@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState  } from "react";
-import api from "@/api/api";
+import api from "@/services/api";
 import { simpleType } from '@/types/simpleType';
 import Card from '@/components/Card';
 
