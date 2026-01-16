@@ -6,7 +6,7 @@
   --foreground: #171717;
   --secondary: #3A3F42;
   --font-dm-sans: "DM Sans", sans-serif;
-
+  --font-grape-nuts: "Grape Nuts", sans-serif;
 }
 
 @theme inline {
@@ -16,6 +16,7 @@
   --color-secondary: var(--secondary);
   --font-sans: var(--font-dm-sans);
   --font-my-font: var(--font-my-font);
+  --font-grape-nuts: var(--font-grape-nuts);
 }
 
 @media (prefers-color-scheme: dark) {
