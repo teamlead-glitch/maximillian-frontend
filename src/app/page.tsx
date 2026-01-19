@@ -105,13 +105,52 @@ const testimonials = [
 
 ];
 
+const insights = [
+  {
+    id: 1,
+    mainheading: "Travel Insights",
+    heading: "Top ten destinations of Europe in 2026.",
+    content: "Product Manager",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.",
+    insight_image: "/images/insight-img.jpg",
+  },
+  {
+    id: 2,
+    mainheading: "Travel Insights",
+    heading: "Top ten destinations of Europe in 2026.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.",
 
+    insight_image: "/images/insight-img.jpg",
+  },
+  {
+    id: 3,
+    mainheading: "Travel Insights",
+    heading: "Top ten destinations of Europe in 2026.",
+    content: "Product Manager",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien. lorum ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.",
+    insight_image: "/images/insight-img.jpg",
+  },
+
+
+];
+
+
+const logos = [
+  "/images/logo1.png",
+  "/images/logo2.png",
+  "/images/logo3.png",
+  "/images/logo4.png",
+  "/images/logo5.png",
+  "/images/logo1.png",
+  "/images/logo2.png",
+  "/images/logo3.png",
+  "/images/logo4.png",
+  "/images/logo5.png",
+
+];
 
 export default function Home() {
   return (
-
-
-
 
     <>
       <section
@@ -248,7 +287,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                     <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
                       Cultural
                     </li>
-                    <li className="relative pr-3">
+                    <li className="relative">
                       Small Group
                     </li>
                   </ul>
@@ -270,7 +309,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                       Slow Travel
                     </li>
 
-                    <li className="relative pr-3">
+                    <li className="relative ">
                       Private
                     </li>
                   </ul>
@@ -290,7 +329,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                     <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
                       Scenic
                     </li>
-                    <li className="relative pr-3">
+                    <li className="relative ">
                       Photography
                     </li>
                   </ul>
@@ -310,7 +349,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                     <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
                       Slow Travel
                     </li>
-                    <li className="relative pr-3">
+                    <li className="relative ">
                       Photography
                     </li>
                   </ul>
@@ -560,7 +599,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
       {/* design your trips close */}
 
       {/* testimonials */}
-      <section className="bg-[#f9f7f5] py-40">
+      <section className="bg-[#f9f7f5] pt-40 pb-20">
         <div className="  mx-auto px-5">
           <div className="mb-4 mx-auto flex justify-center">
             <img src="images/quote-icon.svg" alt="" />
@@ -568,10 +607,6 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
           <div className="w-full py-20">
             <div className="max-w-4xl mx-auto text-center">
 
-              {/* Heading */}
-
-
-              {/* Slider */}
               <Swiper
                 modules={[Navigation, Autoplay]}
                 navigation={false}   // 👈 no arrows
@@ -721,6 +756,390 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
       {/* What makes our travel packages exceptional close */}
 
 
+
+      {/* insights */}
+      <section className="bg-white pb-40">
+        <div className="mx-auto px-5">
+          <div className="w-full">
+            <div className="max-w-5xl mx-auto">
+              <div className="relative">
+                <button className="insights-prev absolute -left-25 top-1/2  z-20
+    w-20 h-24  flex items-center justify-center cursor-pointer">
+                  <img src="images/left-arrow.svg" alt="" />
+                </button>
+
+                <button className="insights-next absolute -right-25 top-1/2  z-20
+    w-20 h-24  flex items-center justify-center cursor-pointer">
+                  <img src="images/right-arrow.svg" alt="" />
+                </button>
+                <Swiper
+                  modules={[Navigation, Autoplay]}
+                  loop={true}
+                  spaceBetween={0}
+                  autoplay={{
+                    delay: 2000,
+                    disableOnInteraction: false, // ⭐ VERY IMPORTANT
+                    pauseOnMouseEnter: true,
+                  }}
+                  navigation={{
+                    prevEl: ".insights-prev",
+                    nextEl: ".insights-next",
+                  }}
+                  speed={800}
+                  className="insights-swiper"
+                >
+                  {insights.map((item) => (
+                    <SwiperSlide key={item.id}>
+                      <div className="relative flex items-center gap-16 p-20 z-10">
+
+                        {/* BACKGROUND (70%) */}
+                        <div
+                          className="
+                    absolute inset-y-0 left-0
+                    w-[80%]
+                    bg-[#f7f3ef]
+                    rounded-md
+                    z-0
+                  "
+                        />
+
+                        {/* LEFT CONTENT */}
+                        <div className="relative z-10 w-1/2 pr-20">
+                          <p className="text-sm tracking-wide text-(--color-secondary) mb-4">
+                            {item.mainheading}
+                          </p>
+
+                          <h2 className="text-2xl font-my-font text-(--color-secondary) leading-snug mb-6 line-clamp-2">
+                            {item.heading}
+                          </h2>
+
+                          <p className="text-sm text-(--color-secondary) mb-5 max-w-md line-clamp-4">
+                            {item.text || item.content}
+                          </p>
+
+                          <button className="flex items-center font-my-font py-3 cursor-pointer hover:bg-gray-100 transition">
+                            <span className="mr-3">Read More</span>
+                            <svg
+                              width="53"
+                              height="8"
+                              viewBox="0 0 53 8"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
+                                fill="#3A3F42"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+
+                        {/* RIGHT IMAGE */}
+                        <div className="relative z-10 w-1/2">
+                          <img
+                            src={item.insight_image}
+                            alt={item.heading}
+                            className="rounded-2xl object-cover shadow-2xl w-full "
+                          />
+                        </div>
+
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/*insights close */}
+
+      {/* bespoke journey */}
+      <section
+        className="
+    py-20 h-screen 
+    bg-[url('/images/bespoke-journey-bg.jpg')]
+    bg-cover bg-center bg-no-repeat"
+      >
+        <div className="max-w-[1300px] flex items-center justify-between h-full flex-col gap-8 mx-auto ">
+          <div className="w-full flex flex-col items-end gap-5">
+            <img src="images/google-review.svg" alt="" />
+            <img src="images/tripadvisor-reviews.svg" alt="" />
+          </div>
+          <div className="w-full pl-10">
+            <h2 className="text-6xl font-my-font text-white mb-6 ">
+              Begin Your <br />
+              Bespoke Journey
+            </h2>
+            <p className="text-sm text-white mb-5 max-w-md line-clamp-4">
+              Luxury travel isn’t about where you go. It’s about how it feels. Let us design a journey that reflects you.
+            </p>
+            <div className="flex gap-4">
+              <button className="bg-white/30 backdrop-blur-md text-white 
+px-6 py-3 rounded-full font-medium 
+shadow-lg
+hover:bg-white/40 transition cursor-pointer font-my-font">
+                Explore Our Journeys
+              </button>
+              <button className=" text-white 
+px-6 py-3 border border-white/40 rounded-full font-medium 
+shadow-lg
+hover:bg-white/40 transition cursor-pointer font-my-font">
+                Design your trip
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      {/* bespoke journey close */}
+
+
+      {/* logo carousel */}
+      <section className="w-full py-20 ">
+        <Swiper
+          modules={[Autoplay]}
+          loop={true}
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
+          }}
+          speed={3000}
+          slidesPerView={3}
+          spaceBetween={10}
+          breakpoints={{
+            0: { slidesPerView: 2 },
+            640: { slidesPerView: 3 },
+            1024: { slidesPerView: 6 },
+          }}
+          className="flex items-center"
+        >
+          {logos.map((logo, index) => (
+            <SwiperSlide key={index}>
+              <div className="flex items-center justify-center">
+                <img
+                  src={logo}
+                  alt={`logo-${index}`}
+                  className="h-16 w-auto object-contain 
+               "
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+      {/* logo carousel close */}
+
+
+
+      {/* footer */}
+
+      <footer className="bg-white border-t  border-gray-200 py-20">
+        <div className="max-w-[1400px] mx-auto">
+
+          <div className="grid grid-cols-[1fr_2fr_1fr] gap-8">
+            <div className="border-r border-gray-200">
+              <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Menu</h6>
+              <ul className="text-body font-medium">
+                <li className="mb-4 text-5xl font-my-font text-(--color-secondary)">
+                  <a href="https://flowbite.com/" className="hover:underline">Home</a>
+                </li>
+                <li className="mb-4 text-5xl font-my-font text-(--color-secondary)">
+                  <a href="https://flowbite.com/" className="hover:underline">Destinations</a>
+                </li>
+                <li className="mb-4 text-5xl font-my-font text-(--color-secondary)">
+                  <a href="https://flowbite.com/" className="hover:underline">Design Your Trip</a>
+                </li>
+                <li className="mb-4 text-5xl font-my-font text-(--color-secondary)">
+                  <a href="https://flowbite.com/" className="hover:underline">Our World</a>
+                </li>
+                <li className="mb-4 text-5xl font-my-font text-(--color-secondary)">
+                  <a href="https://flowbite.com/" className="hover:underline">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+            <div className="px-10 border-r border-gray-200">
+              <div className="grid grid-cols-2">
+                <div className="div">
+                  <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Specialties</h6>
+                  <ul className="text-body font-medium">
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline ">Ladies only Journeys</a>
+                    </li>
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Family Travel</a>
+                    </li>
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Slow Travel Experiences</a>
+                    </li>
+
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Senior Friendly Journeys</a>
+                    </li>
+
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Solo Traveller</a>
+                    </li>
+
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Festival Journeys</a>
+                    </li>
+                  </ul>
+
+                  <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Regions</h6>
+                  <ul className="text-body font-medium">
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Explore Europe</a>
+                    </li>
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Amazing Asia</a>
+                    </li>
+
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Astounding America</a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="div">
+                  <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Experience</h6>
+                  <ul className="text-body font-medium">
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Cultural Journeys</a>
+                    </li>
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Photography Tours</a>
+                    </li>
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Trekking and Outdoors</a>
+                    </li>
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Culinary Journeys</a>
+                    </li>
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Wellness Travel</a>
+                    </li>
+                    <li className="mb-4 text-[#818c94]">
+                      <a href="#" className="hover:underline">Scenic Escapes</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+            <div className="pl-10">
+              <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Contact</h6>
+              <ul className="text-body font-medium mb-5">
+                <li className="mb-4 text-[#818c94]">
+                  Registered Office: <br />
+                  Maximilian Holidays Pvt Ltd<br />
+                  #3B, The Q Business Bay,<br />
+                  Kochi, Kerala - India.
+                </li></ul>
+              <ul className="text-body font-medium mb-5">
+                <li className="mb-4 text-[#818c94]">
+                  Corporate Office <br />
+                  Level B, Ocean Pearl <br />
+                  Smart City, Dubai.
+                </li>
+              </ul>
+
+              <ul className="text-body font-medium pl-0 -ml-[25px]">
+                <li className="mb-4 flex items-center gap-3 text-[#818c94]">
+                  <img
+                    src="images/call-icon.svg"
+                    alt="Phone"
+                    className="w-3 h-3"
+                  />
+                  +91 999 886 8866
+                </li>
+
+                <li className="mb-4 flex items-center gap-3 text-[#818c94]">
+                  <img
+                    src="images/whatsapp-icon.svg"
+                    alt="Phone"
+                    className="w-3 h-3"
+                  />
+                  +91 999 886 8866
+                </li>
+
+                <li className="flex items-center gap-3 text-[#818c94]">
+                  <img
+                    src="images/mail-icon.svg"
+                    alt="Email"
+                    className="w-3 h-3"
+                  />
+                  hello@maximilianholidays.com
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <hr className="border-gray-200 my-6  sm:mx-auto lg:my-8" />
+          <div className="sm:flex sm:items-center sm:justify-between w-full">
+            <span className="text-base text-[#93989b]  text-body sm:text-center">Made by  <a href="https://phitany.com/" className="hover:underline">Phitany</a>
+            </span>
+            <div className="div">
+              <ul className="flex gap-4 mt-1">
+                <li className="relative text-base text-[#93989b]  text-body sm:text-center pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+                  <a href="#" className="hover:underline">Terms</a>
+                </li>
+
+                <li className="relative pr-3 text-base text-[#93989b]  text-body sm:text-center">
+                  <a href="#" className="hover:underline">Privacy Policy</a>
+                </li>
+              </ul></div>
+            <div className="flex mt-4 sm:justify-center sm:mt-0">
+              <a href="#" className="text-body text-[#818c94] hover:text-heading">
+                <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clipRule="evenodd" /></svg>
+                <span className="sr-only">Facebook page</span>
+              </a>
+              <a href="#" className="text-body text-[#818c94] hover:text-heading ms-5">
+                <svg
+                  className="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12 2c2.717 0 3.056.01 4.122.06 1.064.05 1.79.217 2.43.465a4.92 4.92 0 0 1 1.77 1.153 4.92 4.92 0 0 1 1.153 1.77c.248.64.415 1.366.465 2.43.05 1.066.06 1.405.06 4.122s-.01 3.056-.06 4.122c-.05 1.064-.217 1.79-.465 2.43a4.902 4.902 0 0 1-2.923 2.923c-.64.248-1.366.415-2.43.465-1.066.05-1.405.06-4.122.06s-3.056-.01-4.122-.06c-1.064-.05-1.79-.217-2.43-.465a4.902 4.902 0 0 1-2.923-2.923c-.248-.64-.415-1.366-.465-2.43C2.01 15.056 2 14.717 2 12s.01-3.056.06-4.122c.05-1.064.217-1.79.465-2.43A4.92 4.92 0 0 1 3.678 3.73a4.92 4.92 0 0 1 1.77-1.153c.64-.248 1.366-.415 2.43-.465C8.944 2.01 9.283 2 12 2Zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm5.25-.75a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="sr-only">Instagram page</span>
+              </a>
+
+              <a href="#" className="text-body text-[#818c94] hover:text-heading ms-5">
+                <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z" /></svg>
+                <span className="sr-only">Twitter page</span>
+              </a>
+              <a href="#" className="text-body text-[#818c94] hover:text-heading ms-5">
+                <svg
+                  className="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M21.58 7.19a2.75 2.75 0 0 0-1.94-1.95C17.88 4.75 12 4.75 12 4.75s-5.88 0-7.64.49A2.75 2.75 0 0 0 2.42 7.19 28.7 28.7 0 0 0 2 12a28.7 28.7 0 0 0 .42 4.81 2.75 2.75 0 0 0 1.94 1.95c1.76.49 7.64.49 7.64.49s5.88 0 7.64-.49a2.75 2.75 0 0 0 1.94-1.95A28.7 28.7 0 0 0 22 12a28.7 28.7 0 0 0-.42-4.81ZM10 15.5v-7l6 3.5-6 3.5Z" />
+                </svg>
+                <span className="sr-only">YouTube channel</span>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </footer >
+
+      <footer className="bg-[#C43131] py-20">
+        <div className="max-w-[1300px] flex flex-col items-center justify-center mx-auto text-center">
+          <img src="images/logo-footer.svg" alt="" />
+          <p className="text-white text-xs mt-3">A premium travel brand owned by Maximilian Holidays Private Ltd.</p>
+        </div>
+      </footer>
+
+      {/* footer close */}
     </>
   );
 }
