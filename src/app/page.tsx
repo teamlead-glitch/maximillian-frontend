@@ -11,7 +11,6 @@ import { useState, useEffect, useRef } from "react";
 const slides = [
   {
     id: 1,
-
     title: "Rajasthan",
     desc: "Discover breathtaking destinations and thrilling experiences.",
     image: "/images/destination-img1.jpg",
