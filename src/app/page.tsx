@@ -153,6 +153,8 @@ export default function Home() {
   return (
 
     <>
+
+      {/* hero section */}
       <section
         className="relative bg-cover bg-center min-h-screen"
         style={{
@@ -179,8 +181,8 @@ export default function Home() {
 
           {/* Left content */}
           <div className="flex flex-col w-lg">
-            <p className="text-white font-light text-end">Curated international travel experiences for discerning explorers. Crafted with care, culture, and character.</p>
-            <h1 className="text-4xl text-white md:text-7xl mb-4 font-my-font text-end">
+            <p className="text-white font-light text-end text-xs sm:text-base">Curated international travel experiences for discerning explorers. Crafted with care, culture, and character.</p>
+            <h1 className="text-5xl text-white md:text-7xl mb-4 font-my-font-regular text-end">
               Journeys Beyond <br />
               The Ordinary
             </h1>
@@ -188,15 +190,17 @@ export default function Home() {
 
             <div className="flex justify-end gap-4">
               <button className="bg-white/30 backdrop-blur-md text-white 
-px-6 py-3 rounded-full font-medium 
-shadow-lg
-hover:bg-white/40 transition cursor-pointer font-my-font">
+ px-4 py-3
+    md:px-6 md:py-4 rounded-full font-my-font-semibold 
+shadow-lg  text-xs sm:text-base
+hover:bg-white/40 transition cursor-pointer ">
                 Explore Our Journeys
               </button>
               <button className=" text-white 
-px-6 py-3 border border-white/40 rounded-full font-medium 
-shadow-lg
-hover:bg-white/40 transition cursor-pointer font-my-font">
+ px-4 py-3
+    md:px-6 md:py-4 border border-white/40 rounded-full font-my-font-semibold
+shadow-lg text-xs sm:text-base
+hover:bg-white/40 transition cursor-pointer ">
                 Design your trip
               </button>
             </div>
@@ -207,25 +211,39 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
 
         </div>
       </section >
+      {/* hero section close */}
+
+
 
       {/* about section */}
-
-
-      <section className="py-20">
+      <section className="relative py-20 overflow-hidden">
+        {/* Top Right Decorative Shape */}
+        <img
+          src="/images/logo-shape.png"
+          alt="Decorative shape"
+          className="
+      absolute top-0 right-0
+      w-200 sm:w-150 lg:w-200
+      pointer-events-none
+      select-none
+    "
+        />
         <div className="max-w-[1300px] flex mx-auto  px-5  ">
-          <div className="w-[10%]"><img src="images/logo-icon.svg" alt="" /></div>
-          <div className="w-[60%]">
-            <h2 className=" font-my-font text-4xl text-(--color-secondary) mb-5">Travel, Thoughtfully <br /> Designed.</h2>
-            <div className="flex gap-5">
-              <div className="w-1/2">
-                <p className="text-sm text-(--color-secondary)  mb-4">
+          <div className="w-[20%]  lg:w-[10%]"><img src="images/logo-icon.svg" alt="" /></div>
+          <div className="w-[80%] lg:w-[60%]">
+            <h2 className=" font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) mb-5">Travel, Thoughtfully <br /> Designed.</h2>
+            <div className="flex flex-col md:flex-row gap-5">
+              <div className="w-full md:w-1/2">
+                <p className="text-(--color-secondary)  mb-4">
 
                   At Maximillian Holidays, we believe meaningful travel is unhurried, immersive, and deeply personal.</p>
-                <p className="text-sm text-(--color-secondary)">We craft small-group and private international journeys that focus on culture, connection, and comfort—moving beyond checklists to create experiences that stay with you long after the journey ends.</p>
+                <p className="text-(--color-secondary)">We craft small-group and private international journeys that focus on culture, connection, and comfort—moving beyond checklists to create experiences that stay with you long after the journey ends.</p>
               </div>
-              <div className="w-1/2"><p className="text-sm text-(--color-secondary)">Our curated approach focuses on specialty journeys from culinary and trekking expeditions to slow travel designed to foster genuine discovery. Through an enquiry-driven user journey and a commitment to cinematic storytelling, we transform international travel into a premium, custom-fit experience tailored specifically to your group size, budget, and season.</p></div>
+              <div className="w-full md:w-1/2"><p className="text-(--color-secondary)">Our curated approach focuses on specialty journeys from culinary and trekking expeditions to slow travel designed to foster genuine discovery. Through an enquiry-driven user journey and a commitment to cinematic storytelling, we transform international travel into a premium, custom-fit experience tailored specifically to your group size, budget, and season.</p></div>
             </div>
-            <button className="flex items-center font-my-font justify-center py-3 cursor-pointer  hover:bg-gray-100 transition">
+            <button className="flex items-center font-my-font-semibold text-sm sm:text-base justify-center py-3 mt-3  cursor-pointer  ">
+
+
               <span className="mr-3">Our World</span>
               <svg
                 width="53"
@@ -248,16 +266,16 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
 
       {/* signature journey section */}
 
-      <section className="py-20">
+      <section className="pt-0 md:pt-20 md:pb-20">
         <div className="max-w-[1300px]  mx-auto px-5">
-          <div className="flex justify-end items-center w-full gap-8">
-            <div className="inline-block">  <h3 className=" font-my-font text-4xl text-(--color-secondary) text-right">Our <br />
+          <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
+            <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />
               Signature Journeys</h3></div>
-            <div className="w-px h-10 bg-gray-300 "></div>
-            <div className="w-[200px]"><p className="text-sm text-(--color-secondary) ">A selection of our carefully curated international experiences.</p></div>
-            <div className="w-px h-10 bg-gray-300 "></div>
-            <div className="inline-block"> <button className="flex items-center font-my-font justify-center py-3 cursor-pointer  ">
-              <span className="mr-3">View All Signature Journeys</span>
+            <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+            <div className="w-full md:w-[200px]"><p className="text-sm text-(--color-secondary) ">A selection of our carefully curated international experiences.</p></div>
+            <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+            <div className="inline-block"> <button className="flex items-center text-sm sm:text-base font-my-font-semibold justify-center py-3 cursor-pointer  ">
+              <span className="mr-3 flex flex-wrap justify-start items-start">View All Signature Journeys</span>
               <svg
                 width="53"
                 height="8"
@@ -272,89 +290,98 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
               </svg>
             </button></div>
           </div>
-          <div className="w-full flex mt-20 gap-10">
-            <div className="w-1/3"><div className="img__box rounded-md relative"><img src="images/signature-journey-1.jpg" className="rounded-md" alt="" />
-              <div className="absolute inset-0 bg-gradient-to-t  rounded-md
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-4 lg:gap-10 mt-5 md:mt-20">
+            <div className="div">
+              <div className="rounded-md relative aspect-[3/4] overflow-hidden"><img src="images/signature-journey-1.jpg" className="rounded-md w-full h-full object-cover" alt="" />
+                <div className="absolute inset-0 bg-gradient-to-t  rounded-md
                   from-black/80 via-black/40 to-transparent">
-              </div>
-              <div className="absolute w-full bottom-0 left-0 p-5 flex flex-col items-center">
-                <h3 className="font-my-font text-white text-2xl">Signature Journey</h3>
-                <div className="text-white text-xs">
-                  <ul className="flex gap-2 mt-1">
-                    <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
-                      Europe
-                    </li>
-                    <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
-                      Cultural
-                    </li>
-                    <li className="relative">
-                      Small Group
-                    </li>
-                  </ul>
+                </div>
+                <div className="absolute w-full bottom-0 left-0 p-5 flex flex-col items-center">
+                  <h3 className="font-my-font-regular text-white text-2xl">Timeless Europe</h3>
+                  <div className="text-white text-xs">
+                    <ul className="flex flex-wrap justify-center items-center gap-2 mt-1">
+                      <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
+                        Europe
+                      </li>
+                      <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
+                        Cultural
+                      </li>
+                      <li className="relative">
+                        Small Group
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div></div>
-            <div className="w-1/3"><div className="img__box rounded-md relative"><img src="images/signature-journey-2.jpg" className="rounded-md" alt="" />
-              <div className="absolute inset-0 bg-gradient-to-t  rounded-md
+            </div>
+            <div className="div">
+              <div className="rounded-md relative aspect-[3/4] overflow-hidden">
+                <img src="images/signature-journey-2.jpg" className="rounded-md w-full h-full object-cover" alt="" />
+                <div className="absolute inset-0 bg-gradient-to-t  rounded-md
                   from-black/80 via-black/40 to-transparent">
-              </div>
-              <div className="absolute w-full bottom-0 left-0 p-5 flex flex-col items-center">
-                <h3 className="font-my-font text-white text-2xl">Japan in Quiet Detail</h3>
-                <div className="text-white text-xs">
-                  <ul className="flex gap-2 mt-1">
-                    <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
-                      Asia
-                    </li>
-                    <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
-                      Slow Travel
-                    </li>
+                </div>
+                <div className="absolute w-full bottom-0 left-0 p-5 flex flex-col items-center">
+                  <h3 className="font-my-font-regular text-white text-2xl">Japan in Quiet Detail</h3>
+                  <div className="text-white text-xs">
+                    <ul className="flex flex-wrap justify-center items-center gap-2 mt-1">
+                      <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
+                        Asia
+                      </li>
+                      <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
+                        Slow Travel
+                      </li>
 
-                    <li className="relative ">
-                      Private
-                    </li>
-                  </ul>
-                </div>
-              </div></div></div>
-            <div className="w-1/3"><div className="img__box rounded-md relative"><img src="images/signature-journey-3.jpg" className="rounded-md" alt="" />
-              <div className="absolute inset-0 bg-gradient-to-t  rounded-md
+                      <li className="relative ">
+                        Private
+                      </li>
+                    </ul>
+                  </div>
+                </div></div>
+            </div>
+            <div className="div">
+              <div className="rounded-md relative aspect-[3/4] overflow-hidden"><img src="images/signature-journey-3.jpg" className="rounded-md w-full h-full object-cover" alt="" />
+                <div className="absolute inset-0 bg-gradient-to-t  rounded-md
                   from-black/80 via-black/40 to-transparent">
-              </div>
-              <div className="absolute w-full bottom-0 left-0 p-5 flex flex-col items-center">
-                <h3 className="font-my-font text-white text-2xl">American Landscapes</h3>
-                <div className="text-white text-xs">
-                  <ul className="flex gap-2 mt-1">
-                    <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
-                      USA
-                    </li>
-                    <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
-                      Scenic
-                    </li>
-                    <li className="relative ">
-                      Photography
-                    </li>
-                  </ul>
                 </div>
-              </div></div></div>
-            <div className="w-1/3"><div className="img__box rounded-md relative"><img src="images/signature-journey-4.jpg" className="rounded-md" alt="" />
-              <div className="absolute inset-0 bg-gradient-to-t  rounded-md
+                <div className="absolute w-full bottom-0 left-0 p-5 flex flex-col items-center">
+                  <h3 className="font-my-font-regular text-white text-2xl">American Landscapes</h3>
+                  <div className="text-white text-xs">
+                    <ul className="flex flex-wrap justify-center items-center gap-2 mt-1">
+                      <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
+                        USA
+                      </li>
+                      <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
+                        Scenic
+                      </li>
+                      <li className="relative ">
+                        Photography
+                      </li>
+                    </ul>
+                  </div>
+                </div></div>
+            </div>
+            <div className="div">
+              <div className="rounded-md relative aspect-[3/4] overflow-hidden"><img src="images/signature-journey-4.jpg" className="rounded-md w-full h-full object-cover" alt="" />
+                <div className="absolute inset-0 bg-gradient-to-t  rounded-md
                   from-black/80 via-black/40 to-transparent">
-              </div>
-              <div className="absolute w-full bottom-0 left-0 p-5 flex flex-col items-center">
-                <h3 className="font-my-font text-white text-2xl">African Wilderness</h3>
-                <div className="text-white text-xs">
-                  <ul className="flex gap-2 mt-1">
-                    <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
-                      Africa
-                    </li>
-                    <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
-                      Slow Travel
-                    </li>
-                    <li className="relative ">
-                      Photography
-                    </li>
-                  </ul>
                 </div>
-              </div></div></div>
+                <div className="absolute w-full bottom-0 left-0 p-5 flex flex-col items-center">
+                  <h3 className="font-my-font-regular text-white text-2xl">African Wilderness</h3>
+                  <div className="text-white text-xs">
+                    <ul className="flex flex-wrap justify-center items-center gap-2 mt-1">
+                      <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
+                        Africa
+                      </li>
+                      <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
+                        Slow Travel
+                      </li>
+                      <li className="relative ">
+                        Photography
+                      </li>
+                    </ul>
+                  </div>
+                </div></div>
+            </div>
           </div>
 
         </div>
@@ -366,46 +393,44 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
       {/* experience tour */}
       <section className="py-20">
         <div className="max-w-[1300px]  mx-auto px-5">
-          <div className="flex gap-8">
-            <div className="w-1/4 relative pr-10"><h3 className=" font-my-font text-4xl text-(--color-secondary) mb-5 text-right">Experience <br /> Tours</h3>  <div className="absolute right-0 top-0  w-px h-10 bg-gray-400 "></div></div>
-            <div className="w-3/4">
-              <div className="flex w-full gap-10 mb-10">
-                <div className="w-1/2 py-3">
+          <div className="flex gap-8 flex-col md:flex-row">
+            <div className="w-full md:w-1/4 relative mr-0 md:pr-10"><h3 className=" font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) md:text-right">Experience <br /> Tours</h3>  <div className="absolute right-0 top-0  w-px h-10 bg-gray-400 md:block hidden"></div></div>
+            <div className="w-full md:w-3/4">
+              <div className="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon1.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Cultural Journeys</h4>
-                  <p className="text-sm text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
+                  <h4 className="text-1xl font-my-font-semibold">Cultural Journeys</h4>
+                  <p className="text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
                 </div>
-                <div className="w-1/2 py-3">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon2.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Photography Tours</h4>
-                  <p className="text-sm text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
+                  <h4 className="text-1xl font-my-font-semibold">Photography Tours</h4>
+                  <p className="text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
                 </div>
-                <div className="w-1/2 py-3">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon3.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Trekking and Outdoors</h4>
-                  <p className="text-sm text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
+                  <h4 className="text-1xl font-my-font-semibold">Trekking and Outdoors</h4>
+                  <p className=" text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
                 </div>
 
               </div>
-              <div className="flex w-full gap-10">
-                <div className="w-1/2 py-3">
+              <div className="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon1.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Cultural Journeys</h4>
-                  <p className="text-sm text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
+                  <h4 className="text-1xl font-my-font-semibold">Cultural Journeys</h4>
+                  <p className=" text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
                 </div>
-                <div className="w-1/2 py-3">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon2.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Photography Tours</h4>
-                  <p className="text-sm text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
+                  <h4 className="text-1xl font-my-font-semibold">Photography Tours</h4>
+                  <p className=" text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
                 </div>
-                <div className="w-1/2 py-3">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon3.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Trekking and Outdoors</h4>
-                  <p className="text-sm text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
+                  <h4 className="text-1xl font-my-font-semibold">Trekking and Outdoors</h4>
+                  <p className=" text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
                 </div>
-
               </div>
-
             </div>
           </div>
         </div>
@@ -413,50 +438,50 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
       {/* experience tour close */}
 
       {/* speciality tours */}
-      <section className="py-20">
+      <section className="pt-0 md:pt-20 pb-10 md:pb-20">
         <div className="max-w-[1300px]  mx-auto px-5">
-          <div className="flex gap-8">
+          <div className="flex flex-col-reverse md:flex-row gap-8">
 
-            <div className="w-3/4">
-              <div className="flex w-full gap-10 mb-10">
-                <div className="w-1/2 py-3">
+            <div className="w-full md:w-3/4">
+              <div className="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon4.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Ladies-Only Journeys</h4>
-                  <p className="text-sm text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
+                  <h4 className="font-my-font-semibold text-1xl">Ladies-Only Journeys</h4>
+                  <p className="text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
                 </div>
-                <div className="w-1/2 py-3">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon5.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Family Travel</h4>
-                  <p className="text-sm text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
+                  <h4 className="font-my-font-semibold text-1xl">Family Travel</h4>
+                  <p className="text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
                 </div>
-                <div className="w-1/2 py-3">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon6.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Slow Travel Experiences</h4>
-                  <p className="text-sm text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
+                  <h4 className="font-my-font-semibold text-1xl">Slow Travel Experiences</h4>
+                  <p className="text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
                 </div>
 
               </div>
-              <div className="flex w-full gap-10">
-                <div className="w-1/2 py-3">
+              <div className="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon4.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Ladies-Only Journeys</h4>
-                  <p className="text-sm text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
+                  <h4 className="font-my-font-semibold text-11xl">Ladies-Only Journeys</h4>
+                  <p className=" text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
                 </div>
-                <div className="w-1/2 py-3">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon5.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Family Travel</h4>
-                  <p className="text-sm text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
+                  <h4 className="font-my-font-semibold text-1xl">Family Travel</h4>
+                  <p className="text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
                 </div>
-                <div className="w-1/2 py-3">
+                <div className="w-full sm:w-1/2 py-3">
                   <div className="pb-5"><img src="images/experience-tour-icon6.svg" alt="" /></div>
-                  <h4 className="font-my-font text-2xl">Slow Travel Experiences</h4>
-                  <p className="text-sm text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
+                  <h4 className="font-my-font-semibold text-1xl">Slow Travel Experiences</h4>
+                  <p className="text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
                 </div>
-
               </div>
-
             </div>
-            <div className="w-1/4 relative pl-10"><h3 className=" font-my-font text-4xl text-(--color-secondary) mb-5 text-left">Speciality <br /> Tours</h3>  <div className="absolute left-0 top-0  w-px h-10 bg-gray-400 "></div></div>
+
+            <div className="w-full md:w-1/4 ml-0 md:pl-10">
+              <h3 className=" font-my-font-regular text-4xl text-(--color-secondary)  text-left">Speciality <br /> Tours</h3>  <div className="absolute left-0 top-0  w-px h-10 bg-gray-400 "></div></div>
           </div>
         </div>
       </section >
@@ -464,17 +489,17 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
 
 
       {/* featured destination */}
-      <section className="bg-[#F5F2EE] py-20">
+      <section className="bg-[#F5F2EE] pt-10 md:pt-20 pb-10 md:pb-20">
         <div className="max-w-[1300px]  mx-auto px-5">
-          <div className="flex items-center w-full gap-8">
-            <div className="inline-block">  <h3 className=" font-my-font text-4xl text-(--color-secondary) text-right">
+          <div className="flex flex-col md:flex-row  items-start md:items-center w-full gap-4 md:gap-8">
+            <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">
               Featured <br />
               Destinations</h3></div>
-            <div className="w-px h-10 bg-gray-300 "></div>
-            <div className="w-[200px]"><p className="text-sm text-(--color-secondary) ">Check out our carefully curated destination experiences.</p></div>
-            <div className="w-px h-10 bg-gray-300 "></div>
-            <div className="inline-block"> <button className="flex items-center font-my-font justify-center py-3 cursor-pointer  hover:bg-gray-100 transition">
-              <span className="mr-3">View All Destinations</span>
+            <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+            <div className="w-full md:w-[200px]"><p className="text-sm text-(--color-secondary) ">Check out our carefully curated destination experiences.</p></div>
+            <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+            <div className="inline-block"> <button className="flex items-center text-sm sm:text-base font-my-font-semibold justify-center py-3 cursor-pointer ">
+              <span className="mr-3 flex flex-wrap justify-start items-start">View All Destinations</span>
               <svg
                 width="53"
                 height="8"
@@ -503,16 +528,16 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
               disableOnInteraction: false,
             }}
             breakpoints={{
-              0: { slidesPerView: 1.3 },
-              640: { slidesPerView: 2.3 },
-              1024: { slidesPerView: 4.5 },
+              0: { slidesPerView: 1.3, spaceBetween: 20 },
+              480: { slidesPerView: 2.3, spaceBetween: 20 },
+              1024: { slidesPerView: 4.5, },
             }}
             className="w-full overflow-visible"
           >
             {slides.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="bg-white rounded-xl overflow-hidden
-  transition-all duration-300 my-15
+  transition-all duration-300 my-10 md:my-15
   hover:shadow-2xl"
                 >
 
@@ -526,7 +551,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                   </div>
 
                   {/* Content */}
-                  <div className="py-5 px-6 text-center relative">
+                  <div className="py-5 px-6 text-center relative h-full flex flex-col min-h-[120px] ">
                     <div
                       className="absolute -top-[40px] right-4 z-10
   w-12 h-12 rounded-full
@@ -543,7 +568,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
   transition-all duration-300
   group-hover:rotate-90 group-hover:scale-110"
                       /> </div>
-                    <h3 className="text-lg font-semibold mt-1 font-my-font">
+                    <h3 className="text-lg font-semibold mt-1 font-my-font-regular line-clamp-1">
                       {item.title}
                     </h3>
 
@@ -565,16 +590,16 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
 
 
       {/* design your trips */}
-      <section className="py-40">
+      <section className="py-20 md:py-40">
         <div className="max-w-[1300px]  mx-auto px-5">
-          <div className="flex justify-end items-center w-full gap-8">
-            <div className="inline-block">  <h3 className=" font-my-font text-4xl text-(--color-secondary) text-right">Design <br />
+          <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
+            <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Design <br />
               Your Trip</h3></div>
-            <div className="w-px h-10 bg-gray-300 "></div>
-            <div className="w-[200px]"><p className="text-sm text-(--color-secondary) ">Some journeys can’t be templated. Design a fully personalised journey with us.</p></div>
-            <div className="w-px h-10 bg-gray-300 "></div>
-            <div className="inline-block"> <button className="flex items-center font-my-font justify-center py-3 cursor-pointer  ">
-              <span className="mr-3">Start Designing</span>
+            <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+            <div className="w-full md:w-[200px]"><p className="text-sm text-(--color-secondary) ">Some journeys can’t be templated. Design a fully personalised journey with us.</p></div>
+            <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+            <div className="inline-block"> <button className="flex items-center text-sm sm:text-base font-my-font-semibold justify-center py-3 cursor-pointer  ">
+              <span className="mr-3 flex flex-wrap justify-start items-start">Start Designing</span>
               <svg
                 width="53"
                 height="8"
@@ -589,7 +614,6 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
               </svg>
             </button></div>
           </div>
-
         </div>
         <div className="max-w-[1300px]  mx-auto px-10 w-full mt-10">
           <img src="images/design-your-trips.svg" alt="" />
@@ -599,19 +623,19 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
       {/* design your trips close */}
 
       {/* testimonials */}
-      <section className="bg-[#f9f7f5] pt-40 pb-20">
+      <section className="bg-[#f9f7f5] pt-20 md:pt-40 pb-10 md:pb-20">
         <div className="  mx-auto px-5">
           <div className="mb-4 mx-auto flex justify-center">
             <img src="images/quote-icon.svg" alt="" />
           </div>
-          <div className="w-full py-20">
+          <div className="w-full my-10 md:py-20">
             <div className="max-w-4xl mx-auto text-center">
 
               <Swiper
                 modules={[Navigation, Autoplay]}
                 navigation={false}   // 👈 no arrows
                 loop
-                spaceBetween={40}
+                spaceBetween={10}
                 autoplay={{
                   delay: 3000,          // 3 seconds per slide
                   disableOnInteraction: false,
@@ -623,27 +647,36 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                 {testimonials.map((item) => (
                   <SwiperSlide key={item.id}>
                     <div className="flex flex-col items-center">
-                      <p className="text-3xl text-(--color-secondary)  mb-10 leading-normal">
+                      <p className="text-lg md:text-2xl lg:text-3xl text-(--color-secondary)  mb-10 leading-normal">
                         {item.text}
                       </p>
 
-                      <div className="flex items-center gap-20 mb-10">
-                        {testimonials.map((u) => (
-                          <img
-                            key={u.id}
-                            src={u.avatar}
-                            alt={u.name}
-                            className={`w-12 h-12 rounded-full object-cover transition-all
-                ${u.id === item.id
-                                ? "ring-0  scale-150 grayscale-0 opacity-100"
-                                : "opacity-50 grayscale ring-0"
-                              }`}
-                          />
-                        ))}
+                      <div className="flex items-center gap-4 md:gap-10 mb-10 overflow-hidden justify-center min-h-[80px]">
+                        {(() => {
+                          const currentIndex = testimonials.findIndex((t) => t.id === item.id);
+                          const total = testimonials.length;
+                          const visibleAvatars = [-2, -1, 0, 1, 2].map((offset) => {
+                            const index = (currentIndex + offset + total) % total;
+                            return testimonials[index];
+                          });
+
+                          return visibleAvatars.map((u, idx) => (
+                            <img
+                              key={`${u.id}-${idx}`}
+                              src={u.avatar}
+                              alt={u.name}
+                              className={`w-12 h-12 rounded-full object-cover transition-all duration-300
+                                ${idx === 2
+                                  ? "ring-0 scale-150 grayscale-0 opacity-100 z-10"
+                                  : "opacity-40 grayscale scale-90"
+                                }`}
+                            />
+                          ));
+                        })()}
                       </div>
 
                       <h4 className="font-grape-nuts text-2xl text-(--color-secondary)">{item.name}</h4>
-                      <p className="text-sm text-(--color-secondary)">
+                      <p className="text-(--color-secondary)">
                         {item.designation}
                       </p>
                     </div>
@@ -653,7 +686,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
             </div>
           </div>
           <div className="mb-4 mx-auto flex justify-center">
-            <div className="inline-block"> <button className="flex items-center font-my-font justify-center py-3 cursor-pointer  ">
+            <div className="inline-block"> <button className="flex items-center text-sm sm:text-base font-my-font-semibold justify-center py-3 cursor-pointer  ">
               <span className="mr-3">View All Testimonials</span>
               <svg
                 width="53"
@@ -675,19 +708,17 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
 
 
       {/* What makes our travel packages exceptional */}
-
-
-      <section className="py-40">
-        <div className="max-w-[1300px] flex items-center gap-8 mx-auto  px-5  ">
+      <section className="py-10 md:py-40">
+        <div className="max-w-[1300px] flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mx-auto  px-5  ">
           <div className="w-[10%]"><img src="images/logo-icon.svg" alt="" /></div>
           <div className="inline-block]">
-            <h2 className=" font-my-font text-4xl text-(--color-secondary) mb-5">What makes our travel <br /> packages exceptional</h2>
+            <h2 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) ">What makes our travel <br /> packages exceptional</h2>
             <div className="flex gap-5">
             </div>
 
           </div>
-          <div className="w-px h-10 bg-gray-300 "></div>
-          <div className="inline-block"> <button className="flex items-center font-my-font justify-center py-3 cursor-pointer  ">
+          <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+          <div className="inline-block"> <button className="flex items-center text-sm sm:text-base font-my-font-semibold justify-center py-3 cursor-pointer  ">
             <span className="mr-3">Contact Now Us</span>
             <svg
               width="53"
@@ -704,49 +735,49 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
           </button></div>
         </div>
 
-        <div className="max-w-[1300px] flex items-center gap-8 mx-auto mt-10  px-5  ">
-          <div className="w-[10%]"></div>
+        <div className="max-w-[1300px] flex items-center gap-8 mx-auto mt-10 md:mt-20  px-5  ">
+          <div className=" hidden md:block md:w-[10%]"></div>
           <div className="w-[90%]">
-            <div className="grid  items-center   sm:grid-cols-2 gap-15   lg:grid-cols-4">
-              <div className="pb-10">
+            <div className="grid  items-center   sm:grid-cols-2 md:gap-5 lg:gap-10 xl:gap-15   lg:grid-cols-4">
+              <div className="pb-10 pr-0 md:pr-5">
                 <div className="pb-5"><img src="images/package-exception-icon-1.svg" alt="" /></div>
 
-                <p className="text-sm text-(--color-secondary)">Experiences over checklists. Not photo tick-box tourism.</p>
+                <p className="text-(--color-secondary)">Experiences over checklists. Not photo tick-box tourism.</p>
               </div>
-              <div className="pb-10">
+              <div className="pb-10 pr-0 md:pr-5">
                 <div className="pb-5"><img src="images/package-exception-icon-2.svg" alt="" /></div>
 
-                <p className="text-sm text-(--color-secondary)">Private guides & exclusive access.</p>
+                <p className="text-(--color-secondary)">Private guides & exclusive access.</p>
               </div>
-              <div className="pb-10">
+              <div className="pb-10 pr-0 md:pr-5">
                 <div className="pb-5"><img src="images/package-exception-icon-3.svg" alt="" /></div>
 
-                <p className="text-sm text-(--color-secondary)">Handpicked luxury hotels & villas.</p>
+                <p className="text-(--color-secondary)">Handpicked luxury hotels & villas.</p>
               </div>
-              <div className="pb-10">
+              <div className="pb-10 pr-0 md:pr-5">
                 <div className="pb-5"><img src="images/package-exception-icon-4.svg" alt="" /></div>
 
-                <p className="text-sm text-(--color-secondary)">Flexible itineraries, no rigid schedules.</p>
+                <p className="text-(--color-secondary)">Flexible itineraries, no rigid schedules.</p>
               </div>
-              <div className="pb-10">
+              <div className="pb-10 pr-0 md:pr-5">
                 <div className="pb-5"><img src="images/package-exception-icon-5.svg" alt="" /></div>
 
-                <p className="text-sm text-(--color-secondary)">Thoughtful pacing. Space to explore, reflect & connect.</p>
+                <p className="text-(--color-secondary)">Thoughtful pacing. Space to explore, reflect & connect.</p>
               </div>
-              <div className="pb-10">
+              <div className="pb-10 pr-0 md:pr-5">
                 <div className="pb-5"><img src="images/package-exception-icon-6.svg" alt="" /></div>
 
-                <p className="text-sm text-(--color-secondary)">Deeper immersion rather than rushed sightseeing.</p>
+                <p className="text-(--color-secondary)">Deeper immersion rather than rushed sightseeing.</p>
               </div>
-              <div className="pb-10">
+              <div className="pb-10 pr-0 md:pr-5">
                 <div className="pb-5"><img src="images/package-exception-icon-7.svg" alt="" /></div>
 
-                <p className="text-sm text-(--color-secondary)">24/7 global concierge support.</p>
+                <p className="text-(--color-secondary)">24/7 global concierge support.</p>
               </div>
-              <div className="pb-10">
+              <div className="pb-10 pr-0 md:pr-5">
                 <div className="pb-5"><img src="images/package-exception-icon-8.svg" alt="" /></div>
 
-                <p className="text-sm text-(--color-secondary)">Discreet, personalised service.</p>
+                <p className="text-(--color-secondary)">Discreet, personalised service.</p>
               </div>
             </div>
           </div>
@@ -758,18 +789,18 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
 
 
       {/* insights */}
-      <section className="bg-white pb-40">
-        <div className="mx-auto px-5">
+      <section className="bg-white pb-10 md:pb-40">
+        <div className="mx-auto px-0 md:px-5">
           <div className="w-full">
             <div className="max-w-5xl mx-auto">
               <div className="relative">
-                <button className="insights-prev absolute -left-25 top-1/2  z-20
-    w-20 h-24  flex items-center justify-center cursor-pointer">
+                <button className="insights-prev hidden lg:flex text-sm sm:text-base absolute md:left-0 xl:-left-25 top-1/2  z-20
+    w-20 h-24 items-center justify-center cursor-pointer">
                   <img src="images/left-arrow.svg" alt="" />
                 </button>
 
-                <button className="insights-next absolute -right-25 top-1/2  z-20
-    w-20 h-24  flex items-center justify-center cursor-pointer">
+                <button className="insights-next hidden lg:flex text-sm sm:text-base absolute md:right-0 xl:-right-25 top-1/2  z-20
+    w-20 h-24  items-center justify-center cursor-pointer">
                   <img src="images/right-arrow.svg" alt="" />
                 </button>
                 <Swiper
@@ -777,10 +808,11 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                   loop={true}
                   spaceBetween={0}
                   autoplay={{
-                    delay: 2000,
+                    delay: 4000,
                     disableOnInteraction: false, // ⭐ VERY IMPORTANT
                     pauseOnMouseEnter: true,
                   }}
+
                   navigation={{
                     prevEl: ".insights-prev",
                     nextEl: ".insights-next",
@@ -790,34 +822,34 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                 >
                   {insights.map((item) => (
                     <SwiperSlide key={item.id}>
-                      <div className="relative flex items-center gap-16 p-20 z-10">
+                      <div className="relative flex flex-col md:flex-row items-center gap-3 md:gap-10 xl:gap-20 p-10 md:p-15 xl:p-20 z-10">
 
                         {/* BACKGROUND (70%) */}
                         <div
                           className="
                     absolute inset-y-0 left-0
-                    w-[80%]
+                    w-full md:w-[80%]
                     bg-[#f7f3ef]
-                    rounded-md
+                    rounded-none md:rounded-md
                     z-0
                   "
                         />
 
                         {/* LEFT CONTENT */}
-                        <div className="relative z-10 w-1/2 pr-20">
-                          <p className="text-sm tracking-wide text-(--color-secondary) mb-4">
+                        <div className="relative z-10 w-full md:w-1/2 pr-0 md:pr-10 py-0 md:py-10  xl:pr-20 ">
+                          <p className="tracking-wide text-(--color-secondary) mb-4">
                             {item.mainheading}
                           </p>
 
-                          <h2 className="text-2xl font-my-font text-(--color-secondary) leading-snug mb-6 line-clamp-2">
+                          <h2 className="text-2xl font-my-font-semibold text-(--color-secondary) leading-snug mb-4 md:mb-6 line-clamp-2">
                             {item.heading}
                           </h2>
 
-                          <p className="text-sm text-(--color-secondary) mb-5 max-w-md line-clamp-4">
+                          <p className="text-(--color-secondary) mb-5 max-w-md line-clamp-4">
                             {item.text || item.content}
                           </p>
 
-                          <button className="flex items-center font-my-font py-3 cursor-pointer hover:bg-gray-100 transition">
+                          <button className="flex items-center text-sm sm:text-base font-my-font-semibold py-3 cursor-pointer hover:bg-gray-100 transition">
                             <span className="mr-3">Read More</span>
                             <svg
                               width="53"
@@ -835,7 +867,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                         </div>
 
                         {/* RIGHT IMAGE */}
-                        <div className="relative z-10 w-1/2">
+                        <div className="relative z-10 w-full md:w-1/2">
                           <img
                             src={item.insight_image}
                             alt={item.heading}
@@ -861,30 +893,33 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
     bg-[url('/images/bespoke-journey-bg.jpg')]
     bg-cover bg-center bg-no-repeat"
       >
-        <div className="max-w-[1300px] flex items-center justify-between h-full flex-col gap-8 mx-auto ">
-          <div className="w-full flex flex-col items-end gap-5">
-            <img src="images/google-review.svg" alt="" />
-            <img src="images/tripadvisor-reviews.svg" alt="" />
+        <div className="max-w-[1300px] flex items-center justify-between h-full flex-col gap-8 mx-auto  ">
+          <div className="w-full flex flex-col items-end gap-5 pr-5 xl:pr-0">
+            <img src="images/google-review.svg" alt="" className="w-40 md:w-auto" />
+            <img src="images/tripadvisor-reviews.svg" alt="" className="w-40 md:w-auto" />
           </div>
-          <div className="w-full pl-10">
-            <h2 className="text-6xl font-my-font text-white mb-6 ">
+          <div className="w-full pl-5 md:pl-10">
+            <h4 className="text-4xl md:text-5xl lg:text-6xl font-my-font-regular text-white mb-6 ">
               Begin Your <br />
               Bespoke Journey
-            </h2>
-            <p className="text-sm text-white mb-5 max-w-md line-clamp-4">
+            </h4>
+            <p className=" text-white mb-5 max-w-md line-clamp-4">
               Luxury travel isn’t about where you go. It’s about how it feels. Let us design a journey that reflects you.
             </p>
             <div className="flex gap-4">
+
               <button className="bg-white/30 backdrop-blur-md text-white 
-px-6 py-3 rounded-full font-medium 
-shadow-lg
-hover:bg-white/40 transition cursor-pointer font-my-font">
+ px-4 py-3
+    md:px-6 md:py-4 rounded-full font-my-font-semibold 
+shadow-lg  text-xs sm:text-base
+hover:bg-white/40 transition cursor-pointer ">
                 Explore Our Journeys
               </button>
               <button className=" text-white 
-px-6 py-3 border border-white/40 rounded-full font-medium 
-shadow-lg
-hover:bg-white/40 transition cursor-pointer font-my-font">
+ px-4 py-3
+    md:px-6 md:py-4 border border-white/40 rounded-full font-my-font-semibold
+shadow-lg text-xs sm:text-base
+hover:bg-white/40 transition cursor-pointer ">
                 Design your trip
               </button>
             </div>
@@ -896,7 +931,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
 
 
       {/* logo carousel */}
-      <section className="w-full py-20 ">
+      <section className="w-full  py-10 md:py-20 ">
         <Swiper
           modules={[Autoplay]}
           loop={true}
@@ -934,91 +969,91 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
 
       {/* footer */}
 
-      <footer className="bg-white border-t  border-gray-200 py-20">
+      <footer className="bg-white border-t  border-gray-200 py-20 px-5 xl:px-0">
         <div className="max-w-[1400px] mx-auto">
 
-          <div className="grid grid-cols-[1fr_2fr_1fr] gap-8">
-            <div className="border-r border-gray-200">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-4 md:gap-8">
+            <div className="border-0  md:border-r border-gray-200 mb-5 md:mb-0">
               <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Menu</h6>
               <ul className="text-body font-medium">
-                <li className="mb-4 text-5xl font-my-font text-(--color-secondary)">
+                <li className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)">
                   <a href="https://flowbite.com/" className="hover:underline">Home</a>
                 </li>
-                <li className="mb-4 text-5xl font-my-font text-(--color-secondary)">
+                <li className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)">
                   <a href="https://flowbite.com/" className="hover:underline">Destinations</a>
                 </li>
-                <li className="mb-4 text-5xl font-my-font text-(--color-secondary)">
+                <li className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)">
                   <a href="https://flowbite.com/" className="hover:underline">Design Your Trip</a>
                 </li>
-                <li className="mb-4 text-5xl font-my-font text-(--color-secondary)">
+                <li className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)">
                   <a href="https://flowbite.com/" className="hover:underline">Our World</a>
                 </li>
-                <li className="mb-4 text-5xl font-my-font text-(--color-secondary)">
+                <li className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)">
                   <a href="https://flowbite.com/" className="hover:underline">Contact Us</a>
                 </li>
               </ul>
             </div>
-            <div className="px-10 border-r border-gray-200">
-              <div className="grid grid-cols-2">
-                <div className="div">
+            <div className="border-0  md:border-r border-gray-200 mb-5 md:mb-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="div mb-5 md:mb-0">
                   <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Specialties</h6>
-                  <ul className="text-body font-medium">
-                    <li className="mb-4 text-[#818c94]">
+                  <ul className="text-body font-medium mb-5 md:mb-0">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline ">Ladies only Journeys</a>
                     </li>
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Family Travel</a>
                     </li>
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Slow Travel Experiences</a>
                     </li>
 
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Senior Friendly Journeys</a>
                     </li>
 
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Solo Traveller</a>
                     </li>
 
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Festival Journeys</a>
                     </li>
                   </ul>
 
                   <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Regions</h6>
                   <ul className="text-body font-medium">
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Explore Europe</a>
                     </li>
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Amazing Asia</a>
                     </li>
 
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Astounding America</a>
                     </li>
                   </ul>
                 </div>
-                <div className="div">
+                <div className="div mb-5 md:mb-0">
                   <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Experience</h6>
                   <ul className="text-body font-medium">
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Cultural Journeys</a>
                     </li>
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Photography Tours</a>
                     </li>
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Trekking and Outdoors</a>
                     </li>
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Culinary Journeys</a>
                     </li>
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Wellness Travel</a>
                     </li>
-                    <li className="mb-4 text-[#818c94]">
+                    <li className="mb-2 xl:mb-4 text-[#818c94]">
                       <a href="#" className="hover:underline">Scenic Escapes</a>
                     </li>
                   </ul>
@@ -1026,7 +1061,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
               </div>
 
             </div>
-            <div className="pl-10">
+            <div className="pl-0 md:pl-10">
               <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Contact</h6>
               <ul className="text-body font-medium mb-5">
                 <li className="mb-4 text-[#818c94]">
@@ -1043,14 +1078,14 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                 </li>
               </ul>
 
-              <ul className="text-body font-medium pl-0 -ml-[25px]">
+              <ul className="text-body font-medium pl-0 md:pl-0 md:-ml-[25px]">
                 <li className="mb-4 flex items-center gap-3 text-[#818c94]">
                   <img
                     src="images/call-icon.svg"
                     alt="Phone"
                     className="w-3 h-3"
                   />
-                  +91 999 886 8866
+                  <a href="tel:+91 999 886 8866">   +91 999 886 8866</a>
                 </li>
 
                 <li className="mb-4 flex items-center gap-3 text-[#818c94]">
@@ -1059,7 +1094,7 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                     alt="Phone"
                     className="w-3 h-3"
                   />
-                  +91 999 886 8866
+                  <a href="tel:+91 999 886 8866">   +91 999 886 8866</a>
                 </li>
 
                 <li className="flex items-center gap-3 text-[#818c94]">
@@ -1068,14 +1103,14 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
                     alt="Email"
                     className="w-3 h-3"
                   />
-                  hello@maximilianholidays.com
+                  <a href="mailto:hello@maximilianholidays.com">hello@maximilianholidays.com</a>
                 </li>
               </ul>
 
             </div>
           </div>
           <hr className="border-gray-200 my-6  sm:mx-auto lg:my-8" />
-          <div className="sm:flex sm:items-center sm:justify-between w-full">
+          <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between w-full gap-5">
             <span className="text-base text-[#93989b]  text-body sm:text-center">Made by  <a href="https://phitany.com/" className="hover:underline">Phitany</a>
             </span>
             <div className="div">
@@ -1132,10 +1167,10 @@ hover:bg-white/40 transition cursor-pointer font-my-font">
         </div>
       </footer >
 
-      <footer className="bg-[#C43131] py-20">
+      <footer className="bg-[#C43131] py-10 md:py-20">
         <div className="max-w-[1300px] flex flex-col items-center justify-center mx-auto text-center">
           <img src="images/logo-footer.svg" alt="" />
-          <p className="text-white text-xs mt-3">A premium travel brand owned by Maximilian Holidays Private Ltd.</p>
+          <p className="text-white text-sm mt-3">A premium travel brand owned by Maximilian Holidays Private Ltd.</p>
         </div>
       </footer>
 
