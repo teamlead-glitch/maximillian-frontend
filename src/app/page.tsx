@@ -180,7 +180,7 @@ export default function Home() {
         <div className="max-w-[1300px] mx-auto flex items-end justify-end  py-20  px-5  min-h-screen ">
 
           {/* Left content */}
-          <div className="flex flex-col w-lg">
+          <div className="flex flex-col w-lg gap-5">
             <p className="text-white font-light text-end text-xs sm:text-base">Curated international travel experiences for discerning explorers. Crafted with care, culture, and character.</p>
             <h1 className="text-5xl text-white md:text-7xl mb-4 font-my-font-regular text-end">
               Journeys Beyond <br />
