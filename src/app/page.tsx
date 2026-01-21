@@ -5,6 +5,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css";
 import { title } from "process";
+import { useState, useEffect, useRef } from "react";
 
 
 const slides = [
@@ -149,7 +150,78 @@ const logos = [
 
 ];
 
+const continents = [
+  {
+    id: "asia",
+    name: "Asia",
+    image: "images/tajmahal.jpg",
+    countries: ["India", "Thailand", "Bali", "Vietnam", "Japan", "Singapore", "Malaysia", "Maldives", "Sri Lanka"]
+  },
+  {
+    id: "europe",
+    name: "Europe",
+    image: "images/europe.jpg",
+    countries: ["France", "Italy", "Spain", "Greece", "Switzerland", "Germany", "Netherlands", "Austria"]
+  },
+  {
+    id: "africa",
+    name: "Africa",
+    image: "images/africa.jpg",
+    countries: ["South Africa", "Kenya", "Tanzania", "Morocco", "Egypt", "Mauritius", "Seychelles"]
+  },
+  {
+    id: "americas",
+    name: "Americas",
+    image: "images/america.jpg",
+    countries: ["USA", "Canada", "Mexico", "Brazil", "Argentina", "Peru", "Costa Rica", "Chile"]
+  },
+  {
+    id: "oceania",
+    name: "Oceania",
+    image: "images/oceania.jpg",
+    countries: ["Australia", "New Zealand", "Fiji", "Tahiti", "Cook Islands"]
+  }
+];
+const active = "Home"; // or from router
+
+
 export default function Home() {
+  const [megaOpen, setMegaOpen] = useState(false);
+  const [sideOpen, setSideOpen] = useState(false);
+  const [activeContinent, setActiveContinent] = useState("asia");
+  const megaMenuRef = useRef<HTMLDivElement>(null);
+  const activeData = continents.find(
+    (c) => c.id === activeContinent
+  );
+
+  useEffect(() => {
+    if (sideOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [sideOpen]);
+
+  // Close mega menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (megaMenuRef.current && !megaMenuRef.current.contains(event.target as Node)) {
+        setMegaOpen(false);
+      }
+    };
+
+    if (megaOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [megaOpen]);
+
   return (
 
     <>
@@ -163,8 +235,8 @@ export default function Home() {
       >
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2
-             w-full max-w-[1600px]
-             flex justify-between py-5 px-5"
+             w-full max-w-[1600px] z-50
+             flex justify-between py-5 px-10"
         >
 
           <div className="flex items-center gap-2">
@@ -175,7 +247,103 @@ export default function Home() {
             />
 
           </div>
-          <div className="">nav</div>
+          <div className="flex items-center gap-5">
+            <div ref={megaMenuRef} className="flex items-center gap-5 lg:relative p-3 ">
+              {/* Explore Destination */}
+              <button
+                onClick={() => setMegaOpen(!megaOpen)}
+                className="text-white font-my-font-semibold text-xs sm:text-base cursor-pointer"
+              >
+                Explore Destination
+              </button>
+
+              <button className="
+  bg-white
+  
+  font-my-font-semibold 
+  text-black 
+  px-3 py-3 md:px-4 md:py-2 
+  rounded-full 
+  text-xs sm:text-base 
+  cursor-pointer 
+  hover:bg-[#C43131]
+  hover:text-white
+  transition-all duration-300
+">
+                Design Your trip
+              </button>
+
+              <a href="tel:+919876543210">      <img src="/images/call-top-icon.svg" alt="" /></a>
+
+              {/* Hamburger */}
+              <button className="cursor-pointer" onClick={() => setSideOpen(true)}>
+                <img src="/images/hamburg-menu.svg" alt="" />
+              </button>
+
+
+
+              {/* 🔽 Mega Menu (same page) */}
+              {megaOpen && (
+                <div
+                  className="absolute top-full left-0 right-0 lg:right-0 lg:left-auto mt-2 w-full md:w-[768px] lg:w-[900px] bg-white shadow-xl rounded-xl p-6 z-50"
+                >
+                  <div className="flex gap-6">
+                    {/* Left Side - 60% - Continents & Countries */}
+                    <div className="w-[65%]">
+                      {/* Continent Tabs */}
+                      <div className="flex gap-2 mb-4  pb-3">
+                        {continents.map((continent) => (
+                          <div
+                            key={continent.id}
+                            onClick={() => setActiveContinent(continent.id)}
+                            className={`cursor-pointer px-4 py-1 border border-gray-300 rounded-3xl
+    ${activeContinent === continent.id
+                                ? "text-[#C43131] border-[#C43131]  text-xl font-my-font-semibold"
+                                : "text-gray-500 border-gray-300 text-xl font-my-font-semibold"
+                              }`}
+                          >
+                            {continent.name}
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Countries Grid */}
+                      <div className="grid grid-cols-2 gap-3">
+                        {continents
+                          .find((c) => c.id === activeContinent)
+                          ?.countries.map((country, idx) => (
+                            <div
+                              key={idx}
+                              className="px-3 py-2 text-base text-gray-700 hover:text-black hover:bg-gray-100 rounded cursor-pointer transition-all"
+                            >
+                              {country}
+                            </div>
+                          ))}
+                      </div>
+                    </div>
+
+                    {/* Right Side - 40% - Featured/Popular */}
+                    <div className="w-[35%] pl-6">
+                      <div className="w-full h-full aspect-[4/5] overflow-hidden rounded-lg">
+                        <img
+                          src={activeData?.image}
+                          alt={activeData?.name}
+                          className="w-full h-full object-cover transition-all duration-500"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* RIGHT SLIDE MENU */}
+            <>
+            </>
+          </div>
+
+
+
         </div>
         <div className="max-w-[1300px] mx-auto flex items-end justify-end  py-20  px-5  min-h-screen ">
 
@@ -207,13 +375,101 @@ hover:bg-white/40 transition cursor-pointer ">
           </div>
 
           {/* Right image */}
-
-
         </div>
       </section >
       {/* hero section close */}
 
 
+
+      {/* side bar */}
+      <div
+        onClick={() => setSideOpen(false)}
+        className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300
+    ${sideOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+      ></div>
+
+      <div
+        className={`fixed top-0 right-0 h-screen w-[85%] sm:w-[300px] bg-white z-[1000]
+    transform transition-transform duration-300 ease-in-out
+    overflow-y-auto
+    ${sideOpen ? "translate-x-0" : "translate-x-full"}`}
+
+      >
+
+        <div className="absolute left-0 bottom-20 px-6 py-5 ">
+          <ul className="text-body font-medium ">
+            <li className="mb-4 flex items-center gap-3  font-my-font-regular text-(--color-secondary)">
+              <img
+                src="images/call-icon.svg"
+                alt="Phone"
+                className="w-5 h-5"
+              />
+              <a href="tel:+91 999 886 8866">   +91 999 886 8866</a>
+            </li>
+
+            <li className="mb-4 flex items-center gap-3  font-my-font-regular text-(--color-secondary)">
+              <img
+                src="images/whatsapp-icon.svg"
+                alt="Phone"
+                className="w-5 h-5"
+              />
+              <a href="tel:+91 999 886 8866">   +91 999 886 8866</a>
+            </li>
+
+            <li className="flex items-center gap-3  font-my-font-regular text-(--color-secondary)">
+              <img
+                src="images/mail-icon.svg"
+                alt="Email"
+                className="w-5 h-5"
+              />
+              <a href="mailto:hello@maximilianholidays.com">hello@maximilianholidays.com</a>
+            </li>
+          </ul></div>
+
+
+
+        <div className="absolute right-0 bottom-0 "> <img src="images/logo-icon.svg" alt="" /></div>
+        <div className="p-6 flex justify-end items-center">
+          <button
+            onClick={() => setSideOpen(false)}
+            className="text-xl cursor-pointer"
+          >
+            ✕
+          </button>
+        </div>
+
+        <nav className="px-6 space-y-4 text-sm flex flex-col">
+          {["Home", "Destinations", "Design Your Trip", "Our World", "Contact Us"].map(
+            (item, i) => (
+              <a
+                key={i}
+                href="#"
+                className={`
+          relative inline-block
+          font-my-font-semibold text-lg text-(--color-secondary) 
+          transition-colors duration-300
+          ${active === item ? "text-[#C43131]" : "text-(--color-secondary) "}
+          hover:text-[#C43131]
+
+          after:content-['']
+          after:absolute after:left-0 after:-bottom-1
+          after:h-[2px]
+          after:bg-[#C43131]
+          after:transition-all after:duration-300
+          ${active === item ? "after:w-[40px]" : "after:w-0"}
+          hover:after:w-[40px]
+        `}
+              >
+                {item}
+              </a>
+            )
+          )}
+        </nav>
+
+
+      </div>
+
+      {/* side bar close */}
 
       {/* about section */}
       <section className="relative py-20 overflow-hidden">
