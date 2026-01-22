@@ -72,7 +72,7 @@ export default function TopMenu(){
 
     return(
         <>
-        <SideBar />
+       
 
           <div
                     className="absolute top-0 left-1/2 -translate-x-1/2
@@ -181,6 +181,9 @@ export default function TopMenu(){
                         <>
                         </>
                     </div>
+
+
+                     <SideBar />
 
 
 
