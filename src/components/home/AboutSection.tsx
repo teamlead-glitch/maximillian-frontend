@@ -28,11 +28,11 @@ export default function AboutSection() {
                             </div>
                             <div className="w-full md:w-1/2"><p className="text-(--color-secondary)">Our curated approach focuses on specialty journeys from culinary and trekking expeditions to slow travel designed to foster genuine discovery. Through an enquiry-driven user journey and a commitment to cinematic storytelling, we transform international travel into a premium, custom-fit experience tailored specifically to your group size, budget, and season.</p></div>
                         </div>
-                        <button className="flex items-center font-my-font-semibold text-sm sm:text-base justify-center py-3 mt-3  cursor-pointer  ">
-
-
+                        <button className="group flex items-center font-my-font-semibold text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
                             <span className="mr-3">Our World</span>
+
                             <svg
+                                className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
                                 width="53"
                                 height="8"
                                 viewBox="0 0 53 8"
@@ -45,6 +45,7 @@ export default function AboutSection() {
                                 />
                             </svg>
                         </button>
+
                     </div>
                 </div>
             </section>

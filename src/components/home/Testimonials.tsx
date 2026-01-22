@@ -37,12 +37,11 @@ const testimonials = [
 
 ];
 
-export default function Testimonials()
-{
-    return(
+export default function Testimonials() {
+    return (
         <>
 
-           {/* testimonials */}
+            {/* testimonials */}
             <section className="bg-[#f9f7f5] pt-20 md:pt-40 pb-10 md:pb-20">
                 <div className="  mx-auto px-5">
                     <div className="mb-4 mx-auto flex justify-center">
@@ -106,9 +105,11 @@ export default function Testimonials()
                         </div>
                     </div>
                     <div className="mb-4 mx-auto flex justify-center">
-                        <div className="inline-block"> <button className="flex items-center text-sm sm:text-base font-my-font-semibold justify-center py-3 cursor-pointer  ">
-                            <span className="mr-3">View All Testimonials</span>
+                        <div className="inline-block">  <button className="group flex items-center font-my-font-semibold text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
+                            <span className="mr-3">Our World</span>
+
                             <svg
+                                className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
                                 width="53"
                                 height="8"
                                 viewBox="0 0 53 8"

@@ -14,6 +14,7 @@ import BespokeJourney from "./BespokeJourney";
 import LogoCarousel from "./LogoCarousel";
 import Footer from "../common/footer/footer";
 import TopMenu from "../common/header/TopMenu";
+import BackToTop from "../common/BackToTop";
 
 
 
@@ -60,8 +61,7 @@ export default function HomePage() {
 
             <Footer />
 
-
-
+            <BackToTop />
 
 
         </>

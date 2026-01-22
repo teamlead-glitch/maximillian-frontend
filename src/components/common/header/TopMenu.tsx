@@ -42,16 +42,36 @@ const active = "Home"; // or from router
 export default function TopMenu() {
 
     const [megaOpen, setMegaOpen] = useState(false);
-
     const [activeContinent, setActiveContinent] = useState("asia");
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
     const megaMenuRef = useRef<HTMLDivElement>(null);
     const activeData = continents.find(
         (c) => c.id === activeContinent
     );
 
+    // Handle scroll to show/hide header
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
 
+            // Show header when scrolling up, hide when scrolling down
+            if (currentScrollY < lastScrollY || currentScrollY < 100) {
+                setIsVisible(true);
+            } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                setIsVisible(false);
+            }
 
+            setLastScrollY(currentScrollY);
+        };
 
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [lastScrollY]);
 
     // Close mega menu when clicking outside
     useEffect(() => {
@@ -75,20 +95,24 @@ export default function TopMenu() {
 
 
             <div
-                className="absolute top-0 left-1/2 -translate-x-1/2
+                className={`fixed top-0 left-1/2 -translate-x-1/2
              w-full max-w-[1600px] z-50
-             flex justify-between py-5 px-10"
+             flex justify-between py-5 px-10
+             
+             transition-all duration-700 ease-in-out
+             ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
+             ${(lastScrollY > 50 || megaOpen)
+                        ? 'bg-black/50 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]'
+                        : 'bg-transparent border-transparent shadow-none'
+                    }`}
             >
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-between w-full gap-2">
                     <img
                         src="/images/logo.svg"
                         alt="Company Logo"
                         className="h-10 w-auto"
                     />
-
-                </div>
-                <div className="flex items-center gap-5">
                     <div ref={megaMenuRef} className="flex items-center gap-5 lg:relative p-3 ">
                         {/* Explore Destination */}
                         <button
@@ -177,10 +201,8 @@ export default function TopMenu() {
                         )}
                     </div>
 
-                    {/* RIGHT SLIDE MENU */}
-                    <>
-                    </>
                 </div>
+
 
 
                 <SideBarMenu />

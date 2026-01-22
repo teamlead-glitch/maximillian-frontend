@@ -29,30 +29,30 @@ export default function SignatureJourney() {
                         </button></div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-4 lg:gap-10 mt-5 md:mt-20">
-                        <div className="div">
-                            <div className="rounded-md relative aspect-[3/4] overflow-hidden"><img src="images/signature-journey-1.jpg" className="rounded-md w-full h-full object-cover" alt="" />
-                                <div className="absolute inset-0 bg-gradient-to-t  rounded-md
+                        <div className="div"><a href=""> <div className="rounded-md relative aspect-[3/4] overflow-hidden"><img src="images/signature-journey-1.jpg" className="rounded-md w-full h-full object-cover" alt="" />
+                            <div className="absolute inset-0 bg-gradient-to-t  rounded-md
                   from-black/80 via-black/40 to-transparent">
-                                </div>
-                                <div className="absolute w-full bottom-0 left-0 p-5 flex flex-col items-center">
-                                    <h3 className="font-my-font-regular text-white text-2xl">Timeless Europe</h3>
-                                    <div className="text-white text-xs">
-                                        <ul className="flex flex-wrap justify-center items-center gap-2 mt-1">
-                                            <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
-                                                Europe
-                                            </li>
-                                            <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
-                                                Cultural
-                                            </li>
-                                            <li className="relative">
-                                                Small Group
-                                            </li>
-                                        </ul>
-                                    </div>
+                            </div>
+                            <div className="absolute w-full bottom-0 left-0 p-5 flex flex-col items-center">
+                                <h3 className="font-my-font-regular text-white text-2xl">Timeless Europe</h3>
+                                <div className="text-white text-xs">
+                                    <ul className="flex flex-wrap justify-center items-center gap-2 mt-1">
+                                        <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
+                                            Europe
+                                        </li>
+                                        <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
+                                            Cultural
+                                        </li>
+                                        <li className="relative">
+                                            Small Group
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
+                        </div></a>
+
                         </div>
-                        <div className="div">
+                        <div className="div"><a href="">
                             <div className="rounded-md relative aspect-[3/4] overflow-hidden">
                                 <img src="images/signature-journey-2.jpg" className="rounded-md w-full h-full object-cover" alt="" />
                                 <div className="absolute inset-0 bg-gradient-to-t  rounded-md
@@ -74,9 +74,9 @@ export default function SignatureJourney() {
                                             </li>
                                         </ul>
                                     </div>
-                                </div></div>
+                                </div></div></a>
                         </div>
-                        <div className="div">
+                        <div className="div"><a href="">
                             <div className="rounded-md relative aspect-[3/4] overflow-hidden"><img src="images/signature-journey-3.jpg" className="rounded-md w-full h-full object-cover" alt="" />
                                 <div className="absolute inset-0 bg-gradient-to-t  rounded-md
                   from-black/80 via-black/40 to-transparent">
@@ -96,9 +96,9 @@ export default function SignatureJourney() {
                                             </li>
                                         </ul>
                                     </div>
-                                </div></div>
+                                </div></div></a>
                         </div>
-                        <div className="div">
+                        <div className="div"><a href="">
                             <div className="rounded-md relative aspect-[3/4] overflow-hidden"><img src="images/signature-journey-4.jpg" className="rounded-md w-full h-full object-cover" alt="" />
                                 <div className="absolute inset-0 bg-gradient-to-t  rounded-md
                   from-black/80 via-black/40 to-transparent">
@@ -118,7 +118,7 @@ export default function SignatureJourney() {
                                             </li>
                                         </ul>
                                     </div>
-                                </div></div>
+                                </div></div></a>
                         </div>
                     </div>
 

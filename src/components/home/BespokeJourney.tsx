@@ -1,8 +1,8 @@
-export default function BespokeJourney(){
+export default function BespokeJourney() {
 
-    return(
+    return (
         <>
-          {/* bespoke journey */}
+            {/* bespoke journey */}
             <section
                 className="
     py-20 h-screen 
@@ -24,18 +24,45 @@ export default function BespokeJourney(){
                         </p>
                         <div className="flex gap-4">
 
-                            <button className="bg-white/30 backdrop-blur-md text-white 
- px-4 py-3
-    md:px-6 md:py-4 rounded-full font-my-font-semibold 
-shadow-lg  text-xs sm:text-base
-hover:bg-white/40 transition cursor-pointer ">
+                            <button className="
+relative overflow-hidden
+bg-white/30 backdrop-blur-md text-white cursor-pointer
+px-4 py-3 md:px-6 md:py-4 rounded-full font-my-font-semibold
+shadow-lg text-xs sm:text-base
+transition-all duration-300
+hover:bg-white/40
+before:absolute before:inset-0
+before:-translate-x-full
+before:bg-gradient-to-r 
+before:from-transparent before:via-white/40 before:to-transparent
+before:transition-transform before:duration-700
+hover:before:translate-x-full
+">
                                 Explore Our Journeys
                             </button>
-                            <button className=" text-white 
- px-4 py-3
-    md:px-6 md:py-4 border border-white/40 rounded-full font-my-font-semibold
+
+
+                            <button
+                                className="
+relative overflow-hidden
+text-white
+px-4 py-3 md:px-6 md:py-4
+border border-white/40 rounded-full
+font-my-font-semibold
 shadow-lg text-xs sm:text-base
-hover:bg-white/40 transition cursor-pointer ">
+cursor-pointer
+
+transition-all duration-300
+hover:bg-white/40
+
+before:absolute before:inset-0
+before:-translate-x-full
+before:bg-gradient-to-r
+before:from-transparent before:via-white/40 before:to-transparent
+before:transition-transform before:duration-700
+hover:before:translate-x-full
+"
+                            >
                                 Design your trip
                             </button>
                         </div>
