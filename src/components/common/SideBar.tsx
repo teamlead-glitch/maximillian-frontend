@@ -33,13 +33,7 @@ export default function SideBar() {
 
       {/* Hamburger */}
       <button className="cursor-pointer" onClick={() => setSideOpen(true)}>
-        <Image
-          src="/images/hamburg-menu.svg"
-          alt="Open menu"
-          width={28}
-          height={28}
-          className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8"
-        />
+        <img src="/images/hamburg-menu.svg" alt="" />
       </button>
 
       {/* Overlay */}
