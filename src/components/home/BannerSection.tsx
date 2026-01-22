@@ -46,7 +46,7 @@ export default function BannerSection() {
         (c) => c.id === activeContinent
     );
 
-   
+
 
 
 
@@ -120,9 +120,9 @@ export default function BannerSection() {
 
                             <a href="tel:+919876543210">      <img src="/images/call-top-icon.svg" alt="" /></a>
 
-                          
 
-                              <SideBar/>
+
+                            <SideBar />
 
 
 
@@ -225,7 +225,7 @@ hover:bg-white/40 transition cursor-pointer ">
 
 
 
-         
+
 
         </>
     )

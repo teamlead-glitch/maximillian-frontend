@@ -1,9 +1,9 @@
-export default function SpecialityTours(){
+export default function SpecialityTours() {
 
-    return(
+    return (
         <>
-          {/* speciality tours */}
-            <section className="pt-0 md:pt-20 pb-10 md:pb-20">
+            {/* speciality tours */}
+            <section className="bg-white pt-0 md:pt-20 pb-10 md:pb-20">
                 <div className="max-w-[1300px]  mx-auto px-5">
                     <div className="flex flex-col-reverse md:flex-row gap-8">
 

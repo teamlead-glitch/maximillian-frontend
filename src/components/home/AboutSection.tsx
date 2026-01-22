@@ -1,9 +1,9 @@
-export default function AboutSection(){
+export default function AboutSection() {
 
-    return(
+    return (
         <>
-         {/* about section */}
-            <section className="relative py-20 overflow-hidden">
+            {/* about section */}
+            <section className="relative py-20 overflow-hidden bg-white">
                 {/* Top Right Decorative Shape */}
                 <img
                     src="/images/logo-shape.png"

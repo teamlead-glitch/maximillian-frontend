@@ -1,9 +1,9 @@
-export default function ExperienceTour(){
+export default function ExperienceTour() {
 
-    return(
+    return (
         <>
-          {/* experience tour */}
-            <section className="py-20">
+            {/* experience tour */}
+            <section className="bg-white py-20">
                 <div className="max-w-[1300px]  mx-auto px-5">
                     <div className="flex gap-8 flex-col md:flex-row">
                         <div className="w-full md:w-1/4 relative mr-0 md:pr-10"><h3 className=" font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) md:text-right">Experience <br /> Tours</h3>  <div className="absolute right-0 top-0  w-px h-10 bg-gray-400 md:block hidden"></div></div>
@@ -48,6 +48,6 @@ export default function ExperienceTour(){
                 </div>
             </section>
             {/* experience tour close */}
-            </>
+        </>
     )
 }

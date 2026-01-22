@@ -1,11 +1,11 @@
-export default function WhatMakeExc(){
+export default function WhatMakeExc() {
 
-    return(
+    return (
         <>
-        
+
 
             {/* What makes our travel packages exceptional */}
-            <section className="py-10 md:py-40">
+            <section className="bg-white py-10 md:py-40">
                 <div className="max-w-[1300px] flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mx-auto  px-5  ">
                     <div className="w-[10%]"><img src="images/logo-icon.svg" alt="" /></div>
                     <div className="inline-block]">

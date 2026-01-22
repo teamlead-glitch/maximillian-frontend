@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-
+import Image from "next/image";
 
 const menuItems = [
   "Home",
@@ -13,28 +13,34 @@ const menuItems = [
 
 export default function SideBar() {
 
-     const [sideOpen, setSideOpen] = useState(false);
-      const pathname = usePathname();
-     
-    
-        useEffect(() => {
-            if (sideOpen) {
-                document.body.style.overflow = "hidden";
-            } else {
-                document.body.style.overflow = "auto";
-            }
-            return () => {
-                document.body.style.overflow = "auto";
-            };
-        }, [sideOpen]);
+  const [sideOpen, setSideOpen] = useState(false);
+  const pathname = usePathname();
+
+
+  useEffect(() => {
+    if (sideOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [sideOpen]);
 
   return (
     <>
 
       {/* Hamburger */}
-                            <button className="cursor-pointer" onClick={() => setSideOpen(true)}>
-                                <img src="/images/hamburg-menu.svg" alt="" />
-                            </button>
+      <button className="cursor-pointer" onClick={() => setSideOpen(true)}>
+        <Image
+          src="/images/hamburg-menu.svg"
+          alt="Open menu"
+          width={28}
+          height={28}
+          className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8"
+        />
+      </button>
 
       {/* Overlay */}
       <div
@@ -71,10 +77,9 @@ export default function SideBar() {
                 relative inline-block
                 font-my-font-semibold text-lg
                 transition-colors duration-300
-                ${
-                  pathname === item
-                    ? "text-[#C43131]"
-                    : "text-(--color-secondary)"
+                ${pathname === item
+                  ? "text-[#C43131]"
+                  : "text-(--color-secondary)"
                 }
                 hover:text-[#C43131]
 

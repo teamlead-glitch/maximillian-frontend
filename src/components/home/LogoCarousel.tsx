@@ -21,14 +21,14 @@ const logos = [
 
 ];
 
-export default function LogoCarousel(){
+export default function LogoCarousel() {
 
-    return(
+    return (
         <>
-        
+
 
             {/* logo carousel */}
-            <section className="w-full  py-10 md:py-20 ">
+            <section className="bg-white w-full  py-10 md:py-20 ">
                 <Swiper
                     modules={[Autoplay]}
                     loop={true}

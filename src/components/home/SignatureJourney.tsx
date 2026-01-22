@@ -1,10 +1,10 @@
-export default function SignatureJourney(){
+export default function SignatureJourney() {
 
-    return(
+    return (
         <>
-         {/* signature journey section */}
+            {/* signature journey section */}
 
-            <section className="pt-0 md:pt-20 md:pb-20">
+            <section className="bg-white pt-0 md:pt-20 md:pb-20">
                 <div className="max-w-[1300px]  mx-auto px-5">
                     <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
                         <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />
