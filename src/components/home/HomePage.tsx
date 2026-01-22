@@ -12,7 +12,8 @@ import WhatMakeExc from "./WhatMakeExc";
 import Insights from "./Insights";
 import BespokeJourney from "./BespokeJourney";
 import LogoCarousel from "./LogoCarousel";
-import Footer from "../footer/footer";
+import Footer from "../common/footer/footer";
+import TopMenu from "../common/header/TopMenu";
 
 
 
@@ -29,7 +30,7 @@ export default function HomePage() {
         <>
 
 
-
+            <TopMenu />
             <BannerSection />
             <AboutSection />
             <SignatureJourney />
