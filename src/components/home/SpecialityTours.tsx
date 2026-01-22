@@ -45,7 +45,7 @@ export default function SpecialityTours() {
                             </div>
                         </div>
 
-                        <div className="w-full md:w-1/4 ml-0 md:pl-10">
+                        <div className="w-full md:w-1/4 ml-0 md:pl-10 relative">
                             <h3 className=" font-my-font-regular text-4xl text-(--color-secondary)  text-left">Speciality <br /> Tours</h3>  <div className="absolute left-0 top-0  w-px h-10 bg-gray-400 "></div></div>
                     </div>
                 </div>
