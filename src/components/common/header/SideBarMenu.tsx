@@ -10,7 +10,7 @@ const menuItems = [
 ];
 
 
-export default function SideBar() {
+export default function SideBarMenu() {
 
   const [sideOpen, setSideOpen] = useState(false);
   const pathname = usePathname();
