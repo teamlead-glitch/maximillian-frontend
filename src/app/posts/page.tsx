@@ -8,6 +8,7 @@ import Card from '@/components/Card';
 export default function Posts() {
   const [posts, setPosts] = useState<simpleType[]>([]);
 
+  
   useEffect(() => {
     const fetchPosts = async () => {
       try {
