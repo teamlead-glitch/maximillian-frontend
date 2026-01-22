@@ -1,8 +1,8 @@
-export default function Footer(){
+export default function Footer() {
 
-    return(
+    return (
         <>
-          {/* footer */}
+            {/* footer */}
 
             <footer className="bg-white border-t  border-gray-200 py-20 px-5 xl:px-0">
                 <div className="max-w-[1400px] mx-auto">
@@ -11,22 +11,31 @@ export default function Footer(){
                         <div className="border-0  md:border-r border-gray-200 mb-5 md:mb-0">
                             <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Menu</h6>
                             <ul className="text-body font-medium">
-                                <li className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)">
-                                    <a href="https://flowbite.com/" className="hover:underline">Home</a>
-                                </li>
-                                <li className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)">
-                                    <a href="https://flowbite.com/" className="hover:underline">Destinations</a>
-                                </li>
-                                <li className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)">
-                                    <a href="https://flowbite.com/" className="hover:underline">Design Your Trip</a>
-                                </li>
-                                <li className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)">
-                                    <a href="https://flowbite.com/" className="hover:underline">Our World</a>
-                                </li>
-                                <li className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)">
-                                    <a href="https://flowbite.com/" className="hover:underline">Contact Us</a>
-                                </li>
+                                {["Home", "Destinations", "Design Your Trip", "Our World", "Contact Us"].map((item) => (
+                                    <li
+                                        key={item}
+                                        className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)"
+                                    >
+                                        <a
+                                            href="#"
+                                            className="
+          relative inline-block
+          after:content-['']
+          after:absolute after:left-0 after:-bottom-1
+          after:w-full after:h-[1px]
+         after:bg-[#C43131]
+          after:scale-x-0
+          after:origin-left
+          after:transition-transform after:duration-500 after:ease-out
+          hover:after:scale-x-100
+        "
+                                        >
+                                            {item}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
+
                         </div>
                         <div className="border-0  md:border-r border-gray-200 mb-5 md:mb-0">
                             <div className="grid grid-cols-1 lg:grid-cols-2">

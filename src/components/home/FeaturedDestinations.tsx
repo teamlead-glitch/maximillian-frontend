@@ -125,49 +125,54 @@ export default function FeaturedDestinations() {
                     >
                         {slides.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <div className="bg-white rounded-xl overflow-hidden
+                                <div
+                                    className="bg-white rounded-xl overflow-hidden
   transition-all duration-300 my-10 md:my-15
-  hover:shadow-2xl"
+  hover:shadow-2xl
+  group"
                                 >
-
                                     {/* Image */}
-                                    <div className="w-full aspect-[3/3]">
+                                    <div className="w-full aspect-[3/3] overflow-hidden">
                                         <img
                                             src={item.image}
                                             alt={item.title}
-                                            className="w-full h-full object-cover"
+                                            className="
+        w-full h-full object-cover
+        transition-transform duration-500 ease-out
+        group-hover:scale-110
+      "
                                         />
                                     </div>
 
                                     {/* Content */}
-                                    <div className="py-5 px-6 text-center relative h-full flex flex-col min-h-[120px] ">
+                                    <div className="py-5 px-6 text-center relative h-full flex flex-col min-h-[120px]">
                                         <div
                                             className="absolute -top-[40px] right-4 z-10
-  w-12 h-12 rounded-full
-  flex items-center justify-center
-  bg-white/20 backdrop-blur-lg
- 
-
-  transition-all duration-300
-  hover:bg-white/30 hover:scale-105
-  cursor-pointer"
-                                        > <img
+      w-12 h-12 rounded-full
+      flex items-center justify-center
+      bg-white/20 backdrop-blur-lg
+      transition-all duration-300
+      hover:bg-white/30 hover:scale-105
+      cursor-pointer"
+                                        >
+                                            <img
                                                 src="images/arrow.svg"
                                                 className="w-5 h-5
-  transition-all duration-300
-  group-hover:rotate-90 group-hover:scale-110"
-                                            /> </div>
+        transition-all duration-300
+        group-hover:rotate-45 "
+                                            />
+                                        </div>
+
                                         <h3 className="text-lg font-semibold mt-1 font-my-font-regular line-clamp-1">
                                             {item.title}
                                         </h3>
-
 
                                         <p className="text-sm text-gray-600 mt-2 line-clamp-2">
                                             {item.desc}
                                         </p>
                                     </div>
-
                                 </div>
+
                             </SwiperSlide>
                         ))}
                     </Swiper>
