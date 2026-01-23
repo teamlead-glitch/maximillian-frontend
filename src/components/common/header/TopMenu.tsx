@@ -97,7 +97,7 @@ export default function TopMenu() {
             <div
                 className={`fixed top-0 left-1/2 -translate-x-1/2
              w-full max-w-[1600px] z-50
-             flex justify-between py-5 px-10
+             flex justify-between py-5 md:py-5 px-5 md:px-10
              
              transition-all duration-700 ease-in-out
              ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
@@ -113,7 +113,7 @@ export default function TopMenu() {
                         alt="Company Logo"
                         className="h-10 w-auto"
                     />
-                    <div ref={megaMenuRef} className="flex items-center gap-5 lg:relative p-3 ">
+                    <div ref={megaMenuRef} className="flex items-center gap-5 lg:relative p-0 ">
                         {/* Explore Destination */}
                         <button
                             onClick={() => setMegaOpen(!megaOpen)}

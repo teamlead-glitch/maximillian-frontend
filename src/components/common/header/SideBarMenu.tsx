@@ -36,7 +36,7 @@ export default function SideBarMenu() {
     <>
 
       {/* Hamburger */}
-      <button className="cursor-pointer" onClick={() => setSideOpen(true)}>
+      <button className="cursor-pointer pl-5" onClick={() => setSideOpen(true)}>
         <img src="/images/hamburg-menu.svg" alt="" />
       </button>
 

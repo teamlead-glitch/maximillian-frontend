@@ -4,7 +4,7 @@ export default function Footer() {
         <>
             {/* footer */}
 
-            <footer className="bg-white border-t  border-gray-200 py-20 px-5 xl:px-0">
+            <footer className="bg-white border-t  border-gray-200 py-20 px-5 ">
                 <div className="max-w-[1400px] mx-auto">
 
                     <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-4 md:gap-8">
