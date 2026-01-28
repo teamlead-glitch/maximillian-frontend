@@ -86,7 +86,7 @@ export default function FeaturedDestinations() {
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                         <div className="inline-block">
                             <button className="group flex items-center font-my-font-semibold text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
-                                <span className="mr-3">Our World</span>
+                                <span className="mr-3">View All Destinations</span>
 
                                 <svg
                                     className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
