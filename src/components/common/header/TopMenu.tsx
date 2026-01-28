@@ -270,8 +270,12 @@ export default function TopMenu() {
 
                                         </div>
 
-                                        <button className="mt-8 self-start border cursor-pointer border-black px-6 py-2 rounded-full text-sm hover:border-[#C43131] hover:bg-[#C43131] transition-all duration-300 hover:text-white hover:tracking-wider">
-                                            View all journeys
+                                        <button
+                                            className="mt-8 self-start border cursor-pointer border-black px-6 py-2 rounded-full text-sm
+  hover:border-[#C43131] hover:bg-[#C43131] transition-all duration-300
+  hover:text-white hover:tracking-wider"
+                                        >
+                                            View all journeys in {activeRegion}
                                         </button>
                                     </div>
 
