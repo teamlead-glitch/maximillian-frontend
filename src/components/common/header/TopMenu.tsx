@@ -118,7 +118,7 @@ export default function TopMenu() {
             <div
                 className={`fixed top-0 left-1/2 -translate-x-1/2
         w-full max-w-[1600px] z-50
-        flex justify-between py-5 px-5 md:px-10
+        flex justify-between py-3 md:py-5 px-3 md:px-10
         transition-all duration-700 ease-in-out
         ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}
         ${lastScrollY > 50 || megaOpen
@@ -133,7 +133,7 @@ export default function TopMenu() {
                         {/* Explore Destination */}
                         <button
                             onClick={() => setMegaOpen((prev) => !prev)}
-                            className={`relative text-white font-my-font-semibold cursor-pointer text-xs sm:text-base
+                            className={`relative text-white font-my-font-semibold cursor-pointer md:block hidden text-xs sm:text-base
         after:absolute after:left-0 after:-bottom-1
         after:h-[2px] after:bg-[#C43131] after:transition-all after:duration-300
         ${megaOpen ? "after:w-full" : "after:w-0"}
@@ -143,7 +143,7 @@ export default function TopMenu() {
                         </button>
                         <button
                             className="bg-white font-my-font-semibold text-black
-              px-3 py-3 md:px-4 md:py-2 rounded-full cursor-pointer
+              px-3 py-3 md:px-4 md:py-2 md:block hidden rounded-full cursor-pointer
               text-xs sm:text-base
               hover:bg-[#C43131] hover:text-white
               transition-all duration-300"
