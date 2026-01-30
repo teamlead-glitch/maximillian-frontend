@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-
+import { X } from "lucide-react";
 /* =====================================================
    DESTINATIONS (RELAXED TYPING)
 ===================================================== */
@@ -84,11 +84,13 @@ export default function SideBarMenu() {
     };
   }, [sideOpen]);
 
+  const [activeLink, setActiveLink] = useState("Home");
+
   return (
     <>
       {/* HAMBURGER */}
       <button
-        className="pl-5 md:hidden cursor-pointer"
+        className="pl-5  cursor-pointer"
         onClick={() => setSideOpen(true)}
       >
         <img src="/images/hamburg-menu.svg" alt="Menu" />
@@ -114,42 +116,55 @@ export default function SideBarMenu() {
             >
               {/* CLOSE */}
               <div className="h-[72px] px-6 flex items-center justify-end border-b border-gray-300">
-                <button onClick={() => setSideOpen(false)}>✕</button>
+                <button onClick={() => setSideOpen(false)} className="cursor-pointer"><X /></button>
               </div>
 
               {/* NAV */}
               <div className="flex-1 overflow-y-auto">
-                <nav className="px-6 py-5 space-y-4 md:hidden">
+                <nav className="px-6 py-5 space-y-6">
                   {/* EXPLORE DESTINATIONS */}
                   <button
                     onClick={() => setDestinationPanel(true)}
-                    className="flex justify-between items-center w-full font-semibold"
+                    className="flex justify-between items-center w-full font-my-font-semibold text-(--color-secondary) cursor-pointer md:hidden"
                   >
                     Explore Destinations
                     <ChevronRight />
                   </button>
 
-                  {[
-                    "Home",
-                    "Design Your Trip",
-                    "Our World",
-                    "Contact Us",
-                  ].map((item) => (
+                  {["Home", "Design Your Trip", "Our World", "Contact Us"].map((item) => (
                     <a
                       key={item}
                       href="#"
-                      onClick={() => setSideOpen(false)}
-                      className="block font-semibold"
+                      onClick={() => {
+                        setActiveLink(item);
+                        setSideOpen(false);
+                      }}
+                      className={`relative block font-my-font-semibold text-(--color-secondary)
+        after:absolute after:left-0 after:-bottom-[5px]
+        after:h-[2px] after:w-[30px] after:bg-[#C43131]
+        after:transition-all after:duration-300
+        ${activeLink === item
+                          ? "after:opacity-100"
+                          : "after:opacity-0"
+                        }
+      `}
                     >
                       {item}
                     </a>
                   ))}
                 </nav>
+
+
+                <div className="absolute left-0 bottom-20 px-6 py-5"> <ul className="text-body font-medium"> <li className="mb-4 flex items-center gap-3 font-my-font-regular text-(--color-secondary)"> <img src="/images/call-icon.svg" alt="Phone" className="w-5 h-5" /> <a href="tel:+919998868866">+91 999 886 8866</a> </li> <li className="mb-4 flex items-center gap-3 font-my-font-regular text-(--color-secondary)"> <img src="/images/whatsapp-icon.svg" alt="WhatsApp" className="w-5 h-5" /> <a href="https://wa.me/919998868866">+91 999 886 8866</a> </li> <li className="flex items-center gap-3 font-my-font-regular text-(--color-secondary)"> <img src="/images/mail-icon.svg" alt="Email" className="w-5 h-5" /> <a href="mailto:hello@maximilianholidays.com"> hello@maximilianholidays.com </a> </li> </ul> </div> <div className="absolute right-0 bottom-0"> <img src="/images/logo-icon.svg" alt="Logo" /> </div>
+
+
+
+
               </div>
-            </div>
+            </div >
 
             {/* DESTINATION PANEL */}
-            <div
+            < div
               className={`fixed top-0 right-0 h-screen w-[85%] max-w-[320px]
               bg-white z-[1100] flex flex-col md:hidden
               transform transition-transform duration-300
@@ -162,7 +177,7 @@ export default function SideBarMenu() {
                     setDestinationPanel(false);
                     setActiveRegion(null);
                   }}
-                  className="flex items-center gap-2 font-semibold"
+                  className="flex items-center  gap-2 font-my-font-regular text-(--color-secondary) cursor-pointer"
                 >
                   <ChevronLeft /> Back
                 </button>
@@ -175,7 +190,7 @@ export default function SideBarMenu() {
                     <button
                       key={region}
                       onClick={() => setActiveRegion(region)}
-                      className="w-full flex justify-between font-semibold"
+                      className="w-full flex justify-between font-my-font-semibold text-(--color-secondary) cursor-pointer"
                     >
                       {region}
                       <ChevronRight />
@@ -188,10 +203,10 @@ export default function SideBarMenu() {
               {activeRegion && (
                 <div className="absolute inset-0 bg-white z-[1200] flex flex-col">
                   <div className="flex items-center gap-3 p-6 border-b border-gray-300">
-                    <button onClick={() => setActiveRegion(null)}>
+                    <button onClick={() => setActiveRegion(null)} className="cursor-pointer">
                       <ChevronLeft />
                     </button>
-                    <h3 className="font-semibold">{activeRegion}</h3>
+                    <h3 className="font-my-font-regular text-(--color-secondary) cursor-pointer">{activeRegion}</h3>
                   </div>
 
                   <ul className="grid grid-cols-2 gap-2 p-6 overflow-y-auto">
@@ -203,7 +218,7 @@ export default function SideBarMenu() {
                           setDestinationPanel(false);
                           setActiveRegion(null);
                         }}
-                        className="cursor-pointer py-2"
+                        className="cursor-pointer py-2 font-my-font-semibold text-(--color-secondary)"
                       >
                         {country}
                       </li>
@@ -211,10 +226,11 @@ export default function SideBarMenu() {
                   </ul>
                 </div>
               )}
-            </div>
+            </div >
           </>,
           document.body
-        )}
+        )
+      }
     </>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-
+import { MoveRight, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import SideBarMenu from "./SideBarMenu";
 
@@ -119,11 +119,10 @@ export default function TopMenu() {
         flex justify-between py-3 md:py-5 px-3 md:px-10
         transition-all duration-700 ease-in-out
         ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}
-        ${
-          lastScrollY > 50 || megaOpen
+        ${lastScrollY > 50 || megaOpen
             ? "bg-black/50 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]"
             : "bg-transparent"
-        }`}
+          }`}
       >
         <div className="flex items-center justify-between w-full gap-2">
           <img
@@ -146,8 +145,8 @@ export default function TopMenu() {
 
             <button
               className="bg-white font-my-font-semibold text-black
-              px-3 py-3 md:px-4 md:py-2 md:block hidden rounded-full cursor-pointer
-              text-xs sm:text-base
+              px-3 py-3 md:px-4 md:py-2 sm:block hidden rounded-full cursor-pointer
+              text-xs md:text-base
               hover:bg-[#C43131] hover:text-white
               transition-all duration-300"
             >
@@ -160,12 +159,34 @@ export default function TopMenu() {
 
             {/* MEGA MENU */}
             {megaOpen && (
-              <div className="fixed left-0 top-full w-screen bg-gradient-to-br from-white via-[#f8dfce] to-[#f9dbcb] z-50">
-                <div className="max-w-[1600px] mx-auto px-10 py-15 grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-10 text-black">
+              <div className="fixed left-0 top-full h-screen w-screen bg-gradient-to-br from-white via-[#f8dfce] to-[#f9dbcb] z-50">
+                <div className="relative w-full flex justify-end px-10 py-5">
+
+                  {/* CLOSE ICON */}
+                  <button
+                    onClick={() => setMegaOpen(false)}
+                    aria-label="Close menu"
+                    className="  z-10
+    p-2 rounded-full cursor-pointer bg-[#C43131] hover:bg-white
+    transition-all duration-300 group"
+                  >
+                    <X
+                      size={16}
+                      strokeWidth={2}
+                      className="text-white group-hover:text-[#C43131]"
+                    />
+                  </button>
+
+
+                </div>
+
+
+
+                <div className="max-w-[1600px] mx-auto px-10 grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-10 text-black">
 
                   {/* REGIONS */}
                   <div className="space-y-4 border-r border-gray-300">
-                    <h4 className="text-sm uppercase opacity-60 pb-2">
+                    <h4 className="text-sm uppercase opacity-60 pb-1 relative before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:bg-[#C43131] before:transition-all before:duration-300 before:w-10">
                       Regions
                     </h4>
 
@@ -176,42 +197,65 @@ export default function TopMenu() {
                         <button
                           key={region}
                           onClick={() => setActiveRegion(region)}
-                          className={`w-full text-left text-lg font-my-font-semibold pr-6
-                          ${
-                            isActive
+                          className={`group w-full flex items-center 
+  text-left text-lg font-my-font-semibold cursor-pointer pr-6
+  transition-all duration-300
+  ${isActive
                               ? "text-[#C43131]"
                               : "text-black hover:text-[#C43131]"
-                          }`}
+                            }`}
                         >
-                          {region}
+                          <span>{region}</span>
+
+                          {/* Active Arrow */}
+                          <MoveRight
+                            size={25}
+                            strokeWidth={2}
+                            className={`transition-all duration-300 pl-1.5
+    ${isActive
+                                ? "opacity-100 translate-x-0 text-[#C43131]"
+                                : "opacity-0 -translate-x-2"
+                              }`}
+                          />
                         </button>
+
+
                       );
                     })}
                   </div>
 
                   {/* COUNTRIES */}
                   <div className="flex flex-col border-r border-gray-300">
-                    <h4 className="text-sm uppercase opacity-60 pb-2">
+                    <h4 className="text-sm uppercase opacity-60 pb-1 relative before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:bg-[#C43131] before:transition-all before:duration-300 before:w-10">
                       {activeRegion} Countries
                     </h4>
 
                     <ul className="grid grid-cols-2 gap-3 mt-3">
                       {REGIONS[activeRegion].countries.map((country) => (
-                        <li key={country}>{country}</li>
+                        <li key={country} className="cursor-pointer hover:text-[#C43131] transition-all duration-300">{country}</li>
                       ))}
                     </ul>
 
-                    <button className="mt-8 border border-black px-6 py-2 rounded-full text-sm">
+                    <button className="mt-8 border border-[#C43131] block w-fit px-6 py-2 rounded-full text-sm hover:bg-[#C43131] cursor-pointer hover:text-white hover:tracking-wide transition-all duration-300">
                       View all journeys in {activeRegion}
                     </button>
                   </div>
 
                   {/* IMAGE */}
                   <div className="rounded-xl overflow-hidden">
+
+                    <div className="relative rounded-xl overflow-hidden">
+
+                      {/* CLOSE ICON */}
+
+
+
+                    </div>
+
                     <img
                       src={REGIONS[activeRegion].image}
                       alt={activeRegion}
-                      className="w-full object-cover"
+                      className="w-full rounded-xl object-cover"
                     />
                   </div>
 
