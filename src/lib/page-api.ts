@@ -12,7 +12,7 @@ export async function fetchPageBySlug(
 
     if (!res.ok) return null;
 
-    const json: PageResponse  = await res.json();
+    const json: PageResponse = await res.json();
 
     return json;
   } catch (error) {

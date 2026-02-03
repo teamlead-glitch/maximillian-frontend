@@ -14,7 +14,7 @@ export async function generateSeoMetadata(
       description: "MT .........",
     };
   }
-  
+
 
   return {
     title: seo.meta_title,

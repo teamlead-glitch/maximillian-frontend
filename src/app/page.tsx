@@ -11,11 +11,11 @@ export const generateMetadata = async () => {
 
 
 const page = await fetchPageBySlug(slug);
-//console.log(page,' page++')
+
 
 export default function Home() {
   return (
-     <>
+    <>
       {/* ✅ JSON-LD SCHEMA (SERVER RENDERED) */}
       {page?.seo?.schema_markup && (
         <script
@@ -25,8 +25,8 @@ export default function Home() {
           }}
         />
       )}
-  <HomePage />
-  </>
+      <HomePage />
+    </>
   );
 }
 
