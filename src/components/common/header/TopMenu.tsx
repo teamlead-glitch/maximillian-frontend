@@ -1,5 +1,5 @@
 "use client";
-import { MoveRight, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import SideBarMenu from "./SideBarMenu";
 
@@ -33,24 +33,76 @@ const REGIONS = {
   },
 
   Europe: {
-    countries: ["France", "Italy", "Spain", "Switzerland", "Germany"],
+    countries: [
+      "France",
+      "Italy",
+      "Spain",
+      "Switzerland",
+      "Germany",
+      "United Kingdom",
+      "Netherlands",
+      "Belgium",
+      "Austria",
+      "Portugal",
+      "Greece",
+      "Ireland",
+      "Iceland",
+
+    ],
     image: "/images/europe.jpg",
   },
 
   Africa: {
-    countries: ["Kenya", "South Africa", "Morocco", "Egypt"],
+    countries: [
+      "South Africa",
+      "Kenya",
+      "Morocco",
+      "Egypt",
+      "Tanzania",
+      "Uganda",
+      "Rwanda",
+      "Ethiopia",
+      "Namibia",
+      "Botswana",
+      "Zimbabwe",
+      "Zambia",
+
+    ],
     image: "/images/africa.jpg",
   },
 
   America: {
-    countries: ["USA", "Canada", "Brazil", "Peru"],
+    countries: [
+
+      "United States",
+      "Canada",
+      "Mexico",
+
+      "Costa Rica",
+      "Panama",
+      "Jamaica",
+      "Brazil",
+      "Argentina",
+      "Chile",
+      "Peru",
+      "Colombia",
+
+    ],
     image: "/images/america.jpg",
   },
 
   Oceania: {
-    countries: ["Australia", "New Zealand", "Fiji"],
+    countries: [
+      "Australia",
+      "New Zealand",
+      "Fiji",
+      "Kiribati",
+      "Nauru",
+      "Tuvalu"
+    ],
     image: "/images/oceania.jpg",
   },
+
 } as const;
 
 /* ================= TYPES ================= */
@@ -70,13 +122,17 @@ export default function TopMenu() {
   /* ---------------- DISABLE BODY SCROLL ---------------- */
   useEffect(() => {
     if (megaOpen) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
       document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     }
 
     return () => {
       document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     };
   }, [megaOpen]);
 
@@ -159,7 +215,7 @@ export default function TopMenu() {
 
             {/* MEGA MENU */}
             {megaOpen && (
-              <div className="fixed left-0 top-full h-screen w-screen bg-gradient-to-br from-white via-[#f8dfce] to-[#f9dbcb] z-50">
+              <div className="fixed left-0 top-full h-[calc(100vh-100%)] w-full overflow-y-auto bg-linear-to-br from-[#fbfbfb] via-[#fbfbfb] to-[#fbfbfb] z-50 pb-20">
                 <div className="relative w-full flex justify-end px-10 py-5">
 
                   {/* CLOSE ICON */}
@@ -167,13 +223,13 @@ export default function TopMenu() {
                     onClick={() => setMegaOpen(false)}
                     aria-label="Close menu"
                     className="  z-10
-    p-2 rounded-full cursor-pointer bg-[#C43131] hover:bg-white
+    p-2 rounded-full cursor-pointer bg-[#C43131] hover:bg-black hover:text-white
     transition-all duration-300 group"
                   >
                     <X
                       size={16}
                       strokeWidth={2}
-                      className="text-white group-hover:text-[#C43131]"
+                      className="text-white group-hover:text-white"
                     />
                   </button>
 
@@ -182,13 +238,13 @@ export default function TopMenu() {
 
 
 
-                <div className="max-w-[1600px] mx-auto px-10 grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-10 text-black">
+                <div className=" mx-auto px-3 md:px-10  grid grid-cols-1 md:grid-cols-[1fr_3fr_2fr] gap-10 text-black">
 
                   {/* REGIONS */}
-                  <div className="space-y-4 border-r border-gray-300">
-                    <h4 className="text-sm uppercase opacity-60 pb-1 relative before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:bg-[#C43131] before:transition-all before:duration-300 before:w-10">
+                  <div className="space-y-4">
+                    {/* <h4 className="text-sm uppercase opacity-60 pb-1 relative before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:bg-[#C43131] before:transition-all before:duration-300 before:w-10">
                       Regions
-                    </h4>
+                    </h4> */}
 
                     {(Object.keys(REGIONS) as Region[]).map((region) => {
                       const isActive = activeRegion === region;
@@ -198,7 +254,7 @@ export default function TopMenu() {
                           key={region}
                           onClick={() => setActiveRegion(region)}
                           className={`group w-full flex items-center 
-  text-left text-lg font-my-font-semibold cursor-pointer pr-6
+  text-left text-lg font-semibold cursor-pointer pr-6
   transition-all duration-300
   ${isActive
                               ? "text-[#C43131]"
@@ -208,7 +264,7 @@ export default function TopMenu() {
                           <span>{region}</span>
 
                           {/* Active Arrow */}
-                          <MoveRight
+                          {/* <MoveRight
                             size={25}
                             strokeWidth={2}
                             className={`transition-all duration-300 pl-1.5
@@ -216,7 +272,7 @@ export default function TopMenu() {
                                 ? "opacity-100 translate-x-0 text-[#C43131]"
                                 : "opacity-0 -translate-x-2"
                               }`}
-                          />
+                          /> */}
                         </button>
 
 
@@ -225,12 +281,12 @@ export default function TopMenu() {
                   </div>
 
                   {/* COUNTRIES */}
-                  <div className="flex flex-col border-r border-gray-300">
-                    <h4 className="text-sm uppercase opacity-60 pb-1 relative before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:bg-[#C43131] before:transition-all before:duration-300 before:w-10">
+                  <div className="flex flex-col">
+                    {/* <h4 className="text-sm uppercase opacity-60 pb-1 relative before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:bg-[#C43131] before:transition-all before:duration-300 before:w-10">
                       {activeRegion} Countries
-                    </h4>
+                    </h4> */}
 
-                    <ul className="grid grid-cols-2 gap-3 mt-3">
+                    <ul className="grid grid-cols-2 gap-3">
                       {REGIONS[activeRegion].countries.map((country) => (
                         <li key={country} className="cursor-pointer hover:text-[#C43131] transition-all duration-300">{country}</li>
                       ))}
@@ -242,20 +298,14 @@ export default function TopMenu() {
                   </div>
 
                   {/* IMAGE */}
-                  <div className="rounded-xl overflow-hidden">
-
-                    <div className="relative rounded-xl overflow-hidden">
-
-                      {/* CLOSE ICON */}
+                  <div className="rounded-xl overflow-hidden pl-0 md:pl-20">
 
 
-
-                    </div>
 
                     <img
                       src={REGIONS[activeRegion].image}
                       alt={activeRegion}
-                      className="w-full rounded-xl object-cover"
+                      className="w-full rounded-xl object-cover aspect-3/4"
                     />
                   </div>
 

@@ -132,7 +132,7 @@ export default function FeaturedDestinations() {
   group"
                                 >
                                     {/* Image */}
-                                    <div className="w-full aspect-[3/3] overflow-hidden">
+                                    <div className="w-full aspect-3/3 overflow-hidden">
                                         <img
                                             src={item.image}
                                             alt={item.title}

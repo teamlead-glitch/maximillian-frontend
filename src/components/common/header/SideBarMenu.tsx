@@ -102,7 +102,7 @@ export default function SideBarMenu() {
             {/* OVERLAY */}
             <div
               onClick={() => setSideOpen(false)}
-              className={`fixed inset-0 bg-black/50 z-[999]
+              className={`fixed inset-0 bg-black/50 z-999
               transition-opacity duration-300
               ${sideOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
             />
@@ -110,7 +110,7 @@ export default function SideBarMenu() {
             {/* SIDEBAR */}
             <div
               className={`fixed top-0 right-0 h-screen w-[85%] max-w-[320px]
-              bg-white z-[1000] flex flex-col
+              bg-white z-1000 flex flex-col
               transform transition-transform duration-300
               ${sideOpen ? "translate-x-0" : "translate-x-full"}`}
             >
@@ -166,7 +166,7 @@ export default function SideBarMenu() {
             {/* DESTINATION PANEL */}
             < div
               className={`fixed top-0 right-0 h-screen w-[85%] max-w-[320px]
-              bg-white z-[1100] flex flex-col md:hidden
+              bg-white z-1100 flex flex-col md:hidden
               transform transition-transform duration-300
               ${destinationPanel ? "translate-x-0" : "translate-x-full"}`}
             >
@@ -201,7 +201,7 @@ export default function SideBarMenu() {
 
               {/* COUNTRIES */}
               {activeRegion && (
-                <div className="absolute inset-0 bg-white z-[1200] flex flex-col">
+                <div className="absolute inset-0 bg-white z-1200 flex flex-col">
                   <div className="flex items-center gap-3 p-6 border-b border-gray-300">
                     <button onClick={() => setActiveRegion(null)} className="cursor-pointer">
                       <ChevronLeft />
