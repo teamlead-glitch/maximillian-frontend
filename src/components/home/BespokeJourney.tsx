@@ -10,7 +10,7 @@ export default function BespokeJourney() {
     bg-cover bg-center bg-no-repeat"
             >
                 <div className="max-w-[1300px] flex items-center justify-between h-full flex-col gap-8 mx-auto  ">
-                    <div className="w-full flex flex-col items-end gap-5 pr-5 xl:pr-0">
+                    <div className="w-full flex flex-col items-start gap-5 pr-5 xl:pr-0">
                         <img src="images/google-review.svg" alt="" className="w-40 md:w-auto" />
                         <img src="images/tripadvisor-reviews.svg" alt="" className="w-40 md:w-auto" />
                     </div>
