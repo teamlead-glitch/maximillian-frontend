@@ -44,7 +44,7 @@ export default function DynamicPageClient({
             <section className="relative py-20 bg-white ">
 
                <div
-            className="prose max-w-none description-content"
+            className="max-w-[1300px] mx-auto px-5 space-y-3 description-content"
             style={{ minHeight: "150px" }}
             dangerouslySetInnerHTML={{ __html: page?.content ?? '' }}
           />
