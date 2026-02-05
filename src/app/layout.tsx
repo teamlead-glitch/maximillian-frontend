@@ -3,6 +3,10 @@ import { DM_Sans, Grape_Nuts } from "next/font/google";
 import "./globals.css";
 import { myFont, myFontMedium, myFontRegular, myFontSemibold } from "./font";
 
+import Footer from "@/components/common/footer/footer";
+import TopMenu from "@/components/common/header/TopMenu";
+import BackToTop from "@/components/common/BackToTop";
+
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
@@ -32,7 +36,10 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${grapeNuts.variable} ${myFont.variable} ${myFontMedium.variable} ${myFontRegular.variable} ${myFontSemibold.variable} antialiased`}
       >
+        <TopMenu />
         {children}
+        <Footer />
+        <BackToTop />
       </body>
     </html>
   );

@@ -12,56 +12,24 @@ import WhatMakeExc from "./WhatMakeExc";
 import Insights from "./Insights";
 import BespokeJourney from "./BespokeJourney";
 import LogoCarousel from "./LogoCarousel";
-import Footer from "../common/footer/footer";
-import TopMenu from "../common/header/TopMenu";
-import BackToTop from "../common/BackToTop";
-
-
-
-
-
 
 export default function HomePage() {
-
-
-
 
     return (
 
         <>
-
-
-            <TopMenu />
             <BannerSection />
             <AboutSection />
             <SignatureJourney />
             <ExperienceTour />
-
             <SpecialityTours />
-
-
             <FeaturedDestinations />
-
-
             <DesignYourTrips />
-
             <Testimonials />
-
-
             <WhatMakeExc />
-
-
             <Insights />
-
             <BespokeJourney />
-
-
-
             <LogoCarousel />
-
-            <Footer />
-
-            <BackToTop />
 
 
         </>

@@ -3,13 +3,6 @@ import { generateSeoMetadata } from "@/lib/seo";
 import { PAGE_SLUGS } from "@/constants/pageSlugs";
 import { fetchPageBySlug } from "@/lib/page-api";
 import Allstyle from "@/components/commonstructure/Allstyle";
-import TopMenu from "@/components/common/header/TopMenu";
-import Footer from "@/components/common/footer/footer";
-
-import BackToTop from "@/components/common/BackToTop";
-
-
-
 
 const slug = PAGE_SLUGS.HOME;
 
@@ -34,11 +27,8 @@ export default function Home() {
                 />
             )}
 
-            <TopMenu />
+            
             <Allstyle />
-
-            <Footer />
-            <BackToTop />
 
         </>
     );
