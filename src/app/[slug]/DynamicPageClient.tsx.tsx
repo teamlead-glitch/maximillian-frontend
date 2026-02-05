@@ -1,5 +1,7 @@
 "use client";
 
+import { CheckCircle, ChevronRight } from "lucide-react";
+import Link from "next/link";
 import { PageResponse } from "@/types/pagesTypes";
 import NotFound from "../not-found";
 
@@ -43,12 +45,32 @@ export default function DynamicPageClient({
             {/* CONTENT */}
             <section className="relative py-20 bg-white ">
 
+              <div className="max-w-[1300px] mx-auto px-5 space-y-3">
+
+                <div className="detail_breadcrumps py-3">
+                        <div className="container">
+                            <nav className="flex flex-wrap items-center space-x-2 text-sm text-(--color-secondary)">
+                                <Link
+                                    href="/"
+                                    className="text-(--color-secondary)  transition-colors duration-200 no-underline font-light hover:text-[#c43131]"
+                                >
+                                    Home
+                                </Link>
+                                <ChevronRight className="w-4 h-4 text-gray-400" />
+                                <span className="text-(--color-secondary) font-medium">
+                                    {page?.title}
+                                </span>
+                            </nav>
+                        </div>
+                    </div>
+
                <div
-            className="max-w-[1300px] mx-auto px-5 space-y-3 description-content"
+            className="description-content"
             style={{ minHeight: "150px" }}
             dangerouslySetInnerHTML={{ __html: page?.content ?? '' }}
           />
         
+        </div>
                
             </section >
      
