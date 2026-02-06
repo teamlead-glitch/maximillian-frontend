@@ -181,11 +181,12 @@ export default function TopMenu() {
           }`}
       >
         <div className="flex items-center justify-between w-full gap-2">
-          <img
+          <a href="/"><img
             src="/images/logo.svg"
             alt="Company Logo"
             className="h-10 w-auto"
-          />
+          /></a>
+          
 
           <div ref={megaMenuRef} className="flex items-center gap-5 lg:relative">
             {/* Explore Destination */}

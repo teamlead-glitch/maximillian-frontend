@@ -30,8 +30,9 @@ export default function DesignYourTrips() {
                         </button></div>
                     </div>
                 </div>
-                <div className="max-w-[1300px]  mx-auto px-10 w-full mt-10">
-                    <img src="images/design-your-trips.svg" alt="" />
+                <div className="max-w-[1300px]  mx-auto px-5 md:px-10 w-full mt-3 md:mt-10">
+                    <img src="images/design-your-trips.svg" alt="" className="hidden md:block" />
+                     <img src="images/design-your-trips-mobile.svg" alt="" className="block md:hidden" />
                 </div>
             </section>
 

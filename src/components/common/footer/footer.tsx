@@ -14,7 +14,7 @@ export default function Footer() {
                                 {["Home", "Destinations", "Design Your Trip", "Our World", "Contact Us"].map((item) => (
                                     <li
                                         key={item}
-                                        className="mb-4 text-3xl md:text-4xl lg:text-5xl font-my-font-regular text-(--color-secondary)"
+                                        className="mb-4 text-2xl md:text-3xl lg:text-4xl font-my-font-regular text-(--color-secondary)"
                                     >
                                         <a
                                             href="#"
