@@ -38,43 +38,55 @@ export default function WhatMakeExc() {
                     <div className=" hidden md:block md:w-[10%]"></div>
                     <div className="w-[90%]">
                         <div className="grid  items-center   sm:grid-cols-2 md:gap-5 lg:gap-10 xl:gap-15   lg:grid-cols-4">
-                            <div className="pb-10 pr-0 md:pr-5">
-                                <div className="pb-5"><img src="images/package-exception-icon-1.svg" alt="" /></div>
+                            <a href="" className="group block pb-10 pr-0 md:pr-5">
+                                <div className="pb-5">
+                                    <img
+                                        src="images/package-exception-icon-1.svg"
+                                        alt="Cultural Journeys"
+                                        className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]"
+                                    />
+                                </div>
 
                                 <p className="text-(--color-secondary)">Experiences over checklists. Not photo tick-box tourism.</p>
-                            </div>
-                            <div className="pb-10 pr-0 md:pr-5">
-                                <div className="pb-5"><img src="images/package-exception-icon-2.svg" alt="" /></div>
+                            </a>
+                            <a href="" className="group block pb-10 pr-0 md:pr-5">
+                                <div className="pb-5">
+                                    <img
+                                        src="images/package-exception-icon-2.svg"
+                                        alt="Cultural Journeys"
+                                        className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]"
+                                    />
+                                </div>
 
                                 <p className="text-(--color-secondary)">Private guides & exclusive access.</p>
-                            </div>
-                            <div className="pb-10 pr-0 md:pr-5">
-                                <div className="pb-5"><img src="images/package-exception-icon-3.svg" alt="" /></div>
+                            </a>
+                            <a href="" className="group block pb-10 pr-0 md:pr-5">
+                                <div className="pb-5"><img src="images/package-exception-icon-3.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
 
                                 <p className="text-(--color-secondary)">Handpicked luxury hotels & villas.</p>
-                            </div>
-                            <div className="pb-10 pr-0 md:pr-5">
-                                <div className="pb-5"><img src="images/package-exception-icon-4.svg" alt="" /></div>
+                            </a>
+                            <a href="" className="group block pb-10 pr-0 md:pr-5">
+                                <div className="pb-5"><img src="images/package-exception-icon-4.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
 
                                 <p className="text-(--color-secondary)">Flexible itineraries, no rigid schedules.</p>
-                            </div>
-                            <div className="pb-10 pr-0 md:pr-5">
-                                <div className="pb-5"><img src="images/package-exception-icon-5.svg" alt="" /></div>
+                            </a>
+                            <a href="" className="group block pb-10 pr-0 md:pr-5">
+                                <div className="pb-5"><img src="images/package-exception-icon-5.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
 
                                 <p className="text-(--color-secondary)">Thoughtful pacing. Space to explore, reflect & connect.</p>
-                            </div>
-                            <div className="pb-10 pr-0 md:pr-5">
-                                <div className="pb-5"><img src="images/package-exception-icon-6.svg" alt="" /></div>
+                            </a>
+                            <a href="" className="group block pb-10 pr-0 md:pr-5">
+                                <div className="pb-5"><img src="images/package-exception-icon-6.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
 
                                 <p className="text-(--color-secondary)">Deeper immersion rather than rushed sightseeing.</p>
-                            </div>
-                            <div className="pb-10 pr-0 md:pr-5">
-                                <div className="pb-5"><img src="images/package-exception-icon-7.svg" alt="" /></div>
+                            </a>
+                            <a href="" className="group block pb-10 pr-0 md:pr-5">
+                                <div className="pb-5"><img src="images/package-exception-icon-7.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
 
                                 <p className="text-(--color-secondary)">24/7 global concierge support.</p>
-                            </div>
+                            </a>
                             <div className="pb-10 pr-0 md:pr-5">
-                                <div className="pb-5"><img src="images/package-exception-icon-8.svg" alt="" /></div>
+                                <div className="pb-5"><img src="images/package-exception-icon-8.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
 
                                 <p className="text-(--color-secondary)">Discreet, personalised service.</p>
                             </div>
