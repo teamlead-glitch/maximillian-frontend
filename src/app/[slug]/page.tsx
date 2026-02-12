@@ -21,15 +21,15 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const {slug} = await params; 
-   const page = await fetchPageBySlug(slug);
+  const { slug } = await params;
+  const page = await fetchPageBySlug(slug);
 
-     if (!page ||  slug == 'home') {
-       // Optional: you can throw notFound() here
-       return <NotFound />;
-     }
+  if (!page || slug == 'home') {
+    // Optional: you can throw notFound() here
+    return <NotFound />;
+  }
 
-   return (
+  return (
     <>
       {/* ✅ JSON-LD SCHEMA (SERVER RENDERED) */}
       {page?.seo?.schema_markup && (
@@ -41,9 +41,9 @@ export default async function Page({
         />
       )}
 
-      <DynamicPageClient page={page}/>
+      <DynamicPageClient page={page} />
     </>
   );
-  
- 
+
+
 }
