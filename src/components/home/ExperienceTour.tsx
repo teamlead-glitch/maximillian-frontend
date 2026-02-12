@@ -17,17 +17,17 @@ export default function ExperienceTour() {
                                             className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]"
                                         />
                                     </div>
-                                    <h4 className="text-1xl font-my-font-semibold">Cultural Journeys</h4>
+                                    <h4 className="text-1xl font-my-font-semibold text-black">Cultural Journeys</h4>
                                     <p className="text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
                                 </a>
                                 <a href="" className="group block w-full sm:w-1/2 py-3">
                                     <div className="pb-5"><img src="images/experience-tour-icon2.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-                                    <h4 className="text-1xl font-my-font-semibold">Photography Tours</h4>
+                                    <h4 className="text-1xl font-my-font-semibold text-black">Photography Tours</h4>
                                     <p className="text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
                                 </a>
                                 <a href="" className="group block w-full sm:w-1/2 py-3">
                                     <div className="pb-5"><img src="images/experience-tour-icon3.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-                                    <h4 className="text-1xl font-my-font-semibold">Trekking and Outdoors</h4>
+                                    <h4 className="text-1xl font-my-font-semibold text-black">Trekking and Outdoors</h4>
                                     <p className=" text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
                                 </a>
 
@@ -35,17 +35,17 @@ export default function ExperienceTour() {
                             <div className="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10">
                                 <a href="" className="group block w-full sm:w-1/2 py-3">
                                     <div className="pb-5"><img src="images/experience-tour-icon1.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-                                    <h4 className="text-1xl font-my-font-semibold">Cultural Journeys</h4>
+                                    <h4 className="text-1xl font-my-font-semibold text-black">Cultural Journeys</h4>
                                     <p className=" text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
                                 </a>
                                 <a href="" className="group block w-full sm:w-1/2 py-3">
                                     <div className="pb-5"><img src="images/experience-tour-icon2.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-                                    <h4 className="text-1xl font-my-font-semibold">Photography Tours</h4>
+                                    <h4 className="text-1xl font-my-font-semibold text-black">Photography Tours</h4>
                                     <p className=" text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
                                 </a>
                                 <a href="" className="group block w-full sm:w-1/2 py-3">
                                     <div className="pb-5"><img src="images/experience-tour-icon3.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-                                    <h4 className="text-1xl font-my-font-semibold">Trekking and Outdoors</h4>
+                                    <h4 className="text-1xl font-my-font-semibold text-black">Trekking and Outdoors</h4>
                                     <p className=" text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
                                 </a>
                             </div>

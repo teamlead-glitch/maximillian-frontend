@@ -105,7 +105,7 @@ export default function Testimonials() {
                         </div>
                     </div>
                     <div className="mb-4 mx-auto flex justify-center">
-                        <div className="inline-block">  <button className="group flex items-center font-my-font-semibold text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
+                        <div className="inline-block">  <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
                             <span className="mr-3">View All Testimonials</span>
 
                             <svg

@@ -104,7 +104,7 @@ export default function Insights() {
                                                         {item.text || item.content}
                                                     </p>
 
-                                                    <button className="group flex items-center text-sm sm:text-base font-my-font-semibold py-3 cursor-pointer  ">
+                                                    <button className="group flex items-center text-black text-sm sm:text-base font-my-font-semibold py-3 cursor-pointer  ">
                                                         <span className="mr-3">Read More</span>
                                                         <svg className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
                                                             width="53"

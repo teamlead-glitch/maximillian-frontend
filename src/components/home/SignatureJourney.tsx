@@ -13,7 +13,7 @@ export default function SignatureJourney() {
                         <div className="w-full md:w-[200px]"><p className="text-sm text-(--color-secondary) ">A selection of our carefully curated international experiences.</p></div>
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                         <div className="inline-block">
-                            <button className="group flex items-center font-my-font-semibold text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
+                            <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
                                 <span className="mr-3">View All Signature Journeys</span>
 
                                 <svg

@@ -11,7 +11,7 @@ export default function DesignYourTrips() {
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                         <div className="w-full md:w-[200px]"><p className="text-sm text-(--color-secondary) ">Some journeys can’t be templated. Design a fully personalised journey with us.</p></div>
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                        <div className="inline-block">  <button className="group flex items-center font-my-font-semibold text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
+                        <div className="inline-block">  <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
                             <span className="mr-3">Start Designing</span>
 
                             <svg
@@ -32,7 +32,7 @@ export default function DesignYourTrips() {
                 </div>
                 <div className="max-w-[1300px]  mx-auto px-5 md:px-10 w-full mt-3 md:mt-10">
                     <img src="images/design-your-trips.svg" alt="" className="hidden md:block" />
-                     <img src="images/design-your-trips-mobile.svg" alt="" className="block md:hidden" />
+                    <img src="images/design-your-trips-mobile.svg" alt="" className="block md:hidden" />
                 </div>
             </section>
 

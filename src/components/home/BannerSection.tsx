@@ -31,7 +31,7 @@ export default function BannerSection() {
                             <button className="
 relative overflow-hidden
 bg-white/30 backdrop-blur-md text-white cursor-pointer
-px-4 py-3 md:px-6 md:py-4 rounded-full font-my-font-semibold
+px-4 py-3 md:px-6 md:py-4 rounded-full font-my-font-semibold 
 shadow-lg text-xs sm:text-base
 transition-all duration-300
 hover:bg-white/40
@@ -52,7 +52,7 @@ relative overflow-hidden
 text-white
 px-4 py-3 md:px-6 md:py-4
 border border-white/40 rounded-full
-font-my-font-semibold
+font-my-font-semibold 
 shadow-lg text-xs sm:text-base
 cursor-pointer
 

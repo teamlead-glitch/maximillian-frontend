@@ -15,7 +15,7 @@ export default function WhatMakeExc() {
 
                     </div>
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                    <div className="inline-block"> <button className="group flex items-center font-my-font-semibold text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
+                    <div className="inline-block"> <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
                         <span className="mr-3">Contact Us Now</span>
 
                         <svg
