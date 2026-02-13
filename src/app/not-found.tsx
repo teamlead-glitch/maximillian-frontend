@@ -3,7 +3,7 @@
 import Link from "next/link";
 import TopMenu from "@/components/common/header/TopMenu";
 import Footer from "@/components/common/footer/footer";
-
+import LogoCarousel from "@/components/home/LogoCarousel";
 import BackToTop from "@/components/common/BackToTop";
 
 export default function NotFound() {
@@ -11,51 +11,40 @@ export default function NotFound() {
         <>
             <TopMenu />
             {/* HEADER */}
-            <section
-                className="relative py-40 bg-black bg-cover bg-center"
-                style={{
-                    backgroundImage: "url('/images/404.jpg')",
-                }}
-            >
-                {/* overlay */}
-                <div className="absolute inset-0 bg-black/30"></div>
 
-                <h1 className="relative z-10 text-center text-white text-4xl font-my-font-semibold">
-                    404 Error
-                </h1>
-            </section>
-            <div className=" flex items-center justify-center bg-white px-6 py-20 md:py-40">
-                <div className="flex flex-col items-center text-center not-found">
-
-                    <img src="/images/404.gif" alt="" className="w-50" />
-
-
-
-
-                    <h2 className="text-3xl md:text-4xl  font-my-font-regular  text-(--color-secondary)">
-                        Sorry, this page is unavailable.
-                    </h2>
-                    <a href="/">  <button className="group flex items-center font-my-font-semibold text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
-                        <span className="mr-3">Go back home</span>
-
-                        <svg
-                            className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
-                            width="53"
-                            height="8"
-                            viewBox="0 0 53 8"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
-                                fill="#3A3F42"
-                            />
-                        </svg>
-                    </button></a>
+            <div className="max-w-[1300px] flex mx-auto  px-70 py-70 ">
+                <div className="flex flex-col items-center text-center mx-auto">
+                    <h1 className="font-my-font-regular text-break lg:text-5xl text-4xl text-(--color-secondary) mb-5">
+                        404
+                    </h1>
+                    <p className="text-lg text-(--color-secondary)">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Please try the following:</p>
+                    <hr className="w-full mx-auto my-5 border-gray-300" />
+                    <div className="w-full flex justify-between">
+                        <div className="flex items-center gap-2 whitespace-nowrap"><img src="images/checkspelling-icon.svg" alt="" />
+                            <a href="" className="text-(--color-secondary)">Check your spelling</a></div>
+                        <div className="flex items-center gap-2 whitespace-nowrap"><img src="images/returnhome-icon.svg" alt="" />
+                            <a href="" className="text-(--color-secondary) underline">Return to the Home page</a></div>
+                        <div className="flex items-center gap-2 whitespace-nowrap"><img src="images/clickback-icon.svg" alt="" />
+                            <a href="" className="text-(--color-secondary) underline">Click the Back button</a></div>
+                    </div>
+                    <hr className="w-full mx-auto my-5 border-gray-300" />
+                    <div className="w-full flex gap-5 px-5 items-center justify-between">
+                        <a href="tel:+919998868866" className="flex gap-2 text-[#46545E] ">
+                            <img src="/images/call-icon.svg" className="w-5" /> +91 999 886 8866
+                        </a>
+                        <a href="https://wa.me/919998868866" className="flex gap-2 text-[#46545E] ">
+                            <img src="/images/whatsapp-icon.svg" className="w-5" /> WhatsApp
+                        </a>
+                        <a href="mailto:hello@maximilianholidays.com" className="flex gap-2 text-[#46545E] ">
+                            <img src="/images/mail-icon.svg" className="w-5" />
+                            hello@maximilianholidays.com
+                        </a>
+                    </div>
 
                 </div>
 
             </div>
+            <LogoCarousel />
             <Footer />
             <BackToTop />
         </>

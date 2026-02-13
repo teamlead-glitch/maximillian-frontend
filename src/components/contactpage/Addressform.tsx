@@ -15,7 +15,7 @@ export default function AddressForm() {
                         <div className="w-2/3 pr-10">
                             <div className="w-full flex items-center">
                                 <div className="w-2/3 pr-10 ">
-                                    <h1 className="font-my-font-regular text-break text-5xl text-(--color-secondary) text-right ">Let’s talk about <br />
+                                    <h1 className="font-my-font-regular text-break lg:text-5xl text-4xl text-(--color-secondary) text-right ">Let’s talk about <br />
                                         your next holiday plan! </h1>
                                 </div>
                                 <div className="w-px h-15 bg-gray-300 hidden md:block"></div>
@@ -272,27 +272,12 @@ hover:before:translate-x-full hover:text-white
 
                                         </div>
                                     </div>
-
-
-
-
-
-
-
-
-
                                 </div>
-
-
                             </div>
 
                         </div>
                     </div >
                 </div >
-
-
-
-
             </section >
 
 
