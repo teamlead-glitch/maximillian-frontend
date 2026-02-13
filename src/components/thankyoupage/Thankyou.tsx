@@ -1,5 +1,5 @@
 "use client";
-
+import LogoCarousel from "@/components/home/LogoCarousel"
 export default function Thankyou() {
 
 
@@ -66,6 +66,7 @@ export default function Thankyou() {
                     </a>
                 </div>
             </section>
+            <LogoCarousel />
         </>
     );
 }

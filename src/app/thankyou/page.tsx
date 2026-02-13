@@ -2,7 +2,7 @@ import Thankyou from "@/components/thankyoupage/Thankyou";
 import { generateSeoMetadata } from "@/lib/seo";
 import { PAGE_SLUGS } from "@/constants/pageSlugs";
 import { fetchPageBySlug } from "@/lib/page-api";
-// import LogoCarousel from "@/components/home/LogoCarousel"
+
 
 
 
