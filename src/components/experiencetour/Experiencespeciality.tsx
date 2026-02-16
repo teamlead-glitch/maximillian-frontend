@@ -18,7 +18,7 @@ export default function Experiencespeciality() {
                                 <div className="rounded-md w-full aspect-square relative overflow-hidden">
                                     <a href="">
                                         <img src="images/expeience-img-1.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                                        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
+                                        <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                         <div className="absolute bottom-0 left-0 right-0 p-4">
                                             <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
                                         </div>
@@ -49,7 +49,7 @@ export default function Experiencespeciality() {
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square  relative overflow-hidden">
                                     <a href=""><img src="images/expeience-img-2.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
-                                    <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
 
                                         <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
@@ -80,7 +80,7 @@ export default function Experiencespeciality() {
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square relative overflow-hidden">
                                     <a href=""><img src="images/expeience-img-3.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
-                                    <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
 
                                         <p className="text-white text-lg font-my-font-semibold text-center">10 days</p>
@@ -111,7 +111,7 @@ export default function Experiencespeciality() {
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square relative overflow-hidden">
                                     <a href=""><img src="images/expeience-img-4.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
-                                    <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
                                         <p className="text-white text-lg font-my-font-semibold text-center">05 days</p>
                                     </div>
@@ -140,7 +140,7 @@ export default function Experiencespeciality() {
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square  relative overflow-hidden">
                                     <a href=""><img src="images/expeience-img-5.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
-                                    <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
 
                                         <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
@@ -171,7 +171,7 @@ export default function Experiencespeciality() {
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square relative overflow-hidden">
                                     <a href=""><img src="images/expeience-img-6.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
-                                    <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
 
                                         <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
@@ -206,7 +206,7 @@ export default function Experiencespeciality() {
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square relative overflow-hidden">
                                     <a href=""><img src="images/expeience-img-7.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
-                                    <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
                                         <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
                                     </div>
@@ -235,7 +235,7 @@ export default function Experiencespeciality() {
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square  relative overflow-hidden">
                                     <a href=""><img src="images/expeience-img-8.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
-                                    <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
 
                                         <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
@@ -266,7 +266,7 @@ export default function Experiencespeciality() {
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square relative overflow-hidden">
                                     <a href=""><img src="images/expeience-img-9.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
-                                    <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
 
                                         <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
