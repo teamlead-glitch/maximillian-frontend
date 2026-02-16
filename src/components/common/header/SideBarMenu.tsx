@@ -5,8 +5,11 @@ import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import Link from "next/link";
 
+/* ===================== TYPES ===================== */
+type Region = "Asia" | "Europe" | "Africa" | "America" | "Oceania";
+
 /* ===================== DESTINATIONS ===================== */
-const destinations: Record<string, string[]> = {
+const destinations: Record<Region, string[]> = {
   Asia: [
     "India", "Afghanistan", "Azerbaijan", "Bahrain", "Cambodia", "China",
     "Indonesia", "Japan", "Jordan", "Kazakhstan", "Kuwait", "Malaysia",
@@ -19,7 +22,7 @@ const destinations: Record<string, string[]> = {
   Oceania: ["Australia", "New Zealand", "Fiji"],
 };
 
-const regions = Object.keys(destinations);
+const regions = Object.keys(destinations) as Region[];
 
 /* ===================== ICONS ===================== */
 const ChevronRight = () => (
@@ -38,15 +41,19 @@ const ChevronLeft = () => (
 export default function SideBarMenu() {
   const [sideOpen, setSideOpen] = useState(false);
   const [destinationPanel, setDestinationPanel] = useState(false);
-  const [activeRegion, setActiveRegion] = useState<string | null>(null);
+  const [activeRegion, setActiveRegion] = useState<Region | null>(null);
   const [activeLink, setActiveLink] = useState("Home");
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = sideOpen ? "hidden" : "auto";
-    return () => (document.body.style.overflow = "auto");
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [sideOpen]);
 
   if (!mounted) return null;
@@ -54,7 +61,10 @@ export default function SideBarMenu() {
   return (
     <>
       {/* HAMBURGER */}
-      <button className="pl-5 cursor-pointer" onClick={() => setSideOpen(true)}>
+      <button
+        className="pl-5 cursor-pointer"
+        onClick={() => setSideOpen(true)}
+      >
         <img src="/images/hamburg-menu.svg" alt="Menu" />
       </button>
 
@@ -107,7 +117,11 @@ export default function SideBarMenu() {
                   className={`relative block font-my-font-semibold
                   after:absolute after:left-0 after:-bottom-1 after:h-[2px]
                   after:w-[30px] after:bg-[#C43131] after:transition-opacity
-                  ${activeLink === item.name ? "after:opacity-100" : "after:opacity-0"}`}
+                  ${
+                    activeLink === item.name
+                      ? "after:opacity-100"
+                      : "after:opacity-0"
+                  }`}
                 >
                   {item.name}
                 </Link>
@@ -117,13 +131,24 @@ export default function SideBarMenu() {
             {/* CONTACT */}
             <div className="px-6 pb-20 space-y-4">
               <a href="tel:+919998868866" className="flex gap-3">
-                <img src="/images/call-icon.svg" className="w-5" /> +91 999 886 8866
+                <img src="/images/call-icon.svg" className="w-5" alt="Call" />
+                +91 999 886 8866
               </a>
+
               <a href="https://wa.me/919998868866" className="flex gap-3">
-                <img src="/images/whatsapp-icon.svg" className="w-5" /> WhatsApp
+                <img
+                  src="/images/whatsapp-icon.svg"
+                  className="w-5"
+                  alt="WhatsApp"
+                />
+                WhatsApp
               </a>
-              <a href="mailto:hello@maximilianholidays.com" className="flex gap-3">
-                <img src="/images/mail-icon.svg" className="w-5" />
+
+              <a
+                href="mailto:hello@maximilianholidays.com"
+                className="flex gap-3"
+              >
+                <img src="/images/mail-icon.svg" className="w-5" alt="Mail" />
                 hello@maximilianholidays.com
               </a>
             </div>
@@ -133,7 +158,9 @@ export default function SideBarMenu() {
           <div
             className={`fixed top-0 right-0 h-screen w-[85%] max-w-[320px]
             bg-white z-[1100] md:hidden transition-transform duration-300
-            ${destinationPanel ? "translate-x-0" : "translate-x-full"}`}
+            ${
+              destinationPanel ? "translate-x-0" : "translate-x-full"
+            }`}
           >
             <div className="p-6 border-b">
               <button
@@ -162,6 +189,7 @@ export default function SideBarMenu() {
             ) : (
               <div className="p-6">
                 <h3 className="mb-4 font-semibold">{activeRegion}</h3>
+
                 <ul className="grid grid-cols-2 gap-3">
                   {destinations[activeRegion].map((country) => (
                     <li
