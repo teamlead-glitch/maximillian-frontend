@@ -1,0 +1,228 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import LogoCarousel from "@/components/home/LogoCarousel";
+import Image from "next/image";
+
+export default function Bloginsightlist() {
+    const [shareUrl, setShareUrl] = useState("");
+
+
+
+
+    return (
+        <>
+            <section className="relative pt-40 pb-10 overflow-hidden bg-white">
+                <div className="max-w-[1300px]  mx-auto  px-5  ">
+                    <div className="w-full justify-center items-center mb-10">
+                        <h1 className="font-my-font-regular text-break lg:text-5xl text-4xl text-(--color-secondary) text-center ">
+                            Travel Insights
+                        </h1>
+                    </div>
+                    <div className="grid grid-cols-[7fr_3fr] gap-10">
+                        <div className="group">
+                            <div className="aspect-[7/3]  relative overflow-hidden">
+                                <a href=""> <img src="images/blog-details-img.png" alt="" className="rounded-lg w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent rounded-lg"></div>
+
+                                </a>
+                                <div className="absolute bottom-0 left-0 right-0 p-4">
+
+                                    <p className="text-white text-lg  text-right">4 min read</p>
+                                </div>
+                            </div>
+                            <div className="w-1/2 pt-5">
+                                <a href=""><h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">Top ten destinations of Europe in year 2026.</h3></a>
+                                <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Guides
+                                    </li>
+                                    <li className="relative text-(--color-secondary) after: content-none">
+                                        Europe
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="group">
+                            <div className="aspect-square  relative overflow-hidden">
+                                <a href=""> <img src="images/bloglist-1.png" alt="" className="w-full h-full object-cover rounded-xl" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent rounded-lg"></div></a>
+                                <div className="absolute bottom-0 left-0 right-0 p-4">
+
+                                    <p className="text-white text-lg  text-right">4 min read</p>
+                                </div>
+
+
+                                <div className="w-full pt-5">
+                                    <h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">The Best Places to see Cherry Blossom Outside of Japan</h3>
+                                    <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
+                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                            Guides
+                                        </li>
+                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                            Tailand
+                                        </li>
+                                        <li className="relative text-(--color-secondary) after: content-none">
+                                            England
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div className="grid grid-cols-3 gap-10 py-10">
+                        <div className="flex flex-col"> <div className="aspect-square"><img src="images/bloglist-4.jpg" alt="" className="w-full h-full object-cover rounded-xl" /></div>
+                            <div className="w-full pt-5">
+                                <h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                                <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Experience
+                                    </li>
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Specialty
+                                    </li>
+                                    <li className="relative text-(--color-secondary) after: content-none">
+                                        Country
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="flex flex-col"> <div className="aspect-square"><img src="images/bloglist-3.jpg" alt="" className="w-full h-full object-cover rounded-xl" /></div>
+                            <div className="w-full pt-5">
+                                <h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                                <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Experience
+                                    </li>
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Specialty
+                                    </li>
+                                    <li className="relative text-(--color-secondary) after: content-none">
+                                        Country
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="flex flex-col"> <div className="aspect-square"><img src="images/bloglist-2.jpg" alt="" className="w-full h-full object-cover rounded-xl" /></div>
+                            <div className="w-full pt-5">
+                                <h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                                <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Experience
+                                    </li>
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Specialty
+                                    </li>
+                                    <li className="relative text-(--color-secondary) after: content-none">
+                                        Country
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div className="grid grid-cols-[3fr_7fr] gap-10">
+
+                        <div className="aspect-square"><img src="images/bloglist-1.png" alt="" className="w-full h-full object-cover rounded-xl" />
+                            <div className="w-full pt-5">
+                                <h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">The Best Places to see Cherry Blossom Outside of Japan</h3>
+                                <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Guides
+                                    </li>
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Tailand
+                                    </li>
+                                    <li className="relative text-(--color-secondary) after: content-none">
+                                        England
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div className="aspect-[7/3]">
+                            <img src="images/blog-details-img.png" alt="" className="w-full h-full object-cover rounded-xl" />
+                            <div className="w-1/2 pt-5">
+                                <h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">Top ten destinations of Europe in year 2026.</h3>
+                                <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Guides
+                                    </li>
+                                    <li className="relative text-(--color-secondary) after: content-none">
+                                        Europe
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-10 py-10">
+                        <div className="flex flex-col"> <div className="aspect-square"><img src="images/bloglist-2.jpg" alt="" className="w-full h-full object-cover rounded-xl" /></div>
+                            <div className="w-full pt-5">
+                                <h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                                <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Experience
+                                    </li>
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Specialty
+                                    </li>
+                                    <li className="relative text-(--color-secondary) after: content-none">
+                                        Country
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="flex flex-col"> <div className="aspect-square"><img src="images/bloglist-3.jpg" alt="" className="w-full h-full object-cover rounded-xl" /></div>
+                            <div className="w-full pt-5">
+                                <h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                                <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Experience
+                                    </li>
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Specialty
+                                    </li>
+                                    <li className="relative text-(--color-secondary) after: content-none">
+                                        Country
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="flex flex-col"> <div className="aspect-square"><img src="images/bloglist-4.jpg" alt="" className="w-full h-full object-cover rounded-xl" /></div>
+                            <div className="w-full pt-5">
+                                <h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                                <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Experience
+                                    </li>
+                                    <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                        Specialty
+                                    </li>
+                                    <li className="relative text-(--color-secondary) after: content-none">
+                                        Country
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div >
+
+            </section >
+
+            <LogoCarousel />
+
+        </>
+    );
+}

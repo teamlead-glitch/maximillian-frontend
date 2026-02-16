@@ -9,6 +9,7 @@
   --secondary: #3A3F42;
   --font-dm-sans: "DM Sans", sans-serif;
   --font-grape-nuts: "Grape Nuts", sans-serif;
+  --font-dm-serif: "DM Serif Display", sans-serif;
 }
 
 @theme inline {
@@ -23,6 +24,7 @@
   --font-my-font-regular: var(--font-my-fontregular);
   --font-my-font-semibold: var(--font-my-fontsemibold);
   --font-grape-nuts: var(--font-grape-nuts);
+  --font-dm-serif: var(--font-dm-serif);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,7 +48,8 @@ body {
 
 @layer base {
   p {
-    @apply text-sm sm:text-base;
+    @apply text-sm sm:text-base mb-1 text-(--color-secondary);
+
   }
 }
 

@@ -3,4 +3,8 @@ export const PAGE_SLUGS = {
   ABOUT_US: "aboutus",
   CONTACT: "contact",
   THANKYOU: "thankyou",
+  BLOG_INSIGHTS: "blog-insights",
+  BLOG_DETAILS: "blog-details",
+  TRAVEL_INSIGHT: "travelinsight",
+  EXPERIENCE: "experience",
 } as const;

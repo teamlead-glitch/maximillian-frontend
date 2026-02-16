@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Grape_Nuts } from "next/font/google";
+import { DM_Sans, Grape_Nuts, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import { myFont, myFontMedium, myFontRegular, myFontSemibold } from "./font";
 
@@ -24,6 +24,14 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
 });
 
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-dm-serif",
+});
+
+
+
 const grapeNuts = Grape_Nuts({
   weight: ["400"],
   subsets: ["latin"],
@@ -44,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dmSans.variable} ${grapeNuts.variable} ${myFont.variable} ${myFontMedium.variable} ${myFontRegular.variable} ${myFontSemibold.variable} antialiased`}
+        className={`${dmSans.variable} ${grapeNuts.variable} ${dmSerif.variable} ${myFont.variable} ${myFontMedium.variable} ${myFontRegular.variable} ${myFontSemibold.variable} antialiased`}
       >
         <TopMenu />
         {children}
