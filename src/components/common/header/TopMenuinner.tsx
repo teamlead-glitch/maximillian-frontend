@@ -109,7 +109,7 @@ const REGIONS = {
 type Region = keyof typeof REGIONS;
 
 /* ================= COMPONENT ================= */
-export default function TopMenu() {
+export default function TopMenuinner() {
     const [megaOpen, setMegaOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
