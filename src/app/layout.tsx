@@ -11,6 +11,8 @@ import TopMenu from "@/components/common/header/TopMenu";
 import BackToTop from "@/components/common/BackToTop";
 import TopMenuinner from "@/components/common/header/TopMenuinner";
 
+
+
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: [
@@ -62,7 +64,8 @@ export default function RootLayout({
         className={`${dmSans.variable} ${grapeNuts.variable} ${dmSerif.variable} ${myFont.variable} ${myFontMedium.variable} ${myFontRegular.variable} ${myFontSemibold.variable} antialiased`}
       >
         {/* <TopMenu /> */}
-         {pathname === "/" ? <TopMenu /> : <TopMenuinner />}
+        {pathname === "/" ? <TopMenu /> : <TopMenuinner />}
+
         {children}
         <Footer />
         <BackToTop />

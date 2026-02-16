@@ -298,6 +298,62 @@ export default function Experiencespeciality() {
 
 
                             </div>
+
+
+
+
+
+                            <div className="group">
+                                <div className="aspect-square rounded-lg w-full  relative overflow-hidden">
+                                    <a href=""> <img src="images/bloglist-1.png" alt="" className="rounded-lg w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
+                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
+                                    <div className="absolute bottom-0 left-0 right-0 p-4 rounded-lg">
+
+                                        <p className="text-white text-lg  text-right">4 min read</p>
+                                    </div></div>
+
+
+                                <div className="w-full pt-5">
+                                    <a href="" > <h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">The Best Places to see Cherry Blossom Outside of Japan</h3></a>
+                                    <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
+                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                            Guides
+                                        </li>
+                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                            Tailand
+                                        </li>
+                                        <li className="relative text-(--color-secondary) after: content-none">
+                                            England
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>

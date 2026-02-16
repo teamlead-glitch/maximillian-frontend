@@ -1,7 +1,7 @@
 "use client";
 import { X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import SideBarMenu from "./SideBarMenu";
+import SideBarMenuInner from "./SideBarMenuInner";
 
 /* ================= REGIONS DATA ================= */
 const REGIONS = {
@@ -176,13 +176,13 @@ export default function TopMenuinner() {
         transition-all duration-700 ease-in-out
         ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}
         ${lastScrollY > 50 || megaOpen
-                        ? "bg-black/50 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]"
+                        ? "bg-white/80 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]"
                         : "bg-transparent"
                     }`}
             >
                 <div className="flex items-center justify-between w-full gap-2">
                     <a href="/"><img
-                        src="/images/logo.svg"
+                        src="/images/logo-black.svg"
                         alt="Company Logo"
                         className="h-10 w-auto"
                     /></a>
@@ -192,7 +192,7 @@ export default function TopMenuinner() {
                         {/* Explore Destination */}
                         <button
                             onClick={() => setMegaOpen((prev) => !prev)}
-                            className={`relative text-white font-my-font-semibold cursor-pointer md:block hidden text-xs sm:text-base
+                            className={`relative text-(--color-secondary) font-my-font-semibold cursor-pointer md:block hidden text-xs sm:text-base
               after:absolute after:left-0 after:-bottom-1
               after:h-[2px] after:bg-[#C43131] after:transition-all after:duration-300
               ${megaOpen ? "after:w-full" : "after:w-0"}`}
@@ -201,7 +201,7 @@ export default function TopMenuinner() {
                         </button>
 
                         <button
-                            className="bg-white font-my-font-semibold text-black
+                            className="bg-white font-my-font-semibold text-(--color-secondary)
               px-3 py-3 md:px-4 md:py-2 sm:block hidden rounded-full cursor-pointer
               text-xs md:text-base
               hover:bg-[#C43131] hover:text-white
@@ -211,7 +211,7 @@ export default function TopMenuinner() {
                         </button>
 
                         <a href="tel:+919876543210">
-                            <img src="/images/call-top-icon.svg" alt="Call" />
+                            <img src="/images/call-top-icon-black.svg" alt="Call" />
                         </a>
 
                         {/* MEGA MENU */}
@@ -233,12 +233,7 @@ export default function TopMenuinner() {
                                             className="text-white group-hover:text-white"
                                         />
                                     </button>
-
-
                                 </div>
-
-
-
                                 <div className=" mx-auto px-3 md:px-10  grid grid-cols-1 md:grid-cols-[1fr_3fr_2fr] gap-10 text-black">
 
                                     {/* REGIONS */}
@@ -300,9 +295,6 @@ export default function TopMenuinner() {
 
                                     {/* IMAGE */}
                                     <div className="rounded-xl overflow-hidden pl-0 md:pl-20">
-
-
-
                                         <img
                                             src={REGIONS[activeRegion].image}
                                             alt={activeRegion}
@@ -316,7 +308,7 @@ export default function TopMenuinner() {
                     </div>
                 </div>
 
-                <SideBarMenu />
+                <SideBarMenuInner />
             </div>
         </>
     );

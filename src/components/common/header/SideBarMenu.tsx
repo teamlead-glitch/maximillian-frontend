@@ -117,11 +117,10 @@ export default function SideBarMenu() {
                   className={`relative block font-my-font-semibold
                   after:absolute after:left-0 after:-bottom-1 after:h-[2px]
                   after:w-[30px] after:bg-[#C43131] after:transition-opacity
-                  ${
-                    activeLink === item.name
+                  ${activeLink === item.name
                       ? "after:opacity-100"
                       : "after:opacity-0"
-                  }`}
+                    }`}
                 >
                   {item.name}
                 </Link>
@@ -158,9 +157,8 @@ export default function SideBarMenu() {
           <div
             className={`fixed top-0 right-0 h-screen w-[85%] max-w-[320px]
             bg-white z-[1100] md:hidden transition-transform duration-300
-            ${
-              destinationPanel ? "translate-x-0" : "translate-x-full"
-            }`}
+            ${destinationPanel ? "translate-x-0" : "translate-x-full"
+              }`}
           >
             <div className="p-6 border-b">
               <button

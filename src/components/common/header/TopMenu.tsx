@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import SideBarMenu from "./SideBarMenu";
 
+
 /* ================= REGIONS DATA ================= */
 const REGIONS = {
   Asia: {
@@ -317,6 +318,7 @@ export default function TopMenu() {
         </div>
 
         <SideBarMenu />
+
       </div>
     </>
   );
