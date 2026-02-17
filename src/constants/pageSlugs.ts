@@ -7,4 +7,5 @@ export const PAGE_SLUGS = {
   BLOG_DETAILS: "blog-details",
   TRAVEL_INSIGHT: "travelinsight",
   EXPERIENCE: "experience",
+  DESIGNYOURTRIP: "designyourtrip",
 } as const;

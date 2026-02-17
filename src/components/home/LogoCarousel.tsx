@@ -28,7 +28,7 @@ export default function LogoCarousel() {
 
 
             {/* logo carousel */}
-            <section className="bg-white w-full  py-10 md:py-20 ">
+            <section className="bg-white w-full  py-10 md:py-20 border-t  border-gray-200 ">
                 <Swiper
                     modules={[Autoplay]}
                     loop={true}

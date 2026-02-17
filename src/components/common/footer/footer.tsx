@@ -8,7 +8,7 @@ export default function Footer() {
                 <div className="max-w-[1400px] mx-auto">
 
                     <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-4 md:gap-8">
-                        <div className="border-0  md:border-r border-gray-200 mb-5 md:mb-0">
+                        <div className="border-0  md:border-r border-gray-200 mb-5 md:mb-0 pr-5">
                             <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Menu</h6>
                             <ul className="text-body font-medium">
                                 {["Home", "Destinations", "Design Your Trip", "Our World", "Contact Us"].map((item) => (
