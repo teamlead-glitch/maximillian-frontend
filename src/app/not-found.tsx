@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import TopMenuinner from "@/components/common/header/TopMenuinner";
+import TopMenuinner from "@/components/common/header/menu/TopMenuinner";
 
 import LogoCarousel from "@/components/home/LogoCarousel";
 

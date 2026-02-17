@@ -13,6 +13,7 @@ interface ApiRegion {
 
 interface RegionObject {
   countries: string[];
+  image: string;
 }
 
 export function transformRegions(
@@ -23,7 +24,7 @@ export function transformRegions(
   apiData.forEach((region) => {
     result[region.title] = {
       countries: region.countries.map((country) => country.title),
-
+      image: `/images/${region.slug.split("/")[1]}.jpg`, 
     };
   });
 
