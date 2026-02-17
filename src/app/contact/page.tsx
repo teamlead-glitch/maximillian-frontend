@@ -1,8 +1,9 @@
 import AddressForm from "@/components/contactpage/Addressform";
-import BespokeJourney from "@/components/home/BespokeJourney";
+
 import { generateSeoMetadata } from "@/lib/seo";
 import { PAGE_SLUGS } from "@/constants/pageSlugs";
 import { fetchPageBySlug } from "@/lib/page-api";
+
 
 const slug = PAGE_SLUGS.CONTACT;
 
@@ -27,7 +28,7 @@ export default function Contact() {
                 />
             )}
             <AddressForm />
-            <BespokeJourney />
+
         </>
     );
 }

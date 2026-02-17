@@ -1,4 +1,9 @@
 "use client";
+import BespokeJourney from "@/components/home/BespokeJourney";
+import LogoCarousel from "@/components/home/LogoCarousel";
+
+
+
 export default function AddressForm() {
 
 
@@ -6,22 +11,22 @@ export default function AddressForm() {
 
         <>
 
-            <section className="relative py-40 overflow-hidden bg-white z-10">
+            <section className="relative py-32 md:py-40 overflow-hidden bg-white z-10">
                 {/* Background */}
-                <div className="absolute inset-y-0 right-0 w-[36%] bg-[#F5F2EE] -z-10"></div>
+                <div className="absolute inset-y-0 right-0 w-[36%] bg-[#F5F2EE] -z-10 md:block hidden"></div>
 
                 <div className="max-w-[1300px] flex mx-auto  px-5  ">
                     <div className="flex flex-col md:flex-row w-full">
-                        <div className="w-2/3 pr-10">
-                            <div className="w-full flex items-center">
-                                <div className="w-2/3 pr-10 ">
-                                    <h1 className="font-my-font-regular text-break lg:text-5xl text-4xl text-(--color-secondary) text-right ">Let’s talk about <br />
+                        <div className="w-full md:w-2/3 pr-0 sm:pr-10">
+                            <div className="w-full flex flex-col sm:flex-row items-center">
+                                <div className="w-full sm:w-2/3 pr-0 sm:pr-10 ">
+                                    <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary) text-left sm:text-right ">Let’s talk about <br />
                                         your next holiday plan! </h1>
                                 </div>
-                                <div className="w-px h-15 bg-gray-300 hidden md:block"></div>
-                                <div className="w-1/3 pl-10">   <p className="text-(--color-secondary)">Every enquiry is personally reviewed by our travel design team.</p></div>
+                                <div className="w-px h-15 bg-gray-300 hidden sm:block"></div>
+                                <div className="w-full sm:w-1/3 pl-0 sm:pl-10 mt-5  sm:mt-0">   <p className="text-(--color-secondary)">Every enquiry is personally reviewed by our travel design team.</p></div>
                             </div>
-                            <div className="w-full pr-60 mt-20">
+                            <div className="w-full  pr-10 md:pr-10  lg:pr-30 xl:pr-60 mt-10 sm:mt-20">
                                 <form className="w-full max-w-3xl space-y-6">
 
                                     {/* Row 1 */}
@@ -168,9 +173,9 @@ hover:before:translate-x-full hover:text-white
                             </div>
                         </div>
 
-                        <div className="w-1/3">
+                        <div className="w-full md:w-1/3 mt-20 md:mt-0">
 
-                            <div className="w-full pl-10">
+                            <div className="w-full pl-0 xl:pl-10">
                                 <h4 className="font-my-font-semibold text-var(--color-secondary) text-xl ml-8">Contact</h4>
                                 <div className="flex mt-5 items-start ">
                                     <img src="images/location_icon.svg" alt="" className="mt-2 mr-5" />
@@ -199,7 +204,7 @@ hover:before:translate-x-full hover:text-white
                                 </div>
 
 
-                                <div className="flex mt-4 py-16 sm:mt-0 ml-8">
+                                <div className="flex mt-4 py-10 md:py-16 sm:mt-0 ml-8">
                                     <a href="#" className="text-body text-[#46545E] hover:text-heading">
                                         <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clipRule="evenodd" /></svg>
                                         <span className="sr-only">Facebook page</span>
@@ -280,7 +285,8 @@ hover:before:translate-x-full hover:text-white
                 </div >
             </section >
 
-
+            <BespokeJourney />
+            <LogoCarousel />
 
         </>
     );

@@ -9,11 +9,11 @@ export default function Experiencespeciality() {
     return (
 
         <>
-            <section className="relative pt-40  pb-20 overflow-hidden bg-white ">
+            <section className="relative pt-32  xl:pt-40  pb-20 overflow-hidden bg-white ">
                 <div className="max-w-[1300px] flex mx-auto  px-5">
                     <div className="flex flex-col w-full justify-center">
-                        <h1 className="font-my-font-regular text-break lg:text-5xl text-4xl text-(--color-secondary) text-center">Experience Journeys</h1>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-15 mt-20">
+                        <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary) text-center ">Experience Journeys</h1>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-10 lg:mt-20">
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square relative overflow-hidden">
                                     <a href="">
@@ -24,8 +24,7 @@ export default function Experiencespeciality() {
                                         </div>
                                     </a>
                                 </div>
-                                <div className="px-5 py-5">
-
+                                <div className=" px-0 md:px-5  py-5">
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
                                             Laos
@@ -34,7 +33,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -51,12 +50,11 @@ export default function Experiencespeciality() {
                                     <a href=""><img src="images/expeience-img-2.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
                                     <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
-
                                         <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
                                     </div>
                                 </div>
 
-                                <div className="px-5 py-5">
+                                <div className=" px-0 md:px-5  py-5">
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
                                             Madyapradesh
@@ -65,7 +63,7 @@ export default function Experiencespeciality() {
                                             India
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -87,7 +85,7 @@ export default function Experiencespeciality() {
                                     </div>
                                 </div>
 
-                                <div className="px-5 py-5">
+                                <div className=" px-0 md:px-5  py-5">
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
                                             Sri Lanka
@@ -96,7 +94,7 @@ export default function Experiencespeciality() {
                                             Maldives
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2">Sri Lanka and the Maldives: Elephants & Emerald Isles</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2 line-clamp-2">Sri Lanka and the Maldives: Elephants & Emerald Isles</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -116,7 +114,7 @@ export default function Experiencespeciality() {
                                         <p className="text-white text-lg font-my-font-semibold text-center">05 days</p>
                                     </div>
                                 </div>
-                                <div className="px-5 py-5">
+                                <div className=" px-0 md:px-5  py-5">
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
                                             Laos
@@ -125,7 +123,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2">The Ultimate Escape: A Journey of Discovery</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">The Ultimate Escape: A Journey of Discovery</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -147,7 +145,7 @@ export default function Experiencespeciality() {
                                     </div>
                                 </div>
 
-                                <div className="px-5 py-5">
+                                <div className=" px-0 md:px-5  py-5">
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
                                             Laos
@@ -156,7 +154,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -178,7 +176,7 @@ export default function Experiencespeciality() {
                                     </div>
                                 </div>
 
-                                <div className="px-5 py-5">
+                                <div className=" px-0 md:px-5  py-5">
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
                                             Laos
@@ -187,7 +185,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -198,10 +196,6 @@ export default function Experiencespeciality() {
                                     </ul>
 
                                 </div>
-
-
-
-
                             </div>
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square relative overflow-hidden">
@@ -211,7 +205,7 @@ export default function Experiencespeciality() {
                                         <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
                                     </div>
                                 </div>
-                                <div className="px-5 py-5">
+                                <div className=" px-0 md:px-5  py-5">
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
                                             Laos
@@ -220,7 +214,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -242,7 +236,7 @@ export default function Experiencespeciality() {
                                     </div>
                                 </div>
 
-                                <div className="px-5 py-5">
+                                <div className=" px-0 md:px-5  py-5">
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
                                             Laos
@@ -251,7 +245,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -272,8 +266,7 @@ export default function Experiencespeciality() {
                                         <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
                                     </div>
                                 </div>
-
-                                <div className="px-5 py-5">
+                                <div className=" px-0 md:px-5  py-5">
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
                                             Laos
@@ -282,7 +275,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -291,69 +284,8 @@ export default function Experiencespeciality() {
                                             Small Group
                                         </li>
                                     </ul>
-
-                                </div>
-
-
-
-
-                            </div>
-
-
-
-
-
-                            <div className="group">
-                                <div className="aspect-square rounded-lg w-full  relative overflow-hidden">
-                                    <a href=""> <img src="images/bloglist-1.png" alt="" className="rounded-lg w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
-                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
-                                    <div className="absolute bottom-0 left-0 right-0 p-4 rounded-lg">
-
-                                        <p className="text-white text-lg  text-right">4 min read</p>
-                                    </div></div>
-
-
-                                <div className="w-full pt-5">
-                                    <a href="" > <h3 className="font-my-font-semibold text-break  text-2xl text-(--color-secondary)  line-clamp-2">The Best Places to see Cherry Blossom Outside of Japan</h3></a>
-                                    <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1 py-4">
-                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                            Guides
-                                        </li>
-                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                            Tailand
-                                        </li>
-                                        <li className="relative text-(--color-secondary) after: content-none">
-                                            England
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>
