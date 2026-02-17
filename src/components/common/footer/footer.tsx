@@ -4,7 +4,7 @@ export default function Footer() {
         <>
             {/* footer */}
 
-            <footer className="bg-white border-t  border-gray-200 py-20 px-5 ">
+            <footer className="bg-white border-t  border-gray-200 py-20 px-5 md:px-10 ">
                 <div className="max-w-[1400px] mx-auto">
 
                     <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-4 md:gap-8">
@@ -211,7 +211,7 @@ export default function Footer() {
                 </div>
             </footer >
 
-            <footer className="bg-[#C43131] py-10 md:py-20">
+            <footer className="bg-[#C43131] py-10 md:py-20 px-5 md:px-10">
                 <div className="max-w-[1300px] flex flex-col items-center justify-center mx-auto text-center">
                     <img src="images/logo-footer.svg" alt="" />
                     <p className="text-white text-sm mt-3">A premium travel brand owned by Maximilian Holidays Private Ltd.</p>

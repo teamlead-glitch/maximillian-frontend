@@ -10,7 +10,7 @@ export default function Thankyou() {
             <section className="relative pt-40 pb-20 overflow-hidden bg-[#F5F2EE] z-10">
                 <div className="max-w-[1300px] flex mx-auto">
                     <div className="flex flex-col mx-auto justify-center w-xl px-5">
-                        <h1 className="font-my-font-regular text-break lg:text-5xl text-4xl text-(--color-secondary) text-center ">
+                        <h1 className="font-my-font-regular text-break text-center  text-4xl xl:text-5xl text-(--color-secondary) ">
                             Thanks,<br /> We got your enquiry.
                         </h1>
                         <p className="text-(--color-secondary) text-center mt-5 ">
@@ -21,8 +21,8 @@ export default function Thankyou() {
             </section >
 
             <section className="relative py-20 overflow-hidden bg-white z-10">
-                <div className="max-w-[1200px] flex mx-auto px-5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 items-center">
+                <div className="max-w-[1200px] flex mx-auto px-10">
+                    <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5 gap-4 items-center">
 
                         <div className="w-full mb-5 md:mb-0">
                             <div className="text-[#D3CABF] text-4xl font-my-font-regular mb-4">01</div>
@@ -31,8 +31,12 @@ export default function Thankyou() {
                                 And will discuss & plan about your bespoke journey in detail.
                             </p>
                         </div>
-                        <div className=" justify-center items-center md:flex hidden">
-                            <img src="images/arrow-right.svg" alt="" />
+                        <div className="flex justify-start md:justify-center items-start md:items-center py-10">
+                            <img
+                                src="images/arrow-right.svg"
+                                alt=""
+                                className="rotate-90 md:rotate-0"
+                            />
                         </div>
                         <div className="w-full mb-5 md:mb-0">
                             <div className="text-[#D3CABF] text-4xl font-my-font-regular mb-4">02</div>
@@ -41,8 +45,12 @@ export default function Thankyou() {
                                 Based on the conversation, we will craft a tailored travel experience for you.
                             </p>
                         </div>
-                        <div className=" justify-center items-center md:flex hidden">
-                            <img src="images/arrow-right.svg" alt="" />
+                        <div className="flex justify-start md:justify-center items-start md:items-center py-10">
+                            <img
+                                src="images/arrow-right.svg"
+                                alt=""
+                                className="rotate-90 md:rotate-0"
+                            />
                         </div>
                         <div className="w-full">
                             <div className="text-[#D3CABF] text-4xl font-my-font-regular mb-4">03</div>
