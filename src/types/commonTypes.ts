@@ -20,3 +20,22 @@ export interface Seo {
   og_image_url?: string | null;
   twitter_image_url?: string | null;
 }
+
+
+export interface Country {
+  id: number;
+  title: string;
+  slug: string;
+}
+
+export interface Region {
+  id: number;
+  title: string;
+  slug: string;
+  countries: Country[];
+}
+
+/**
+ * Full API response type
+ */
+export type Regions = Region[];

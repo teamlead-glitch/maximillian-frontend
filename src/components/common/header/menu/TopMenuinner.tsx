@@ -1,7 +1,7 @@
 "use client";
 import { X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import SideBarMenuInner from "./SideBarMenuInner";
+import SideBarMenuInner from "./../SideBarMenuInner";
 
 /* ================= REGIONS DATA ================= */
 const REGIONS = {
