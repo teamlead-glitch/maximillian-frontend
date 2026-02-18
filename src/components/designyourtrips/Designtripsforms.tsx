@@ -8,7 +8,7 @@ import { Range, getTrackBackground } from "react-range";
 
 
 export default function Designyourtrip() {
-    const [startDate, setStartDate] = useState(null);
+    const [startDate, setStartDate] = useState<Date | null>(null);
 
     const STEP = 10;
     const MIN = 0;
@@ -177,7 +177,7 @@ export default function Designyourtrip() {
                                         <div className="relative">
                                             <DatePicker
                                                 selected={startDate}
-                                                onChange={(date) => setStartDate(date)}
+                                                onChange={(date:Date | null) => setStartDate(date)}
                                                 placeholderText="Traveling on"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
                                             />
