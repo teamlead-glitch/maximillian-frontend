@@ -3,7 +3,7 @@ import { API_CONFIG } from "@/constants/config";
 export async function getRegions() {
   try {
     const res = await fetch(`${API_CONFIG.BASE_URL}/menu/`, {
-      next: { revalidate: 3600 }, // ISR – cache for 1 hour
+      next: { revalidate: 60 }, // 3600 : ISR – cache for 1 hour
     });
 
     if (!res.ok) {
