@@ -9,7 +9,7 @@ import LogoCarousel from "@/components/home/LogoCarousel";
 export default function NotFound() {
     return (
         <>
-            <TopMenuinner />
+            {/* <TopMenuinner /> */}
             {/* HEADER */}
 
             <div className="max-w-[1300px] flex mx-auto px-10 md:px-24 lg:px-44 py-32 md:py-40 lg:py-70 ">
