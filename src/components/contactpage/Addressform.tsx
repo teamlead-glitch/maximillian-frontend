@@ -1,10 +1,143 @@
 "use client";
 import BespokeJourney from "@/components/home/BespokeJourney";
 import LogoCarousel from "@/components/home/LogoCarousel";
+import { apiService } from "@/services/api";
+import { ContactEnquiryResponse, FormErrors, Formtypes } from "@/types/addressformTypes";
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 
 
 export default function AddressForm() {
+
+    const [formData, setFormData] = useState<Formtypes>({
+        title: "",
+        name: "",
+        mobile: "",
+        email: "",
+        message: "",
+        is_agreed: false,
+    });
+    /* console.log(formData) */
+
+    const [errors, setErrors] = useState<FormErrors>({
+        title: "",
+        name: "",
+        mobile: "",
+        email: "",
+        message: "",
+    });
+
+    /* -----------------------------------------------------------------------
+      HANDLE FORM INPUT CHANGES (WITH TYPESCRIPT SAFETY)
+   ----------------------------------------------------------------------- */
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { id, value, type } = e.target;
+
+        // Checkbox needs e.target.checked instead of value
+        const finalValue =
+            type === "checkbox"
+                ? (e.target as HTMLInputElement).checked
+                : value;
+
+        setFormData((prev) => ({
+            ...prev,
+            [id]: finalValue,
+        }));
+    };
+    /* -----------------------------------------------------------------------
+       FORM VALIDATION (STRONG + CLEAN)
+    ----------------------------------------------------------------------- */
+    const validate = (): boolean => {
+        const newErrors: Partial<FormErrors> = {};
+
+        //title validation
+        if (!formData.title) {
+            newErrors.title = "Title required"
+        }
+
+        // Name validation
+        if (!formData.name.trim()) {
+            newErrors.name = "Name is required";
+        } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
+            newErrors.name = "Name cannot contain numbers or special characters";
+        }
+
+        // Mobile validation
+        if (!formData.mobile.trim()) {
+            newErrors.mobile = "Mobile number is required";
+        } else if (!/^[+]?[0-9\s-]+$/.test(formData.mobile)) {
+            newErrors.mobile = "Mobile number should contain only numbers";
+        } else if (!/^[1-9]\d{9,14}$/.test(formData.mobile)) {
+            newErrors.mobile = "Enter a valid mobile number";
+        }
+
+
+        // Email validation
+        if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+            newErrors.email = "Enter a valid email";
+        }
+
+        // Message validation
+        if (!formData.message.trim()) {
+            newErrors.message = "Message is required";
+        } else if (formData.message.trim().length < 5) {
+            newErrors.message = "Message must be at least 5 characters";
+        }
+
+        setErrors(newErrors as FormErrors);
+
+        return Object.keys(newErrors).length === 0; // true → no errors
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // form validation
+  if (!validate()) return;
+
+  try {
+    const payload = {
+      name: `${formData.title} ${formData.name}`.trim(),
+      phone: formData.mobile,
+      email: formData.email,
+      message: formData.message,
+    };
+
+    const res = await apiService.post<ContactEnquiryResponse>(
+      "/api/contact-enquiry", // ✅ remove /api if BASE_URL already contains it
+      payload
+    );
+
+    /* console.log(res); */
+
+    if (res.result === "success") {
+      toast.success(res.message);
+
+      // Reset form
+      setFormData({
+        title: "",
+        name: "",
+        mobile: "",
+        email: "",
+        message: "",
+        is_agreed: false,
+      });
+
+    } else {
+      toast.error(res.message || "Something went wrong"); // ✅ fixed syntax
+    }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    console.error("CONTACT FORM ERROR:", error);
+
+    // ✅ show backend validation error
+    toast.error( "Failed to send. Please try again!");
+  }
+};
+
+
 
 
     return (
@@ -27,112 +160,151 @@ export default function AddressForm() {
                                 <div className="w-full sm:w-1/3 pl-0 sm:pl-10 mt-5  sm:mt-0">   <p className="text-(--color-secondary)">Every enquiry is personally reviewed by our travel design team.</p></div>
                             </div>
                             <div className="w-full  pr-10 md:pr-10  lg:pr-30 xl:pr-60 mt-10 sm:mt-20">
-                                <form className="w-full max-w-3xl space-y-6">
+                                <form className="w-full max-w-3xl space-y-6" onSubmit={handleSubmit}>
 
                                     {/* Row 1 */}
                                     <div className="grid grid-cols-1 md:grid-cols-[30%_67%] gap-4">
                                         {/* Title */}
-                                        <div className="relative w-full">
-                                            {/* LEFT ICON */}
-                                            <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                                                <img
-                                                    src="images/title-icon.svg"   // your left icon svg
-                                                    alt="title icon"
-                                                    className="w-4 h-4"
-                                                />
-                                            </span>
-
-                                            {/* SELECT */}
-                                            <select
-                                                className="w-full bg-transparent border border-gray-300 text-(--color-secondary) rounded-md 
-               pl-10 pr-10 py-3 focus:outline-none focus:border-gray-500 appearance-none"
-                                            >
-                                                <option value="">Title</option>
-                                                <option>Mr</option>
-                                                <option>Mrs</option>
-                                                <option>Ms</option>
-                                            </select>
-
-                                            {/* RIGHT DROPDOWN ARROW */}
-                                            <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-                                                <svg
-                                                    className="w-4 h-4 text-gray-400"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                    viewBox="0 0 24 24"
+                                        <div>
+                                            <div className="relative w-full">
+                                                {/* LEFT ICON */}
+                                                <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                                                    <img
+                                                        src="images/title-icon.svg"   // your left icon svg
+                                                        alt="title icon"
+                                                        className="w-4 h-4"
+                                                    />
+                                                </span>
+    
+                                                {/* SELECT */}
+                                                <select id="title"
+                                                    value={formData.title}
+                                                    onChange={handleChange}
+    
+                                                    className="w-full bg-transparent border border-gray-300 text-(--color-secondary) rounded-md 
+                   pl-10 pr-10 py-3 focus:outline-none focus:border-gray-500 appearance-none"
+    
                                                 >
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                                </svg>
-                                            </span>
+                                                    <option value="">Title</option>
+                                                    <option>Mr</option>
+                                                    <option>Mrs</option>
+                                                    <option>Ms</option>
+                                                </select>
+    
+                                                {/* RIGHT DROPDOWN ARROW */}
+                                                <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                                                    <svg
+                                                        className="w-4 h-4 text-gray-400"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        strokeWidth="2"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </span>
+    
+                                            </div>
+                                             {errors.title && <p style={{ color: "red", fontSize: "12px" }}>{errors.title}</p>}
                                         </div>
 
 
                                         {/* Full Name */}
-                                        <div className="relative w-full">
-                                            {/* Left Icon */}
-                                            <img
-                                                src="images/name-icon.svg"   // your SVG icon path
-                                                alt="User"
-                                                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
-                                            />
-
-                                            {/* Input */}
-                                            <input
-                                                type="text"
-                                                placeholder="Full name"
-                                                className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
-                                            />
+                                        <div>
+                                            <div className="relative w-full">
+                                                {/* Left Icon */}
+                                                <img
+                                                    src="images/name-icon.svg"   // your SVG icon path
+                                                    alt="User"
+                                                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
+                                                />
+    
+                                                {/* Input */}
+                                                <input
+                                                    onChange={handleChange}
+                                                    value={formData.name}
+                                                    type="text"
+                                                    id="name"
+                                                    placeholder="Full name"
+                                                    className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
+                                                />
+                                               
+                                            </div>
+                                              {errors.name && <p style={{ color: "red", fontSize: "12px" }}>{errors.name}</p>}
                                         </div>
                                     </div>
 
                                     {/* Row 2 */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {/* Email */}
-                                        <div className="relative w-full">
-                                            {/* Left Icon */}
-                                            <img
-                                                src="images/email-icon.svg"   // your SVG icon path
-                                                alt="User"
-                                                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
-                                            />
-
-                                            {/* Input */}
-                                            <input
-                                                type="text"
-                                                placeholder="Email ID"
-                                                className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
-                                            />
+                                        <div>
+                                            <div className="relative w-full">
+                                                {/* Left Icon */}
+                                                <img
+                                                    src="images/email-icon.svg"   // your SVG icon path
+                                                    alt="User"
+                                                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
+                                                />
+    
+                                                {/* Input */}
+                                                <input
+                                                    onChange={handleChange}
+                                                    value={formData.email}
+                                                    type="text"
+                                                    id="email"
+                                                    placeholder="Email ID"
+                                                    className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
+                                                />
+                                            </div>
+                                            {errors.email && <p style={{ color: "red", fontSize: "12px" }}>{errors.email}</p>}
                                         </div>
+                                         
 
                                         {/* Phone */}
-                                        <div className="relative w-full">
-                                            {/* Left Icon */}
-                                            <img
-                                                src="images/phone-icon.svg"   // your SVG icon path
-                                                alt="User"
-                                                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
-                                            />
-
-                                            {/* Input */}
-                                            <input
-                                                type="text"
-                                                placeholder="Phone number"
-                                                className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
-                                            />
+                                        <div>
+                                            <div className="relative w-full">
+                                                {/* Left Icon */}
+                                                <img
+                                                    src="images/phone-icon.svg"   // your SVG icon path
+                                                    alt="User"
+                                                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
+                                                />
+    
+                                                {/* Input */}
+                                                <input
+                                                    onChange={handleChange}
+                                                    value={formData.mobile}
+                                                    type="text"
+                                                    placeholder="Phone number"
+                                                    id="mobile"
+                                                    className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
+                                                />
+                                            </div>
+                                            {errors.mobile && <p style={{ color: "red", fontSize: "12px" }}>{errors.mobile}</p>}
                                         </div>
                                     </div>
 
                                     {/* Message */}
-                                    <textarea
-                                        rows={3}
-                                        placeholder="Your message"
-                                        className="w-full bg-transparent border border-gray-300 text-(--color-secondary) placeholder:text-(--color-secondary) rounded-xl px-4 py-4 focus:outline-none focus:border-gray-500 resize-none"
-                                    />
+                                   <div className="flex flex-col">
 
+                                        <textarea
+                                            onChange={handleChange}
+                                            value={formData.message}
+                                            id="message"
+                                            rows={3}
+                                            placeholder="Your message"
+                                            className="w-full bg-transparent border border-gray-300 text-(--color-secondary) placeholder:text-(--color-secondary) rounded-xl px-4 py-4 focus:outline-none focus:border-gray-500 resize-none"
+                                        />
+
+                                        {errors.message && <p style={{ color: "red", fontSize: "12px" }}>{errors.message}</p>}
+
+                                    </div>
                                     {/* Checkbox */}
                                     <label className="flex items-start gap-3 text-sm text-(--color-secondary)">
                                         <input
+                                            onChange={handleChange}
+                                            checked={formData.is_agreed}
+                                            id="is_agreed"
                                             type="checkbox"
                                             className="mt-1 h-4 w-4 rounded border-gray-600 bg-transparent focus:ring-0"
                                         />
@@ -146,6 +318,7 @@ export default function AddressForm() {
 
                                     {/* Button */}
                                     <button
+                                        type="submit"
                                         className="
 relative overflow-hidden
 text-(--color-secondary)
@@ -287,6 +460,9 @@ hover:before:translate-x-full hover:text-white
 
             <BespokeJourney />
             <LogoCarousel />
+            
+      {/* Toast */}
+      <ToastContainer position="top-left" autoClose={2000} theme="colored" />
 
         </>
     );
