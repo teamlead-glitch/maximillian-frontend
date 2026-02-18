@@ -2,121 +2,24 @@
 import { X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import SideBarMenu from "./../SideBarMenu";
+import { RegionFormated } from "@/lib/regionTransformer";
 
 
-/* ================= REGIONS DATA ================= */
-const REGIONS = {
-  Asia: {
-    countries: [
-      "India",
-      "Afghanistan",
-      "Azerbaijan",
-      "Bahrain",
-      "Cambodia",
-      "China",
-      "Indonesia",
-      "Japan",
-      "Jordan",
-      "Kazakhstan",
-      "Kuwait",
-      "Malaysia",
-      "Maldives",
-      "Nepal",
-      "Qatar",
-      "Saudi Arabia",
-      "Singapore",
-      "Sri Lanka",
-      "Thailand",
-      "United Arab Emirates",
-      "Vietnam",
-    ],
-    image: "/images/india.jpg",
-  },
-
-  Europe: {
-    countries: [
-      "France",
-      "Italy",
-      "Spain",
-      "Switzerland",
-      "Germany",
-      "United Kingdom",
-      "Netherlands",
-      "Belgium",
-      "Austria",
-      "Portugal",
-      "Greece",
-      "Ireland",
-      "Iceland",
-
-    ],
-    image: "/images/europe.jpg",
-  },
-
-  Africa: {
-    countries: [
-      "South Africa",
-      "Kenya",
-      "Morocco",
-      "Egypt",
-      "Tanzania",
-      "Uganda",
-      "Rwanda",
-      "Ethiopia",
-      "Namibia",
-      "Botswana",
-      "Zimbabwe",
-      "Zambia",
-
-    ],
-    image: "/images/africa.jpg",
-  },
-
-  America: {
-    countries: [
-
-      "United States",
-      "Canada",
-      "Mexico",
-
-      "Costa Rica",
-      "Panama",
-      "Jamaica",
-      "Brazil",
-      "Argentina",
-      "Chile",
-      "Peru",
-      "Colombia",
-
-    ],
-    image: "/images/america.jpg",
-  },
-
-  Oceania: {
-    countries: [
-      "Australia",
-      "New Zealand",
-      "Fiji",
-      "Kiribati",
-      "Nauru",
-      "Tuvalu"
-    ],
-    image: "/images/oceania.jpg",
-  },
-
-} as const;
-
-/* ================= TYPES ================= */
-type Region = keyof typeof REGIONS;
 
 /* ================= COMPONENT ================= */
-export default function TopMenuHome() {
+export default function TopMenuHome({ regions }: { regions: Record<string, RegionFormated> }) {
   const [megaOpen, setMegaOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  /* ✅ STRICT & SAFE */
-  const [activeRegion, setActiveRegion] = useState<Region>("Asia");
+  console.log(regions, 'regions---')
+  const regionKeys = Object.keys(regions) as (keyof typeof regions)[];
+  const [activeRegion, setActiveRegion] = useState<keyof typeof regions>(
+    regionKeys[0]
+  );
+
+
+
 
   const megaMenuRef = useRef<HTMLDivElement>(null);
 
@@ -244,11 +147,9 @@ export default function TopMenuHome() {
 
                   {/* REGIONS */}
                   <div className="space-y-4">
-                    {/* <h4 className="text-sm uppercase opacity-60 pb-1 relative before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:bg-[#C43131] before:transition-all before:duration-300 before:w-10">
-                      Regions
-                    </h4> */}
 
-                    {(Object.keys(REGIONS) as Region[]).map((region) => {
+
+                    {Object.keys(regions).map((region) => {
                       const isActive = activeRegion === region;
 
                       return (
@@ -265,16 +166,7 @@ export default function TopMenuHome() {
                         >
                           <span>{region}</span>
 
-                          {/* Active Arrow */}
-                          {/* <MoveRight
-                            size={25}
-                            strokeWidth={2}
-                            className={`transition-all duration-300 pl-1.5
-    ${isActive
-                                ? "opacity-100 translate-x-0 text-[#C43131]"
-                                : "opacity-0 -translate-x-2"
-                              }`}
-                          /> */}
+
                         </button>
 
 
@@ -284,12 +176,10 @@ export default function TopMenuHome() {
 
                   {/* COUNTRIES */}
                   <div className="flex flex-col">
-                    {/* <h4 className="text-sm uppercase opacity-60 pb-1 relative before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:bg-[#C43131] before:transition-all before:duration-300 before:w-10">
-                      {activeRegion} Countries
-                    </h4> */}
+
 
                     <ul className="grid grid-cols-2 gap-3">
-                      {REGIONS[activeRegion].countries.map((country) => (
+                      {regions[activeRegion]?.countries?.length > 0 && regions[activeRegion].countries.map((country) => (
                         <li key={country} className="cursor-pointer hover:text-[#C43131] transition-all duration-300">{country}</li>
                       ))}
                     </ul>
@@ -305,7 +195,7 @@ export default function TopMenuHome() {
 
 
                     <img
-                      src={REGIONS[activeRegion].image}
+                      src={regions[activeRegion].image}
                       alt={activeRegion}
                       className="w-full rounded-xl object-cover aspect-3/4"
                     />

@@ -2,120 +2,21 @@
 import { X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import SideBarMenuInner from "./../SideBarMenuInner";
+import { RegionFormated } from "@/lib/regionTransformer";
 
-/* ================= REGIONS DATA ================= */
-const REGIONS = {
-    Asia: {
-        countries: [
-            "India",
-            "Afghanistan",
-            "Azerbaijan",
-            "Bahrain",
-            "Cambodia",
-            "China",
-            "Indonesia",
-            "Japan",
-            "Jordan",
-            "Kazakhstan",
-            "Kuwait",
-            "Malaysia",
-            "Maldives",
-            "Nepal",
-            "Qatar",
-            "Saudi Arabia",
-            "Singapore",
-            "Sri Lanka",
-            "Thailand",
-            "United Arab Emirates",
-            "Vietnam",
-        ],
-        image: "/images/india.jpg",
-    },
-
-    Europe: {
-        countries: [
-            "France",
-            "Italy",
-            "Spain",
-            "Switzerland",
-            "Germany",
-            "United Kingdom",
-            "Netherlands",
-            "Belgium",
-            "Austria",
-            "Portugal",
-            "Greece",
-            "Ireland",
-            "Iceland",
-
-        ],
-        image: "/images/europe.jpg",
-    },
-
-    Africa: {
-        countries: [
-            "South Africa",
-            "Kenya",
-            "Morocco",
-            "Egypt",
-            "Tanzania",
-            "Uganda",
-            "Rwanda",
-            "Ethiopia",
-            "Namibia",
-            "Botswana",
-            "Zimbabwe",
-            "Zambia",
-
-        ],
-        image: "/images/africa.jpg",
-    },
-
-    America: {
-        countries: [
-
-            "United States",
-            "Canada",
-            "Mexico",
-
-            "Costa Rica",
-            "Panama",
-            "Jamaica",
-            "Brazil",
-            "Argentina",
-            "Chile",
-            "Peru",
-            "Colombia",
-
-        ],
-        image: "/images/america.jpg",
-    },
-
-    Oceania: {
-        countries: [
-            "Australia",
-            "New Zealand",
-            "Fiji",
-            "Kiribati",
-            "Nauru",
-            "Tuvalu"
-        ],
-        image: "/images/oceania.jpg",
-    },
-
-} as const;
-
-/* ================= TYPES ================= */
-type Region = keyof typeof REGIONS;
 
 /* ================= COMPONENT ================= */
-export default function TopMenuinner() {
+export default function TopMenuinner({ regions }: { regions: Record<string, RegionFormated> }) {
     const [megaOpen, setMegaOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
     /* ✅ STRICT & SAFE */
-    const [activeRegion, setActiveRegion] = useState<Region>("Asia");
+    console.log(regions, 'regions---')
+  const regionKeys = Object.keys(regions) as (keyof typeof regions)[];
+  const [activeRegion, setActiveRegion] = useState<keyof typeof regions>(
+    regionKeys[0]
+  );
 
     const megaMenuRef = useRef<HTMLDivElement>(null);
 
@@ -242,7 +143,7 @@ export default function TopMenuinner() {
                       Regions
                     </h4> */}
 
-                                        {(Object.keys(REGIONS) as Region[]).map((region) => {
+                                        {(Object.keys(regions)).map((region) => {
                                             const isActive = activeRegion === region;
 
                                             return (
@@ -283,7 +184,7 @@ export default function TopMenuinner() {
                     </h4> */}
 
                                         <ul className="grid grid-cols-2 gap-3">
-                                            {REGIONS[activeRegion].countries.map((country) => (
+                                            {regions[activeRegion]?.countries?.length > 0 && regions[activeRegion].countries.map((country) => (
                                                 <li key={country} className="cursor-pointer hover:text-[#C43131] transition-all duration-300">{country}</li>
                                             ))}
                                         </ul>
@@ -296,7 +197,7 @@ export default function TopMenuinner() {
                                     {/* IMAGE */}
                                     <div className="rounded-xl overflow-hidden pl-0 md:pl-20">
                                         <img
-                                            src={REGIONS[activeRegion].image}
+                                            src={regions[activeRegion].image}
                                             alt={activeRegion}
                                             className="w-full rounded-xl object-cover aspect-3/4"
                                         />

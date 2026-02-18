@@ -57,7 +57,7 @@ export default async function RootLayout({
 }) {
 
   const regions:Regions = await getRegions();
-  console.log(regions,'regions++')
+  console.log(regions,'regions++-')
 
   return (
     <html lang="en">

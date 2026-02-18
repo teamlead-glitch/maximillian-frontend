@@ -1,30 +1,19 @@
-interface ApiCountry {
-  id: number;
-  title: string;
-  slug: string;
-}
+import { Region } from "@/types/commonTypes";
 
-interface ApiRegion {
-  id: number;
-  title: string;
-  slug: string;
-  countries: ApiCountry[];
-}
-
-interface RegionObject {
+export interface RegionFormated {
   countries: string[];
   image: string;
 }
 
 export function transformRegions(
-  apiData: ApiRegion[]
-): Record<string, RegionObject> {
-  const result: Record<string, RegionObject> = {};
+  apiData: Region[]
+): Record<string, RegionFormated> {
+  const result: Record<string, RegionFormated> = {};
 
   apiData.forEach((region) => {
     result[region.title] = {
       countries: region.countries.map((country) => country.title),
-      image: `/images/${region.slug.split("/")[1]}.jpg`, 
+      image: region.image, 
     };
   });
 
