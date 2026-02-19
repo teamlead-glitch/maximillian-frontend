@@ -58,17 +58,19 @@ console.log(res);
                             </button>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-4 lg:gap-10 mt-5 md:mt-20">
+
                         {loading ? (
                                 <Loader />
                             ) : signatureJournerys.length === 0 ? (
                                 <p>No journeys available</p>
                             ) : (
-                                signatureJournerys.map((item) => (
-                                 <JourneyCard key={item.id} journey={item} />
-                                ))
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-4 lg:gap-10 mt-5 md:mt-20">
+                                {signatureJournerys.map((item) => (
+                                    <JourneyCard key={item.id} journey={item} />
+                                ))}
+                                </div>
                             )}
-                    </div>
+
 
                 </div>
             </section>
