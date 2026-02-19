@@ -12,9 +12,11 @@ export default function SignatureJourney() {
 
     useEffect(() => {
         const fetchSignatureJourneys = async () => {
+
+        try{
         const res = await apiService.get<journeyResponse[]>("/signature-packages?count=4");
-console.log(res);
-        if (res) {
+
+        if(res) {
             setJourney(res || []);
 
         } else {
@@ -22,6 +24,10 @@ console.log(res);
         }
 
         setLoading(false);
+        } finally{
+            setLoading(false);
+        }
+
         };
 
         fetchSignatureJourneys();
@@ -29,7 +35,12 @@ console.log(res);
     return (
         <>
             {/* signature journey section */}
-
+                    {loading ? (
+                                <Loader />
+                            ) : signatureJournerys.length === 0 ? (
+                                // <p>No journeys available</p>
+                                <></>
+                            ) : (
             <section className="bg-white pt-0 md:pt-20 md:pb-20">
                 <div className="max-w-[1300px]  mx-auto px-5">
                     <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
@@ -59,21 +70,18 @@ console.log(res);
                         </div>
                     </div>
 
-                        {loading ? (
-                                <Loader />
-                            ) : signatureJournerys.length === 0 ? (
-                                <p>No journeys available</p>
-                            ) : (
+
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-4 lg:gap-10 mt-5 md:mt-20">
                                 {signatureJournerys.map((item) => (
                                     <JourneyCard key={item.id} journey={item} />
                                 ))}
                                 </div>
-                            )}
+
 
 
                 </div>
             </section>
+             )}
             {/* signature journey section close */}
         </>
     )
