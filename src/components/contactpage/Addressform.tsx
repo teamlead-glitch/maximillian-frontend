@@ -460,7 +460,6 @@ min-w-[190px]
                                             <img
                                                 src="images/map-img.png"
                                                 alt="View location"
-                                                className="w-[65px] h-auto cursor-pointer hover:opacity-80"
                                             />
                                             </a>
                                         </div>
