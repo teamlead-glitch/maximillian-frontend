@@ -47,14 +47,15 @@ const chunkArray = <T,>(array: T[], size: number): T[][] => {
                     // <p>No journeys available</p>
                     <></>
                 ) : (
-
-            <section className="bg-white py-20">
-                <div className="max-w-[1300px]  mx-auto px-5">
-                    { taggroups.map((group,index) => (
-                         <div className={`flex gap-8 ${index %2 == 0 ? "flex-col" : "flex-col-reverse" } md:flex-row`} key={group.id}>
-                             <div className="w-full md:w-1/4 relative mr-0 md:pr-10">
-                                <h3 className=" font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) md:text-right">{group.title} <br /> Tours</h3>
-                                <div className="absolute right-0 top-0  w-px h-10 bg-gray-400 md:block hidden"></div>
+                <>
+                { taggroups.map((group,index) => (
+                <section className="bg-white py-20" key={group.id}>
+                    <div className="max-w-[1300px]  mx-auto px-5">
+                        <div className={`flex gap-8 ${index %2 == 0 ? "flex-col md:flex-row" : "flex-col-reverse md:flex-row-reverse" } `} >
+                             <div className={` w-full md:w-1/4 relative mr-0 ${index % 2 == 0 ? "md:pr-10" : "md:pl-10"} `}>
+                                <h3 className={`font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) ${index % 2 == 0 ? "md:text-right" : "md:text-left"}`}>{group.title} <br /> Tours</h3>
+                                <div className={`absolute w-px h-10 bg-gray-400 md:block hidden ${ index % 2 === 1 ? "left-0 top-0" : "right-0 top-0"}`}
+></div>
                             </div>
                             <div className="w-full md:w-3/4">
                             {/* <div class="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10"></div> */}
@@ -64,15 +65,16 @@ const chunkArray = <T,>(array: T[], size: number): T[][] => {
                                     className="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10"
                                 >
                                     {row.map((item) => (
-                                    <TagCard key={item.id} tag={item} />
+                                    <TagCard key={item.id} tag={item} type={index} />
                                     ))}
                                 </div>
                                 ))}
                             </div>
                         </div>
-                    ))}
-                </div>
-            </section>
+                    </div>
+                </section>
+            ))}
+            </>
         )}
             {/* experience tour close */}
         </>
