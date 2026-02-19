@@ -156,7 +156,7 @@ export default function TopMenuHome({ regions }: { regions: Record<string, Regio
                         <button
                           key={region}
                           onClick={() => setActiveRegion(region)}
-                          className={`group w-full flex items-center 
+                          className={`group w-full flex items-center
   text-left text-lg font-semibold cursor-pointer pr-6
   transition-all duration-300
   ${isActive

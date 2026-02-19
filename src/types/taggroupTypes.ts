@@ -5,5 +5,5 @@ export interface taggroupResponse {
   short_description: string | null;
   description: string | null;
   is_active: number;
-  tags: string|number[]
+  tags: []
 }
