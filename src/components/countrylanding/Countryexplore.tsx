@@ -35,7 +35,7 @@ const insights = [
 
 ];
 
-export default function Regionlist() {
+export default function Countrylist() {
 
 
     return (
@@ -43,63 +43,43 @@ export default function Regionlist() {
         <>
 
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
-                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]"><img src="images/region_landing_bg.webp" alt="" className="w-full h-full object-cover" />
+                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]"><img src="images/country_landing_bg.webp" alt="" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
 -translate-x-1/2  -translate-y-1/2
 w-[90%] sm:w-[80%] md:w-auto
 px-4 sm:px-0 text-center">
                         <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-white text-center ">
-                            ASIA
+                            INDIA
                         </h1>
                     </div>
                 </div>
-
-                <div className="max-w-[1300px] mx-auto py-10 pt-10 pb-0     md:py-10 xl:py-15 px-5">
-                    <div className="flex flex-wrap items-center gap-10 md:gap-28 justify-center">
-
-                        <a href="#overview" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
-                            Overview
-                        </a>
-
-                        <a href="#journeys" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
-                            Journeys
-                        </a>
-
-                        <a href="#inspirations" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
-                            Inspirations
-                        </a>
-
-                    </div>
-                </div>
-
-
             </section >
-            <section id="overview" className="relative  py-10 md:pt-10 md:pb-10   xl:pt-15 xl:pb-15 px-5 overflow-hidden bg-white scroll-mt-16">
+            <section className="relative  py-10 md:pt-20 md:pb-10   xl:pt-30 xl:pb-15 px-5 overflow-hidden bg-white">
                 <div className="max-w-[1300px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5">
                         <div className="pr-0 md:pr-15 xl:pr-80">
-                            <h2 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">Journeys across cultures, landscapes, and time.</h2>
+                            <h2 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">Short Headline featuring India Region</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut. Aenean ultrices convallis sagittis. Nullam posuere, tortor a fringilla condimentum, dui justo facilisis sem, ac varius dolor leo ac ex.</p>
                         </div>
                         <div className="pl-0 md:pl-10">
                             <div className="aspect-[4/2]">
-                                <img src="images/taj.webp" alt="" className="w-full h-full object-cover rounded-md" />
+                                <img src="images/region_landing_sideimg.webp" alt="" className="w-full h-full object-cover rounded-md" />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="journeys" className="relative py-10  md:py-15 px-5 overflow-hidden bg-white scroll-mt-16">
+            <section className="relative py-10 md:py-15  xl:py-20 px-5 overflow-hidden bg-white ">
                 <div className="max-w-[1000px] mx-auto">
                     <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
                         <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />
                             Signature Journeys</h3></div>
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                        <div className="w-full md:w-[200px]"><p className="text-sm text-(--color-secondary) ">A selection of our carefully curated international experiences.</p></div>
+                        <div className="w-full md:w-[200px]"><p className="text-sm text-(--color-secondary) ">A selection of our carefully curated Indian travel experiences.</p></div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-10 lg:mt-20">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-5 lg:mt-10">
                         <div className="py-3 group">
                             <div className="rounded-md w-full aspect-square relative overflow-hidden">
                                 <a href="">
@@ -305,50 +285,164 @@ px-4 sm:px-0 text-center">
                     </div>
                 </div>
             </section>
-            <section className="bg-white py-10">
-                <div className="max-w-[1300px] flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mx-auto  px-5  ">
-                    <div className="inline-block]">
-                        <h2 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) ">What Makes Our <br /> Asia Journeys Exceptional</h2>
-                        <div className="flex gap-5">
+
+            <div className="w-full py-10  md:py-20 mx-auto flex  flex-col lg:flex-row justify-between items-center bg-white">
+                <div className=" w-full lg:w-1/2 aspect-square relative group overflow-hidden">
+
+                    <img
+                        src="images/curated-left-img.webp"
+                        className="w-full h-full object-cover rounded-0 md:rounded-r-[10px] z-10"
+                    />
+
+                    <div className="absolute top-10 right-10 z-10">
+                        <img src="images/curated-india-img.svg" className="w-[80px] md:w-auto" />
+                    </div>
+
+                    {/* Gradient overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-black/80 to-transparent rounded-0 md:rounded-b-md"></div>
+
+                    {/* TEXT — hidden by default, visible on hover */}
+                    <div className="absolute bottom-0 wifull  md:w-1/2 pl-5 md:pl-15 pb-5 md:pb-15 
+                    opacity-0 translate-y-6 
+                    transition-all duration-500 
+                    group-hover:opacity-100 group-hover:translate-y-0">
+
+                        <h4 className="text-white text-3xl font-my-font-regular">
+                            Royal and Heritage Journeys
+                        </h4>
+
+                        <p className="text-white line-clamp-3">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non est autem rem! Autem animi ratione architecto maxime ex perspiciatis? Consectetur minus in provident culpa nemo at accusantium, eum fugit dolorem?
+                        </p>
+
+                        <button className="group flex items-center font-my-font-semibold text-sm text-white sm:text-base py-3 mt-3 cursor-pointer">
+                            <span className="mr-3">View More Journeys</span>
+
+                            <svg
+                                className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
+                                width="53"
+                                height="8"
+                                viewBox="0 0 53 8"
+                                fill="none"
+                            >
+                                <path
+                                    d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
+                                    fill="#fff"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+                <div className="w-full lg:w-1/2 px-10 md:px-20  xl:px-40 h-full mt-15   lg:mt-0">
+                    <div className="w-full flex flex-col items-center justify-between h-full">
+                        <div className="relative inset-0 flex flex-col items-start justify-center 
+                px-0 md:px-10 py-5 "> <h4 className="text-var(--secondary-color) text-3xl font-my-font-regular">
+                                Himalayan Landscapes
+                            </h4>
+
+                            <p className="text-var(--secondary-color) line-clamp-3">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
+                            </p>
+
+                            <button className="group flex items-center font-my-font-semibold text-sm text-var(--secondary-color) sm:text-base py-3 mt-3 cursor-pointer">
+                                <span className="mr-3">View More Journeys</span>
+
+                                <svg
+                                    className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
+                                    width="53"
+                                    height="8"
+                                    viewBox="0 0 53 8"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
+                                        fill="#3A3F42"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="w-full aspect-4/2.5 relative group overflow-hidden">
+                            <img src="images/south_sideimg.webp" className="w-full h-full object-cover rounded-xl " />
+                            <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl"></div>
+                            <div className="absolute inset-0 flex flex-col items-start justify-center 
+                px-10 py-5
+                opacity-0 translate-y-6
+                transition-all duration-500
+                group-hover:opacity-100 group-hover:translate-y-0">
+
+                                <h4 className="text-white text-3xl font-my-font-regular">
+                                    Southern India and Kerala
+                                </h4>
+
+                                <p className="text-white line-clamp-3 hidden md:block">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
+                                </p>
+
+                                <button className="group flex items-center font-my-font-semibold text-sm text-white sm:text-base py-3 mt-3 cursor-pointer">
+                                    <span className="mr-3">View More Journeys</span>
+
+                                    <svg
+                                        className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
+                                        width="53"
+                                        height="8"
+                                        viewBox="0 0 53 8"
+                                        fill="none"
+                                    >
+                                        <path
+                                            d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
+                                            fill="#fff"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div className="relative inset-0 flex flex-col items-start justify-center 
+                px-0 md:px-10 py-5 "> <h4 className="text-var(--secondary-color) text-3xl font-my-font-regular">
+                                Festivals and Cultural Moments
+                            </h4>
+
+                            <p className="text-var(--secondary-color) line-clamp-3">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
+                            </p>
+
+                            <button className="group flex items-center font-my-font-semibold text-sm text-var(--secondary-color) sm:text-base py-3 mt-3 cursor-pointer">
+                                <span className="mr-3">View More Journeys</span>
+
+                                <svg
+                                    className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
+                                    width="53"
+                                    height="8"
+                                    viewBox="0 0 53 8"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
+                                        fill="#3A3F42"
+                                    />
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div className="max-w-[1300px] flex items-center gap-8 mx-auto mt-10 md:mt-20  px-5  ">
-                    <div className="grid  items-center   sm:grid-cols-2 md:gap-5 lg:gap-10 xl:gap-15   md:grid-cols-4">
-                        <a href="" className="group block pb-10 pr-0 md:pr-5">
-                            <div className="pb-5">
-                                <img
-                                    src="images/journey-icon1.png"
-                                    alt="Cultural Journeys"
-                                    className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" />
+            </div>
+            <section className="relative  py-10 md:pt-20 md:pb-10   xl:pt-30 xl:pb-15 px-5 overflow-hidden bg-white">
+                <div className="max-w-[1000px] mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5 items-center">
+                        <div className="pr-0 md:pr-15 xl:pr-36">
+                            <h3 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">What Makes Our India Journeys Different/Exceptional?</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut. Aenean ultrices convallis sagittis. Nullam posuere, tortor a fringilla condimentum, dui justo facilisis sem, ac varius dolor leo ac ex.</p>
+                        </div>
+                        <div className="pl-0 md:pl-10">
+                            <div className="aspect-[2/3]">
+                                <img src="images/region_landing_sideimg2.webp" alt="" className="w-full h-full object-cover rounded-md" />
                             </div>
-                            <p className="text-(--color-secondary)">Journeys designed around contrast and rhythm, not country checklists</p>
-                        </a>
-                        <a href="" className="group block pb-10 pr-0 md:pr-5">
-                            <div className="pb-5">
-                                <img
-                                    src="images/journey-icon2.png"
-                                    alt="Cultural Journeys"
-                                    className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" />
-                            </div>
-
-                            <p className="text-(--color-secondary)">Balance between heritage, landscapes, and local life</p>
-                        </a>
-                        <a href="" className="group block pb-10 pr-0 md:pr-5">
-                            <div className="pb-5"><img src="images/journey-icon3.png" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-
-                            <p className="text-(--color-secondary)">Thoughtful routing that respects distances and travel fatigue</p>
-                        </a>
-                        <a href="" className="group block pb-10 pr-0 md:pr-5">
-                            <div className="pb-5"><img src="images/journey-icon4.png" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-
-                            <p className="text-(--color-secondary)">Space for immersion, reflection, and authentic encounters</p>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </section>
             {/* insights */}
-            <section id="inspirations" className="bg-white pb-10 md:pb-40 scroll-mt-16" >
+            <section className="bg-white pb-10 md:pb-20 xl:pb-40 ">
                 <div className="mx-auto px-0 md:px-5">
                     <div className="w-full">
                         <div className="max-w-5xl mx-auto">
