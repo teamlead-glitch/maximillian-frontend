@@ -172,19 +172,19 @@ export default function Designyourtrip() {
                                             placeholder="Preferred region(s) / countries"
                                             className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md  px-3 py-3 focus:outline-none focus:border-gray-500" />
                                     </div>
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
 
                                         <div className="relative">
                                             <DatePicker
                                                 selected={startDate}
-                                                onChange={(date:Date | null) => setStartDate(date)}
+                                                onChange={(date: Date | null) => setStartDate(date)}
                                                 placeholderText="Traveling on"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
                                             />
                                         </div>
                                         <div className="relative">
                                             <input type="text"
-                                                placeholder="Traveling on"
+                                                placeholder="Duration"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
                                             />
                                         </div>
