@@ -12,7 +12,7 @@ export default function Ourworld() {
 
         <>
 
-            <section className="relative  pt-20 pb-10 md:py-20 overflow-hidden bg-white">
+            <section className="relative  pt-15 pb-10 md:py-20 overflow-hidden bg-white">
                 <div className="h-screen w-full relative"><img src="images/our-worldbg.webp" alt="" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute top-1/2 left-1/2 
