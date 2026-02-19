@@ -3,7 +3,6 @@ export default function SignatureJourney() {
     return (
         <>
             {/* signature journey section */}
-
             <section className="bg-white pt-0 md:pt-20 md:pb-20">
                 <div className="max-w-[1300px]  mx-auto px-5">
                     <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
@@ -53,7 +52,7 @@ export default function SignatureJourney() {
 
                                     {/* Bottom Content */}
                                     <div className="
-        absolute w-full bottom-0 left-0 p-5 
+        absolute w-full bottom-0 left-0 p-5
         flex flex-col items-center
         transition-transform duration-500 ease-out
         group-hover:-translate-y-5
@@ -96,7 +95,7 @@ export default function SignatureJourney() {
                   from-black/80 via-black/40 to-transparent">
                                     </div>
                                     <div className="
-        absolute w-full bottom-0 left-0 p-5 
+        absolute w-full bottom-0 left-0 p-5
         flex flex-col items-center
         transition-transform duration-500 ease-out
         group-hover:-translate-y-5
@@ -132,7 +131,7 @@ export default function SignatureJourney() {
                   from-black/80 via-black/40 to-transparent">
                                     </div>
                                     <div className="
-        absolute w-full bottom-0 left-0 p-5 
+        absolute w-full bottom-0 left-0 p-5
         flex flex-col items-center
         transition-transform duration-500 ease-out
         group-hover:-translate-y-5
@@ -167,7 +166,7 @@ export default function SignatureJourney() {
                   from-black/80 via-black/40 to-transparent">
                                 </div>
                                 <div className="
-        absolute w-full bottom-0 left-0 p-5 
+        absolute w-full bottom-0 left-0 p-5
         flex flex-col items-center
         transition-transform duration-500 ease-out
         group-hover:-translate-y-5
