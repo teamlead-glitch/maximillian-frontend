@@ -2,7 +2,7 @@
 import BespokeJourney from "@/components/home/BespokeJourney";
 import LogoCarousel from "@/components/home/LogoCarousel";
 import { apiService } from "@/services/api";
-import { ContactEnquiryResponse, FormErrors, Formtypes, SettingItem, SettingsResponse } from "@/types/addressformTypes";
+import { ContactEnquiryResponse, FormErrors, Formtypes, SettingsResponse } from "@/types/addressformTypes";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
