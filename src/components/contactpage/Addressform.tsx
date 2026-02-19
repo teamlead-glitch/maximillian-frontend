@@ -2,13 +2,17 @@
 import BespokeJourney from "@/components/home/BespokeJourney";
 import LogoCarousel from "@/components/home/LogoCarousel";
 import { apiService } from "@/services/api";
-import { ContactEnquiryResponse, FormErrors, Formtypes } from "@/types/addressformTypes";
-import { useState } from "react";
+import { ContactEnquiryResponse, FormErrors, Formtypes, SettingsResponse } from "@/types/addressformTypes";
+import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 
 
 export default function AddressForm() {
+
+    //settings api
+    const [settings, setSettings] = useState<SettingsResponse | null>(null);
+
 
     const [formData, setFormData] = useState<Formtypes>({
         title: "",
@@ -90,6 +94,8 @@ export default function AddressForm() {
         return Object.keys(newErrors).length === 0; // true → no errors
     };
 
+
+    //submit form
     const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
@@ -105,7 +111,7 @@ export default function AddressForm() {
     };
 
     const res = await apiService.post<ContactEnquiryResponse>(
-      "/api/contact-enquiry", // ✅ remove /api if BASE_URL already contains it
+      "/contact-enquiry", // ✅ remove /api if BASE_URL already contains it
       payload
     );
 
@@ -138,6 +144,58 @@ export default function AddressForm() {
 };
 
 
+/* settngs api */
+useEffect(() => {
+
+  const fetchSettings = async () => {
+    try {
+      const res = await apiService.get<SettingsResponse>("/settings");
+
+      console.log("FINAL SETTINGS DATA:", res);
+
+      setSettings(res); // ✅ directly set
+
+    } catch (error) {
+      console.error("Settings API Error:", error);
+    }
+  };
+
+  fetchSettings();
+
+}, []);
+
+  //fb link
+  const fb_link = `${settings?.fb_url}`;
+
+    //twitter link
+  const twitter_link = `${settings?.twitter_url}`;
+
+    //youtube link
+  const youtube_url = `${settings?.youtube_url}`;
+
+    //linkedin link
+  const linkedin_url = `${settings?.linked_in}`;
+
+    //insta link
+  const insta_url = `${settings?.insta_url}`;
+  //phone number
+  const phone_number = settings?.phone;
+  //creating link
+  const phone_link = phone_number ? `tel:${phone_number}` : "#";
+
+  //number storing
+  const whatsappNumber = settings?.whatsapp;
+ //message storing
+ const message = encodeURIComponent("Hi! I would like to know more.");
+
+    const whatsappLink = whatsappNumber
+          ? `https://wa.me/${whatsappNumber}?text=${message}`
+                : "#";
+
+ //email link
+  const email = settings?.email;
+  //console.log(email);
+  const email_link = email ? `mailto:${email}` : "#";
 
 
     return (
@@ -350,13 +408,32 @@ hover:before:translate-x-full hover:text-white
 
                             <div className="w-full pl-0 xl:pl-10">
                                 <h4 className="font-my-font-semibold text-var(--color-secondary) text-xl ml-8">Contact</h4>
-                                <div className="flex mt-5 items-start ">
-                                    <img src="images/location_icon.svg" alt="" className="mt-2 mr-5" />
-                                    <div className="div">
-                                        <h5 className="text-[#46545E] text-lg font-semibold">Registered Office</h5>
-                                        <p className="text-(--color-secondary)">Maximilian Holidays Pvt Ltd, <br /> #3B, The Q Business Bay,<br />Kochi, Kerala - India.</p>
-
+                                
+                                <div className="flex mt-5 gap-5 items-center ">
+                                    <div className="flex mt-5 items-start ">
+                                        <img src="images/location_icon.svg" alt="" className="mt-2 mr-5" />
+                                        <div className="div">
+                                            <h5 className="text-[#46545E] text-lg font-semibold">Registered Office</h5>
+                                            <p className="text-(--color-secondary)">{settings?.address??"Not available"}</p>
+    
+                                        </div>
                                     </div>
+                                        {settings?.address_link && (
+                                        <div className="pl-4">
+                                            <a
+                                            href={settings.address_link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            >
+                                            <img
+                                                src="images/map-img.png"
+                                                alt="View location"
+                                                className="w-[65px] h-auto cursor-pointer hover:opacity-80"
+                                            />
+                                            </a>
+                                        </div>
+                                        )}
+
                                 </div>
 
 
@@ -365,24 +442,33 @@ hover:before:translate-x-full hover:text-white
                                         <img src="images/location_icon.svg" alt="" className="mt-2 mr-5" />
                                         <div className="div">
                                             <h5 className="text-[#46545E] text-lg font-semibold">Corporate Office</h5>
-                                            <p className="text-(--color-secondary)">Level B, Ocean Pearl,<br /> Smart City, Dubai.</p>
-
-
+                                            <p className="text-(--color-secondary)">{settings?.address_2??"Not available"}</p>
                                         </div>
                                     </div>
-                                    <div className="pl-4">
-                                        <img src="images/map-img.png" alt="" />
-                                    </div>
+                                    {settings?.address_link_2 && (
+                                        <div className="pl-4">
+                                            <a
+                                            href={settings.address_link_2}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            >
+                                            <img
+                                                src="images/map-img.png"
+                                                alt="View location"
+                                            />
+                                            </a>
+                                        </div>
+                                        )}
 
                                 </div>
 
 
                                 <div className="flex mt-4 py-10 md:py-16 sm:mt-0 ml-8">
-                                    <a href="#" className="text-body text-[#46545E] hover:text-heading">
+                                    <a href={fb_link} className="text-body text-[#46545E] hover:text-heading" target="_blank">
                                         <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clipRule="evenodd" /></svg>
                                         <span className="sr-only">Facebook page</span>
                                     </a>
-                                    <a href="#" className="text-body text-[#46545E] hover:text-heading ms-5">
+                                    <a href={insta_url} className="text-body text-[#46545E] hover:text-heading ms-5" target="_blank">
                                         <svg
                                             className="w-5 h-5"
                                             aria-hidden="true"
@@ -399,11 +485,11 @@ hover:before:translate-x-full hover:text-white
                                         <span className="sr-only">Instagram page</span>
                                     </a>
 
-                                    <a href="#" className="text-body text-[#46545E] hover:text-heading ms-5">
+                                    <a href={twitter_link} className="text-body text-[#46545E] hover:text-heading ms-5" target="_blank">
                                         <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z" /></svg>
                                         <span className="sr-only">Twitter page</span>
                                     </a>
-                                    <a href="#" className="text-body text-[#46545E] hover:text-heading ms-5">
+                                    <a href={youtube_url} className="text-body text-[#46545E] hover:text-heading ms-5" target="_blank">
                                         <svg
                                             className="w-5 h-5"
                                             aria-hidden="true"
@@ -426,7 +512,7 @@ hover:before:translate-x-full hover:text-white
                                         <img src="images/call-icon.svg" className="w-5 mr-5" />
 
                                         <div className="div">
-                                            <a href="tel:+919998868866" className="flex gap-3"><p className="text-(--color-secondary)">+91 999 886 8866</p></a>
+                                            <a href={phone_link} className="flex gap-3"><p className="text-(--color-secondary)">{settings?.phone??"Not available"}</p></a>
 
                                         </div>
                                     </div>
@@ -436,7 +522,7 @@ hover:before:translate-x-full hover:text-white
                                         <img src="images/whatsapp-icon.svg" className="w-5 mr-5" />
 
                                         <div className="div">
-                                            <a href="https://wa.me/919998868866" className="flex gap-3">   <p className="text-(--color-secondary)">WhatsApp</p></a>
+                                            <a href={whatsappLink} className="flex gap-3" target="_blank">   <p className="text-(--color-secondary)">WhatsApp</p></a>
 
 
                                         </div>
@@ -445,8 +531,7 @@ hover:before:translate-x-full hover:text-white
 
                                         <img src="images/mail-icon.svg" className="w-5 mr-5" />
                                         <div className="div">
-                                            <a href="mailto:hello@maximilianholidays.com" className="flex gap-3"> <p className="text-(--color-secondary)"> hello@maximilianholidays.com</p></a>
-
+                                            <a href={email_link} className="flex gap-3"> <p className="text-(--color-secondary)">{settings?.email?? "Not available"}</p></a>
 
                                         </div>
                                     </div>

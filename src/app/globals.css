@@ -63,3 +63,12 @@ body {
   z-index: -1;
   background: #ffffff;
 }
+
+/* globals.css */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}

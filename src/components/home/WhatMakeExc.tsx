@@ -37,7 +37,7 @@ export default function WhatMakeExc() {
                 <div className="max-w-[1300px] flex items-center gap-8 mx-auto mt-10 md:mt-20  px-5  ">
                     <div className=" hidden md:block md:w-[10%]"></div>
                     <div className="w-[90%]">
-                        <div className="grid  items-center   sm:grid-cols-2 md:gap-5 lg:gap-10 xl:gap-15   lg:grid-cols-4">
+                        <div className="grid  items-center   sm:grid-cols-2 md:grid-cols-4 md:gap-5 lg:gap-10 xl:gap-15   ">
                             <a href="" className="group block pb-10 pr-0 md:pr-5">
                                 <div className="pb-5">
                                     <img
@@ -85,11 +85,11 @@ export default function WhatMakeExc() {
 
                                 <p className="text-(--color-secondary)">24/7 global concierge support.</p>
                             </a>
-                            <div className="pb-10 pr-0 md:pr-5">
+                            <a href="" className="group block pb-10 pr-0 md:pr-5">
                                 <div className="pb-5"><img src="images/package-exception-icon-8.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
 
                                 <p className="text-(--color-secondary)">Discreet, personalised service.</p>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
