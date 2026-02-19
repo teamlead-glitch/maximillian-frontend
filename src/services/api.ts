@@ -12,11 +12,14 @@ async function handleResponse<T>(res: Response): Promise<T> {
   const data = await res.json();
 
   if (!res.ok || data?.error) {
-    throw {
+
+    const error: ApiError = {
       message: data?.message || "API Error",
       status: res.status,
       isBusinessError: Boolean(data?.error),
-    } as ApiError;
+    };
+
+    throw new Error(JSON.stringify(error));
   }
 
   return data as T;
