@@ -21,7 +21,7 @@ export default function SignatureJourney() {
 
                 }
             } catch (err) {
-                console.error("Failed to load Journeys:" + err);
+                console.log("Failed to load Journeys:" + err);
             }
             finally {
                 setLoading(false);

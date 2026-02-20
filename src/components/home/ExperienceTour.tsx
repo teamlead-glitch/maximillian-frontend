@@ -1,58 +1,81 @@
+"use client";
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
+import { apiService } from "@/services/api";
+import Loader from "../common/Loader";
+import { taggroupResponse } from "@/types/taggroupTypes";
+import TagCard from "@/components/tags/tagCard"
 export default function ExperienceTour() {
+    const [taggroups, setTaggroups] = useState<taggroupResponse[]>([]);
+    // const [activeIndex, setActiveIndex] = useState(0);
+    const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+        const fetchtaggroups = async () => {
+            try{
+            const res = await apiService.get<taggroupResponse[]>("/tag-groups");
+
+            if(res) {
+                setTaggroups(res || []);
+
+            } else {
+                console.error("Failed to load tags groups");
+            }
+
+            setLoading(false);
+            } finally{
+                setLoading(false);
+            }
+
+        };
+
+        fetchtaggroups();
+    }, []);
+const chunkArray = <T,>(array: T[], size: number): T[][] => {
+  const result: T[][] = [];
+  for (let i = 0; i < array.length; i += 3) {
+    result.push(array.slice(i, i + 3));
+  }
+  return result;
+};
     return (
         <>
-            {/* experience tour */}
-            <section className="bg-white py-20">
-                <div className="max-w-[1300px]  mx-auto px-5">
-                    <div className="flex gap-8 flex-col md:flex-row">
-                        <div className="w-full md:w-1/4 relative mr-0 md:pr-10"><h3 className=" font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) md:text-right">Experience <br /> Tours</h3>  <div className="absolute right-0 top-0  w-px h-10 bg-gray-400 md:block hidden"></div></div>
-                        <div className="w-full md:w-3/4">
-                            <div className="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10">
-                                <a href="" className="group block w-full sm:w-1/2 py-3">
-                                    <div className="pb-5">
-                                        <img
-                                            src="images/experience-tour-icon1.svg"
-                                            alt="Cultural Journeys"
-                                            className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]"
-                                        />
-                                    </div>
-                                    <h4 className="text-1xl font-my-font-semibold text-black">Cultural Journeys</h4>
-                                    <p className="text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
-                                </a>
-                                <a href="" className="group block w-full sm:w-1/2 py-3">
-                                    <div className="pb-5"><img src="images/experience-tour-icon2.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-                                    <h4 className="text-1xl font-my-font-semibold text-black">Photography Tours</h4>
-                                    <p className="text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
-                                </a>
-                                <a href="" className="group block w-full sm:w-1/2 py-3">
-                                    <div className="pb-5"><img src="images/experience-tour-icon3.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-                                    <h4 className="text-1xl font-my-font-semibold text-black">Trekking and Outdoors</h4>
-                                    <p className=" text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
-                                </a>
-
+        {/* experience tour */}
+        {loading ? (
+                    <Loader />
+                ) : taggroups.length === 0 ? (
+                    // <p>No journeys available</p>
+                    <></>
+                ) : (
+                <>
+                { taggroups.map((group,index) => (
+                <section className="bg-white py-20" key={group.id}>
+                    <div className="max-w-[1300px]  mx-auto px-5">
+                        <div className={`flex gap-8 ${index %2 == 0 ? "flex-col md:flex-row" : "flex-col-reverse md:flex-row-reverse" } `} >
+                             <div className={` w-full md:w-1/4 relative mr-0 ${index % 2 == 0 ? "md:pr-10" : "md:pl-10"} `}>
+                                <h3 className={`font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) ${index % 2 == 0 ? "md:text-right" : "md:text-left"}`}>{group.title} <br /> Tours</h3>
+                                <div className={`absolute w-px h-10 bg-gray-400 md:block hidden ${ index % 2 === 1 ? "left-0 top-0" : "right-0 top-0"}`}
+></div>
                             </div>
-                            <div className="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10">
-                                <a href="" className="group block w-full sm:w-1/2 py-3">
-                                    <div className="pb-5"><img src="images/experience-tour-icon1.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-                                    <h4 className="text-1xl font-my-font-semibold text-black">Cultural Journeys</h4>
-                                    <p className=" text-(--color-secondary)">Immersive experiences rooted in history, art, and local traditions.</p>
-                                </a>
-                                <a href="" className="group block w-full sm:w-1/2 py-3">
-                                    <div className="pb-5"><img src="images/experience-tour-icon2.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-                                    <h4 className="text-1xl font-my-font-semibold text-black">Photography Tours</h4>
-                                    <p className=" text-(--color-secondary)">Carefully paced journeys designed for visual storytelling.</p>
-                                </a>
-                                <a href="" className="group block w-full sm:w-1/2 py-3">
-                                    <div className="pb-5"><img src="images/experience-tour-icon3.svg" alt="" className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" /></div>
-                                    <h4 className="text-1xl font-my-font-semibold text-black">Trekking and Outdoors</h4>
-                                    <p className=" text-(--color-secondary)">Nature-led travel for those who seek landscapes beyond the ordinary.</p>
-                                </a>
+                            <div className="w-full md:w-3/4">
+                            {/* <div class="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10"></div> */}
+                             {chunkArray(group.tags, 2).map((row, rowIndex) => (
+                                <div
+                                    key={rowIndex}
+                                    className="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10"
+                                >
+                                    {row.map((item) => (
+                                    <TagCard key={item.id} tag={item} type={index} />
+                                    ))}
+                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            ))}
+            </>
+        )}
             {/* experience tour close */}
         </>
     )
