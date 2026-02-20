@@ -56,16 +56,19 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
 
-  const regions:Regions = await getRegions();
-  console.log(regions,'regions++-')
+  const regions: Regions = await getRegions();
+  console.log(regions, 'regions++-')
+
+
+
 
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${dmSans.variable} ${grapeNuts.variable} ${dmSerif.variable} ${myFont.variable} ${myFontMedium.variable} ${myFontRegular.variable} ${myFontSemibold.variable} antialiased`}
       >
-        <TopMenu regions={regions}/>
-        
+        <TopMenu regions={regions} />
+
 
         {children}
         <Footer />

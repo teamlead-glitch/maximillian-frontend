@@ -10,5 +10,6 @@ export const PAGE_SLUGS = {
   DESIGNYOURTRIP: "designyourtrip",
   OURWORLD: "ourworld",
   REGION: "region",
+  COUNTRY: "country",
   BLOGS: "blogs"
 } as const;
