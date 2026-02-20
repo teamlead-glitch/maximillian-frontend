@@ -1,3 +1,5 @@
+import { tagResponse } from "@/types/TagTypes";
+
 export interface journeyResponse {
   id: number;
   title: string;
@@ -5,8 +7,19 @@ export interface journeyResponse {
   short_description: string | null;
   description: string | null;
   is_active: number;
-  tags: string|number[],
-  region:string|number[],
+  tags: [
+    {
+      id: number;
+      title: string;
+      icon: string;
+      slug:string;
+    }
+  ],
+  region:{
+    id: number;
+    title: string;
+    slug:string;
+  },
   country:string|number[],
   tag_group:string|number[],
 }

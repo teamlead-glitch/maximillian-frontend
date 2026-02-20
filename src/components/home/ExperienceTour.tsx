@@ -31,13 +31,21 @@ export default function ExperienceTour() {
 
         fetchtaggroups();
     }, []);
-const chunkArray = <T,>(array: T[], size: number): T[][] => {
+// const chunkArray = <T,>(array: T[], size: number): T[][] => {
+//   const result: T[][] = [];
+//   for (let i = 0; i < array.length; i += 3) {
+//     result.push(array.slice(i, i + 3));
+//   }
+//   return result;
+// };
+function chunkArray<T>(array: T[], size: number): T[][] {
   const result: T[][] = [];
-  for (let i = 0; i < array.length; i += 3) {
+  for (let i = 0; i < array.length; i += size) {
     result.push(array.slice(i, i + 3));
   }
   return result;
-};
+}
+
     return (
         <>
         {/* experience tour */}
@@ -54,8 +62,7 @@ const chunkArray = <T,>(array: T[], size: number): T[][] => {
                         <div className={`flex gap-8 ${index %2 == 0 ? "flex-col md:flex-row" : "flex-col-reverse md:flex-row-reverse" } `} >
                              <div className={` w-full md:w-1/4 relative mr-0 ${index % 2 == 0 ? "md:pr-10" : "md:pl-10"} `}>
                                 <h3 className={`font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) ${index % 2 == 0 ? "md:text-right" : "md:text-left"}`}>{group.title} <br /> Tours</h3>
-                                <div className={`absolute w-px h-10 bg-gray-400 md:block hidden ${ index % 2 === 1 ? "left-0 top-0" : "right-0 top-0"}`}
-></div>
+                                <div className={`absolute w-px h-10 bg-gray-400 md:block hidden ${ index % 2 === 1 ? "left-0 top-0" : "right-0 top-0"}`}></div>
                             </div>
                             <div className="w-full md:w-3/4">
                             {/* <div class="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10"></div> */}
@@ -65,7 +72,7 @@ const chunkArray = <T,>(array: T[], size: number): T[][] => {
                                     className="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10"
                                 >
                                     {row.map((item) => (
-                                    <TagCard key={item.id} tag={item} type={index} />
+                                    <TagCard key={item.id} tag={item} />
                                     ))}
                                 </div>
                                 ))}
