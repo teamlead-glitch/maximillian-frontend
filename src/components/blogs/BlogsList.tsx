@@ -144,8 +144,10 @@ export default function BlogsList() {
                     <div
                       key={index}
                       className={`grid gap-10 ${rowItems.length === 1
-                        ? "grid-cols-1"
-                        : `grid-cols-1 sm:grid-cols-[${isReversed ? "1fr_2fr" : "2fr_1fr"}]`
+                          ? "grid-cols-1"
+                          : isReversed
+                            ? "grid-cols-1 sm:grid-cols-[1fr_2fr]"
+                            : "grid-cols-1 sm:grid-cols-[2fr_1fr]"
                         }`}
                     >
                       {rowItems.length === 1 && (
