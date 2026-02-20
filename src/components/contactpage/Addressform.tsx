@@ -5,6 +5,7 @@ import { apiService } from "@/services/api";
 import { ContactEnquiryResponse, FormErrors, Formtypes, SettingsResponse } from "@/types/addressformTypes";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import SimpleCaptcha from "../Captcha";
 
 
 
@@ -12,6 +13,12 @@ export default function AddressForm() {
 
     //settings api
     const [settings, setSettings] = useState<SettingsResponse | null>(null);
+    //loader
+    const [loading, setLoading] = useState(false);
+
+      //for captcha validation
+const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+const [captchaResetKey, setCaptchaResetKey] = useState(0);
 
 
     const [formData, setFormData] = useState<Formtypes>({
@@ -98,11 +105,19 @@ export default function AddressForm() {
     //submit form
     const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-
+    
+  if (loading) return; // 🔥 extra safety (prevents double click)
   // form validation
   if (!validate()) return;
+  if (!isCaptchaVerified) {
+    toast.error("Please verify captcha before submitting");
+    return;
+  } 
 
   try {
+
+      setLoading(true); // ⭐ start loader
+
     const payload = {
       name: `${formData.title} ${formData.name}`.trim(),
       phone: formData.mobile,
@@ -129,6 +144,8 @@ export default function AddressForm() {
         message: "",
         is_agreed: false,
       });
+      setIsCaptchaVerified(false);
+        setCaptchaResetKey((prev) => prev + 1); // 🔄 refresh captcha
 
     } else {
       toast.error(res.message || "Something went wrong"); // ✅ fixed syntax
@@ -140,6 +157,8 @@ export default function AddressForm() {
 
     // ✅ show backend validation error
     toast.error( "Failed to send. Please try again!");
+  }finally {
+    setLoading(false); // ⭐ stop loader
   }
 };
 
@@ -373,10 +392,14 @@ useEffect(() => {
                                             </a>
                                         </span>
                                     </label>
+                                      {/* Captcha number */}
+                          <SimpleCaptcha onVerify={setIsCaptchaVerified}  resetTrigger={captchaResetKey} />
+
 
                                     {/* Button */}
                                     <button
                                         type="submit"
+                                         disabled={loading}
                                         className="
 relative overflow-hidden
 text-(--color-secondary)
@@ -395,9 +418,18 @@ before:bg-gradient-to-r
 before:from-transparent before:via-black/40 before:to-transparent
 before:transition-transform before:duration-700
 hover:before:translate-x-full hover:text-white
+min-w-[190px] 
 "
                                     >
-                                        Send Your Message
+                                         {loading ? (
+                                            <p className="flex justify-center items-center gap-2">
+                                            
+                                            Sending....
+                                            <span className="inline-block animate-spin h-4 w-4 border-2 border-red-500 border-t-transparent rounded-full"></span>
+                                            </p>
+                                        ) : (
+                                            "Send Your Message"
+                                        )}
                                     </button>
 
                                 </form>
@@ -428,7 +460,6 @@ hover:before:translate-x-full hover:text-white
                                             <img
                                                 src="images/map-img.png"
                                                 alt="View location"
-                                                className="w-[65px] h-auto cursor-pointer hover:opacity-80"
                                             />
                                             </a>
                                         </div>
