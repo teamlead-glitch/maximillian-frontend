@@ -17,7 +17,7 @@ export default function BlogsList() {
   const [skip, setSkip] = useState(0);
   const [hasMore, setHasMore] = useState(true);
 
-   const observerRef = useRef<HTMLDivElement | null>(null);
+  const observerRef = useRef<HTMLDivElement | null>(null);
 
   // useEffect(() => {
 
@@ -42,7 +42,7 @@ export default function BlogsList() {
   //   fetchBlogs();
   // }, []);
 
-    // Fetch blogs
+  // Fetch blogs
   const fetchBlogs = async () => {
     if (!hasMore) return;
 
@@ -72,10 +72,10 @@ export default function BlogsList() {
     fetchBlogs();
   }, []);
 
-   // Infinite Scroll Observer
+  // Infinite Scroll Observer
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
-      
+
       const target = entries[0];
       if (target.isIntersecting && !loading) {
         //alert(1)
@@ -133,27 +133,41 @@ export default function BlogsList() {
 
               while (index < blogs.length) {
                 if (useHeroRow) {
-                  // ---- 3:1 Layout (2 items) ----
+                  // ---- 2 Column Layout ----
                   const rowItems = blogs.slice(index, index + 2);
+
+                  const isReversed = Math.floor(index / 5) % 2 === 1;
+                  // Explanation:
+                  // Every hero row alternates direction
 
                   rows.push(
                     <div
                       key={index}
-                      className={`grid gap-10 ${
-                        rowItems.length === 1
-                          ? "grid-cols-1"
-                          : "grid-cols-1 sm:grid-cols-[2fr_1fr]"
-                      }`}
+                      className={`grid gap-10 ${rowItems.length === 1
+                        ? "grid-cols-1"
+                        : `grid-cols-1 sm:grid-cols-[${isReversed ? "1fr_2fr" : "2fr_1fr"}]`
+                        }`}
                     >
-                      {/* First Blog Large */}
-                      <BlogCard
-                        blog={rowItems[0]}
-                        variant="large"
-                      />
+                      {rowItems.length === 1 && (
+                        <BlogCard blog={rowItems[0]} variant="large" />
+                      )}
 
-                      {/* Second Blog Small */}
-                      {rowItems[1] && (
-                        <BlogCard blog={rowItems[1]} />
+                      {rowItems.length === 2 && (
+                        <>
+                          {isReversed ? (
+                            <>
+                              {/* Small First */}
+                              <BlogCard blog={rowItems[1]} />
+                              <BlogCard blog={rowItems[0]} variant="large" />
+                            </>
+                          ) : (
+                            <>
+                              {/* Large First */}
+                              <BlogCard blog={rowItems[0]} variant="large" />
+                              <BlogCard blog={rowItems[1]} />
+                            </>
+                          )}
+                        </>
                       )}
                     </div>
                   );
@@ -166,14 +180,7 @@ export default function BlogsList() {
                   rows.push(
                     <div
                       key={index}
-                      // className={`grid gap-10 ${
-                      //   rowItems.length === 1
-                      //     ? "grid-cols-1"
-                      //     : rowItems.length === 2
-                      //     ? "grid-cols-1 sm:grid-cols-2"
-                      //     : "grid-cols-1 sm:grid-cols-3"
-                      // }`}
-                       className={`grid gap-10 grid-cols-1 sm:grid-cols-3`}
+                      className="grid gap-10 grid-cols-1 sm:grid-cols-3"
                     >
                       {rowItems.map((blog) => (
                         <BlogCard key={blog.id} blog={blog} />
@@ -184,8 +191,10 @@ export default function BlogsList() {
                   index += 3;
                 }
 
-                useHeroRow = !useHeroRow; // Toggle pattern
+                useHeroRow = !useHeroRow;
               }
+
+
 
               return rows;
             })()}
