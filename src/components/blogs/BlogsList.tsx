@@ -39,7 +39,7 @@ export default function BlogsList() {
 
   if (!blogData?.blogs?.length) {
     return (
-      <section className="pt-32 pb-20 text-center">
+      <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center">
         <h2>No blogs available</h2>
       </section>
     );
