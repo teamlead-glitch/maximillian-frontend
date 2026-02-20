@@ -12,6 +12,7 @@ export interface journeyResponse {
       id: number;
       title: string;
       icon: string;
+      slug:string;
     }
   ],
   region:{
