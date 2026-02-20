@@ -18,11 +18,10 @@ export default function BlogCard({
     <div className="group flex flex-col">
       {/* IMAGE */}
       <div
-        className={`relative overflow-hidden rounded-lg ${
-          variant === "large"
+        className={`relative overflow-hidden rounded-lg ${variant === "large"
             ? "aspect-[2/1]"
             : "aspect-square"
-        }`}
+          }`}
       >
         {blog?.image_path && (
           <Link href={`/${blog.slug}`}>
@@ -44,11 +43,10 @@ export default function BlogCard({
       <div className="pt-5 flex flex-col flex-grow">
         <Link href={`/${blog.slug}`}>
           <h3
-            className={`font-semibold text-(--color-secondary) line-clamp-2 ${
-              variant === "large"
+            className={`font-semibold text-(--color-secondary) line-clamp-2 ${variant === "large"
                 ? "text-2xl md:text-3xl"
                 : "text-lg md:text-xl"
-            }`}
+              }`}
           >
             {blog.title}
           </h3>
@@ -60,11 +58,10 @@ export default function BlogCard({
             {blog.tags.map((tag, index) => (
               <li
                 key={tag.id}
-                className={`relative text-(--color-secondary) ${
-                  index !== blog.tags.length - 1
+                className={`relative text-(--color-secondary) ${index !== blog.tags.length - 1
                     ? "pr-5 after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2"
                     : ""
-                }`}
+                  }`}
               >
                 {tag.title}
               </li>
