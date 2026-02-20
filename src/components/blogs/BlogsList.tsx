@@ -1,43 +1,111 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import LogoCarousel from "@/components/home/LogoCarousel";
 import Loader from "../common/Loader";
 import BlogCard from "./BlogCard";
 import { BlogsResponse } from "@/types/blogs";
 import { apiService } from "@/services/api";
 
+const TAKE = 5;
+
 export default function BlogsList() {
-  const [blogData, setBlogData] = useState<BlogsResponse | null>(null);
+  // const [blogData, setBlogData] = useState<BlogsResponse | null>(null);
+  const [blogs, setBlogs] = useState<BlogsResponse["blogs"]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        setLoading(true);
+  const [skip, setSkip] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
 
-        const res = await apiService.get<BlogsResponse>(
-          "/blogs?take=50&skip=0"
-        );
+   const observerRef = useRef<HTMLDivElement | null>(null);
 
-        setBlogData(res);
-      } catch (error) {
-        console.error("Blog API error:", error);
-      } finally {
-        setLoading(false);
+  // useEffect(() => {
+
+  //   if (!hasMore) return;
+
+  //   const fetchBlogs = async () => {
+  //     try {
+  //       setLoading(true);
+
+  //       const res = await apiService.get<BlogsResponse>(
+  //         "/blogs?take=50&skip=0"
+  //       );
+
+  //       setBlogData(res);
+  //     } catch (error) {
+  //       console.error("Blog API error:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchBlogs();
+  // }, []);
+
+    // Fetch blogs
+  const fetchBlogs = async () => {
+    if (!hasMore) return;
+
+    try {
+      setLoading(true);
+
+      const res = await apiService.get<BlogsResponse>(
+        `/blogs?take=${TAKE}&skip=${skip}`
+      );
+
+      if (res.blogs.length < TAKE) {
+        setHasMore(false);
       }
-    };
 
+      setBlogs((prev) => [...prev, ...res.blogs]);
+      setSkip((prev) => prev + TAKE);
+    } catch (error) {
+      console.error("Blog API error:", error);
+      setHasMore(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Initial Load
+  useEffect(() => {
     fetchBlogs();
   }, []);
 
-  if (loading) return (
-  <section className="pt-32 xl:pt-40 pb-20 bg-white">    
-  <Loader />
-  </section>
+   // Infinite Scroll Observer
+  const handleObserver = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      
+      const target = entries[0];
+      if (target.isIntersecting && !loading) {
+        //alert(1)
+        fetchBlogs();
+      }
+    },
+    [loading]
   );
 
-  if (!blogData?.blogs?.length) {
+  useEffect(() => {
+    const option = {
+      root: null,
+      rootMargin: "200px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver(handleObserver, option);
+
+    if (observerRef.current) observer.observe(observerRef.current);
+
+    return () => observer.disconnect();
+  }, [handleObserver]);
+
+  // if (loading) return (
+  // <section className="pt-32 xl:pt-40 pb-20 bg-white">    
+  // <Loader />
+  // </section>
+  // );
+
+  if (!loading && !blogs.length) {
     return (
       <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center">
         <h2>No blogs available</h2>
@@ -63,10 +131,10 @@ export default function BlogsList() {
               let index = 0;
               let useHeroRow = true; // Start with 3:1 row
 
-              while (index < blogData.blogs.length) {
+              while (index < blogs.length) {
                 if (useHeroRow) {
                   // ---- 3:1 Layout (2 items) ----
-                  const rowItems = blogData.blogs.slice(index, index + 2);
+                  const rowItems = blogs.slice(index, index + 2);
 
                   rows.push(
                     <div
@@ -93,7 +161,7 @@ export default function BlogsList() {
                   index += 2;
                 } else {
                   // ---- 3 Column Layout ----
-                  const rowItems = blogData.blogs.slice(index, index + 3);
+                  const rowItems = blogs.slice(index, index + 3);
 
                   rows.push(
                     <div
@@ -121,6 +189,11 @@ export default function BlogsList() {
 
               return rows;
             })()}
+          </div>
+
+          {/* Loader Trigger */}
+          <div ref={observerRef} className="h-10 flex justify-center mt-10">
+            {loading && <Loader />}
           </div>
         </div>
       </section>
