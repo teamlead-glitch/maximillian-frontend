@@ -11,7 +11,7 @@ export default function TopMenu({ regions }:{regions:Regions}) {
   
    const pathname = usePathname();
    const formattedRegions:Record<string, RegionFormated> = transformRegions(regions);
-   console.log(formattedRegions,'formattedRegions++')
+   //console.log(formattedRegions,'formattedRegions++')
 
   return (
     <>

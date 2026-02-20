@@ -55,7 +55,7 @@ export default function BlogsList() {
           {/* 🔥 Alternating Layout */}
           <div className="space-y-16">
             {(() => {
-              const rows: JSX.Element[] = [];
+              const rows: React.ReactNode[] = [];
               let index = 0;
               let useHeroRow = true; // Start with 3:1 row
 
