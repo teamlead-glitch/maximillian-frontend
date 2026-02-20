@@ -31,7 +31,11 @@ export default function BlogsList() {
     fetchBlogs();
   }, []);
 
-  if (loading) return <Loader />;
+  if (loading) return (
+  <section className="pt-32 xl:pt-40 pb-20 bg-white">    
+  <Loader />
+  </section>
+  );
 
   if (!blogData?.blogs?.length) {
     return (
@@ -70,7 +74,7 @@ export default function BlogsList() {
                       className={`grid gap-10 ${
                         rowItems.length === 1
                           ? "grid-cols-1"
-                          : "grid-cols-1 sm:grid-cols-[3fr_1fr]"
+                          : "grid-cols-1 sm:grid-cols-[2fr_1fr]"
                       }`}
                     >
                       {/* First Blog Large */}
@@ -94,13 +98,14 @@ export default function BlogsList() {
                   rows.push(
                     <div
                       key={index}
-                      className={`grid gap-10 ${
-                        rowItems.length === 1
-                          ? "grid-cols-1"
-                          : rowItems.length === 2
-                          ? "grid-cols-1 sm:grid-cols-2"
-                          : "grid-cols-1 sm:grid-cols-3"
-                      }`}
+                      // className={`grid gap-10 ${
+                      //   rowItems.length === 1
+                      //     ? "grid-cols-1"
+                      //     : rowItems.length === 2
+                      //     ? "grid-cols-1 sm:grid-cols-2"
+                      //     : "grid-cols-1 sm:grid-cols-3"
+                      // }`}
+                       className={`grid gap-10 grid-cols-1 sm:grid-cols-3`}
                     >
                       {rowItems.map((blog) => (
                         <BlogCard key={blog.id} blog={blog} />

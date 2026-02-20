@@ -20,7 +20,7 @@ export default function BlogCard({
       <div
         className={`relative overflow-hidden rounded-lg ${
           variant === "large"
-            ? "aspect-[3/1]"
+            ? "aspect-[2/1]"
             : "aspect-square"
         }`}
       >
@@ -72,9 +72,9 @@ export default function BlogCard({
           </ul>
         )}
 
-        <p className="text-sm text-gray-500 mt-2">
+        {/* <p className="text-sm text-gray-500 mt-2">
           {formatLongDate(blog.created_at)}
-        </p>
+        </p> */}
       </div>
     </div>
   );
