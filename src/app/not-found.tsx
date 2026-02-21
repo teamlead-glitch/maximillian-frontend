@@ -18,11 +18,11 @@ export default function NotFound() {
                     <p className="text-lg text-(--color-secondary)">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Please try the following:</p>
                     <hr className="w-full  mx-auto my-5 border-gray-300" />
                     <div className="w-full flex flex-col md:flex-row justify-between items-center gap-5">
-                        <div className="flex items-center gap-2 whitespace-nowrap"><img src="images/checkspelling-icon.svg" alt="" />
+                        <div className="flex items-center gap-2 whitespace-nowrap"><img src="/images/checkspelling-icon.svg" alt="" />
                             <a href="" className="text-(--color-secondary)">Check your spelling</a></div>
-                        <div className="flex items-center gap-2 whitespace-nowrap"><img src="images/returnhome-icon.svg" alt="" />
+                        <div className="flex items-center gap-2 whitespace-nowrap"><img src="/images/returnhome-icon.svg" alt="" />
                             <a href="" className="text-(--color-secondary) underline">Return to the&nbsp;Home&nbsp;page</a></div>
-                        <div className="flex items-center gap-2 whitespace-nowrap"><img src="images/clickback-icon.svg" alt="" />
+                        <div className="flex items-center gap-2 whitespace-nowrap"><img src="/images/clickback-icon.svg" alt="" />
                             <a href="" className="text-(--color-secondary) underline">Click the&nbsp;Back&nbsp;button</a></div>
                     </div>
                     <hr className="w-full mx-auto my-5 border-gray-300" />

@@ -25,7 +25,7 @@ export default function BlogCard({
         }`}
       >
         {blog?.image_path && (
-          <Link href={`/${blog.slug}`}>
+           <Link href={`/blogs/${blog.short_slug}`}>
             <Image
               src={blog.image_path}
               alt={blog.title}
@@ -42,7 +42,7 @@ export default function BlogCard({
 
       {/* CONTENT */}
       <div className="pt-5 flex flex-col flex-grow">
-        <Link href={`/${blog.slug}`}>
+        <Link href={`/blogs/${blog.short_slug}`}>
           <h3
             className={`font-semibold text-(--color-secondary) line-clamp-2 ${
               variant === "large"
