@@ -10,15 +10,15 @@ export type Seo = {
 
   slug: string;
 
-  canonical_url: string | undefined;
+  canonical_url: string;
 
-  og_title: string | undefined;
-  og_description: string | undefined;
-  og_image: string | undefined;
+  og_title: string;
+  og_description: string ;
+  og_image: string;
 
-  twitter_title: string | undefined;
-  twitter_description: string | undefined;
-  twitter_image: string | undefined;
+  twitter_title: string ;
+  twitter_description: string 
+  twitter_image: string ;
 
   schema_markup: string;
 

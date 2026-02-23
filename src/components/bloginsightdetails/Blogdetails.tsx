@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import LogoCarousel from "@/components/home/LogoCarousel";
 import Image from "next/image";
 import { BlogDetailType } from "@/types/blogTypes";
+import { formatLongDate } from "@/utils/formatDate";
 
 export default function Blogdetails({details}:{details:BlogDetailType}) {
     const [shareUrl, setShareUrl] = useState("");
@@ -23,6 +24,7 @@ export default function Blogdetails({details}:{details:BlogDetailType}) {
     const third_descripton=details.third_description
     const author_name=details.author.name
     const author_image=details.author.image
+
     const shareLinks = [
         {
             icon: "images/facebook.svg",
