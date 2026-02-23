@@ -37,4 +37,5 @@ export type BlogType = {
     name: string;
     image: string;
   };
+  estimated_time?:number;
 };

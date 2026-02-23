@@ -38,7 +38,7 @@ export default function BlogCard({
 
         <div className="absolute bottom-0 left-0 right-2 p-4 ">
                                     <div className="absolute bottom-0 left-0 right-2 p-4 ">
-                                        <p className="text-white text-sm md:text-lg  text-right">4 min read</p>
+                                        <p className="text-white text-sm md:text-lg  text-right">{blog.estimated_time??'-'} min read</p>
                                     </div>
                                 </div>
 
