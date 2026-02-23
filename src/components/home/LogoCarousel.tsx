@@ -10,7 +10,7 @@ import { apiService } from "@/services/api";
 
 
 
-const logos = [
+/* const logos = [
     "/images/logo1.png",
     "/images/logo2.png",
     "/images/logo3.png",
@@ -22,7 +22,7 @@ const logos = [
     "/images/logo4.png",
     "/images/logo5.png",
 
-];
+]; */
 
 export default function LogoCarousel() {
 
@@ -35,7 +35,7 @@ export default function LogoCarousel() {
         try {
           const res = await apiService.get<PartnerType[]>("/partners");
     
-          console.log("FINAL SETTINGS DATA:", res);
+          /* console.log("FINAL SETTINGS DATA:", res); */
     
           setCarousel(res); // ✅ directly set
     
