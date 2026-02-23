@@ -59,6 +59,7 @@ export type BlogDetailType = {
   short_slug: string;
   created_at: string;
   updated_at: string;
+  estimated_time:number;
 
   // ⭐ FIX HERE
   seoDetail: Seo | null;

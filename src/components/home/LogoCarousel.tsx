@@ -1,8 +1,11 @@
-
+"use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css";
+import { useEffect, useState } from "react";
+import { PartnerType } from "@/types/LogoCarouselTypes";
+import { apiService } from "@/services/api";
 
 
 
@@ -23,6 +26,28 @@ const logos = [
 
 export default function LogoCarousel() {
 
+    //partners api
+        const [carousel, setCarousel] = useState<PartnerType[]>([]);
+
+    useEffect(() => {
+    
+      const fetchSettings = async () => {
+        try {
+          const res = await apiService.get<PartnerType[]>("/partners");
+    
+          console.log("FINAL SETTINGS DATA:", res);
+    
+          setCarousel(res); // ✅ directly set
+    
+        } catch (error) {
+          console.error("Settings API Error:", error);
+        }
+      };
+    
+      fetchSettings();
+    
+    }, []);
+
     return (
         <>
 
@@ -33,7 +58,7 @@ export default function LogoCarousel() {
                     modules={[Autoplay]}
                     loop={true}
                     autoplay={{
-                        delay: 0,
+                         delay: 0,
                         disableOnInteraction: false,
                     }}
                     speed={3000}
@@ -46,12 +71,12 @@ export default function LogoCarousel() {
                     }}
                     className="flex items-center"
                 >
-                    {logos.map((logo, index) => (
-                        <SwiperSlide key={index}>
+                    {carousel.map((item) => (
+                        <SwiperSlide key={item.id}>
                             <div className="flex items-center justify-center">
                                 <img
-                                    src={logo}
-                                    alt={`logo-${index}`}
+                                    src={item.image}
+                                    alt={item.alt_text}
                                     className="h-16 w-auto object-contain 
                "
                                 />

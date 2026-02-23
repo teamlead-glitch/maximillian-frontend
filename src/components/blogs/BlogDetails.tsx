@@ -24,6 +24,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
     const second_descrption = details?.second_description ?? "";
     const image = details?.image ?? "";
     const third_descripton = details?.third_description ?? "";
+    const estimated_time=details?.estimated_time??"";
 
     const published_date = details?.created_at
         ? formatShortDate(details.created_at)
@@ -90,7 +91,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                 {region}
                             </li>
                             <li className="relative text-(--color-secondary) after: content-none">
-                                4 Min read
+                                {estimated_time} Min read
                             </li>
                         </ul>
 
