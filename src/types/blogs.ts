@@ -8,6 +8,7 @@ export type BlogType = {
   id: number;
   title: string;
   slug: string;
+  short_slug:string;
   is_active: number;
   short_description: string;
   description: string;

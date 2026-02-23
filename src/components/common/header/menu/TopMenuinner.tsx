@@ -12,7 +12,7 @@ export default function TopMenuinner({ regions }: { regions: Record<string, Regi
     const [lastScrollY, setLastScrollY] = useState(0);
 
     /* ✅ STRICT & SAFE */
-    console.log(regions, 'regions---')
+    /* console.log(regions, 'regions---') */
   const regionKeys = Object.keys(regions) as (keyof typeof regions)[];
   const [activeRegion, setActiveRegion] = useState<keyof typeof regions>(
     regionKeys[0]

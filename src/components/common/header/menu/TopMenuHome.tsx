@@ -12,7 +12,7 @@ export default function TopMenuHome({ regions }: { regions: Record<string, Regio
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  console.log(regions, 'regions---')
+ /*  console.log(regions, 'regions---') */
   const regionKeys = Object.keys(regions) as (keyof typeof regions)[];
   const [activeRegion, setActiveRegion] = useState<keyof typeof regions>(
     regionKeys[0]
