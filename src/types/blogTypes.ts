@@ -57,21 +57,36 @@ export type BlogDetailType = {
 
   slug: string;
   short_slug: string;
+  created_at: string;
+  updated_at: string;
 
   // ⭐ FIX HERE
   seoDetail: Seo | null;
 
-  author: {
-    id: number;
-    name: string;
-    image: string;
-  };
+    author: {
+  id: number;
+  name: string;
+  image_path: string;
+  tagline: string;
+  is_active: number;
+  description: string;
+  instagram: string;
+  linkedin: string;
+  created_at: string;
+  updated_at: string;
+} | null;
 
   region: {
     title: string;
     slug: string;
     short_slug: string;
   };
+  category: {
+    id: number,
+    title: string,
+    created_at: string,
+    updated_at: string,
+  },
 
   tags: {
     id: number;
