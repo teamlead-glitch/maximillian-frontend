@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import { cache } from "react";
-import BlogsDetailsClient from "./BlogsDetailsClient";
 import { mapSeoToMetadata } from "@/lib/seo-mapper";
 import NotFound from "@/app/not-found";
 import { API_CONFIG } from "@/constants/config";
 import { BlogDetailType } from "@/types/blogTypes";
+import Blogdetails from "@/components/blogs/BlogDetails";
 
 
 type PageProps = {
@@ -55,9 +55,9 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
 
   const { slug } = await params;
-  const news = await fetchDetailsBySlug(slug);
+  const blog_pages = await fetchDetailsBySlug(slug);
 
-  return mapSeoToMetadata(news?.seoDetail ?? null);
+  return mapSeoToMetadata(blog_pages?.seoDetail ?? null);
 }
 
 
@@ -66,25 +66,25 @@ export async function generateMetadata({
 export default async function Page({ params }: PageProps) {
 
   const { slug } = await params;
-  const news = await fetchDetailsBySlug(slug);
+  const blog_pages = await fetchDetailsBySlug(slug);
 
-  if (!news) {
+  if (!blog_pages) {
     return <NotFound />;
   }
 
   return (
     <>
       {/* JSON-LD SCHEMA */}
-      {news?.seoDetail?.schema_markup && (
+      {blog_pages?.seoDetail?.schema_markup && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: news.seoDetail.schema_markup,
+            __html: blog_pages.seoDetail.schema_markup,
           }}
         />
       )}
 
-      <BlogsDetailsClient details={news} />
+       <Blogdetails details={blog_pages} /> ;
     </>
   );
 }
