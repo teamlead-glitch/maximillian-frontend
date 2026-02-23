@@ -119,9 +119,9 @@ export default function BlogsList() {
         <div className="max-w-[1300px] mx-auto px-5">
           {/* Heading */}
           <div className="mb-10 text-center">
-            <h1 className="text-4xl xl:text-5xl text-(--color-secondary)">
-              Travel Insights
-            </h1>
+            <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary) text-center ">
+                            Travel Insights
+                        </h1>
           </div>
 
           {/* 🔥 Alternating Layout */}

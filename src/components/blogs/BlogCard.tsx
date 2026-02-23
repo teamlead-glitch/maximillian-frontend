@@ -36,14 +36,20 @@ export default function BlogCard({
           </Link>
         )}
 
-        <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-gradient-to-t from-black/80 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-2 p-4 ">
+                                    <div className="absolute bottom-0 left-0 right-2 p-4 ">
+                                        <p className="text-white text-sm md:text-lg  text-right">4 min read</p>
+                                    </div>
+                                </div>
+
+        
       </div>
 
       {/* CONTENT */}
       <div className="pt-5 flex flex-col flex-grow">
         <Link href={`/${blog.slug}`}>
           <h3
-            className={`font-semibold text-(--color-secondary) line-clamp-2 ${variant === "large"
+            className={`font-my-font-semibold text-break text-(--color-secondary)  line-clamp-2 ${variant === "large"
                 ? "text-2xl md:text-3xl"
                 : "text-lg md:text-xl"
               }`}
