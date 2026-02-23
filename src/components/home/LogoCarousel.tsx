@@ -10,7 +10,7 @@ import { apiService } from "@/services/api";
 
 
 
-/* const logos = [
+const logos = [
     "/images/logo1.png",
     "/images/logo2.png",
     "/images/logo3.png",
@@ -22,7 +22,7 @@ import { apiService } from "@/services/api";
     "/images/logo4.png",
     "/images/logo5.png",
 
-]; */
+];
 
 export default function LogoCarousel() {
 
@@ -55,6 +55,7 @@ export default function LogoCarousel() {
             {/* logo carousel */}
             <section className="bg-white w-full  py-10 md:py-20 border-t  border-gray-200 ">
                 <Swiper
+                 key={carousel.length} // 🔥 IMPORTANT
                     modules={[Autoplay]}
                     loop={true}
                     autoplay={{
