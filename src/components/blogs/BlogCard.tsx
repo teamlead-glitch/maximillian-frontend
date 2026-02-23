@@ -38,7 +38,11 @@ export default function BlogCard({
 
         <div className="absolute bottom-0 left-0 right-2 p-4 ">
                                     <div className="absolute bottom-0 left-0 right-2 p-4 ">
+                                      {blog.estimated_time && (
+
+                                      
                                         <p className="text-white text-sm md:text-lg  text-right">{blog.estimated_time??'-'} min read</p>
+                                        )}
                                     </div>
                                 </div>
 
@@ -49,10 +53,7 @@ export default function BlogCard({
       <div className="pt-5 flex flex-col flex-grow">
         <Link href={`/${blog.slug}`}>
           <h3
-            className={`font-my-font-semibold text-break text-(--color-secondary)  line-clamp-2 ${variant === "large"
-                ? "text-2xl md:text-3xl"
-                : "text-lg md:text-xl"
-              }`}
+            className="font-my-font-semibold text-break  text-xl md:text-2xl text-(--color-secondary)  line-clamp-2"
           >
             {blog.title}
           </h3>
