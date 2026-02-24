@@ -14,6 +14,7 @@ export interface FormErrors {
   mobile: string;
   email: string;
   message: string;
+  is_agreed:string
 }
 
 

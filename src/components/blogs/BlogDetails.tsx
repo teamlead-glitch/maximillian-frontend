@@ -20,6 +20,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
     const title = details?.title ?? "";
     const banner_image = details?.banner_image ?? "";
+    const mobile_banner_image = details?.banner_mob_image ?? "";
     const description = details?.description ?? "";
     const second_descrption = details?.second_description ?? "";
     const image = details?.image ?? "";
@@ -113,11 +114,29 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
                     </div>
                 </div >
-                <div className=" py-3 md:py-6 aspect-[4/2.5] md:aspect-[4/1.5] relative">
-                    {banner_image && (
-                        <Image src={banner_image} alt={title} fill className="object-cover w-full h-full" />
-                    )}
-                </div>
+                <div className="py-3 md:py-6 aspect-[4/2.5] md:aspect-[4/1.5] relative">
+
+  {/* MOBILE IMAGE */}
+  {mobile_banner_image && (
+    <Image
+      src={mobile_banner_image}
+      alt={title}
+      fill
+      className="object-cover w-full h-full md:hidden"
+    />
+  )}
+
+  {/* DESKTOP IMAGE */}
+  {banner_image && (
+    <Image
+      src={banner_image}
+      alt={title}
+      fill
+      className="object-cover w-full h-full hidden md:block"
+    />
+  )}
+
+</div>
             </section >
 
             <section className="relative py-5 overflow-hidden bg-white">
