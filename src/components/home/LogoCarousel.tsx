@@ -6,11 +6,12 @@ import "swiper/css";
 import { useEffect, useState } from "react";
 import { PartnerType } from "@/types/LogoCarouselTypes";
 import { apiService } from "@/services/api";
+import Image from "next/image";
 
 
 
 
-const logos = [
+/* const logos = [
     "/images/logo1.png",
     "/images/logo2.png",
     "/images/logo3.png",
@@ -22,30 +23,30 @@ const logos = [
     "/images/logo4.png",
     "/images/logo5.png",
 
-];
+]; */
 
 export default function LogoCarousel() {
 
     //partners api
-        const [carousel, setCarousel] = useState<PartnerType[]>([]);
+    const [carousel, setCarousel] = useState<PartnerType[]>([]);
 
     useEffect(() => {
-    
-      const fetchSettings = async () => {
-        try {
-          const res = await apiService.get<PartnerType[]>("/partners");
-    
-          /* console.log("FINAL SETTINGS DATA:", res); */
-    
-          setCarousel(res); // ✅ directly set
-    
-        } catch (error) {
-          console.error("Settings API Error:", error);
-        }
-      };
-    
-      fetchSettings();
-    
+
+        const fetchSettings = async () => {
+            try {
+                const res = await apiService.get<PartnerType[]>("/partners");
+
+                /* console.log("FINAL SETTINGS DATA:", res); */
+
+                setCarousel(res); // ✅ directly set
+
+            } catch (error) {
+                console.error("Settings API Error:", error);
+            }
+        };
+
+        fetchSettings();
+
     }, []);
 
     return (
@@ -55,11 +56,11 @@ export default function LogoCarousel() {
             {/* logo carousel */}
             <section className="bg-white w-full  py-10 md:py-20 border-t  border-gray-200 ">
                 <Swiper
-                 key={carousel.length} // 🔥 IMPORTANT
+                    key={carousel.length} // 🔥 IMPORTANT
                     modules={[Autoplay]}
                     loop={true}
                     autoplay={{
-                         delay: 0,
+                        delay: 0,
                         disableOnInteraction: false,
                     }}
                     speed={3000}
@@ -75,12 +76,14 @@ export default function LogoCarousel() {
                     {carousel.map((item) => (
                         <SwiperSlide key={item.id}>
                             <div className="flex items-center justify-center">
-                                <img
-                                    src={item.image}
-                                    alt={item.alt_text}
-                                    className="h-16 w-auto object-contain 
-               "
-                                />
+                                <div className="relative h-16 w-full">
+                                    <Image
+                                        src={item.image}
+                                        alt={item.alt_text}
+                                        fill
+                                        className="object-contain "
+                                    />
+                                </div>
                             </div>
                         </SwiperSlide>
                     ))}

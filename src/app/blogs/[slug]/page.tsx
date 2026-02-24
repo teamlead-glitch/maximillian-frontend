@@ -84,7 +84,7 @@ export default async function Page({ params }: PageProps) {
         />
       )}
 
-       <Blogdetails details={blog_pages} /> ;
+       <Blogdetails details={blog_pages} /> 
     </>
   );
 }
