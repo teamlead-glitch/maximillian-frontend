@@ -5,7 +5,7 @@ import LogoCarousel from "@/components/home/LogoCarousel";
 import Image from "next/image";
 import { BlogDetailType } from "@/types/blogTypes";
 import { formatShortDate } from "@/utils/formatDate";
-
+import Link from "next/link";
 export default function Blogdetails({ details }: { details: BlogDetailType }) {
     const [shareUrl, setShareUrl] = useState("");
 
@@ -20,10 +20,12 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
     const title = details?.title ?? "";
     const banner_image = details?.banner_image ?? "";
+    const mobile_banner_image = details?.banner_mob_image ?? "";
     const description = details?.description ?? "";
     const second_descrption = details?.second_description ?? "";
     const image = details?.image ?? "";
     const third_descripton = details?.third_description ?? "";
+    const estimated_time = details?.estimated_time ?? "";
 
     const published_date = details?.created_at
         ? formatShortDate(details.created_at)
@@ -31,11 +33,13 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
     const region = details?.region?.title ?? "";
 
-    const auth_category = details?.category?.title ?? "";
+    const category = details?.category?.title ?? "";
 
-    const breadcrumbItems = details?.author
-        ? [auth_category, "Context", "Experience"]
-        : [];
+    const tagItems = details?.tags || [];
+
+    const countries = details?.countries || [];
+
+
 
     const shareLinks = [
         {
@@ -84,23 +88,55 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                         </h1>
                         <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1 py-4">
                             <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                Guides
+                                {category}
                             </li>
                             <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                 {region}
                             </li>
+                            {countries.map((country, i) => (
+                                <li
+                                    key={country.id}
+                                    className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                >
+                                    <Link href="#" className="hover:underline">
+                                        {country.title}
+                                    </Link>
+
+                                    {i < countries.length - 1 && (
+                                        <span className="mx-2 shrink-0">/</span>
+                                    )}
+                                </li>
+                            ))}
                             <li className="relative text-(--color-secondary) after: content-none">
-                                4 Min read
+                                {estimated_time} Min read
                             </li>
                         </ul>
 
                     </div>
                 </div >
-                <div className=" py-3 md:py-6 aspect-[4/2.5] md:aspect-[4/1.5]">
-                    {banner_image && (
-                        <img src={banner_image} alt={title} className="object-cover w-full h-full"/>
-                    )}
-                </div>
+                <div className="py-3 md:py-6 aspect-[4/2.5] md:aspect-[4/1.5] relative">
+
+  {/* MOBILE IMAGE */}
+  {mobile_banner_image && (
+    <Image
+      src={mobile_banner_image}
+      alt={title}
+      fill
+      className="object-cover w-full h-full md:hidden"
+    />
+  )}
+
+  {/* DESKTOP IMAGE */}
+  {banner_image && (
+    <Image
+      src={banner_image}
+      alt={title}
+      fill
+      className="object-cover w-full h-full hidden md:block"
+    />
+  )}
+
+</div>
             </section >
 
             <section className="relative py-5 overflow-hidden bg-white">
@@ -110,13 +146,13 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
                         </div>
                     </div>
-                    <div className="w-full justify-center grid grid-cols-1 sm:grid-cols-[7fr_3fr] gap-3 py-10">
-                        <div dangerouslySetInnerHTML={{ __html: second_descrption }}>
+                    <div className="w-full justify-center  grid grid-cols-1 sm:grid-cols-[7fr_3fr] gap-3 py-10 items-start">
+                        <div className=" [&_p:empty]:hidden   [&_.MsoNormal]:!m-0 " dangerouslySetInnerHTML={{ __html: second_descrption }}>
 
                         </div>
-                        <div className="aspect-square">
+                        <div className="relative w-full max-w-[323px] h-[323px]">
                             {image && (
-                                <img src={image} alt="" className="rounded-lg object-cover w-full h-full" />
+                                <Image src={image} alt="" fill className="rounded-lg object-cover" />
                             )}
                         </div>
                     </div>
@@ -124,35 +160,73 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                     <div dangerouslySetInnerHTML={{ __html: third_descripton }}>
 
                     </div>
-                    {details?.author && (<div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 ">
-                        <div className="flex  gap-3 pr-0 md:pr-20 xl:pr-30">
-                            {details?.author?.image_path && (
-                                <img
+                    <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 ">
+                        {details?.author ? (
+
+                            /* ✅ FULL AUTHOR BLOCK */
+                            <div className="flex gap-3 pr-0 md:pr-20 xl:pr-30 relative">
+
+                                <Image
                                     src={details.author.image_path}
+                                    width={50}
+                                    height={50}
                                     alt="author"
                                     className="object-cover rounded-full w-15 h-15"
                                 />
-                            )}
-                            <div className="grid gap-2 pl-4">
-                                <h5 className=" text-break text-sm text-(--color-secondary)">Written by</h5>
-                                <h4 className="font-my-font-semibold text-break text-xl text-(--color-secondary)">{details.author.name}</h4>
-                                <p>{details.author.tagline}</p>
-                                <div className="flex gap-2">
-                                    <a href={details.author.linkedin} target="_blank"><img src="/images/linkedin.svg" alt="" /></a>
-                                    <a href={details.author.instagram} target="_blank"><img src="/images/instagram.svg" alt="" /></a>
+
+                                <div className="grid gap-2 pl-4">
+                                    <h5 className="text-break text-sm text-(--color-secondary)">
+                                        Written by
+                                    </h5>
+
+                                    <h4 className="font-my-font-semibold text-break text-xl text-(--color-secondary)">
+                                        {details.author.name}
+                                    </h4>
+
+                                    <p>{details.author.tagline}</p>
+
+                                    <div className="flex gap-2 relative">
+                                        <a href={details.author.linkedin} target="_blank">
+                                            <Image src="/images/linkedin.svg" width={20} height={20} alt="" />
+                                        </a>
+
+                                        <a href={details.author.instagram} target="_blank">
+                                            <Image src="/images/instagram.svg" width={20} height={20} alt="" />
+                                        </a>
+                                    </div>
+
+                                    <div dangerouslySetInnerHTML={{ __html: details.author.description }} />
                                 </div>
-                                <div dangerouslySetInnerHTML={{ __html: details.author.description }}></div>
+
                             </div>
-                        </div>
+
+                        ) : (
+
+                            /* ✅ ONLY ADMIN TEXT */
+                            <div className="text-sm text-(--color-secondary)">
+                                Written by Author
+                            </div>
+
+                        )}
                         <div className="flex flex-col gap-2 items-start md:items-end  justify-between mt-5 md:mt-0">
                             <div className="w-full flex flex-col items-center md:items-end">
-                                <ul className="flex gap-2 pb-3 md:pb-0">
-                                    {breadcrumbItems.map((item, i) => (
-                                        <li key={i} className="flex items-center text-sm text-(--color-secondary)">
-                                            {item}
-                                            {i < breadcrumbItems.length - 1 && <span className="mx-2">/</span>}
+                                <ul className="flex items-center gap-2 pb-3 md:pb-0">
+
+                                    {tagItems.map((tag, i) => (
+                                        <li
+                                            key={tag.id}
+                                            className="flex items-center text-sm text-(--color-secondary)"
+                                        >
+                                            <Link href="#" className="hover:underline">
+                                                {tag.title}
+                                            </Link>
+
+                                            {i < tagItems.length - 1 && (
+                                                <span className="mx-2 shrink-0">/</span>
+                                            )}
                                         </li>
                                     ))}
+
                                 </ul>
                                 <p><span className="text-sm">{published_date}</span></p></div>
                             <div className="w-full flex items-center md:items-end">
@@ -177,11 +251,10 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                             </div>
 
                         </div>
-                    </div>)}
+                    </div>
                 </div>
             </section >
             <LogoCarousel />
-
         </>
     );
 }

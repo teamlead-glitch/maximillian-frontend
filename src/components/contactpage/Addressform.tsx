@@ -6,6 +6,7 @@ import { ContactEnquiryResponse, FormErrors, Formtypes, SettingsResponse } from 
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import SimpleCaptcha from "../Captcha";
+import Link from "next/link";
 
 
 
@@ -37,6 +38,7 @@ const [captchaResetKey, setCaptchaResetKey] = useState(0);
         mobile: "",
         email: "",
         message: "",
+        is_agreed:"",
     });
 
     /* -----------------------------------------------------------------------
@@ -94,6 +96,10 @@ const [captchaResetKey, setCaptchaResetKey] = useState(0);
             newErrors.message = "Message is required";
         } else if (formData.message.trim().length < 5) {
             newErrors.message = "Message must be at least 5 characters";
+        }
+        /* check */
+        if (!formData.is_agreed) {
+            newErrors.is_agreed="You must agree to continue."
         }
 
         setErrors(newErrors as FormErrors);
@@ -377,21 +383,23 @@ useEffect(() => {
 
                                     </div>
                                     {/* Checkbox */}
-                                    <label className="flex items-start gap-3 text-sm text-(--color-secondary)">
-                                        <input
-                                            onChange={handleChange}
-                                            checked={formData.is_agreed}
-                                            id="is_agreed"
-                                            type="checkbox"
-                                            className="mt-1 h-4 w-4 rounded border-gray-600 bg-transparent focus:ring-0"
-                                        />
-                                        <span >
-                                            I've read and agreed to Festivon{" "}
-                                            <a href="/privacy-policy" className="underline hover:text-black">
-                                                Privacy Policy
-                                            </a>
-                                        </span>
-                                    </label>
+                                    <div className="flex flex-col">
+                                        <label className="flex items-start gap-3 text-sm text-(--color-secondary)">
+                                            <input
+                                                onChange={handleChange}
+                                                checked={formData.is_agreed}
+                                                id="is_agreed"
+                                                type="checkbox"
+                                                className="mt-1 h-4 w-4 rounded border-gray-600 bg-transparent focus:ring-0"
+                                            />
+                                            <span >
+                                                I&apos;ve read and agreed to Festivon{" "}
+                                                <Link href="/privacy-policy" className="underline hover:text-black" >Privacy Policy</Link>
+                                                    
+                                            </span>
+                                        </label>
+                                         {errors.is_agreed && <p className="mt-1" style={{ color: "red", fontSize: "12px" }}>{errors.is_agreed}</p>}
+                                    </div>
                                       {/* Captcha number */}
                           <SimpleCaptcha onVerify={setIsCaptchaVerified}  resetTrigger={captchaResetKey} />
 
