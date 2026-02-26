@@ -57,9 +57,9 @@ export default function ExperienceTour() {
             ) : (
                 <>
                     {taggroups.map((group, index) => (
-                        <section className="bg-white py-10 md:py-20" key={group.id}>
+                        <section className="bg-white pt-15 pb-10 md:pt-10 md:py-10    xl:py-20" key={group.id}>
                             <div className="max-w-[1300px]  mx-auto px-5">
-                                <div className={`flex gap-8 ${index % 2 == 0 ? "flex-col md:flex-row" : "flex-col-reverse md:flex-row-reverse"} `} >
+                                <div className={`flex gap-8 ${index % 2 == 0 ? "flex-col md:flex-row" : "flex-col md:flex-row-reverse sm:flex-col"} `} >
                                     <div className={` w-full md:w-1/4 relative mr-0 ${index % 2 == 0 ? "md:pr-10" : "md:pl-10"} `}>
                                         <h3 className={`font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) ${index % 2 == 0 ? "md:text-right" : "md:text-left"}`}>{group.title} <br /> Tours</h3>
                                         <div className={`absolute w-px h-10 bg-gray-400 md:block hidden ${index % 2 === 1 ? "left-0 top-0" : "right-0 top-0"}`}></div>

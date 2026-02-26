@@ -20,7 +20,7 @@ export default function WhatMakeExc() {
     return (
         <>
             {/* SECTION */}
-            <section className="bg-white py-10 md:py-40">
+            <section className="bg-white py-10 md:pt-20 md:pb-0   lg:pb-0 lg:pt-40">
 
                 {/* HEADER */}
                 <div className="max-w-[1300px] flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mx-auto px-5">

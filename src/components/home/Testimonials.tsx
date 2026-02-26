@@ -42,12 +42,12 @@ export default function Testimonials() {
         <>
 
             {/* testimonials */}
-            <section className="bg-[#f9f7f5] pt-20 md:pt-40 pb-10 md:pb-20">
+            <section className="bg-[#f9f7f5] pt-20   md:pt-20   xl:pt-40 pb-10 md:pb-20">
                 <div className="  mx-auto px-5">
                     <div className="mb-4 mx-auto flex justify-center">
                         <img src="images/quote-icon.svg" alt="" />
                     </div>
-                    <div className="w-full my-10 md:py-20">
+                    <div className="w-full my-10 md:py-5 xl:py-10">
                         <div className="max-w-4xl mx-auto text-center">
 
                             <Swiper

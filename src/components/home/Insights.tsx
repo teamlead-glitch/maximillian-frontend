@@ -44,18 +44,21 @@ export default function Insights() {
 
 
             {/* insights */}
-            <section className="bg-white pb-10 md:pb-40">
+
+
+
+            <section className="bg-white pb-0 md:py-20 lg:py-40">
                 <div className="mx-auto px-0 md:px-5">
                     <div className="w-full">
                         <div className="max-w-5xl mx-auto">
                             <div className="relative">
                                 <button className="insights-prev hidden lg:flex text-sm sm:text-base absolute md:left-0 xl:-left-25 top-1/2  z-20
-    w-20 h-24 items-center justify-center cursor-pointer">
+    w-12 h-14 md:w-14 md:h-16 lg:w-16 lg:h-20 xl:w-20 xl:h-24 items-center justify-center cursor-pointer">
                                     <img src="images/left-arrow.svg" alt="" />
                                 </button>
 
                                 <button className="insights-next hidden lg:flex text-sm sm:text-base absolute md:right-0 xl:-right-25 top-1/2  z-20
-    w-20 h-24  items-center justify-center cursor-pointer">
+    w-12 h-14 md:w-14 md:h-16 lg:w-16 lg:h-20 xl:w-20 xl:h-24  items-center justify-center cursor-pointer">
                                     <img src="images/right-arrow.svg" alt="" />
                                 </button>
                                 <Swiper
@@ -77,7 +80,7 @@ export default function Insights() {
                                 >
                                     {insights.map((item) => (
                                         <SwiperSlide key={item.id}>
-                                            <div className="relative flex flex-col md:flex-row items-center gap-3 md:gap-10 xl:gap-20 p-10 md:p-15 xl:p-20 z-10">
+                                            <div className="relative flex flex-col md:flex-row items-center gap-3 md:gap-10 xl:gap-20 py-15 px-5 md:p-20 xl:p-20 z-10">
 
                                                 {/* BACKGROUND (70%) */}
                                                 <div
@@ -91,7 +94,7 @@ export default function Insights() {
                                                 />
 
                                                 {/* LEFT CONTENT */}
-                                                <div className="relative z-10 w-full md:w-1/2 pr-0 md:pr-10 py-0 md:py-10  xl:pr-20 ">
+                                                <div className="relative z-10 w-full md:w-1/2 pr-0 md:pr-5 py-0 md:py-0  xl:pr-20 ">
                                                     <p className="tracking-wide text-(--color-secondary) mb-4">
                                                         {item.mainheading}
                                                     </p>
