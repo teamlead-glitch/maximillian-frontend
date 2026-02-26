@@ -394,7 +394,7 @@ useEffect(() => {
                                             />
                                             <span >
                                                 I&apos;ve read and agreed to Festivon{" "}
-                                                <Link href="/privacy-policy" className="underline hover:text-black" >Privacy Policy</Link>
+                                                <Link href="/privacy-policy" target="_blank" className="underline hover:text-black" >Privacy Policy</Link>
                                                     
                                             </span>
                                         </label>

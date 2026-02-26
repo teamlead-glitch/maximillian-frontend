@@ -93,7 +93,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                             <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                 {region}
                             </li>
-                            {countries.map((country, i) => (
+                            {countries.map((country) => (
                                 <li
                                     key={country.id}
                                     className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
@@ -101,10 +101,6 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                     <Link href="#" className="hover:underline">
                                         {country.title}
                                     </Link>
-
-                                    {i < countries.length - 1 && (
-                                        <span className="mx-2 shrink-0">/</span>
-                                    )}
                                 </li>
                             ))}
                             <li className="relative text-(--color-secondary) after: content-none">
