@@ -104,7 +104,7 @@ export default function Testimonials() {
                             </Swiper>
                         </div>
                     </div>
-                    <div className="mb-4 mx-auto flex justify-center">
+                    {/* <div className="mb-4 mx-auto flex justify-center">
                         <div className="inline-block">  <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
                             <span className="mr-3">View All Testimonials</span>
 
@@ -122,7 +122,7 @@ export default function Testimonials() {
                                 />
                             </svg>
                         </button></div>
-                    </div>
+                    </div> */}
                 </div>
             </section>
             {/* testimonials close */}
