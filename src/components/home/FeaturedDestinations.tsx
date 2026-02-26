@@ -163,7 +163,7 @@ export default function FeaturedDestinations() {
                                             />
                                         </div>
 
-                                        <h3 className="text-lg font-semibold mt-1 font-my-font-regular line-clamp-1">
+                                        <h3 className="text-lg font-semibold mt-1 font-my-font-regular text-(--color-secondary) line-clamp-1">
                                             {item.title}
                                         </h3>
 

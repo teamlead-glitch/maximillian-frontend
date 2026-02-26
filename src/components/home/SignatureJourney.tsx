@@ -1,5 +1,8 @@
 "use client";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Pagination } from "swiper/modules";
+import "swiper/css/pagination";
 import { useState, useEffect } from "react";
 import { apiService } from "@/services/api";
 import Loader from "../common/Loader";
@@ -40,7 +43,7 @@ export default function SignatureJourney() {
                 // <p>No journeys available</p>
                 <></>
             ) : (
-                <section className="bg-white pt-0 md:pt-20 md:pb-20">
+                <section className=" pt-0 md:pt-20 md:pb-20 bg-white">
                     <div className="max-w-[1300px]  mx-auto px-5">
                         <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
                             <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />
@@ -68,20 +71,69 @@ export default function SignatureJourney() {
                                 </button>
                             </div>
                         </div>
+                        <div className="md:hidden mt-5">
+
+                            {/* Pagination OUTSIDE */}
 
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-4 lg:gap-10 mt-5 md:mt-20">
+                            <Swiper
+                                modules={[Pagination]}
+                                pagination={{
+                                    el: ".signature-pagination",
+                                    clickable: true,
+                                }}
+
+                                spaceBetween={16}
+                                slidesPerView={1.2}
+                            >
+                                {signatureJournerys.map((item) => (
+                                    <SwiperSlide key={item.id}>
+                                        <JourneyCard journey={item} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+
+                            <div className="signature-pagination flex justify-center py-3  bg-white"></div>
+
+                        </div>
+
+                        {/* Grid for ≥768px */}
+                        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-10 mt-20">
                             {signatureJournerys.map((item) => (
                                 <JourneyCard key={item.id} journey={item} />
                             ))}
                         </div>
-
-
-
                     </div>
                 </section>
             )}
             {/* signature journey section close */}
+
+
+
+            {/* PAGINATION STYLE */}
+            <style jsx global>{`
+
+ .signature-pagination{
+ background: white}
+
+ .swiper-pagination-bullet{
+ display:flex;
+ gap:10px;
+ width:10px;
+ height:10px;
+ }
+
+      .signature-pagination .swiper-pagination-bullet {
+         background: #171717;
+        
+          width: 10px;
+          height: 10px;
+      }
+
+      .signature-pagination .swiper-pagination-bullet-active {
+        background: #171717;
+      }
+    `}</style>
         </>
     )
 }
