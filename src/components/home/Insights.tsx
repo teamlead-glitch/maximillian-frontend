@@ -95,7 +95,7 @@ export default function Insights() {
 
                                                 {/* LEFT CONTENT */}
                                                 <div className="relative z-10 w-full md:w-1/2 pr-0 md:pr-5 py-0 md:py-0  xl:pr-20 ">
-                                                    <p className="tracking-wide text-(--color-secondary) mb-4">
+                                                    <p className="tracking-wide  mb-4">
                                                         {item.mainheading}
                                                     </p>
 
@@ -103,7 +103,7 @@ export default function Insights() {
                                                         {item.heading}
                                                     </h2>
 
-                                                    <p className="text-(--color-secondary) mb-5 max-w-md line-clamp-4">
+                                                    <p className="mb-5 max-w-md line-clamp-4">
                                                         {item.text || item.content}
                                                     </p>
 

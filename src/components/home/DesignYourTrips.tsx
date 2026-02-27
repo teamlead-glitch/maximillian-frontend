@@ -9,7 +9,7 @@ export default function DesignYourTrips() {
                         <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Design <br />
                             Your Trip</h3></div>
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                        <div className="w-full md:w-[200px]"><p className="text-sm text-(--color-secondary) ">Some journeys can’t be templated. Design a fully personalised journey with us.</p></div>
+                        <div className="w-full md:w-[200px]"><p>Some journeys can’t be templated. Design a fully personalised journey with us.</p></div>
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                         <div className="inline-block">  <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
                             <span className="mr-3">Start Designing</span>

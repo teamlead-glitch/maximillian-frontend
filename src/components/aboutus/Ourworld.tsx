@@ -40,14 +40,14 @@ px-4 sm:px-0 text-center">
                         <div className="w-full md:w-1/2 pr-0  lg:pr-28">
                             <h2 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">How We See the World Around Us
                             </h2>
-                            <p className="mb-5">We see travel as more than movement between cities.
+                            <p>We see travel as more than movement between cities.
                             </p>
-                            <p className="mb-5">We see context — the story behind a street, the rhythm of a place, the layers that give meaning to a moment.
+                            <p>We see context — the story behind a street, the rhythm of a place, the layers that give meaning to a moment.
                             </p>
-                            <p className="mb-5">A well-designed journey is not measured by how much you see, but by how deeply you experience it.</p>
-                            <p className="mb-5">We believe in considered pacing, intelligent routing, and itineraries that leave room to breathe.
+                            <p>A well-designed journey is not measured by how much you see, but by how deeply you experience it.</p>
+                            <p>We believe in considered pacing, intelligent routing, and itineraries that leave room to breathe.
                             </p>
-                            <p className="mb-5">Because when travel is rushed, perspective is lost.
+                            <p>Because when travel is rushed, perspective is lost.
 
                             </p>
 
@@ -75,7 +75,7 @@ px-4 sm:px-0 text-center">
                         </div>
                         <div className="w-full md:w-1/2 pl-0  lg:pl-28   ">
                             <h3 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">About Festivon and Its Vision</h3>
-                            <p className="mb-5">Festivon Signature Tours is a curated boutique travel brand focused on designing European and global journeys for discerning travellers.</p>
+                            <p>Festivon Signature Tours is a curated boutique travel brand focused on designing European and global journeys for discerning travellers.</p>
                             <p>Our vision is not scale.
                             </p>
                             <p>It is precision.
@@ -132,7 +132,7 @@ px-4 sm:px-0 text-center">
                     <div className="flex flex-col items-center md:flex-row w-full">
                         <div className="w-full md:w-1/2 pr-0  lg:pr-28">
                             <h2 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">Founder’s Inspiration and His Journey</h2>
-                            <p className="mb-5">Festivon was founded with the belief that travel planning deserves the same discipline and clarity as any well-structured profession.
+                            <p>Festivon was founded with the belief that travel planning deserves the same discipline and clarity as any well-structured profession.
                             </p>
                             <p>With over two decades of professional experience in compliance and safety-driven environments — where structure, accountability, and precision are essential — our founder recognised a gap in the travel space. Beautiful destinations were being offered, but without thoughtful guidance behind them.</p>
                             <p>Alongside this professional background, he has spent more than fifteen years travelling extensively across India, Europe, the Middle East, and parts of the Americas — personally planning and executing multi-country journeys, gaining practical insights into routing, logistics, cultural nuances, and on-ground realities.</p>

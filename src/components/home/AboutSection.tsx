@@ -24,9 +24,9 @@ export default function AboutSection() {
                                 <p className="text-(--color-secondary)  mb-4">
 
                                     At Maximillian Holidays, we believe meaningful travel is unhurried, immersive, and deeply personal.</p>
-                                <p className="text-(--color-secondary)">We craft small-group and private international journeys that focus on culture, connection, and comfort—moving beyond checklists to create experiences that stay with you long after the journey ends.</p>
+                                <p >We craft small-group and private international journeys that focus on culture, connection, and comfort—moving beyond checklists to create experiences that stay with you long after the journey ends.</p>
                             </div>
-                            <div className="w-full md:w-1/2"><p className="text-(--color-secondary)">Our curated approach focuses on specialty journeys from culinary and trekking expeditions to slow travel designed to foster genuine discovery. Through an enquiry-driven user journey and a commitment to cinematic storytelling, we transform international travel into a premium, custom-fit experience tailored specifically to your group size, budget, and season.</p></div>
+                            <div className="w-full md:w-1/2"><p>Our curated approach focuses on specialty journeys from culinary and trekking expeditions to slow travel designed to foster genuine discovery. Through an enquiry-driven user journey and a commitment to cinematic storytelling, we transform international travel into a premium, custom-fit experience tailored specifically to your group size, budget, and season.</p></div>
                         </div>
                         <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-3 mt-3 cursor-pointer">
                             <span className="mr-3">Our World</span>

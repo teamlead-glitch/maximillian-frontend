@@ -82,7 +82,7 @@ export default function FeaturedDestinations() {
                             Featured <br />
                             Destinations</h3></div>
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                        <div className="w-full md:w-[200px]"><p className="text-sm text-(--color-secondary) ">Check out our carefully curated destination experiences.</p></div>
+                        <div className="w-full md:w-[200px]"><p>Check out our carefully curated destination experiences.</p></div>
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                         <div className="inline-block">
                             <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">

@@ -13,7 +13,7 @@ export default function Thankyou() {
                         <h1 className="font-my-font-regular text-break text-center  text-4xl xl:text-5xl text-(--color-secondary) ">
                             Thanks,<br /> We got your enquiry.
                         </h1>
-                        <p className="text-(--color-secondary) text-center mt-5 ">
+                        <p className="mt-5 ">
                             Every enquiry is personally reviewed by our travel design team. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut. Aenean ultrices convallis sagittis. Nullam posuere, tortor a fringilla condimentum.
                         </p>
                     </div >
@@ -27,7 +27,7 @@ export default function Thankyou() {
                         <div className="w-full mb-5 md:mb-0">
                             <div className="text-[#D3CABF] text-4xl font-my-font-regular mb-4">01</div>
                             <h3 className="text-(--color-secondary) text-xl font-my-font-semibold ">Our team will contact you</h3>
-                            <p className="text-(--color-secondary) mt-2 ">
+                            <p className="mt-2 ">
                                 And will discuss & plan about your bespoke journey in detail.
                             </p>
                         </div>
@@ -41,7 +41,7 @@ export default function Thankyou() {
                         <div className="w-full mb-5 md:mb-0">
                             <div className="text-[#D3CABF] text-4xl font-my-font-regular mb-4">02</div>
                             <h3 className="text-(--color-secondary) text-xl font-my-font-semibold ">We Curate the Experience</h3>
-                            <p className="text-(--color-secondary) mt-2 ">
+                            <p className=" mt-2 ">
                                 Based on the conversation, we will craft a tailored travel experience for you.
                             </p>
                         </div>
@@ -55,7 +55,7 @@ export default function Thankyou() {
                         <div className="w-full">
                             <div className="text-[#D3CABF] text-4xl font-my-font-regular mb-4">03</div>
                             <h3 className="text-(--color-secondary) text-xl font-my-font-semibold ">Pack for the journey!</h3>
-                            <p className="text-(--color-secondary) mt-2 ">
+                            <p className=" mt-2 ">
                                 When you’re happy with the package and itinerary, we’re good to pack!
                             </p>
                         </div>

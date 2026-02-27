@@ -16,9 +16,9 @@ export default function AddressForm() {
     //loader
     const [loading, setLoading] = useState(false);
 
-      //for captcha validation
-const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
-const [captchaResetKey, setCaptchaResetKey] = useState(0);
+    //for captcha validation
+    const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+    const [captchaResetKey, setCaptchaResetKey] = useState(0);
 
 
     const [formData, setFormData] = useState<Formtypes>({
@@ -104,117 +104,117 @@ const [captchaResetKey, setCaptchaResetKey] = useState(0);
 
     //submit form
     const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-    
-  if (loading) return; // 🔥 extra safety (prevents double click)
-  // form validation
-  if (!validate()) return;
-  if (!isCaptchaVerified) {
-    toast.error("Please verify captcha before submitting");
-    return;
-  } 
+        e.preventDefault();
 
-  try {
+        if (loading) return; // 🔥 extra safety (prevents double click)
+        // form validation
+        if (!validate()) return;
+        if (!isCaptchaVerified) {
+            toast.error("Please verify captcha before submitting");
+            return;
+        }
 
-      setLoading(true); // ⭐ start loader
+        try {
 
-    const payload = {
-      name: `${formData.title} ${formData.name}`.trim(),
-      phone: formData.mobile,
-      email: formData.email,
-      message: formData.message,
+            setLoading(true); // ⭐ start loader
+
+            const payload = {
+                name: `${formData.title} ${formData.name}`.trim(),
+                phone: formData.mobile,
+                email: formData.email,
+                message: formData.message,
+            };
+
+            const res = await apiService.post<ContactEnquiryResponse>(
+                "/contact-enquiry", // ✅ remove /api if BASE_URL already contains it
+                payload
+            );
+
+            /* console.log(res); */
+
+            if (res.result === "success") {
+                toast.success(res.message);
+
+                // Reset form
+                setFormData({
+                    title: "",
+                    name: "",
+                    mobile: "",
+                    email: "",
+                    message: "",
+                    is_agreed: false,
+                });
+                setIsCaptchaVerified(false);
+                setCaptchaResetKey((prev) => prev + 1); // 🔄 refresh captcha
+
+            } else {
+                toast.error(res.message || "Something went wrong"); // ✅ fixed syntax
+            }
+
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+            console.error("CONTACT FORM ERROR:", error);
+
+            // ✅ show backend validation error
+            toast.error("Failed to send. Please try again!");
+        } finally {
+            setLoading(false); // ⭐ stop loader
+        }
     };
 
-    const res = await apiService.post<ContactEnquiryResponse>(
-      "/contact-enquiry", // ✅ remove /api if BASE_URL already contains it
-      payload
-    );
 
-    /* console.log(res); */
+    /* settngs api */
+    useEffect(() => {
 
-    if (res.result === "success") {
-      toast.success(res.message);
+        const fetchSettings = async () => {
+            try {
+                const res = await apiService.get<SettingsResponse>("/settings");
 
-      // Reset form
-      setFormData({
-        title: "",
-        name: "",
-        mobile: "",
-        email: "",
-        message: "",
-        is_agreed: false,
-      });
-      setIsCaptchaVerified(false);
-        setCaptchaResetKey((prev) => prev + 1); // 🔄 refresh captcha
+                console.log("FINAL SETTINGS DATA:", res);
 
-    } else {
-      toast.error(res.message || "Something went wrong"); // ✅ fixed syntax
-    }
+                setSettings(res); // ✅ directly set
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-    console.error("CONTACT FORM ERROR:", error);
+            } catch (error) {
+                console.error("Settings API Error:", error);
+            }
+        };
 
-    // ✅ show backend validation error
-    toast.error( "Failed to send. Please try again!");
-  }finally {
-    setLoading(false); // ⭐ stop loader
-  }
-};
+        fetchSettings();
 
+    }, []);
 
-/* settngs api */
-useEffect(() => {
-
-  const fetchSettings = async () => {
-    try {
-      const res = await apiService.get<SettingsResponse>("/settings");
-
-      console.log("FINAL SETTINGS DATA:", res);
-
-      setSettings(res); // ✅ directly set
-
-    } catch (error) {
-      console.error("Settings API Error:", error);
-    }
-  };
-
-  fetchSettings();
-
-}, []);
-
-  //fb link
-  const fb_link = `${settings?.fb_url}`;
+    //fb link
+    const fb_link = `${settings?.fb_url}`;
 
     //twitter link
-  const twitter_link = `${settings?.twitter_url}`;
+    const twitter_link = `${settings?.twitter_url}`;
 
     //youtube link
-  const youtube_url = `${settings?.youtube_url}`;
+    const youtube_url = `${settings?.youtube_url}`;
 
     //linkedin link
-  const linkedin_url = `${settings?.linked_in}`;
+    const linkedin_url = `${settings?.linked_in}`;
 
     //insta link
-  const insta_url = `${settings?.insta_url}`;
-  //phone number
-  const phone_number = settings?.phone;
-  //creating link
-  const phone_link = phone_number ? `tel:${phone_number}` : "#";
+    const insta_url = `${settings?.insta_url}`;
+    //phone number
+    const phone_number = settings?.phone;
+    //creating link
+    const phone_link = phone_number ? `tel:${phone_number}` : "#";
 
-  //number storing
-  const whatsappNumber = settings?.whatsapp;
- //message storing
- const message = encodeURIComponent("Hi! I would like to know more.");
+    //number storing
+    const whatsappNumber = settings?.whatsapp;
+    //message storing
+    const message = encodeURIComponent("Hi! I would like to know more.");
 
     const whatsappLink = whatsappNumber
-          ? `https://wa.me/${whatsappNumber}?text=${message}`
-                : "#";
+        ? `https://wa.me/${whatsappNumber}?text=${message}`
+        : "#";
 
- //email link
-  const email = settings?.email;
-  //console.log(email);
-  const email_link = email ? `mailto:${email}` : "#";
+    //email link
+    const email = settings?.email;
+    //console.log(email);
+    const email_link = email ? `mailto:${email}` : "#";
 
 
     return (
@@ -234,7 +234,7 @@ useEffect(() => {
                                         your next holiday plan! </h1>
                                 </div>
                                 <div className="w-px h-15 bg-gray-300 hidden sm:block"></div>
-                                <div className="w-full sm:w-1/3 pl-0 sm:pl-10 mt-5  sm:mt-0">   <p className="text-(--color-secondary)">Every enquiry is personally reviewed by our travel design team.</p></div>
+                                <div className="w-full sm:w-1/3 pl-0 sm:pl-10 mt-5  sm:mt-0">   <p>Every enquiry is personally reviewed by our travel design team.</p></div>
                             </div>
                             <div className="w-full  pr-10 md:pr-10  lg:pr-30 xl:pr-60 mt-10 sm:mt-20">
                                 <form className="w-full max-w-3xl space-y-6" onSubmit={handleSubmit}>
@@ -252,22 +252,22 @@ useEffect(() => {
                                                         className="w-4 h-4"
                                                     />
                                                 </span>
-    
+
                                                 {/* SELECT */}
                                                 <select id="title"
                                                     value={formData.title}
                                                     onChange={handleChange}
-    
+
                                                     className="w-full bg-transparent border border-gray-300 text-(--color-secondary) rounded-md 
                    pl-10 pr-10 py-3 focus:outline-none focus:border-gray-500 appearance-none"
-    
+
                                                 >
                                                     <option value="">Title</option>
                                                     <option>Mr</option>
                                                     <option>Mrs</option>
                                                     <option>Ms</option>
                                                 </select>
-    
+
                                                 {/* RIGHT DROPDOWN ARROW */}
                                                 <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
                                                     <svg
@@ -280,9 +280,9 @@ useEffect(() => {
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                                                     </svg>
                                                 </span>
-    
+
                                             </div>
-                                             {errors.title && <p style={{ color: "red", fontSize: "12px" }}>{errors.title}</p>}
+                                            {errors.title && <p style={{ color: "red", fontSize: "12px" }}>{errors.title}</p>}
                                         </div>
 
 
@@ -295,7 +295,7 @@ useEffect(() => {
                                                     alt="User"
                                                     className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
                                                 />
-    
+
                                                 {/* Input */}
                                                 <input
                                                     onChange={handleChange}
@@ -305,9 +305,9 @@ useEffect(() => {
                                                     placeholder="Full name"
                                                     className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
                                                 />
-                                               
+
                                             </div>
-                                              {errors.name && <p style={{ color: "red", fontSize: "12px" }}>{errors.name}</p>}
+                                            {errors.name && <p style={{ color: "red", fontSize: "12px" }}>{errors.name}</p>}
                                         </div>
                                     </div>
 
@@ -322,7 +322,7 @@ useEffect(() => {
                                                     alt="User"
                                                     className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
                                                 />
-    
+
                                                 {/* Input */}
                                                 <input
                                                     onChange={handleChange}
@@ -335,7 +335,7 @@ useEffect(() => {
                                             </div>
                                             {errors.email && <p style={{ color: "red", fontSize: "12px" }}>{errors.email}</p>}
                                         </div>
-                                         
+
 
                                         {/* Phone */}
                                         <div>
@@ -346,7 +346,7 @@ useEffect(() => {
                                                     alt="User"
                                                     className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
                                                 />
-    
+
                                                 {/* Input */}
                                                 <input
                                                     onChange={handleChange}
@@ -362,7 +362,7 @@ useEffect(() => {
                                     </div>
 
                                     {/* Message */}
-                                   <div className="flex flex-col">
+                                    <div className="flex flex-col">
 
                                         <textarea
                                             onChange={handleChange}
@@ -392,14 +392,14 @@ useEffect(() => {
                                             </a>
                                         </span>
                                     </label>
-                                      {/* Captcha number */}
-                          <SimpleCaptcha onVerify={setIsCaptchaVerified}  resetTrigger={captchaResetKey} />
+                                    {/* Captcha number */}
+                                    <SimpleCaptcha onVerify={setIsCaptchaVerified} resetTrigger={captchaResetKey} />
 
 
                                     {/* Button */}
                                     <button
                                         type="submit"
-                                         disabled={loading}
+                                        disabled={loading}
                                         className="
 relative overflow-hidden
 text-(--color-secondary)
@@ -421,11 +421,11 @@ hover:before:translate-x-full hover:text-white
 min-w-[190px] 
 "
                                     >
-                                         {loading ? (
+                                        {loading ? (
                                             <p className="flex justify-center items-center gap-2">
-                                            
-                                            Sending....
-                                            <span className="inline-block animate-spin h-4 w-4 border-2 border-red-500 border-t-transparent rounded-full"></span>
+
+                                                Sending....
+                                                <span className="inline-block animate-spin h-4 w-4 border-2 border-red-500 border-t-transparent rounded-full"></span>
                                             </p>
                                         ) : (
                                             "Send Your Message"
@@ -440,30 +440,30 @@ min-w-[190px]
 
                             <div className="w-full pl-0 xl:pl-10">
                                 <h4 className="font-my-font-semibold text-var(--color-secondary) text-xl ml-8">Contact</h4>
-                                
+
                                 <div className="flex mt-5 gap-5 items-center ">
                                     <div className="flex mt-5 items-start ">
                                         <img src="images/location_icon.svg" alt="" className="mt-2 mr-5" />
                                         <div className="div">
                                             <h5 className="text-[#46545E] text-lg font-semibold">Registered Office</h5>
-                                            <p className="text-(--color-secondary)">{settings?.address??"Not available"}</p>
-    
+                                            <p>{settings?.address ?? "Not available"}</p>
+
                                         </div>
                                     </div>
-                                        {settings?.address_link && (
+                                    {settings?.address_link && (
                                         <div className="pl-4">
                                             <a
-                                            href={settings.address_link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
+                                                href={settings.address_link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                             >
-                                            <img
-                                                src="images/map-img.png"
-                                                alt="View location"
-                                            />
+                                                <img
+                                                    src="images/map-img.png"
+                                                    alt="View location"
+                                                />
                                             </a>
                                         </div>
-                                        )}
+                                    )}
 
                                 </div>
 
@@ -473,23 +473,23 @@ min-w-[190px]
                                         <img src="images/location_icon.svg" alt="" className="mt-2 mr-5" />
                                         <div className="div">
                                             <h5 className="text-[#46545E] text-lg font-semibold">Corporate Office</h5>
-                                            <p className="text-(--color-secondary)">{settings?.address_2??"Not available"}</p>
+                                            <p>{settings?.address_2 ?? "Not available"}</p>
                                         </div>
                                     </div>
                                     {settings?.address_link_2 && (
                                         <div className="pl-4">
                                             <a
-                                            href={settings.address_link_2}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
+                                                href={settings.address_link_2}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                             >
-                                            <img
-                                                src="images/map-img.png"
-                                                alt="View location"
-                                            />
+                                                <img
+                                                    src="images/map-img.png"
+                                                    alt="View location"
+                                                />
                                             </a>
                                         </div>
-                                        )}
+                                    )}
 
                                 </div>
 
@@ -543,7 +543,7 @@ min-w-[190px]
                                         <img src="images/call-icon.svg" className="w-5 mr-5" />
 
                                         <div className="div">
-                                            <a href={phone_link} className="flex gap-3"><p className="text-(--color-secondary)">{settings?.phone??"Not available"}</p></a>
+                                            <a href={phone_link} className="flex gap-3"><p>{settings?.phone ?? "Not available"}</p></a>
 
                                         </div>
                                     </div>
@@ -553,7 +553,7 @@ min-w-[190px]
                                         <img src="images/whatsapp-icon.svg" className="w-5 mr-5" />
 
                                         <div className="div">
-                                            <a href={whatsappLink} className="flex gap-3" target="_blank">   <p className="text-(--color-secondary)">WhatsApp</p></a>
+                                            <a href={whatsappLink} className="flex gap-3" target="_blank">   <p>WhatsApp</p></a>
 
 
                                         </div>
@@ -562,7 +562,7 @@ min-w-[190px]
 
                                         <img src="images/mail-icon.svg" className="w-5 mr-5" />
                                         <div className="div">
-                                            <a href={email_link} className="flex gap-3"> <p className="text-(--color-secondary)">{settings?.email?? "Not available"}</p></a>
+                                            <a href={email_link} className="flex gap-3"> <p>{settings?.email ?? "Not available"}</p></a>
 
                                         </div>
                                     </div>
@@ -576,9 +576,9 @@ min-w-[190px]
 
             <BespokeJourney />
             <LogoCarousel />
-            
-      {/* Toast */}
-      <ToastContainer position="top-left" autoClose={2000} theme="colored" />
+
+            {/* Toast */}
+            <ToastContainer position="top-left" autoClose={2000} theme="colored" />
 
         </>
     );

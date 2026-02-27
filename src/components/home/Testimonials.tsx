@@ -74,7 +74,7 @@ export default function Testimonials() {
                                         <h4 className="font-grape-nuts text-2xl text-(--color-secondary)">
                                             {item.name}
                                         </h4>
-                                        <p className="text-(--color-secondary)">{item.designation}</p>
+                                        <p>{item.designation}</p>
                                     </div>
 
                                 </div>

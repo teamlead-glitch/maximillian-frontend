@@ -81,7 +81,7 @@ export default function WhatMakeExc() {
                                                     className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]"
                                                 />
                                             </div>
-                                            <p className="text-(--color-secondary)">{item.text}</p>
+                                            <p>{item.text}</p>
                                         </div>
                                     </SwiperSlide>
                                 ))}
