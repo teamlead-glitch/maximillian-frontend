@@ -86,8 +86,8 @@ export default function SideBarMenu() {
             ${sideOpen ? "translate-x-0" : "translate-x-full"}`}
           >
             {/* HEADER */}
-            <div className="h-[72px] px-6 flex justify-end items-center">
-              <button onClick={() => setSideOpen(false)}>
+            <div className="h-[72px] px-6 flex justify-end items-center  ">
+              <button onClick={() => setSideOpen(false)} className="text-(--color-secondary) cursor-pointer">
                 <X />
               </button>
             </div>
@@ -104,7 +104,7 @@ export default function SideBarMenu() {
               {[
                 { name: "Home", href: "/" },
                 { name: "Design Your Trip", href: "/design-your-trip" },
-                { name: "Our World", href: "/our-world" },
+                { name: "Our World", href: "/ourworld" },
                 { name: "Contact Us", href: "/contact" },
               ].map((item) => (
                 <Link
@@ -114,7 +114,7 @@ export default function SideBarMenu() {
                     setActiveLink(item.name);
                     setSideOpen(false);
                   }}
-                  className={`relative block font-my-font-semibold
+                  className={`relative block font-my-font-semibold text-(--color-secondary)
                   after:absolute after:left-0 after:-bottom-1 after:h-[2px]
                   after:w-[30px] after:bg-[#C43131] after:transition-opacity
                   ${activeLink === item.name
@@ -129,15 +129,15 @@ export default function SideBarMenu() {
 
             {/* CONTACT */}
             <div className="px-6 pb-20 space-y-4">
-              <a href="tel:+919998868866" className="flex gap-3">
-                <img src="/images/call-icon.svg" className="w-5" alt="Call" />
+              <a href="tel:+919998868866" className="flex gap-3  text-(--color-secondary)">
+                <img src="/images/call-icon.svg" className="w-5 text-(--color-secondary)" alt="Call" />
                 +91 999 886 8866
               </a>
 
-              <a href="https://wa.me/919998868866" className="flex gap-3">
+              <a href="https://wa.me/919998868866" className="flex gap-3  text-(--color-secondary)">
                 <img
                   src="/images/whatsapp-icon.svg"
-                  className="w-5"
+                  className="w-5 text-(--color-secondary)"
                   alt="WhatsApp"
                 />
                 WhatsApp
@@ -145,7 +145,7 @@ export default function SideBarMenu() {
 
               <a
                 href="mailto:hello@maximilianholidays.com"
-                className="flex gap-3"
+                className="flex gap-3  text-(--color-secondary)"
               >
                 <img src="/images/mail-icon.svg" className="w-5" alt="Mail" />
                 hello@maximilianholidays.com

@@ -15,7 +15,7 @@ export default function NotFound() {
             <div className="max-w-[1300px] flex mx-auto px-10 md:px-24 lg:px-44 py-32 md:py-40 lg:py-70 ">
                 <div className="w-full flex flex-col items-center text-center mx-auto">
                     <h1 className="font-my-font-regular text-break  text-4xl xl:text-5xl text-(--color-secondary) text-left sm:text-right ">  404</h1>
-                    <p className="text-lg text-(--color-secondary)">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Please try the following:</p>
+                    <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Please try the following:</p>
                     <hr className="w-full  mx-auto my-5 border-gray-300" />
                     <div className="w-full flex flex-col md:flex-row justify-between items-center gap-5">
                         <div className="flex items-center gap-2 whitespace-nowrap"><img src="/images/checkspelling-icon.svg" alt="" />

@@ -97,7 +97,7 @@ px-4 sm:px-0 text-center">
                         <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />
                             Signature Journeys</h3></div>
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                        <div className="w-full md:w-[200px]"><p className="text-sm text-(--color-secondary) ">A selection of our carefully curated international experiences.</p></div>
+                        <div className="w-full md:w-[200px]"><p>A selection of our carefully curated international experiences.</p></div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-10 lg:mt-20">
                         <div className="py-3 group">

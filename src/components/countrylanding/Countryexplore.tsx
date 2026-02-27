@@ -77,7 +77,7 @@ px-4 sm:px-0 text-center">
                         <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />
                             Signature Journeys</h3></div>
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                        <div className="w-full md:w-[200px]"><p className="text-sm text-(--color-secondary) ">A selection of our carefully curated Indian travel experiences.</p></div>
+                        <div className="w-full md:w-[200px]"><p>A selection of our carefully curated Indian travel experiences.</p></div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-5 lg:mt-10">
                         <div className="py-3 group">
@@ -303,9 +303,7 @@ px-4 sm:px-0 text-center">
 
                     {/* TEXT — hidden by default, visible on hover */}
                     <div className="absolute bottom-0 wifull  md:w-1/2 pl-5 md:pl-15 pb-5 md:pb-15 
-                    opacity-0 translate-y-6 
-                    transition-all duration-500 
-                    group-hover:opacity-100 group-hover:translate-y-0">
+                   ">
 
                         <h4 className="text-white text-3xl font-my-font-regular">
                             Royal and Heritage Journeys
@@ -335,51 +333,28 @@ px-4 sm:px-0 text-center">
 
                 </div>
                 <div className="w-full lg:w-1/2 px-10 md:px-20  xl:px-40 h-full mt-15   lg:mt-0">
-                    <div className="w-full flex flex-col items-center justify-between h-full">
-                        <div className="relative inset-0 flex flex-col items-start justify-center 
-                px-0 md:px-10 py-5 "> <h4 className="text-var(--secondary-color) text-3xl font-my-font-regular">
-                                Himalayan Landscapes
-                            </h4>
+                    <div className="w-full flex flex-col items-center justify-between h-full gap-3">
 
-                            <p className="text-var(--secondary-color) line-clamp-3">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
-                            </p>
-
-                            <button className="group flex items-center font-my-font-semibold text-sm text-var(--secondary-color) sm:text-base py-3 mt-3 cursor-pointer">
-                                <span className="mr-3">View More Journeys</span>
-
-                                <svg
-                                    className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
-                                    width="53"
-                                    height="8"
-                                    viewBox="0 0 53 8"
-                                    fill="none"
-                                >
-                                    <path
-                                        d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
-                                        fill="#3A3F42"
-                                    />
-                                </svg>
-                            </button>
-                        </div>
                         <div className="w-full aspect-4/2.5 relative group overflow-hidden">
-                            <img src="images/south_sideimg.webp" className="w-full h-full object-cover rounded-xl " />
-                            <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl"></div>
+                            <img src="images/himalayan.webp" className="w-full h-full object-cover rounded-xl  opacity-0
+                transition-all duration-500
+                group-hover:opacity-100 group-hover:translate-y-0 " />
+                            <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-0 
+                transition-all duration-500
+                group-hover:opacity-100 group-hover:translate-y-0"></div>
                             <div className="absolute inset-0 flex flex-col items-start justify-center 
                 px-10 py-5
-                opacity-0 translate-y-6
-                transition-all duration-500
-                group-hover:opacity-100 group-hover:translate-y-0">
+              ">
 
-                                <h4 className="text-white text-3xl font-my-font-regular">
-                                    Southern India and Kerala
+                                <h4 className="text-var(--secondary-color) text-3xl font-my-font-regular group-hover:text-white">
+                                    Himalayan Landscapes
                                 </h4>
 
-                                <p className="text-white line-clamp-3 hidden md:block">
+                                <p className="text-var(--secondary-color) line-clamp-3 hidden md:block group-hover:text-white">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
                                 </p>
 
-                                <button className="group flex items-center font-my-font-semibold text-sm text-white sm:text-base py-3 mt-3 cursor-pointer">
+                                <button className="group flex items-center font-my-font-semibold text-sm text-var(--secondary-color) sm:text-base py-3 mt-3 cursor-pointer group-hover:text-white">
                                     <span className="mr-3">View More Journeys</span>
 
                                     <svg
@@ -391,38 +366,91 @@ px-4 sm:px-0 text-center">
                                     >
                                         <path
                                             d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
-                                            fill="#fff"
+                                            className="fill-black group-hover:fill-white transition-colors"
                                         />
                                     </svg>
                                 </button>
                             </div>
                         </div>
-                        <div className="relative inset-0 flex flex-col items-start justify-center 
-                px-0 md:px-10 py-5 "> <h4 className="text-var(--secondary-color) text-3xl font-my-font-regular">
-                                Festivals and Cultural Moments
-                            </h4>
 
-                            <p className="text-var(--secondary-color) line-clamp-3">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
-                            </p>
+                        {/* second image */}
+                        <div className="w-full aspect-4/2.5 relative group overflow-hidden">
+                            <img src="images/south_sideimg.webp" className="w-full h-full object-cover rounded-xl  opacity-0
+                transition-all duration-500
+                group-hover:opacity-100 group-hover:translate-y-0 " />
+                            <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-0 
+                transition-all duration-500
+                group-hover:opacity-100 group-hover:translate-y-0"></div>
+                            <div className="absolute inset-0 flex flex-col items-start justify-center 
+                px-10 py-5
+              ">
 
-                            <button className="group flex items-center font-my-font-semibold text-sm text-var(--secondary-color) sm:text-base py-3 mt-3 cursor-pointer">
-                                <span className="mr-3">View More Journeys</span>
+                                <h4 className="text-var(--secondary-color) text-3xl font-my-font-regular group-hover:text-white">
+                                    Southern India and Kerala
+                                </h4>
 
-                                <svg
-                                    className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
-                                    width="53"
-                                    height="8"
-                                    viewBox="0 0 53 8"
-                                    fill="none"
-                                >
-                                    <path
-                                        d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
-                                        fill="#3A3F42"
-                                    />
-                                </svg>
-                            </button>
+                                <p className="text-var(--secondary-color) line-clamp-3 hidden md:block group-hover:text-white">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
+                                </p>
+
+                                <button className="group flex items-center font-my-font-semibold text-sm text-var(--secondary-color) sm:text-base py-3 mt-3 cursor-pointer group-hover:text-white">
+                                    <span className="mr-3">View More Journeys</span>
+
+                                    <svg
+                                        className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
+                                        width="53"
+                                        height="8"
+                                        viewBox="0 0 53 8"
+                                        fill="none"
+                                    >
+                                        <path
+                                            d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
+                                            className="fill-black group-hover:fill-white transition-colors"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
+
+                        {/* third image */}
+                        <div className="w-full aspect-4/2.5 relative group overflow-hidden">
+                            <img src="images/holi.webp" className="w-full h-full object-cover rounded-xl  opacity-0
+                transition-all duration-500
+                group-hover:opacity-100 group-hover:translate-y-0 " />
+                            <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-0 
+                transition-all duration-500
+                group-hover:opacity-100 group-hover:translate-y-0"></div>
+                            <div className="absolute inset-0 flex flex-col items-start justify-center 
+                px-10 py-5
+              ">
+
+                                <h4 className="text-var(--secondary-color) text-3xl font-my-font-regular group-hover:text-white">
+                                    Festivals and Cultural Moments
+                                </h4>
+
+                                <p className="text-var(--secondary-color) line-clamp-3 hidden md:block group-hover:text-white">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
+                                </p>
+
+                                <button className="group flex items-center font-my-font-semibold text-sm text-var(--secondary-color) sm:text-base py-3 mt-3 cursor-pointer group-hover:text-white">
+                                    <span className="mr-3">View More Journeys</span>
+
+                                    <svg
+                                        className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
+                                        width="53"
+                                        height="8"
+                                        viewBox="0 0 53 8"
+                                        fill="none"
+                                    >
+                                        <path
+                                            d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
+                                            className="fill-black group-hover:fill-white transition-colors"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

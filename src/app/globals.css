@@ -48,10 +48,114 @@ body {
 
 @layer base {
   p {
-    @apply text-sm sm:text-base mb-1 text-(--color-secondary);
+    @apply text-sm sm:text-base mb-4 text-(--color-secondary);
 
   }
 }
+
+
+
+@layer components {
+  .content h1 {
+    @apply text-4xl md:text-5xl font-my-font-regular text-(--color-secondary) mb-4;
+  }
+
+
+
+  .content h2 {
+    @apply text-3xl md:text-4xl font-my-font-regular text-(--color-secondary) mb-4;
+  }
+
+  .content h3 {
+    @apply text-2xl md:text-3xl font-my-font-regular text-(--color-secondary) mb-3;
+  }
+
+  .content h4 {
+    @apply text-xl md:text-2xl font-my-font-regular text-(--color-secondary) mb-3;
+  }
+
+  .content h5 {
+    @apply text-lg font-my-font-regular text-(--color-secondary) mb-2;
+  }
+
+
+
+
+
+  .content .checklist {
+    @apply py-3;
+  }
+
+  .content .checklist ul {
+    @apply py-3;
+  }
+
+  .content .checklist li {
+    @apply relative pl-6 text-sm sm:text-base text-(--color-secondary);
+  }
+
+  .content .checklist li::before {
+    content: "✔";
+    @apply absolute left-0 top-0 text-[#c43131] font-bold;
+  }
+
+  .content .dotlist {
+    @apply py-3;
+  }
+
+  .content .dotlist ul {
+    @apply py-3;
+  }
+
+
+  .content .dotlist li {
+    @apply relative pl-6 text-sm sm:text-base text-(--color-secondary);
+  }
+
+  .content .dotlist li::before {
+    content: "•";
+    @apply absolute left-0 top-0 text-[#c43131] font-bold;
+  }
+
+
+  .content .arrowlist {
+    @apply py-3;
+  }
+
+  .content .arrowlist ul {
+    @apply py-3;
+  }
+
+
+  .content .arrowlist li {
+    @apply relative pl-6 text-sm sm:text-base text-(--color-secondary);
+  }
+
+  .content .arrowlist li::before {
+    content: "→";
+    @apply absolute left-0 top-0 text-[#c43131] font-bold;
+  }
+
+
+
+  .content ol {
+    @apply py-3 list-decimal list-inside;
+  }
+
+  .content ol li {
+    @apply text-sm sm:text-base text-(--color-secondary);
+  }
+
+  .content .box {
+    @apply bg-gray-50 border border-gray-200 rounded-xl p-6 mt-5 mb-8 space-y-3;
+  }
+
+
+
+}
+
+
+
 
 .insights-swiper::after {
   content: "";

@@ -360,7 +360,7 @@ hover:before:translate-x-full hover:text-white
                         <div className="w-full mb-5 md:mb-0 flex items-center pr-10">
 
                             <div className="pr-10"><img src="images/custom-journey-icon.png" alt="" /> </div>
-                            <p className="text-(--color-secondary) mt-2 font-my-font-semibold text-xl ">
+                            <p className="mt-2 font-my-font-semibold text-xl ">
                                 Custom journeys, no templates
                             </p>
                         </div>
@@ -368,7 +368,7 @@ hover:before:translate-x-full hover:text-white
                         <div className="w-full mb-5 md:mb-0 flex    items-center pr-10">
 
                             <div className="pr-10"><img src="images/multi-country.png" alt="" /> </div>
-                            <p className="text-(--color-secondary) mt-2 font-my-font-semibold text-xl ">
+                            <p className="mt-2 font-my-font-semibold text-xl ">
                                 Multi-country planning specialists
                             </p>
                         </div>
@@ -376,7 +376,7 @@ hover:before:translate-x-full hover:text-white
                         <div className="w-full mb-5 md:mb-0 flex items-center pr-10">
 
                             <div className="pr-10"><img src="images/your-review.png" alt="" /> </div>
-                            <p className="text-(--color-secondary) mt-2 font-my-font-semibold text-xl ">
+                            <p className=" mt-2 font-my-font-semibold text-xl ">
                                 You review before you commit.
                             </p>
                         </div>
