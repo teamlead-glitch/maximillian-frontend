@@ -393,7 +393,7 @@ export default function AddressForm() {
                                         />
                                         <span >
                                             I've read and agreed to Festivon{" "}
-                                            <a href="/privacy-policy" className="underline hover:text-black">
+                                            <a href="/privacy-policy" target="_blank" className="underline hover:text-black">
                                                 Privacy Policy
                                             </a>
                                         </span>
