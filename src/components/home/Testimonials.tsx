@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { useRef, useState } from "react";
 import "swiper/css";
+import { Swiper as SwiperType } from "swiper";
 
 const testimonials = [
     {
@@ -37,7 +38,7 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-    const swiperRef = useRef(null);
+    const swiperRef = useRef<SwiperType | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
@@ -91,7 +92,7 @@ export default function Testimonials() {
                                 src={u.avatar}
                                 alt={u.name}
                                 onClick={() =>
-                                    swiperRef.current.slideToLoop(index)
+                                    swiperRef.current?.slideToLoop(index)
                                 }
                                 className={`w-14 h-14 rounded-full object-cover cursor-pointer transition-all duration-300
                                 
