@@ -105,6 +105,7 @@ export default function SideBarMenu() {
                 { name: "Home", href: "/" },
                 { name: "Design Your Trip", href: "/design-your-trip" },
                 { name: "Our World", href: "/ourworld" },
+                { name: "Blogs", href: "/blogs" },
                 { name: "Contact Us", href: "/contact" },
               ].map((item) => (
                 <Link
