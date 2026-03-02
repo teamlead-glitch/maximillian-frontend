@@ -1,80 +1,112 @@
 
-
+import React, { useState, useEffect } from "react";
+import { apiService } from "@/services/api";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
+import Loader from "../common/Loader";
+import { CountryResponse } from "@/types/countryType";
 import "swiper/css/navigation";
 import "swiper/css";
 
-const slides = [
-    {
-        id: 1,
-        title: "Rajasthan",
-        desc: "Discover breathtaking destinations and thrilling experiences.",
-        image: "/images/destination-img1.jpg",
-    },
-    {
-        id: 2,
+// const slides = [
+//     {
+//         id: 1,
+//         title: "Rajasthan",
+//         desc: "Discover breathtaking destinations and thrilling experiences.",
+//         image: "/images/destination-img1.jpg",
+//     },
+//     {
+//         id: 2,
 
-        title: "Maldives",
-        desc: "Premium journeys designed for comfort and elegance.",
-        image: "/images/destination-img2.jpg",
-    },
-    {
-        id: 3,
+//         title: "Maldives",
+//         desc: "Premium journeys designed for comfort and elegance.",
+//         image: "/images/destination-img2.jpg",
+//     },
+//     {
+//         id: 3,
 
-        title: "Paris",
-        desc: "Perfect trips for families to enjoy together.",
-        image: "/images/destination-img3.jpg",
-    },
-    {
-        id: 4,
+//         title: "Paris",
+//         desc: "Perfect trips for families to enjoy together.",
+//         image: "/images/destination-img3.jpg",
+//     },
+//     {
+//         id: 4,
 
-        title: "Dubai",
-        desc: "Unforgettable moments for newlyweds.",
-        image: "/images/destination-img4.jpg",
-    },
-    {
-        id: 5,
+//         title: "Dubai",
+//         desc: "Unforgettable moments for newlyweds.",
+//         image: "/images/destination-img4.jpg",
+//     },
+//     {
+//         id: 5,
 
-        title: "Greece",
-        desc: "Go on a journey of self-discovery.",
-        image: "/images/destination-img5.jpg",
-    },
-    {
-        id: 6,
+//         title: "Greece",
+//         desc: "Go on a journey of self-discovery.",
+//         image: "/images/destination-img5.jpg",
+//     },
+//     {
+//         id: 6,
 
-        title: "Kerala",
-        desc: "Fun-filled trips with like-minded explorers.",
-        image: "/images/destination-img6.jpg",
-    },
-    {
-        id: 7,
+//         title: "Kerala",
+//         desc: "Fun-filled trips with like-minded explorers.",
+//         image: "/images/destination-img6.jpg",
+//     },
+//     {
+//         id: 7,
 
-        title: "Rajasthanr",
-        desc: "Fun-filled trips with like-minded explorers.",
-        image: "/images/destination-img1.jpg",
-    },
-    {
-        id: 8,
+//         title: "Rajasthanr",
+//         desc: "Fun-filled trips with like-minded explorers.",
+//         image: "/images/destination-img1.jpg",
+//     },
+//     {
+//         id: 8,
 
-        title: "Maldives",
-        desc: "Fun-filled trips with like-minded explorers.",
-        image: "/images/destination-img2.jpg",
-    },
-    {
-        id: 9,
+//         title: "Maldives",
+//         desc: "Fun-filled trips with like-minded explorers.",
+//         image: "/images/destination-img2.jpg",
+//     },
+//     {
+//         id: 9,
 
-        title: "Paris",
-        desc: "Fun-filled trips with like-minded explorers.",
-        image: "/images/destination-img3.jpg",
-    },
-];
+//         title: "Paris",
+//         desc: "Fun-filled trips with like-minded explorers.",
+//         image: "/images/destination-img3.jpg",
+//     },
+// ];
 
 export default function FeaturedDestinations() {
+    const [countries, setCountries] = useState<CountryResponse[]>([]);
+        // const [activeIndex, setActiveIndex] = useState(0);
+    const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+        const fetchCountry = async () => {
+            try {
+                const res = await apiService.get<CountryResponse[]>("/featured-countries");
+
+                if (res) {
+                    setCountries(res || []);
+
+                } else {
+                    console.error("Failed to load featured countries");
+                }
+
+                setLoading(false);
+            } finally {
+                setLoading(false);
+            }
+
+        };
+
+        fetchCountry();
+    }, []);
     return (
         <>
-            {/* featured destination */}
+            {loading ? (
+                            <Loader />
+                        ) : countries.length === 0 ? (
+                            // <p>No journeys available</p>
+                            <></>
+                        ) : (
             <section className="bg-[#F5F2EE] pt-10 md:pt-20 pb-10 md:pb-20">
                 <div className="max-w-[1300px]  mx-auto px-5">
                     <div className="flex flex-col md:flex-row  items-start md:items-center w-full gap-4 md:gap-8">
@@ -123,7 +155,7 @@ export default function FeaturedDestinations() {
                         }}
                         className="w-full overflow-visible"
                     >
-                        {slides.map((item) => (
+                        {countries.map((item) => (
                             <SwiperSlide key={item.id}>
                                 <div
                                     className="bg-white rounded-xl overflow-hidden
@@ -134,7 +166,7 @@ export default function FeaturedDestinations() {
                                     {/* Image */}
                                     <div className="w-full aspect-3/3 overflow-hidden">
                                         <img
-                                            src={item.image}
+                                            src={item.image_path}
                                             alt={item.title}
                                             className="
         w-full h-full object-cover
@@ -168,7 +200,7 @@ export default function FeaturedDestinations() {
                                         </h3>
 
                                         <p className="text-sm text-gray-600 mt-2 line-clamp-2">
-                                            {item.desc}
+                                            {item.short_description}
                                         </p>
                                     </div>
                                 </div>
@@ -180,7 +212,7 @@ export default function FeaturedDestinations() {
 
             </section>
 
-            {/* featured destination close */}
+                     )} {/* featured destination close */}
         </>
     )
-} 
+}
