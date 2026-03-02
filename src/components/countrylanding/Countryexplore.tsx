@@ -346,15 +346,15 @@ px-4 sm:px-0 text-center">
                 px-10 py-5
               ">
 
-                                <h4 className="text-var(--secondary-color) text-3xl font-my-font-regular group-hover:text-white">
+                                <h4 className="text-(--color-secondary) text-3xl font-my-font-regular group-hover:text-white">
                                     Himalayan Landscapes
                                 </h4>
 
-                                <p className="text-var(--secondary-color) line-clamp-3 hidden md:block group-hover:text-white">
+                                <p className="text-(--color-secondary) line-clamp-3 hidden md:block group-hover:text-white">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
                                 </p>
 
-                                <button className="group flex items-center font-my-font-semibold text-sm text-var(--secondary-color) sm:text-base py-3 mt-3 cursor-pointer group-hover:text-white">
+                                <button className="group flex items-center font-my-font-semibold text-sm text-(--color-secondary) sm:text-base py-3  cursor-pointer group-hover:text-white">
                                     <span className="mr-3">View More Journeys</span>
 
                                     <svg
@@ -385,15 +385,15 @@ px-4 sm:px-0 text-center">
                 px-10 py-5
               ">
 
-                                <h4 className="text-var(--secondary-color) text-3xl font-my-font-regular group-hover:text-white">
+                                <h4 className="text-(--color-secondary) text-3xl font-my-font-regular group-hover:text-white">
                                     Southern India and Kerala
                                 </h4>
 
-                                <p className="text-var(--secondary-color) line-clamp-3 hidden md:block group-hover:text-white">
+                                <p className="text-(--color-secondary) line-clamp-3 hidden md:block group-hover:text-white">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
                                 </p>
 
-                                <button className="group flex items-center font-my-font-semibold text-sm text-var(--secondary-color) sm:text-base py-3 mt-3 cursor-pointer group-hover:text-white">
+                                <button className="group flex items-center font-my-font-semibold text-sm text-(--color-secondary) sm:text-base py-3  cursor-pointer group-hover:text-white">
                                     <span className="mr-3">View More Journeys</span>
 
                                     <svg
@@ -424,15 +424,15 @@ px-4 sm:px-0 text-center">
                 px-10 py-5
               ">
 
-                                <h4 className="text-var(--secondary-color) text-3xl font-my-font-regular group-hover:text-white">
+                                <h4 className="text-(--color-secondary) text-3xl font-my-font-regular group-hover:text-white">
                                     Festivals and Cultural Moments
                                 </h4>
 
-                                <p className="text-var(--secondary-color) line-clamp-3 hidden md:block group-hover:text-white">
+                                <p className="text-(--color-secondary) line-clamp-3 hidden md:block group-hover:text-white">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
                                 </p>
 
-                                <button className="group flex items-center font-my-font-semibold text-sm text-var(--secondary-color) sm:text-base py-3 mt-3 cursor-pointer group-hover:text-white">
+                                <button className="group flex items-center font-my-font-semibold text-sm text-(--color-secondary) sm:text-base py-3  cursor-pointer group-hover:text-white">
                                     <span className="mr-3">View More Journeys</span>
 
                                     <svg
