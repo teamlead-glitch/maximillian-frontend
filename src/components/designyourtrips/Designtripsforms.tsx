@@ -16,8 +16,12 @@ export default function Designyourtrip() {
     //for captcha validation
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
     const [captchaResetKey, setCaptchaResetKey] = useState(0);
-        //loader
+    //loader
     const [loading, setLoading] = useState(false);
+
+    /* disableing todays date */
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
 
     const STEP = 10;
     const MIN = 0;
@@ -54,18 +58,18 @@ export default function Designyourtrip() {
         group_size: "",
         trip_type: "",
         travel_pace: "",
-        budget: `$${values[0].toLocaleString()} - $${values[1].toLocaleString()}`,
+        budget: "",
         season: ""
     });
 
-     console.log(formData)
+    /* console.log(formData)  */
     const [errors, setErrors] = useState<DYTFormErrors>({
-            title: "",
-            name: "",
-            phone: "",
-            email: "",
-            destination:""
-        });
+        title: "",
+        name: "",
+        phone: "",
+        email: "",
+        destination: ""
+    });
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -78,63 +82,63 @@ export default function Designyourtrip() {
         }));
     };
 
-     /* -----------------------------------------------------------------------
-           FORM VALIDATION (STRONG + CLEAN)
-        ----------------------------------------------------------------------- */
-        const validate = (): boolean => {
-            const newErrors: Partial<DYTFormErrors> = {};
-    
-            //title validation
-            if (!formData.title) {
-                newErrors.title = "Title required"
-            }
-    
-            // Name validation
-            if (!formData.name.trim()) {
-                newErrors.name = "Name is required";
-            } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
-                newErrors.name = "Name cannot contain numbers or special characters";
-            }
-    
-            // Mobile validation
-            if (!formData.phone.trim()) {
-                newErrors.phone = "Mobile number is required";
-            } else if (!/^[+]?[0-9\s-]+$/.test(formData.phone)) {
-                newErrors.phone = "Mobile number should contain only numbers";
-            } else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
-                newErrors.phone = "Enter a valid mobile number";
-            }
-    
-    
-            // Email validation
-            if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-                newErrors.email = "Enter a valid email";
-            }
-    
-            // destination validation
-            if (!formData.destination.trim()) {
-                newErrors.destination = "Destination is required";
-            }
-    
-            setErrors(newErrors as DYTFormErrors);
-    
-            return Object.keys(newErrors).length === 0; // true → no errors
-        };
-    
+    /* -----------------------------------------------------------------------
+          FORM VALIDATION (STRONG + CLEAN)
+       ----------------------------------------------------------------------- */
+    const validate = (): boolean => {
+        const newErrors: Partial<DYTFormErrors> = {};
+
+        //title validation
+        if (!formData.title) {
+            newErrors.title = "Title required"
+        }
+
+        // Name validation
+        if (!formData.name.trim()) {
+            newErrors.name = "Name is required";
+        } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
+            newErrors.name = "Name cannot contain numbers or special characters";
+        }
+
+        // Mobile validation
+        if (!formData.phone.trim()) {
+            newErrors.phone = "Mobile number is required";
+        } else if (!/^[+]?[0-9\s-]+$/.test(formData.phone)) {
+            newErrors.phone = "Mobile number should contain only numbers";
+        } else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
+            newErrors.phone = "Enter a valid mobile number";
+        }
+
+
+        // Email validation
+        if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+            newErrors.email = "Enter a valid email";
+        }
+
+        // destination validation
+        if (!formData.destination.trim()) {
+            newErrors.destination = "Destination is required";
+        }
+
+        setErrors(newErrors as DYTFormErrors);
+
+        return Object.keys(newErrors).length === 0; // true → no errors
+    };
+
 
     //submit form
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-         if (loading) return; // 🔥 extra safety (prevents double click)
+        if (loading) return; // 🔥 extra safety (prevents double click)
         if (!validate()) return;
-         if (!isCaptchaVerified) {
+        if (!isCaptchaVerified) {
             toast.error("Please verify captcha before submitting");
             return;
         }
 
         try {
 
-             setLoading(true); // ⭐ start loader
+            setLoading(true); // ⭐ start loader
 
             const payload = {
                 name: `${formData.title} ${formData.name}`.trim(),
@@ -177,6 +181,7 @@ export default function Designyourtrip() {
                     budget: "",
                     season: ""
                 });
+                 setStartDate(null);
                 setIsCaptchaVerified(false);
                 setCaptchaResetKey((prev) => prev + 1); // 🔄 refresh captcha
 
@@ -190,10 +195,34 @@ export default function Designyourtrip() {
 
             // ✅ show backend validation error
             toast.error("Failed to send. Please try again!");
-        }finally {
+        } finally {
             setLoading(false); // ⭐ stop loader
         }
     };
+
+    /* reset button */
+
+const resetForm = () => {
+  setFormData({
+    title: "",
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+    destination: "",
+    travel_date: "",
+    duration: "",
+    group_size: "",
+    trip_type: "",
+    travel_pace: "",
+    budget: `$${values[0].toLocaleString()} - $${values[1].toLocaleString()}`,
+    season: ""
+  });
+
+  setStartDate(null);
+  setIsCaptchaVerified(false);
+  setCaptchaResetKey((prev) => prev + 1);
+};
     return (
 
         <>
@@ -261,7 +290,7 @@ export default function Designyourtrip() {
                                                         className="w-4 h-4"
                                                     />
                                                 </span>
-    
+
                                                 {/* SELECT */}
                                                 <select
                                                     className="w-full bg-transparent border border-gray-300 text-(--color-secondary) rounded-md 
@@ -275,7 +304,7 @@ export default function Designyourtrip() {
                                                     <option>Mrs</option>
                                                     <option>Ms</option>
                                                 </select>
-    
+
                                                 {/* RIGHT DROPDOWN ARROW */}
                                                 <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
                                                     <svg
@@ -289,7 +318,7 @@ export default function Designyourtrip() {
                                                     </svg>
                                                 </span>
                                             </div>
-                                             {errors.title && <p style={{ color: "red", fontSize: "12px" }}>{errors.title}</p>}
+                                            {errors.title && <p style={{ color: "red", fontSize: "12px" }}>{errors.title}</p>}
                                         </div>
 
 
@@ -302,7 +331,7 @@ export default function Designyourtrip() {
                                                     alt="User"
                                                     className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
                                                 />
-    
+
                                                 {/* Input */}
                                                 <input
                                                     type="text"
@@ -313,15 +342,15 @@ export default function Designyourtrip() {
                                                     onChange={handleChange}
                                                 />
                                             </div>
-                                             {errors.name && <p style={{ color: "red", fontSize: "12px" }}>{errors.name}</p>}
+                                            {errors.name && <p style={{ color: "red", fontSize: "12px" }}>{errors.name}</p>}
                                         </div>
-                                       
+
                                     </div>
 
                                     {/* Row 2 */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {/* Email */}
-                                       <div>
+                                        <div>
                                             <div className="relative w-full">
                                                 {/* Left Icon */}
                                                 <img
@@ -329,7 +358,7 @@ export default function Designyourtrip() {
                                                     alt="User"
                                                     className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
                                                 />
-    
+
                                                 {/* Input */}
                                                 <input
                                                     id="email"
@@ -340,8 +369,8 @@ export default function Designyourtrip() {
                                                     className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
                                                 />
                                             </div>
-                                             {errors.email && <p style={{ color: "red", fontSize: "12px" }}>{errors.email}</p>}
-                                       </div>
+                                            {errors.email && <p style={{ color: "red", fontSize: "12px" }}>{errors.email}</p>}
+                                        </div>
 
                                         {/* Phone */}
                                         <div>
@@ -352,7 +381,7 @@ export default function Designyourtrip() {
                                                     alt="User"
                                                     className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
                                                 />
-    
+
                                                 {/* Input */}
                                                 <input
                                                     type="text"
@@ -384,7 +413,7 @@ export default function Designyourtrip() {
                                         <div className="relative">
                                             <DatePicker
                                                 selected={startDate}
-                                                 minDate={new Date()}  
+                                                minDate={tomorrow} // disables today and past dates
                                                 placeholderText="Traveling on"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
                                                 id="date"
@@ -392,14 +421,14 @@ export default function Designyourtrip() {
                                                     setStartDate(date);
 
                                                     if (date) {
-      const formatted =
-        `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+                                                        const formatted =
+                                                            `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 
-      setFormData((prev) => ({
-        ...prev,
-        travel_date: formatted
-      }));
-    }
+                                                        setFormData((prev) => ({
+                                                            ...prev,
+                                                            travel_date: formatted
+                                                        }));
+                                                    }
                                                 }}
 
                                             />
@@ -531,14 +560,14 @@ export default function Designyourtrip() {
 
 
                                     {/* Captcha number */}
-                                                                        <SimpleCaptcha onVerify={setIsCaptchaVerified} resetTrigger={captchaResetKey} />
+                                    <SimpleCaptcha onVerify={setIsCaptchaVerified} resetTrigger={captchaResetKey} />
 
 
                                     {/* Button */}
 
                                     <div className="flex gap-4">
                                         <button
-                                             disabled={loading}
+                                            disabled={loading}
                                             type="submit"
                                             className="
 relative overflow-hidden bg-(--color-secondary)
@@ -562,19 +591,20 @@ hover:before:translate-x-full hover:text-white
 
                                         >
                                             {loading ? (
-                                            <span className="flex justify-center items-center text-white  w-full gap-2">
+                                                <span className="flex justify-center items-center text-white  w-full gap-2">
 
-                                                Sending.......
-                                                <span className="inline-block animate-spin h-4 w-4 border-2 border-red-500 border-t-transparent rounded-full"></span>
-                                            </span>
-                                        ) : (
-                                            "Start Designing Your Trip"
-                                        )}
-                                            
+                                                    Sending.......
+                                                    <span className="inline-block animate-spin h-4 w-4 border-2 border-red-500 border-t-transparent rounded-full"></span>
+                                                </span>
+                                            ) : (
+                                                "Start Designing Your Trip"
+                                            )}
+
                                         </button>
 
 
                                         <button
+                                        onClick={resetForm}
                                             className="
 relative overflow-hidden
 text-(--color-secondary)
@@ -644,7 +674,7 @@ hover:before:translate-x-full hover:text-white
 
 
             <LogoCarousel />
-             {/* Toast */}
+            {/* Toast */}
             <ToastContainer position="top-right" autoClose={2000} theme="colored" />
         </>
     );
