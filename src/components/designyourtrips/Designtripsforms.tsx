@@ -303,15 +303,48 @@ export default function Designyourtrip() {
                                         </div>
                                     </div>
 
-                                    <div className="relativee w-full"> 
-                                        <div className="w-full max-w-xl mx-auto"> 
-                                            <p className="py-4">Budget range</p> {/* Labels */} {/* Slider */}
-                                             <Range values={values} step={STEP} min={MIN} max={MAX} 
-                                             onChange={(vals) => setValues(vals)}
-                                              renderTrack={({ props, children }) => (<div {...props}
-                                               className="h-2 w-full rounded bg-gray-200"
-                                                style={{ background: getTrackBackground({ values, colors: ["#e5e7eb", "#3A3F42", "#e5e7eb"], min: MIN, max: MAX }) }} > {children} </div>)} 
-                                                renderThumb={({ props }) => (<div {...props} className="h-5 w-5 bg-white border-2 border-black rounded-full shadow" />)} />
+                                    <div className="relativee w-full">
+                                        <div className="w-full max-w-xl mx-auto">
+                                            <p className="py-4">Budget range</p>
+                                            {/* Labels */}
+
+
+                                            {/* Slider */}
+                                            <Range
+                                                values={values}
+                                                step={STEP}
+                                                min={MIN}
+                                                max={MAX}
+                                                onChange={(vals) => setValues(vals)}
+                                                renderTrack={({ props, children }) => (
+                                                    <div
+                                                        {...props}
+                                                        className="h-2 w-full rounded bg-gray-200"
+                                                        style={{
+                                                            background: getTrackBackground({
+                                                                values,
+                                                                colors: ["#e5e7eb", "#3A3F42", "#e5e7eb"],
+                                                                min: MIN,
+                                                                max: MAX
+                                                            })
+                                                        }}
+                                                    >
+                                                        {children}
+                                                    </div>
+                                                )}
+                                                renderThumb={({ props }) => (
+                                                    <div
+                                                        {...props}
+                                                        className="h-5 w-5 bg-white border-2 border-black rounded-full shadow"
+                                                    />
+                                                )}
+                                            />
+                                            <div className="flex justify-between mt-4 text-gray-700 font-medium">
+                                                <span>${values[0]}</span>
+                                                <span>${values[1]}</span>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                         <div className="relative w-full">
                                             <input
