@@ -18,8 +18,11 @@ export interface DYTformtypes {
 export interface DYTFormErrors {
   title:string;
   name: string;
-  mobile: string;
+  phone: string;
   email: string;
-  message: string;
-  is_agreed:string
+  destination:string;
 }
+export type DYTEnquiryResponse = {
+  result: string;
+  message: string;
+};

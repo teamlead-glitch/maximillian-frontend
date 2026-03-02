@@ -4,18 +4,42 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import LogoCarousel from "@/components/home/LogoCarousel";
 import { Range, getTrackBackground } from "react-range";
-import { DYTformtypes } from "@/types/designYourTripTypes";
+import { DYTEnquiryResponse, DYTFormErrors, DYTformtypes } from "@/types/designYourTripTypes";
+import { toast, ToastContainer } from "react-toastify";
+import { apiService } from "@/services/api";
+import SimpleCaptcha from "../Captcha";
 
 
 
 export default function Designyourtrip() {
     const [startDate, setStartDate] = useState<Date | null>(null);
+    //for captcha validation
+    const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+    const [captchaResetKey, setCaptchaResetKey] = useState(0);
+        //loader
+    const [loading, setLoading] = useState(false);
 
     const STEP = 10;
     const MIN = 0;
     const MAX = 1000;
 
     const [values, setValues] = useState([100, 600]);
+
+    /* types of trips */
+    const tripTypes = [
+        "Couple / Honeymoon",
+        "Family",
+        " Friends",
+        "Solo"
+    ];
+
+    const travelPace = [
+        "Relaxed",
+        "Balanced",
+        "Fast_Paced"
+    ]
+
+
 
     /* form data */
     const [formData, setFormData] = useState<DYTformtypes>({
@@ -30,11 +54,18 @@ export default function Designyourtrip() {
         group_size: "",
         trip_type: "",
         travel_pace: "",
-        budget: "",
+        budget: `$${values[0].toLocaleString()} - $${values[1].toLocaleString()}`,
         season: ""
     });
 
-    console.log(formData);
+     console.log(formData)
+    const [errors, setErrors] = useState<DYTFormErrors>({
+            title: "",
+            name: "",
+            phone: "",
+            email: "",
+            destination:""
+        });
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -47,7 +78,122 @@ export default function Designyourtrip() {
         }));
     };
 
+     /* -----------------------------------------------------------------------
+           FORM VALIDATION (STRONG + CLEAN)
+        ----------------------------------------------------------------------- */
+        const validate = (): boolean => {
+            const newErrors: Partial<DYTFormErrors> = {};
+    
+            //title validation
+            if (!formData.title) {
+                newErrors.title = "Title required"
+            }
+    
+            // Name validation
+            if (!formData.name.trim()) {
+                newErrors.name = "Name is required";
+            } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
+                newErrors.name = "Name cannot contain numbers or special characters";
+            }
+    
+            // Mobile validation
+            if (!formData.phone.trim()) {
+                newErrors.phone = "Mobile number is required";
+            } else if (!/^[+]?[0-9\s-]+$/.test(formData.phone)) {
+                newErrors.phone = "Mobile number should contain only numbers";
+            } else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
+                newErrors.phone = "Enter a valid mobile number";
+            }
+    
+    
+            // Email validation
+            if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+                newErrors.email = "Enter a valid email";
+            }
+    
+            // destination validation
+            if (!formData.destination.trim()) {
+                newErrors.destination = "Destination is required";
+            }
+    
+            setErrors(newErrors as DYTFormErrors);
+    
+            return Object.keys(newErrors).length === 0; // true → no errors
+        };
+    
 
+    //submit form
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+         if (loading) return; // 🔥 extra safety (prevents double click)
+        if (!validate()) return;
+         if (!isCaptchaVerified) {
+            toast.error("Please verify captcha before submitting");
+            return;
+        }
+
+        try {
+
+             setLoading(true); // ⭐ start loader
+
+            const payload = {
+                name: `${formData.title} ${formData.name}`.trim(),
+                phone: formData.phone,
+                email: formData.email,
+                message: formData.message,
+                duration: formData.duration,
+                destination: formData.destination,
+                budget: formData.budget,
+                group_size: formData.group_size,
+                travel_date: formData.travel_date,
+                travel_type: formData.trip_type,
+                travel_pace: formData.travel_pace
+
+            };
+
+            const res = await apiService.post<DYTEnquiryResponse>(
+                "/fit-enquiry", // ✅ remove /api if BASE_URL already contains it
+                payload
+            );
+
+            console.log(res);
+
+            if (res.result === "success") {
+                toast.success(res.message);
+
+                // Reset form
+                setFormData({
+                    title: "",
+                    name: "",
+                    phone: "",
+                    email: "",
+                    message: "",
+                    destination: "",
+                    travel_date: "",
+                    duration: "",
+                    group_size: "",
+                    trip_type: "",
+                    travel_pace: "",
+                    budget: "",
+                    season: ""
+                });
+                setIsCaptchaVerified(false);
+                setCaptchaResetKey((prev) => prev + 1); // 🔄 refresh captcha
+
+            } else {
+                toast.error(res.message || "Something went wrong"); // ✅ fixed syntax
+            }
+
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+            console.error("CONTACT FORM ERROR:", error);
+
+            // ✅ show backend validation error
+            toast.error("Failed to send. Please try again!");
+        }finally {
+            setLoading(false); // ⭐ stop loader
+        }
+    };
     return (
 
         <>
@@ -98,113 +244,126 @@ export default function Designyourtrip() {
                         <div className="w-full md:w-2/3 pr-0 pl-0 mt-15 md:mt-0">
 
                             <div className="w-full  pl-0 md:pl-20  lg:pl-30 xl:pl-60 ">
-                                <form className="w-full max-w-3xl space-y-5">
+                                <form className="w-full max-w-3xl space-y-5" onSubmit={handleSubmit}>
                                     <div className="w-full">
                                         <h4 className="font-my-font-semibold text-(--color-secondary) text-xl">Traveler</h4>
                                     </div>
                                     {/* Row 1 */}
                                     <div className="grid grid-cols-1 md:grid-cols-[30%_67%] gap-4">
                                         {/* Title */}
-                                        <div className="relative w-full">
-                                            {/* LEFT ICON */}
-                                            <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                                                <img
-                                                    src="images/title-icon.svg"   // your left icon svg
-                                                    alt="title icon"
-                                                    className="w-4 h-4"
-                                                />
-                                            </span>
-
-                                            {/* SELECT */}
-                                            <select
-                                                className="w-full bg-transparent border border-gray-300 text-(--color-secondary) rounded-md 
-               pl-10 pr-10 py-3 focus:outline-none focus:border-gray-500 appearance-none"
-                                                id="title"
-                                                value={formData.title}
-                                                onChange={handleChange}
-                                            >
-                                                <option value="">Title</option>
-                                                <option>Mr</option>
-                                                <option>Mrs</option>
-                                                <option>Ms</option>
-                                            </select>
-
-                                            {/* RIGHT DROPDOWN ARROW */}
-                                            <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-                                                <svg
-                                                    className="w-4 h-4 text-gray-400"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                    viewBox="0 0 24 24"
+                                        <div>
+                                            <div className="relative w-full">
+                                                {/* LEFT ICON */}
+                                                <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                                                    <img
+                                                        src="images/title-icon.svg"   // your left icon svg
+                                                        alt="title icon"
+                                                        className="w-4 h-4"
+                                                    />
+                                                </span>
+    
+                                                {/* SELECT */}
+                                                <select
+                                                    className="w-full bg-transparent border border-gray-300 text-(--color-secondary) rounded-md 
+                   pl-10 pr-10 py-3 focus:outline-none focus:border-gray-500 appearance-none"
+                                                    id="title"
+                                                    value={formData.title}
+                                                    onChange={handleChange}
                                                 >
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                                </svg>
-                                            </span>
+                                                    <option value="">Title</option>
+                                                    <option>Mr</option>
+                                                    <option>Mrs</option>
+                                                    <option>Ms</option>
+                                                </select>
+    
+                                                {/* RIGHT DROPDOWN ARROW */}
+                                                <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                                                    <svg
+                                                        className="w-4 h-4 text-gray-400"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        strokeWidth="2"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                             {errors.title && <p style={{ color: "red", fontSize: "12px" }}>{errors.title}</p>}
                                         </div>
 
 
                                         {/* Full Name */}
-                                        <div className="relative w-full">
-                                            {/* Left Icon */}
-                                            <img
-                                                src="images/name-icon.svg"   // your SVG icon path
-                                                alt="User"
-                                                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
-                                            />
-
-                                            {/* Input */}
-                                            <input
-                                                type="text"
-                                                placeholder="Full name"
-                                                className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
-                                                id="name"
-                                                value={formData.name}
-                                                onChange={handleChange}
-                                            />
+                                        <div>
+                                            <div className="relative w-full">
+                                                {/* Left Icon */}
+                                                <img
+                                                    src="images/name-icon.svg"   // your SVG icon path
+                                                    alt="User"
+                                                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
+                                                />
+    
+                                                {/* Input */}
+                                                <input
+                                                    type="text"
+                                                    placeholder="Full name"
+                                                    className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
+                                                    id="name"
+                                                    value={formData.name}
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                             {errors.name && <p style={{ color: "red", fontSize: "12px" }}>{errors.name}</p>}
                                         </div>
+                                       
                                     </div>
 
                                     {/* Row 2 */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {/* Email */}
-                                        <div className="relative w-full">
-                                            {/* Left Icon */}
-                                            <img
-                                                src="images/email-icon.svg"   // your SVG icon path
-                                                alt="User"
-                                                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
-                                            />
-
-                                            {/* Input */}
-                                            <input
-                                                id="email"
-                                                value={formData.email}
-                                                onChange={handleChange}
-                                                type="text"
-                                                placeholder="Email ID"
-                                                className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
-                                            />
-                                        </div>
+                                       <div>
+                                            <div className="relative w-full">
+                                                {/* Left Icon */}
+                                                <img
+                                                    src="images/email-icon.svg"   // your SVG icon path
+                                                    alt="User"
+                                                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
+                                                />
+    
+                                                {/* Input */}
+                                                <input
+                                                    id="email"
+                                                    value={formData.email}
+                                                    onChange={handleChange}
+                                                    type="text"
+                                                    placeholder="Email ID"
+                                                    className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
+                                                />
+                                            </div>
+                                             {errors.email && <p style={{ color: "red", fontSize: "12px" }}>{errors.email}</p>}
+                                       </div>
 
                                         {/* Phone */}
-                                        <div className="relative w-full">
-                                            {/* Left Icon */}
-                                            <img
-                                                src="images/phone-icon.svg"   // your SVG icon path
-                                                alt="User"
-                                                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
-                                            />
-
-                                            {/* Input */}
-                                            <input
-                                                type="text"
-                                                placeholder="Phone number"
-                                                className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
-                                                id="phone"
-                                                value={formData.phone}
-                                                onChange={handleChange}
-                                            />
+                                        <div>
+                                            <div className="relative w-full">
+                                                {/* Left Icon */}
+                                                <img
+                                                    src="images/phone-icon.svg"   // your SVG icon path
+                                                    alt="User"
+                                                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
+                                                />
+    
+                                                {/* Input */}
+                                                <input
+                                                    type="text"
+                                                    placeholder="Phone number"
+                                                    className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
+                                                    id="phone"
+                                                    value={formData.phone}
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                            {errors.phone && <p style={{ color: "red", fontSize: "12px" }}>{errors.phone}</p>}
                                         </div>
                                     </div>
                                     <div className="pt-3">  <h4 className="font-my-font-semibold text-(--color-secondary) text-xl">Trip details</h4></div>
@@ -217,6 +376,7 @@ export default function Designyourtrip() {
                                             value={formData.destination}
                                             onChange={handleChange}
                                         />
+                                        {errors.destination && <p style={{ color: "red", fontSize: "12px" }}>{errors.destination}</p>}
 
                                     </div>
                                     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -224,16 +384,22 @@ export default function Designyourtrip() {
                                         <div className="relative">
                                             <DatePicker
                                                 selected={startDate}
+                                                 minDate={new Date()}  
                                                 placeholderText="Traveling on"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
                                                 id="date"
                                                 onChange={(date: Date | null) => {
                                                     setStartDate(date);
 
-                                                    setFormData((prev) => ({
-                                                        ...prev,
-                                                        date: date ? date.toISOString().split("T")[0] : ""
-                                                    }));
+                                                    if (date) {
+      const formatted =
+        `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+
+      setFormData((prev) => ({
+        ...prev,
+        travel_date: formatted
+      }));
+    }
                                                 }}
 
                                             />
@@ -273,18 +439,17 @@ export default function Designyourtrip() {
                                                 <option value="" disabled>
                                                     Trip type
                                                 </option>
-                                                <option value="leisure">Leisure</option>
-                                                <option value="business">Business</option>
-                                                <option value="family">Family</option>
-                                                <option value="honeymoon">Honeymoon</option>
-                                                <option value="adventure">Adventure</option>
-                                                <option value="cultural">Cultural</option>
+                                                {tripTypes.map((type) => (
+                                                    <option key={type} value={type.toLowerCase()}>
+                                                        {type}
+                                                    </option>
+                                                ))}
                                             </select>
                                         </div>
 
                                         <div className="relative">
                                             <select
-                                                id=""
+                                                id="travel_pace"
                                                 value={formData.travel_pace}
                                                 onChange={handleChange}
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
@@ -293,12 +458,11 @@ export default function Designyourtrip() {
                                                 <option value="" disabled>
                                                     Travel pace
                                                 </option>
-                                                <option value="europe">Europe</option>
-                                                <option value="asia">Asia</option>
-                                                <option value="north-america">North America</option>
-                                                <option value="south-america">South America</option>
-                                                <option value="africa">Africa</option>
-                                                <option value="australia">Australia</option>
+                                                {travelPace.map((item) => (
+                                                    <option key={item} value={item.toLowerCase()}>
+                                                        {item}
+                                                    </option>
+                                                ))}
                                             </select>
                                         </div>
                                     </div>
@@ -315,7 +479,16 @@ export default function Designyourtrip() {
                                                 step={STEP}
                                                 min={MIN}
                                                 max={MAX}
-                                                onChange={(vals) => setValues(vals)}
+                                                onChange={(vals) => {
+                                                    setValues(vals);
+
+                                                    const budgetString = `$${vals[0].toLocaleString()} - $${vals[1].toLocaleString()}`;
+
+                                                    setFormData((prev) => ({
+                                                        ...prev,
+                                                        budget: budgetString
+                                                    }));
+                                                }}
                                                 renderTrack={({ props, children }) => (
                                                     <div
                                                         {...props}
@@ -346,25 +519,28 @@ export default function Designyourtrip() {
                                         </div>
                                     </div>
 
-                                        <div className="relative w-full">
-                                            <input
-                                                id="message"
-                                                value={formData.message}
-                                                onChange={handleChange}
-                                                type="text"
-                                                placeholder="Anything specific you want to experience?"
-                                                className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md  px-3 py-3 focus:outline-none focus:border-gray-500" />
-                                        </div>
+                                    <div className="relative w-full">
+                                        <input
+                                            id="message"
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            type="text"
+                                            placeholder="Anything specific you want to experience?"
+                                            className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md  px-3 py-3 focus:outline-none focus:border-gray-500" />
+                                    </div>
 
 
-                                        {/* Checkbox */}
+                                    {/* Captcha number */}
+                                                                        <SimpleCaptcha onVerify={setIsCaptchaVerified} resetTrigger={captchaResetKey} />
 
 
-                                        {/* Button */}
+                                    {/* Button */}
 
-                                        <div className="flex gap-4">
-                                            <button
-                                                className="
+                                    <div className="flex gap-4">
+                                        <button
+                                             disabled={loading}
+                                            type="submit"
+                                            className="
 relative overflow-hidden bg-(--color-secondary)
 text-white
 px-4 py-3 md:px-6 md:py-4
@@ -383,13 +559,23 @@ before:from-transparent before:via-black/40 before:to-transparent
 before:transition-transform before:duration-700
 hover:before:translate-x-full hover:text-white
 "
-                                            >
-                                                Start Designing Your Trip
-                                            </button>
+
+                                        >
+                                            {loading ? (
+                                            <span className="flex justify-center items-center text-white  w-full gap-2">
+
+                                                Sending.......
+                                                <span className="inline-block animate-spin h-4 w-4 border-2 border-red-500 border-t-transparent rounded-full"></span>
+                                            </span>
+                                        ) : (
+                                            "Start Designing Your Trip"
+                                        )}
+                                            
+                                        </button>
 
 
-                                            <button
-                                                className="
+                                        <button
+                                            className="
 relative overflow-hidden
 text-(--color-secondary)
 px-4 py-3 md:px-6 md:py-4
@@ -408,18 +594,18 @@ before:from-transparent before:via-black/40 before:to-transparent
 before:transition-transform before:duration-700
 hover:before:translate-x-full hover:text-white
 "
-                                            >
-                                                Reset
-                                            </button> </div>
-                                        <p>No obligation until itinerary approval</p>
+                                        >
+                                            Reset
+                                        </button> </div>
+                                    <p>No obligation until itinerary approval</p>
 
-                                    </form>
-                                    </div>
+                                </form>
                             </div>
+                        </div>
 
 
-                        </div >
                     </div >
+                </div >
             </section >
 
 
@@ -458,7 +644,8 @@ hover:before:translate-x-full hover:text-white
 
 
             <LogoCarousel />
-
+             {/* Toast */}
+            <ToastContainer position="top-right" autoClose={2000} theme="colored" />
         </>
     );
 }
