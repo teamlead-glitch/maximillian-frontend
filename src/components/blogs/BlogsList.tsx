@@ -100,7 +100,7 @@ export default function BlogsList() {
   }, [handleObserver]);
 
   // if (loading) return (
-  // <section className="pt-32 xl:pt-40 pb-20 bg-white">    
+  // <section className="pt-32 xl:pt-40 pb-20 bg-white">
   // <Loader />
   // </section>
   // );

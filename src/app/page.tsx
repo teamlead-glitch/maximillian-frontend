@@ -25,7 +25,7 @@ export default function Home() {
           }}
         />
       )}
-      <HomePage />
+      <HomePage page={page}/>
     </>
   );
 }

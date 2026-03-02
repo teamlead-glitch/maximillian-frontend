@@ -1,24 +1,27 @@
-export default function AboutSection() {
+import Image from "next/image";
+import { PageResponse } from "@/types/pagesTypes";
+export default function AboutSection({
+  page
+}: {
+  page: PageResponse
+}) {
 
     return (
         <>
             {/* about section */}
             <section className="relative py-20 overflow-hidden bg-white">
                 {/* Top Right Decorative Shape */}
-                <img
+                <Image
                     src="/images/logo-shape.png"
                     alt="Decorative shape"
-                    className="
-      absolute top-0 right-0
-      w-200 sm:w-150 lg:w-200
-      pointer-events-none
-      select-none
-    "
+                    className=" absolute top-0 right-0 w-200 sm:w-150 lg:w-200 pointer-events-none select-none "
+                    width="400" height="400"
                 />
                 <div className="max-w-[1300px] flex mx-auto  px-5  ">
                     <div className="w-[20%]  lg:w-[10%]"><img src="images/logo-icon.svg" alt="" /></div>
-                    <div className="w-[80%] lg:w-[60%]">
-                        <h2 className=" font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) mb-5">Travel, Thoughtfully <br /> Designed.</h2>
+                    <div >
+                        <div className="w-[80%] lg:w-[60%]" dangerouslySetInnerHTML={{ __html: page?.content ?? '' }} />
+                        {/* <h2 className=" font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) mb-5">Travel, Thoughtfully <br /> Designed.</h2>
                         <div className="flex flex-col md:flex-row gap-5">
                             <div className="w-full md:w-1/2">
                                 <p className="text-(--color-secondary)  mb-4">
@@ -27,7 +30,7 @@ export default function AboutSection() {
                                 <p >We craft small-group and private international journeys that focus on culture, connection, and comfort—moving beyond checklists to create experiences that stay with you long after the journey ends.</p>
                             </div>
                             <div className="w-full md:w-1/2"><p>Our curated approach focuses on specialty journeys from culinary and trekking expeditions to slow travel designed to foster genuine discovery. Through an enquiry-driven user journey and a commitment to cinematic storytelling, we transform international travel into a premium, custom-fit experience tailored specifically to your group size, budget, and season.</p></div>
-                        </div>
+                        </div> */}
                         <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-3 mt-3 cursor-pointer">
                             <span className="mr-3">Our World</span>
 
