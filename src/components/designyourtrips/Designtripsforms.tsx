@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import LogoCarousel from "@/components/home/LogoCarousel";
 import { Range, getTrackBackground } from "react-range";
+import { DYTformtypes } from "@/types/designYourTripTypes";
 
 
 
@@ -16,6 +17,35 @@ export default function Designyourtrip() {
 
     const [values, setValues] = useState([100, 600]);
 
+    /* form data */
+    const [formData, setFormData] = useState<DYTformtypes>({
+        title: "",
+        name: "",
+        phone: "",
+        email: "",
+        message: "",
+        destination: "",
+        travel_date: "",
+        duration: "",
+        group_size: "",
+        trip_type: "",
+        travel_pace: "",
+        budget: "",
+        season: ""
+    });
+
+    console.log(formData);
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
+        const { id, value } = e.target;
+
+        setFormData((prev) => ({
+            ...prev,
+            [id]: value,
+        }));
+    };
 
 
     return (
@@ -89,6 +119,9 @@ export default function Designyourtrip() {
                                             <select
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary) rounded-md 
                pl-10 pr-10 py-3 focus:outline-none focus:border-gray-500 appearance-none"
+                                                id="title"
+                                                value={formData.title}
+                                                onChange={handleChange}
                                             >
                                                 <option value="">Title</option>
                                                 <option>Mr</option>
@@ -125,6 +158,9 @@ export default function Designyourtrip() {
                                                 type="text"
                                                 placeholder="Full name"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
+                                                id="name"
+                                                value={formData.name}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
@@ -142,6 +178,9 @@ export default function Designyourtrip() {
 
                                             {/* Input */}
                                             <input
+                                                id="email"
+                                                value={formData.email}
+                                                onChange={handleChange}
                                                 type="text"
                                                 placeholder="Email ID"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
@@ -162,6 +201,9 @@ export default function Designyourtrip() {
                                                 type="text"
                                                 placeholder="Phone number"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
+                                                id="phone"
+                                                value={formData.phone}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
@@ -170,28 +212,48 @@ export default function Designyourtrip() {
                                         <input
                                             type="text"
                                             placeholder="Preferred region(s) / countries"
-                                            className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md  px-3 py-3 focus:outline-none focus:border-gray-500" />
+                                            className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md  px-3 py-3 focus:outline-none focus:border-gray-500"
+                                            id="destination"
+                                            value={formData.destination}
+                                            onChange={handleChange}
+                                        />
+
                                     </div>
                                     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
 
                                         <div className="relative">
                                             <DatePicker
                                                 selected={startDate}
-                                                onChange={(date: Date | null) => setStartDate(date)}
                                                 placeholderText="Traveling on"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
+                                                id="date"
+                                                onChange={(date: Date | null) => {
+                                                    setStartDate(date);
+
+                                                    setFormData((prev) => ({
+                                                        ...prev,
+                                                        date: date ? date.toISOString().split("T")[0] : ""
+                                                    }));
+                                                }}
+
                                             />
                                         </div>
                                         <div className="relative">
                                             <input type="text"
                                                 placeholder="Duration"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
+                                                id="duration"
+                                                value={formData.duration}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                         <div className="relative">
                                             <input type="text"
                                                 placeholder="No of travellers"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
+                                                id="group_size"
+                                                value={formData.group_size}
+                                                onChange={handleChange}
                                             />
                                         </div>
 
@@ -203,8 +265,10 @@ export default function Designyourtrip() {
 
                                         <div className="relative">
                                             <select
+                                                id="trip_type"
+                                                value={formData.trip_type}
+                                                onChange={handleChange}
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
-                                                defaultValue=""
                                             >
                                                 <option value="" disabled>
                                                     Trip type
@@ -220,8 +284,11 @@ export default function Designyourtrip() {
 
                                         <div className="relative">
                                             <select
+                                                id=""
+                                                value={formData.travel_pace}
+                                                onChange={handleChange}
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
-                                                defaultValue=""
+
                                             >
                                                 <option value="" disabled>
                                                     Travel pace
@@ -236,65 +303,35 @@ export default function Designyourtrip() {
                                         </div>
                                     </div>
 
-                                    <div className="relativee w-full">
-                                        <div className="w-full max-w-xl mx-auto">
-                                            <p className="py-4">Budget range</p>
-                                            {/* Labels */}
+                                    <div className="relativee w-full"> 
+                                        <div className="w-full max-w-xl mx-auto"> 
+                                            <p className="py-4">Budget range</p> {/* Labels */} {/* Slider */}
+                                             <Range values={values} step={STEP} min={MIN} max={MAX} 
+                                             onChange={(vals) => setValues(vals)}
+                                              renderTrack={({ props, children }) => (<div {...props}
+                                               className="h-2 w-full rounded bg-gray-200"
+                                                style={{ background: getTrackBackground({ values, colors: ["#e5e7eb", "#3A3F42", "#e5e7eb"], min: MIN, max: MAX }) }} > {children} </div>)} 
+                                                renderThumb={({ props }) => (<div {...props} className="h-5 w-5 bg-white border-2 border-black rounded-full shadow" />)} />
 
-
-                                            {/* Slider */}
-                                            <Range
-                                                values={values}
-                                                step={STEP}
-                                                min={MIN}
-                                                max={MAX}
-                                                onChange={(vals) => setValues(vals)}
-                                                renderTrack={({ props, children }) => (
-                                                    <div
-                                                        {...props}
-                                                        className="h-2 w-full rounded bg-gray-200"
-                                                        style={{
-                                                            background: getTrackBackground({
-                                                                values,
-                                                                colors: ["#e5e7eb", "#3A3F42", "#e5e7eb"],
-                                                                min: MIN,
-                                                                max: MAX
-                                                            })
-                                                        }}
-                                                    >
-                                                        {children}
-                                                    </div>
-                                                )}
-                                                renderThumb={({ props }) => (
-                                                    <div
-                                                        {...props}
-                                                        className="h-5 w-5 bg-white border-2 border-black rounded-full shadow"
-                                                    />
-                                                )}
-                                            />
-                                            <div className="flex justify-between mt-4 text-gray-700 font-medium">
-                                                <span>${values[0]}</span>
-                                                <span>${values[1]}</span>
-                                            </div>
+                                        <div className="relative w-full">
+                                            <input
+                                                id="message"
+                                                value={formData.message}
+                                                onChange={handleChange}
+                                                type="text"
+                                                placeholder="Anything specific you want to experience?"
+                                                className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md  px-3 py-3 focus:outline-none focus:border-gray-500" />
                                         </div>
-                                    </div>
-
-                                    <div className="relative w-full">
-                                        <input
-                                            type="text"
-                                            placeholder="Anything specific you want to experience?"
-                                            className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md  px-3 py-3 focus:outline-none focus:border-gray-500" />
-                                    </div>
 
 
-                                    {/* Checkbox */}
+                                        {/* Checkbox */}
 
 
-                                    {/* Button */}
+                                        {/* Button */}
 
-                                    <div className="flex gap-4">
-                                        <button
-                                            className="
+                                        <div className="flex gap-4">
+                                            <button
+                                                className="
 relative overflow-hidden bg-(--color-secondary)
 text-white
 px-4 py-3 md:px-6 md:py-4
@@ -313,13 +350,13 @@ before:from-transparent before:via-black/40 before:to-transparent
 before:transition-transform before:duration-700
 hover:before:translate-x-full hover:text-white
 "
-                                        >
-                                            Start Designing Your Trip
-                                        </button>
+                                            >
+                                                Start Designing Your Trip
+                                            </button>
 
 
-                                        <button
-                                            className="
+                                            <button
+                                                className="
 relative overflow-hidden
 text-(--color-secondary)
 px-4 py-3 md:px-6 md:py-4
@@ -338,18 +375,18 @@ before:from-transparent before:via-black/40 before:to-transparent
 before:transition-transform before:duration-700
 hover:before:translate-x-full hover:text-white
 "
-                                        >
-                                            Reset
-                                        </button> </div>
-                                    <p>No obligation until itinerary approval</p>
+                                            >
+                                                Reset
+                                            </button> </div>
+                                        <p>No obligation until itinerary approval</p>
 
-                                </form>
+                                    </form>
+                                    </div>
                             </div>
-                        </div>
 
 
+                        </div >
                     </div >
-                </div >
             </section >
 
 
