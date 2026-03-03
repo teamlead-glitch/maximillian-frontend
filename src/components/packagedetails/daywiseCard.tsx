@@ -14,11 +14,11 @@ function DaywiseCard() {
                     </p>
                     <ul className="w-full align-center flex flex-wrap gap-4">
                         <li className="flex items-center gap-1 ">
-                            <img src="images/hand_meal.png" alt="" className="w-5 h-5 " />
+                            <img src="/images/hand_meal.png" alt="" className="w-5 h-5 " />
                             <span className="text-(--color-secondary) text-sm md:text-base">Airport transfer</span>
                         </li>
                         <li className="flex items-center gap-1">
-                            <img src="images/bed.png" alt="" className="w-5 h-5" />
+                            <img src="/images/bed.png" alt="" className="w-5 h-5" />
                             <span className="text-(--color-secondary) text-sm md:text-base">Hotel check-in assistance
                             </span>
                         </li>
@@ -27,7 +27,7 @@ function DaywiseCard() {
                 </div>
                 <div className="w-full md:w-2/5">
                     <div className="aspect-4/3">
-                        <img src="images/euro3-day1.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                        <img src="/images/euro3-day1.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
             </div>
             <div className="py-5 md:py-10 w-full"><hr /> </div>
 

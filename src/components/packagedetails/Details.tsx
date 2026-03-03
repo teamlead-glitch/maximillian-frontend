@@ -1,118 +1,27 @@
 "use client";
 import BespokeJourney from "@/components/home/BespokeJourney";
 import LogoCarousel from "@/components/home/LogoCarousel";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css";
 import { useState } from "react";
-import { Plus, Minus, Circle } from "lucide-react";
+import { Circle } from "lucide-react";
 import DaywiseCard from "./daywiseCard";
 import PackagedetailsSlider from "./packagedetailsSlider";
 import Faq from "./Faq";
-const insights = [
-    {
-        id: 1,
-        mainheading: "Travel Insights",
-        heading: "Top ten destinations of Europe in 2026.",
-        content: "Product Manager",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.",
-        insight_image: "/images/insight-img.jpg",
-    },
-    {
-        id: 2,
-        mainheading: "Travel Insights",
-        heading: "Top ten destinations of Europe in 2026.",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.",
-
-        insight_image: "/images/insight-img.jpg",
-    },
-    {
-        id: 3,
-        mainheading: "Travel Insights",
-        heading: "Top ten destinations of Europe in 2026.",
-        content: "Product Manager",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien. lorum ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.",
-        insight_image: "/images/insight-img.jpg",
-    },
-
-
-];
+import { PackageResponse } from "@/types/PackageDetailsType";
 
 
 
-const slides = [
-    {
-        id: 1,
+export default function Details({ details }: { details: PackageResponse }) {
+ 
+const banner_image = details?.banner_image ?? "";
 
-
-        image: "/images/euro3-gallery-1.webp",
-    },
-    {
-        id: 2,
-
-
-        image: "/images/euro3-gallery-2.webp",
-    },
-    {
-        id: 3,
-
-
-        image: "/images/euro3-gallery-3.webp",
-    },
-    {
-        id: 4,
-
-
-        image: "/images/euro3-gallery-4.webp",
-    },
-    {
-        id: 5,
-
-
-        image: "/images/euro3-gallery-5.webp",
-    },
-    {
-        id: 6,
-
-
-        image: "/images/euro3-gallery-6.webp",
-    },
-
-
-];
-
-const faqs = [
-    {
-        question: "Is this journey physically demanding?",
-        answer: "No. Mountain experiences are cable-car and rail based, with minimal walking."
-    },
-    {
-        question: "Can this journey be customised?",
-        answer: "Yes. Duration, hotels, experiences, and meal plans can be tailored.",
-    },
-    {
-        question: "Is this suitable for first-time Europe travellers?",
-        answer: "Yes, especially for those who prefer a relaxed, well-planned pace."
-    },
-
-
-
-];
-
-
-export default function Details() {
-    const [openIndex, setOpenIndex] = useState<number|null>(null);
-
-    const toggle = (index:number|null) => {
-        setOpenIndex(openIndex === index ? null : index);
-    };
 
     return (
 
         <>
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
-                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]"><img src="images/euro3-hero-bg.webp" alt="" className="w-full h-full object-cover" />
+                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]"><img src="/images/euro3-hero-bg.webp" alt="" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
 -translate-x-1/2  -translate-y-1/2
@@ -190,7 +99,7 @@ px-4 sm:px-0 text-center"></div>
                     <div className="w-full flex md:flex-row flex-col  align-center justify-center">
                         <div className="w-full md:w-2/4 mb-10 md:mb-0">
                             <div className="aspect-square shadow-2xl">
-                                <img src="images/euro3-journey-overview.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div>
+                                <img src="/images/euro3-journey-overview.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div>
                         </div>
                         <div className="w-full md:w-3/4 pl-0 md:pl-20 flex align-center justify-center flex-col">
                             <h2 className="font-my-font-regular text-break xl:text-4xl text-3xl text-(--color-secondary) mb-10
@@ -234,7 +143,7 @@ before:-translate-y-1/2 after:-translate-y-1/2">
                         <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-0 md:py-4 mt-3 cursor-pointer">
                             <span className="mr-3">Download This itinerary as PDF</span>
 
-                            <img src="images/download.svg" alt="" />
+                            <img src="/images/download.svg" alt="" />
                         </button>
                     </div>
                 </div>
@@ -378,7 +287,7 @@ before:-translate-y-1/2 after:-translate-y-1/2">
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square relative overflow-hidden">
                                     <a href="">
-                                        <img src="images/expeience-img-1.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                                        <img src="/images/expeience-img-1.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                                         <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                         <div className="absolute bottom-0 left-0 right-0 p-4">
                                             <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
@@ -408,7 +317,7 @@ before:-translate-y-1/2 after:-translate-y-1/2">
                             </div>
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square  relative overflow-hidden">
-                                    <a href=""><img src="images/expeience-img-2.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
+                                    <a href=""><img src="/images/expeience-img-2.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
                                     <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
                                         <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
@@ -438,7 +347,7 @@ before:-translate-y-1/2 after:-translate-y-1/2">
                             </div>
                             <div className="py-3 group">
                                 <div className="rounded-md w-full aspect-square relative overflow-hidden">
-                                    <a href=""><img src="images/expeience-img-3.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
+                                    <a href=""><img src="/images/expeience-img-3.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
                                     <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
 
