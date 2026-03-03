@@ -14,6 +14,7 @@ import { apiService } from "@/services/api";
 import PackageCard from "../package/PackageCard";
 import { Region } from "@/types/region";
 import Insights from "../home/Insights";
+import IndiaOnly from "./IndiaOnly";
 
 const TAKE = 15;
 
@@ -175,6 +176,8 @@ px-4 sm:px-0 text-center">
                     </div>
                 </div>
             </section>
+
+            {slug == 'india' &&<IndiaOnly />}
             
             {/* insights */}
             <Insights />
