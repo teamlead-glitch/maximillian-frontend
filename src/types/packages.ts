@@ -19,6 +19,7 @@ export interface PackageItem {
   tags: Tag[];
   countries: Country[];
   tag_groups: TagGroup[];
+  days: string;
 }
 
 export interface Region {

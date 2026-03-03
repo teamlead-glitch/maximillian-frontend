@@ -8,10 +8,12 @@ import { DYTEnquiryResponse, DYTFormErrors, DYTformtypes } from "@/types/designY
 import { toast, ToastContainer } from "react-toastify";
 import { apiService } from "@/services/api";
 import SimpleCaptcha from "../Captcha";
+import { useRouter } from "next/navigation";
 
 
 
 export default function Designyourtrip() {
+    const router = useRouter();
     const [startDate, setStartDate] = useState<Date | null>(null);
     //for captcha validation
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
@@ -163,7 +165,7 @@ export default function Designyourtrip() {
             console.log(res);
 
             if (res.result === "success") {
-                toast.success(res.message);
+                 router.push("/thankyou");
 
                 // Reset form
                 setFormData({
