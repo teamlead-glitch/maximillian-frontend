@@ -3,6 +3,7 @@ import { Region } from "@/types/commonTypes";
 export interface RegionFormated {
   countries: string[];
   image: string;
+  slug:string
 }
 
 export function transformRegions(
@@ -14,6 +15,7 @@ export function transformRegions(
     result[region.title] = {
       countries: region.countries.map((country) => country.title),
       image: region.image, 
+      slug:region.slug
     };
   });
 
