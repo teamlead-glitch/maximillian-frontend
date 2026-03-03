@@ -1,4 +1,4 @@
-import Country from '../app/country/page';
+
 export interface CountryResponse {
   id: number;
   title: string;
