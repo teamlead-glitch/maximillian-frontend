@@ -7,6 +7,9 @@ import "swiper/css/navigation";
 import "swiper/css";
 import { useState } from "react";
 import { Plus, Minus, Circle } from "lucide-react";
+import DaywiseCard from "./daywiseCard";
+import PackagedetailsSlider from "./packagedetailsSlider";
+import Faq from "./Faq";
 const insights = [
     {
         id: 1,
@@ -279,6 +282,7 @@ relative pb-2">Munich – Historic Heart & City Life
                                 <img src="images/noimg.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
                     </div>
                     <div className="py-5 md:py-10 w-full"><hr /> </div>
+                    <DaywiseCard/>
                     <div className="w-full flex flex-col md:flex-row  align-center justify-between">
                         <div className="w-full md:w-3/5 mb-4 md:mb-0 flex align-center justify-center flex-col gap-4 pr-4">
                             <h5 className="text-(--color-secondary) text-small">Day 3:</h5>
@@ -832,6 +836,7 @@ relative pb-2"> Vienna – Imperial Europe at Leisure
                     </Swiper>
                 </div>
             </section >
+            <PackagedetailsSlider/>
 
             <section className=" bg-white py-10 md:py-30  px-5">
                 <div className="max-w-[1000px] mx-auto">
@@ -884,6 +889,7 @@ relative pb-2"> Vienna – Imperial Europe at Leisure
 
                 </div>
             </section>
+            <Faq/>
 
             <section className=" bg-white py-10   px-5">
                 <div className="max-w-[1300px] mx-auto">
