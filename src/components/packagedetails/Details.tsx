@@ -9,19 +9,28 @@ import DaywiseCard from "./daywiseCard";
 import PackagedetailsSlider from "./packagedetailsSlider";
 import Faq from "./Faq";
 import { PackageResponse } from "@/types/PackageDetailsType";
+import Image from "next/image";
 
 
 
 export default function Details({ details }: { details: PackageResponse }) {
  
 const banner_image = details?.banner_image ?? "";
-
+ const title = details?.title ?? "";
+ const package_tagline=details?.package_tagline??"";
+const season =details?.season??"";
+const duration=details?.duration_text??"";
+const group_size=details?.package_size??"";
+ const countries = details?.countries || [];
+ const journey_overview=details?.description??"";
+ const journey_flow=details?.journey_flow??"";
+ const journey_image=details?.image_path ?? "";
 
     return (
 
         <>
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
-                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]"><img src="/images/euro3-hero-bg.webp" alt="" className="w-full h-full object-cover" />
+                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]"><Image src={banner_image} alt="" fill className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
 -translate-x-1/2  -translate-y-1/2
@@ -31,8 +40,8 @@ px-4 sm:px-0 text-center"></div>
             <section className=" bg-white py-10 md:py-30  px-5">
                 <div className="max-w-[800px] mx-auto   ">
                     <div className="flex flex-wrap items-center gap-5 justify-center">
-                        <h1 className="font-my-font-regular text-break xl:text-5xl md:text-4xl text-3xl text-(--color-secondary) text-center ">EURO 3 – Alpine Europe at an Easy Pace</h1>
-                        <p className="text-center">A thoughtfully paced journey through Central Europe, designed for travellers who value comfort, scenery, and time to truly experience each destination.
+                        <h1 className="font-my-font-regular text-break xl:text-5xl md:text-4xl text-3xl text-(--color-secondary) text-center ">{title}</h1>
+                        <p className="text-center">{package_tagline}
                         </p>
                     </div></div>
                 <div className="max-w-[1300px] mx-auto pt-5 lg:pt-16">
@@ -50,25 +59,29 @@ px-4 sm:px-0 text-center"></div>
                         </div>
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Duration</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold"> 14–15 Days</h4>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold"> {duration}</h4>
                         </div>
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
                             <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1">
-                                <li className="relative text-sm sm:text-base font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                    Germany
-                                </li>
-                                <li className="relative text-sm sm:text-base font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                    Switzerland
-                                </li>
-                                <li className="relativetext-sm sm:text-base font-my-font-semibold  text-(--color-secondary)">
-                                    Austria
-                                </li>
+                               {countries.map((country, index) => (
+                                    <li
+                                    key={country.id}
+                                    className="flex items-center text-sm sm:text-base font-my-font-semibold text-(--color-secondary)"
+                                    >
+                                    {country.title}
+
+                                    {/* Show dot only if NOT last item */}
+                                    {countries.length > 1 && index !== countries.length - 1 && (
+                                        <span className="mx-2">⬥</span>
+                                    )}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Best season</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold">May to September</h4>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold">{season}</h4>
 
                         </div>
                         <div className="pb-2 md:pb-0">
@@ -89,7 +102,7 @@ px-4 sm:px-0 text-center"></div>
                         </div>
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Group size</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold">Private journeys / Small groups only</h4>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold">{group_size}</h4>
                         </div>
                     </div>
                 </div>
@@ -98,8 +111,8 @@ px-4 sm:px-0 text-center"></div>
                 <div className="max-w-[1000px] mx-auto w-full relative  ">
                     <div className="w-full flex md:flex-row flex-col  align-center justify-center">
                         <div className="w-full md:w-2/4 mb-10 md:mb-0">
-                            <div className="aspect-square shadow-2xl">
-                                <img src="/images/euro3-journey-overview.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div>
+                            <div className="aspect-square shadow-2xl relative">
+                                <Image src={journey_image} fill alt="" className="w-full h-full object-cover rounded-lg" /></div>
                         </div>
                         <div className="w-full md:w-3/4 pl-0 md:pl-20 flex align-center justify-center flex-col">
                             <h2 className="font-my-font-regular text-break xl:text-4xl text-3xl text-(--color-secondary) mb-10
@@ -108,20 +121,15 @@ before:content-[''] before:absolute before:-bottom-3 before:left-0
 before:w-16 before:h-[2px] before:bg-gray-300">
                                 Journey overview
                             </h2>
-                            <p>EURO 3 is created for travellers who prefer  <span className="font-semibold">depth over distance</span>.
-                            </p>
-                            <p>Instead of rushing across multiple countries, this journey settles into the heart of Central Europe — beginning in Bavaria, moving gently through Germany’s forested landscapes, entering the Swiss Alps at a relaxed pace, and concluding in Austria’s elegant cultural capitals.
-                            </p>
-                            <p>The journey is designed around <span className="font-semibold">longer stays, scenic rail travel, and unhurried days.</span>  Mountain experiences are accessible and non-strenuous, cities are explored at a comfortable rhythm, and travel days are thoughtfully planned to avoid fatigue.</p>
-                            <p>EURO 3 is ideal for travellers who want Europe to feel <span className="font-semibold">calm, immersive, and beautifully balanced</span> , rather than rushed or overwhelming.
-                            </p>
+                            <div className="content" dangerouslySetInnerHTML={{ __html: journey_overview }}>
 
-                            <h3 className="font-my-font-regular text-break xl:text-3xl text-2xl text-(--color-secondary) mb-5">The Journey Flow
-                            </h3>
-                            <p>The experience begins in <span className="font-semibold">Munich</span>, where Bavarian culture, historic streets, and alpine day trips provide a gentle introduction to Europe. From here, the journey moves into Germany’s forested heartland before crossing into Switzerland’s lakes and mountains.
-                            </p>
-                            <p>After experiencing the alpine regions around Lucerne and Interlaken, the journey pauses briefly in Zurich before continuing into Austria. A short stay in <span className="font-semibold">Salzburg</span> adds musical and baroque charm, before the journey concludes in <span className="font-semibold">Vienna</span>, where imperial architecture and café culture provide a refined finale.
-                            </p>
+                        </div>
+
+                             <h3 className="font-my-font-regular text-break xl:text-3xl text-2xl text-(--color-secondary) mb-5">The Journey Flow
+                            </h3> 
+                            <div className="content" dangerouslySetInnerHTML={{ __html: journey_flow }}>
+
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -135,10 +143,9 @@ after:content-[''] after:absolute after:top-1/2 after:right-0 after:w-1/4 after:
 before:-translate-y-1/2 after:-translate-y-1/2">
                             Day-wise Itinerary </h2></div>
 
-                    <DaywiseCard/>
-                    <DaywiseCard/>
-                    <DaywiseCard/>
-                    <DaywiseCard/>
+                    {details?.itinerary?.map((day) => (
+  <DaywiseCard key={day.id} day={day} />
+))}
                     <div className="w-full text-center flex justify-center py-5      md:py-10">
                         <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-0 md:py-4 mt-3 cursor-pointer">
                             <span className="mr-3">Download This itinerary as PDF</span>
