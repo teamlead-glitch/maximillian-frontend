@@ -1,11 +1,11 @@
-import Countryexplore from "@/components/countrylanding/Countryexplore";
+import Countrylisting from "@/components/countrylist/Countrylisting";
 
 import { generateSeoMetadata } from "@/lib/seo";
 import { PAGE_SLUGS } from "@/constants/pageSlugs";
 import { fetchPageBySlug } from "@/lib/page-api";
 
 
-const slug = PAGE_SLUGS.COUNTRY;
+const slug = PAGE_SLUGS.COUNTRYLISTING;
 
 export const generateMetadata = async () => {
     return generateSeoMetadata(slug);
@@ -15,7 +15,7 @@ export const generateMetadata = async () => {
 const page = await fetchPageBySlug(slug);
 
 
-export default function CountryPage() {
+export default function CountryLandingPage() {
     return (
         <>
             {/* ✅ JSON-LD SCHEMA (SERVER RENDERED) */}
@@ -27,7 +27,7 @@ export default function CountryPage() {
                     }}
                 />
             )}
-            <Countryexplore />
+            <Countrylisting />
 
         </>
     );

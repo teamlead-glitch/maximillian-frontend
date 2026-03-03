@@ -12,6 +12,8 @@ export const PAGE_SLUGS = {
   REGION: "region",
   COUNTRY: "country",
   BLOGS: "blogs",
-  PACKAGE: "package"
+  PACKAGE: "package",
+  COUNTRYLISTING: "countrylisting",
+
 
 } as const;

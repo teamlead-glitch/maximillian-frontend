@@ -43,74 +43,58 @@ const slides = [
         id: 1,
 
 
-        image: "/images/slide4.webp",
+        image: "/images/euro3-gallery-1.webp",
     },
     {
         id: 2,
 
 
-        image: "/images/slide3.webp",
+        image: "/images/euro3-gallery-2.webp",
     },
     {
         id: 3,
 
 
-        image: "/images/slide2.webp",
+        image: "/images/euro3-gallery-3.webp",
     },
     {
         id: 4,
 
 
-        image: "/images/slide1.webp",
+        image: "/images/euro3-gallery-4.webp",
     },
     {
         id: 5,
 
 
-        image: "/images/slide4.webp",
+        image: "/images/euro3-gallery-5.webp",
     },
     {
         id: 6,
 
 
-        image: "/images/slide3.webp",
+        image: "/images/euro3-gallery-6.webp",
     },
-    {
-        id: 7,
 
-
-        image: "/images/slide2.webp",
-    },
-    {
-        id: 8,
-
-
-        image: "/images/slide1.webp",
-    },
 
 ];
 
 const faqs = [
     {
-        question: "Donec ultrices erat at dolor maximus?",
-        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien. lorum ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.",
+        question: "Is this journey physically demanding?",
+        answer: "No. Mountain experiences are cable-car and rail based, with minimal walking."
     },
     {
-        question: "Praesent at urna eu sapien blandit scelerisque?",
-        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien. lorum ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.",
+        question: "Can this journey be customised?",
+        answer: "Yes. Duration, hotels, experiences, and meal plans can be tailored.",
     },
     {
-        question: "Class aptent taciti sociosqu?",
-        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien. lorum ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.",
+        question: "Is this suitable for first-time Europe travellers?",
+        answer: "Yes, especially for those who prefer a relaxed, well-planned pace."
     },
-    {
-        question: "raesent rutrum metus ac ultrices?",
-        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien. lorum ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.",
-    },
-    {
-        question: "Donec ultrices erat at dolor maximus?",
-        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien. lorum ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet sit amet sapien.",
-    },
+
+
+
 ];
 
 
@@ -125,7 +109,7 @@ export default function Details() {
 
         <>
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
-                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]"><img src="images/details-bg.webp" alt="" className="w-full h-full object-cover" />
+                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]"><img src="images/euro3-hero-bg.webp" alt="" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
 -translate-x-1/2  -translate-y-1/2
@@ -140,51 +124,51 @@ px-4 sm:px-0 text-center"></div>
                         </p>
                     </div></div>
                 <div className="max-w-[1300px] mx-auto pt-5 lg:pt-16">
-                    <div className="flex flex-wrap align-center justify-center gap-y-5 gap-x-5 md:gap-12 xl:gap-16">
+                    <div className="flex flex-wrap align-center  gap-y-2 gap-x-3 md:gap-8 xl:gap-12">
                         <div className="pb-2 md:pb-0">
-                            <span className="text-sm sm:text-base md:text-lg text-(--color-secondary)">Experience type</span>
-                            <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
-                                <li className="relative text-sm sm:text-base md:text-lg font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                            <span className="text-sm sm:text-base text-(--color-secondary)">Experience type</span>
+                            <ul className="flex flex-wrap items-start  md:items-center text-sm gap-2 mt-1">
+                                <li className="relative text-sm sm:text-base  font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                     Slow Travel
                                 </li>
-                                <li className="relative text-sm sm:text-base md:text-lg font-my-font-semibold  text-(--color-secondary)">
+                                <li className="relative text-sm sm:text-base font-my-font-semibold  text-(--color-secondary)">
                                     Scenic Europe
                                 </li>
                             </ul>
                         </div>
                         <div className="pb-2 md:pb-0">
-                            <span className="text-sm sm:text-base md:text-lg text-(--color-secondary)">Duration</span>
-                            <h4 className="text-sm sm:text-base md:text-lg text-(--color-secondary) font-my-font-semibold"> 14–15 Days</h4>
+                            <span className="text-sm sm:text-base text-(--color-secondary)">Duration</span>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold"> 14–15 Days</h4>
                         </div>
                         <div className="pb-2 md:pb-0">
-                            <span className="text-sm sm:text-base md:text-lg text-(--color-secondary)">Countries covered</span>
-                            <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
-                                <li className="relative text-sm sm:text-base md:text-lg font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                            <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
+                            <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1">
+                                <li className="relative text-sm sm:text-base font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                     Germany
                                 </li>
-                                <li className="relative text-sm sm:text-base md:text-lg font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                <li className="relative text-sm sm:text-base font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                     Switzerland
                                 </li>
-                                <li className="relative text-sm sm:text-base md:text-lg font-my-font-semibold  text-(--color-secondary)">
+                                <li className="relativetext-sm sm:text-base font-my-font-semibold  text-(--color-secondary)">
                                     Austria
                                 </li>
                             </ul>
                         </div>
                         <div className="pb-2 md:pb-0">
-                            <span className="text-sm sm:text-base md:text-lg text-(--color-secondary)">Best season</span>
-                            <h4 className="text-sm sm:text-base md:text-lg text-(--color-secondary) font-my-font-semibold">May to September</h4>
+                            <span className="text-sm sm:text-base text-(--color-secondary)">Best season</span>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold">May to September</h4>
 
                         </div>
                         <div className="pb-2 md:pb-0">
-                            <span className="text-sm sm:text-base md:text-lg text-(--color-secondary)">Journey style</span>
-                            <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
-                                <li className="relative text-sm sm:text-base md:text-lg font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                            <span className="text-sm sm:text-base text-(--color-secondary)">Journey style</span>
+                            <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1">
+                                <li className="relative text-sm sm:text-base font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                     Rail-based
                                 </li>
-                                <li className="relative text-sm sm:text-base md:text-lg font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                <li className="relative text-sm sm:text-base font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                     Easy pace
                                 </li>
-                                <li className="relative text-sm sm:text-base md:text-lg font-my-font-semibold pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                <li className="relative text-sm sm:text-base font-my-font-semibold pr-5 text-(--color-secondary)">
                                     FIT (Customisable)
 
                                 </li>
@@ -192,8 +176,8 @@ px-4 sm:px-0 text-center"></div>
                             </ul>
                         </div>
                         <div className="pb-2 md:pb-0">
-                            <span className="text-sm sm:text-base md:text-lg text-(--color-secondary)">Group size</span>
-                            <h4 className="text-sm sm:text-base md:text-lg text-(--color-secondary) font-my-font-semibold">Private journeys / Small groups only</h4>
+                            <span className="text-sm sm:text-base text-(--color-secondary)">Group size</span>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold">Private journeys / Small groups only</h4>
                         </div>
                     </div>
                 </div>
@@ -203,7 +187,7 @@ px-4 sm:px-0 text-center"></div>
                     <div className="w-full flex md:flex-row flex-col  align-center justify-center">
                         <div className="w-full md:w-2/4 mb-10 md:mb-0">
                             <div className="aspect-square shadow-2xl">
-                                <img src="images/journey-details.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div>
+                                <img src="images/euro3-journey-overview.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div>
                         </div>
                         <div className="w-full md:w-3/4 pl-0 md:pl-20 flex align-center justify-center flex-col">
                             <h2 className="font-my-font-regular text-break xl:text-4xl text-3xl text-(--color-secondary) mb-10
@@ -263,7 +247,7 @@ relative pb-2">
                         </div>
                         <div className="w-full md:w-2/5">
                             <div className="aspect-4/3">
-                                <img src="images/itinerary1.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                                <img src="images/euro3-day1.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
                     </div>
                     <div className="py-5 md:py-10 w-full"><hr /> </div>
                     <div className="w-full flex flex-col md:flex-row  align-center justify-between">
@@ -292,7 +276,7 @@ relative pb-2">Munich – Historic Heart & City Life
                         </div>
                         <div className="w-full md:w-2/5">
                             <div className="aspect-4/3">
-                                <img src="images/itinerary2.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                                <img src="images/noimg.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
                     </div>
                     <div className="py-5 md:py-10 w-full"><hr /> </div>
                     <div className="w-full flex flex-col md:flex-row  align-center justify-between">
@@ -323,7 +307,7 @@ relative pb-2">
                         </div>
                         <div className="w-full md:w-2/5">
                             <div className="aspect-4/3">
-                                <img src="images/itinerary3.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                                <img src="images/euro3-day3.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
                     </div>
                     <div className="py-5 md:py-10 w-full"><hr /> </div>
                     <div className="w-full flex flex-col md:flex-row  align-center justify-between">
@@ -354,7 +338,7 @@ relative pb-2">
                         </div>
                         <div className="w-full md:w-2/5">
                             <div className="aspect-4/3">
-                                <img src="images/itinerary4.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                                <img src="images/euro3-day4.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
                     </div>
                     <div className="py-5 md:py-10 w-full"><hr /> </div>
 
@@ -390,7 +374,7 @@ relative pb-2">
                         </div>
                         <div className="w-full md:w-2/5">
                             <div className="aspect-4/3">
-                                <img src="images/itinerary4.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                                <img src="images/noimg.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
                     </div>
 
 
@@ -430,8 +414,351 @@ relative pb-2">
                         </div>
                         <div className="w-full md:w-2/5">
                             <div className="aspect-4/3">
-                                <img src="images/itinerary4.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                                <img src="images/euro3-day6.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
                     </div>
+
+                    <div className="py-5 md:py-10 w-full"><hr /> </div>
+
+                    {/* day7 */}
+
+                    <div className="w-full flex flex-col md:flex-row  align-center justify-between">
+                        <div className="w-full md:w-3/5 mb-4 md:mb-0 flex align-center justify-center flex-col gap-4 pr-4">
+                            <h5 className="text-(--color-secondary) text-small">Day 7:</h5>
+                            <h3 className="font-my-font-semibold  xl:text-2xl text-xl text-(--color-secondary) 
+relative pb-2">Into Switzerland – Arrival in Lucerne </h3>
+                            <p>Travel by train into Switzerland, passing through scenic valleys and lakes. On arrival in Lucerne, check into your hotel and explore the city on foot.
+
+                            </p>
+
+                            <p>A gentle walk across the Chapel Bridge and through the Old Town introduces you to Lucerne’s lakeside charm. Evening is relaxed along the waterfront. </p>
+
+                            <ul className="w-full align-center flex flex-wrap gap-4">
+                                <li className="flex items-center gap-1 ">
+                                    <img src="images/hand_meal.png" alt="" className="w-5 h-5 " />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Breakfast</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Scenic rail travel</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/group-transfer.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Orientation walk</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="w-full md:w-2/5">
+                            <div className="aspect-4/3">
+                                <img src="images/euro3-day7.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                    </div>
+
+                    {/* day7 close */}
+                    <div className="py-5 md:py-10 w-full"><hr /> </div>
+
+                    {/* day8 */}
+                    <div className="w-full flex flex-col md:flex-row  align-center justify-between">
+                        <div className="w-full md:w-3/5 mb-4 md:mb-0 flex align-center justify-center flex-col gap-4 pr-4">
+                            <h5 className="text-(--color-secondary) text-small">Day 8:</h5>
+                            <h3 className="font-my-font-semibold  xl:text-2xl text-xl text-(--color-secondary) 
+relative pb-2">Lucerne – Lakes & Mountain Views
+                            </h3>
+                            <p>Enjoy a classic Swiss mountain experience today. Travel by boat and mountain railway to Mount Pilatus or Mount Rigi, where panoramic views of lakes and alpine peaks unfold effortlessly.
+
+
+                            </p>
+
+                            <p>The afternoon is deliberately unhurried, ideal for café visits, shopping, or lakeside strolls.
+
+                            </p>
+
+                            <ul className="w-full align-center flex flex-wrap gap-4">
+                                <li className="flex items-center gap-1 ">
+                                    <img src="images/hand_meal.png" alt="" className="w-5 h-5 " />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Breakfast</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Mountain excursion</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/group-transfer.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Transport
+
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="w-full md:w-2/5">
+                            <div className="aspect-4/3">
+                                <img src="images/euro3-day8.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                    </div>
+                    {/* day8 close */}
+                    <div className="py-5 md:py-10 w-full"><hr /> </div>
+
+                    {/* day9 */}
+                    <div className="w-full flex flex-col md:flex-row  align-center justify-between">
+                        <div className="w-full md:w-3/5 mb-4 md:mb-0 flex align-center justify-center flex-col gap-4 pr-4">
+                            <h5 className="text-(--color-secondary) text-small">Day 9:</h5>
+                            <h3 className="font-my-font-semibold  xl:text-2xl text-xl text-(--color-secondary) 
+relative pb-2">Lucerne to Interlaken
+
+                            </h3>
+                            <p>Board one of Switzerland’s most scenic train routes to Interlaken. After check-in, spend the rest of the day settling in or enjoying a relaxed walk through the town.
+                            </p>
+
+
+                            <ul className="w-full align-center flex flex-wrap gap-4">
+                                <li className="flex items-center gap-1 ">
+                                    <img src="images/hand_meal.png" alt="" className="w-5 h-5 " />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Breakfast</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Scenic rail journey</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div className="w-full md:w-2/5">
+                            <div className="aspect-4/3">
+                                <img src="images/noimg.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                    </div>
+                    {/* day9 close */}
+                    <div className="py-5 md:py-10 w-full"><hr /> </div>
+
+                    {/* day10 */}
+                    <div className="w-full flex flex-col md:flex-row  align-center justify-between">
+                        <div className="w-full md:w-3/5 mb-4 md:mb-0 flex align-center justify-center flex-col gap-4 pr-4">
+                            <h5 className="text-(--color-secondary) text-small">Day 10:</h5>
+                            <h3 className="font-my-font-semibold  xl:text-2xl text-xl text-(--color-secondary) 
+relative pb-2">Jungfraujoch – Top of Europe
+                            </h3>
+                            <p>A highlight of the journey. Travel by mountain railway to Jungfraujoch, often called the “Top of Europe,” where you enjoy glacier views, observation decks, and the Ice Palace.
+
+                            </p>
+                            <p>Descend at a comfortable pace and return to Interlaken in the evening.
+                            </p>
+
+
+                            <ul className="w-full align-center flex flex-wrap gap-4">
+                                <li className="flex items-center gap-1 ">
+                                    <img src="images/hand_meal.png" alt="" className="w-5 h-5 " />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Breakfast</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Alpine rail journey</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Entrance fees
+                                    </span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div className="w-full md:w-2/5">
+                            <div className="aspect-4/3">
+                                <img src="images/euro3-day10.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                    </div>
+                    {/* day10 close */}
+                    <div className="py-5 md:py-10 w-full"><hr /> </div>
+                    {/* day11 */}
+                    <div className="w-full flex flex-col md:flex-row  align-center justify-between">
+                        <div className="w-full md:w-3/5 mb-4 md:mb-0 flex align-center justify-center flex-col gap-4 pr-4">
+                            <h5 className="text-(--color-secondary) text-small">Day 11:</h5>
+                            <h3 className="font-my-font-semibold  xl:text-2xl text-xl text-(--color-secondary) 
+relative pb-2"> Interlaken – A Gentle Alpine Day
+
+                            </h3>
+                            <p>This day is kept flexible. You may explore nearby lakes, visit alpine villages, or simply relax and enjoy the mountain scenery at your own pace.
+                            </p>
+
+
+
+                            <ul className="w-full align-center flex flex-wrap gap-4">
+                                <li className="flex items-center gap-1 ">
+                                    <img src="images/hand_meal.png" alt="" className="w-5 h-5 " />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Breakfast</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Free time
+                                    </span>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        <div className="w-full md:w-2/5">
+                            <div className="aspect-4/3">
+                                <img src="images/noimg.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                    </div>
+                    {/* day11 close */}
+                    <div className="py-5 md:py-10 w-full"><hr /> </div>
+
+                    {/* day12 */}
+                    <div className="w-full flex flex-col md:flex-row  align-center justify-between">
+                        <div className="w-full md:w-3/5 mb-4 md:mb-0 flex align-center justify-center flex-col gap-4 pr-4">
+                            <h5 className="text-(--color-secondary) text-small">Day 12:</h5>
+                            <h3 className="font-my-font-semibold  xl:text-2xl text-xl text-(--color-secondary) 
+relative pb-2">  Interlaken to Zurich
+
+                            </h3>
+                            <p>Travel by train to Zurich. After check-in, explore the Old Town, lakeside promenades, and elegant streets reflecting Switzerland’s refined urban character
+                            </p>
+                            <p>The evening is calm and relaxed, offering a gentle transition from the Alps to Austria.
+                            </p>
+
+
+
+                            <ul className="w-full align-center flex flex-wrap gap-4">
+                                <li className="flex items-center gap-1 ">
+                                    <img src="images/hand_meal.png" alt="" className="w-5 h-5 " />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Breakfast</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base"> Rail travel
+                                    </span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base"> City exploration
+
+                                    </span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div className="w-full md:w-2/5">
+                            <div className="aspect-4/3">
+                                <img src="images/euro3-day12.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                    </div>
+                    {/* day12 close */}
+                    <div className="py-5 md:py-10 w-full"><hr /> </div>
+
+                    {/* day13*/}
+                    <div className="w-full flex flex-col md:flex-row  align-center justify-between">
+                        <div className="w-full md:w-3/5 mb-4 md:mb-0 flex align-center justify-center flex-col gap-4 pr-4">
+                            <h5 className="text-(--color-secondary) text-small">Day 13:</h5>
+                            <h3 className="font-my-font-semibold  xl:text-2xl text-xl text-(--color-secondary) 
+relative pb-2">  Zurich to Salzburg
+
+
+                            </h3>
+                            <p>Board a comfortable train to Salzburg. After arrival, explore the compact Old Town, framed by alpine scenery and baroque architecture.
+                            </p>
+                            <p>A leisurely evening walk sets the mood for this charming city.
+                            </p>
+
+
+
+                            <ul className="w-full align-center flex flex-wrap gap-4">
+                                <li className="flex items-center gap-1 ">
+                                    <img src="images/hand_meal.png" alt="" className="w-5 h-5 " />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Breakfast</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base"> Rail travel
+                                    </span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base"> Orientation walk
+
+
+                                    </span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div className="w-full md:w-2/5">
+                            <div className="aspect-4/3">
+                                <img src="images/noimg.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                    </div>
+                    {/* day13 close */}
+                    <div className="py-5 md:py-10 w-full"><hr /> </div>
+
+                    {/* day14*/}
+                    <div className="w-full flex flex-col md:flex-row  align-center justify-between">
+                        <div className="w-full md:w-3/5 mb-4 md:mb-0 flex align-center justify-center flex-col gap-4 pr-4">
+                            <h5 className="text-(--color-secondary) text-small">Day 14:</h5>
+                            <h3 className="font-my-font-semibold  xl:text-2xl text-xl text-(--color-secondary) 
+relative pb-2"> Arrival in Vienna – First Impressions</h3>
+                            <p>Continue by train to Vienna. After check-in, enjoy a gentle introduction to the city with an orientation walk through historic neighbourhoods or along the Ringstrasse.
+
+                            </p>
+                            <p>Evening is free for a relaxed dinner or café visit.
+
+                            </p>
+
+
+
+                            <ul className="w-full align-center flex flex-wrap gap-4">
+                                <li className="flex items-center gap-1 ">
+                                    <img src="images/hand_meal.png" alt="" className="w-5 h-5 " />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Breakfast</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base"> Rail travel
+                                    </span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base"> Orientation walk
+
+
+                                    </span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div className="w-full md:w-2/5">
+                            <div className="aspect-4/3">
+                                <img src="images/noimg.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                    </div>
+                    {/* day14 close */}
+                    <div className="py-5 md:py-10 w-full"><hr /> </div>
+
+                    {/* day15*/}
+                    <div className="w-full flex flex-col md:flex-row  align-center justify-between">
+                        <div className="w-full md:w-3/5 mb-4 md:mb-0 flex align-center justify-center flex-col gap-4 pr-4">
+                            <h5 className="text-(--color-secondary) text-small">Day 15:</h5>
+                            <h3 className="font-my-font-semibold  xl:text-2xl text-xl text-(--color-secondary) 
+relative pb-2"> Vienna – Imperial Europe at Leisure
+                            </h3>
+                            <p>Explore Vienna’s imperial landmarks with a guided city tour covering palaces, boulevards, and cultural highlights.
+
+                            </p>
+                            <p>The afternoon is free for museums, shopping, or lingering at one of Vienna’s famous cafés, concluding the journey on a refined and unhurried note.
+                            </p>
+                            <ul className="w-full align-center flex flex-wrap gap-4">
+                                <li className="flex items-center gap-1 ">
+                                    <img src="images/hand_meal.png" alt="" className="w-5 h-5 " />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Breakfast</span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base"> Guided city tour
+                                    </span>
+                                </li>
+                                <li className="flex items-center gap-1">
+                                    <img src="images/bed.png" alt="" className="w-5 h-5" />
+                                    <span className="text-(--color-secondary) text-sm md:text-base">Entrance fees
+                                    </span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div className="w-full md:w-2/5">
+                            <div className="aspect-4/3">
+                                <img src="images/euro3-day15.webp" alt="" className="w-full h-full object-cover rounded-lg" /></div></div>
+                    </div>
+                    {/* day15 close */}
+
 
                     <div className="w-full text-center flex justify-center py-5      md:py-10">
                         <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-0 md:py-4 mt-3 cursor-pointer">
@@ -446,10 +773,12 @@ relative pb-2">
 
             <section className="bg-[#F5F2EE] w-full py-15 md:py-30 ">
                 <div className="flex flex-col md:flex-row justify-center items-start md:items-center w-full gap-4 md:gap-8 px-5">
-                    <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Fixed departure: <br />
-                        ₹19,200 per person</h3></div>
+                    <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Pricing: <br />
+                        On request
+                    </h3></div>
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                    <div className="w-full md:w-[200px]"><p>For ‘Ladakh: Mountains, Monasteries and Landscapes’ package.</p></div>
+                    <div className="w-full md:w-[200px]"><p>EURO 3 is a <span className="font-bold">customisable FIT journey</span> . Pricing varies based on travel dates, hotel category, and personal preferences.
+                    </p></div>
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                     <div className="inline-block">
                         <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-2 md:py-3 mt-3 cursor-pointer">
@@ -547,7 +876,7 @@ relative pb-2">
                         </div>
                         <div className="w-full md:w-1/3">
                             <div className="aspect-3/4">
-                                <img src="images/faq-img.webp" alt="" className="w-full h-full object-cover rounded-md" />
+                                <img src="images/euro3-faq.webp" alt="" className="w-full h-full object-cover rounded-md" />
                             </div>
                         </div>
                     </div>
@@ -590,18 +919,37 @@ relative pb-2">
                         <ul className="space-y-2">
                             <li className="flex items-start gap-2">
                                 <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">First item text</span>
+                                <span className="text-(--color-secondary) text-base">International flights
+
+
+
+
+
+                                </span>
                             </li>
 
                             <li className="flex items-start gap-2">
                                 <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Second item text</span>
+                                <span className="text-(--color-secondary) text-base">Visa assistance & travel insurance</span>
                             </li>
 
                             <li className="flex items-start gap-2">
                                 <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Third item text</span>
+                                <span className="text-(--color-secondary) text-base">Accommodation with daily breakfast</span>
                             </li>
+                            <li className="flex items-start gap-2">
+                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
+                                <span className="text-(--color-secondary) text-base">Scenic rail journeys & transfers</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
+                                <span className="text-(--color-secondary) text-base">Guided city tours and entrance fees</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
+                                <span className="text-(--color-secondary) text-base">Mountain excursions and special experiences</span>
+                            </li>
+
                         </ul>
 
                     </div>
@@ -623,17 +971,20 @@ relative pb-2">
                         <ul className="space-y-2">
                             <li className="flex items-start gap-2">
                                 <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">First item text</span>
+                                <span className="text-(--color-secondary) text-base">Personal expenses such as laundry, minibar, or room service
+                                </span>
                             </li>
 
                             <li className="flex items-start gap-2">
                                 <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Second item text</span>
+                                <span className="text-(--color-secondary) text-base">Optional experiences not mentioned in the itinerary
+                                </span>
                             </li>
 
                             <li className="flex items-start gap-2">
                                 <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Third item text</span>
+                                <span className="text-(--color-secondary) text-base">Any services not specifically requested or customised
+                                </span>
                             </li>
                         </ul>
                         {/* <div className="w-full flex">
