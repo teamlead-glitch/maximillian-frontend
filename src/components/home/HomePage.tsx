@@ -12,14 +12,18 @@ import WhatMakeExc from "./WhatMakeExc";
 import Insights from "./Insights";
 import BespokeJourney from "./BespokeJourney";
 import LogoCarousel from "./LogoCarousel";
-
-export default function HomePage() {
+import { PageResponse } from "@/types/pagesTypes";
+export default function HomePage({
+  page
+}: {
+  page: PageResponse
+}) {
 
     return (
 
         <>
             <BannerSection />
-            <AboutSection />
+            <AboutSection page={page}/>
             <SignatureJourney />
             <ExperienceTour />
             {/* <SpecialityTours /> */}
