@@ -181,7 +181,7 @@ export default function TopMenuHome({ regions }: { regions: Record<string, Regio
 
                     <ul className="grid grid-cols-2 gap-3">
                       {regions[activeRegion]?.countries?.length > 0 && regions[activeRegion].countries.map((country) => (
-                        <li key={country} className="cursor-pointer hover:text-[#C43131] transition-all duration-300">{country}</li>
+                        <Link href={`/${country?.slug}`} key={country.title} className="cursor-pointer hover:text-[#C43131] transition-all duration-300">{country.title}</Link>
                       ))}
                     </ul>
 
