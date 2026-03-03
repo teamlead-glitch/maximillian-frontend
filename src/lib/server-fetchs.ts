@@ -37,3 +37,23 @@ export async function fetchRegionBySlug(
     return null;
   }
 }
+
+export async function fetchCountryBySlug(
+  slug: string
+): Promise<Region | null> {
+  try {
+    const res = await fetch(
+      `${API_CONFIG.BASE_URL}/country/${slug}`,
+      { cache: "no-store" }
+    );
+
+    if (!res.ok) return null;
+
+    const json: Region = await res.json();
+//console.log(json,'json+++')
+    return json;
+  } catch (error) {
+    console.error("SERVER FETCH ERROR:", error);
+    return null;
+  }
+}
