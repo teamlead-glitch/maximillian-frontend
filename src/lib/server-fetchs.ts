@@ -1,4 +1,5 @@
 import { API_CONFIG } from "@/constants/config";
+import { Region } from "@/types/region";
 
 export async function getRegions() {
   try {
@@ -14,5 +15,45 @@ export async function getRegions() {
   } catch (error) {
     console.error("Menu API error:", error);
     return [];
+  }
+}
+
+export async function fetchRegionBySlug(
+  slug: string
+): Promise<Region | null> {
+  try {
+    const res = await fetch(
+      `${API_CONFIG.BASE_URL}/region/${slug}`,
+      { cache: "no-store" }
+    );
+
+    if (!res.ok) return null;
+
+    const json: Region = await res.json();
+//console.log(json,'json+++')
+    return json;
+  } catch (error) {
+    console.error("SERVER FETCH ERROR:", error);
+    return null;
+  }
+}
+
+export async function fetchCountryBySlug(
+  slug: string
+): Promise<Region | null> {
+  try {
+    const res = await fetch(
+      `${API_CONFIG.BASE_URL}/country/${slug}`,
+      { cache: "no-store" }
+    );
+
+    if (!res.ok) return null;
+
+    const json: Region = await res.json();
+//console.log(json,'json+++')
+    return json;
+  } catch (error) {
+    console.error("SERVER FETCH ERROR:", error);
+    return null;
   }
 }

@@ -1,9 +1,16 @@
 import { Region } from "@/types/commonTypes";
 
 export interface RegionFormated {
-  countries: string[];
+  countries: CountryFormatted[];
   image: string;
+  slug:string
 }
+
+export interface CountryFormatted {
+  title: string;
+  slug: string;
+}
+
 
 export function transformRegions(
   apiData: Region[]
@@ -12,8 +19,13 @@ export function transformRegions(
 
   apiData.forEach((region) => {
     result[region.title] = {
-      countries: region.countries.map((country) => country.title),
+       countries:
+          region.countries?.map(({ title, slug }) => ({
+            title,
+            slug,
+          })) ?? [],
       image: region.image, 
+      slug:region.slug
     };
   });
 

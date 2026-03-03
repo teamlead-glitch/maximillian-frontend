@@ -3,6 +3,8 @@ import { X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import SideBarMenuInner from "./../SideBarMenuInner";
 import { RegionFormated } from "@/lib/regionTransformer";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 
 /* ================= COMPONENT ================= */
@@ -19,6 +21,9 @@ export default function TopMenuinner({ regions }: { regions: Record<string, Regi
   );
 
     const megaMenuRef = useRef<HTMLDivElement>(null);
+
+     const pathname = usePathname();
+
 
     /* ---------------- DISABLE BODY SCROLL ---------------- */
     useEffect(() => {
@@ -67,6 +72,10 @@ export default function TopMenuinner({ regions }: { regions: Record<string, Regi
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [megaOpen]);
+
+      useEffect(() => {
+    setMegaOpen(false);
+  }, [pathname]); // 👈 runs on every route change
 
     return (
         <>
@@ -185,13 +194,13 @@ export default function TopMenuinner({ regions }: { regions: Record<string, Regi
 
                                         <ul className="grid grid-cols-2 gap-3">
                                             {regions[activeRegion]?.countries?.length > 0 && regions[activeRegion].countries.map((country) => (
-                                                <li key={country} className="cursor-pointer hover:text-[#C43131] transition-all duration-300">{country}</li>
+                                                <Link  href={`/${country?.slug}`}  key={country.title} className="cursor-pointer hover:text-[#C43131] transition-all duration-300">{country.title}</Link>
                                             ))}
                                         </ul>
 
-                                        <button className="mt-8 border border-[#C43131] block w-fit px-6 py-2 rounded-full text-sm hover:bg-[#C43131] cursor-pointer hover:text-white hover:tracking-wide transition-all duration-300">
+                                        <Link  href={`/${regions[activeRegion]?.slug}`}  className="mt-8 border border-[#C43131] block w-fit px-6 py-2 rounded-full text-sm hover:bg-[#C43131] cursor-pointer hover:text-white hover:tracking-wide transition-all duration-300">
                                             View all journeys in {activeRegion}
-                                        </button>
+                                        </Link>
                                     </div>
 
                                     {/* IMAGE */}

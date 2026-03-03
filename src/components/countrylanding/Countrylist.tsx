@@ -18,7 +18,7 @@ import Insights from "../home/Insights";
 const TAKE = 15;
 
 
-export default function Regionlist({ slug, regionDetails }: { slug: string; regionDetails: Region|null}) {
+export default function Countrylist({ slug, regionDetails }: { slug: string; regionDetails: Region|null}) {
 
 
     const [packages, setPackages] = useState<PackagesResponse["packages"]>([]);
@@ -108,23 +108,7 @@ px-4 sm:px-0 text-center">
                     </div>
                 </div>
 
-                <div className="max-w-[1300px] mx-auto py-10 pt-10 pb-0     md:py-10 xl:py-15 px-5">
-                    <div className="flex flex-wrap items-center gap-10 md:gap-28 justify-center">
-
-                        <a href="#overview" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
-                            Overview
-                        </a>
-
-                        <a href="#journeys" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
-                            Journeys
-                        </a>
-
-                        <a href="#inspirations" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
-                            Inspirations
-                        </a>
-
-                    </div>
-                </div>
+                
 
 
             </section >
@@ -191,24 +175,7 @@ px-4 sm:px-0 text-center">
                     </div>
                 </div>
             </section>
-            <section className="bg-white py-10">
-                <div className="max-w-[1300px] flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mx-auto  px-5  ">
-                    <div className="inline-block]">
-                        <h2 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) ">What Makes Our <br /> {regionDetails?.title} Journeys Exceptional</h2>
-                        <div className="flex gap-5">
-                        </div>
-                    </div>
-                </div>
-                <div className="max-w-[1300px] flex items-center gap-8 mx-auto mt-10 md:mt-20  px-5  ">
-                    <div className="grid  items-center   sm:grid-cols-2 md:gap-5 lg:gap-10 xl:gap-15   md:grid-cols-4">
-                        <div
-                    dangerouslySetInnerHTML={{
-                        __html: regionDetails?.what_makes_us_exceptional || "",
-                    }}
-                />
-                    </div>
-                </div>
-            </section>
+            
             {/* insights */}
             <Insights />
             {/*insights close */}

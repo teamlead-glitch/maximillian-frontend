@@ -10,15 +10,14 @@ export const generateMetadata = async () => {
   return generateSeoMetadata(slug);
 };
 
+export default async function Home() {
+  // ✅ Fetch data on server
+  const page: PageResponse | null = await fetchPageBySlug(slug);
 
-const page = await fetchPageBySlug(slug);
+  if (!page) {
+    return <div>Page not found</div>;
+  }
 
-
-export default function Home({
-  page
-}: {
-  page: PageResponse
-}) {
   return (
     <>
       {/* ✅ JSON-LD SCHEMA (SERVER RENDERED) */}
@@ -30,8 +29,9 @@ export default function Home({
           }}
         />
       )}
-      <HomePage page={page}/>
+
+      {/* ✅ Pass data to HomePage */}
+      <HomePage page={page} />
     </>
   );
 }
-
