@@ -2,6 +2,7 @@ import HomePage from "@/components/home/HomePage";
 import { generateSeoMetadata } from "@/lib/seo";
 import { PAGE_SLUGS } from "@/constants/pageSlugs";
 import { fetchPageBySlug } from "@/lib/page-api";
+import { PageResponse } from "@/types/pagesTypes";
 
 const slug = PAGE_SLUGS.HOME;
 
@@ -13,7 +14,11 @@ export const generateMetadata = async () => {
 const page = await fetchPageBySlug(slug);
 
 
-export default function Home() {
+export default function Home({
+  page
+}: {
+  page: PageResponse
+}) {
   return (
     <>
       {/* ✅ JSON-LD SCHEMA (SERVER RENDERED) */}

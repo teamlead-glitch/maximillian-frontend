@@ -1,19 +1,12 @@
-import { BlogsResponse } from "@/types/blogs";
+import { BlogType } from "@/types/blogs"
 import Image from "next/image";
 
 interface Props {
-  blog: BlogsResponse;
+  blog: BlogType;
 }
 
 export default function InsightCard({ blog }: Props) {
-  const stripHtml = (html) => {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    if(doc.body.textContent == null){
-      return '';
-    }
-    return doc.body.textContent;
-  };
-  const cleanText = stripHtml(blog.description);
+
   return (
     <div className="relative flex flex-col md:flex-row items-center gap-3 md:gap-10 xl:gap-20 py-15 px-5 md:p-20 xl:p-20 z-10">
       {/* BACKGROUND (70%) */}

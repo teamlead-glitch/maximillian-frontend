@@ -4,7 +4,7 @@ import BannerSection from "./BannerSection";
 import AboutSection from "./AboutSection";
 import SignatureJourney from "./SignatureJourney";
 import ExperienceTour from "./ExperienceTour";
-import SpecialityTours from "./SpecialityTours";
+// import SpecialityTours from "./SpecialityTours";
 import FeaturedDestinations from "./FeaturedDestinations";
 import DesignYourTrips from "./DesignYourTrips";
 import Testimonials from "./Testimonials";
@@ -23,7 +23,7 @@ export default function HomePage({
 
         <>
             <BannerSection />
-            <AboutSection page={page}/>
+            <AboutSection page={ page }/>
             <SignatureJourney />
             <ExperienceTour />
             {/* <SpecialityTours /> */}
