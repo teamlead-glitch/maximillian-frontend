@@ -1,5 +1,6 @@
 import { BlogType } from "@/types/blogs"
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   blog: BlogType;
@@ -25,7 +26,7 @@ export default function InsightCard({ blog }: Props) {
           {blog.short_description}
         </p>
 
-        <button className="group flex items-center text-black text-sm sm:text-base font-my-font-semibold py-3 cursor-pointer  ">
+        <Link href={`/blogs/${blog.short_slug}`} className="group flex items-center text-black text-sm sm:text-base font-my-font-semibold py-3 cursor-pointer  ">
           <span className="mr-3">Read More</span>
           <svg
             className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
@@ -40,7 +41,7 @@ export default function InsightCard({ blog }: Props) {
               fill="#3A3F42"
             />
           </svg>
-        </button>
+        </Link>
       </div>
 
       {/* RIGHT IMAGE */}
