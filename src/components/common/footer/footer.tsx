@@ -65,7 +65,7 @@ export default function Footer() {
                                         </li>
                                     </ul>
 
-                                    <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Regions</h6>
+                                    <h6 className="mb-6 mt-15 text-sm text-[#93989b]  text-heading">Regions</h6>
                                     <ul className="text-body font-medium">
                                         <li className="mb-2 xl:mb-4 text-[#818c94]">
                                             <a href="#" className="hover:underline">Explore Europe</a>

@@ -33,13 +33,16 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
                                         </li>
-                                        <li className="relative text-(--color-secondary)">
+                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Small Group
+                                        </li>
+                                        <li className="relative text-(--color-secondary)">
+                                            +2 more
                                         </li>
                                     </ul>
 
@@ -63,7 +66,7 @@ export default function Experiencespeciality() {
                                             India
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -87,14 +90,17 @@ export default function Experiencespeciality() {
 
                                 <div className=" px-0 md:px-5  py-5">
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
-                                        <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
-                                            Sri Lanka
+                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                            Cultural
                                         </li>
-                                        <li className="relative text-[#818c94]">
-                                            Maldives
+                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                            Small Group
+                                        </li>
+                                        <li className="relative text-(--color-secondary)">
+                                            +2 more
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2 line-clamp-2">Sri Lanka and the Maldives: Elephants & Emerald Isles</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">Sri Lanka and the Maldives: Elephants & Emerald Isles</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -123,7 +129,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">The Ultimate Escape: A Journey of Discovery</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">The Ultimate Escape: A Journey of Discovery</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -154,7 +160,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -185,7 +191,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -214,7 +220,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -245,7 +251,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural
@@ -275,7 +281,7 @@ export default function Experiencespeciality() {
                                             Cambodia
                                         </li>
                                     </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-2xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
+                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
                                     <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                                         <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                             Cultural

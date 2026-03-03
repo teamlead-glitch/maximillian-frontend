@@ -273,8 +273,8 @@ export default function Designyourtrip() {
                                                 )}
                                             />
                                             <div className="flex justify-between mt-4 text-gray-700 font-medium">
-                                                <span>${values[0]}</span>
-                                                <span>${values[1]}</span>
+                                                <span>₹{values[0]}</span>
+                                                <span>₹{values[1]}</span>
                                             </div>
                                         </div>
                                     </div>

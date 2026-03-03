@@ -7,14 +7,15 @@ export default function BespokeJourney() {
                 className="
     py-20 h-screen 
     bg-[url('/images/bespoke-journey-bg.jpg')]
-    bg-cover bg-center bg-no-repeat"
+    bg-cover bg-center bg-no-repeat px-5"
             >
                 <div className="max-w-[1300px] flex items-center justify-between h-full flex-col gap-8 mx-auto  ">
-                    <div className="w-full flex flex-col items-start gap-5  pl-5 md:pl-10">
-                        <img src="images/google-review.svg" alt="" className="w-40 md:w-auto" />
-                        <img src="images/tripadvisor-reviews.svg" alt="" className="w-40 md:w-auto" />
+                    <div className="w-full flex flex-col  items-end  gap-5   ">
+                        <img src="images/google-review.svg" alt="" className="w-60 " />
+                        <img src="images/tripadvisor-reviews.svg" alt="" className="w-60 " />
+
                     </div>
-                    <div className="w-full pl-5 md:pl-10">
+                    <div className="w-full">
                         <h4 className="text-4xl md:text-5xl lg:text-6xl font-my-font-regular text-white mb-6 ">
                             Begin Your <br />
                             Bespoke Journey

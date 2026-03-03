@@ -123,7 +123,7 @@ export default function Blogdetails() {
                             </div>
                         </div>
                         <div className="flex flex-col gap-2 items-start md:items-end  justify-between mt-5 md:mt-0">
-                            <div className="w-full flex flex-col items-center md:items-end">
+                            <div className="w-full flex flex-wrap flex-col items-center md:items-end">
                                 <ul className="flex gap-2 pb-3 md:pb-0">
                                     {["Category", "Context", "Experience"].map((item, i) => (
                                         <li key={i} className="flex items-center text-sm text-(--color-secondary)">

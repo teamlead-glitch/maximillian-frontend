@@ -38,7 +38,7 @@ export default function AddressForm() {
         mobile: "",
         email: "",
         message: "",
-        is_agreed:"",
+        is_agreed: "",
     });
 
     /* -----------------------------------------------------------------------
@@ -99,7 +99,7 @@ export default function AddressForm() {
         }
         /* check */
         if (!formData.is_agreed) {
-            newErrors.is_agreed="You must agree to continue."
+            newErrors.is_agreed = "You must agree to continue."
         }
 
         setErrors(newErrors as FormErrors);
@@ -227,13 +227,13 @@ export default function AddressForm() {
 
         <>
 
-            <section className="relative py-32 md:py-40 overflow-hidden bg-white z-10">
+            <section className="relative  overflow-hidden bg-white z-10">
                 {/* Background */}
-                <div className="absolute inset-y-0 right-0 w-[36%] bg-[#F5F2EE] -z-10 md:block hidden"></div>
+                <div className="absolute inset-y-0 right-0 w-[20%]  bg-[#F5F2EE] -z-10 md:block hidden"></div>
 
                 <div className="max-w-[1300px] flex mx-auto  px-5  ">
                     <div className="flex flex-col md:flex-row w-full">
-                        <div className="w-full md:w-2/3 pr-0 sm:pr-10">
+                        <div className="w-full md:w-2/3 pr-0 sm:pr-10 pt-32 pb-10 md:py-40">
                             <div className="w-full flex flex-col sm:flex-row items-center">
                                 <div className="w-full sm:w-2/3 pr-0 sm:pr-10 ">
                                     <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary) text-left sm:text-right ">Let’s talk about <br />
@@ -442,13 +442,13 @@ min-w-[190px]
                             </div>
                         </div>
 
-                        <div className="w-full md:w-1/3 mt-20 md:mt-0">
+                        <div className="w-full md:w-1/3 mt-0 md:mt-0 py-15  md:py-40    md:bg-[#F5F2EE]">
 
-                            <div className="w-full pl-0 xl:pl-10">
-                                <h4 className="font-my-font-semibold text-var(--color-secondary) text-xl ml-8">Contact</h4>
+                            <div className="w-full pl-0 md:pl-5 xl:pl-10">
+                                <h4 className="font-my-font-semibold text-(--color-secondary) text-xl ml-8">Contact</h4>
 
                                 <div className="flex mt-5 gap-5 items-center ">
-                                    <div className="flex mt-5 items-start ">
+                                    <div className="w-2/3 flex mt-5 items-start ">
                                         <img src="images/location_icon.svg" alt="" className="mt-2 mr-5" />
                                         <div className="div">
                                             <h5 className="text-[#46545E] text-lg font-semibold">Registered Office</h5>
@@ -457,7 +457,7 @@ min-w-[190px]
                                         </div>
                                     </div>
                                     {settings?.address_link && (
-                                        <div className="pl-4">
+                                        <div className="w-1/3 pl-4">
                                             <a
                                                 href={settings.address_link}
                                                 target="_blank"
@@ -475,7 +475,7 @@ min-w-[190px]
 
 
                                 <div className="flex mt-5 gap-5 items-center ">
-                                    <div className="flex mt-5  items-start ">
+                                    <div className="w-2/3 flex mt-5 items-start ">
                                         <img src="images/location_icon.svg" alt="" className="mt-2 mr-5" />
                                         <div className="div">
                                             <h5 className="text-[#46545E] text-lg font-semibold">Corporate Office</h5>
@@ -483,7 +483,7 @@ min-w-[190px]
                                         </div>
                                     </div>
                                     {settings?.address_link_2 && (
-                                        <div className="pl-4">
+                                        <div className="w-1/3 pl-4">
                                             <a
                                                 href={settings.address_link_2}
                                                 target="_blank"
