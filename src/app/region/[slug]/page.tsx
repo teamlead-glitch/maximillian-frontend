@@ -1,23 +1,34 @@
 import Regionlist from "@/components/regionlanding/Regionlist";
-
-import { generateSeoMetadata } from "@/lib/seo";
-import { PAGE_SLUGS } from "@/constants/pageSlugs";
+import { Metadata } from "next";
 import { fetchRegionBySlug } from "@/lib/server-fetchs";
+import { mapSeoToMetadata } from "@/lib/seo-mapper";
 
 
 type PageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
+    params: Promise<{
+        slug: string;
+    }>;
 };
 
+/* ---------- SEO (SERVER) ---------- */
+export async function generateMetadata({
+    params,
+}: PageProps): Promise<Metadata> {
 
-export default async function  Region({ params }: PageProps) {
+    const { slug } = await params;
+    const region_pages = await fetchRegionBySlug(slug);
 
-    
-const { slug } = await params;
-const page = await fetchRegionBySlug(slug);
-//console.log(page,'page++')
+    return mapSeoToMetadata(region_pages?.seo_detail ?? null);
+}
+
+
+
+export default async function Region({ params }: PageProps) {
+
+
+    const { slug } = await params;
+    const page = await fetchRegionBySlug(slug);
+    //console.log(page,'page++')
 
     return (
         <>
@@ -30,7 +41,7 @@ const page = await fetchRegionBySlug(slug);
                     }}
                 />
             )}
-            <Regionlist slug={slug} regionDetails={page}/>
+            <Regionlist slug={slug} regionDetails={page} />
 
         </>
     );
