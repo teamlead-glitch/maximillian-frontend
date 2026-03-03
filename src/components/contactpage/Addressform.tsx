@@ -7,10 +7,12 @@ import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import SimpleCaptcha from "../Captcha";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 
 
 export default function AddressForm() {
+    const router = useRouter();
 
     //settings api
     const [settings, setSettings] = useState<SettingsResponse | null>(null);
@@ -139,7 +141,7 @@ export default function AddressForm() {
             /* console.log(res); */
 
             if (res.result === "success") {
-                toast.success(res.message);
+                router.push("/thankyou");
 
                 // Reset form
                 setFormData({
@@ -383,21 +385,24 @@ export default function AddressForm() {
 
                                     </div>
                                     {/* Checkbox */}
-                                    <label className="flex items-start gap-3 text-sm text-(--color-secondary)">
-                                        <input
-                                            onChange={handleChange}
-                                            checked={formData.is_agreed}
-                                            id="is_agreed"
-                                            type="checkbox"
-                                            className="mt-1 h-4 w-4 rounded border-gray-600 bg-transparent focus:ring-0"
-                                        />
-                                        <span >
-                                            I've read and agreed to Festivon{" "}
-                                            <a href="/privacy-policy" target="_blank" className="underline hover:text-black">
-                                                Privacy Policy
-                                            </a>
-                                        </span>
-                                    </label>
+                                   <div className="flex flex-col">
+                                        <label className="flex items-start gap-3 text-sm text-(--color-secondary)">
+                                            <input
+                                                onChange={handleChange}
+                                                checked={formData.is_agreed}
+                                                id="is_agreed"
+                                                type="checkbox"
+                                                className="mt-1 h-4 w-4 rounded border-gray-600 bg-transparent focus:ring-0"
+                                            />
+                                            <span >
+                                                I&apos;ve read and agreed to Festivon{" "}
+                                                <a href="/privacy-policy" target="_blank" className="underline hover:text-black">
+                                                    Privacy Policy
+                                                </a>
+                                            </span>
+                                        </label>
+                                          {errors.is_agreed && <p className="mt-1" style={{ color: "red", fontSize: "12px" }}>{errors.is_agreed}</p>}
+                                   </div>
                                     {/* Captcha number */}
                                     <SimpleCaptcha onVerify={setIsCaptchaVerified} resetTrigger={captchaResetKey} />
 

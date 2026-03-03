@@ -93,57 +93,66 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                             <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
                                 {region}
                             </li>
-                            {countries.map((country) => (
-                                <li
-                                    key={country.id}
-                                    className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
-                                >
-                                    <Link href="#" className="hover:underline">
-                                        {country.title}
-                                    </Link>
+                            {countries.map((country, index) => {
+                                const isLastCountry = index === countries.length - 1;
+                                return (
+                                    <li
+                                        key={country.id}
+                                        className={`relative pr-5 text-(--color-secondary) ${!estimated_time && isLastCountry
+                                                ? ""
+                                                : "after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                            }`}
+                                    >
+                                        <Link href="#" className="hover:underline">
+                                            {country.title}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+
+                            {estimated_time && (
+                                <li className="relative text-(--color-secondary)">
+                                    {estimated_time} Min read
                                 </li>
-                            ))}
-                            <li className="relative text-(--color-secondary) after: content-none">
-                                {estimated_time} Min read
-                            </li>
+                            )}
                         </ul>
 
                     </div>
                 </div >
                 <div className="py-3 md:py-6 aspect-[4/2.5] md:aspect-[4/1.5] relative">
 
-  {/* MOBILE IMAGE */}
-  {mobile_banner_image && (
-    <Image
-      src={mobile_banner_image}
-      alt={title}
-      fill
-      className="object-cover w-full h-full md:hidden"
-    />
-  )}
+                    {/* MOBILE IMAGE */}
+                    {mobile_banner_image && (
+                        <Image
+                            src={mobile_banner_image}
+                            alt={title}
+                            fill
+                            className="object-cover w-full h-full md:hidden"
+                        />
+                    )}
 
-  {/* DESKTOP IMAGE */}
-  {banner_image && (
-    <Image
-      src={banner_image}
-      alt={title}
-      fill
-      className="object-cover w-full h-full hidden md:block"
-    />
-  )}
+                    {/* DESKTOP IMAGE */}
+                    {banner_image && (
+                        <Image
+                            src={banner_image}
+                            alt={title}
+                            fill
+                            className="object-cover w-full h-full hidden md:block"
+                        />
+                    )}
 
-</div>
+                </div>
             </section >
 
             <section className="relative py-5 overflow-hidden bg-white">
                 <div className="max-w-[1200px]  mx-auto  px-5 md:px-10">
                     <div className="w-full">
-                        <div dangerouslySetInnerHTML={{ __html: description }}>
+                        <div className="content" dangerouslySetInnerHTML={{ __html: description }}>
 
                         </div>
                     </div>
                     <div className="w-full justify-center  grid grid-cols-1 sm:grid-cols-[7fr_3fr] gap-3 py-10 items-start">
-                        <div className=" [&_p:empty]:hidden   [&_.MsoNormal]:!m-0 " dangerouslySetInnerHTML={{ __html: second_descrption }}>
+                        <div className="content" dangerouslySetInnerHTML={{ __html: second_descrption }}>
 
                         </div>
                         <div className="relative w-full max-w-[323px] h-[323px]">
@@ -153,7 +162,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                         </div>
                     </div>
 
-                    <div dangerouslySetInnerHTML={{ __html: third_descripton }}>
+                    <div className="content" dangerouslySetInnerHTML={{ __html: third_descripton }}>
 
                     </div>
                     <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 ">

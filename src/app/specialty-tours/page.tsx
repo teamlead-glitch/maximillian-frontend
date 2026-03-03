@@ -1,19 +1,20 @@
-import Blogdetails from "@/components/bloginsightdetails/Blogdetails";
+import Experiencespeciality from "@/components/experiencetour/Experiencespeciality";
 import { generateSeoMetadata } from "@/lib/seo";
 import { PAGE_SLUGS } from "@/constants/pageSlugs";
 import { fetchPageBySlug } from "@/lib/page-api";
+// import LogoCarousel from "@/components/home/LogoCarousel"
 
-const slug = PAGE_SLUGS.BLOG_DETAILS;
+
+
+const slug = PAGE_SLUGS.EXPERIENCE;
 
 export const generateMetadata = async () => {
     return generateSeoMetadata(slug);
 };
 
+export default async function ExperiencePage() {
+    const page = await fetchPageBySlug(slug);
 
-const page = await fetchPageBySlug(slug);
-
-
-export default function BlogDetailsPage() {
     return (
         <>
             {/* ✅ JSON-LD SCHEMA (SERVER RENDERED) */}
@@ -26,9 +27,8 @@ export default function BlogDetailsPage() {
                 />
             )}
 
-            <Blogdetails />
-
+            <Experiencespeciality type='speciality'/>
+            {/* <LogoCarousel /> */}
         </>
     );
 }
-

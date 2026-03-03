@@ -40,7 +40,7 @@ export default function ExperienceTour() {
     // };
     function chunkArray<T>(array: T[], size: number): T[][] {
         const result: T[][] = [];
-        for (let i = 0; i < array.length; i += size) {
+        for (let i = 0; i < array.length; i +=3) {
             result.push(array.slice(i, i + 3));
         }
         return result;
