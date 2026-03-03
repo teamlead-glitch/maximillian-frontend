@@ -99,9 +99,9 @@ const faqs = [
 
 
 export default function Details() {
-    const [openIndex, setOpenIndex] = useState(null);
+    const [openIndex, setOpenIndex] = useState<number|null>(null);
 
-    const toggle = (index) => {
+    const toggle = (index:number|null) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
