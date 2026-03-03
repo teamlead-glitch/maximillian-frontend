@@ -7,10 +7,12 @@ import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import SimpleCaptcha from "../Captcha";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 
 
 export default function AddressForm() {
+    const router = useRouter();
 
     //settings api
     const [settings, setSettings] = useState<SettingsResponse | null>(null);
@@ -139,7 +141,7 @@ export default function AddressForm() {
             /* console.log(res); */
 
             if (res.result === "success") {
-                toast.success(res.message);
+                router.push("/thankyou");
 
                 // Reset form
                 setFormData({

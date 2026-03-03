@@ -14,7 +14,7 @@ export default function Thankyou() {
                             Thanks,<br /> We got your enquiry.
                         </h1>
                         <p className="mt-5 ">
-                            Every enquiry is personally reviewed by our travel design team. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut. Aenean ultrices convallis sagittis. Nullam posuere, tortor a fringilla condimentum.
+                            Every enquiry is personally reviewed by our team, and we’ll get back to you shortly with the information or guidance you need. If you’re planning a journey, we’ll help shape it around your preferences and interests. If you have questions, we’ll make sure you receive the right answers and support.
                         </p>
                     </div >
                 </div >
