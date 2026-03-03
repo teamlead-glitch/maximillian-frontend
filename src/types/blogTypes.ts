@@ -17,7 +17,7 @@ export type Seo = {
   og_image: string;
 
   twitter_title: string ;
-  twitter_description: string 
+  twitter_description: string
   twitter_image: string ;
 
   schema_markup: string;
@@ -50,8 +50,9 @@ export type BlogDetailType = {
   description: string;
   second_description: string;
   third_description: string;
-
+  short_description:string;
   image: string;
+  image_path: string;
   banner_image: string;
   banner_mob_image: string;
 

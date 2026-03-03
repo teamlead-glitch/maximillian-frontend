@@ -12,14 +12,14 @@ import InsightCard from "@/components/blogs/Insights"
 
 export default function Insights() {
 
-    const [insights, setBlogs] = useState<BlogsResponse[]>([]);
+    const [insights, setBlogs] = useState<BlogsResponse["blogs"]>([]);
             // const [activeIndex, setActiveIndex] = useState(0);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const res = await apiService.get<BlogsResponse[]>("/blogs?skip=0&take=10");
+                const res = await apiService.get<BlogsResponse>("/blogs?skip=0&take=10");
 
                 if (res) {
                     setBlogs(res.blogs || []);

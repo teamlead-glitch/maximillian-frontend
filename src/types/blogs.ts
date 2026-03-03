@@ -13,7 +13,9 @@ export type BlogType = {
   short_description: string;
   description: string;
   image_path: string;
-
+  category:{
+    title: string,
+  };
   region: {
     title: string;
     slug: string;
