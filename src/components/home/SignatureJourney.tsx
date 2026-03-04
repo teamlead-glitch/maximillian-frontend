@@ -6,10 +6,10 @@ import "swiper/css/pagination";
 import { useState, useEffect } from "react";
 import { apiService } from "@/services/api";
 import Loader from "../common/Loader";
-import { journeyResponse } from "@/types/journeyTypes";
+import { PackagesResponse } from "@/types/packages";
 import JourneyCard from "../package/JourneyCard";
 export default function SignatureJourney() {
-    const [signatureJournerys, setJourney] = useState<journeyResponse[]>([]);
+    const [signatureJournerys, setJourney] = useState<PackagesResponse["packages"]>([]);
     // const [activeIndex, setActiveIndex] = useState(0);
     const [loading, setLoading] = useState(true);
 
@@ -17,10 +17,10 @@ export default function SignatureJourney() {
         const fetchSignatureJourneys = async () => {
 
             try {
-                const res = await apiService.get<journeyResponse[]>("/signature-packages?count=4");
+                const res = await apiService.get<PackagesResponse>("/signature-packages?count=4");
 
                 if (res) {
-                    setJourney(res || []);
+                    setJourney(res.packages || []);
 
                 }
             } catch (err) {
@@ -125,7 +125,7 @@ export default function SignatureJourney() {
 
       .signature-pagination .swiper-pagination-bullet {
          background: #171717;
-        
+
           width: 10px;
           height: 10px;
       }
