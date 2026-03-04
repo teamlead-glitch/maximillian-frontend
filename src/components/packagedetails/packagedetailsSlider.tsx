@@ -3,56 +3,62 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Gallery } from '@/types/PackageDetailsType';
 import Image from 'next/image';
+import { useState } from 'react';
 interface PackageSliderprops {
-  gallery?: Gallery[];
-  price_text?: string;
-  title?: string;
+    gallery?: Gallery[];
+    price_text?: string;
+    title?: string;
 }
 
-function PackagedetailsSlider({ gallery,price_text,title }: PackageSliderprops) {
-   /*  const slides = [
-    {
-        id: 1,
+function PackagedetailsSlider({ gallery, price_text, title }: PackageSliderprops) {
+
+    const [talkOpen, setTalkOpen] = useState(false);
 
 
-        image: "/images/euro3-gallery-1.webp",
-    },
-    {
-        id: 2,
 
-
-        image: "/images/euro3-gallery-2.webp",
-    },
-    {
-        id: 3,
-
-
-        image: "/images/euro3-gallery-3.webp",
-    },
-    {
-        id: 4,
-
-
-        image: "/images/euro3-gallery-4.webp",
-    },
-    {
-        id: 5,
-
-
-        image: "/images/euro3-gallery-5.webp",
-    },
-    {
-        id: 6,
-
-
-        image: "/images/euro3-gallery-6.webp",
-    },
-
-
-]; */
-  return (
-    <>
-<section className="bg-[#F5F2EE] w-full py-15 md:py-30 ">
+    /*  const slides = [
+     {
+         id: 1,
+ 
+ 
+         image: "/images/euro3-gallery-1.webp",
+     },
+     {
+         id: 2,
+ 
+ 
+         image: "/images/euro3-gallery-2.webp",
+     },
+     {
+         id: 3,
+ 
+ 
+         image: "/images/euro3-gallery-3.webp",
+     },
+     {
+         id: 4,
+ 
+ 
+         image: "/images/euro3-gallery-4.webp",
+     },
+     {
+         id: 5,
+ 
+ 
+         image: "/images/euro3-gallery-5.webp",
+     },
+     {
+         id: 6,
+ 
+ 
+         image: "/images/euro3-gallery-6.webp",
+     },
+ 
+ 
+ ]; */
+    return (
+        <>
+            <section className="bg-[#F5F2EE] w-full py-15 md:py-30 ">
                 <div className="flex flex-col md:flex-row justify-center items-start md:items-center w-full gap-4 md:gap-8 px-5">
                     <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right w-[200px]">{price_text} </h3></div>
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
@@ -60,7 +66,7 @@ function PackagedetailsSlider({ gallery,price_text,title }: PackageSliderprops) 
                     </p></div>
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                     <div className="inline-block">
-                        <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-2 md:py-3 mt-3 cursor-pointer">
+                        <button onClick={() => setTalkOpen(true)} className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-2 md:py-3 mt-3 cursor-pointer">
                             <span className="mr-3">Talk to Us</span>
 
                             <svg
@@ -80,6 +86,86 @@ function PackagedetailsSlider({ gallery,price_text,title }: PackageSliderprops) 
                     </div>
                 </div>
 
+
+                {talkOpen && (
+                    <div
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+                        onClick={() => setTalkOpen(false)}
+                    >
+                        <div
+                            className="bg-white rounded-xl shadow-xl w-[90%] md:w-[500px] p-8 relative"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setTalkOpen(false)}
+                                className="absolute top-4 right-4 text-gray-500 hover:text-black cursor-pointer"
+                            >
+                                ✕
+                            </button>
+
+                            <h2 className="text-2xl font-my-font-semibold text-(--color-secondary) mb-6 text-center">
+                                Talk To Us
+                            </h2>
+
+                            <form className="flex flex-col gap-4">
+
+                                <input
+                                    type="text"
+                                    placeholder="Full Name"
+                                    className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
+                                />
+
+                                <input
+                                    type="email"
+                                    placeholder="Email Address"
+                                    className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
+                                />
+
+                                <input
+                                    type="tel"
+                                    placeholder="Phone Number"
+                                    className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
+                                />
+
+                                {/* Extra fields */}
+
+                                <input
+                                    type="text"
+                                    placeholder="EURO 3 – Alpine Europe at an Easy Pace" readOnly
+                                    className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
+                                />
+
+                                <textarea
+                                    placeholder="Your Message"
+                                    rows={3}
+                                    className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
+                                />
+
+                                <button type="submit" className="
+relative overflow-hidden
+bg-black/90 backdrop-blur-md text-white cursor-pointer
+px-4 py-3 md:px-6 md:py-4 rounded-lg font-my-font-semibold
+shadow-lg text-xs sm:text-base
+transition-all duration-300
+hover:bg-black/100
+before:absolute before:inset-0
+before:-translate-x-full
+before:bg-gradient-to-r 
+before:from-transparent before:via-white/40 before:to-transparent
+before:transition-transform before:duration-700
+hover:before:translate-x-full
+">
+                                    Send Enquiry
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+                )}
+
+
+
                 {/* slide */}
 
 
@@ -93,31 +179,31 @@ function PackagedetailsSlider({ gallery,price_text,title }: PackageSliderprops) 
                         autoplay={{ delay: 2500, disableOnInteraction: false }}
                         className="w-full overflow-visible"
                     >
-                         {gallery?.map((item, index) => (
+                        {gallery?.map((item, index) => (
                             <SwiperSlide
-                            key={index}
-                            className="!w-[280px] md:!w-[340px] lg:!w-[420px]"
+                                key={index}
+                                className="!w-[280px] md:!w-[340px] lg:!w-[420px]"
                             >
-                            <div className="bg-white rounded-md overflow-hidden mt-20 group">
-                                <div className="w-full h-72 overflow-hidden relative">
-                                <Image
-                                    src={item.image_path}
-                                    alt={`Gallery ${index}`}
-                                    fill
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                />
+                                <div className="bg-white rounded-md overflow-hidden mt-20 group">
+                                    <div className="w-full h-72 overflow-hidden relative">
+                                        <Image
+                                            src={item.image_path}
+                                            alt={`Gallery ${index}`}
+                                            fill
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        />
+                                    </div>
                                 </div>
-                            </div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
                 </div>
             </section >
-    
-    
-    
-    </>
-  )
+
+
+
+        </>
+    )
 }
 
 export default PackagedetailsSlider

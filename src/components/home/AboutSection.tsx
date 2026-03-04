@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { PageResponse } from "@/types/pagesTypes";
 export default function AboutSection({
-  page
+    page
 }: {
-  page: PageResponse
+    page: PageResponse
 }) {
 
     return (
@@ -23,7 +23,7 @@ export default function AboutSection({
                     <div >
                         <div className="w-[80%] lg:w-[60%]" >
                             <h2 className=" font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) mb-5">Travel, Thoughtfully <br /> Designed.</h2>
-                            <div className="flex flex-col md:flex-row gap-5" dangerouslySetInnerHTML={{ __html: page?.content ?? '' }}  />
+                            <div className="flex flex-col md:flex-row gap-5" dangerouslySetInnerHTML={{ __html: page?.content ?? '' }} />
 
 
                             <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-3 mt-3 cursor-pointer">

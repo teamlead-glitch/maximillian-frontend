@@ -16,6 +16,9 @@ import Related_journels from "./Related_journels";
 
 export default function Details({ details }: { details: PackageResponse }) {
 
+
+    const [open, setOpen] = useState(false);
+
     const banner_image = details?.banner_image;
     const title = details?.title ?? "";
     const package_tagline = details?.package_tagline ?? "";
@@ -64,7 +67,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                         -translate-x-1/2  -translate-y-1/2
                         w-[90%] sm:w-[80%] md:w-auto
                         px-4 sm:px-0 text-center">
-                    
+
                     </div>
                 </div></section>
             <section className=" bg-white py-10 md:py-30  px-5">
@@ -188,22 +191,91 @@ before:w-16 before:h-[2px] before:bg-gray-300">
 before:content-[''] before:absolute before:top-1/2 before:left-0 before:w-1/4 before:h-[1px] before:bg-gray-400
 after:content-[''] after:absolute after:top-1/2 after:right-0 after:w-1/4 after:h-[1px] after:bg-gray-400
 before:-translate-y-1/2 after:-translate-y-1/2">
-                            Day-wise Itinerary </h2></div>
+                            Day-wise Itinerary </h2>
+                    </div>
 
 
                     {/* daywise card component */}
                     {details?.itinerary?.map((day) => (
                         <DaywiseCard key={day.id} day={day} />
                     ))}
-                    <div className="w-full text-center flex justify-center py-5      md:py-10">
-                        <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-0 md:py-4 mt-3 cursor-pointer">
-                            <span className="mr-3">Download This itinerary as PDF</span>
-
-                            <img src="/images/download.svg" alt="" />
+                    <div className="w-full text-center flex justify-center py-5 md:py-10">
+                        <button
+                            onClick={() => setOpen(true)}
+                            className="group flex items-center font-my-font-semibold text-sm text-black sm:text-base justify-center py-0 md:py-4 mt-3 cursor-pointer"
+                        >
+                            <span className="mr-3 font-my-font-semibold text-(--color-secondary)">Download This itinerary as PDF</span>
+                            <img src="/images/download.svg" alt="download" />
                         </button>
                     </div>
+
+
+
+                    {/* Popup Modal */}
+                    {open && (
+                        <div
+                            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+                            onClick={() => setOpen(false)}   // close when clicking overlay
+                        >
+                            <div
+                                className="bg-white rounded-xl shadow-xl w-[90%] md:w-[500px] p-8 relative"
+                                onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+                            >
+                                {/* Close Button */}
+                                <button
+                                    onClick={() => setOpen(false)}
+                                    className="absolute top-4 right-4 text-gray-500 hover:text-black cursor-pointer"
+                                >
+                                    ✕
+                                </button>
+
+                                <h2 className="text-2xl font-my-font-semibold text-(--color-secondary) mb-6 text-center">
+                                    Download Itinerary
+                                </h2>
+
+                                <form className="flex flex-col gap-4">
+                                    <input
+                                        type="text"
+                                        placeholder="Full Name"
+                                        className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
+                                    />
+
+                                    <input
+                                        type="email"
+                                        placeholder="Email Address"
+                                        className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
+                                    />
+
+                                    <input
+                                        type="tel"
+                                        placeholder="Phone Number"
+                                        className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
+                                    />
+
+                                    <button type="submit" className="
+relative overflow-hidden
+bg-black/90 backdrop-blur-md text-white cursor-pointer
+px-4 py-3 md:px-6 md:py-4 rounded-lg font-my-font-semibold
+shadow-lg text-xs sm:text-base
+transition-all duration-300
+hover:bg-black/100
+before:absolute before:inset-0
+before:-translate-x-full
+before:bg-gradient-to-r 
+before:from-transparent before:via-white/40 before:to-transparent
+before:transition-transform before:duration-700
+hover:before:translate-x-full
+">
+                                        Download PDF
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+                    )}
+
                 </div>
-            </section>
+            </section >
 
             <PackagedetailsSlider gallery={details?.gallery} price_text={price_text} title={title} />
             <Faq faq={faq} faq_image={faq_image} />
