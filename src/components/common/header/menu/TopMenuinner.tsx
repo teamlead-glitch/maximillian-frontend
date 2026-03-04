@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import SideBarMenuInner from "./../SideBarMenuInner";
+import SideBarMenu from "../SideBarMenu";
 import { RegionFormated } from "@/lib/regionTransformer";
 import { usePathname } from "next/navigation";
 import MegaMenu from "./MegaMenu";
@@ -130,7 +130,7 @@ export default function TopMenuinner({ regions }: { regions: Record<string, Regi
                     </div>
                 </div>
 
-                <SideBarMenuInner />
+                <SideBarMenu isInner={true} regions={regions}/>
             </div>
         </>
     );
