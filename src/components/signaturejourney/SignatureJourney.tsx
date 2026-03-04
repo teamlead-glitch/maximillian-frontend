@@ -1,24 +1,23 @@
 "use client";
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import BespokeJourney from "@/components/home/BespokeJourney";
-import { PackageItem } from "@/types/packages";
+import { PackagesResponse } from "@/types/packages";
 import Loader from "../common/Loader";
 import { apiService } from "@/services/api";
 import PackageCard from "../package/PackageCard";
 
-const TAKE = 15;
 
-export default function Experiencespeciality({ type = "experience-journeys" }: { type?: string }) {
 
-    const [packages, setPackages] = useState<PackageItem[]>([]);
+export default function Experiencespeciality() {
+
+    const [packages, setPackages] = useState<PackagesResponse["packages"]>([]);
     const [loading, setLoading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
 
     const observerRef = useRef<HTMLDivElement | null>(null);
 
-    const slug =
-        type === "experience-journeys" ? "experience" : "specialty";
+
 
 
 
@@ -29,13 +28,11 @@ export default function Experiencespeciality({ type = "experience-journeys" }: {
         try {
             setLoading(true);
 
-            const res = await apiService.get<PackageItem>(
+            const res = await apiService.get<PackagesResponse>(
                 `/signature-packages`
             );
 
-
-
-            setPackages(res || []);
+            setPackages(res.packages);
 
         } catch (error) {
             console.error("packages API error:", error);
@@ -45,42 +42,10 @@ export default function Experiencespeciality({ type = "experience-journeys" }: {
         }
     };
 
-    // Initial Load
+
     useEffect(() => {
         fetchPackages();
     }, []);
-
-    // Infinite Scroll Observer
-    const handleObserver = useCallback(
-        (entries: IntersectionObserverEntry[]) => {
-
-            const target = entries[0];
-            if (target.isIntersecting && !loading) {
-                //alert(1)
-                fetchPackages();
-            }
-        },
-        [loading]
-    );
-
-    useEffect(() => {
-        const option = {
-            root: null,
-            rootMargin: "200px",
-            threshold: 0,
-        };
-
-        const observer = new IntersectionObserver(handleObserver, option);
-
-        if (observerRef.current) observer.observe(observerRef.current);
-
-        return () => observer.disconnect();
-    }, [handleObserver]);
-
-
-
-
-
 
     return (
 
@@ -91,7 +56,7 @@ export default function Experiencespeciality({ type = "experience-journeys" }: {
                         <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary) text-center ">Signature Journeys</h1>
 
 
-                            { (!loading && !packages.length)  ? (
+                            { (!loading && !packages?.length)  ? (
                                      <h2 className="text-center mt-20">No packages available</h2>
 
                                 ) :
