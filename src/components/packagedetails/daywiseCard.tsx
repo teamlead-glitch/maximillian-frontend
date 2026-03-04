@@ -32,7 +32,7 @@ function DaywiseCard({ day }: DaywiseCardProps) {
           </h3>
 
           {/* Description */}
-          <div
+          <p
             className="content"
             dangerouslySetInnerHTML={{ __html: description }}
           />
