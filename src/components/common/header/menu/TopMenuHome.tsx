@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import SideBarMenu from "./../SideBarMenu";
 import { RegionFormated } from "@/lib/regionTransformer";
 import MegaMenu from "./MegaMenu";
-
+import Link from "next/link";
 
 
 /* ================= COMPONENT ================= */
@@ -105,7 +105,7 @@ export default function TopMenuHome({ regions }: { regions: Record<string, Regio
               Explore Destination
             </button>
 
-            <button
+            <Link href={`/designyourtrip`}
               className="bg-white font-my-font-semibold text-black
               px-3 py-3 md:px-4 md:py-2 sm:block hidden rounded-full cursor-pointer
               text-xs md:text-base
@@ -113,7 +113,7 @@ export default function TopMenuHome({ regions }: { regions: Record<string, Regio
               transition-all duration-300"
             >
               Design Your trip
-            </button>
+            </Link>
 
             <a href="tel:+919876543210">
               <img src="/images/call-top-icon.svg" alt="Call" />
