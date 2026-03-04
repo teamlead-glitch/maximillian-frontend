@@ -4,25 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import Link from "next/link";
-
-/* ===================== TYPES ===================== */
-type Region = "Asia" | "Europe" | "Africa" | "America" | "Oceania";
-
-/* ===================== DESTINATIONS ===================== */
-const destinations: Record<Region, string[]> = {
-  Asia: [
-    "India", "Afghanistan", "Azerbaijan", "Bahrain", "Cambodia", "China",
-    "Indonesia", "Japan", "Jordan", "Kazakhstan", "Kuwait", "Malaysia",
-    "Maldives", "Nepal", "Qatar", "Saudi Arabia", "Singapore",
-    "Sri Lanka", "Thailand", "United Arab Emirates", "Vietnam",
-  ],
-  Europe: ["France", "Italy", "Switzerland"],
-  Africa: ["Kenya", "South Africa", "Morocco", "Egypt"],
-  America: ["USA", "Canada", "Brazil", "Peru"],
-  Oceania: ["Australia", "New Zealand", "Fiji"],
-};
-
-const regions = Object.keys(destinations) as Region[];
+import { RegionFormated } from "@/lib/regionTransformer";
 
 /* ===================== ICONS ===================== */
 const ChevronRight = () => (
@@ -38,10 +20,20 @@ const ChevronLeft = () => (
 );
 
 /* ===================== COMPONENT ===================== */
-export default function SideBarMenu() {
+
+export default function SideBarMenu({
+  regions,
+  isInner = false,
+}: {
+  regions: Record<string, RegionFormated>;
+  isInner?: boolean;
+}) {
+
+  const regionKeys = Object.keys(regions);
+
   const [sideOpen, setSideOpen] = useState(false);
   const [destinationPanel, setDestinationPanel] = useState(false);
-  const [activeRegion, setActiveRegion] = useState<Region | null>(null);
+  const [activeRegion, setActiveRegion] = useState<string | null>(null);
   const [activeLink, setActiveLink] = useState("Home");
   const [mounted, setMounted] = useState(false);
 
@@ -65,7 +57,11 @@ export default function SideBarMenu() {
         className="pl-5 cursor-pointer"
         onClick={() => setSideOpen(true)}
       >
-        <img src="/images/hamburg-menu.svg" alt="Menu" />
+        {isInner === false ? (
+          <img src="/images/hamburg-menu.svg" alt="Menu" />
+        ) : (
+          <img src="/images/hamburg-menu-inner.svg" alt="Menu" />
+        )}
       </button>
 
       {createPortal(
@@ -86,8 +82,11 @@ export default function SideBarMenu() {
             ${sideOpen ? "translate-x-0" : "translate-x-full"}`}
           >
             {/* HEADER */}
-            <div className="h-[72px] px-6 flex justify-end items-center  ">
-              <button onClick={() => setSideOpen(false)} className="text-(--color-secondary) cursor-pointer">
+            <div className="h-[72px] px-6 flex justify-end items-center">
+              <button
+                onClick={() => setSideOpen(false)}
+                className="text-(--color-secondary) cursor-pointer"
+              >
                 <X />
               </button>
             </div>
@@ -130,15 +129,21 @@ export default function SideBarMenu() {
 
             {/* CONTACT */}
             <div className="px-6 pb-20 space-y-4">
-              <a href="tel:+919998868866" className="flex gap-3  text-(--color-secondary)">
-                <img src="/images/call-icon.svg" className="w-5 text-(--color-secondary)" alt="Call" />
+              <a
+                href="tel:+919998868866"
+                className="flex gap-3 text-(--color-secondary)"
+              >
+                <img src="/images/call-icon.svg" className="w-5" alt="Call" />
                 +91 999 886 8866
               </a>
 
-              <a href="https://wa.me/919998868866" className="flex gap-3  text-(--color-secondary)">
+              <a
+                href="https://wa.me/919998868866"
+                className="flex gap-3 text-(--color-secondary)"
+              >
                 <img
                   src="/images/whatsapp-icon.svg"
-                  className="w-5 text-(--color-secondary)"
+                  className="w-5"
                   alt="WhatsApp"
                 />
                 WhatsApp
@@ -146,7 +151,7 @@ export default function SideBarMenu() {
 
               <a
                 href="mailto:hello@maximilianholidays.com"
-                className="flex gap-3  text-(--color-secondary)"
+                className="flex gap-3 text-(--color-secondary)"
               >
                 <img src="/images/mail-icon.svg" className="w-5" alt="Mail" />
                 hello@maximilianholidays.com
@@ -158,14 +163,16 @@ export default function SideBarMenu() {
           <div
             className={`fixed top-0 right-0 h-screen w-[85%] max-w-[320px]
             bg-white z-[1100] md:hidden transition-transform duration-300
-            ${destinationPanel ? "translate-x-0" : "translate-x-full"
-              }`}
+            ${destinationPanel ? "translate-x-0" : "translate-x-full"}`}
           >
             <div className="p-6 border-b">
               <button
                 onClick={() => {
-                  setDestinationPanel(false);
-                  setActiveRegion(null);
+                  if (activeRegion) {
+                    setActiveRegion(null);
+                  } else {
+                    setDestinationPanel(false);
+                  }
                 }}
                 className="flex items-center gap-2"
               >
@@ -173,26 +180,55 @@ export default function SideBarMenu() {
               </button>
             </div>
 
+            {/* REGION LIST */}
             {!activeRegion ? (
               <div className="p-6 space-y-6">
-                {regions.map((region) => (
-                  <button
-                    key={region}
-                    onClick={() => setActiveRegion(region)}
-                    className="flex justify-between w-full font-semibold"
-                  >
-                    {region} <ChevronRight />
-                  </button>
-                ))}
+
+                {regionKeys.map((region) => {
+
+                  if (region.toLowerCase() === "india") {
+                    return (
+                      <Link
+                        key={region}
+                        href={`/country/india`}
+                        onClick={() => {
+                          setSideOpen(false);
+                          setDestinationPanel(false);
+                        }}
+                        className="flex justify-between w-full font-semibold"
+                      >
+                        {region}
+                      </Link>
+                    );
+                  }
+
+                  return (
+                    <button
+                      key={region}
+                      onClick={() => setActiveRegion(region)}
+                      className="flex justify-between w-full font-semibold"
+                    >
+                      {region} <ChevronRight />
+                    </button>
+                  );
+                })}
+
               </div>
             ) : (
-              <div className="p-6">
-                <h3 className="mb-4 font-semibold">{activeRegion}</h3>
 
-                <ul className="grid grid-cols-2 gap-3">
-                  {destinations[activeRegion].map((country) => (
-                    <li
-                      key={country}
+              /* COUNTRY LIST */
+              <div className="p-6">
+
+                <h3 className="mb-4 font-semibold capitalize">
+                  {activeRegion}
+                </h3>
+
+                <ul className="grid grid-cols-2 gap-3 mb-6">
+
+                  {regions[activeRegion]?.countries?.map((country) => (
+                    <Link
+                      href={`/${country.slug}`}
+                      key={country.slug}
                       className="cursor-pointer"
                       onClick={() => {
                         setSideOpen(false);
@@ -200,13 +236,28 @@ export default function SideBarMenu() {
                         setActiveRegion(null);
                       }}
                     >
-                      {country}
-                    </li>
+                      {country.title}
+                    </Link>
                   ))}
+
                 </ul>
+
+                <Link
+                  href={`/${regions[activeRegion]?.slug}`}
+                  onClick={() => {
+                    setSideOpen(false);
+                    setDestinationPanel(false);
+                    setActiveRegion(null);
+                  }}
+                  className="block border border-[#C43131] w-fit px-4 py-2 rounded-full text-sm hover:bg-[#C43131] hover:text-white transition"
+                >
+                  View all journeys in {activeRegion}
+                </Link>
+
               </div>
             )}
           </div>
+
         </>,
         document.body
       )}
