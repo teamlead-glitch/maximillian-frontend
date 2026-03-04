@@ -14,31 +14,29 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html>
-      <body
+    <div
+      style={{
+        display: "flex",
+        minHeight: "100vh",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        fontFamily: "sans-serif",
+      }}
+    >
+      <h1>Something went wrong</h1>
+      <p>Please try again.</p>
+
+      <button
+        onClick={() => reset()}
         style={{
-          display: "flex",
-          minHeight: "100vh",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          fontFamily: "sans-serif",
+          marginTop: 16,
+          padding: "8px 16px",
+          cursor: "pointer",
         }}
       >
-        <h1>Something went wrong</h1>
-        <p>Please try again.</p>
-
-        <button
-          onClick={() => reset()}
-          style={{
-            marginTop: 16,
-            padding: "8px 16px",
-            cursor: "pointer",
-          }}
-        >
-          Retry
-        </button>
-      </body>
-    </html>
+        Retry
+      </button>
+    </div>
   );
 }
