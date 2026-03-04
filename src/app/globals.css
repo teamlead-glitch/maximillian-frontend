@@ -151,7 +151,17 @@ body {
   }
 
 
+  .content .quote-box {
+    @apply w-full mx-auto text-center px-5 md:px-15 py-2 md:py-15;
+  }
 
+  .content .quote-icon {
+    @apply text-center text-4xl font-dm-serif text-(--color-secondary);
+  }
+
+  .content .quote-text {
+    @apply italic text-lg sm:text-xl md:text-2xl;
+  }
 }
 
 
