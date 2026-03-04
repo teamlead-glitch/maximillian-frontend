@@ -1,9 +1,16 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
+import { Gallery } from '@/types/PackageDetailsType';
+import Image from 'next/image';
+interface PackageSliderprops {
+  gallery?: Gallery[];
+  price_text?: string;
+  title?: string;
+}
 
-function PackagedetailsSlider() {
-    const slides = [
+function PackagedetailsSlider({ gallery,price_text,title }: PackageSliderprops) {
+   /*  const slides = [
     {
         id: 1,
 
@@ -42,16 +49,14 @@ function PackagedetailsSlider() {
     },
 
 
-];
+]; */
   return (
     <>
 <section className="bg-[#F5F2EE] w-full py-15 md:py-30 ">
                 <div className="flex flex-col md:flex-row justify-center items-start md:items-center w-full gap-4 md:gap-8 px-5">
-                    <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Pricing: <br />
-                        On request
-                    </h3></div>
+                    <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right w-[200px]">{price_text} </h3></div>
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                    <div className="w-full md:w-[200px]"><p>EURO 3 is a <span className="font-bold">customisable FIT journey</span> . Pricing varies based on travel dates, hotel category, and personal preferences.
+                    <div className="w-full md:w-[200px]"><p>{title} is a <span className="font-bold">customisable FIT journey</span>. Pricing varies based on travel dates, hotel category, and personal preferences.
                     </p></div>
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                     <div className="inline-block">
@@ -88,19 +93,21 @@ function PackagedetailsSlider() {
                         autoplay={{ delay: 2500, disableOnInteraction: false }}
                         className="w-full overflow-visible"
                     >
-                        {slides.map((item) => (
-                            <SwiperSlide key={item.id} className="!w-[280px] md:!w-[340px] lg:!w-[420px]">
-                                <div className="bg-white rounded-md overflow-hidden mt-20  group">
-
-                                    <div className="w-full h-72 overflow-hidden">
-                                        <img
-                                            src={item.image}
-                                            alt=""
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                        />
-                                    </div>
-
+                         {gallery?.map((item, index) => (
+                            <SwiperSlide
+                            key={index}
+                            className="!w-[280px] md:!w-[340px] lg:!w-[420px]"
+                            >
+                            <div className="bg-white rounded-md overflow-hidden mt-20 group">
+                                <div className="w-full h-72 overflow-hidden relative">
+                                <Image
+                                    src={item.image_path}
+                                    alt={`Gallery ${index}`}
+                                    fill
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
                                 </div>
+                            </div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
