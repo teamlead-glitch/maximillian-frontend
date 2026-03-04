@@ -38,6 +38,8 @@ export interface PackageResponse {
   gallery: Gallery[];
   region: Region;
   seo_detail: SeoDetail;
+   taggroups: TagGroup[];
+   regions: Region;
 }
 
 export interface SeoDetail {
@@ -70,6 +72,7 @@ export interface SeoDetail {
   llm_approved: number;
   created_at: string;
   updated_at: string;
+ 
 }
 export interface Tag {
   id: number;
@@ -132,6 +135,27 @@ export interface Region {
   title: string;
 }
 export interface Gallery {
-  id?: number;
-  image?: string;
+  image_path: string;
+}
+export interface TagGroup {
+  group_id: number;
+  group_title: string;
+  slug: string | null;
+  short_slug: string;
+  tags: TagGroupTag[];
+}
+
+export interface TagGroupTag {
+  id: number;
+  title: string;
+  slug: string | null;
+  group_id: number;
+  short_slug: string;
+}
+export interface Region {
+  id: number;
+  title: string;
+  slug: string;
+  type: string;
+  short_slug: string;
 }

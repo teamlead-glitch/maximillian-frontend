@@ -1,0 +1,61 @@
+import React, { useEffect, useState } from 'react'
+import { PackagesResponse } from "@/types/packages";
+import Loader from "../common/Loader";
+import { apiService } from "@/services/api";
+import PackageCard from "../package/PackageCard";
+interface props {
+  region_slug?:string;
+}
+
+function Related_journels({ region_slug }: props) {
+    const [packages, setPackages] = useState<PackagesResponse["packages"]>([]);
+        const [loading, setLoading] = useState(true);
+        const [hasMore, setHasMore] = useState(true);
+
+    const fetchPackages = async () => {
+            if (!hasMore) return;
+    
+            try {
+                setLoading(true);
+    
+                const res = await apiService.get<PackagesResponse>(
+                    `/packages?type=region&slug=${region_slug}&take=3&skip=0`
+                );
+    
+    
+    
+                setPackages(res.packages);
+            } catch (error) {
+                console.error("packages API error:", error);
+                setHasMore(false);
+            } finally {
+                setLoading(false);
+            }
+        };
+          useEffect(() => {
+                fetchPackages();
+            }, []);
+  return (
+    <>
+          <section className=" bg-white py-10 md:py-20  px-5">
+                <div className="max-w-[1000px] mx-auto flex flex-col items-end  ">
+
+                    <div className="flex flex-col w-full justify-center">
+                        <h4 className="font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) text-center">Related Journeys</h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-5 lg:mt-20">
+                            {packages.map((pckge) =>
+                            
+                                                            <PackageCard key={pckge.id} details={pckge} />
+                                                        )}
+                            
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+    </>
+  )
+}
+
+export default Related_journels

@@ -10,32 +10,62 @@ import PackagedetailsSlider from "./packagedetailsSlider";
 import Faq from "./Faq";
 import { PackageResponse } from "@/types/PackageDetailsType";
 import Image from "next/image";
+import Related_journels from "./Related_journels";
 
 
 
 export default function Details({ details }: { details: PackageResponse }) {
- 
-const banner_image = details?.banner_image ?? "";
- const title = details?.title ?? "";
- const package_tagline=details?.package_tagline??"";
-const season =details?.season??"";
-const duration=details?.duration_text??"";
-const group_size=details?.package_size??"";
- const countries = details?.countries || [];
- const journey_overview=details?.description??"";
- const journey_flow=details?.journey_flow??"";
- const journey_image=details?.image_path ?? "";
 
+    const banner_image = details?.banner_image;
+    const title = details?.title ?? "";
+    const package_tagline = details?.package_tagline ?? "";
+    const season = details?.season ?? "";
+    const duration = details?.duration_text ?? "";
+    const group_size = details?.package_size ?? "";
+    const countries = details?.countries || [];
+    const journey_overview = details?.description ?? "";
+    const journey_flow = details?.journey_flow ?? "";
+    const journey_image = details?.image_path ?? "";
+    const journey_styles = details?.journey_style?.split(",") ?? [];
+    const price_text = details?.price_text ?? "";
+    const faq = details?.faqs || [];
+    const faq_image = details?.faq_image ?? "";
+    const includes = details?.inclusion || [];
+    const excludes = details?.exclusion || [];
+    const mobile_banner_image = details?.banner_mob_image;
+    const taggroups = details?.taggroups || [];
+    const region_slug = details?.regions?.short_slug;
     return (
 
         <>
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
-                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]"><Image src={banner_image} alt="" fill className="w-full h-full object-cover" />
+                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]">
+                    {/* MOBILE IMAGE */}
+                    {mobile_banner_image && (
+                        <Image
+                            src={mobile_banner_image}
+                            alt={title}
+                            fill
+                            className="object-cover w-full h-full md:hidden"
+                        />
+                    )}
+
+                    {/* DESKTOP IMAGE */}
+                    {banner_image && (
+                        <Image
+                            src={banner_image}
+                            alt={title}
+                            fill
+                            className="object-cover w-full h-full hidden md:block"
+                        />
+                    )}
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
--translate-x-1/2  -translate-y-1/2
-w-[90%] sm:w-[80%] md:w-auto
-px-4 sm:px-0 text-center"></div>
+                        -translate-x-1/2  -translate-y-1/2
+                        w-[90%] sm:w-[80%] md:w-auto
+                        px-4 sm:px-0 text-center">
+                    
+                    </div>
                 </div></section>
             <section className=" bg-white py-10 md:py-30  px-5">
                 <div className="max-w-[800px] mx-auto   ">
@@ -46,60 +76,77 @@ px-4 sm:px-0 text-center"></div>
                     </div></div>
                 <div className="max-w-[1300px] mx-auto pt-5 lg:pt-16">
                     <div className="flex flex-wrap align-center  gap-y-2 gap-x-3 md:gap-8 xl:gap-12">
-                        <div className="pb-2 md:pb-0">
-                            <span className="text-sm sm:text-base text-(--color-secondary)">Experience type</span>
-                            <ul className="flex flex-wrap items-start  md:items-center text-sm gap-2 mt-1">
-                                <li className="relative text-sm sm:text-base  font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                    Slow Travel
-                                </li>
-                                <li className="relative text-sm sm:text-base font-my-font-semibold  text-(--color-secondary)">
-                                    Scenic Europe
-                                </li>
-                            </ul>
-                        </div>
+                        {taggroups.map((group) => (
+                            <div key={group.group_id} className="pb-2 md:pb-0">
+                                <span className="text-sm sm:text-base text-(--color-secondary)">
+                                    {group.group_title}
+                                </span>
+
+                                <ul className="flex flex-wrap items-start md:items-center text-sm gap-2 mt-1">
+                                    {group.tags.map((tag, index) => (
+                                        <li
+                                            key={tag.id}
+                                            className={`relative text-sm sm:text-base font-my-font-semibold pr-5 text-(--color-secondary)
+                                                 ${index !== group.tags.length - 1
+                                                    ? "after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                                    : ""
+                                                }`}
+                                        >
+                                            {tag.title}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Duration</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold"> {duration}</h4>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1"> {duration}</h4>
                         </div>
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
                             <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1">
-                               {countries.map((country, index) => (
+                                {countries.map((country, index) => (
                                     <li
-                                    key={country.id}
-                                    className="flex items-center text-sm sm:text-base font-my-font-semibold text-(--color-secondary)"
+                                        key={country.id}
+                                        className="flex items-center text-sm sm:text-base font-my-font-semibold text-(--color-secondary)"
                                     >
-                                    {country.title}
+                                        {country.title}
 
-                                    {/* Show dot only if NOT last item */}
-                                    {countries.length > 1 && index !== countries.length - 1 && (
-                                        <span className="mx-2">⬥</span>
-                                    )}
+                                        {/* Show dot only if NOT last item */}
+                                        {countries.length > 1 && index !== countries.length - 1 && (
+                                            <span className="mx-2">⬥</span>
+                                        )}
                                     </li>
                                 ))}
                             </ul>
                         </div>
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Best season</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold">{season}</h4>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1">{season}</h4>
 
                         </div>
-                        <div className="pb-2 md:pb-0">
-                            <span className="text-sm sm:text-base text-(--color-secondary)">Journey style</span>
-                            <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1">
-                                <li className="relative text-sm sm:text-base font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                    Rail-based
-                                </li>
-                                <li className="relative text-sm sm:text-base font-my-font-semibold  pr-5 text-(--color-secondary) after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                    Easy pace
-                                </li>
-                                <li className="relative text-sm sm:text-base font-my-font-semibold pr-5 text-(--color-secondary)">
-                                    FIT (Customisable)
+                        {journey_styles.length > 0 && (
+                            <div className="pb-2 md:pb-0">
+                                <span className="text-sm sm:text-base text-(--color-secondary)">
+                                    Journey style
+                                </span>
 
-                                </li>
-
-                            </ul>
-                        </div>
+                                <ul className="flex flex-wrap items-center text-sm gap-2 mt-1">
+                                    {journey_styles.map((style, index) => (
+                                        <li
+                                            key={index}
+                                            className={`relative text-sm sm:text-base font-my-font-semibold pr-5 text-(--color-secondary)
+          ${index !== journey_styles.length - 1
+                                                    ? "after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                                    : ""
+                                                }`}
+                                        >
+                                            {style.trim()}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Group size</span>
                             <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold">{group_size}</h4>
@@ -123,13 +170,13 @@ before:w-16 before:h-[2px] before:bg-gray-300">
                             </h2>
                             <div className="content" dangerouslySetInnerHTML={{ __html: journey_overview }}>
 
-                        </div>
+                            </div>
 
-                             <h3 className="font-my-font-regular text-break xl:text-3xl text-2xl text-(--color-secondary) mb-5">The Journey Flow
-                            </h3> 
+                            <h3 className="font-my-font-regular text-break xl:text-3xl text-2xl text-(--color-secondary) mb-5">The Journey Flow
+                            </h3>
                             <div className="content" dangerouslySetInnerHTML={{ __html: journey_flow }}>
 
-                        </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,9 +190,11 @@ after:content-[''] after:absolute after:top-1/2 after:right-0 after:w-1/4 after:
 before:-translate-y-1/2 after:-translate-y-1/2">
                             Day-wise Itinerary </h2></div>
 
+
+                    {/* daywise card component */}
                     {details?.itinerary?.map((day) => (
-  <DaywiseCard key={day.id} day={day} />
-))}
+                        <DaywiseCard key={day.id} day={day} />
+                    ))}
                     <div className="w-full text-center flex justify-center py-5      md:py-10">
                         <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-0 md:py-4 mt-3 cursor-pointer">
                             <span className="mr-3">Download This itinerary as PDF</span>
@@ -155,8 +204,9 @@ before:-translate-y-1/2 after:-translate-y-1/2">
                     </div>
                 </div>
             </section>
-            <PackagedetailsSlider/>
-            <Faq/>
+
+            <PackagedetailsSlider gallery={details?.gallery} price_text={price_text} title={title} />
+            <Faq faq={faq} faq_image={faq_image} />
 
             <section className=" bg-white py-10   px-5">
                 <div className="max-w-[1300px] mx-auto">
@@ -189,39 +239,17 @@ before:-translate-y-1/2 after:-translate-y-1/2">
                             </div>
                         </div> */}
 
+                        {/* includes */}
+
                         <ul className="space-y-2">
-                            <li className="flex items-start gap-2">
-                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">International flights
-
-
-
-
-
-                                </span>
-                            </li>
-
-                            <li className="flex items-start gap-2">
-                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Visa assistance & travel insurance</span>
-                            </li>
-
-                            <li className="flex items-start gap-2">
-                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Accommodation with daily breakfast</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Scenic rail journeys & transfers</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Guided city tours and entrance fees</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Mountain excursions and special experiences</span>
-                            </li>
+                            {includes.map((item) => (
+                                <li key={item.id} className="flex items-start gap-2">
+                                    <Circle className="w-2.5 h-2.5 fill-black mt-2" />
+                                    <span className="text-(--color-secondary) text-base">
+                                        {item.title}
+                                    </span>
+                                </li>
+                            ))}
 
                         </ul>
 
@@ -240,25 +268,18 @@ before:-translate-y-1/2 after:-translate-y-1/2">
                             <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                             <div className="w-full md:w-[200px]"><p>What’s not included by default in your journey.</p></div>
                         </div>
+                        {/* excludes */}
 
                         <ul className="space-y-2">
-                            <li className="flex items-start gap-2">
-                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Personal expenses such as laundry, minibar, or room service
-                                </span>
-                            </li>
-
-                            <li className="flex items-start gap-2">
-                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Optional experiences not mentioned in the itinerary
-                                </span>
-                            </li>
-
-                            <li className="flex items-start gap-2">
-                                <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                <span className="text-(--color-secondary) text-base">Any services not specifically requested or customised
-                                </span>
-                            </li>
+                            {excludes?.length > 0 &&
+                                excludes.map((item) => (
+                                    <li key={item.id} className="flex items-start gap-2">
+                                        <Circle className="w-2.5 h-2.5 fill-black mt-2" />
+                                        <span className="text-(--color-secondary) text-base">
+                                            {item.title}
+                                        </span>
+                                    </li>
+                                ))}
                         </ul>
                         {/* <div className="w-full flex">
                             <div className="w-full md:w-1/4"><h5 className="text-base font-bold text-(--color-secondary)">Documents.</h5>  </div>
@@ -285,110 +306,8 @@ before:-translate-y-1/2 after:-translate-y-1/2">
                 </div>
             </section>
 
-            <section className=" bg-white py-10 md:py-20  px-5">
-                <div className="max-w-[1000px] mx-auto flex flex-col items-end  ">
-
-                    <div className="flex flex-col w-full justify-center">
-                        <h4 className="font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) text-center">Related Journeys</h4>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-5 lg:mt-20">
-                            <div className="py-3 group">
-                                <div className="rounded-md w-full aspect-square relative overflow-hidden">
-                                    <a href="">
-                                        <img src="/images/expeience-img-1.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                                        <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
-                                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                                            <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className=" px-0 md:px-5  py-5">
-                                    <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
-                                        <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
-                                            Laos
-                                        </li>
-                                        <li className="relative text-[#818c94]">
-                                            Cambodia
-                                        </li>
-                                    </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
-                                    <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
-                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                            Cultural
-                                        </li>
-                                        <li className="relative text-(--color-secondary)">
-                                            Small Group
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                            <div className="py-3 group">
-                                <div className="rounded-md w-full aspect-square  relative overflow-hidden">
-                                    <a href=""><img src="/images/expeience-img-2.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
-                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
-                                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                                        <p className="text-white text-lg font-my-font-semibold text-center">08 days</p>
-                                    </div>
-                                </div>
-
-                                <div className=" px-0 md:px-5  py-5">
-                                    <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
-                                        <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
-                                            Madyapradesh
-                                        </li>
-                                        <li className="relative text-[#818c94]">
-                                            India
-                                        </li>
-                                    </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">A Mesmerizing Journey Across Cambodia</h4></a>
-                                    <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
-                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                            Cultural
-                                        </li>
-                                        <li className="relative text-(--color-secondary)">
-                                            Small Group
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                            <div className="py-3 group">
-                                <div className="rounded-md w-full aspect-square relative overflow-hidden">
-                                    <a href=""><img src="/images/expeience-img-3.png" alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></a>
-                                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
-                                    <div className="absolute bottom-0 left-0 right-0 p-4">
-
-                                        <p className="text-white text-lg font-my-font-semibold text-center">10 days</p>
-                                    </div>
-                                </div>
-
-                                <div className=" px-0 md:px-5  py-5">
-                                    <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
-                                        <li className="relative pr-3 text-[#818c94] after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]">
-                                            Sri Lanka
-                                        </li>
-                                        <li className="relative text-[#818c94]">
-                                            Maldives
-                                        </li>
-                                    </ul>
-                                    <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-lg md:text-xl text-center py-2 line-clamp-2">Sri Lanka and the Maldives: Elephants & Emerald Isles</h4></a>
-                                    <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
-                                        <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                            Cultural
-                                        </li>
-                                        <li className="relative text-(--color-secondary)">
-                                            Small Group
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </section>
+            {/*related journels component  */}
+            <Related_journels region_slug={region_slug} />
 
 
 
