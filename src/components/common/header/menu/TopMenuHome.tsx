@@ -126,7 +126,7 @@ export default function TopMenuHome({ regions }: { regions: Record<string, Regio
           </div>
         </div>
 
-        <SideBarMenu />
+        <SideBarMenu regions={regions}/>
 
       </div>
     </>
