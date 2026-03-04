@@ -24,7 +24,7 @@ export default function HomePage({
         <>
             <BannerSection />
             <AboutSection page={ page }/>
-            <SignatureJourney />
+            {/* <SignatureJourney /> */}
             <ExperienceTour />
             {/* <SpecialityTours /> */}
             <FeaturedDestinations />
