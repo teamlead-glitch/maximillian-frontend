@@ -1,8 +1,9 @@
-import { journeyResponse } from "@/types/journeyTypes";
+import { PackageItem } from "@/types/packages"
+import { PackagesResponse } from "@/types/packages";
 import Image from "next/image";
 
 interface Props {
-    journey: journeyResponse;
+    journey: PackageItem;
 }
 
 export default function JourneyCard({ journey }: Props) {
