@@ -154,14 +154,14 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
             <section className="relative py-5 overflow-hidden bg-white">
                 <div className="max-w-[1200px]  mx-auto  px-5 md:px-10">
                     <div className="w-full">
-                        <div className="content" dangerouslySetInnerHTML={{ __html: description }}>
+                        <p className="content" dangerouslySetInnerHTML={{ __html: description }}>
 
-                        </div>
+                        </p>
                     </div>
                     <div className="w-full justify-center  grid grid-cols-1 sm:grid-cols-[7fr_3fr] gap-3 py-10 items-start">
-                        <div className="content" dangerouslySetInnerHTML={{ __html: second_descrption }}>
+                        <p className="content" dangerouslySetInnerHTML={{ __html: second_descrption }}>
 
-                        </div>
+                        </p>
                         <div className="relative w-full max-w-[323px] h-[323px]">
                             {image && (
                                 <Image src={image} alt="" fill className="rounded-lg object-cover" />
@@ -169,9 +169,9 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                         </div>
                     </div>
 
-                    <div className="content" dangerouslySetInnerHTML={{ __html: third_descripton }}>
+                    <p className="content" dangerouslySetInnerHTML={{ __html: third_descripton }}>
 
-                    </div>
+                    </p>
                     <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 ">
                         {details?.author ? (
 
@@ -207,7 +207,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                         </a>
                                     </div>
 
-                                    <div dangerouslySetInnerHTML={{ __html: details.author.description }} />
+                                    <p dangerouslySetInnerHTML={{ __html: details.author.description }} />
                                 </div>
 
                             </div>

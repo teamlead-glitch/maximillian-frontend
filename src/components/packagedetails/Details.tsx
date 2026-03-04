@@ -179,15 +179,15 @@ before:content-[''] before:absolute before:-bottom-3 before:left-0
 before:w-16 before:h-[2px] before:bg-gray-300">
                                 Journey overview
                             </h2>
-                            <div className="content" dangerouslySetInnerHTML={{ __html: journey_overview }}>
+                            <p className="content" dangerouslySetInnerHTML={{ __html: journey_overview }}>
 
-                            </div>
+                            </p>
 
                             {/*  <h3 className="font-my-font-regular text-break xl:text-3xl text-2xl text-(--color-secondary) mb-5">The Journey Flow
                             </h3> */}
-                            <div className="content" dangerouslySetInnerHTML={{ __html: journey_flow }}>
+                            <p className="content" dangerouslySetInnerHTML={{ __html: journey_flow }}>
 
-                            </div>
+                            </p>
                         </div>
                     </div>
                 </div>
