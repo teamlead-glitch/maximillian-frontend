@@ -117,11 +117,10 @@ export default function SideBarMenu({
                   className={`relative block font-my-font-semibold text-(--color-secondary)
                   after:absolute after:left-0 after:-bottom-1 after:h-[2px]
                   after:w-[30px] after:bg-[#C43131] after:transition-opacity
-                  ${
-                    activeLink === item.name
+                  ${activeLink === item.name
                       ? "after:opacity-100"
                       : "after:opacity-0"
-                  }`}
+                    }`}
                 >
                   {item.name}
                 </Link>
