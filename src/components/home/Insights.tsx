@@ -8,18 +8,20 @@ import { apiService } from "@/services/api";
 import Loader from "../common/Loader";
 import { BlogsResponse } from "@/types/blogs";
 import InsightCard from "@/components/blogs/Insights"
+import Image from "next/image";
 
 
-export default function Insights() {
+export default function Insights({filterRegionId=false}:{filterRegionId?:boolean|number}) {
 
     const [insights, setBlogs] = useState<BlogsResponse["blogs"]>([]);
-            // const [activeIndex, setActiveIndex] = useState(0);
+    // const [activeIndex, setActiveIndex] = useState(0);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const res = await apiService.get<BlogsResponse>("/blogs?skip=0&take=10");
+                const url = `/blogs?skip=0&take=10${filterRegionId ? `&region_id=${filterRegionId}` : ""}`;
+                const res = await apiService.get<BlogsResponse>(url);
 
                 if (res) {
                     setBlogs(res.blogs || []);
@@ -37,11 +39,12 @@ export default function Insights() {
 
         fetchBlogs();
     }, []);
-if (!loading && !insights.length) {
-    return (
-<></>
-    );
-  }
+    if (!loading && !insights.length) {
+        return 
+    }
+    if (loading) {
+        return <Loader />
+    }
     return (
         <>
 
@@ -58,12 +61,12 @@ if (!loading && !insights.length) {
                             <div className="relative">
                                 <button className="insights-prev hidden lg:flex text-sm sm:text-base absolute md:left-0 xl:-left-25 top-1/2  z-20
     w-12 h-14 md:w-14 md:h-16 lg:w-16 lg:h-20 xl:w-20 xl:h-24 items-center justify-center cursor-pointer">
-                                    <img src="images/left-arrow.svg" alt="" />
+                                    <Image fill src="/images/left-arrow.svg" alt="" />
                                 </button>
 
                                 <button className="insights-next hidden lg:flex text-sm sm:text-base absolute md:right-0 xl:-right-25 top-1/2  z-20
     w-12 h-14 md:w-14 md:h-16 lg:w-16 lg:h-20 xl:w-20 xl:h-24  items-center justify-center cursor-pointer">
-                                    <img src="images/right-arrow.svg" alt="" />
+                                    <Image fill src="/images/right-arrow.svg" alt="" />
                                 </button>
                                 <Swiper
                                     modules={[Navigation, Autoplay]}

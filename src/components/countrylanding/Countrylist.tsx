@@ -179,9 +179,9 @@ px-4 sm:px-0 text-center">
 
             {slug == 'india' &&<IndiaOnly />}
             
-            {/* insights */}
-            <Insights />
-            {/*insights close */}
+            
+            {/* <Insights /> */}
+            
 
             <BespokeJourney />
             <LogoCarousel />

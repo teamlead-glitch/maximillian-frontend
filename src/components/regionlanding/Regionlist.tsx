@@ -210,7 +210,7 @@ px-4 sm:px-0 text-center">
                 </div>
             </section>
             {/* insights */}
-            <Insights />
+            <Insights filterRegionId={regionDetails?.id}/>
             {/*insights close */}
 
             <BespokeJourney />
