@@ -63,16 +63,42 @@ export default function BlogCard({
         {blog.tags?.length > 0 && (
           <ul className="flex flex-wrap items-center text-sm gap-2 mt-3">
             {blog.tags.map((tag, index) => (
+              <Link href={`/${tag.slug}`}>
               <li
                 key={tag.id}
-                className={`relative text-(--color-secondary) ${index !== blog.tags.length - 1
+                className={`relative text-(--color-secondary) ${(index !== blog.tags.length - 1 || blog.countries.length >0 || blog.region )
                     ? "pr-5 after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2"
                     : ""
                   }`}
               >
                 {tag.title}
               </li>
+              </Link>
             ))}
+
+
+            {blog.countries.map((country, index) => (
+              <Link href={`/${country.slug}`}>
+              <li
+                key={country.id}
+                className={`relative text-(--color-secondary) ${(index !== blog.countries.length - 1 || blog.region)
+                    ? "pr-5 after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2"
+                    : ""
+                  }`}
+              >
+                {country.title}
+              </li>
+              </Link>
+            ))}
+{blog.region &&
+            <Link href={`/${blog.region.slug}`}>
+              <li
+                key={blog.region.slug}
+                className={`relative text-(--color-secondary)`}
+              >
+                {blog.region.title}
+              </li>
+              </Link>}
           </ul>
         )}
 
