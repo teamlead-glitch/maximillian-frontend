@@ -209,7 +209,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
                             /* ✅ ONLY ADMIN TEXT */
                             <div className="text-sm text-(--color-secondary)">
-                                Written by Author
+                                Written by Admin
                             </div>
 
                         )}
