@@ -87,28 +87,35 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                             {title}
                         </h1>
                         <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1 py-4">
-                            <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                {category}
-                            </li>
-                            <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                {region}
-                            </li>
-                            {countries.map((country, index) => {
-                                const isLastCountry = index === countries.length - 1;
-                                return (
-                                    <li
-                                        key={country.id}
-                                        className={`relative pr-5 text-(--color-secondary) ${!estimated_time && isLastCountry
-                                                ? ""
-                                                : "after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
-                                            }`}
-                                    >
-                                        <Link href="#" className="hover:underline">
-                                            {country.title}
-                                        </Link>
-                                    </li>
-                                );
-                            })}
+                            {category && (
+                                <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                    {category}
+                                </li>
+                            )}
+
+                            {region && (
+                                <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
+                                    {region}
+                                </li>
+                            )}
+                            {countries?.length > 0 &&
+                                countries.map((country, index) => {
+                                    const isLastCountry = index === countries.length - 1;
+
+                                    return (
+                                        <li
+                                            key={country.id}
+                                            className={`relative pr-5 text-(--color-secondary) ${!estimated_time && isLastCountry
+                                                    ? ""
+                                                    : "after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                                }`}
+                                        >
+                                            <Link href={`/country/${country.short_slug}`} className="hover:underline">
+                                                {country.title}
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
 
                             {estimated_time && (
                                 <li className="relative text-(--color-secondary)">
@@ -222,7 +229,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                             key={tag.id}
                                             className="flex items-center text-sm text-(--color-secondary)"
                                         >
-                                            <Link href="#" className="hover:underline">
+                                            <Link href={`/tag/${tag.short_slug}`} className="hover:underline">
                                                 {tag.title}
                                             </Link>
 

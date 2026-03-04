@@ -64,7 +64,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                         -translate-x-1/2  -translate-y-1/2
                         w-[90%] sm:w-[80%] md:w-auto
                         px-4 sm:px-0 text-center">
-                    
+
                     </div>
                 </div></section>
             <section className=" bg-white py-10 md:py-30  px-5">
@@ -120,11 +120,16 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 ))}
                             </ul>
                         </div>
-                        <div className="pb-2 md:pb-0">
-                            <span className="text-sm sm:text-base text-(--color-secondary)">Best season</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1">{season}</h4>
-
-                        </div>
+                        {season && (
+                            <div className="pb-2 md:pb-0">
+                                <span className="text-sm sm:text-base text-(--color-secondary)">
+                                    Best season
+                                </span>
+                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1">
+                                    {season}
+                                </h4>
+                            </div>
+                        )}
                         {journey_styles.length > 0 && (
                             <div className="pb-2 md:pb-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
@@ -147,10 +152,16 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 </ul>
                             </div>
                         )}
-                        <div className="pb-2 md:pb-0">
-                            <span className="text-sm sm:text-base text-(--color-secondary)">Group size</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold">{group_size}</h4>
-                        </div>
+                        {group_size && (
+                            <div className="pb-2 md:pb-0">
+                                <span className="text-sm sm:text-base text-(--color-secondary)">
+                                    Group size
+                                </span>
+                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold">
+                                    {group_size}
+                                </h4>
+                            </div>
+                        )}
                     </div>
                 </div>
             </section >
@@ -172,8 +183,8 @@ before:w-16 before:h-[2px] before:bg-gray-300">
 
                             </div>
 
-                            <h3 className="font-my-font-regular text-break xl:text-3xl text-2xl text-(--color-secondary) mb-5">The Journey Flow
-                            </h3>
+                            {/*  <h3 className="font-my-font-regular text-break xl:text-3xl text-2xl text-(--color-secondary) mb-5">The Journey Flow
+                            </h3> */}
                             <div className="content" dangerouslySetInnerHTML={{ __html: journey_flow }}>
 
                             </div>
