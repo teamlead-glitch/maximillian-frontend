@@ -179,7 +179,7 @@ px-4 sm:px-0 text-center">
                 </div>
             </section>
 
-            {slug == 'india' &&<IndiaOnly />}
+            {slug == 'india' &&<IndiaOnly what_makes_us_exceptional={regionDetails?.what_makes_us_exceptional??''}/>}
             
             
             {/* <Insights /> */}

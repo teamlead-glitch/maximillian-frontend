@@ -5,7 +5,7 @@ import { IndiaOnlyData } from "@/types/countryType";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function IndiaOnly(){
+export default function IndiaOnly({what_makes_us_exceptional}:{what_makes_us_exceptional:string}){
 
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState<IndiaOnlyData[]>([]);
@@ -106,7 +106,7 @@ export default function IndiaOnly(){
               ">
 
                                 <h4 className="text-(--color-secondary) text-3xl font-my-font-regular group-hover:text-white">
-                                    {data[1]?.title}
+                                    {data[1]?.title}11
                                 </h4>
 
                                 <p className="text-(--color-secondary) line-clamp-3 hidden md:block group-hover:text-white">
@@ -173,9 +173,9 @@ export default function IndiaOnly(){
 
                         {/* third image */}
                         <div className="w-full aspect-4/2.5 relative group overflow-hidden">
-                            <img src="../../images/holi.webp" className="w-full h-full object-cover rounded-xl  opacity-0
+                            {data[3]?.image &&<img src={data[3]?.image} className="w-full h-full object-cover rounded-xl  opacity-0
                 transition-all duration-500
-                group-hover:opacity-100 group-hover:translate-y-0 " />
+                group-hover:opacity-100 group-hover:translate-y-0 " />}
                             <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-0 
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0"></div>
@@ -184,14 +184,14 @@ export default function IndiaOnly(){
               ">
 
                                 <h4 className="text-(--color-secondary) text-3xl font-my-font-regular group-hover:text-white">
-                                    Festivals and Cultural Moments
+                                    {data[3]?.title}
                                 </h4>
 
                                 <p className="text-(--color-secondary) line-clamp-3 hidden md:block group-hover:text-white">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut.
+                                     {data[3]?.short_description}
                                 </p>
 
-                                <button className="group flex items-center font-my-font-semibold text-sm text-(--color-secondary) sm:text-base py-3  cursor-pointer group-hover:text-white">
+                                <Link href={`/${data[3]?.slug}`} className="group flex items-center font-my-font-semibold text-sm text-(--color-secondary) sm:text-base py-3  cursor-pointer group-hover:text-white">
                                     <span className="mr-3">View More Journeys</span>
 
                                     <svg
@@ -206,19 +206,21 @@ export default function IndiaOnly(){
                                             className="fill-black group-hover:fill-white transition-colors"
                                         />
                                     </svg>
-                                </button>
+                                </Link>
                             </div>
                         </div>
 
                     </div>
                 </div>
             </div>
-            <section className="relative  py-10 md:pt-20 md:pb-10   xl:pt-30 xl:pb-15 px-5 overflow-hidden bg-white">
+            {what_makes_us_exceptional &&<section className="relative  py-10 md:pt-20 md:pb-10   xl:pt-30 xl:pb-15 px-5 overflow-hidden bg-white">
                 <div className="max-w-[1000px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5 items-center">
                         <div className="pr-0 md:pr-15 xl:pr-36">
                             <h3 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">What Makes Our India Journeys Different/Exceptional?</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut. Aenean ultrices convallis sagittis. Nullam posuere, tortor a fringilla condimentum, dui justo facilisis sem, ac varius dolor leo ac ex.</p>
+                            {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut. Aenean ultrices convallis sagittis. Nullam posuere, tortor a fringilla condimentum, dui justo facilisis sem, ac varius dolor leo ac ex.</p> */}
+                        <p className="content" dangerouslySetInnerHTML={{ __html: what_makes_us_exceptional }}></p>
+                        
                         </div>
                         <div className="pl-0 md:pl-10">
                             <div className="aspect-[2/3]">
@@ -227,7 +229,7 @@ export default function IndiaOnly(){
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>}
             </>
     )
 }
