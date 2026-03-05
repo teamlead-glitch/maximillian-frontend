@@ -8,8 +8,9 @@ import Footer from "@/components/common/footer/footer";
 import TopMenu from "@/components/common/header/TopMenu";
 import BackToTop from "@/components/common/BackToTop";
 
-import { getRegions } from "@/lib/server-fetchs";
-import { Regions } from "@/types/commonTypes";
+import { getRegions, getSettings, getTagGroups } from "@/lib/server-fetchs";
+import { Regions, Settings } from "@/types/commonTypes";
+import { taggroupResponse } from "@/types/taggroupTypes";
 
 export const metadata = {
   title: "Maximillian Holidays",
@@ -61,6 +62,12 @@ export default async function RootLayout({
   const regions: Regions = await getRegions();
   //console.log(regions, 'regions++-')
 
+  const settings: Settings = await getSettings();
+  //console.log(settings, 'settings++-')
+
+  const tagGroups: taggroupResponse[] = await getTagGroups();
+  //console.log(tagGroups, 'tagGroups++-')
+
 
 
 
@@ -73,7 +80,7 @@ export default async function RootLayout({
 
 
         {children}
-        <Footer />
+        <Footer settings={settings} regions={regions} tagGroups={tagGroups}/>
         <BackToTop />
       </body>
     </html>

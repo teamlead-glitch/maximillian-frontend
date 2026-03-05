@@ -57,3 +57,38 @@ export async function fetchCountryBySlug(
     return null;
   }
 }
+
+
+export async function getSettings() {
+  try {
+    const res = await fetch(`${API_CONFIG.BASE_URL}/settings/`, {
+      next: { revalidate: 60 }, // 3600 : ISR – cache for 1 hour
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch menu");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("Menu API error:", error);
+    return [];
+  }
+}
+
+export async function getTagGroups() {
+  try {
+    const res = await fetch(`${API_CONFIG.BASE_URL}/tag-groups/`, {
+      next: { revalidate: 60 }, // 3600 : ISR – cache for 1 hour
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch menu");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("Menu API error:", error);
+    return [];
+  }
+}

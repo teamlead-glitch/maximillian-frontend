@@ -1,4 +1,8 @@
-export default function Footer() {
+import { Settings, Regions } from "@/types/commonTypes";
+import Link from "next/link";
+import { taggroupResponse } from "@/types/taggroupTypes";
+
+export default function Footer({settings, regions, tagGroups}:{settings:Settings; regions:Regions; tagGroups:taggroupResponse[]}) {
 
     return (
         <>
@@ -11,13 +15,17 @@ export default function Footer() {
                         <div className="border-0  md:border-r border-gray-200 mb-5 md:mb-0 pr-5">
                             <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Menu</h6>
                             <ul className="text-body font-medium">
-                                {["Home", "Destinations", "Design Your Trip", "Our World", "Contact Us"].map((item) => (
+                                {[{ label: "Home", href: "/" },
+  { label: "Destinations", href: "/destinations" },
+  { label: "Design Your Trip", href: "/designyourtrip" },
+  { label: "Our World", href: "/ourworld" },
+  { label: "Contact Us", href: "/contact" }].map((item) => (
                                     <li
-                                        key={item}
+                                        key={item.label}
                                         className="mb-4 text-2xl md:text-3xl lg:text-4xl font-my-font-regular text-(--color-secondary)"
                                     >
-                                        <a
-                                            href="#"
+                                        <Link
+                                            href={item.href}
                                             className="
           relative inline-block
           after:content-['']
@@ -30,8 +38,8 @@ export default function Footer() {
           hover:after:scale-x-100
         "
                                         >
-                                            {item}
-                                        </a>
+                                            {item.label}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -42,64 +50,46 @@ export default function Footer() {
                                 <div className="div mb-5 md:mb-0">
                                     <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Specialties</h6>
                                     <ul className="text-body font-medium mb-5 md:mb-0">
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline ">Ladies only Journeys</a>
-                                        </li>
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Family Travel</a>
-                                        </li>
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Slow Travel Experiences</a>
+                                        {tagGroups[0].tags.map((exp) => (
+
+                                             <li className="mb-2 xl:mb-4 text-[#818c94]">
+                                            <Link href={`/tag/${exp.short_slug}`} className="hover:underline ">{exp.title}</Link>
                                         </li>
 
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Senior Friendly Journeys</a>
-                                        </li>
-
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Solo Traveller</a>
-                                        </li>
-
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Festival Journeys</a>
-                                        </li>
+                                        ))}
+                                       
+                                        
                                     </ul>
 
                                     <h6 className="mb-6 mt-15 text-sm text-[#93989b]  text-heading">Regions</h6>
                                     <ul className="text-body font-medium">
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Explore Europe</a>
-                                        </li>
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Amazing Asia</a>
+
+                                        {regions.map((reg) => (
+
+                                            <li className="mb-2 xl:mb-4 text-[#818c94]">
+                                                {reg.slug === 'india'? (
+                                                    <Link href="/country/india" className="hover:underline">{reg.menu_title?reg.menu_title:reg.title}</Link>
+                                                ):(
+                                                <Link href={`/${reg.slug}`} className="hover:underline">{reg.menu_title?reg.menu_title:reg.title}</Link>
+                                                )}
+                                           
                                         </li>
 
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Astounding America</a>
-                                        </li>
+                                        ))}
+                                        
+                                       
                                     </ul>
                                 </div>
                                 <div className="div mb-5 md:mb-0">
                                     <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Experience</h6>
                                     <ul className="text-body font-medium">
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Cultural Journeys</a>
+                                        {tagGroups[1].tags.map((spec) => (
+
+                                             <li className="mb-2 xl:mb-4 text-[#818c94]">
+                                            <Link href={`/tag/${spec.short_slug}`} className="hover:underline ">{spec.title}</Link>
                                         </li>
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Photography Tours</a>
-                                        </li>
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Trekking and Outdoors</a>
-                                        </li>
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Culinary Journeys</a>
-                                        </li>
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Wellness Travel</a>
-                                        </li>
-                                        <li className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <a href="#" className="hover:underline">Scenic Escapes</a>
-                                        </li>
+
+                                        ))}
                                     </ul>
                                 </div>
                             </div>
@@ -110,15 +100,12 @@ export default function Footer() {
                             <ul className="text-body font-medium mb-5">
                                 <li className="mb-4 text-[#818c94]">
                                     Registered Office: <br />
-                                    Maximilian Holidays Pvt Ltd<br />
-                                    #3B, The Q Business Bay,<br />
-                                    Kochi, Kerala - India.
+                                    {settings.address}
                                 </li></ul>
                             <ul className="text-body font-medium mb-5">
                                 <li className="mb-4 text-[#818c94]">
                                     Corporate Office <br />
-                                    Level B, Ocean Pearl <br />
-                                    Smart City, Dubai.
+                                    {settings.address_2}
                                 </li>
                             </ul>
 
@@ -129,7 +116,7 @@ export default function Footer() {
                                         alt="Phone"
                                         className="w-3 h-3"
                                     />
-                                    <a href="tel:+91 999 886 8866">   +91 999 886 8866</a>
+                                    <a href={`tel:${settings.phone}`}>   {settings.phone}</a>
                                 </li>
 
                                 <li className="mb-4 flex items-center gap-3 text-[#818c94]">
@@ -138,7 +125,7 @@ export default function Footer() {
                                         alt="Phone"
                                         className="w-3 h-3"
                                     />
-                                    <a href="tel:+91 999 886 8866">   +91 999 886 8866</a>
+                                    <a href={`tel:${settings.whatsapp}`}>   {settings.whatsapp}</a>
                                 </li>
 
                                 <li className="flex items-center gap-3 text-[#818c94]">
@@ -147,7 +134,7 @@ export default function Footer() {
                                         alt="Email"
                                         className="w-3 h-3"
                                     />
-                                    <a href="mailto:hello@maximilianholidays.com">hello@maximilianholidays.com</a>
+                                    <a href={`mailto:${settings.email}`}>{settings.email}</a>
                                 </li>
                             </ul>
 
@@ -160,19 +147,26 @@ export default function Footer() {
                         <div className="div">
                             <ul className="flex gap-4 mt-1">
                                 <li className="relative text-base text-[#93989b]  text-body sm:text-center pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
-                                    <a href="#" className="hover:underline">Terms</a>
+                                    <Link href="/terms-and-conditions" className="hover:underline">Terms</Link>
                                 </li>
 
-                                <li className="relative pr-3 text-base text-[#93989b]  text-body sm:text-center">
-                                    <a href="#" className="hover:underline">Privacy Policy</a>
+                                <li className="relative text-base text-[#93989b]  text-body sm:text-center pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+                                    <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
                                 </li>
+
+                             
+                                <li className="relative pr-3 text-base text-[#93989b]  text-body sm:text-center">
+                                    <Link href="/health-and-safety-policy" className="hover:underline">Health and Safety Policy</Link>
+                                </li>
+
+                                
                             </ul></div>
                         <div className="flex mt-4 sm:justify-center sm:mt-0">
-                            <a href="#" className="text-body text-[#818c94] hover:text-heading">
+                            <a target="_blank" href={settings.fb_url??'#'} className="text-body text-[#818c94] hover:text-heading">
                                 <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clipRule="evenodd" /></svg>
                                 <span className="sr-only">Facebook page</span>
                             </a>
-                            <a href="#" className="text-body text-[#818c94] hover:text-heading ms-5">
+                            <a target="_blank" href={settings.insta_url??'#'} className="text-body text-[#818c94] hover:text-heading ms-5">
                                 <svg
                                     className="w-5 h-5"
                                     aria-hidden="true"
@@ -189,11 +183,11 @@ export default function Footer() {
                                 <span className="sr-only">Instagram page</span>
                             </a>
 
-                            <a href="#" className="text-body text-[#818c94] hover:text-heading ms-5">
+                            <a target="_blank" href={settings.twitter_url??'#'} className="text-body text-[#818c94] hover:text-heading ms-5">
                                 <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z" /></svg>
                                 <span className="sr-only">Twitter page</span>
                             </a>
-                            <a href="#" className="text-body text-[#818c94] hover:text-heading ms-5">
+                            <a target="_blank" href={settings.youtube_url??'#'} className="text-body text-[#818c94] hover:text-heading ms-5">
                                 <svg
                                     className="w-5 h-5"
                                     aria-hidden="true"

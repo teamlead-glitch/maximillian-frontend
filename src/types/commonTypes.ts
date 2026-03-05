@@ -34,9 +34,29 @@ export interface Region {
   slug: string;
   image: string;
   countries: Country[];
+  menu_title?: string;
 }
 
 /**
  * Full API response type
  */
 export type Regions = Region[];
+
+export interface Settings {
+  company_name: string;
+  contact_email: string;
+  package_enquiry_email: string;
+  fit_enquiry_email: string;
+  email: string;
+  phone: string;
+  whatsapp: string;
+  address: string;
+  address_link: string | null;
+  address_2: string;
+  address_link_2: string | null;
+  fb_url: string | null;
+  twitter_url: string | null;
+  youtube_url: string | null;
+  linked_in: string | null;
+  insta_url: string | null;
+}
