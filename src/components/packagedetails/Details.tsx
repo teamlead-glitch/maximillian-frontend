@@ -11,6 +11,10 @@ import Faq from "./Faq";
 import { PackageResponse } from "@/types/PackageDetailsType";
 import Image from "next/image";
 import Related_journels from "./Related_journels";
+import { Download_ErrorTypes, Download_ItineraryTypes, TalktoUsEnquiryResponse } from "@/types/packagePopupTypes";
+import { toast, ToastContainer } from "react-toastify";
+import { apiService } from "@/services/api";
+import SimpleCaptcha from "../Captcha";
 
 
 
@@ -18,6 +22,26 @@ export default function Details({ details }: { details: PackageResponse }) {
 
 
     const [open, setOpen] = useState(false);
+    //for captcha validation
+    const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+    const [captchaResetKey, setCaptchaResetKey] = useState(0);
+
+    //loader
+    const [loading, setLoading] = useState(false);
+    const [formData, setFormData] = useState<Download_ItineraryTypes>({
+        name: "",
+        email: "",
+        phone: "",
+
+    });
+    console.log(formData);
+
+    const [errors, setErrors] = useState<Download_ErrorTypes>({
+        name: "",
+        phone: "",
+        email: "",
+    });
+
 
     const banner_image = details?.banner_image;
     const title = details?.title ?? "";
@@ -38,6 +62,117 @@ export default function Details({ details }: { details: PackageResponse }) {
     const mobile_banner_image = details?.banner_mob_image;
     const taggroups = details?.taggroups || [];
     const region_slug = details?.regions?.short_slug;
+    const tour_id = details?.id;
+
+
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
+        const { id, value } = e.target;
+
+        setFormData((prev) => ({
+            ...prev,
+            [id]: value,
+        }));
+    };
+
+    /* -----------------------------------------------------------------------
+           FORM VALIDATION (STRONG + CLEAN)
+        ----------------------------------------------------------------------- */
+    const validate = (): boolean => {
+        const newErrors: Partial<Download_ErrorTypes> = {};
+
+        // Name validation
+        if (!formData.name.trim()) {
+            newErrors.name = "Name is required";
+        } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
+            newErrors.name = "Name cannot contain numbers or special characters";
+        }
+
+        // Mobile validation
+        if (!formData.phone.trim()) {
+            newErrors.phone = "Mobile number is required";
+        } else if (!/^[+]?[0-9\s-]+$/.test(formData.phone)) {
+            newErrors.phone = "Mobile number should contain only numbers";
+        } else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
+            newErrors.phone = "Enter a valid mobile number";
+        }
+
+
+        // Email validation
+        if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+            newErrors.email = "Enter a valid email";
+        }
+
+        setErrors(newErrors as Download_ErrorTypes);
+
+        return Object.keys(newErrors).length === 0; // true → no errors
+    };
+
+    //submit form
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (loading) return; // 🔥 extra safety (prevents double click)
+        // form validation
+        if (!validate()) return;
+        if (!isCaptchaVerified) {
+            toast.error("Please verify captcha before submitting");
+            return;
+        }
+
+
+        try {
+
+            setLoading(true); // ⭐ start loader
+
+            const payload = {
+                name: formData.name.trim(),
+                phone: formData.phone,
+                email: formData.email,
+                package_id: details?.id
+
+
+            };
+            /* console.log("Payload:", payload); */
+
+            const res = await apiService.post<TalktoUsEnquiryResponse>(
+                "/itinerary-enquiry", // ✅ remove /api if BASE_URL already contains it
+                payload
+            );
+
+            console.log(res);
+
+            if (res.result === "success") {
+                toast.success(res.message || "Package Enquiry Sent Successfully")
+                // Reset form
+                setFormData({
+                    name: "",
+                    phone: "",
+                    email: "",
+                });
+                setIsCaptchaVerified(false);
+                setCaptchaResetKey((prev) => prev + 1); // 🔄 refresh captcha
+                setTimeout(() => {
+                    setOpen(false);
+                }, 2300);
+
+            } else {
+                toast.error(res.message || "Something went wrong"); // ✅ fixed syntax
+            }
+
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+            console.error("CONTACT FORM ERROR:", error);
+
+            // ✅ show backend validation error
+            toast.error("Failed to send. Please try again!");
+        } finally {
+            setLoading(false); // ⭐ stop loader
+        }
+    };
+
     return (
 
         <>
@@ -244,26 +379,45 @@ before:-translate-y-1/2 after:-translate-y-1/2">
                                     Download Itinerary
                                 </h2>
 
-                                <form className="flex flex-col gap-4">
-                                    <input
-                                        type="text"
-                                        placeholder="Full Name"
-                                        className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
-                                    />
+                                <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                                    <div>
+                                        <input
+                                            id="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            type="text"
+                                            placeholder="Full Name"
+                                            className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500 w-full"
+                                        />
+                                        {errors.name && <p style={{ color: "red", fontSize: "12px" }}>{errors.name}</p>}
+                                    </div>
 
-                                    <input
-                                        type="email"
-                                        placeholder="Email Address"
-                                        className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
-                                    />
+                                    <div>
+                                        <input
+                                            id="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            type="email"
+                                            placeholder="Email Address"
+                                            className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500 w-full"
+                                        />
+                                        {errors.email && <p style={{ color: "red", fontSize: "12px" }}>{errors.email}</p>}
+                                    </div>
 
-                                    <input
-                                        type="tel"
-                                        placeholder="Phone Number"
-                                        className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
-                                    />
+                                    <div>
+                                        <input
+                                            id="phone"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            type="tel"
+                                            placeholder="Phone Number"
+                                            className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500 w-full"
+                                        />
+                                        {errors.phone && <p style={{ color: "red", fontSize: "12px" }}>{errors.phone}</p>}
+                                    </div>
+                                    <SimpleCaptcha onVerify={setIsCaptchaVerified} resetTrigger={captchaResetKey} />
 
-                                    <button type="submit" className="
+                                    <button type="submit" disabled={loading} className="
 relative overflow-hidden
 bg-black/90 backdrop-blur-md text-white cursor-pointer
 px-4 py-3 md:px-6 md:py-4 rounded-lg font-my-font-semibold
@@ -277,10 +431,20 @@ before:from-transparent before:via-white/40 before:to-transparent
 before:transition-transform before:duration-700
 hover:before:translate-x-full
 ">
-                                        Download PDF
+                                        {loading ? (
+                                            <span className="flex justify-center items-center text-white  w-full gap-2">
+
+                                                Sending.......
+                                                <span className="inline-block animate-spin h-4 w-4 border-2 border-red-500 border-t-transparent rounded-full"></span>
+                                            </span>
+                                        ) : (
+                                            "Download PDF"
+                                        )}
+
                                     </button>
                                 </form>
-
+                                {/* Toast */}
+                                <ToastContainer position="top-right" autoClose={2000} theme="colored" />
                             </div>
                         </div>
                     )}
@@ -288,7 +452,7 @@ hover:before:translate-x-full
                 </div>
             </section >
 
-            <PackagedetailsSlider gallery={details?.gallery} price_text={price_text} title={title} />
+            <PackagedetailsSlider gallery={details?.gallery} price_text={price_text} title={title} id={tour_id} />
             <Faq faq={faq} faq_image={faq_image} />
 
             <section className=" bg-white py-10   px-5">
