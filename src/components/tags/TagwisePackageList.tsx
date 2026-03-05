@@ -19,7 +19,7 @@ export default function TagwisePackageList({ slug }: { slug: string }) {
 
     const observerRef = useRef<HTMLDivElement | null>(null);
 
-    
+
 
 
 
@@ -81,13 +81,13 @@ export default function TagwisePackageList({ slug }: { slug: string }) {
     }, [handleObserver]);
 
 
-    if (!loading && !packages.length) {
-        return (
-            <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center">
-                <h2>No packages available</h2>
-            </section>
-        );
-    }
+    // if (!loading && !packages.length) {
+    //     return (
+    //         <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center">
+    //             <h2>No packages available</h2>
+    //         </section>
+    //     );
+    // }
 
 
 
@@ -106,8 +106,12 @@ export default function TagwisePackageList({ slug }: { slug: string }) {
                                 <PackageCard key={pckge.id} details={pckge} />
                             )}
 
+                          
+
 
                         </div>
+
+                          {(!loading && !packages.length) && <h2 className="text-center">No packages available</h2> }
 
                         {/* Loader Trigger */}
                         <div ref={observerRef} className="h-10 flex justify-center mt-10">

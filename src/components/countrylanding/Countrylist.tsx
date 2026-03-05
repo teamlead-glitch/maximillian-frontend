@@ -118,7 +118,8 @@ px-4 sm:px-0 text-center">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5">
                         <div className="pr-0 md:pr-15 xl:pr-80">
                             <h2 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">{regionDetails?.title}</h2>
-                            <p>{regionDetails?.short_description}</p>
+                           
+                            <p className="content" dangerouslySetInnerHTML={{ __html: regionDetails?.description??'' }}></p>
                         </div>
                         <div className="pl-0 md:pl-10">
                             <div className="aspect-[4/2]">
