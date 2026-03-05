@@ -48,13 +48,13 @@ export default function IndiaOnly(){
         <div className="w-full py-10  md:py-20 mx-auto flex  flex-col lg:flex-row justify-between items-center bg-white">
                 <div className=" w-full lg:w-1/2 aspect-square relative group overflow-hidden">
 
-                    <img
-                        src={data[0]?.image??''}
+                    {data[0]?.image &&<img
+                        src={data[0]?.image}
                         className="w-full h-full object-cover rounded-0 md:rounded-r-[10px] z-10"
-                    />
+                    />}
 
                     <div className="absolute top-10 right-10 z-10">
-                        <img src={data[0]?.icon??''} className="w-[80px] md:w-auto" />
+                        {data[0]?.icon &&<img src={data[0]?.icon} className="w-[80px] md:w-auto" />}
                     </div>
 
                     {/* Gradient overlay */}
@@ -95,9 +95,9 @@ export default function IndiaOnly(){
                     <div className="w-full flex flex-col items-center justify-between h-full gap-3">
 
                         <div className="w-full aspect-4/2.5 relative group overflow-hidden">
-                            <img src={data[1]?.image??''} className="w-full h-full object-cover rounded-xl  opacity-0
+                            {data[1]?.image && <img src={data[1]?.image} className="w-full h-full object-cover rounded-xl  opacity-0
                 transition-all duration-500
-                group-hover:opacity-100 group-hover:translate-y-0 " />
+                group-hover:opacity-100 group-hover:translate-y-0 " />}
                             <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-0 
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0"></div>
@@ -134,9 +134,9 @@ export default function IndiaOnly(){
 
                         {/* second image */}
                         <div className="w-full aspect-4/2.5 relative group overflow-hidden">
-                            <img src={data[2]?.image??''} className="w-full h-full object-cover rounded-xl  opacity-0
+                            {data[2]?.image &&<img src={data[2]?.image} className="w-full h-full object-cover rounded-xl  opacity-0
                 transition-all duration-500
-                group-hover:opacity-100 group-hover:translate-y-0 " />
+                group-hover:opacity-100 group-hover:translate-y-0 " />}
                             <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-0 
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0"></div>
