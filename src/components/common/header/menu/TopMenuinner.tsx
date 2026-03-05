@@ -5,10 +5,11 @@ import { RegionFormated } from "@/lib/regionTransformer";
 import { usePathname } from "next/navigation";
 import MegaMenu from "./MegaMenu";
 import Link from "next/link";
+import { Settings } from "@/types/commonTypes";
 
 
 /* ================= COMPONENT ================= */
-export default function TopMenuinner({ regions }: { regions: Record<string, RegionFormated> }) {
+export default function TopMenuinner({ regions, settings }: { regions: Record<string, RegionFormated>; settings:Settings }) {
     const [megaOpen, setMegaOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -120,7 +121,7 @@ export default function TopMenuinner({ regions }: { regions: Record<string, Regi
                             Design Your trip
                         </Link>
 
-                        <a href="tel:+919876543210">
+                        <a href={`tel:${settings.phone}`}>
                             <img src="/images/call-top-icon-black.svg" alt="Call" />
                         </a>
 
@@ -131,7 +132,7 @@ export default function TopMenuinner({ regions }: { regions: Record<string, Regi
                     </div>
                 </div>
 
-                <SideBarMenu isInner={true} regions={regions}/>
+                <SideBarMenu isInner={true} regions={regions} settings={settings}/>
             </div>
         </>
     );

@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { RegionFormated } from "@/lib/regionTransformer";
+import { Settings } from "@/types/commonTypes";
 
 /* ===================== ICONS ===================== */
 const ChevronRight = () => (
@@ -24,9 +25,11 @@ const ChevronLeft = () => (
 export default function SideBarMenu({
   regions,
   isInner = false,
+  settings
 }: {
   regions: Record<string, RegionFormated>;
   isInner?: boolean;
+  settings:Settings
 }) {
 
   const regionKeys = Object.keys(regions);
@@ -102,7 +105,7 @@ export default function SideBarMenu({
 
               {[
                 { name: "Home", href: "/" },
-                { name: "Design Your Trip", href: "/design-your-trip" },
+                { name: "Design Your Trip", href: "/designyourtrip" },
                 { name: "Our World", href: "/ourworld" },
                 { name: "Blogs", href: "/blogs" },
                 { name: "Contact Us", href: "/contact" },
@@ -130,15 +133,15 @@ export default function SideBarMenu({
             {/* CONTACT */}
             <div className="px-6 pb-20 space-y-4">
               <a
-                href="tel:+919998868866"
+                href={`tel:${settings.phone}`}
                 className="flex gap-3 text-(--color-secondary)"
               >
                 <img src="/images/call-icon.svg" className="w-5" alt="Call" />
-                +91 999 886 8866
+               {settings.phone}
               </a>
 
               <a
-                href="https://wa.me/919998868866"
+                href={`https://wa.me/${settings.whatsapp}`}
                 className="flex gap-3 text-(--color-secondary)"
               >
                 <img
@@ -150,11 +153,11 @@ export default function SideBarMenu({
               </a>
 
               <a
-                href="mailto:hello@maximilianholidays.com"
+                href={`mailto:${settings.email}`}
                 className="flex gap-3 text-(--color-secondary)"
               >
                 <img src="/images/mail-icon.svg" className="w-5" alt="Mail" />
-                hello@maximilianholidays.com
+               {settings.email}
               </a>
             </div>
           </div>

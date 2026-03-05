@@ -125,7 +125,7 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                                         alt="Phone"
                                         className="w-3 h-3"
                                     />
-                                    <a href={`tel:${settings.whatsapp}`}>   {settings.whatsapp}</a>
+                                    <a href={`https://wa.me/${settings.whatsapp}`}>   {settings.whatsapp}</a>
                                 </li>
 
                                 <li className="flex items-center gap-3 text-[#818c94]">

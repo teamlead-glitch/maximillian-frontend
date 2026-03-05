@@ -76,7 +76,7 @@ export default async function RootLayout({
       <body
         className={`${dmSans.variable} ${grapeNuts.variable} ${dmSerif.variable} ${myFont.variable} ${myFontMedium.variable} ${myFontRegular.variable} ${myFontSemibold.variable} antialiased`}
       >
-        <TopMenu regions={regions} />
+        <TopMenu regions={regions} settings={settings}/>
 
 
         {children}

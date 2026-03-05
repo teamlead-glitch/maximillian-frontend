@@ -6,8 +6,9 @@ import { usePathname } from "next/navigation";
 import { transformRegions } from "@/lib/regionTransformer";
 import { Regions } from "@/types/commonTypes";
 import { RegionFormated } from "@/lib/regionTransformer";
+import { Settings } from "@/types/commonTypes";
 
-export default function TopMenu({ regions }:{regions:Regions}) {
+export default function TopMenu({ regions, settings }:{regions:Regions; settings:Settings}) {
   
    const pathname = usePathname();
    const formattedRegions:Record<string, RegionFormated> = transformRegions(regions);
@@ -16,7 +17,7 @@ export default function TopMenu({ regions }:{regions:Regions}) {
   return (
     <>
 
-    {pathname === "/" ? <TopMenuHome regions={formattedRegions}/> : <TopMenuinner regions={formattedRegions}/>}
+    {pathname === "/" ? <TopMenuHome regions={formattedRegions} settings={settings}/> : <TopMenuinner regions={formattedRegions} settings={settings}/>}
      
     </>
   );
