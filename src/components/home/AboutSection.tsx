@@ -19,11 +19,11 @@ export default function AboutSection({
                     width="400" height="400"
                 />
                 <div className="max-w-[1300px] flex mx-auto  px-5  ">
-                    <div className="w-[20%]  lg:w-[10%]"><img src="images/logo-icon.svg" alt="" /></div>
+                    <div className="w-full  md:w-[30%] lg:w-[30%]"><img src="images/logo-icon.svg" alt="" /></div>
                     <div >
-                        <div className="w-[80%] lg:w-[60%]" >
+                        <div className="w-full  md:w-[70%] lg:w-[60%]" >
                             <h2 className=" font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) mb-5">Travel, Thoughtfully <br /> Designed.</h2>
-                            <div className="flex flex-col md:flex-row gap-5" dangerouslySetInnerHTML={{ __html: page?.content ?? '' }} />
+                            <div className="grid md:grid-cols-2 grid-cols-1 gap-5" dangerouslySetInnerHTML={{ __html: page?.content ?? '' }} />
 
 
                             <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-3 mt-3 cursor-pointer">
