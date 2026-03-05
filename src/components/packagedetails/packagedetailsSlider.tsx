@@ -4,58 +4,162 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { Gallery } from '@/types/PackageDetailsType';
 import Image from 'next/image';
 import { useState } from 'react';
+import { TalktoUS_Errors, TalktoUS_types, TalktoUsEnquiryResponse } from '@/types/packagePopupTypes';
+import { toast, ToastContainer } from 'react-toastify';
+import { apiService } from '@/services/api';
+import SimpleCaptcha from '../Captcha';
 interface PackageSliderprops {
     gallery?: Gallery[];
     price_text?: string;
     title?: string;
+    id?: number;
 }
 
-function PackagedetailsSlider({ gallery, price_text, title }: PackageSliderprops) {
+function PackagedetailsSlider({ gallery, price_text, title, id }: PackageSliderprops) {
 
     const [talkOpen, setTalkOpen] = useState(false);
+    //loader
+    const [loading, setLoading] = useState(false);
+    //for captcha validation
+    const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+    const [captchaResetKey, setCaptchaResetKey] = useState(0);
+
+    const [formData, setFormData] = useState<TalktoUS_types>({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        tour_id: ""
+
+    });
+    console.log(formData);
+
+    const [errors, setErrors] = useState<TalktoUS_Errors>({
+        name: "",
+        phone: "",
+        email: "",
+        message: "",
+    });
 
 
 
-    /*  const slides = [
-     {
-         id: 1,
- 
- 
-         image: "/images/euro3-gallery-1.webp",
-     },
-     {
-         id: 2,
- 
- 
-         image: "/images/euro3-gallery-2.webp",
-     },
-     {
-         id: 3,
- 
- 
-         image: "/images/euro3-gallery-3.webp",
-     },
-     {
-         id: 4,
- 
- 
-         image: "/images/euro3-gallery-4.webp",
-     },
-     {
-         id: 5,
- 
- 
-         image: "/images/euro3-gallery-5.webp",
-     },
-     {
-         id: 6,
- 
- 
-         image: "/images/euro3-gallery-6.webp",
-     },
- 
- 
- ]; */
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
+        const { id, value } = e.target;
+
+        setFormData((prev) => ({
+            ...prev,
+            [id]: value,
+        }));
+    };
+
+
+    /* -----------------------------------------------------------------------
+          FORM VALIDATION (STRONG + CLEAN)
+       ----------------------------------------------------------------------- */
+    const validate = (): boolean => {
+        const newErrors: Partial<TalktoUS_Errors> = {};
+
+        // Name validation
+        if (!formData.name.trim()) {
+            newErrors.name = "Name is required";
+        } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
+            newErrors.name = "Name cannot contain numbers or special characters";
+        }
+
+        // Mobile validation
+        if (!formData.phone.trim()) {
+            newErrors.phone = "Mobile number is required";
+        } else if (!/^[+]?[0-9\s-]+$/.test(formData.phone)) {
+            newErrors.phone = "Mobile number should contain only numbers";
+        } else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
+            newErrors.phone = "Enter a valid mobile number";
+        }
+
+
+        // Email validation
+        if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+            newErrors.email = "Enter a valid email";
+        }
+
+        // Message validation
+        if (!formData.message.trim()) {
+            newErrors.message = "Message is required";
+        } else if (formData.message.trim().length < 5) {
+            newErrors.message = "Message must be at least 5 characters";
+        }
+
+        setErrors(newErrors as TalktoUS_Errors);
+
+        return Object.keys(newErrors).length === 0; // true → no errors
+    };
+
+
+    //submit form
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (loading) return; // 🔥 extra safety (prevents double click)
+        // form validation
+        if (!validate()) return;
+        if (!isCaptchaVerified) {
+            toast.error("Please verify captcha before submitting");
+            return;
+        }
+
+
+        try {
+
+            setLoading(true); // ⭐ start loader
+
+            const payload = {
+                name: formData.name.trim(),
+                phone: formData.phone,
+                email: formData.email,
+                message: formData.message,
+                tour_id: id
+
+
+            };
+
+            const res = await apiService.post<TalktoUsEnquiryResponse>(
+                "/package-enquiry", // ✅ remove /api if BASE_URL already contains it
+                payload
+            );
+
+            console.log(res);
+
+            if (res.result === "success") {
+                toast.success(res.message || "Package Enquiry Sent Successfully")
+                // Reset form
+                setFormData({
+                    name: "",
+                    phone: "",
+                    email: "",
+                    message: "",
+                    tour_id: ""
+                });
+                setTimeout(() => {
+                    setTalkOpen(false);
+                }, 2300);
+                setIsCaptchaVerified(false);
+                setCaptchaResetKey((prev) => prev + 1); // 🔄 refresh captcha
+
+            } else {
+                toast.error(res.message || "Something went wrong"); // ✅ fixed syntax
+            }
+
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+            console.error("CONTACT FORM ERROR:", error);
+
+            // ✅ show backend validation error
+            toast.error("Failed to send. Please try again!");
+        } finally {
+            setLoading(false); // ⭐ stop loader
+        }
+    };
+
     return (
         <>
             <section className="bg-[#F5F2EE] w-full py-15 md:py-30 ">
@@ -108,41 +212,68 @@ function PackagedetailsSlider({ gallery, price_text, title }: PackageSliderprops
                                 Talk To Us
                             </h2>
 
-                            <form className="flex flex-col gap-4">
+                            <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
 
-                                <input
-                                    type="text"
-                                    placeholder="Full Name"
-                                    className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
-                                />
+                                <div>
+                                    <input
+                                        id='name'
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        type="text"
+                                        placeholder="Full Name"
+                                        className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500 w-full"
+                                    />
+                                    {errors.name && <p style={{ color: "red", fontSize: "12px" }}>{errors.name}</p>}
+                                </div>
 
-                                <input
-                                    type="email"
-                                    placeholder="Email Address"
-                                    className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
-                                />
+                                <div>
+                                    <input
+                                        id='email'
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        type="email"
+                                        placeholder="Email Address"
+                                        className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500 w-full"
+                                    />
+                                    {errors.email && <p style={{ color: "red", fontSize: "12px" }}>{errors.email}</p>}
+                                </div>
 
-                                <input
-                                    type="tel"
-                                    placeholder="Phone Number"
-                                    className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
-                                />
+                                <div>
+                                    <input
+                                        id='phone'
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        type="tel"
+                                        placeholder="Phone Number"
+                                        className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500 w-full"
+                                    />
+                                    {errors.phone && <p style={{ color: "red", fontSize: "12px" }}>{errors.phone}</p>}
+                                </div>
 
                                 {/* Extra fields */}
 
-                                <input
-                                    type="text"
-                                    placeholder="EURO 3 – Alpine Europe at an Easy Pace" readOnly
-                                    className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
-                                />
+                                <div>
+                                    <input
+                                        type="text"
+                                        placeholder={title} readOnly
+                                        className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500 w-full"
+                                    />
+                                </div>
 
-                                <textarea
-                                    placeholder="Your Message"
-                                    rows={3}
-                                    className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500"
-                                />
+                                <div>
+                                    <textarea
+                                        id='message'
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        placeholder="Your Message"
+                                        rows={3}
+                                        className="border border-[#5b5e60] rounded-lg p-3 outline-none text-(--color-secondary) placeholder:text-gray-500 w-full"
+                                    />
+                                    {errors.message && <p style={{ color: "red", fontSize: "12px" }}>{errors.message}</p>}
+                                </div>
+                                <SimpleCaptcha onVerify={setIsCaptchaVerified} resetTrigger={captchaResetKey} />
 
-                                <button type="submit" className="
+                                <button type="submit" disabled={loading} className="
 relative overflow-hidden
 bg-black/90 backdrop-blur-md text-white cursor-pointer
 px-4 py-3 md:px-6 md:py-4 rounded-lg font-my-font-semibold
@@ -156,10 +287,22 @@ before:from-transparent before:via-white/40 before:to-transparent
 before:transition-transform before:duration-700
 hover:before:translate-x-full
 ">
-                                    Send Enquiry
+                                    {loading ? (
+                                        <span className="flex justify-center items-center text-white  w-full gap-2">
+
+                                            Sending.......
+                                            <span className="inline-block animate-spin h-4 w-4 border-2 border-red-500 border-t-transparent rounded-full"></span>
+                                        </span>
+                                    ) : (
+                                        "Send Enquiry"
+                                    )}
+
+
                                 </button>
 
                             </form>
+                            {/* Toast */}
+                            <ToastContainer position="top-right" autoClose={2000} theme="colored" />
                         </div>
                     </div>
                 )}

@@ -53,43 +53,43 @@ export default function LogoCarousel() {
         <>
 
 
-            {/* logo carousel */}
-            <section className="bg-white w-full  py-10 md:py-20 border-t  border-gray-200 ">
-                <Swiper
-                    key={carousel.length} // 🔥 IMPORTANT
-                    modules={[Autoplay]}
-                    loop={true}
-                    autoplay={{
-                        delay: 0,
-                        disableOnInteraction: false,
-                    }}
-                    speed={3000}
-                    slidesPerView={3}
-                    spaceBetween={10}
-                    breakpoints={{
-                        0: { slidesPerView: 2 },
-                        640: { slidesPerView: 3 },
-                        1024: { slidesPerView: 6 },
-                    }}
-                    className="flex items-center"
-                >
-                    {carousel.map((item) => (
-                        <SwiperSlide key={item.id}>
-                            <div className="flex items-center justify-center">
-                                <div className="relative h-16 w-full">
-                                    <Image
-                                        src={item.image}
-                                        alt={item.alt_text}
-                                        fill
-                                        className="object-contain "
-                                    />
+            {carousel.length > 0 && (
+                <section className="bg-white w-full py-10 md:py-20 border-t border-gray-200">
+                    <Swiper
+                        key={carousel.length}
+                        modules={[Autoplay]}
+                        loop={true}
+                        autoplay={{
+                            delay: 0,
+                            disableOnInteraction: false,
+                        }}
+                        speed={3000}
+                        slidesPerView={3}
+                        spaceBetween={10}
+                        breakpoints={{
+                            0: { slidesPerView: 2 },
+                            640: { slidesPerView: 3 },
+                            1024: { slidesPerView: 6 },
+                        }}
+                        className="flex items-center"
+                    >
+                        {carousel.map((item) => (
+                            <SwiperSlide key={item.id}>
+                                <div className="flex items-center justify-center">
+                                    <div className="relative h-16 w-full">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.alt_text}
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </section>
-            {/* logo carousel close */}
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </section>
+            )}
         </>
     )
 }
