@@ -60,7 +60,7 @@ export default function BlogCard({
         </Link>
 
         {/* Tags */}
-        {blog.tags?.length > 0 && (
+        {(blog.tags?.length > 0 || blog.countries.length >0 || blog.region) && (
           <ul className="flex flex-wrap items-center text-sm gap-2 mt-3">
             {blog.tags.map((tag, index) => (
               <Link href={`/${tag.slug}`}>
