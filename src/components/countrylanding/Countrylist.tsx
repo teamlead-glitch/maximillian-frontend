@@ -156,7 +156,7 @@ px-4 sm:px-0 text-center">
                                                 {loading && <Loader />}
                                             </div>
 
-                    <div className="w-full flex justify-center">
+                    {/* <div className="w-full flex justify-center">
                         <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-3 mt-3 cursor-pointer">
                             <span className="mr-3">View More Journeys</span>
 
@@ -174,7 +174,7 @@ px-4 sm:px-0 text-center">
                                 />
                             </svg>
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 
