@@ -52,7 +52,7 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                                     <ul className="text-body font-medium mb-5 md:mb-0">
                                         {tagGroups[0].tags.map((exp) => (
 
-                                             <li className="mb-2 xl:mb-4 text-[#818c94]">
+                                             <li key={exp.id} className="mb-2 xl:mb-4 text-[#818c94]">
                                             <Link href={`/tag/${exp.short_slug}`} className="hover:underline ">{exp.title}</Link>
                                         </li>
 
@@ -66,7 +66,7 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
 
                                         {regions.map((reg) => (
 
-                                            <li className="mb-2 xl:mb-4 text-[#818c94]">
+                                            <li key={reg.id} className="mb-2 xl:mb-4 text-[#818c94]">
                                                 {reg.slug === 'india'? (
                                                     <Link href="/country/india" className="hover:underline">{reg.menu_title?reg.menu_title:reg.title}</Link>
                                                 ):(
@@ -85,7 +85,7 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                                     <ul className="text-body font-medium">
                                         {tagGroups[1].tags.map((spec) => (
 
-                                             <li className="mb-2 xl:mb-4 text-[#818c94]">
+                                             <li key={spec.id} className="mb-2 xl:mb-4 text-[#818c94]">
                                             <Link href={`/tag/${spec.short_slug}`} className="hover:underline ">{spec.title}</Link>
                                         </li>
 
