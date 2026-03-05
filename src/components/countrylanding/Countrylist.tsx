@@ -42,7 +42,7 @@ export default function Countrylist({ slug, regionDetails }: { slug: string; reg
                 setLoading(true);
     
                 const res = await apiService.get<PackagesResponse>(
-                    `/packages?type=region&slug=${slug}&take=${TAKE}&skip=${skip}`
+                    `/packages?type=country&slug=${slug}&take=${TAKE}&skip=${skip}`
                 );
     
                 if (res.packages.length < TAKE) {
