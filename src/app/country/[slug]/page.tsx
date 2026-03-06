@@ -2,7 +2,7 @@ import Countrylist from "@/components/countrylanding/Countrylist";
 import { Metadata } from "next";
 import { fetchCountryBySlug } from "@/lib/server-fetchs";
 import { mapSeoToMetadata } from "@/lib/seo-mapper";
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 
 type PageProps = {
@@ -32,7 +32,7 @@ export default async function Country({ params }: PageProps) {
     //console.log(page,'page++')
 
     if (!page) {
-    redirect("/");
+    notFound();
   }
 
     return (
