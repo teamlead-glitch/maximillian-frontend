@@ -10,7 +10,7 @@ interface Props {
 export default function JourneyCard({ journey }: Props) {
     return (
         <div className="div">
-            <Link href={`/package/${journey.short_slug}`} className="group block">
+            <div className="group block">
                 <div className="rounded-md relative aspect-[3/4] overflow-hidden">
 
                     {/* Image */}
@@ -23,7 +23,7 @@ export default function JourneyCard({ journey }: Props) {
                     {/* Bottom Content */}
                     <div className=" absolute w-full bottom-0 left-0 p-5 flex flex-col items-center transition-transform duration-500 ease-out group-hover:-translate-y-5">
                         <h3 className="font-my-font-regular text-white text-2xl text-center">
-                            {journey.title}
+                            <Link href={`/package/${journey.short_slug}`}>{journey.title}</Link>
                         </h3>
 
                         <div className="text-white text-xs">
@@ -49,7 +49,7 @@ export default function JourneyCard({ journey }: Props) {
                     </div>
 
                 </div>
-            </Link>
+            </div>
         </div>
     );
 }
