@@ -38,7 +38,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
     const tagItems = details?.tags || [];
 
     const countries = details?.countries || [];
-    const region_slug=details?.region?.short_slug
+    const region_slug = details?.region?.short_slug
 
 
 
@@ -89,16 +89,16 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                         </h1>
                         <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1 py-4">
                             {category && (
-                                <li className={`relative text-(--color-secondary) ${(region.length >0 ||countries.length>0 )?"relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)":""}`}>
+                                <li className={`relative text-(--color-secondary) ${(region.length > 0 || countries.length > 0) ? "relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)" : ""}`}>
                                     {category}
                                 </li>
                             )}
 
                             {region && (
                                 <li>
-                                    <Link href={`/region/${region_slug}`} className={`relative text-(--color-secondary) hover:underline ${(countries.length >0 )?"relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)":""}`}>
-                                                    {region}
-                                     </Link>
+                                    <Link href={`/region/${region_slug}`} className={`relative text-(--color-secondary) hover:underline ${(countries.length > 0) ? "relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)" : ""}`}>
+                                        {region}
+                                    </Link>
                                 </li>
                             )}
                             {countries?.length > 0 &&
@@ -109,8 +109,8 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                         <li
                                             key={country.id}
                                             className={`relative pr-5 text-(--color-secondary) ${!estimated_time && isLastCountry
-                                                    ? ""
-                                                    : "after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                                ? ""
+                                                : "after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
                                                 }`}
                                         >
                                             <Link href={`/country/${country.short_slug}`} className="hover:underline">
@@ -199,16 +199,21 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                     </h4>
 
                                     <p>{details.author.tagline}</p>
+                                    {(details.author.linkedin || details.author.instagram) && (
+                                        <div className="flex gap-2 relative">
+                                            {details.author.linkedin && (
+                                                <a href={details.author.linkedin} target="_blank">
+                                                    <Image src="/images/linkedin.svg" width={20} height={20} alt="" />
+                                                </a>
+                                            )}
 
-                                    <div className="flex gap-2 relative">
-                                        <a href={details.author.linkedin} target="_blank">
-                                            <Image src="/images/linkedin.svg" width={20} height={20} alt="" />
-                                        </a>
-
-                                        <a href={details.author.instagram} target="_blank">
-                                            <Image src="/images/instagram.svg" width={20} height={20} alt="" />
-                                        </a>
-                                    </div>
+                                            {details.author.instagram && (
+                                                <a href={details.author.instagram} target="_blank">
+                                                    <Image src="/images/instagram.svg" width={20} height={20} alt="" />
+                                                </a>
+                                            )}
+                                        </div>
+                                    )}
 
                                     <p dangerouslySetInnerHTML={{ __html: details.author.description }} />
                                 </div>
