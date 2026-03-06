@@ -56,11 +56,11 @@ export default function TagListing({
 
       {/* +more tooltip */}
       {hiddenItems.length > 0 && (
-        <li className="relative group cursor-pointer text-(--color-secondary)">
+        <li className="relative group/tags cursor-pointer text-(--color-secondary)">
           +{hiddenItems.length} more
 
           {/* tooltip */}
-          <div className="absolute left-0  hidden group-hover:block bg-white shadow-lg border rounded-md p-2 z-20 min-w-[200px]">
+          <div className="absolute left-0  hidden group-hover/tags:block bg-white shadow-lg border rounded-md p-2 z-20 min-w-[200px]">
             {hiddenItems.map((item) => (
               <Link
                 key={item.slug}
