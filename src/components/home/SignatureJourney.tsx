@@ -8,6 +8,7 @@ import { apiService } from "@/services/api";
 import Loader from "../common/Loader";
 import { PackagesResponse } from "@/types/packages";
 import JourneyCard from "../package/JourneyCard";
+import Link from "next/link";
 export default function SignatureJourney() {
     const [signatureJournerys, setJourney] = useState<PackagesResponse["packages"]>([]);
     // const [activeIndex, setActiveIndex] = useState(0);
@@ -52,7 +53,7 @@ export default function SignatureJourney() {
                             <div className="w-full md:w-[200px]"><p>A selection of our carefully curated international experiences.</p></div>
                             <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                             <div className="inline-block">
-                                <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
+                                <Link href="/signature-journeys" className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
                                     <span className="mr-3">View All Signature Journeys</span>
 
                                     <svg
@@ -68,7 +69,7 @@ export default function SignatureJourney() {
                                             fill="#3A3F42"
                                         />
                                     </svg>
-                                </button>
+                                </Link>
                             </div>
                         </div>
                         <div className="md:hidden mt-5">

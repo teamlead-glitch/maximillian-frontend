@@ -8,6 +8,7 @@ export interface PackageItem {
   id: number;
   title: string;
   slug: string;
+  short_slug: string;
   is_active: number;
   sort_order: number;
   short_description: string;

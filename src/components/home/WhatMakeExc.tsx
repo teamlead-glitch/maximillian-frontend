@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css/pagination";
+import Link from "next/link";
 
 const items = [
     { icon: 1, text: "Experiences over checklists. Not photo tick-box tourism." },
@@ -37,12 +38,12 @@ export default function WhatMakeExc() {
 
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
 
-                    <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base py-3 mt-3 cursor-pointer">
+                    <Link href="/contact" className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base py-3 mt-3 cursor-pointer">
                         <span className="mr-3">Contact Us Now</span>
                         <span className="transition-transform duration-300 group-hover:translate-x-2">
                             ➜
                         </span>
-                    </button>
+                    </Link>
                 </div>
 
                 {/* CONTENT */}
@@ -130,14 +131,14 @@ export default function WhatMakeExc() {
  }
         .whatmakes-pagination .swiper-pagination-bullet  {
           background: #171717;
-        
+
           width: 10px;
           height: 10px;
         }
 
         .whatmakes-pagination .swiper-pagination-bullet-active {
         #171717
-        
+
         }
       `}</style>
         </>

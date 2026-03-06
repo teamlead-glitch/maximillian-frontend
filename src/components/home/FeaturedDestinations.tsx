@@ -7,71 +7,9 @@ import Loader from "../common/Loader";
 import { CountryResponse } from "@/types/countryType";
 import "swiper/css/navigation";
 import "swiper/css";
+import Link from "next/link";
+import Image from "next/image";
 
-// const slides = [
-//     {
-//         id: 1,
-//         title: "Rajasthan",
-//         desc: "Discover breathtaking destinations and thrilling experiences.",
-//         image: "/images/destination-img1.jpg",
-//     },
-//     {
-//         id: 2,
-
-//         title: "Maldives",
-//         desc: "Premium journeys designed for comfort and elegance.",
-//         image: "/images/destination-img2.jpg",
-//     },
-//     {
-//         id: 3,
-
-//         title: "Paris",
-//         desc: "Perfect trips for families to enjoy together.",
-//         image: "/images/destination-img3.jpg",
-//     },
-//     {
-//         id: 4,
-
-//         title: "Dubai",
-//         desc: "Unforgettable moments for newlyweds.",
-//         image: "/images/destination-img4.jpg",
-//     },
-//     {
-//         id: 5,
-
-//         title: "Greece",
-//         desc: "Go on a journey of self-discovery.",
-//         image: "/images/destination-img5.jpg",
-//     },
-//     {
-//         id: 6,
-
-//         title: "Kerala",
-//         desc: "Fun-filled trips with like-minded explorers.",
-//         image: "/images/destination-img6.jpg",
-//     },
-//     {
-//         id: 7,
-
-//         title: "Rajasthanr",
-//         desc: "Fun-filled trips with like-minded explorers.",
-//         image: "/images/destination-img1.jpg",
-//     },
-//     {
-//         id: 8,
-
-//         title: "Maldives",
-//         desc: "Fun-filled trips with like-minded explorers.",
-//         image: "/images/destination-img2.jpg",
-//     },
-//     {
-//         id: 9,
-
-//         title: "Paris",
-//         desc: "Fun-filled trips with like-minded explorers.",
-//         image: "/images/destination-img3.jpg",
-//     },
-// ];
 
 export default function FeaturedDestinations() {
     const [countries, setCountries] = useState<CountryResponse[]>([]);
@@ -117,7 +55,7 @@ export default function FeaturedDestinations() {
                         <div className="w-full md:w-[200px]"><p>Check out our carefully curated destination experiences.</p></div>
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                         <div className="inline-block">
-                            <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
+                            <Link href="/destinations" className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
                                 <span className="mr-3">View All Destinations</span>
 
                                 <svg
@@ -133,7 +71,8 @@ export default function FeaturedDestinations() {
                                         fill="#3A3F42"
                                     />
                                 </svg>
-                            </button></div>
+                            </Link>
+                        </div>
                     </div>
 
                 </div>
@@ -158,40 +97,30 @@ export default function FeaturedDestinations() {
                         {countries.map((item) => (
                             <SwiperSlide key={item.id}>
                                 <div
-                                    className="bg-white rounded-xl overflow-hidden
-  transition-all duration-300 my-10 md:my-15
-  hover:shadow-2xl
-  group"
+                                    className="bg-white rounded-xl overflow-hidden transition-all duration-300 my-10 md:my-15 hover:shadow-2xl group"
                                 >
+                                    <Link href={`/country/${item.short_slug}`}>
                                     {/* Image */}
                                     <div className="w-full aspect-3/3 overflow-hidden">
-                                        <img
+                                        <Image
                                             src={item.image_path}
                                             alt={item.title}
-                                            className="
-        w-full h-full object-cover
-        transition-transform duration-500 ease-out
-        group-hover:scale-110
-      "
+                                            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                                            width="1000"
+                                            height="1000"
                                         />
                                     </div>
 
                                     {/* Content */}
                                     <div className="py-5 px-6 text-center relative h-full flex flex-col min-h-[120px]">
                                         <div
-                                            className="absolute -top-[40px] right-4 z-10
-      w-12 h-12 rounded-full
-      flex items-center justify-center
-      bg-white/20 backdrop-blur-lg
-      transition-all duration-300
-      hover:bg-white/30 hover:scale-105
-      cursor-pointer"
-                                        >
-                                            <img
+                                            className="absolute -top-[40px] right-4 z-10 w-12 h-12 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-lg transition-all duration-300 hover:bg-white/30 hover:scale-105 cursor-pointer">
+                                            <Image
                                                 src="images/arrow.svg"
-                                                className="w-5 h-5
-        transition-all duration-300
-        group-hover:rotate-45 "
+                                                className="w-5 h-5 transition-all duration-300 group-hover:rotate-45 "
+                                                alt=""
+                                                width="100"
+                                                height="100"
                                             />
                                         </div>
 
@@ -203,6 +132,7 @@ export default function FeaturedDestinations() {
                                             {item.short_description}
                                         </p>
                                     </div>
+                                    </Link>
                                 </div>
 
                             </SwiperSlide>
