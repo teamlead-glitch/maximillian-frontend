@@ -12,7 +12,7 @@ export default function InsightCard({ blog }: Props) {
     <div className="relative flex flex-col md:flex-row items-center gap-3 md:gap-10 xl:gap-20 py-15 px-5 md:p-20 xl:p-20 z-10">
       {/* BACKGROUND (70%) */}
       <div
-        className="absolute inset-y-0 left-0 w-full md:w-[80%] bg-[#f7f3ef] rounded-none md:rounded-md z-0 "/>
+        className="absolute inset-y-0 left-0 w-full md:w-[80%] bg-[#f7f3ef] rounded-none md:rounded-md z-0 " />
 
       {/* LEFT CONTENT */}
       <div className="relative z-10 w-full md:w-1/2 pr-0 md:pr-5 py-0 md:py-0  xl:pr-20 ">
@@ -45,11 +45,11 @@ export default function InsightCard({ blog }: Props) {
       </div>
 
       {/* RIGHT IMAGE */}
-      <div className="relative z-10 w-full md:w-1/2">
+      <div className="relative z-10 w-full md:w-1/2 aspect-[13/9] ">
         <Image
           src={blog.image_path}
           alt={blog.title}
-          className="rounded-2xl object-cover shadow-2xl w-full "
+          className="rounded-2xl object-cover shadow-2xl  w-full h-full  "
           width="650"
           height="450"
         />

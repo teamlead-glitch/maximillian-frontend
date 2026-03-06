@@ -19,77 +19,77 @@ import IndiaOnly from "./IndiaOnly";
 const TAKE = 15;
 
 
-export default function Countrylist({ slug, regionDetails }: { slug: string; regionDetails: Region|null}) {
+export default function Countrylist({ slug, regionDetails }: { slug: string; regionDetails: Region | null }) {
 
 
     const [packages, setPackages] = useState<PackagesResponse["packages"]>([]);
-        const [loading, setLoading] = useState(true);
-    
-        const [skip, setSkip] = useState(0);
-        const [hasMore, setHasMore] = useState(true);
-    
-        const observerRef = useRef<HTMLDivElement | null>(null);
-    
-        
-    
-    
-    
-        // Fetch packages
-        const fetchPackages = async () => {
-            if (!hasMore) return;
-    
-            try {
-                setLoading(true);
-    
-                const res = await apiService.get<PackagesResponse>(
-                    `/packages?type=country&slug=${slug}&take=${TAKE}&skip=${skip}`
-                );
-    
-                if (res.packages.length < TAKE) {
-                    setHasMore(false);
-                }
-    
-                setPackages((prev) => [...prev, ...res.packages]);
-                setSkip((prev) => prev + TAKE);
-            } catch (error) {
-                console.error("packages API error:", error);
+    const [loading, setLoading] = useState(true);
+
+    const [skip, setSkip] = useState(0);
+    const [hasMore, setHasMore] = useState(true);
+
+    const observerRef = useRef<HTMLDivElement | null>(null);
+
+
+
+
+
+    // Fetch packages
+    const fetchPackages = async () => {
+        if (!hasMore) return;
+
+        try {
+            setLoading(true);
+
+            const res = await apiService.get<PackagesResponse>(
+                `/packages?type=country&slug=${slug}&take=${TAKE}&skip=${skip}`
+            );
+
+            if (res.packages.length < TAKE) {
                 setHasMore(false);
-            } finally {
-                setLoading(false);
             }
+
+            setPackages((prev) => [...prev, ...res.packages]);
+            setSkip((prev) => prev + TAKE);
+        } catch (error) {
+            console.error("packages API error:", error);
+            setHasMore(false);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Initial Load
+    useEffect(() => {
+        fetchPackages();
+    }, []);
+
+    // Infinite Scroll Observer
+    const handleObserver = useCallback(
+        (entries: IntersectionObserverEntry[]) => {
+
+            const target = entries[0];
+            if (target.isIntersecting && !loading) {
+                //alert(1)
+                fetchPackages();
+            }
+        },
+        [loading]
+    );
+
+    useEffect(() => {
+        const option = {
+            root: null,
+            rootMargin: "200px",
+            threshold: 0,
         };
-    
-        // Initial Load
-        useEffect(() => {
-            fetchPackages();
-        }, []);
-    
-        // Infinite Scroll Observer
-        const handleObserver = useCallback(
-            (entries: IntersectionObserverEntry[]) => {
-    
-                const target = entries[0];
-                if (target.isIntersecting && !loading) {
-                    //alert(1)
-                    fetchPackages();
-                }
-            },
-            [loading]
-        );
-    
-        useEffect(() => {
-            const option = {
-                root: null,
-                rootMargin: "200px",
-                threshold: 0,
-            };
-    
-            const observer = new IntersectionObserver(handleObserver, option);
-    
-            if (observerRef.current) observer.observe(observerRef.current);
-    
-            return () => observer.disconnect();
-        }, [handleObserver]);
+
+        const observer = new IntersectionObserver(handleObserver, option);
+
+        if (observerRef.current) observer.observe(observerRef.current);
+
+        return () => observer.disconnect();
+    }, [handleObserver]);
 
 
     return (
@@ -97,20 +97,20 @@ export default function Countrylist({ slug, regionDetails }: { slug: string; reg
         <>
 
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
-                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]">
-                {regionDetails?.banner_image && <Image fill src={regionDetails?.banner_image} alt="" className="w-full h-full object-cover" />}
+                <div className="w-full relative  aspect-[16/9]   md:aspect-[16/4]">
+                    {regionDetails?.banner_image && <Image fill src={regionDetails?.banner_image} alt="" className="w-full h-full object-cover" />}
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
 -translate-x-1/2  -translate-y-1/2
 w-[90%] sm:w-[80%] md:w-auto
 px-4 sm:px-0 text-center">
                         <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-white text-center ">
-                           {regionDetails?.title}
+                            {regionDetails?.title}
                         </h1>
                     </div>
                 </div>
 
-                
+
 
 
             </section >
@@ -119,8 +119,8 @@ px-4 sm:px-0 text-center">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5">
                         <div className="pr-0 md:pr-15 xl:pr-80">
                             <h2 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">{regionDetails?.title}</h2>
-                           
-                            <p className="content" dangerouslySetInnerHTML={{ __html: regionDetails?.description??'' }}></p>
+
+                            <p className="content" dangerouslySetInnerHTML={{ __html: regionDetails?.description ?? '' }}></p>
                         </div>
                         <div className="pl-0 md:pl-10">
                             <div className="aspect-[4/2]">
@@ -140,22 +140,22 @@ px-4 sm:px-0 text-center">
                         <div className="w-full md:w-[200px]"><p>A selection of our carefully curated international experiences.</p></div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-10 lg:mt-20">
-                        
 
 
-{packages.map((pckge) =>
 
-                                <PackageCard key={pckge.id} details={pckge} />
-                            )}
+                        {packages.map((pckge) =>
+
+                            <PackageCard key={pckge.id} details={pckge} />
+                        )}
 
 
 
                     </div>
 
-                     {/* Loader Trigger */}
-                                            <div ref={observerRef} className="h-10 flex justify-center mt-10">
-                                                {loading && <Loader />}
-                                            </div>
+                    {/* Loader Trigger */}
+                    <div ref={observerRef} className="h-10 flex justify-center mt-10">
+                        {loading && <Loader />}
+                    </div>
 
                     {/* <div className="w-full flex justify-center">
                         <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-3 mt-3 cursor-pointer">
@@ -179,11 +179,11 @@ px-4 sm:px-0 text-center">
                 </div>
             </section>
 
-            {slug == 'india' &&<IndiaOnly what_makes_us_exceptional={regionDetails?.what_makes_us_exceptional??''}/>}
-            
-            
+            {slug == 'india' && <IndiaOnly what_makes_us_exceptional={regionDetails?.what_makes_us_exceptional ?? ''} />}
+
+
             {/* <Insights /> */}
-            
+
 
             <BespokeJourney />
             <LogoCarousel />
