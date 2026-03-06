@@ -42,7 +42,7 @@ export default function Countrylist({ slug, regionDetails }: { slug: string; reg
                 setLoading(true);
     
                 const res = await apiService.get<PackagesResponse>(
-                    `/packages?type=region&slug=${slug}&take=${TAKE}&skip=${skip}`
+                    `/packages?type=country&slug=${slug}&take=${TAKE}&skip=${skip}`
                 );
     
                 if (res.packages.length < TAKE) {
@@ -97,7 +97,8 @@ export default function Countrylist({ slug, regionDetails }: { slug: string; reg
         <>
 
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
-                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]"><Image fill src={regionDetails?.banner_image ?? ''} alt="" className="w-full h-full object-cover" />
+                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]">
+                {regionDetails?.banner_image && <Image fill src={regionDetails?.banner_image} alt="" className="w-full h-full object-cover" />}
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
 -translate-x-1/2  -translate-y-1/2
@@ -123,7 +124,7 @@ px-4 sm:px-0 text-center">
                         </div>
                         <div className="pl-0 md:pl-10">
                             <div className="aspect-[4/2]">
-                                <img src={regionDetails?.image_path??''} alt="" className="w-full h-full object-cover rounded-md" />
+                                <img src={regionDetails?.image_path} alt="" className="w-full h-full object-cover rounded-md" />
                             </div>
                         </div>
                     </div>
@@ -156,7 +157,7 @@ px-4 sm:px-0 text-center">
                                                 {loading && <Loader />}
                                             </div>
 
-                    <div className="w-full flex justify-center">
+                    {/* <div className="w-full flex justify-center">
                         <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-3 mt-3 cursor-pointer">
                             <span className="mr-3">View More Journeys</span>
 
@@ -174,11 +175,11 @@ px-4 sm:px-0 text-center">
                                 />
                             </svg>
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 
-            {slug == 'india' &&<IndiaOnly />}
+            {slug == 'india' &&<IndiaOnly what_makes_us_exceptional={regionDetails?.what_makes_us_exceptional??''}/>}
             
             
             {/* <Insights /> */}

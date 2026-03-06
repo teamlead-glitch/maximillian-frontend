@@ -38,6 +38,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
     const tagItems = details?.tags || [];
 
     const countries = details?.countries || [];
+    const region_slug=details?.region?.short_slug
 
 
 
@@ -94,8 +95,10 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                             )}
 
                             {region && (
-                                <li className="relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)">
-                                    {region}
+                                <li>
+                                    <Link href={`/region/${region_slug}`} className="hover:underline text-(--color-secondary)">
+                                                    {region}
+                                     </Link>
                                 </li>
                             )}
                             {countries?.length > 0 &&
