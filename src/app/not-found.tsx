@@ -1,10 +1,28 @@
-"use client";
+
 
 import Link from "next/link";
 import TopMenuinner from "@/components/common/header/menu/TopMenuinner";
 
 import LogoCarousel from "@/components/home/LogoCarousel";
+import { getSettings } from "@/lib/server-fetchs";
+import { Settings } from "@/types/commonTypes";
+ const settings: Settings = await getSettings();
 
+ 
+   const phone_number = settings?.phone; 
+    //creating link
+     const phone_link = phone_number ? `tel:${phone_number}` : "#"; 
+      //message storing
+    const message = encodeURIComponent("Hi! I would like to know more.");
+     //number storing
+    const whatsappNumber = settings?.whatsapp;
+     const whatsappLink = whatsappNumber
+        ? `https://wa.me/${whatsappNumber}?text=${message}`
+        : "#";
+    //email link
+    const email = settings?.email;
+    //console.log(email);
+    const email_link = email ? `mailto:${email}` : "#";
 
 export default function NotFound() {
     return (
@@ -21,21 +39,21 @@ export default function NotFound() {
                             <div className="flex items-center gap-2 whitespace-nowrap"><img src="/images/checkspelling-icon.svg" alt="" />
                                 <a href="" className="text-(--color-secondary)">Check your spelling</a></div>
                             <div className="flex items-center gap-2 whitespace-nowrap"><img src="/images/returnhome-icon.svg" alt="" />
-                                <a href="" className="text-(--color-secondary) underline">Return to the&nbsp;Home&nbsp;page</a></div>
+                                <Link href="/" className="text-(--color-secondary) underline">Return to the&nbsp;Home&nbsp;page</Link></div>
                             <div className="flex items-center gap-2 whitespace-nowrap"><img src="/images/clickback-icon.svg" alt="" />
-                                <a href="" className="text-(--color-secondary) underline">Click the&nbsp;Back&nbsp;button</a></div>
+                                <Link href="/" className="text-(--color-secondary) underline">Click the&nbsp;Back&nbsp;button</Link></div>
                         </div>
                         <hr className="w-full mx-auto my-5 border-gray-300" />
-                        <div className="w-full flex flex-col md:flex-row gap-5 px-5 items-center justify-between">
-                            <a href="tel:+919998868866" className="flex gap-2 text-[#46545E] ">
-                                <img src="/images/call-icon.svg" className="w-5" /> +91 999 886 8866
+                        <div className="w-full flex flex-col md:flex-row gap-5 px-5 items-center justify-between" >
+                            <a href={phone_link} className="flex gap-2 text-[#46545E] " target="_blank">
+                                <img src="/images/call-icon.svg" className="w-5" /> {phone_number}
                             </a>
-                            <a href="https://wa.me/919998868866" className="flex gap-2 text-[#46545E] ">
+                            <a href={whatsappLink} className="flex gap-2 text-[#46545E] " target="_blank">
                                 <img src="/images/whatsapp-icon.svg" className="w-5" /> WhatsApp
                             </a>
-                            <a href="mailto:hello@maximilianholidays.com" className="flex gap-2 text-[#46545E] ">
+                            <a href={email_link} className="flex gap-2 text-[#46545E] " target="_blank">
                                 <img src="/images/mail-icon.svg" className="w-5" />
-                                hello@maximilianholidays.com
+                                {email}
                             </a>
                         </div>
 

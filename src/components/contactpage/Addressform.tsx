@@ -197,16 +197,16 @@ export default function AddressForm() {
     const fb_link = `${settings?.fb_url}`;
 
     //twitter link
-    const twitter_link = `${settings?.twitter_url}`;
+    const twitter_link =settings?.twitter_url ?? "#";
 
     //youtube link
-    const youtube_url = `${settings?.youtube_url}`;
+    const youtube_url = settings?.youtube_url??"#";
 
     //linkedin link
-    const linkedin_url = `${settings?.linked_in}`;
+    const linkedin_url = settings?.linked_in??"#";
 
     //insta link
-    const insta_url = `${settings?.insta_url}`;
+    const insta_url = settings?.insta_url??"#";
     //phone number
     const phone_number = settings?.phone;
     //creating link
