@@ -1,5 +1,5 @@
 "use client";
-
+import { useEffect } from "react";
 import Link from "next/link";
 import { useState, useRef } from "react";
 import { createPortal } from "react-dom";
@@ -29,6 +29,16 @@ export default function TagListingForSignature({
 
   const triggerRef = useRef<HTMLLIElement | null>(null);
   const hideTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+  const closeTooltip = () => setShowTooltip(false);
+
+  window.addEventListener("scroll", closeTooltip, true);
+
+  return () => {
+    window.removeEventListener("scroll", closeTooltip, true);
+  };
+}, []);
 
   const items = [
     ...(region ? [{ ...region, type: "region" }] : []),
