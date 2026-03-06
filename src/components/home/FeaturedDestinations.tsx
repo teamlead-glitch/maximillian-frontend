@@ -140,23 +140,24 @@ export default function FeaturedDestinations() {
                     <div className="w-full ">
                         <Swiper
                             modules={[Autoplay]}
-                            slidesPerView={4.5}
-                            centeredSlides={true}
-                            spaceBetween={50}
+                            slidesPerView="auto"
 
+                            spaceBetween={30}
+                            loop={true}
+                            speed={4000}
                             autoplay={{
-                                delay: 2500,
+                                delay: 0,
                                 disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
                             }}
-                            breakpoints={{
-                                0: { slidesPerView: 1.3, spaceBetween: 20 },
-                                480: { slidesPerView: 2.3, spaceBetween: 20 },
-                                1024: { slidesPerView: 4.5, },
-                            }}
-                            className="w-full overflow-visible"
+                            allowTouchMove={true}
+                            className="w-full"
                         >
                             {countries.map((item) => (
-                                <SwiperSlide key={item.id}>
+                                <SwiperSlide
+                                    key={item.id}
+                                    className="!w-[260px] md:!w-[280px] lg:!w-[300px]"
+                                >
                                     <div
                                         className="bg-white rounded-xl overflow-hidden
   transition-all duration-300 my-10 md:my-15
