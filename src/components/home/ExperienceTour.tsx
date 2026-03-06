@@ -13,7 +13,7 @@ export default function ExperienceTour() {
     useEffect(() => {
         const fetchtaggroups = async () => {
             try {
-                const res = await apiService.get<taggroupResponse[]>("/tag-groups");
+                const res = await apiService.get<taggroupResponse[]>("/tag-groups?home=1");
 
                 if (res) {
                     setTaggroups(res || []);

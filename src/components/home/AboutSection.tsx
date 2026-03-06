@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PageResponse } from "@/types/pagesTypes";
+import Link from "next/link";
 export default function AboutSection({
     page
 }: {
@@ -26,7 +27,7 @@ export default function AboutSection({
                             <div className="grid md:grid-cols-2 grid-cols-1 gap-5" dangerouslySetInnerHTML={{ __html: page?.content ?? '' }} />
 
 
-                            <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-3 mt-3 cursor-pointer">
+                            <Link href="/ourworld" className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-3 cursor-pointer">
                                 <span className="mr-3">Our World</span>
 
                                 <svg
@@ -42,7 +43,7 @@ export default function AboutSection({
                                         fill="#3A3F42"
                                     />
                                 </svg>
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

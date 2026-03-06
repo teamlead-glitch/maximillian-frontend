@@ -9,7 +9,7 @@ import PackageCard from "../package/PackageCard";
 
 const TAKE = 15;
 
-export default function TagwisePackageList({ slug }: { slug: string }) {
+export default function TagwisePackageList({ slug, title }: { slug: string; title:string }) {
 
     const [packages, setPackages] = useState<PackagesResponse["packages"]>([]);
     const [loading, setLoading] = useState(true);
@@ -98,7 +98,7 @@ export default function TagwisePackageList({ slug }: { slug: string }) {
                 <div className="max-w-[1300px] flex mx-auto  px-5">
                     <div className="flex flex-col w-full justify-center">
                         <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary) text-center ">
-                            {slug}</h1>
+                            {title}</h1>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-10 lg:mt-20">
 
                             {packages.map((pckge) =>

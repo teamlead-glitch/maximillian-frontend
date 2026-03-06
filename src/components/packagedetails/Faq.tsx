@@ -18,7 +18,11 @@ function Faq({ faq = [], faq_image }: Faqprops) {
   const activeFaqs = faq
     .filter((item) => item.is_active === 1)
     .sort((a, b) => a.sort_order - b.sort_order);
-
+    
+    // ✅ If no FAQs, don't render the section
+  if (activeFaqs.length === 0) {
+    return null;
+  }
   return (
     <section className="bg-white py-10 md:py-30 px-5">
       <div className="max-w-[1000px] mx-auto">

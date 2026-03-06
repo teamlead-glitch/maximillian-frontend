@@ -29,7 +29,7 @@ export default function DynamicPageClient({
       <section
         className="relative py-40 bg-black bg-cover bg-center"
         style={{
-          backgroundImage: "url('/images/inner-bg.jpg')",
+          backgroundImage: `url(${page?.banner_image ?? "/images/inner-bg.jpg"})`,
         }}
       >
         {/* overlay */}

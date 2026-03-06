@@ -133,7 +133,8 @@ px-4 sm:px-0 text-center">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5">
                         <div className="pr-0 md:pr-15 xl:pr-80">
                             <h2 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">{regionDetails?.title}</h2>
-                            <p>{regionDetails?.short_description}</p>
+                            {/* <p>{regionDetails?.short_description}</p> */}
+                            <p className="content" dangerouslySetInnerHTML={{ __html: regionDetails?.description??'' }}></p>
                         </div>
                         <div className="pl-0 md:pl-10">
                             <div className="aspect-[4/2]">
@@ -144,7 +145,7 @@ px-4 sm:px-0 text-center">
                 </div>
             </section>
 
-            <section id="journeys" className="relative py-10  md:py-15 px-5 overflow-hidden bg-white scroll-mt-16">
+            {packages.length >0 && <section id="journeys" className="relative py-10  md:py-15 px-5 overflow-hidden bg-white scroll-mt-16">
                 <div className="max-w-[1000px] mx-auto">
                     <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
                         <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />
@@ -170,7 +171,7 @@ px-4 sm:px-0 text-center">
                         {loading && <Loader />}
                     </div>
 
-                    <div className="w-full flex justify-center">
+                    {/* <div className="w-full flex justify-center">
                         <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-3 mt-3 cursor-pointer">
                             <span className="mr-3">View More Journeys</span>
 
@@ -188,10 +189,12 @@ px-4 sm:px-0 text-center">
                                 />
                             </svg>
                         </button>
-                    </div>
+                    </div> */}
                 </div>
-            </section>
-            <section className="bg-white py-10">
+            </section>}
+
+            <div className="content" dangerouslySetInnerHTML={{ __html: regionDetails?.what_makes_us_exceptional || "" }}></div>
+            {/* <section className="bg-white py-10">
                 <div className="max-w-[1300px] flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mx-auto  px-5  ">
                     <div className="inline-block]">
                         <h2 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) ">What Makes Our <br /> {regionDetails?.title} Journeys Exceptional</h2>
@@ -208,7 +211,7 @@ px-4 sm:px-0 text-center">
                         />
                     </div>
                 </div>
-            </section>
+            </section> */}
             {/* insights */}
             <div id="inspirations">
                 <Insights filterRegionId={regionDetails?.id} />

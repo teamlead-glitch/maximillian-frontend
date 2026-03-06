@@ -5,8 +5,8 @@ import { Seo } from "@/types/commonTypes";
 export function mapSeoToMetadata(seo?: Seo | null): Metadata {
   if (!seo) {
     return {
-      title: "Chicago Van Rentals",
-      description: "Premium van rental services in Chicago",
+      title: "Maximilian Holidays",
+      description: "Maximilian Holidays",
     };
   }
 

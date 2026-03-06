@@ -7,71 +7,9 @@ import Loader from "../common/Loader";
 import { CountryResponse } from "@/types/countryType";
 import "swiper/css/navigation";
 import "swiper/css";
+import Link from "next/link";
+import Image from "next/image";
 
-// const slides = [
-//     {
-//         id: 1,
-//         title: "Rajasthan",
-//         desc: "Discover breathtaking destinations and thrilling experiences.",
-//         image: "/images/destination-img1.jpg",
-//     },
-//     {
-//         id: 2,
-
-//         title: "Maldives",
-//         desc: "Premium journeys designed for comfort and elegance.",
-//         image: "/images/destination-img2.jpg",
-//     },
-//     {
-//         id: 3,
-
-//         title: "Paris",
-//         desc: "Perfect trips for families to enjoy together.",
-//         image: "/images/destination-img3.jpg",
-//     },
-//     {
-//         id: 4,
-
-//         title: "Dubai",
-//         desc: "Unforgettable moments for newlyweds.",
-//         image: "/images/destination-img4.jpg",
-//     },
-//     {
-//         id: 5,
-
-//         title: "Greece",
-//         desc: "Go on a journey of self-discovery.",
-//         image: "/images/destination-img5.jpg",
-//     },
-//     {
-//         id: 6,
-
-//         title: "Kerala",
-//         desc: "Fun-filled trips with like-minded explorers.",
-//         image: "/images/destination-img6.jpg",
-//     },
-//     {
-//         id: 7,
-
-//         title: "Rajasthanr",
-//         desc: "Fun-filled trips with like-minded explorers.",
-//         image: "/images/destination-img1.jpg",
-//     },
-//     {
-//         id: 8,
-
-//         title: "Maldives",
-//         desc: "Fun-filled trips with like-minded explorers.",
-//         image: "/images/destination-img2.jpg",
-//     },
-//     {
-//         id: 9,
-
-//         title: "Paris",
-//         desc: "Fun-filled trips with like-minded explorers.",
-//         image: "/images/destination-img3.jpg",
-//     },
-// ];
 
 export default function FeaturedDestinations() {
     const [countries, setCountries] = useState<CountryResponse[]>([]);

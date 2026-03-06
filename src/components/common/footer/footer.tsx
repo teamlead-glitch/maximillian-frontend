@@ -112,7 +112,7 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                             <ul className="text-body font-medium pl-0 md:pl-0 md:-ml-[25px]">
                                 <li className="mb-4 flex items-center gap-3 text-[#818c94]">
                                     <img
-                                        src="images/call-icon.svg"
+                                        src="/images/call-icon.svg"
                                         alt="Phone"
                                         className="w-3 h-3"
                                     />
@@ -121,7 +121,7 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
 
                                 <li className="mb-4 flex items-center gap-3 text-[#818c94]">
                                     <img
-                                        src="images/whatsapp-icon.svg"
+                                        src="/images/whatsapp-icon.svg"
                                         alt="Phone"
                                         className="w-3 h-3"
                                     />
@@ -130,7 +130,7 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
 
                                 <li className="flex items-center gap-3 text-[#818c94]">
                                     <img
-                                        src="images/mail-icon.svg"
+                                        src="/images/mail-icon.svg"
                                         alt="Email"
                                         className="w-3 h-3"
                                     />
