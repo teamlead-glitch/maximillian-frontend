@@ -3,6 +3,7 @@
 import { PackageItem } from "@/types/packages";
 import Image from "next/image";
 import Link from "next/link";
+import TagListing from "../common/TagListing";
 
 export default function PackageCard({ details }: { details: PackageItem }) {
 
@@ -33,7 +34,7 @@ export default function PackageCard({ details }: { details: PackageItem }) {
                     ))}
                 </ul>
                 <a href=""><h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-2xl text-center py-2 line-clamp-2">{details.title}</h4></a>
-                <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
+                {/* <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                     {details.tags.map((tag, index) => (
                         <Link href={`/${tag.slug}`} key={tag.id}>
                             <li className="flex items-center text-(--color-secondary)">
@@ -44,7 +45,11 @@ export default function PackageCard({ details }: { details: PackageItem }) {
                             </li>
                         </Link>
                     ))}
-                </ul>
+                </ul> */}
+
+                 <TagListing
+                  tags={details.tags}
+                />
 
             </div>
         </div>

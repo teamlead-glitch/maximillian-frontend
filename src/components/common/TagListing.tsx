@@ -60,7 +60,7 @@ export default function TagListing({
           +{hiddenItems.length} more
 
           {/* tooltip */}
-          <div className="absolute left-0 top-6 hidden group-hover:block bg-white shadow-lg border rounded-md p-2 z-20 min-w-[150px]">
+          <div className="absolute left-0  hidden group-hover:block bg-white shadow-lg border rounded-md p-2 z-20 min-w-[200px]">
             {hiddenItems.map((item) => (
               <Link
                 key={item.slug}
