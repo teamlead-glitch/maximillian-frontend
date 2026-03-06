@@ -2,6 +2,7 @@ import Regionlist from "@/components/regionlanding/Regionlist";
 import { Metadata } from "next";
 import { fetchRegionBySlug } from "@/lib/server-fetchs";
 import { mapSeoToMetadata } from "@/lib/seo-mapper";
+import { redirect } from "next/navigation";
 
 
 type PageProps = {
@@ -29,6 +30,9 @@ export default async function Region({ params }: PageProps) {
     const { slug } = await params;
     const page = await fetchRegionBySlug(slug);
     //console.log(page,'page++')
+     if (!page) {
+    redirect("/");
+  }
 
     return (
         <>

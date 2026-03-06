@@ -1,3 +1,4 @@
+import { Seo } from "./commonTypes";
 export interface tagResponse {
   id: number;
   title: string;
@@ -5,4 +6,5 @@ export interface tagResponse {
   short_slug:string;
   short_description: string | null;
   is_active: number;
+  seo_detail?: Seo;
 }
