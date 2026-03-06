@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import TagwisePackageList from "@/components/tags/TagwisePackageList";
 import { mapSeoToMetadata } from "@/lib/seo-mapper";
 import { fetchTagBySlug } from "@/lib/server-fetchs";
+import { notFound } from "next/navigation";
 
 type PageProps = {
   params: Promise<{
@@ -27,6 +28,10 @@ export default async function Tag({ params }: PageProps) { // ✅ renamed compon
 const { slug } = await params;
 
 const page = await fetchTagBySlug(slug);
+
+if (!page) {
+    notFound();
+  }
 
   return (
     <>

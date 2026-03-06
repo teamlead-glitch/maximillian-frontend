@@ -6,6 +6,8 @@ import { X } from "lucide-react";
 import Link from "next/link";
 import { RegionFormated } from "@/lib/regionTransformer";
 import { Settings } from "@/types/commonTypes";
+import { usePathname } from "next/navigation";
+
 
 /* ===================== ICONS ===================== */
 const ChevronRight = () => (
@@ -32,12 +34,15 @@ export default function SideBarMenu({
   settings:Settings
 }) {
 
+   const pathname = usePathname();
+   
+
   const regionKeys = Object.keys(regions);
 
   const [sideOpen, setSideOpen] = useState(false);
   const [destinationPanel, setDestinationPanel] = useState(false);
   const [activeRegion, setActiveRegion] = useState<string | null>(null);
-  const [activeLink, setActiveLink] = useState("Home");
+  const [activeLink, setActiveLink] = useState(pathname);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -114,18 +119,18 @@ export default function SideBarMenu({
                   key={item.name}
                   href={item.href}
                   onClick={() => {
-                    setActiveLink(item.name);
+                    setActiveLink(item.href);
                     setSideOpen(false);
                   }}
                   className={`relative block font-my-font-semibold text-(--color-secondary)
                   after:absolute after:left-0 after:-bottom-1 after:h-[2px]
                   after:w-[30px] after:bg-[#C43131] after:transition-opacity
-                  ${activeLink === item.name
+                  ${activeLink === item.href
                       ? "after:opacity-100"
                       : "after:opacity-0"
                     }`}
                 >
-                  {item.name}
+                  {item.name} 
                 </Link>
               ))}
             </nav>

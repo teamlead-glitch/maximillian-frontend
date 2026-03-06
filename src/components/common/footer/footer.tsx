@@ -50,7 +50,7 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                                 <div className="div mb-5 md:mb-0">
                                     <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Specialties</h6>
                                     <ul className="text-body font-medium mb-5 md:mb-0">
-                                        {tagGroups[0].tags.map((exp) => (
+                                        {tagGroups[1].tags.map((exp) => (
 
                                              <li key={exp.id} className="mb-2 xl:mb-4 text-[#818c94]">
                                             <Link href={`/tag/${exp.short_slug}`} className="hover:underline ">{exp.title}</Link>
@@ -83,7 +83,7 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                                 <div className="div mb-5 md:mb-0">
                                     <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Experience</h6>
                                     <ul className="text-body font-medium">
-                                        {tagGroups[1].tags.map((spec) => (
+                                        {tagGroups[0].tags.map((spec) => (
 
                                              <li key={spec.id} className="mb-2 xl:mb-4 text-[#818c94]">
                                             <Link href={`/tag/${spec.short_slug}`} className="hover:underline ">{spec.title}</Link>

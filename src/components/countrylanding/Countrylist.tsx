@@ -182,7 +182,7 @@ px-4 sm:px-0 text-center">
             {slug == 'india' && <IndiaOnly what_makes_us_exceptional={regionDetails?.what_makes_us_exceptional ?? ''} />}
 
 
-            {/* <Insights /> */}
+            {slug == 'india' && <Insights filterRegionId={1}/> }
 
 
             <BespokeJourney />
