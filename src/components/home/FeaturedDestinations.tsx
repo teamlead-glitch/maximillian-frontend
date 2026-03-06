@@ -55,7 +55,7 @@ export default function FeaturedDestinations() {
                             <div className="w-full md:w-[200px]"><p>Check out our carefully curated destination experiences.</p></div>
                             <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                             <div className="inline-block">
-                                <button className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
+                                <Link href="/destinations" className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer">
                                     <span className="mr-3">View All Destinations</span>
 
                                     <svg
@@ -71,7 +71,7 @@ export default function FeaturedDestinations() {
                                             fill="#3A3F42"
                                         />
                                     </svg>
-                                </button></div>
+                                </Link></div>
                         </div>
 
                     </div>
@@ -117,6 +117,8 @@ export default function FeaturedDestinations() {
 
                                         {/* Content */}
                                         <div className="py-5 px-6 text-center relative h-full flex flex-col min-h-[120px]">
+                                            
+                                            <Link href={`/country/${item.short_slug}`}>
                                             <div
                                                 className="absolute -top-[40px] right-4 z-10
       w-12 h-12 rounded-full
@@ -133,6 +135,7 @@ export default function FeaturedDestinations() {
         group-hover:rotate-45 "
                                                 />
                                             </div>
+                                            </Link>
 
                                             <h3 className="text-lg font-semibold mt-1 font-my-font-regular text-(--color-secondary) line-clamp-1">
                                                 {item.title}

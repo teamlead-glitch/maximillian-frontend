@@ -114,7 +114,7 @@ px-4 sm:px-0 text-center">
                             </h3>
                             <p>We prioritise meaningful experiences over rushed sightseeing.
                             </p>
-                            <h3 className="font-my-font-regular text-break text-2xl xl:text-3xl  text-(--color-secondary) mt-3">Depth over checklist travel
+                            <h3 className="font-my-font-regular text-break text-2xl xl:text-3xl  text-(--color-secondary) mt-3">
                                 Structure behind creativity
                             </h3>
                             <p>Thoughtful design must be supported by reliable execution.
