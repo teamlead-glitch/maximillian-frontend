@@ -2,6 +2,7 @@ import Countrylist from "@/components/countrylanding/Countrylist";
 import { Metadata } from "next";
 import { fetchCountryBySlug } from "@/lib/server-fetchs";
 import { mapSeoToMetadata } from "@/lib/seo-mapper";
+import { redirect } from "next/navigation";
 
 
 type PageProps = {
@@ -29,6 +30,10 @@ export default async function Country({ params }: PageProps) {
     const { slug } = await params;
     const page = await fetchCountryBySlug(slug);
     //console.log(page,'page++')
+
+    if (!page) {
+    redirect("/");
+  }
 
     return (
         <>
