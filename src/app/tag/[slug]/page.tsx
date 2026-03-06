@@ -1,8 +1,8 @@
 
-import { PAGE_SLUGS } from "@/constants/pageSlugs";
-import { fetchPageBySlug } from "@/lib/page-api";
-import { generateSeoMetadata } from "@/lib/seo";
+import { Metadata } from "next";
 import TagwisePackageList from "@/components/tags/TagwisePackageList";
+import { mapSeoToMetadata } from "@/lib/seo-mapper";
+import { fetchTagBySlug } from "@/lib/server-fetchs";
 
 type PageProps = {
   params: Promise<{
@@ -10,33 +10,37 @@ type PageProps = {
   }>;
 };
 
-const slug = 'tag'//PAGE_SLUGS.TAG;
+/* ---------- SEO (SERVER) ---------- */
+export async function generateMetadata({
+    params,
+}: PageProps): Promise<Metadata> {
 
-export const generateMetadata = async () => {
-  return generateSeoMetadata(slug);
-};
+    const { slug } = await params;
+    const region_pages = await fetchTagBySlug(slug);
 
-
-const page = await fetchPageBySlug(slug);
+    return mapSeoToMetadata(region_pages?.seo_detail ?? null);
+}
 
 
 export default async function Tag({ params }: PageProps) { // ✅ renamed component
 
 const { slug } = await params;
 
+const page = await fetchTagBySlug(slug);
+
   return (
     <>
     {/* ✅ JSON-LD SCHEMA (SERVER RENDERED) */}
-      {page?.seo?.schema_markup && (
+      {page?.seo_detail?.schema_markup && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: page.seo.schema_markup,
+            __html: page.seo_detail.schema_markup,
           }}
         />
       )}
      
-     <TagwisePackageList slug={slug}/>
+     <TagwisePackageList slug={slug} title={page?.title??''}/>
     
     </>
   );

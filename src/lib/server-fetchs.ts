@@ -1,5 +1,6 @@
 import { API_CONFIG } from "@/constants/config";
 import { Region } from "@/types/region";
+import { tagResponse } from "@/types/TagTypes";
 
 export async function getRegions() {
   try {
@@ -90,5 +91,25 @@ export async function getTagGroups() {
   } catch (error) {
     console.error("Menu API error:", error);
     return [];
+  }
+}
+
+export async function fetchTagBySlug(
+  slug: string
+): Promise<tagResponse | null> {
+  try {
+    const res = await fetch(
+      `${API_CONFIG.BASE_URL}/tag-details/${slug}`,
+      { cache: "no-store" }
+    );
+
+    if (!res.ok) return null;
+
+    const json: tagResponse = await res.json();
+//console.log(json,'json+++')
+    return json;
+  } catch (error) {
+    console.error("SERVER FETCH ERROR:", error);
+    return null;
   }
 }
