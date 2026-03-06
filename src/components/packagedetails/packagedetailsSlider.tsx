@@ -75,7 +75,9 @@ function PackagedetailsSlider({ gallery, price_text, title, id }: PackageSliderp
             newErrors.phone = "Mobile number should contain only numbers";
         } else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
             newErrors.phone = "Enter a valid mobile number";
-        }
+        }else if (!/^\d{1,13}$/.test(formData.phone)) {
+    newErrors.phone = "Mobile number cannot exceed 13 digits";
+}
 
 
         // Email validation
