@@ -21,6 +21,7 @@ export interface DYTFormErrors {
   phone: string;
   email: string;
   destination:string;
+  travel_date:string
 }
 export type DYTEnquiryResponse = {
   result: string;
