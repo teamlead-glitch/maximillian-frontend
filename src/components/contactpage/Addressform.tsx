@@ -85,7 +85,9 @@ export default function AddressForm() {
             newErrors.mobile = "Mobile number should contain only numbers";
         } else if (!/^[1-9]\d{9,14}$/.test(formData.mobile)) {
             newErrors.mobile = "Enter a valid mobile number";
-        }
+        }else if (!/^\d{1,13}$/.test(formData.mobile)) {
+    newErrors.mobile = "Mobile number cannot exceed 13 digits";
+}
 
 
         // Email validation

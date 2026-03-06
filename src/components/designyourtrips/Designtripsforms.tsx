@@ -70,7 +70,8 @@ export default function Designyourtrip() {
         name: "",
         phone: "",
         email: "",
-        destination: ""
+        destination: "",
+        travel_date:""
     });
 
     const handleChange = (
@@ -109,7 +110,9 @@ export default function Designyourtrip() {
             newErrors.phone = "Mobile number should contain only numbers";
         } else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
             newErrors.phone = "Enter a valid mobile number";
-        }
+        }else if (!/^\d{1,13}$/.test(formData.phone)) {
+    newErrors.phone = "Mobile number cannot exceed 13 digits";
+}
 
 
         // Email validation
@@ -121,6 +124,9 @@ export default function Designyourtrip() {
         if (!formData.destination.trim()) {
             newErrors.destination = "Destination is required";
         }
+         if (!formData.travel_date) {
+        newErrors.travel_date = "Travel date is required";
+    }
 
         setErrors(newErrors as DYTFormErrors);
 
@@ -249,24 +255,24 @@ const resetForm = () => {
                                 <div className="flex items-center">
                                     <div className="pr-5 font-my-font-regular text-[#D3CABF] text-5xl">01</div>
                                     <div className="div">
-                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-xl md:text-2xl">Share your travel idea</h4>
-                                        <p className="text-[#46545E] text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec ex egestas felis.</p>
+                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-xl md:text-2xl">Tell Us Your Vision</h4>
+                                        <p className="text-[#46545E] text-sm">Share your interests,travel style, and expectations.</p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center">
                                     <div className="pr-5 font-my-font-regular text-[#D3CABF] text-5xl">02</div>
                                     <div className="div">
-                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-xl md:text-2xl">We curate routes and experiences</h4>
-                                        <p className="text-[#46545E] text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec ex egestas felis.</p>
+                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-xl md:text-2xl">We Curate the Experience</h4>
+                                        <p className="text-[#46545E] text-sm">Our experts design a personalised itinerary with refined details.</p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center">
                                     <div className="pr-5 font-my-font-regular text-[#D3CABF] text-5xl">03</div>
                                     <div className="div">
-                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-xl md:text-2xl">Pack for the journey!</h4>
-                                        <p className="text-[#46545E] text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec ex egestas felis.</p>
+                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-xl md:text-2xl">Travel Seamlessly</h4>
+                                        <p className="text-[#46545E] text-sm">Enjoy end-to-end concierge support while you travel.</p>
                                     </div>
                                 </div>
                             </div>
@@ -434,6 +440,8 @@ const resetForm = () => {
                                                 }}
 
                                             />
+                                            {errors.travel_date && <p style={{ color: "red", fontSize: "12px" }}>{errors.travel_date}</p>}
+
                                         </div>
                                         <div className="relative">
                                             <input type="text"
