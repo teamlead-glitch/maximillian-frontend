@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BlogType } from "@/types/blogs";
 import { formatLongDate } from "@/utils/formatDate";
+import TagListing from "../common/TagListing";
 
 type Props = {
   blog: BlogType;
@@ -59,8 +60,15 @@ export default function BlogCard({
           </h3>
         </Link>
 
+
+        <TagListing
+  tags={blog.tags}
+  countries={blog.countries}
+  region={blog.region}
+/>
+
         {/* Tags */}
-        {(blog.tags?.length > 0 || blog.countries.length >0 || blog.region) && (
+        {/* {(blog.tags?.length > 0 || blog.countries.length >0 || blog.region) && (
           <ul className="flex flex-wrap items-center text-sm gap-2 mt-3">
             {blog.tags.map((tag, index) => (
               <Link href={`/${tag.slug}`}>
@@ -100,7 +108,9 @@ export default function BlogCard({
               </li>
               </Link>}
           </ul>
-        )}
+        )} */}
+
+        {/* Tags ends*/}
 
         {/* <p className="text-sm text-gray-500 mt-2">
           {formatLongDate(blog.created_at)}
