@@ -145,7 +145,7 @@ px-4 sm:px-0 text-center">
                 </div>
             </section>
 
-            <section id="journeys" className="relative py-10  md:py-15 px-5 overflow-hidden bg-white scroll-mt-16">
+            {packages.length >0 && <section id="journeys" className="relative py-10  md:py-15 px-5 overflow-hidden bg-white scroll-mt-16">
                 <div className="max-w-[1000px] mx-auto">
                     <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
                         <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />
@@ -191,7 +191,7 @@ px-4 sm:px-0 text-center">
                         </button>
                     </div> */}
                 </div>
-            </section>
+            </section>}
 
             <div className="content" dangerouslySetInnerHTML={{ __html: regionDetails?.what_makes_us_exceptional || "" }}></div>
             {/* <section className="bg-white py-10">
