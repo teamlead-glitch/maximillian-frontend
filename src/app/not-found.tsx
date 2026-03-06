@@ -37,7 +37,7 @@ export default function NotFound() {
                         <hr className="w-full  mx-auto my-5 border-gray-300" />
                         <div className="w-full flex flex-col md:flex-row justify-between items-center gap-5">
                             <div className="flex items-center gap-2 whitespace-nowrap"><img src="/images/checkspelling-icon.svg" alt="" />
-                                <a href="" className="text-(--color-secondary)">Check your spelling</a></div>
+                                <a href="#" className="text-(--color-secondary)">Check your spelling</a></div>
                             <div className="flex items-center gap-2 whitespace-nowrap"><img src="/images/returnhome-icon.svg" alt="" />
                                 <Link href="/" className="text-(--color-secondary) underline">Return to the&nbsp;Home&nbsp;page</Link></div>
                             <div className="flex items-center gap-2 whitespace-nowrap"><img src="/images/clickback-icon.svg" alt="" />
