@@ -81,7 +81,7 @@ export default function LogoCarousel() {
                                             src={item.image}
                                             alt={item.alt_text}
                                             fill
-                                            className="object-contain"
+                                            className="object-contain grayscale"
                                         />
                                     </div>
                                 </div>
