@@ -2,6 +2,7 @@ import { PackageItem } from "@/types/packages"
 import { PackagesResponse } from "@/types/packages";
 import Image from "next/image";
 import Link from "next/link";
+import TagListingForSignature from "../common/TagListingForSignature";
 
 interface Props {
     journey: PackageItem;
@@ -26,7 +27,12 @@ export default function JourneyCard({ journey }: Props) {
                             <Link href={`/package/${journey.short_slug}`}>{journey.title}</Link>
                         </h3>
 
-                        <div className="text-white text-xs">
+                        <TagListingForSignature
+                          tags={journey.tags}
+                          region={journey.region}
+                        />
+
+                        {/* <div className="text-white text-xs">
                             <ul className="flex flex-wrap justify-center items-center gap-2 mt-1">
                                 <li className="relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white">
                                     <Link href={`/region/${journey.region.short_slug}`}>{journey.region.title}</Link>
@@ -45,7 +51,7 @@ export default function JourneyCard({ journey }: Props) {
                                     </li>
                                 ))}
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
