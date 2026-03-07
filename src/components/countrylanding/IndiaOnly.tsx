@@ -106,7 +106,7 @@ export default function IndiaOnly({what_makes_us_exceptional}:{what_makes_us_exc
               ">
 
                                 <h4 className="text-(--color-secondary) text-3xl font-my-font-regular group-hover:text-white">
-                                    {data[1]?.title}11
+                                    {data[1]?.title}
                                 </h4>
 
                                 <p className="text-(--color-secondary) line-clamp-3 hidden md:block group-hover:text-white">
