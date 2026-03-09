@@ -560,7 +560,7 @@ hover:before:translate-x-full
             </section>
 
             {/*related journels component  */}
-            <Related_journels region_slug={region_slug} />
+            <Related_journels region_slug={region_slug} tour_id={tour_id}/>
 
 
 

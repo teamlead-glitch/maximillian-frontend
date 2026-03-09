@@ -5,38 +5,46 @@ import { apiService } from "@/services/api";
 import PackageCard from "../package/PackageCard";
 interface props {
     region_slug?: string;
+    tour_id:number;
 }
 
-function Related_journels({ region_slug }: props) {
+function Related_journels({ region_slug,tour_id }: props) {
     const [packages, setPackages] = useState<PackagesResponse["packages"]>([]);
     const [loading, setLoading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
     const observerRef = useRef<HTMLDivElement | null>(null);
 
     const fetchPackages = async () => {
-        if (!hasMore) return;
+  if (!hasMore) return;
 
-        try {
-            setLoading(true);
+  try {
+    setLoading(true);
 
-            const res = await apiService.get<PackagesResponse>(
-                `/packages?type=region&slug=${region_slug}&take=3&skip=0`
-            );
+    const res = await apiService.get<PackagesResponse>(
+      `/packages?type=region&slug=${region_slug}&take=4&skip=0`
+    );
 
+    // remove current package
+    const filteredPackages = res.packages.filter(
+      (pkg) => pkg.id !== tour_id
+    );
 
+    // show only 3
+    setPackages(filteredPackages.slice(0, 3));
 
-            setPackages(res.packages);
-        } catch (error) {
-            console.error("packages API error:", error);
-            setHasMore(false);
-        } finally {
-            setLoading(false);
-        }
-    };
+  } catch (error) {
+    console.error("packages API error:", error);
+    setHasMore(false);
+  } finally {
+    setLoading(false);
+  }
+};
+
     useEffect(() => {
         fetchPackages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
     return (
         <>
              {loading ? (
