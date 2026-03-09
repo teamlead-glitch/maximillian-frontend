@@ -2,7 +2,7 @@ import { Settings, Regions } from "@/types/commonTypes";
 import Link from "next/link";
 import { taggroupResponse } from "@/types/taggroupTypes";
 
-export default function Footer({settings, regions, tagGroups}:{settings:Settings; regions:Regions; tagGroups:taggroupResponse[]}) {
+export default function Footer({ settings, regions, tagGroups }: { settings: Settings; regions: Regions; tagGroups: taggroupResponse[] }) {
 
     return (
         <>
@@ -16,10 +16,10 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                             <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Menu</h6>
                             <ul className="text-body font-medium">
                                 {[{ label: "Home", href: "/" },
-  { label: "Destinations", href: "/destinations" },
-  { label: "Design Your Trip", href: "/designyourtrip" },
-  { label: "Our World", href: "/ourworld" },
-  { label: "Contact Us", href: "/contact" }].map((item) => (
+                                { label: "Destinations", href: "/destinations" },
+                                { label: "Design Your Trip", href: "/designyourtrip" },
+                                { label: "Our World", href: "/ourworld" },
+                                { label: "Contact Us", href: "/contact" }].map((item) => (
                                     <li
                                         key={item.label}
                                         className="mb-4 text-2xl md:text-3xl lg:text-4xl font-my-font-regular text-(--color-secondary)"
@@ -52,13 +52,13 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                                     <ul className="text-body font-medium mb-5 md:mb-0">
                                         {tagGroups[1].tags.map((exp) => (
 
-                                             <li key={exp.id} className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <Link href={`/tag/${exp.short_slug}`} className="hover:underline ">{exp.title}</Link>
-                                        </li>
+                                            <li key={exp.id} className="mb-2 xl:mb-4 text-[#818c94]">
+                                                <Link href={`/tag/${exp.short_slug}`} className="hover:underline ">{exp.title}</Link>
+                                            </li>
 
                                         ))}
-                                       
-                                        
+
+
                                     </ul>
 
                                     <h6 className="mb-6 mt-15 text-sm text-[#93989b]  text-heading">Regions</h6>
@@ -67,17 +67,17 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                                         {regions.map((reg) => (
 
                                             <li key={reg.id} className="mb-2 xl:mb-4 text-[#818c94]">
-                                                {reg.slug === 'india'? (
-                                                    <Link href="/country/india" className="hover:underline">{reg.menu_title?reg.menu_title:reg.title}</Link>
-                                                ):(
-                                                <Link href={`/${reg.slug}`} className="hover:underline">{reg.menu_title?reg.menu_title:reg.title}</Link>
+                                                {reg.slug === 'india' ? (
+                                                    <Link href="/country/india" className="hover:underline">{reg.menu_title ? reg.menu_title : reg.title}</Link>
+                                                ) : (
+                                                    <Link href={`/${reg.slug}`} className="hover:underline">{reg.menu_title ? reg.menu_title : reg.title}</Link>
                                                 )}
-                                           
-                                        </li>
+
+                                            </li>
 
                                         ))}
-                                        
-                                       
+
+
                                     </ul>
                                 </div>
                                 <div className="div mb-5 md:mb-0">
@@ -85,9 +85,9 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                                     <ul className="text-body font-medium">
                                         {tagGroups[0].tags.map((spec) => (
 
-                                             <li key={spec.id} className="mb-2 xl:mb-4 text-[#818c94]">
-                                            <Link href={`/tag/${spec.short_slug}`} className="hover:underline ">{spec.title}</Link>
-                                        </li>
+                                            <li key={spec.id} className="mb-2 xl:mb-4 text-[#818c94]">
+                                                <Link href={`/tag/${spec.short_slug}`} className="hover:underline ">{spec.title}</Link>
+                                            </li>
 
                                         ))}
                                     </ul>
@@ -145,7 +145,7 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                         <span className="text-base text-[#93989b]  text-body sm:text-center">Made by  <a href="https://phitany.com/" className="hover:underline">Phitany</a>
                         </span>
                         <div className="div">
-                            <ul className="flex gap-4 mt-1">
+                            <ul className="flex flex-wrap gap-4 mt-1">
                                 <li className="relative text-base text-[#93989b]  text-body sm:text-center pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
                                     <Link href="/terms-and-conditions" className="hover:underline">Terms</Link>
                                 </li>
@@ -154,19 +154,19 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                                     <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
                                 </li>
 
-                             
+
                                 <li className="relative pr-3 text-base text-[#93989b]  text-body sm:text-center">
                                     <Link href="/health-and-safety-policy" className="hover:underline">Health and Safety Policy</Link>
                                 </li>
 
-                                
+
                             </ul></div>
                         <div className="flex mt-4 sm:justify-center sm:mt-0">
-                            <a target="_blank" href={settings.fb_url??'#'} className="text-body text-[#818c94] hover:text-heading">
+                            <a target="_blank" href={settings.fb_url ?? '#'} className="text-body text-[#818c94] hover:text-heading">
                                 <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clipRule="evenodd" /></svg>
                                 <span className="sr-only">Facebook page</span>
                             </a>
-                            <a target="_blank" href={settings.insta_url??'#'} className="text-body text-[#818c94] hover:text-heading ms-5">
+                            <a target="_blank" href={settings.insta_url ?? '#'} className="text-body text-[#818c94] hover:text-heading ms-5">
                                 <svg
                                     className="w-5 h-5"
                                     aria-hidden="true"
@@ -183,11 +183,11 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                                 <span className="sr-only">Instagram page</span>
                             </a>
 
-                            <a target="_blank" href={settings.twitter_url??'#'} className="text-body text-[#818c94] hover:text-heading ms-5">
+                            <a target="_blank" href={settings.twitter_url ?? '#'} className="text-body text-[#818c94] hover:text-heading ms-5">
                                 <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z" /></svg>
                                 <span className="sr-only">Twitter page</span>
                             </a>
-                            <a target="_blank" href={settings.youtube_url??'#'} className="text-body text-[#818c94] hover:text-heading ms-5">
+                            <a target="_blank" href={settings.youtube_url ?? '#'} className="text-body text-[#818c94] hover:text-heading ms-5">
                                 <svg
                                     className="w-5 h-5"
                                     aria-hidden="true"
@@ -199,6 +199,20 @@ export default function Footer({settings, regions, tagGroups}:{settings:Settings
                                 </svg>
                                 <span className="sr-only">YouTube channel</span>
                             </a>
+
+                            <a target="_blank" href={'#'} className="text-body text-[#818c94] hover:text-heading ms-5">
+                                <svg
+                                    className="w-5 h-5"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                                </svg> <span className="sr-only">Linkedin</span>
+                            </a>
+
+
 
                         </div>
                     </div>

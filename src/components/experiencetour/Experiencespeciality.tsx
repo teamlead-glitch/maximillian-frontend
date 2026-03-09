@@ -84,7 +84,7 @@ export default function Experiencespeciality({ type = "experience-journeys" }: {
 
     if (!loading && !packages.length) {
         return (
-            <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center">
+            <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center text-(--color-secondary)">
                 <h2>No packages available</h2>
             </section>
         );
