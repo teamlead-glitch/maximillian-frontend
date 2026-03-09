@@ -32,6 +32,8 @@ export default function ExperienceTour() {
 
         fetchtaggroups();
     }, []);
+
+    const url = ['experience-journeys','specialty-tours'];
     // const chunkArray = <T,>(array: T[], size: number): T[][] => {
     //   const result: T[][] = [];
     //   for (let i = 0; i < array.length; i += 3) {
@@ -85,7 +87,7 @@ export default function ExperienceTour() {
                                         ))}
 
 
-                                        <Link href="/experience-journeys" className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base  py-3 mt-3 cursor-pointer">
+                                        <Link href={`/${url[index]}`} className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base  py-3 mt-3 cursor-pointer">
                                             <span className="mr-3">View All Journeys</span>
 
                                             <svg
