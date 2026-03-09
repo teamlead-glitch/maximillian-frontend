@@ -65,7 +65,7 @@ export default function DynamicPageClient({
           </div>
 
           <div
-            className="description-content"
+            className="content"
             style={{ minHeight: "150px" }}
             dangerouslySetInnerHTML={{ __html: page?.content ?? '' }}
           />

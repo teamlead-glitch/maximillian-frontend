@@ -78,6 +78,10 @@ body {
     @apply text-lg font-my-font-regular text-(--color-secondary) mb-2;
   }
 
+  .content div {
+    @apply text-sm sm:text-base mb-4 text-(--color-secondary);
+  }
+
 
 
 
