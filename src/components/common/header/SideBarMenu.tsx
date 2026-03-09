@@ -31,11 +31,11 @@ export default function SideBarMenu({
 }: {
   regions: Record<string, RegionFormated>;
   isInner?: boolean;
-  settings:Settings
+  settings: Settings
 }) {
 
-   const pathname = usePathname();
-   
+  const pathname = usePathname();
+
 
   const regionKeys = Object.keys(regions);
 
@@ -103,7 +103,7 @@ export default function SideBarMenu({
             <nav className="flex-1 overflow-y-auto px-6 py-5 space-y-6">
               <button
                 onClick={() => setDestinationPanel(true)}
-                className="flex justify-between w-full font-my-font-semibold md:hidden"
+                className="flex justify-between w-full font-my-font-semibold md:hidden text-(--color-secondary) cursor-pointer"
               >
                 Explore Destinations <ChevronRight />
               </button>
@@ -130,7 +130,7 @@ export default function SideBarMenu({
                       : "after:opacity-0"
                     }`}
                 >
-                  {item.name} 
+                  {item.name}
                 </Link>
               ))}
             </nav>
@@ -142,7 +142,7 @@ export default function SideBarMenu({
                 className="flex gap-3 text-(--color-secondary)"
               >
                 <img src="/images/call-icon.svg" className="w-5" alt="Call" />
-               {settings.phone}
+                {settings.phone}
               </a>
 
               <a
@@ -162,7 +162,7 @@ export default function SideBarMenu({
                 className="flex gap-3 text-(--color-secondary)"
               >
                 <img src="/images/mail-icon.svg" className="w-5" alt="Mail" />
-               {settings.email}
+                {settings.email}
               </a>
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function SideBarMenu({
                     setDestinationPanel(false);
                   }
                 }}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 text-(--color-secondary) cursor-pointer"
               >
                 <ChevronLeft /> Back
               </button>
@@ -203,7 +203,7 @@ export default function SideBarMenu({
                           setSideOpen(false);
                           setDestinationPanel(false);
                         }}
-                        className="flex justify-between w-full font-semibold"
+                        className="flex justify-between w-full font-semibold text-(--color-secondary) cursor-pointer"
                       >
                         {region}
                       </Link>
@@ -214,7 +214,7 @@ export default function SideBarMenu({
                     <button
                       key={region}
                       onClick={() => setActiveRegion(region)}
-                      className="flex justify-between w-full font-semibold"
+                      className="flex justify-between w-full font-semibold text-(--color-secondary) cursor-pointer"
                     >
                       {region} <ChevronRight />
                     </button>
@@ -227,7 +227,7 @@ export default function SideBarMenu({
               /* COUNTRY LIST */
               <div className="p-6">
 
-                <h3 className="mb-4 font-semibold capitalize">
+                <h3 className="mb-4 font-semibold capitalize text-(--color-secondary) cursor-pointer">
                   {activeRegion}
                 </h3>
 
@@ -237,7 +237,7 @@ export default function SideBarMenu({
                     <Link
                       href={`/${country.slug}`}
                       key={country.slug}
-                      className="cursor-pointer"
+                      className="cursor-pointer text-(--color-secondary) "
                       onClick={() => {
                         setSideOpen(false);
                         setDestinationPanel(false);
@@ -257,7 +257,7 @@ export default function SideBarMenu({
                     setDestinationPanel(false);
                     setActiveRegion(null);
                   }}
-                  className="block border border-[#C43131] w-fit px-4 py-2 rounded-full text-sm hover:bg-[#C43131] hover:text-white transition"
+                  className="block border border-[#C43131] w-fit px-4 py-2 rounded-full text-sm text-(--color-secondary) cursor-pointer hover:bg-[#C43131] hover:text-white transition"
                 >
                   View all journeys in {activeRegion}
                 </Link>

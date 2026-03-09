@@ -22,16 +22,16 @@ export default function PackageCard({ details }: { details: PackageItem }) {
             <div className=" px-0 md:px-5  py-5">
                 <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
                     {details.countries.map((country, index) => (
-                        <Link href={`/${country.slug}`}  key={country.id}>
-                        <li
-                           
-                            className={`relative text-[#818c94] ${index !== details.countries.length - 1
-                                ? "pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]"
-                                : ""
-                                }`}
-                        >
-                            {country.title}
-                        </li>
+                        <Link href={`/${country.slug}`} key={country.id}>
+                            <li
+
+                                className={`relative text-[#818c94] ${index !== details.countries.length - 1
+                                    ? "pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#818c94]"
+                                    : ""
+                                    }`}
+                            >
+                                {country.title}
+                            </li>
                         </Link>
                     ))}
                 </ul>
@@ -49,8 +49,8 @@ export default function PackageCard({ details }: { details: PackageItem }) {
                     ))}
                 </ul> */}
 
-                 <TagListing
-                  tags={details.tags}
+                <TagListing
+                    tags={details.tags}
                 />
 
             </div>
