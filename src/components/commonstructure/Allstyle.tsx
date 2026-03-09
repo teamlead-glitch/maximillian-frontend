@@ -80,6 +80,9 @@ export default function Allstyle() {
                             <li>Third list</li>
                         </ol>
 
+
+
+
                         <div className="box">
                             <h3>
                                 Heading
