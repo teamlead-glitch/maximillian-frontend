@@ -6,6 +6,7 @@ import { PackagesResponse } from "@/types/packages";
 import Loader from "../common/Loader";
 import { apiService } from "@/services/api";
 import PackageCard from "../package/PackageCard";
+import LogoCarousel from "../home/LogoCarousel";
 
 const TAKE = 15;
 
@@ -122,6 +123,8 @@ export default function TagwisePackageList({ slug, title }: { slug: string; titl
                 </div>
             </section>
             <BespokeJourney />
+
+             <LogoCarousel />
 
 
         </>
