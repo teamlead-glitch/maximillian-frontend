@@ -63,7 +63,7 @@ export default function Details({ details }: { details: PackageResponse }) {
     const taggroups = details?.taggroups || [];
     const region_slug = details?.regions?.short_slug;
     const tour_id = details?.id;
-
+    const itinerary_document = details?.itinerary_document ?? "";
 
 
     const handleChange = (
@@ -347,15 +347,19 @@ before:-translate-y-1/2 after:-translate-y-1/2">
                     {details?.itinerary?.map((day) => (
                         <DaywiseCard key={day.id} day={day} />
                     ))}
-                    <div className="w-full text-center flex justify-center py-5 md:py-10">
-                        <button
-                            onClick={() => setOpen(true)}
-                            className="group flex items-center font-my-font-semibold text-sm text-black sm:text-base justify-center py-0 md:py-4 mt-3 cursor-pointer"
-                        >
-                            <span className="mr-3 font-my-font-semibold text-(--color-secondary)">Download This itinerary as PDF</span>
-                            <img src="/images/download.svg" alt="download" />
-                        </button>
-                    </div>
+                   {itinerary_document && (
+  <div className="w-full text-center flex justify-center py-5 md:py-10">
+    <button
+      onClick={() => setOpen(true)}
+      className="group flex items-center font-my-font-semibold text-sm text-black sm:text-base justify-center py-0 md:py-4 mt-3 cursor-pointer"
+    >
+      <span className="mr-3 font-my-font-semibold text-(--color-secondary)">
+        Download This itinerary as PDF
+      </span>
+      <img src="/images/download.svg" alt="download" />
+    </button>
+  </div>
+)}
 
 
 
