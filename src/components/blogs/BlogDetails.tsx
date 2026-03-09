@@ -39,6 +39,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
     const countries = details?.countries || [];
     const region_slug = details?.region?.short_slug
+    const author_description=details?.author?.description??"";
 
 
 
@@ -199,7 +200,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                     </h4>
 
                                     <p>{details.author.tagline}</p>
-                                    {(details.author.linkedin || details.author.instagram) && (
+                                    {(details.author.linkedin || details.author.instagram ||details.author.youtube ||details.author.linkedin) && (
                                         <div className="flex gap-2 relative">
                                             {details.author.linkedin && (
                                                 <a href={details.author.linkedin} target="_blank">
@@ -212,10 +213,20 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                                     <Image src="/images/instagram.svg" width={20} height={20} alt="" />
                                                 </a>
                                             )}
+                                            {details.author.youtube && (
+                                                <a href={details.author.youtube} target="_blank">
+                                                    <Image src="/images/instagram.svg" width={20} height={20} alt="" />
+                                                </a>
+                                            )}
+                                            {details.author.linkedin && (
+                                                <a href={details.author.linkedin} target="_blank">
+                                                    <Image src="/images/instagram.svg" width={20} height={20} alt="" />
+                                                </a>
+                                            )}
                                         </div>
                                     )}
 
-                                    <div dangerouslySetInnerHTML={{ __html: details.author.description }} />
+                                    <div className="content" dangerouslySetInnerHTML={{ __html:author_description }} />
                                 </div>
 
                             </div>

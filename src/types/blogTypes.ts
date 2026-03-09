@@ -74,6 +74,8 @@ export type BlogDetailType = {
   description: string;
   instagram: string;
   linkedin: string;
+  youtube:string;
+  facebook:string
   created_at: string;
   updated_at: string;
 } | null;
