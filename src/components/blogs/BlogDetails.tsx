@@ -218,8 +218,8 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                                     <Image src="/images/instagram.svg" width={20} height={20} alt="" />
                                                 </a>
                                             )}
-                                            {details.author.linkedin && (
-                                                <a href={details.author.linkedin} target="_blank">
+                                            {details.author.facebook && (
+                                                <a href={details.author.facebook} target="_blank">
                                                     <Image src="/images/instagram.svg" width={20} height={20} alt="" />
                                                 </a>
                                             )}
