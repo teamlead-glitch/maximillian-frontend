@@ -3,6 +3,7 @@ import { generateSeoMetadata } from "@/lib/seo";
 import { PAGE_SLUGS } from "@/constants/pageSlugs";
 import { fetchPageBySlug } from "@/lib/page-api";
 import { PageResponse } from "@/types/pagesTypes";
+import { notFound } from "next/navigation";
 
 const slug = PAGE_SLUGS.HOME;
 
@@ -15,7 +16,7 @@ export default async function Home() {
   const page: PageResponse | null = await fetchPageBySlug(slug);
 
   if (!page) {
-    return <div>Page not found</div>;
+    notFound();
   }
 
   return (
