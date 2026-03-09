@@ -1,5 +1,5 @@
 import { generateSeoMetadata } from "@/lib/seo";
-import DynamicPageClient from "./DynamicPageClient.tsx";
+import DynamicPageClient from "./DynamicPageClient";
 import { fetchPageBySlug } from "@/lib/page-api";
 import NotFound from "@/app/not-found";
 export const generateMetadata = async ({
