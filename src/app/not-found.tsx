@@ -6,7 +6,11 @@ import TopMenuinner from "@/components/common/header/menu/TopMenuinner";
 import LogoCarousel from "@/components/home/LogoCarousel";
 import { getSettings } from "@/lib/server-fetchs";
 import { Settings } from "@/types/commonTypes";
- const settings: Settings = await getSettings();
+ 
+
+export default async function NotFound() {
+
+    const settings: Settings = await getSettings();
 
  
    const phone_number = settings?.phone; 
@@ -24,7 +28,6 @@ import { Settings } from "@/types/commonTypes";
     //console.log(email);
     const email_link = email ? `mailto:${email}` : "#";
 
-export default function NotFound() {
     return (
         <>
             {/* <TopMenuinner /> */}
