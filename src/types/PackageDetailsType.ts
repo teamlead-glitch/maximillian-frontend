@@ -30,7 +30,8 @@ export interface PackageResponse {
 
   seoDetail: SeoDetail;
   tags: Tag[];
-  countries: Country[];
+  countries?: Country[];
+  country?: Country[];
   itinerary: Itinerary[];
   faqs: FAQ[];
   inclusion: InclusionExclusion[];
@@ -89,14 +90,21 @@ export interface Tag {
   seo_detail: SeoDetail;
 }
 
+// export interface Country {
+//   id: number;
+//   title: string;
+//   pivot: {
+//     package_id: number;
+//     country_id: number;
+//   };
+//   seo_detail: SeoDetail;
+// }
+
 export interface Country {
   id: number;
   title: string;
-  pivot: {
-    package_id: number;
-    country_id: number;
-  };
-  seo_detail: SeoDetail;
+  slug: string;
+  short_slug: string;
 }
 
 export interface Itinerary {

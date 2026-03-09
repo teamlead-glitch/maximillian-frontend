@@ -15,6 +15,7 @@ import { Download_ErrorTypes, Download_ItineraryTypes, TalktoUsEnquiryResponse }
 import { toast, ToastContainer } from "react-toastify";
 import { apiService } from "@/services/api";
 import SimpleCaptcha from "../Captcha";
+import TagListing from "../common/TagListing";
 
 
 
@@ -49,7 +50,7 @@ export default function Details({ details }: { details: PackageResponse }) {
     const season = details?.season ?? "";
     const duration = details?.duration_text ?? "";
     const group_size = details?.package_size ?? "";
-    const countries = details?.countries || [];
+    const countries = details?.country || [];
     const journey_overview = details?.description ?? "";
     const journey_flow = details?.journey_flow ?? "";
     const journey_image = details?.image_path ?? "";
@@ -244,7 +245,14 @@ export default function Details({ details }: { details: PackageResponse }) {
                         </div>
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
-                            <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1">
+
+                             <TagListing
+                              
+                              countries={countries}
+                             
+                            />
+
+                            {/* <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1">
                                 {countries.map((country, index) => (
                                     <li
                                         key={country.id}
@@ -252,13 +260,13 @@ export default function Details({ details }: { details: PackageResponse }) {
                                     >
                                         {country.title}
 
-                                        {/* Show dot only if NOT last item */}
+                                        
                                         {countries.length > 1 && index !== countries.length - 1 && (
                                             <span className="mx-2">⬥</span>
                                         )}
                                     </li>
                                 ))}
-                            </ul>
+                            </ul> */}
                         </div>
                         {season && (
                             <div className="pb-2 md:pb-0">
