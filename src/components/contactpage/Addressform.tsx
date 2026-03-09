@@ -549,7 +549,7 @@ min-w-[190px]
 
 
 
-                                    <a href={twitter_link} className="text-body text-[#46545E] hover:text-heading ms-5" target="_blank">
+                                    <a href={linkedin_url} className="text-body text-[#46545E] hover:text-heading ms-5" target="_blank">
                                         <svg
                                             className="w-5 h-5"
                                             aria-hidden="true"

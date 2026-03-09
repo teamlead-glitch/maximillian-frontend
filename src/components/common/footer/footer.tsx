@@ -200,7 +200,7 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                                 <span className="sr-only">YouTube channel</span>
                             </a>
 
-                            <a target="_blank" href={'#'} className="text-body text-[#818c94] hover:text-heading ms-5">
+                            <a target="_blank" href={settings.linked_in ?? '#'} className="text-body text-[#818c94] hover:text-heading ms-5">
                                 <svg
                                     className="w-5 h-5"
                                     aria-hidden="true"
