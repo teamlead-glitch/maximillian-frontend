@@ -6,6 +6,7 @@ import { PackagesResponse } from "@/types/packages";
 import Loader from "../common/Loader";
 import { apiService } from "@/services/api";
 import PackageCard from "../package/PackageCard";
+import LogoCarousel from "../home/LogoCarousel";
 
 const TAKE = 15;
 
@@ -119,6 +120,7 @@ export default function Experiencespeciality({ type = "experience-journeys" }: {
                 </div>
             </section>
             <BespokeJourney />
+            <LogoCarousel />
 
 
         </>

@@ -6,6 +6,7 @@ import { PackagesResponse } from "@/types/packages";
 import Loader from "../common/Loader";
 import { apiService } from "@/services/api";
 import PackageCard from "../package/PackageCard";
+import LogoCarousel from "../home/LogoCarousel";
 
 
 
@@ -83,6 +84,7 @@ export default function Experiencespeciality() {
                 </div>
             </section>
             <BespokeJourney />
+            <LogoCarousel />
 
 
         </>
