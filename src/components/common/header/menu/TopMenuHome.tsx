@@ -9,12 +9,12 @@ import { Settings } from "@/types/commonTypes";
 
 
 /* ================= COMPONENT ================= */
-export default function TopMenuHome({ regions, settings }: { regions: Record<string, RegionFormated>;  settings:Settings }) {
+export default function TopMenuHome({ regions, settings }: { regions: Record<string, RegionFormated>; settings: Settings }) {
   const [megaOpen, setMegaOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
- /*  console.log(regions, 'regions---') */
+  /*  console.log(regions, 'regions---') */
   const regionKeys = Object.keys(regions) as (keyof typeof regions)[];
   const [activeRegion, setActiveRegion] = useState<keyof typeof regions>(
     regionKeys[0]
@@ -122,12 +122,12 @@ export default function TopMenuHome({ regions, settings }: { regions: Record<str
 
             {/* MEGA MENU */}
             {megaOpen && (
-              <MegaMenu setMegaOpen={setMegaOpen} regions={regions} activeRegion={activeRegion} setActiveRegion={setActiveRegion}/>
+              <MegaMenu setMegaOpen={setMegaOpen} regions={regions} activeRegion={activeRegion} setActiveRegion={setActiveRegion} />
             )}
           </div>
         </div>
 
-        <SideBarMenu regions={regions} settings={settings}/>
+        <SideBarMenu regions={regions} settings={settings} />
 
       </div>
     </>

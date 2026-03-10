@@ -83,7 +83,14 @@ body {
   }
 
 
+  .content ul {
+    @apply py-3;
+  }
 
+  .content ul li {
+    @apply relative text-sm sm:text-base text-(--color-secondary);
+
+  }
 
 
   .content .checklist {

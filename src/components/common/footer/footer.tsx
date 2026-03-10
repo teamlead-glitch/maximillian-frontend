@@ -221,7 +221,7 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
 
             <footer className="bg-[#C43131] py-10 md:py-20 px-5 md:px-10">
                 <div className="max-w-[1300px] flex flex-col items-center justify-center mx-auto text-center">
-                    <img src="images/logo-footer.svg" alt="" />
+                    <a href="/"> <img src="images/logo-footer.svg" alt="" /></a>
                     <p className="text-white text-sm mt-3">A premium travel brand owned by Maximilian Holidays Private Ltd.</p>
                 </div>
             </footer>
