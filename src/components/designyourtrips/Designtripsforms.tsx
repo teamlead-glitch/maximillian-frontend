@@ -42,7 +42,7 @@ export default function Designyourtrip() {
     const travelPace = [
         "Relaxed",
         "Balanced",
-        "Fast_Paced"
+        "Fast-Paced"
     ]
 
 
