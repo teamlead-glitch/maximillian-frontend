@@ -215,12 +215,12 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                             )}
                                             {details.author.youtube && (
                                                 <a href={details.author.youtube} target="_blank">
-                                                    <Image src="/images/instagram.svg" width={20} height={20} alt="" />
+                                                    <Image src="/images/youtube.svg" width={20} height={20} alt="" />
                                                 </a>
                                             )}
                                             {details.author.facebook && (
                                                 <a href={details.author.facebook} target="_blank">
-                                                    <Image src="/images/instagram.svg" width={20} height={20} alt="" />
+                                                    <Image src="/images/facebook_author.svg" width={20} height={20} alt="" />
                                                 </a>
                                             )}
                                         </div>
