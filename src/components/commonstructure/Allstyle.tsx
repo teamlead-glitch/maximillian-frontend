@@ -81,11 +81,17 @@ export default function Allstyle() {
                         </ol>
 
 
+                        <div className="quote-box">
+                            <div className="quote-icon">“</div>
 
+                            <p className="quote-text">A Road Journey to KutaisiLeaving Tbilisi, the journey westward opens into a quieter, more pastoral Georgia. Golden wheat fields ripple under sunlight, villages pass unhurriedly, and distant mountain ridges appear crowned with snow.<br />The road leads to Kutaisi, once Georgia’s ancient capital. Compared to Tbilisi, Kutaisi feels slower and more intimate. Life unfolds gently here—tree-lined streets, family homes with fruit gardens, modest cafés, and evenings that linger under soft twilight.<br />Historic landmarks such as the Bagrati Cathedral rise above the city, offering panoramic views and a powerful sense of continuity between Georgia’s past and present.</p>
+
+                            <div className="quote-icon">”</div>
+                        </div>
 
                         <div className="box">
                             <h3>
-                                Heading
+                                Heading1
                             </h3>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam corrupti ab nam, quidem mollitia enim ea consequatur inventore voluptates deserunt aliquam nulla dolorem doloribus iure hic. Corrupti sit ab obcaecati.
