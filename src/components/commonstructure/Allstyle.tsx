@@ -80,6 +80,43 @@ export default function Allstyle() {
                             <li>Third list</li>
                         </ol>
 
+                        <p><a href="http://www.google.com" target="_blank">sample link</a></p>
+                        <div><a href="http://www.google.com" target="_blank">sample link</a></div>
+
+
+
+
+                        <div className="content-area">
+                            <table >
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>John</td>
+                                        <td>john@mail.com</td>
+                                        <td>Admin</td>
+                                        <td>Active</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Sarah</td>
+                                        <td>sarah@mail.com</td>
+                                        <td>Editor</td>
+                                        <td>Pending</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
 
                         <div className="quote-box">
                             <div className="quote-icon">“</div>
