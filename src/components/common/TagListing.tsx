@@ -24,6 +24,8 @@ export default function TagListing({
   region,
 }: TagListingProps) {
 
+  const [open, setOpen] = useState(false);
+
   const items = [
     ...tags.map((t) => ({ ...t, type: "tag" })),
     ...countries.map((c) => ({ ...c, type: "country" })),
@@ -56,11 +58,12 @@ export default function TagListing({
 
       {/* +more tooltip */}
       {hiddenItems.length > 0 && (
-        <li className="relative group/tags cursor-pointer text-(--color-secondary)">
+        <li className="relative group/tags cursor-pointer text-(--color-secondary)" onClick={() => setOpen(!open)}>
           +{hiddenItems.length} more
 
           {/* tooltip */}
-          <div className="absolute left-0  hidden group-hover/tags:block bg-white shadow-lg border rounded-md p-2 z-20 min-w-[200px]">
+          <div className={`absolute left-0   bg-white shadow-lg border 
+            rounded-md p-2 z-20 min-w-[200px]  ${open ? "block" : "hidden"} md:group-hover/tags:block`}>
             {hiddenItems.map((item) => (
               <Link
                 key={item.slug}
