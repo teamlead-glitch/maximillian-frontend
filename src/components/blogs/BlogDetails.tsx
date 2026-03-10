@@ -241,7 +241,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                         )}
                         <div className="flex flex-col gap-2 items-start md:items-end  justify-between mt-5 md:mt-0">
                             <div className="w-full flex flex-col items-center md:items-end">
-                                <ul className="flex items-center gap-2 pb-3 md:pb-0">
+                                <ul className="flex  flex-wrap justify-center md:justify-end items-center gap-2 pb-3 md:pb-0">
 
                                     {tagItems.map((tag, i) => (
                                         <li
@@ -259,7 +259,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                     ))}
 
                                 </ul>
-                                <p><span className="text-sm">{published_date}</span></p></div>
+                                <p className="mt-2"><span className="text-sm">{published_date}</span></p></div>
                             <div className="w-full flex items-center md:items-end">
                                 <div className=" w-full flex justify-center md:justify-end  gap-4 mt-5 md:mt-0">
                                     {shareLinks.map((link, index) => (
