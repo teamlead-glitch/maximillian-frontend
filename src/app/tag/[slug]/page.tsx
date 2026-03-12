@@ -33,7 +33,8 @@ const { slug } = await params;
 const page = await fetchTagBySlug(slug);
 
 if (!page) {
-    notFound();
+  return <h1>Tag not found</h1>;
+    //notFound();
   }
 
   return (
