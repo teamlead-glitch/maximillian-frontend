@@ -5,6 +5,9 @@ import { mapSeoToMetadata } from "@/lib/seo-mapper";
 import { fetchTagBySlug } from "@/lib/server-fetchs";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 type PageProps = {
   params: Promise<{
     slug: string;
