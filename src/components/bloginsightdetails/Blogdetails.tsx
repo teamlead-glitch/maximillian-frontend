@@ -108,7 +108,7 @@ export default function Blogdetails() {
 
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem augue, tempus sed placerat a, accumsan non ligula. Nunc urna mi, placerat eget ligula sed, iaculis finibus massa. Nunc at turpis vel lacus faucibus consequat. Fusce at nisi vestibulum, vulputate nisl eget, lacinia diam. Integer tincidunt, lacus vel luctus laoreet, massa elit ullamcorper leo, a faucibus lectus tellus et nisl. Aenean egestas diam quis justo egestas, id tristique ex vestibulum. Sed interdum facilisis nisl, id pharetra ipsum tristique in. Nullam sed semper lorem. Donec eu lacus non elit blandit ultricies. Aenean vitae sagittis sem. Nunc at nisi tempor, lobortis quam eget, semper eros. Quisque eget gravida nisl, quis suscipit turpis. Mauris vitae enim ut lorem gravida hendrerit.</p>
                     </div>
-                    <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 ">
+                    <div className="w-full py-15 justify-between items-start grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 ">
                         <div className="flex  gap-3 pr-0 md:pr-20 xl:pr-30">
                             <img src="images/author.png" alt="" className="object-cover rounded-full w-15 h-15" />
                             <div className="grid gap-2 pl-4">

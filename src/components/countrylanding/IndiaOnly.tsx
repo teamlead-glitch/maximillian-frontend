@@ -94,18 +94,21 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                 <div className="w-full lg:w-1/2 px-5 md:px-20  xl:px-40 h-full mt-15   lg:mt-0">
                     <div className="w-full flex flex-col items-center justify-between h-full gap-3">
 
-                        <div className="w-full aspect-4/3 md:aspect-4/2.5 relative group overflow-hidden">
-                            {data[1]?.image && <img src={data[1]?.image} className="w-full h-full object-cover rounded-xl  opacity-0
+
+
+  {/* first image */}
+                        <div className="w-full aspect-4/3 sm:aspect-4/2 relative group overflow-hidden">
+                            {data[1]?.image && <img src={data[1]?.image} className="w-full h-full object-cover rounded-xl opacity-100  md:opacity-0
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0 " />}
-                            <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-0 
+                            <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-100  md:opacity-0
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0"></div>
                             <div className="absolute inset-0 flex flex-col items-start justify-center 
                px-5  md:px-10 py-5
               ">
 
-                                <h4 className="text-(--color-secondary) text-3xl font-my-font-regular group-hover:text-white">
+                                <h4 className=" text-white   md:text-(--color-secondary) text-2xl md:text-3xl font-my-font-regular group-hover:text-white">
                                     {data[1]?.title}
                                 </h4>
 
@@ -113,13 +116,13 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                                 {/* <p className="text-white line-clamp-3"> */}
 
 
-                                <p className="line-clamp-3 text-(--color-secondary)   group-hover:text-white">
+                                <p className="line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
 
                                     {data[1]?.short_description}
 
                                 </p>
 
-                                <Link href={`/${data[1]?.slug}`} className="group flex items-center font-my-font-semibold text-sm text-(--color-secondary) sm:text-base py-3  cursor-pointer group-hover:text-white">
+                                <Link href={`/${data[1]?.slug}`} className="group flex items-center font-my-font-semibold text-sm text-white   md:text-(--color-secondary) sm:text-base py-3  cursor-pointer group-hover:text-white">
                                     <span className="mr-3">View More Journeys</span>
 
                                     <svg
@@ -131,7 +134,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                                     >
                                         <path
                                             d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
-                                            className="fill-black group-hover:fill-white transition-colors"
+                                            className="fill-white md:fill-black group-hover:fill-white transition-colors"
                                         />
                                     </svg>
                                 </Link>
@@ -139,26 +142,26 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                         </div>
 
                         {/* second image */}
-                        <div className="w-full aspect-4/3 md:aspect-4/2.5 relative group overflow-hidden">
-                            {data[2]?.image && <img src={data[2]?.image} className="w-full h-full object-cover rounded-xl  opacity-0
+                        <div className="w-full aspect-4/3 sm:aspect-4/2 relative group overflow-hidden">
+                            {data[2]?.image && <img src={data[2]?.image} className="w-full h-full object-cover rounded-xl opacity-100   md:opacity-0
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0 " />}
-                            <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-0 
+                            <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-100  md:opacity-0 
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0"></div>
                             <div className="absolute inset-0 flex flex-col items-start justify-center 
                px-5  md:px-10 py-5
               ">
 
-                                <h4 className="text-(--color-secondary) text-3xl font-my-font-regular group-hover:text-white">
+                                <h4 className="text-white   md:text-(--color-secondary) text-2xl md:text-3xl font-my-font-regular group-hover:text-white">
                                     {data[2]?.title}
                                 </h4>
 
-                                <p className="line-clamp-3 text-(--color-secondary)   group-hover:text-white">
+                                <p className="line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
                                     {data[2]?.short_description}
                                 </p>
 
-                                <Link href={`/${data[2]?.slug}`} className="group flex items-center font-my-font-semibold text-sm text-(--color-secondary) sm:text-base py-3  cursor-pointer group-hover:text-white">
+                                <Link href={`/${data[2]?.slug}`} className="group flex items-center font-my-font-semibold text-sm text-white md:text-(--color-secondary) sm:text-base py-3  cursor-pointer group-hover:text-white">
                                     <span className="mr-3">View More Journeys</span>
 
                                     <svg
@@ -170,7 +173,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                                     >
                                         <path
                                             d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
-                                            className="fill-black group-hover:fill-white transition-colors"
+                                            className="fill-white md:fill-black group-hover:fill-white transition-colors"
                                         />
                                     </svg>
                                 </Link>
@@ -178,26 +181,26 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                         </div>
 
                         {/* third image */}
-                        <div className="w-full aspect-4/3 md:aspect-4/2.5 relative group overflow-hidden">
-                            {data[3]?.image && <img src={data[3]?.image} className="w-full h-full object-cover rounded-xl  opacity-0
+                        <div className="w-full aspect-4/3 sm:aspect-4/2 relative group overflow-hidden">
+                            {data[3]?.image && <img src={data[3]?.image} className="w-full h-full object-cover rounded-xl opacity-100   md:opacity-0
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0 " />}
-                            <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-0 
+                            <div className="absolute bottom-0 left-0 right-0 h-full bg-black/50 to-transparent rounded-xl opacity-100  md:opacity-0 
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0"></div>
                             <div className="absolute inset-0 flex flex-col items-start justify-center 
                px-5  md:px-10 py-5
               ">
 
-                                <h4 className="text-(--color-secondary) text-3xl font-my-font-regular group-hover:text-white">
+                                <h4 className="text-white   md:text-(--color-secondary) text-2xl md:text-3xl font-my-font-regular group-hover:text-white">
                                     {data[3]?.title}
                                 </h4>
 
-                                <p className="line-clamp-3 text-(--color-secondary)   group-hover:text-white">
+                                <p className="line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
                                     {data[3]?.short_description}
                                 </p>
 
-                                <Link href={`/${data[3]?.slug}`} className="group flex items-center font-my-font-semibold text-sm text-(--color-secondary) sm:text-base py-3  cursor-pointer group-hover:text-white">
+                                <Link href={`/${data[3]?.slug}`} className="group flex items-center font-my-font-semibold text-sm text-white   md:text-(--color-secondary) sm:text-base py-3  cursor-pointer group-hover:text-white">
                                     <span className="mr-3">View More Journeys</span>
 
                                     <svg
@@ -209,7 +212,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                                     >
                                         <path
                                             d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
-                                            className="fill-black group-hover:fill-white transition-colors"
+                                            className="fill-white md:fill-black group-hover:fill-white transition-colors"
                                         />
                                     </svg>
                                 </Link>

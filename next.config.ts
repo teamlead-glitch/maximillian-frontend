@@ -1,11 +1,16 @@
 import type { NextConfig } from "next";
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URI || "";
+const hostname = new URL(apiUrl).hostname;
+
 const nextConfig: NextConfig = {
-  /* config options here */
-   images: {
-    domains: [ "maximillianholidays.pbsmokeup.in",
-      "staging.maximillianholidays.pbsmokeup.in",
-    "steelblue-cheetah-101023.hostingersite.com"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: hostname,
+      },
+    ],
   },
 };
 
