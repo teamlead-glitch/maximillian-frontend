@@ -4,6 +4,9 @@ import { PAGE_SLUGS } from "@/constants/pageSlugs";
 import { fetchPageBySlug } from "@/lib/page-api";
 import Allstyle from "@/components/commonstructure/Allstyle";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const slug = PAGE_SLUGS.HOME;
 
 export const generateMetadata = async () => {

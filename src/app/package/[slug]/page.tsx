@@ -6,6 +6,8 @@ import { API_CONFIG } from "@/constants/config";
 import { PackageResponse } from "@/types/PackageDetailsType";
 import Details from "@/components/packagedetails/Details";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 type PageProps = {
   params: Promise<{

@@ -2,6 +2,10 @@ import { generateSeoMetadata } from "@/lib/seo";
 import DynamicPageClient from "./DynamicPageClient";
 import { fetchPageBySlug } from "@/lib/page-api";
 import NotFound from "@/app/not-found";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const generateMetadata = async ({
   params,
 }: {

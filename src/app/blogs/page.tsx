@@ -4,6 +4,9 @@ import { fetchPageBySlug } from "@/lib/page-api";
 import { generateSeoMetadata } from "@/lib/seo";
 import BlogsList from "@/components/blogs/BlogsList";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const slug = PAGE_SLUGS.BLOGS;
 
 export const generateMetadata = async () => {

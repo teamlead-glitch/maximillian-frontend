@@ -5,6 +5,9 @@ import { PAGE_SLUGS } from "@/constants/pageSlugs";
 import { fetchPageBySlug } from "@/lib/page-api";
 import Packagedetails from "@/components/packagedetails/Details";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 
 const slug = PAGE_SLUGS.PACKAGE;
 

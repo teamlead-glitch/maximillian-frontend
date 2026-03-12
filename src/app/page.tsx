@@ -5,6 +5,9 @@ import { fetchPageBySlug } from "@/lib/page-api";
 import { PageResponse } from "@/types/pagesTypes";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const slug = PAGE_SLUGS.HOME;
 
 export const generateMetadata = async () => {

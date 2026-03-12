@@ -4,6 +4,8 @@ import { fetchRegionBySlug } from "@/lib/server-fetchs";
 import { mapSeoToMetadata } from "@/lib/seo-mapper";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 type PageProps = {
     params: Promise<{

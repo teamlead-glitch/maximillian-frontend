@@ -6,6 +6,8 @@ import { API_CONFIG } from "@/constants/config";
 import { BlogDetailType } from "@/types/blogTypes";
 import Blogdetails from "@/components/blogs/BlogDetails";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 type PageProps = {
   params: Promise<{
