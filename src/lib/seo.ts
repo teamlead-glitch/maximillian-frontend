@@ -5,7 +5,7 @@ export async function generateSeoMetadata(
   slug: string
 ): Promise<Metadata> {
   const page = await fetchPageBySlug(slug);
-  const seo = page?.seo;
+  const seo = page?.seoDetail;
 
   if (!seo) {
     console.log('no seo info found set deault')

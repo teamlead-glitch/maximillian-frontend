@@ -11,7 +11,7 @@ export interface PageResponse {
   banner_mob_image: string | null;
   web_banner: string;
   mobile_banner: string;
-  seo: Seo;
+  seoDetail: Seo;
   faqs: any[];
   created_at: string;
   updated_at: string;
