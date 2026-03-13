@@ -33,7 +33,7 @@ export default function ExperienceTour() {
         fetchtaggroups();
     }, []);
 
-    const url = ['experience-journeys','specialty-tours'];
+    const url = ['experience-journeys', 'specialty-tours'];
     // const chunkArray = <T,>(array: T[], size: number): T[][] => {
     //   const result: T[][] = [];
     //   for (let i = 0; i < array.length; i += 3) {
@@ -72,7 +72,7 @@ export default function ExperienceTour() {
                                         {chunkArray(group.tags, 2).map((row, rowIndex) => (
                                             <div
                                                 key={rowIndex}
-                                                className="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10"
+                                                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
                                             >
                                                 {row.map((item) => (
                                                     <TagCard key={item.id} tag={item} />

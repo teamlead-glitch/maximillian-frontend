@@ -15,13 +15,12 @@ function DaywiseCard({ day }: DaywiseCardProps) {
 
   return (
     <>
-      <div className="w-full flex flex-col md:flex-row justify-between">
+      <div className="w-full flex flex-col md:flex-row justify-between items-center">
 
         {/* Content Section */}
         <div
-          className={`w-full ${
-            hasImage ? "md:w-3/5 pr-4" : "md:w-full"
-          } mb-4 md:mb-0 flex flex-col gap-4`}
+          className={`w-full ${hasImage ? "md:w-3/5 pr-4" : "md:w-full"
+            } mb-4 md:mb-0 flex flex-col gap-4`}
         >
           <h5 className="text-(--color-secondary) text-small">
             Day {days}

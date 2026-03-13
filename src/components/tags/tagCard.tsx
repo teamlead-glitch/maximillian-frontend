@@ -9,7 +9,7 @@ interface Props {
 export default function TagCard({ tag }: Props) {
 
   return (
-    <Link href={`/tag/${tag.short_slug}`} className="group block w-full sm:w-1/2 py-2  md:py-3">
+    <Link href={`/tag/${tag.short_slug}`} className="group block w-full  py-2  md:py-3 pr-0 md:pr-5">
       <div className=" pb-3 md:pb-5">
         <img src={tag.icon} alt={tag.title} className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]" />
       </div>

@@ -12,6 +12,10 @@
   --font-dm-serif: "DM Serif Display", sans-serif;
 }
 
+
+
+
+
 @theme inline {
   --color-black: #000000;
   --color-white: #ffffff;
@@ -253,4 +257,19 @@ body {
 
 .react-datepicker__input-container {
   width: 100%;
+}
+
+/* pagination dots */
+.insights-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #cbd5e1;
+  /* inactive color */
+  opacity: 1;
+}
+
+/* active dot */
+.insights-pagination .swiper-pagination-bullet-active {
+  background-color: #000;
+  /* active color */
 }

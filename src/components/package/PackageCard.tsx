@@ -13,7 +13,7 @@ export default function PackageCard({ details }: { details: PackageItem }) {
             <div className="rounded-md w-full aspect-square relative overflow-hidden">
                 <Link href={`/${details.slug}`}>
                     <Image fill src={details.image_path} alt="" className="rounded-md w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                    <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
                     <div className="absolute bottom-0 left-0 right-0 p-4">
                         <p className="text-white text-lg font-my-font-semibold text-center">{details.days} Days</p>
                     </div>
