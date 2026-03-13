@@ -24,11 +24,11 @@ export default function Blogs() { // ✅ renamed component
   return (
     <>
     {/* ✅ JSON-LD SCHEMA (SERVER RENDERED) */}
-      {page?.seo?.schema_markup && (
+      {page?.seoDetail?.schema_markup && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: page.seo.schema_markup,
+            __html: page.seoDetail.schema_markup,
           }}
         />
       )}
