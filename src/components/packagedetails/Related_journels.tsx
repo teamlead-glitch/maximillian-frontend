@@ -21,7 +21,7 @@ function Related_journels({ region_slug,tour_id }: props) {
     setLoading(true);
 
     const res = await apiService.get<PackagesResponse>(
-      `/packages?type=region&slug=${region_slug}&take=4&skip=0`
+      `/related-packages?package_id=${tour_id}`
     );
 
     // remove current package
