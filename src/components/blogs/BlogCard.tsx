@@ -20,10 +20,13 @@ export default function BlogCard({
       {/* IMAGE */}
       <div
         className={`relative overflow-hidden rounded-lg ${variant === "large"
-            ? "aspect-[2/1]"
-            : "aspect-square"
+          ? "aspect-[2/1]"
+          : "aspect-square"
           }`}
       >
+
+
+
         {blog?.image_path && (
           <Link href={`/blogs/${blog.short_slug}`}>
             <Image
@@ -37,17 +40,17 @@ export default function BlogCard({
           </Link>
         )}
 
+        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
         <div className="absolute bottom-0 left-0 right-2 p-4 ">
-                                    <div className="absolute bottom-0 left-0 right-2 p-4 ">
-                                      {blog.estimated_time && (
+          {blog.estimated_time && (
 
-                                      
-                                        <p className="text-white text-sm md:text-lg  text-right">{blog.estimated_time??'-'} min read</p>
-                                        )}
-                                    </div>
-                                </div>
 
-        
+            <p className="text-white text-sm md:text-lg  text-right">{blog.estimated_time ?? '-'} min read</p>
+          )}
+        </div>
+
+
+
       </div>
 
       {/* CONTENT */}
@@ -62,10 +65,10 @@ export default function BlogCard({
 
 
         <TagListing
-  tags={blog.tags}
-  countries={blog.countries}
-  region={blog.region}
-/>
+          tags={blog.tags}
+          countries={blog.countries}
+          region={blog.region}
+        />
 
         {/* Tags */}
         {/* {(blog.tags?.length > 0 || blog.countries.length >0 || blog.region) && (

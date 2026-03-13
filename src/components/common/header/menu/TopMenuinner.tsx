@@ -99,7 +99,7 @@ export default function TopMenuinner({ regions, settings }: { regions: Record<st
        ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}
         ${lastScrollY > 50 || megaOpen
                         ? "bg-white/80 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]"
-                        : "bg-transparent"
+                        : "bg-white"
                     }`}
             >
                 <div className="max-w-[1600px] mx-auto flex justify-between py-3 md:py-5 px-3 md:px-10">
@@ -109,7 +109,7 @@ export default function TopMenuinner({ regions, settings }: { regions: Record<st
                         <a href="/"><img
                             src="/images/logo-black.svg"
                             alt="Company Logo"
-                            className="h-10 w-auto"
+                            className="h-11 md:h-12 lg:h-14 w-auto"
                         /></a>
 
 
@@ -126,7 +126,7 @@ export default function TopMenuinner({ regions, settings }: { regions: Record<st
                             </button>
 
                             <Link href={`/designyourtrip`}
-                                className="bg-white font-my-font-semibold text-(--color-secondary)
+                                className="bg-[#3A3F42] font-my-font-semibold text-white
               px-3 py-3 md:px-4 md:py-2 sm:block hidden rounded-full cursor-pointer
               text-xs md:text-base
               hover:bg-[#C43131] hover:text-white

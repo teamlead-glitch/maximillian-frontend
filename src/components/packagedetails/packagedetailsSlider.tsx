@@ -3,6 +3,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Gallery } from '@/types/PackageDetailsType';
 import Image from 'next/image';
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import { Fancybox } from "@fancyapps/ui";
+import { useEffect } from "react";
+
 import { useState } from 'react';
 import { TalktoUS_Errors, TalktoUS_types, TalktoUsEnquiryResponse } from '@/types/packagePopupTypes';
 import { toast, ToastContainer } from 'react-toastify';
@@ -16,6 +20,24 @@ interface PackageSliderprops {
 }
 
 function PackagedetailsSlider({ gallery, price_text, title, id }: PackageSliderprops) {
+
+
+
+    useEffect(() => {
+        Fancybox.bind("[data-fancybox='gallery']", {
+            Thumbs: false,
+            Toolbar: {
+                display: [
+                    "zoom",
+                    "close",
+                ],
+            },
+        });
+
+        return () => {
+            Fancybox.destroy();
+        };
+    }, []);
 
     const [talkOpen, setTalkOpen] = useState(false);
     //loader
@@ -55,6 +77,9 @@ function PackagedetailsSlider({ gallery, price_text, title, id }: PackageSliderp
     };
 
 
+
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
     /* -----------------------------------------------------------------------
           FORM VALIDATION (STRONG + CLEAN)
        ----------------------------------------------------------------------- */
@@ -75,9 +100,9 @@ function PackagedetailsSlider({ gallery, price_text, title, id }: PackageSliderp
             newErrors.phone = "Mobile number should contain only numbers";
         } else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
             newErrors.phone = "Enter a valid mobile number";
-        }else if (!/^\d{1,13}$/.test(formData.phone)) {
-    newErrors.phone = "Mobile number cannot exceed 13 digits";
-}
+        } else if (!/^\d{1,13}$/.test(formData.phone)) {
+            newErrors.phone = "Mobile number cannot exceed 13 digits";
+        }
 
 
         // Email validation
@@ -329,19 +354,51 @@ hover:before:translate-x-full
                                 key={index}
                                 className="!w-[280px] md:!w-[340px] lg:!w-[420px]"
                             >
-                                <div className="bg-white rounded-md overflow-hidden mt-20 group">
+                                <a
+                                    href={item.image_path}
+                                    data-fancybox="gallery"
+                                    className="block bg-white rounded-md overflow-hidden mt-20 group"
+                                >
                                     <div className="w-full h-72 overflow-hidden relative">
                                         <Image
                                             src={item.image_path}
                                             alt={`Gallery ${index}`}
                                             fill
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
                                     </div>
-                                </div>
+                                </a>
                             </SwiperSlide>
                         ))}
                     </Swiper>
+
+
+                    {selectedImage && (
+                        <div
+                            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+                            onClick={() => setSelectedImage(null)}
+                        >
+                            <div
+                                className="relative max-w-5xl w-full h-[80vh]"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                {/* Close Button */}
+                                <button
+                                    onClick={() => setSelectedImage(null)}
+                                    className="absolute -top-10 right-0 text-white text-3xl font-bold hover:text-gray-300 transition cursor-pointer"
+                                >
+                                    ✕
+                                </button>
+
+                                <Image
+                                    src={selectedImage}
+                                    alt="Popup Image"
+                                    fill
+                                    className="object-contain"
+                                />
+                            </div>
+                        </div>
+                    )}
                 </div>
             </section >
 

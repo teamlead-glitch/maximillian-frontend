@@ -106,7 +106,7 @@ export default function TopMenuHome({ regions, settings }: { regions: Record<str
               <img
                 src="/images/logo.svg"
                 alt="Company Logo"
-                className="h-10 w-auto"
+                className="h-11 md:h-12 lg:h-14 w-auto"
               />
             </a>
 
