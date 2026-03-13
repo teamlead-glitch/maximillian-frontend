@@ -10,8 +10,8 @@ export async function generateSeoMetadata(
   if (!seo) {
     console.log('no seo info found set deault')
     return {
-      title: "MT",
-      description: "MT .........",
+      title: "Festivon Tours",
+      description: "Plan your perfect holiday with Festivon Tours",
     };
   }
 

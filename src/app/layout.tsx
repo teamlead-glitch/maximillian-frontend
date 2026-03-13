@@ -13,8 +13,8 @@ import { Regions, Settings } from "@/types/commonTypes";
 import { taggroupResponse } from "@/types/taggroupTypes";
 
 export const metadata = {
-  title: "Maximillian Holidays",
-  description: "Maximillian Holidays",
+  title: "Festivon Tours",
+  description: "Plan your perfect holiday with Festivon Tours",
   icons: {
     icon: "/favicon.ico",
   },
