@@ -96,7 +96,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
 
 
 
-  {/* first image */}
+                        {/* first image */}
                         <div className="w-full aspect-4/3 sm:aspect-4/2 relative group overflow-hidden">
                             {data[1]?.image && <img src={data[1]?.image} className="w-full h-full object-cover rounded-xl opacity-100  md:opacity-0
                 transition-all duration-500

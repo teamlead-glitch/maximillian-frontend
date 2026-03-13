@@ -31,14 +31,14 @@ export default function TagListingForSignature({
   const hideTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-  const closeTooltip = () => setShowTooltip(false);
+    const closeTooltip = () => setShowTooltip(false);
 
-  window.addEventListener("scroll", closeTooltip, true);
+    window.addEventListener("scroll", closeTooltip, true);
 
-  return () => {
-    window.removeEventListener("scroll", closeTooltip, true);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("scroll", closeTooltip, true);
+    };
+  }, []);
 
   const items = [
     ...(region ? [{ ...region, type: "region" }] : []),

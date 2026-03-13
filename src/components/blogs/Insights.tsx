@@ -9,20 +9,20 @@ interface Props {
 export default function InsightCard({ blog }: Props) {
 
   return (
-    <div className="relative flex flex-col md:flex-row items-center gap-3 md:gap-10 xl:gap-20 py-15 px-5 md:p-20 xl:p-20 z-10">
+    <div className="relative flex flex-col md:flex-row items-center gap-3 md:gap-10 xl:gap-20 py-15 px-5  z-10">
       {/* BACKGROUND (70%) */}
       <div
         className="absolute inset-y-0 left-0 w-full md:w-[80%] bg-[#f7f3ef] rounded-none md:rounded-md z-0 " />
 
       {/* LEFT CONTENT */}
-      <div className="relative z-10 w-full md:w-1/2 pr-0 md:pr-5 py-0 md:py-0  xl:pr-20 ">
+      <div className="relative z-10 w-full md:w-1/2 pl-0 md:pl-10 xl:pl-15  ">
         <p className="tracking-wide  mb-4">{blog.category.title}</p>
 
         <h2 className="text-2xl font-my-font-semibold text-(--color-secondary) leading-snug mb-4 md:mb-6 line-clamp-2">
           {blog.title}
         </h2>
 
-        <p className="mb-5 max-w-md line-clamp-4">
+        <p className="mb-5  line-clamp-4">
           {blog.short_description}
         </p>
 
@@ -55,5 +55,9 @@ export default function InsightCard({ blog }: Props) {
         />
       </div>
     </div>
+
+
+
+
   );
 }

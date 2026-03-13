@@ -141,27 +141,29 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                         </div>
                     </div>
                     <hr className="border-gray-200 my-6  sm:mx-auto lg:my-8" />
-                    <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between w-full gap-5">
-                        <span className="text-base text-[#93989b]  text-body sm:text-center">Made by  <a href="https://phitany.com/" className="hover:underline">Phitany</a>
+                    <div className="flex flex-col-reverse md:flex-row items-center md:items-center justify-between w-full gap-5 mt-8 md:mt-16">
+
+                        <span className="text-base text-[#93989b] text-body">
+                            Made by <a href="https://phitany.com/" className="hover:underline">Phitany</a>
                         </span>
-                        <div className="div">
-                            <ul className="flex flex-wrap gap-4 mt-1">
-                                <li className="relative text-base text-[#93989b]  text-body sm:text-center pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+
+                        <div>
+                            <ul className="flex flex-wrap justify-center md:justify-start gap-4 mt-1">
+                                <li className="relative text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
                                     <Link href="/terms-and-conditions" className="hover:underline">Terms</Link>
                                 </li>
 
-                                <li className="relative text-base text-[#93989b]  text-body sm:text-center pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+                                <li className="relative text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
                                     <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
                                 </li>
 
-
-                                <li className="relative pr-3 text-base text-[#93989b]  text-body sm:text-center">
+                                <li className="relative pr-3 text-base text-[#93989b] text-body">
                                     <Link href="/health-and-safety-policy" className="hover:underline">Health and Safety Policy</Link>
                                 </li>
+                            </ul>
+                        </div>
 
-
-                            </ul></div>
-                        <div className="flex mt-4 sm:justify-center sm:mt-0">
+                        <div className="flex justify-center md:justify-end mt-4 md:mt-0">
                             <a target="_blank" href={settings.fb_url ?? '#'} className="text-body text-[#818c94] hover:text-heading">
                                 <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clipRule="evenodd" /></svg>
                                 <span className="sr-only">Facebook page</span>

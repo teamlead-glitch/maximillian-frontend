@@ -98,9 +98,9 @@ export default function Details({ details }: { details: PackageResponse }) {
             newErrors.phone = "Mobile number should contain only numbers";
         } else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
             newErrors.phone = "Enter a valid mobile number";
-        }else if (!/^\d{1,13}$/.test(formData.phone)) {
-    newErrors.phone = "Mobile number cannot exceed 13 digits";
-}
+        } else if (!/^\d{1,13}$/.test(formData.phone)) {
+            newErrors.phone = "Mobile number cannot exceed 13 digits";
+        }
 
 
         // Email validation
@@ -246,10 +246,10 @@ export default function Details({ details }: { details: PackageResponse }) {
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
 
-                             <TagListing
-                              
-                              countries={countries}
-                             
+                            <TagListing
+
+                                countries={countries}
+
                             />
 
                             {/* <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1">
@@ -355,19 +355,19 @@ before:-translate-y-1/2 after:-translate-y-1/2">
                     {details?.itinerary?.map((day) => (
                         <DaywiseCard key={day.id} day={day} />
                     ))}
-                   {itinerary_document && (
-  <div className="w-full text-center flex justify-center py-5 md:py-10">
-    <button
-      onClick={() => setOpen(true)}
-      className="group flex items-center font-my-font-semibold text-sm text-black sm:text-base justify-center py-0 md:py-4 mt-3 cursor-pointer"
-    >
-      <span className="mr-3 font-my-font-semibold text-(--color-secondary)">
-        Download This itinerary as PDF
-      </span>
-      <img src="/images/download.svg" alt="download" />
-    </button>
-  </div>
-)}
+                    {itinerary_document && (
+                        <div className="w-full text-center flex justify-center py-5 md:py-10">
+                            <button
+                                onClick={() => setOpen(true)}
+                                className="group flex items-center font-my-font-semibold text-sm text-black sm:text-base justify-center py-0 md:py-4 mt-3 cursor-pointer"
+                            >
+                                <span className="mr-3 font-my-font-semibold text-(--color-secondary)">
+                                    Download This itinerary as PDF
+                                </span>
+                                <img src="/images/download.svg" alt="download" />
+                            </button>
+                        </div>
+                    )}
 
 
 
@@ -568,7 +568,7 @@ hover:before:translate-x-full
             </section>
 
             {/*related journels component  */}
-            <Related_journels region_slug={region_slug} tour_id={tour_id}/>
+            <Related_journels region_slug={region_slug} tour_id={tour_id} />
 
 
 

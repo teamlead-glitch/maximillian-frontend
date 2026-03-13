@@ -1,6 +1,6 @@
 "use client";
 import LogoCarousel from "@/components/home/LogoCarousel";
-
+import Image from "next/image";
 
 
 
@@ -90,7 +90,21 @@ px-4 sm:px-0 text-center">
             </section>
 
 
-            <section className="relative pt-20 lg:pt-40 overflow-hidden bg-[#F5F2EE]  ">
+            <section className="relative pt-20 lg:pt-40  bg-[#F5F2EE]  ">
+                <div className="absolute 
+  bottom-0 
+  left-0 sm:left-3 md:left-12 lg:left-15 
+  -translate-y-[-120px] sm:-translate-y-[-120px] md:-translate-y-[-140px] lg:-translate-y-[-190px] 
+  z-10"
+                >
+                    <Image
+                        src="/images/festivon-icon.svg"
+                        alt="Festivon Icon"
+                        width={340}
+                        height={340}
+                        className="w-[210px] sm:w-[200px] md:w-[260px] lg:w-[340px] h-auto"
+                    />
+                </div>
                 <div className="max-w-[1200px] flex mx-auto  md:px-15 px-5  ">
                     <div className="flex flex-col  md:flex-row w-full">
                         <div className="w-full md:w-1/2">
