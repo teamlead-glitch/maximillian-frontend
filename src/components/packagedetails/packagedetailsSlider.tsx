@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -22,22 +23,33 @@ interface PackageSliderprops {
 function PackagedetailsSlider({ gallery, price_text, title, id }: PackageSliderprops) {
 
 
-
     useEffect(() => {
-        Fancybox.bind("[data-fancybox='gallery']", {
-            Thumbs: false,
-            Toolbar: {
-                display: [
-                    "zoom",
-                    "close",
-                ],
-            },
-        });
+  const options = {
+    Toolbar: {
+      display: ["zoom", "close"],
+    },
+  } as any;
 
-        return () => {
-            Fancybox.destroy();
-        };
-    }, []);
+  Fancybox.bind("[data-fancybox='gallery']", options);
+
+  return () => Fancybox.unbind("[data-fancybox='gallery']");
+}, []);
+
+    // useEffect(() => {
+    //     Fancybox.bind("[data-fancybox='gallery']", {
+    //         Thumbs: false,
+    //         Toolbar: {
+    //             display: [
+    //                 "zoom",
+    //                 "close",
+    //             ],
+    //         },
+    //     });
+
+    //     return () => {
+    //         Fancybox.destroy();
+    //     };
+    // }, []);
 
     const [talkOpen, setTalkOpen] = useState(false);
     //loader
