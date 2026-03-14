@@ -18,8 +18,8 @@ function Faq({ faq = [], faq_image }: Faqprops) {
   const activeFaqs = faq
     .filter((item) => item.is_active === 1)
     .sort((a, b) => a.sort_order - b.sort_order);
-    
-    // ✅ If no FAQs, don't render the section
+
+  // ✅ If no FAQs, don't render the section
   if (activeFaqs.length === 0) {
     return null;
   }
@@ -40,19 +40,19 @@ function Faq({ faq = [], faq_image }: Faqprops) {
           </div>
         </div>
 
-        <div className="w-full flex flex-col md:flex-row justify-center mt-0 md:mt-10">
+        <div className="w-full flex flex-col md:flex-row justify-center items-center mt-0 md:mt-10">
 
           {/* FAQ List */}
           <div className="w-full md:w-2/3 pr-0 md:pr-15 mb-5 md:mb-0">
             <div className="max-w-2xl mx-auto space-y-4">
 
               {activeFaqs.map((item, index) => (
-                <div key={item.id} className="border-b overflow-hidden">
+                <div key={item.id} className="border-b border-black/20 overflow-hidden">
 
                   {/* Question */}
                   <button
                     onClick={() => toggle(index)}
-                    className="w-full flex justify-between items-center p-4 cursor-pointer"
+                    className="w-full flex justify-between items-center py-4 cursor-pointer"
                   >
                     <span className="text-left text-(--color-secondary) font-my-font-semibold">
                       {item.question}
@@ -67,9 +67,8 @@ function Faq({ faq = [], faq_image }: Faqprops) {
 
                   {/* Answer (HTML from backend) */}
                   <div
-                    className={`overflow-hidden transition-all duration-500 ${
-                      openIndex === index ? "max-h-40 p-4" : "max-h-0"
-                    }`}
+                    className={`overflow-hidden transition-all duration-500 ${openIndex === index ? "max-h-40 py-4" : "max-h-0"
+                      }`}
                   >
                     <div
                       className="text-gray-600"

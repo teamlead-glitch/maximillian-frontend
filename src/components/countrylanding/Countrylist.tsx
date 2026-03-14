@@ -114,7 +114,7 @@ px-4 sm:px-0 text-center">
 
 
             </section >
-            <section id="overview" className="relative  py-10 md:pt-10 md:pb-10   xl:pt-15 xl:pb-15 px-5 overflow-hidden bg-white scroll-mt-16">
+            <section id="overview" className="relative  py-10 md:pt-20 md:pb-10   xl:pt-30 xl:pb-15 px-5 overflow-hidden bg-white scroll-mt-16">
                 <div className="max-w-[1300px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5">
                         <div className="pr-0 md:pr-15 xl:pr-80">

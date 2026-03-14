@@ -246,7 +246,7 @@ export default function AddressForm() {
                                 <div className="w-px h-15 bg-gray-300 hidden sm:block"></div>
                                 <div className="w-full sm:w-1/3 pl-0 sm:pl-10 mt-5  sm:mt-0">   <p>Every enquiry is personally reviewed by our travel design team.</p></div>
                             </div>
-                            <div className="w-full  pr-10 md:pr-10  lg:pr-30 xl:pr-60 mt-10 sm:mt-20">
+                            <div className="w-full  pr-0 md:pr-10  lg:pr-30 xl:pr-60 mt-10 sm:mt-20">
                                 <form className="w-full max-w-3xl space-y-6" onSubmit={handleSubmit}>
 
                                     {/* Row 1 */}
@@ -378,7 +378,7 @@ export default function AddressForm() {
                                             onChange={handleChange}
                                             value={formData.message}
                                             id="message"
-                                            rows={3}
+                                            rows={2}
                                             placeholder="Your message"
                                             className="w-full bg-transparent border border-gray-300 text-(--color-secondary) placeholder:text-(--color-secondary) rounded-xl px-4 py-4 focus:outline-none focus:border-gray-500 resize-none"
                                         />

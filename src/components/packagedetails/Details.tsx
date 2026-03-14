@@ -216,7 +216,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                         </p>
                     </div></div>
                 <div className="max-w-[1300px] mx-auto pt-5 lg:pt-16">
-                    <div className="flex flex-wrap align-center  gap-y-2 gap-x-3 md:gap-8 xl:gap-12">
+                    <div className="flex flex-wrap align-center justify-center  gap-y-2 gap-x-3 md:gap-8 xl:gap-12">
                         {taggroups.map((group) => (
                             <div key={group.group_id} className="pb-2 md:pb-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">

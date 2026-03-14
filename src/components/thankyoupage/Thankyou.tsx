@@ -9,11 +9,11 @@ export default function Thankyou() {
 
             <section className="relative pt-40 pb-20 overflow-hidden bg-[#F5F2EE] z-10">
                 <div className="max-w-[1300px] flex mx-auto">
-                    <div className="flex flex-col mx-auto justify-center w-xl px-5">
+                    <div className="flex flex-col mx-auto justify-center w-2xl px-5">
                         <h1 className="font-my-font-regular text-break text-center  text-4xl xl:text-5xl text-(--color-secondary) ">
                             Thanks,<br /> We got your enquiry.
                         </h1>
-                        <p className="mt-5 ">
+                        <p className="mt-5 text-center">
                             Every enquiry is personally reviewed by our team, and we’ll get back to you shortly with the information or guidance you need. If you’re planning a journey, we’ll help shape it around your preferences and interests. If you have questions, we’ll make sure you receive the right answers and support.
                         </p>
                     </div >
