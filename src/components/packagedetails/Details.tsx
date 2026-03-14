@@ -480,29 +480,19 @@ hover:before:translate-x-full
 
                     </div>
                     <div className="w-full lg:w-3/4 md:mt-5 mt-2">
-                        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-10">
-                            <div className="w-full pr-0 md:pr-5"> <h3 className=" font-my-font-semibold text-xl text-(--color-secondary) ">Accommodation</h3>
-                                <p>Three star or similar lodging / stay for the entire duration of the trip.</p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-10">
+                            
+                            {includes.map((item) => (
+                            <div key={item.id} className="w-full pr-0 md:pr-5"> <h3 className=" font-my-font-semibold text-xl text-(--color-secondary) ">{item.title}</h3>
+                                <p>{item.short_description}</p>
                             </div>
-                            <div className="w-full pr-0 md:pr-5"> <h3 className=" font-my-font-semibold text-xl text-(--color-secondary) ">Airport Transfers</h3>
-                                <p>Pickup and drop-off between the airport/railway station and your hotel.</p>
-                            </div>
-                            <div className="w-full pr-0 md:pr-5"> <h3 className=" font-my-font-semibold text-xl text-(--color-secondary) ">Transportation</h3>
-                                <p>Intercity / inter destination flights, trains, or buses between destinations.</p>
-                            </div>
-                            <div className="w-full pr-0 md:pr-5"> <h3 className=" font-my-font-semibold text-xl text-(--color-secondary) ">Sightseeing & Activities</h3>
-                                <p>Pre-planned tours to major attractions, including a vehicle and a local guide.</p>
-                            </div>
-                            <div className="w-full pr-0 md:pr-5"> <h3 className=" font-my-font-semibold text-xl text-(--color-secondary) ">Support Services</h3>  <p> Assistance from a tour manager or local representative and 24/7 emergency support.</p>
-                            </div>
-                            <div className="w-full pr-0 md:pr-5"> <h3 className=" font-my-font-semibold text-xl text-(--color-secondary) ">Comprehensive Meal Plan</h3>
-                                <p>Breakfast and one major meal (Lunch or Dinner) included in the duration of the trip.</p>
-                            </div>
-                        </div> */}
+                             ))}
+                           
+                        </div>
 
                         {/* includes */}
 
-                        <ul className="space-y-2">
+                        {/* <ul className="space-y-2">
                             {includes.map((item) => (
                                 <li key={item.id} className="flex items-start gap-2">
                                     <Circle className="w-2.5 h-2.5 fill-black mt-2" />
@@ -512,7 +502,7 @@ hover:before:translate-x-full
                                 </li>
                             ))}
 
-                        </ul>
+                        </ul> */}
 
                     </div>
 
@@ -531,7 +521,7 @@ hover:before:translate-x-full
                         </div>
                         {/* excludes */}
 
-                        <ul className="space-y-2">
+                        {/* <ul className="space-y-2">
                             {excludes?.length > 0 &&
                                 excludes.map((item) => (
                                     <li key={item.id} className="flex items-start gap-2">
@@ -541,28 +531,16 @@ hover:before:translate-x-full
                                         </span>
                                     </li>
                                 ))}
-                        </ul>
-                        {/* <div className="w-full flex">
-                            <div className="w-full md:w-1/4"><h5 className="text-base font-bold text-(--color-secondary)">Documents.</h5>  </div>
-                            <div className="w-full md:w-3/4"><p>Visa fees, passport processing, and travel insurance (unless specified).</p></div>
+                        </ul> */}
+
+                        {excludes?.length > 0 &&
+                                excludes.map((item) => (
+                        <div key={item.id} className="w-full flex">
+                            <div className="w-full md:w-1/4"><h5 className="text-base font-bold text-(--color-secondary)">{item.title}</h5>  </div>
+                            <div className="w-full md:w-3/4"><p>{item.short_description}</p></div>
                         </div>
-                        <div className="w-full flex">
-                            <div className="w-full md:w-1/4"><h5 className="text-base font-bold text-(--color-secondary)">Entry Fees.</h5></div>
-                            <div className="w-full md:w-3/4"><p>Tickets for monuments, museums, theme parks, or optional "add-on" safaris.</p></div>
-                        </div>
-                        <div className="w-full flex">
-                            <div className="w-full md:w-1/4"><h5 className="text-base font-bold text-(--color-secondary)">Personal..</h5></div>
-                            <div className="w-full md:w-3/4"><p>Laundry, telephone calls, mini-bar usage, and tips/gratuities for drivers/guides.</p></div>
-                        </div>
-                        <div className="w-full flex">
-                            <div className="w-full md:w-1/4"><h5 className="text-base font-bold text-(--color-secondary)">Flexibility.</h5></div>
-                            <div className="w-full md:w-3/4">
-                                <p>Early check-in or late check-out charges at hotels.</p></div>
-                        </div>
-                        <div className="w-full flex">
-                            <div className="w-full md:w-1/4"><h5 className="text-base font-bold text-(--color-secondary)">Transport.</h5></div>
-                            <div className="w-full md:w-3/4"><p>Airfare to the starting city (for domestic tours) and excess baggage fees.</p></div>
-                        </div> */}
+                        ))}
+                        
                     </div>
                 </div>
             </section>
