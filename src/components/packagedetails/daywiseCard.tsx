@@ -59,7 +59,7 @@ function DaywiseCard({ day }: DaywiseCardProps) {
 
         {/* Image Section */}
         {hasImage && (
-          <div className="w-full md:w-2/5">
+          <div className="w-full md:w-2/5 mt-5 md:mt-0">
             <div className="aspect-4/3 relative">
               <Image
                 src={day.image as string}

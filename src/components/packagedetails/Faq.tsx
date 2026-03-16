@@ -28,7 +28,7 @@ function Faq({ faq = [], faq_image }: Faqprops) {
       <div className="max-w-[1000px] mx-auto">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-center items-start md:items-center w-full gap-4 md:gap-8 py-0 md:py-5 px-5">
+        <div className="flex flex-col md:flex-row justify-center items-start md:items-center w-full gap-4 md:gap-8 py-0 md:py-5 px-0 md:px-5">
           <div>
             <h3 className="font-my-font-regular text-3xl md:text-4xl text-(--color-secondary)">
               FAQ’s
@@ -43,8 +43,8 @@ function Faq({ faq = [], faq_image }: Faqprops) {
         <div className="w-full flex flex-col md:flex-row justify-center items-center mt-0 md:mt-10">
 
           {/* FAQ List */}
-          <div className="w-full md:w-2/3 pr-0 md:pr-15 mb-5 md:mb-0">
-            <div className="max-w-2xl mx-auto space-y-4">
+          <div className="w-full md:w-2/3 pr-0 md:pr-15 mb-10 md:mb-0">
+            <div className="max-w-2xl mx-auto ">
 
               {activeFaqs.map((item, index) => (
                 <div key={item.id} className="border-b border-black/20 overflow-hidden">
@@ -52,7 +52,7 @@ function Faq({ faq = [], faq_image }: Faqprops) {
                   {/* Question */}
                   <button
                     onClick={() => toggle(index)}
-                    className="w-full flex justify-between items-center py-4 cursor-pointer"
+                    className="w-full flex justify-between items-center py-5 md:py-8 cursor-pointer"
                   >
                     <span className="text-left text-(--color-secondary) font-my-font-semibold">
                       {item.question}
