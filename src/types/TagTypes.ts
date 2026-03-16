@@ -6,5 +6,5 @@ export interface tagResponse {
   short_slug:string;
   short_description: string | null;
   is_active: number;
-  seo_detail?: Seo;
+  seoDetail?: Seo;
 }

@@ -20,8 +20,9 @@ export async function generateMetadata({
 
     const { slug } = await params;
     const region_pages = await fetchCountryBySlug(slug);
+    //console.log(region_pages,'region_pages++')
 
-    return mapSeoToMetadata(region_pages?.seo_detail ?? null);
+    return mapSeoToMetadata(region_pages?.seoDetail ?? null);
 }
 
 
@@ -40,11 +41,11 @@ export default async function Country({ params }: PageProps) {
     return (
         <>
             {/* ✅ JSON-LD SCHEMA (SERVER RENDERED) */}
-            {page?.seo_detail?.schema_markup && (
+            {page?.seoDetail?.schema_markup && (
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
-                        __html: page.seo_detail.schema_markup,
+                        __html: page.seoDetail.schema_markup,
                     }}
                 />
             )}

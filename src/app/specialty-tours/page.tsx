@@ -1,8 +1,9 @@
 import Experiencespeciality from "@/components/experiencetour/Experiencespeciality";
-import { generateSeoMetadata } from "@/lib/seo";
+import { fetchTagGroupeBySlug } from "@/lib/server-fetchs";
 import { PAGE_SLUGS } from "@/constants/pageSlugs";
-import { fetchPageBySlug } from "@/lib/page-api";
 // import LogoCarousel from "@/components/home/LogoCarousel"
+import { mapSeoToMetadata } from "@/lib/seo-mapper";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -11,12 +12,18 @@ export const revalidate = 0;
 
 const slug = PAGE_SLUGS.EXPERIENCE;
 
-export const generateMetadata = async () => {
-    return generateSeoMetadata(slug);
-};
+/* ---------- SEO (SERVER) ---------- */
+export async function generateMetadata(): Promise<Metadata> {
+
+    const pageInfo = await fetchTagGroupeBySlug(slug);
+    //console.log(region_pages,'region_pages++')
+
+    return mapSeoToMetadata(pageInfo?.seoDetail ?? null);
+}
 
 export default async function ExperiencePage() {
-    const page = await fetchPageBySlug(slug);
+    const page = await fetchTagGroupeBySlug(slug);
+    //console.log(page,'page++')
 
     return (
         <>

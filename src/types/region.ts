@@ -14,5 +14,5 @@ export interface Region {
   menu_title: string;
   what_makes_us_exceptional: string;
   faqs: any[]; // change to proper type if FAQ structure is known
-  seo_detail: Seo;
+  seoDetail: Seo;
 }
