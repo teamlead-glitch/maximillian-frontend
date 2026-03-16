@@ -150,7 +150,7 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                         <div>
                             <ul className="flex flex-wrap justify-center md:justify-start gap-4 mt-1">
                                 <li className="relative text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
-                                    <Link href="/terms-and-conditions" className="hover:underline">Terms</Link>
+                                    <Link href="/terms-and-conditions" className="hover:underline">Terms and Conditions</Link>
                                 </li>
 
                                 <li className="relative text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
