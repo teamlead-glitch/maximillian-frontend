@@ -24,16 +24,16 @@ function PackagedetailsSlider({ gallery, price_text, title, id }: PackageSliderp
 
 
     useEffect(() => {
-  const options = {
-    Toolbar: {
-      display: ["zoom", "close"],
-    },
-  } as any;
+        const options = {
+            Toolbar: {
+                display: ["zoom", "close"],
+            },
+        } as any;
 
-  Fancybox.bind("[data-fancybox='gallery']", options);
+        Fancybox.bind("[data-fancybox='gallery']", options);
 
-  return () => Fancybox.unbind("[data-fancybox='gallery']");
-}, []);
+        return () => Fancybox.unbind("[data-fancybox='gallery']");
+    }, []);
 
     // useEffect(() => {
     //     Fancybox.bind("[data-fancybox='gallery']", {
@@ -205,7 +205,7 @@ function PackagedetailsSlider({ gallery, price_text, title, id }: PackageSliderp
                 <div className="flex flex-col md:flex-row justify-center items-start md:items-center w-full gap-4 md:gap-8 px-5">
                     <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right w-[200px]">{price_text} </h3></div>
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                    <div className="w-full md:w-[200px]"><p>{title} is a <span className="font-bold">customisable FIT journey</span>. Pricing varies based on travel dates, hotel category, and personal preferences.
+                    <div className="w-3/4 md:w-[400px] px-0 md:px-5"><p>{title} is a <span className="font-bold">customisable FIT journey</span>. Pricing varies based on travel dates, hotel category, and personal preferences.
                     </p></div>
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                     <div className="inline-block">
@@ -351,37 +351,64 @@ hover:before:translate-x-full
                 {/* slide */}
 
 
-                <div className="w-full ">
+                <div className="w-full mt-20 relative">
                     <Swiper
-                        modules={[Autoplay]}
+                        modules={[Autoplay, Navigation]}
                         slidesPerView="auto"
                         centeredSlides
-                        spaceBetween={20}
-                        loop
-                        autoplay={{ delay: 2500, disableOnInteraction: false }}
-                        className="w-full overflow-visible"
+                        spaceBetween={30}
+                        loop={true}
+                        speed={3000}
+                        autoplay={{
+                            delay: 0,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: true,
+                        }}
+                        navigation={{
+                            prevEl: ".featured-prev",
+                            nextEl: ".featured-next",
+                        }}
+
+
+
+                        allowTouchMove={true}
+                        className="w-full"
                     >
                         {gallery?.map((item, index) => (
                             <SwiperSlide
                                 key={index}
-                                className="!w-[280px] md:!w-[340px] lg:!w-[420px]"
+                                className="!w-[260px] md:!w-[280px] lg:!w-[300px]"
                             >
                                 <a
                                     href={item.image_path}
                                     data-fancybox="gallery"
                                     className="block bg-white rounded-md overflow-hidden mt-20 group"
                                 >
-                                    <div className="w-full h-72 overflow-hidden relative">
+                                    <div className="w-full aspect-4/3 overflow-hidden">
                                         <Image
                                             src={item.image_path}
                                             alt={`Gallery ${index}`}
                                             fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                            className="w-full h-full object-cover rounded-md transition-transform duration-500 "
                                         />
                                     </div>
                                 </a>
                             </SwiperSlide>
                         ))}
+
+
+                        <button className="featured-prev absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition hover:bg-white/30 hover:backdrop-blur-lg hover:text-white ">
+                            <svg width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M15 18L9 12L15 6" stroke="#000" strokeWidth="2" fill="none" />
+                            </svg>
+                        </button>
+
+                        {/* Right Arrow */}
+                        <button className="featured-next absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition hover:bg-white/30 hover:backdrop-blur-lg hover:text-white ">
+                            <svg width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M9 18L15 12L9 6" stroke="#000" strokeWidth="2" fill="none" />
+                            </svg>
+                        </button>
                     </Swiper>
 
 

@@ -216,7 +216,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                         </p>
                     </div></div>
                 <div className="max-w-[1300px] mx-auto pt-5 lg:pt-16">
-                    <div className="flex flex-wrap align-center justify-center  gap-y-2 gap-x-3 md:gap-8 xl:gap-12">
+                    <div className="flex flex-wrap align-center justify-center  gap-y-2 gap-x-3 md:gap-8 xl:gap-5">
                         {taggroups.map((group) => (
                             <div key={group.group_id} className="pb-2 md:pb-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
@@ -313,30 +313,39 @@ export default function Details({ details }: { details: PackageResponse }) {
                     </div>
                 </div>
             </section >
-            <section className="relative  py-5 md:py-10 px-5 overflow-hidden bg-white">
-                <div className="max-w-[1000px] mx-auto w-full relative  ">
-                    <div className="w-full flex md:flex-row flex-col  align-center justify-center">
-                        <div className="w-full md:w-2/4 mb-10 md:mb-0">
-                            <div className="aspect-square shadow-2xl relative">
-                                <Image src={journey_image} fill alt="" className="w-full h-full object-cover rounded-lg" /></div>
+            <section className="relative py-5 md:py-10 px-5  bg-white">
+                <div className="max-w-[1000px] mx-auto w-full relative">
+                    <div className="w-full flex md:flex-row flex-col ">
+
+                        {/* Image Section */}
+                        <div className="w-full md:w-2/4 mb-10 md:mb-0 ">
+                            <div className="sticky top-20">
+                                <div className="relative aspect-3/4 shadow-2xl ">
+                                    <Image
+                                        src={journey_image}
+                                        fill
+                                        alt=""
+                                        className="w-full object-cover rounded-lg"
+                                    />
+                                </div>
+                            </div>
                         </div>
+
+                        {/* Content Section */}
                         <div className="w-full md:w-3/4 pl-0 md:pl-20 flex align-center justify-center flex-col">
                             <h2 className="font-my-font-regular text-break xl:text-4xl text-3xl text-(--color-secondary) mb-10
-relative pb-2
-before:content-[''] before:absolute before:-bottom-3 before:left-0 
-before:w-16 before:h-[2px] before:bg-gray-300">
+          relative pb-2
+          before:content-[''] before:absolute before:-bottom-3 before:left-0 
+          before:w-16 before:h-[2px] before:bg-gray-300">
                                 Journey overview
                             </h2>
-                            <p className="content" dangerouslySetInnerHTML={{ __html: journey_overview }}>
 
-                            </p>
+                            <p className="content" dangerouslySetInnerHTML={{ __html: journey_overview }}></p>
 
-                            {/*  <h3 className="font-my-font-regular text-break xl:text-3xl text-2xl text-(--color-secondary) mb-5">The Journey Flow
-                            </h3> */}
-                            <p className="content" dangerouslySetInnerHTML={{ __html: journey_flow }}>
+                            <p className="content" dangerouslySetInnerHTML={{ __html: journey_flow }}></p>
 
-                            </p>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -344,8 +353,8 @@ before:w-16 before:h-[2px] before:bg-gray-300">
                 <div className="max-w-[900px] mx-auto w-full relative  ">
                     <div className="w-full py-10 md:py-15">
                         <h2 className="relative text-center xl:text-6xl md:text-5xl text-4xl        font-my-font-regular text-(--color-secondary)
-before:content-[''] before:absolute before:top-1/2 before:left-0 before:w-1/4 before:h-[1px] before:bg-gray-400
-after:content-[''] after:absolute after:top-1/2 after:right-0 after:w-1/4 after:h-[1px] after:bg-gray-400
+before:content-[''] before:absolute before:top-1/2 before:left-0 before:md:w-1/4 before:w-0 before:h-[1px] before:bg-gray-400
+after:content-[''] after:absolute after:top-1/2 after:right-0 after:md:w-1/4 after:w-0 after:h-[1px] after:bg-gray-400
 before:-translate-y-1/2 after:-translate-y-1/2">
                             Day-wise Itinerary </h2>
                     </div>
@@ -481,13 +490,13 @@ hover:before:translate-x-full
                     </div>
                     <div className="w-full lg:w-3/4 md:mt-5 mt-2">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-10">
-                            
+
                             {includes.map((item) => (
-                            <div key={item.id} className="w-full pr-0 md:pr-5"> <h3 className=" font-my-font-semibold text-xl text-(--color-secondary) ">{item.title}</h3>
-                                <p>{item.short_description}</p>
-                            </div>
-                             ))}
-                           
+                                <div key={item.id} className="w-full pr-0 md:pr-5"> <h3 className=" font-my-font-semibold text-xl text-(--color-secondary) ">{item.title}</h3>
+                                    <p>{item.short_description}</p>
+                                </div>
+                            ))}
+
                         </div>
 
                         {/* includes */}
@@ -534,13 +543,13 @@ hover:before:translate-x-full
                         </ul> */}
 
                         {excludes?.length > 0 &&
-                                excludes.map((item) => (
-                        <div key={item.id} className="w-full flex">
-                            <div className="w-full md:w-1/4"><h5 className="text-base font-bold text-(--color-secondary)">{item.title}</h5>  </div>
-                            <div className="w-full md:w-3/4"><p>{item.short_description}</p></div>
-                        </div>
-                        ))}
-                        
+                            excludes.map((item) => (
+                                <div key={item.id} className="w-full md:flex flex-col">
+                                    <div className="w-full md:w-1/4"><h5 className="text-base font-bold text-(--color-secondary)">{item.title}</h5>  </div>
+                                    <div className="w-full md:w-3/4"><p>{item.short_description}</p></div>
+                                </div>
+                            ))}
+
                     </div>
                 </div>
             </section>

@@ -54,7 +54,7 @@ export default function LogoCarousel() {
 
 
             {carousel.length > 0 && (
-                <section className="bg-white w-full py-10 md:py-20 border-t border-gray-200">
+                <section className="bg-white w-full py-8 md:py-14 border-t border-gray-200">
                     <Swiper
                         key={carousel.length}
                         modules={[Autoplay]}
@@ -63,25 +63,25 @@ export default function LogoCarousel() {
                             delay: 0,
                             disableOnInteraction: false,
                         }}
-                        speed={3000}
+                        speed={4000}
                         slidesPerView={3}
-                        spaceBetween={10}
+                        spaceBetween={0}
                         breakpoints={{
                             0: { slidesPerView: 2 },
                             640: { slidesPerView: 3 },
-                            1024: { slidesPerView: 6 },
+                            1024: { slidesPerView: 8 },
                         }}
                         className="flex items-center"
                     >
                         {carousel.map((item) => (
                             <SwiperSlide key={item.id}>
                                 <div className="flex items-center justify-center">
-                                    <div className="relative h-16 w-full">
+                                    <div className="relative h-20 w-auto   px-15 ">
                                         <Image
                                             src={item.image}
                                             alt={item.alt_text}
                                             fill
-                                            className="object-contain grayscale"
+                                            className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
                                         />
                                     </div>
                                 </div>

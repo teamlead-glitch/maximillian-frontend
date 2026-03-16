@@ -75,19 +75,23 @@ export default function FeaturedDestinations() {
                         </div>
 
                     </div>
-                    <div className="w-full ">
+                    <div className="w-full relative">
                         <Swiper
-                            modules={[Autoplay]}
+                            modules={[Autoplay, Navigation]}
                             slidesPerView="auto"
-
                             spaceBetween={30}
                             loop={true}
-                            speed={4000}
+                            speed={3000}
                             autoplay={{
                                 delay: 0,
                                 disableOnInteraction: false,
                                 pauseOnMouseEnter: true,
                             }}
+                            navigation={{
+                                prevEl: ".featured-prev",
+                                nextEl: ".featured-next",
+                            }}
+
                             allowTouchMove={true}
                             className="w-full"
                         >
@@ -117,24 +121,24 @@ export default function FeaturedDestinations() {
 
                                         {/* Content */}
                                         <div className="py-5 px-6 text-center relative h-full flex flex-col min-h-[120px]">
-                                            
+
                                             <Link href={`/country/${item.short_slug}`}>
-                                            <div
-                                                className="absolute -top-[40px] right-4 z-10
+                                                <div
+                                                    className="absolute -top-[40px] right-4 z-10
       w-12 h-12 rounded-full
       flex items-center justify-center
       bg-white/20 backdrop-blur-lg
       transition-all duration-300
       hover:bg-white/30 hover:scale-105
       cursor-pointer"
-                                            >
-                                                <img
-                                                    src="images/arrow.svg"
-                                                    className="w-5 h-5
+                                                >
+                                                    <img
+                                                        src="images/arrow.svg"
+                                                        className="w-5 h-5
         transition-all duration-300
         group-hover:rotate-45 "
-                                                />
-                                            </div>
+                                                    />
+                                                </div>
                                             </Link>
 
                                             <h3 className="text-lg font-semibold mt-1 font-my-font-regular text-(--color-secondary) line-clamp-1">
@@ -149,7 +153,22 @@ export default function FeaturedDestinations() {
 
                                 </SwiperSlide>
                             ))}
+                            {/* Left Arrow */}
+                            <button className="featured-prev absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition hover:bg-white/30 hover:backdrop-blur-lg hover:text-white ">
+                                <svg width="18" height="18" viewBox="0 0 24 24">
+                                    <path d="M15 18L9 12L15 6" stroke="#000" strokeWidth="2" fill="none" />
+                                </svg>
+                            </button>
+
+                            {/* Right Arrow */}
+                            <button className="featured-next absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition hover:bg-white/30 hover:backdrop-blur-lg hover:text-white ">
+                                <svg width="18" height="18" viewBox="0 0 24 24">
+                                    <path d="M9 18L15 12L9 6" stroke="#000" strokeWidth="2" fill="none" />
+                                </svg>
+                            </button>
                         </Swiper>
+
+
                     </div>
 
                 </section>

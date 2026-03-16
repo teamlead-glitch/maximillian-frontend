@@ -52,7 +52,7 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                                     <ul className="text-body font-medium mb-5 md:mb-0">
                                         {tagGroups[1].tags.map((exp) => (
 
-                                            <li key={exp.id} className="mb-2 xl:mb-4 text-[#818c94]">
+                                            <li key={exp.id} className="mb-2 xl:mb-2 text-[#818c94]">
                                                 <Link href={`/tag/${exp.short_slug}`} className="hover:underline ">{exp.title}</Link>
                                             </li>
 
@@ -66,7 +66,7 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
 
                                         {regions.map((reg) => (
 
-                                            <li key={reg.id} className="mb-2 xl:mb-4 text-[#818c94]">
+                                            <li key={reg.id} className="mb-2 xl:mb-2 text-[#818c94]">
                                                 {reg.slug === 'india' ? (
                                                     <Link href="/country/india" className="hover:underline">{reg.menu_title ? reg.menu_title : reg.title}</Link>
                                                 ) : (
@@ -85,7 +85,7 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                                     <ul className="text-body font-medium">
                                         {tagGroups[0].tags.map((spec) => (
 
-                                            <li key={spec.id} className="mb-2 xl:mb-4 text-[#818c94]">
+                                            <li key={spec.id} className="mb-2 xl:mb-2 text-[#818c94]">
                                                 <Link href={`/tag/${spec.short_slug}`} className="hover:underline ">{spec.title}</Link>
                                             </li>
 
@@ -221,7 +221,7 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                 </div>
             </footer >
 
-            <footer className="bg-[#C43131] py-10 md:py-20 px-5 md:px-10">
+            <footer className="bg-[#C43131] py-8 md:py-12 px-5 md:px-10">
                 <div className="max-w-[1300px] flex flex-col items-center justify-center mx-auto text-center">
                     <a href="/"> <img src="images/logo-footer.svg" alt="" /></a>
                     <p className="text-white text-sm mt-3">A premium travel brand owned by Maximilian Holidays Private Ltd.</p>
