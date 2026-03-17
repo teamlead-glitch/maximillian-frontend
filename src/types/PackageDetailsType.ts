@@ -1,3 +1,4 @@
+import { Seo } from "./commonTypes";
 export interface PackageResponse {
   id: number;
   title: string;
@@ -28,7 +29,7 @@ export interface PackageResponse {
   sort_order: number;
   show_in_home: number;
 
-  seoDetail: SeoDetail;
+  seoDetail: Seo;
   tags: Tag[];
   countries?: Country[];
   country?: Country[];
@@ -38,42 +39,9 @@ export interface PackageResponse {
   exclusion: InclusionExclusion[];
   gallery: Gallery[];
   region: Region;
-  seo_detail: SeoDetail;
+  seo_detail: Seo;
    taggroups: TagGroup[];
    regions: Region;
-}
-
-export interface SeoDetail {
-  id: number;
-  seoable_type: string;
-  seoable_id: number;
-  meta_title: string;
-  meta_description: string;
-  meta_keywords: string;
-  slug: string;
-  canonical_url: string;
-  og_title: string;
-  og_description: string;
-  og_image: string;
-  twitter_title: string;
-  twitter_description: string;
-  twitter_image: string;
-  schema_markup: string;
-  is_indexed: number;
-  is_followed: number;
-  is_in_sitemap: number;
-  priority: number;
-  change_frequency: string;
-  llm_generated_meta_title: string;
-  llm_generated_meta_description: string;
-  llm_generated_schema_markup: string;
-  llm_model_used: string;
-  llm_prompt: string;
-  llm_generated_at: string;
-  llm_approved: number;
-  created_at: string;
-  updated_at: string;
-
 }
 export interface Tag {
   id: number;
@@ -87,7 +55,7 @@ export interface Tag {
     id: number;
     title: string;
   };
-  seo_detail: SeoDetail;
+  seo_detail: Seo;
 }
 
 // export interface Country {
