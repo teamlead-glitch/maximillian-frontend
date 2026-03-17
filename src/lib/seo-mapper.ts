@@ -3,13 +3,13 @@ import { Metadata } from "next";
 import { Seo } from "@/types/commonTypes";
 
 export function mapSeoToMetadata(seo?: Seo | null): Metadata {
-  const title = seo?.meta_title || "Maximilian Holidays";
-  const description = seo?.meta_description || "Maximilian Holidays";
+  const title = seo?.meta_title || "Festivon Tours";
+  const description = seo?.meta_description || "Plan your perfect holiday with Festivon Tours";
 
-  const ogImage = seo?.og_image_url
+  const ogImage = seo?.og_image
     ? [
         {
-          url: seo.og_image_url,
+          url: seo.og_image,
           width: 1200,
           height: 630,
           alt: seo?.og_title ?? title,
@@ -17,10 +17,10 @@ export function mapSeoToMetadata(seo?: Seo | null): Metadata {
       ]
     : [];
 
-  const twitterImage = seo?.twitter_image_url
+  const twitterImage = seo?.twitter_image
     ? [
         {
-          url: seo.twitter_image_url,
+          url: seo.twitter_image,
           alt: seo?.twitter_title ?? title,
         },
       ]
