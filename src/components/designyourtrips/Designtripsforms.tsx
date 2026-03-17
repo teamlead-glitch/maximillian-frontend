@@ -27,9 +27,9 @@ export default function Designyourtrip() {
 
     const STEP = 10;
     const MIN = 0;
-    const MAX = 100000;
+    const MAX = 1000000;
 
-    const [values, setValues] = useState([1000, 100000]);
+    const [values, setValues] = useState([1000, 1000000]);
 
     /* types of trips */
     const tripTypes = [
