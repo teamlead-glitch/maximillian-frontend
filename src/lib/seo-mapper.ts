@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { Seo } from "@/types/commonTypes";
 
 export function mapSeoToMetadata(seo?: Seo | null): Metadata {
+
+  console.log("seo to map", seo);
   const title = seo?.meta_title || "Festivon Tours";
   const description = seo?.meta_description || "Plan your perfect holiday with Festivon Tours";
 
@@ -25,6 +27,38 @@ export function mapSeoToMetadata(seo?: Seo | null): Metadata {
         },
       ]
     : [];
+
+     console.log("mapped seo meta", {
+    title,
+    description,
+    keywords: seo?.meta_keywords || [],
+
+    alternates: seo?.canonical_url
+      ? {
+          canonical: seo.canonical_url,
+        }
+      : undefined,
+
+    robots: {
+      index: seo?.is_indexed === 1,
+      follow: seo?.is_followed === 1,
+    },
+
+    openGraph: {
+      title: seo?.og_title ?? title,
+      description: seo?.og_description ?? description,
+      url: seo?.canonical_url,
+      type: "website",
+      images: ogImage,
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: seo?.twitter_title ?? title,
+      description: seo?.twitter_description ?? description,
+      images: twitterImage,
+    },
+  });
 
   return {
     title,
