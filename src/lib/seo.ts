@@ -7,38 +7,63 @@ export async function generateSeoMetadata(
   const page = await fetchPageBySlug(slug);
   const seo = page?.seoDetail;
 
+  const title = seo?.meta_title || "Festivon Tours";
+  const description =
+    seo?.meta_description || "Plan your perfect holiday with Festivon Tours";
+
+  const ogImage = seo?.og_image
+    ? [
+        {
+          url: seo.og_image,
+          width: 1200,
+          height: 630,
+          alt: seo?.og_title ?? title,
+        },
+      ]
+    : [];
+
+  const twitterImage = seo?.twitter_image
+    ? [
+        {
+          url: seo.twitter_image,
+          alt: seo?.twitter_title ?? title,
+        },
+      ]
+    : [];
+
   if (!seo) {
-    console.log('no seo info found set deault')
-    return {
-      title: "Festivon Tours",
-      description: "Plan your perfect holiday with Festivon Tours",
-    };
+    console.log("no seo info found set default");
   }
 
-
   return {
-    title: seo.meta_title,
-    description: seo.meta_description,
-    keywords: seo.meta_keywords,
-    alternates: {
-      canonical: seo.canonical_url,
-    },
+    title,
+    description,
+    keywords: seo?.meta_keywords || [],
+
+    alternates: seo?.canonical_url
+      ? {
+          canonical: seo.canonical_url,
+        }
+      : undefined,
+
     robots: {
-      index: seo.is_indexed === 1,
-      follow: seo.is_followed === 1,
+      index: seo?.is_indexed === 1,
+      follow: seo?.is_followed === 1,
     },
+
     openGraph: {
-      title: seo.og_title ?? seo.meta_title,
-      description: seo.og_description ?? seo.meta_description,
-      images: seo.og_image_url ? [seo.og_image_url] : [],
+      title: seo?.og_title ?? title,
+      description: seo?.og_description ?? description,
+      url: seo?.canonical_url,
       type: "website",
+      images: ogImage,
     },
+
     twitter: {
       card: "summary_large_image",
-      title: seo.twitter_title ?? seo.meta_title,
-      description:
-        seo.twitter_description ?? seo.meta_description,
-      images: seo.twitter_image_url ? [seo.twitter_image_url] : [],
+      title: seo?.twitter_title ?? title,
+      description: seo?.twitter_description ?? description,
+      images: twitterImage,
     },
   };
 }
