@@ -143,7 +143,7 @@ px-4 sm:px-0 text-center">
             </section>
             <section className="relative py-20 lg:py-40  bg-white">
                 <div className="max-w-[1200px] flex mx-auto  md:px-15 px-5">
-                    <div className="flex flex-col items-center md:flex-row w-full">
+                    <div className="flex flex-col  md:flex-row w-full">
                         <div className="w-full md:w-1/2 pr-0  lg:pr-28">
                             <h2 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">Founder’s Inspiration and His Journey</h2>
                             <p>Festivon was founded with the belief that travel planning deserves the same discipline and clarity as any well-structured profession.
@@ -160,9 +160,13 @@ px-4 sm:px-0 text-center">
                             </p>
                         </div>
                         <div className="w-full md:w-1/2 pl-0 md:pl-15  lg:pl-28  mt-10 md:mt-0 ">
-                            <div className="pl-0 md:pr-20 aspect-square">
-                                <img src="images/founder.webp" alt="" className="w-full h-full object-cover rounded-lg" />
+
+                            <div className="sticky top-20">
+                                <div className="pl-0 md:pr-20 aspect-square">
+                                    <img src="images/founder.webp" alt="" className="w-full h-full object-cover rounded-lg" />
+                                </div>
                             </div>
+
                         </div>
                     </div >
                 </div >
