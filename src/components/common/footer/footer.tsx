@@ -148,7 +148,7 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                         </span>
 
                         <div>
-                            <ul className="flex flex-wrap justify-center md:justify-start gap-4 mt-1">
+                            <ul className="flex flex-wrap justify-center md:justify-center gap-4 mt-1">
                                 <li className="relative text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
                                     <Link href="/terms-and-conditions" className="hover:underline">Terms and Conditions</Link>
                                 </li>
@@ -157,8 +157,23 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                                     <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
                                 </li>
 
-                                <li className="relative pr-3 text-base text-[#93989b] text-body">
+                                <li className="relative pr-3 text-base text-[#93989b] text-body ">
                                     <Link href="/health-and-safety-policy" className="hover:underline">Health and Safety Policy</Link>
+                                </li>
+
+                               
+                            </ul>
+
+
+                            <ul className="flex flex-wrap justify-center md:justify-center gap-4 mt-1">
+                                
+
+                                <li className="relative pr-3 text-base text-[#93989b] text-body after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+                                    <Link href="/responsible-travel-sustainability-policy" className="hover:underline">Responsible Travel & Sustainability Policy</Link>
+                                </li>
+
+                                <li className="relative pr-3 text-base text-[#93989b] text-body ">
+                                    <Link href="/child-protection-safeguarding-policy" className="hover:underline">Child Protection & Safeguarding Policy</Link>
                                 </li>
                             </ul>
                         </div>
