@@ -26,7 +26,7 @@ export default function Designyourtrip() {
     tomorrow.setDate(tomorrow.getDate() + 1);
 
     const STEP = 10;
-    const MIN = 0;
+    const MIN = 1000;
     const MAX = 1000000;
 
     const [values, setValues] = useState([1000, 1000000]);
@@ -64,7 +64,7 @@ export default function Designyourtrip() {
         season: ""
     });
 
-    /* console.log(formData)  */
+     console.log(formData)  
     const [errors, setErrors] = useState<DYTFormErrors>({
         title: "",
         name: "",
@@ -223,7 +223,7 @@ const resetForm = () => {
     group_size: "",
     trip_type: "",
     travel_pace: "",
-    budget: `$${values[0].toLocaleString()} - $${values[1].toLocaleString()}`,
+    budget: `₹${values[0].toLocaleString()} - ₹${values[1].toLocaleString()}`,
     season: ""
   });
 
@@ -521,7 +521,7 @@ const resetForm = () => {
                                                 onChange={(vals) => {
                                                     setValues(vals);
 
-                                                    const budgetString = `$${vals[0].toLocaleString()} - $${vals[1].toLocaleString()}`;
+                                                    const budgetString = `₹${vals[0].toLocaleString()} - ₹${vals[1].toLocaleString()}`;
 
                                                     setFormData((prev) => ({
                                                         ...prev,
