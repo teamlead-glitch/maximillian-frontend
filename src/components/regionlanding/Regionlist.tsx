@@ -42,8 +42,8 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
     useEffect(() => {
         if (divRef.current) {
             const topOffset = divRef.current.offsetTop;
-            setTopOffset(topOffset);
-            console.log("Top Offset:", topOffset);
+            setTopOffset(topOffset + 120);
+            // console.log("Top Offset:", topOffset);
         }
     }, []);
 
@@ -51,13 +51,13 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            if (currentScrollY > lastScrollY.current && currentScrollY > topOffset + 104) {
+            if (currentScrollY > lastScrollY.current && currentScrollY > topOffset) {
                 // Scrolling DOWN
                 setShowSticky(true);
             } else {
                 // Scrolling UP
                 setShowSticky(false);
-                console.log(currentScrollY + '/////' + topOffset);
+                // console.log(currentScrollY + '/////' + topOffset);
             }
 
             lastScrollY.current = currentScrollY;
@@ -137,7 +137,7 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
             <section className="relative  pt-15 pb-0 md:pt-20  bg-white">
                 <div className="w-full relative  aspect-[16/9]   md:aspect-[16/4]"><Image fill src={regionDetails?.banner_image ?? ''} alt="" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/20"></div>
-                    <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
+                    <div className="absolute bottom-0  md:bottom-[50px] left-1/2
 -translate-x-1/2  -translate-y-1/2
 w-[90%] sm:w-[80%] md:w-auto
 px-4 sm:px-0 text-center">
@@ -149,7 +149,7 @@ px-4 sm:px-0 text-center">
             </section >
 
             <div ref={divRef}
-                className={`sticky top-0 left-0 w-full z-50 bg-white transition-transform duration-300 ${!showSticky ? "translate-y-0" : "-translate-y-full "
+                className={`top-0 left-0 w-full z-50 bg-white transition-transform duration-500 ${!showSticky ? "translate-y-0 sticky" : "translate-y-fullw fixed "
                     }`}
             >
                 <div className="max-w-[1300px] mx-auto py-5      md:py-10 xl:py-10 px-5">
@@ -200,8 +200,8 @@ px-4 sm:px-0 text-center">
                 <div className="max-w-[1300px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5">
                         <div className="pr-0 md:pr-10 xl:pr-20 content"  dangerouslySetInnerHTML={{ __html: regionDetails?.description ?? '' }}>
-                           
-                           
+
+
                         </div>
                         <div className="pl-0 md:pl-10">
                             <div className="aspect-[4/2]">
