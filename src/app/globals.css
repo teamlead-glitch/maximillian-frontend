@@ -86,10 +86,10 @@ body {
     @apply text-sm sm:text-base mb-3 text-(--color-secondary);
   }
 
-  .content div a,
+  /* .content div a,
   .content p a {
     @apply font-bold;
-  }
+  } */
 
   .content p {
     @apply text-sm sm:text-base mb-4 text-(--color-secondary);
