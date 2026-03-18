@@ -34,16 +34,30 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
     const [showSticky, setShowSticky] = useState(false);
     const lastScrollY = useRef(0);
 
+
+
+    const divRef = useRef<HTMLDivElement | null>(null);
+    const [topOffset, setTopOffset] = useState(0);
+
+    useEffect(() => {
+        if (divRef.current) {
+            const topOffset = divRef.current.offsetTop;
+            setTopOffset(topOffset);
+            console.log("Top Offset:", topOffset);
+        }
+    }, []);
+
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            if (currentScrollY > lastScrollY.current && currentScrollY > 450) {
+            if (currentScrollY > lastScrollY.current && currentScrollY > topOffset + 104) {
                 // Scrolling DOWN
                 setShowSticky(true);
             } else {
                 // Scrolling UP
                 setShowSticky(false);
+                console.log(currentScrollY + '/////' + topOffset);
             }
 
             lastScrollY.current = currentScrollY;
@@ -52,7 +66,7 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
         window.addEventListener("scroll", handleScroll);
 
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [topOffset]);
 
 
 
@@ -134,8 +148,8 @@ px-4 sm:px-0 text-center">
                 </div>
             </section >
 
-            <div
-                className={`fixed top-0 left-0 w-full z-50 bg-white transition-transform duration-300 ${showSticky ? "translate-y-0" : "-translate-y-full"
+            <div ref={divRef}
+                className={`sticky top-0 left-0 w-full z-50 bg-white transition-transform duration-300 ${!showSticky ? "translate-y-0" : "-translate-y-full "
                     }`}
             >
                 <div className="max-w-[1300px] mx-auto py-5      md:py-10 xl:py-10 px-5">
@@ -159,7 +173,7 @@ px-4 sm:px-0 text-center">
 
 
 
-            <section className="relative  py-10  md:py-15  bg-white">
+            {/* <section className="relative  py-10  md:py-15  bg-white">
                 <div className="flex flex-wrap items-center gap-10 md:gap-28 justify-center">
 
                     <a href="#overview" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
@@ -175,7 +189,7 @@ px-4 sm:px-0 text-center">
                     </a>
 
                 </div>
-            </section>
+            </section> */}
 
 
 
