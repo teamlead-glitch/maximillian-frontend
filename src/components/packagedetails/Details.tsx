@@ -17,7 +17,8 @@ import { apiService } from "@/services/api";
 import SimpleCaptcha from "../Captcha";
 import TagListing from "../common/TagListing";
 import Link from "next/link";
-
+import Inclussions from "./Inclussions";
+import Exclussions from "./Exclussions";
 
 
 export default function Details({ details }: { details: PackageResponse }) {
@@ -506,81 +507,9 @@ hover:before:translate-x-full
             <PackagedetailsSlider gallery={details?.gallery} price_text={price_text} title={title} id={tour_id} />
             <Faq faq={faq} faq_image={faq_image} />
 
-            <section className=" bg-white py-10   px-5">
-                <div className="max-w-[1300px] mx-auto">
-                    <div className="w-full">
-                        <div className="flex flex-col md:flex-row  w-full gap-2 md:gap-8 py-0 md:py-5 ">
-                            <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Inclusions</h3></div>
-                            <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                            <div className="w-full md:w-[200px]"><p>What’s included by default in your journey.</p></div>
-                        </div>
+           <Inclussions includes={includes}/>
 
-                    </div>
-                    <div className="w-full lg:w-3/4 md:mt-5 mt-2">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-10">
-
-                            {includes.map((item) => (
-                                <div key={item.id} className="w-full pr-0 md:pr-5"> <h3 className=" font-my-font-semibold text-xl text-(--color-secondary) ">{item.title}</h3>
-                                    <p>{item.short_description}</p>
-                                </div>
-                            ))}
-
-                        </div>
-
-                        {/* includes */}
-
-                        {/* <ul className="space-y-2">
-                            {includes.map((item) => (
-                                <li key={item.id} className="flex items-start gap-2">
-                                    <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                    <span className="text-(--color-secondary) text-base">
-                                        {item.title}
-                                    </span>
-                                </li>
-                            ))}
-
-                        </ul> */}
-
-                    </div>
-
-
-                </div></section>
-
-            <section className=" bg-white py-0 md:py-20  px-5">
-                <div className="max-w-[1300px] mx-auto flex flex-col items-end  ">
-
-                    <div className="w-full  lg:w-1/2 flex flex-col   ">
-
-                        <div className="flex flex-col md:flex-row  w-full gap-4 md:gap-8 py-5 ">
-                            <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Exclusions</h3></div>
-                            <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                            <div className="w-full md:w-[200px]"><p>What’s not included by default in your journey.</p></div>
-                        </div>
-                        {/* excludes */}
-
-                        {/* <ul className="space-y-2">
-                            {excludes?.length > 0 &&
-                                excludes.map((item) => (
-                                    <li key={item.id} className="flex items-start gap-2">
-                                        <Circle className="w-2.5 h-2.5 fill-black mt-2" />
-                                        <span className="text-(--color-secondary) text-base">
-                                            {item.title}
-                                        </span>
-                                    </li>
-                                ))}
-                        </ul> */}
-
-                        {excludes?.length > 0 &&
-                            excludes.map((item) => (
-                                <div key={item.id} className="w-full md:flex flex-col">
-                                    <div className="w-full md:w-1/4"><h5 className="text-base font-bold text-(--color-secondary)">{item.title}</h5>  </div>
-                                    <div className="w-full md:w-3/4"><p>{item.short_description}</p></div>
-                                </div>
-                            ))}
-
-                    </div>
-                </div>
-            </section>
+           <Exclussions excludes={excludes} />
 
             {/*related journels component  */}
             <Related_journels region_slug={region_slug} tour_id={tour_id} />
