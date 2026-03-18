@@ -83,7 +83,7 @@ body {
   }
 
   .content div {
-    @apply text-sm sm:text-base mb-4 text-(--color-secondary);
+    @apply text-sm sm:text-base mb-3 text-(--color-secondary);
   }
 
   .content div a,
@@ -100,7 +100,7 @@ body {
   }
 
   .content ul {
-    @apply py-3;
+    @apply pb-3;
   }
 
 
@@ -112,11 +112,11 @@ body {
 
 
   .content .checklist {
-    @apply py-3;
+    @apply pb-3;
   }
 
   .content .checklist ul {
-    @apply py-3;
+    @apply pb-3;
   }
 
   .content .checklist li {
@@ -129,11 +129,11 @@ body {
   }
 
   .content .dotlist {
-    @apply py-3;
+    @apply pb-3;
   }
 
   .content .dotlist ul {
-    @apply py-3;
+    @apply pb-3;
   }
 
 
@@ -152,11 +152,11 @@ body {
 
 
   .content .arrowlist {
-    @apply py-3;
+    @apply pb-3;
   }
 
   .content .arrowlist ul {
-    @apply py-3;
+    @apply pb-3;
   }
 
 
@@ -172,7 +172,7 @@ body {
 
 
   .content ol {
-    @apply py-3 list-decimal list-inside;
+    @apply pb-3 list-decimal list-inside;
   }
 
   .content ol li {

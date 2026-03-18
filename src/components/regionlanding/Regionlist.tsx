@@ -31,6 +31,31 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
 
 
 
+    const [showSticky, setShowSticky] = useState(false);
+    const lastScrollY = useRef(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY.current && currentScrollY > 450) {
+                // Scrolling DOWN
+                setShowSticky(true);
+            } else {
+                // Scrolling UP
+                setShowSticky(false);
+            }
+
+            lastScrollY.current = currentScrollY;
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+
+
 
 
     // Fetch packages
@@ -95,7 +120,7 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
 
         <>
 
-            <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
+            <section className="relative  pt-15 pb-0 md:pt-20  bg-white">
                 <div className="w-full relative  aspect-[16/9]   md:aspect-[16/4]"><Image fill src={regionDetails?.banner_image ?? ''} alt="" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
@@ -107,8 +132,13 @@ px-4 sm:px-0 text-center">
                         </h1>
                     </div>
                 </div>
+            </section >
 
-                <div className="max-w-[1300px] mx-auto py-10 pt-10 pb-0     md:py-10 xl:py-15 px-5">
+            <div
+                className={`fixed top-0 left-0 w-full z-50 bg-white transition-transform duration-300 ${showSticky ? "translate-y-0" : "-translate-y-full"
+                    }`}
+            >
+                <div className="max-w-[1300px] mx-auto py-5      md:py-10 xl:py-10 px-5">
                     <div className="flex flex-wrap items-center gap-10 md:gap-28 justify-center">
 
                         <a href="#overview" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
@@ -125,10 +155,34 @@ px-4 sm:px-0 text-center">
 
                     </div>
                 </div>
+            </div>
 
 
-            </section >
-            <section id="overview" className="relative  py-10 md:pt-10 md:pb-10   xl:pt-15 xl:pb-15 px-5 overflow-hidden bg-white scroll-mt-16">
+
+            <section className="relative  py-10  md:py-15  bg-white">
+                <div className="flex flex-wrap items-center gap-10 md:gap-28 justify-center">
+
+                    <a href="#overview" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
+                        Overview
+                    </a>
+
+                    <a href="#journeys" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
+                        Journeys
+                    </a>
+
+                    <a href="#inspirations" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
+                        Inspirations
+                    </a>
+
+                </div>
+            </section>
+
+
+
+
+
+
+            <section id="overview" className="relative  py-10 md:pt-10 md:pb-10   xl:pt-15 xl:pb-15 px-5  bg-white scroll-mt-16">
                 <div className="max-w-[1300px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5">
                         <div className="pr-0 md:pr-15 xl:pr-80">
@@ -145,7 +199,7 @@ px-4 sm:px-0 text-center">
                 </div>
             </section>
 
-            {packages.length > 0 && <section id="journeys" className="relative py-10  md:py-15 px-5 overflow-hidden bg-white scroll-mt-16">
+            {packages.length > 0 && <section id="journeys" className="relative py-10  md:py-15 px-5  bg-white scroll-mt-16">
                 <div className="max-w-[1000px] mx-auto">
                     <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
                         <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />
@@ -219,12 +273,12 @@ px-4 sm:px-0 text-center">
                 </div>
             </section> */}
             {/* insights */}
-            <div id="inspirations">
+            <div id="inspirations" className="scroll-mt-16">
                 <Insights filterRegionId={regionDetails?.id} />
-            </div>
+            </div >
             {/*insights close */}
 
-            <BespokeJourney />
+            < BespokeJourney />
             <LogoCarousel />
 
         </>
