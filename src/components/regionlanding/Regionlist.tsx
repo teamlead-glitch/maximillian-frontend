@@ -34,16 +34,30 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
     const [showSticky, setShowSticky] = useState(false);
     const lastScrollY = useRef(0);
 
+
+
+    const divRef = useRef<HTMLDivElement | null>(null);
+    const [topOffset, setTopOffset] = useState(0);
+
+    useEffect(() => {
+        if (divRef.current) {
+            const topOffset = divRef.current.offsetTop;
+            setTopOffset(topOffset + 120);
+            // console.log("Top Offset:", topOffset);
+        }
+    }, []);
+
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            if (currentScrollY > lastScrollY.current && currentScrollY > 450) {
+            if (currentScrollY > lastScrollY.current && currentScrollY > topOffset) {
                 // Scrolling DOWN
                 setShowSticky(true);
             } else {
                 // Scrolling UP
                 setShowSticky(false);
+                // console.log(currentScrollY + '/////' + topOffset);
             }
 
             lastScrollY.current = currentScrollY;
@@ -52,7 +66,7 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
         window.addEventListener("scroll", handleScroll);
 
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [topOffset]);
 
 
 
@@ -123,7 +137,7 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
             <section className="relative  pt-15 pb-0 md:pt-20  bg-white">
                 <div className="w-full relative  aspect-[16/9]   md:aspect-[16/4]"><Image fill src={regionDetails?.banner_image ?? ''} alt="" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/20"></div>
-                    <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
+                    <div className="absolute bottom-0  md:bottom-[50px] left-1/2
 -translate-x-1/2  -translate-y-1/2
 w-[90%] sm:w-[80%] md:w-auto
 px-4 sm:px-0 text-center">
@@ -134,8 +148,8 @@ px-4 sm:px-0 text-center">
                 </div>
             </section >
 
-            <div
-                className={`fixed top-0 left-0 w-full z-50 bg-white transition-transform duration-300 ${showSticky ? "translate-y-0" : "-translate-y-full"
+            <div ref={divRef}
+                className={`top-0 left-0 w-full z-49 bg-white transition-transform duration-500 ${!showSticky ? "translate-y-0 sticky" : "translate-y-fullw fixed "
                     }`}
             >
                 <div className="max-w-[1300px] mx-auto py-5      md:py-10 xl:py-10 px-5">
@@ -159,7 +173,7 @@ px-4 sm:px-0 text-center">
 
 
 
-            <section className="relative  py-10  md:py-15  bg-white">
+            {/* <section className="relative  py-10  md:py-15  bg-white">
                 <div className="flex flex-wrap items-center gap-10 md:gap-28 justify-center">
 
                     <a href="#overview" className="text-(--color-secondary) font-my-font-semibold cursor-pointer">
@@ -175,7 +189,7 @@ px-4 sm:px-0 text-center">
                     </a>
 
                 </div>
-            </section>
+            </section> */}
 
 
 
@@ -186,8 +200,8 @@ px-4 sm:px-0 text-center">
                 <div className="max-w-[1300px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5">
                         <div className="pr-0 md:pr-10 xl:pr-20 content"  dangerouslySetInnerHTML={{ __html: regionDetails?.description ?? '' }}>
-                           
-                           
+
+
                         </div>
                         <div className="pl-0 md:pl-10">
                             <div className="aspect-[4/2]">
