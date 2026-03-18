@@ -26,7 +26,7 @@ export default function Designyourtrip() {
     tomorrow.setDate(tomorrow.getDate() + 1);
 
     const STEP = 10;
-    const MIN = 0;
+    const MIN = 1000;
     const MAX = 1000000;
 
     const [values, setValues] = useState([1000, 1000000]);
