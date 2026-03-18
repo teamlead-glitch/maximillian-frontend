@@ -228,7 +228,16 @@ export default function Details({ details }: { details: PackageResponse }) {
 
                                 </span>
 
-                                <ul className="flex flex-wrap items-start md:items-center text-sm gap-2 mt-1">
+                                <TagListing
+
+                                    tags={group.tags.map(tag => ({
+                                        id: tag.id,
+                                        title: tag.title,
+                                        slug: tag.slug??'#' ,
+                                    }))}
+                                />
+
+                                {/* <ul className="flex flex-wrap items-start md:items-center text-sm gap-2 mt-1">
                                     {group.tags.map((tag, index) => (
                                         <li
                                             key={tag.id}
@@ -243,12 +252,12 @@ export default function Details({ details }: { details: PackageResponse }) {
                                             </Link>
                                         </li>
                                     ))}
-                                </ul>
+                                </ul> */}
                             </div>
                         ))}
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Duration</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1"> {duration}</h4>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-2"> {duration}</h4>
                         </div>
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
@@ -280,7 +289,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     Best season
                                 </span>
-                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1">
+                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-2">
                                     {season}
                                 </h4>
                             </div>
@@ -312,7 +321,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     Group size
                                 </span>
-                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold">
+                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1">
                                     {group_size}
                                 </h4>
                             </div>
@@ -507,9 +516,9 @@ hover:before:translate-x-full
             <PackagedetailsSlider gallery={details?.gallery} price_text={price_text} title={title} id={tour_id} />
             <Faq faq={faq} faq_image={faq_image} />
 
-           <Inclussions includes={includes}/>
+            <Inclussions includes={includes} />
 
-           <Exclussions excludes={excludes} />
+            <Exclussions excludes={excludes} />
 
             {/*related journels component  */}
             <Related_journels region_slug={region_slug} tour_id={tour_id} />
