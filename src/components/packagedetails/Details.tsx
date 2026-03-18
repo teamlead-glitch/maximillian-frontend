@@ -4,7 +4,7 @@ import LogoCarousel from "@/components/home/LogoCarousel";
 import "swiper/css/navigation";
 import "swiper/css";
 import { useState } from "react";
-import { Circle } from "lucide-react";
+import { Circle, } from "lucide-react";
 import DaywiseCard from "./daywiseCard";
 import PackagedetailsSlider from "./packagedetailsSlider";
 import Faq from "./Faq";
@@ -16,6 +16,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { apiService } from "@/services/api";
 import SimpleCaptcha from "../Captcha";
 import TagListing from "../common/TagListing";
+import Link from "next/link";
 
 
 
@@ -65,6 +66,8 @@ export default function Details({ details }: { details: PackageResponse }) {
     const region_slug = details?.regions?.short_slug;
     const tour_id = details?.id;
     const itinerary_document = details?.itinerary_document ?? "";
+    const meta = details?.metas || [];
+    console.log("metas" + meta);
 
 
     const handleChange = (
@@ -221,6 +224,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                             <div key={group.group_id} className="pb-2 md:pb-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     {group.group_title}
+
                                 </span>
 
                                 <ul className="flex flex-wrap items-start md:items-center text-sm gap-2 mt-1">
@@ -233,7 +237,9 @@ export default function Details({ details }: { details: PackageResponse }) {
                                                     : ""
                                                 }`}
                                         >
-                                            {tag.title}
+                                            <Link href={`/tag/${tag.short_slug}`} className="hover:underline">
+                                                {tag.title}
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -310,6 +316,28 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 </h4>
                             </div>
                         )}
+                        {meta.map((item) => (
+                            <div key={item.id} className="pb-2 md:pb-0">
+                                <span className="text-sm sm:text-base text-(--color-secondary)">
+                                    {item.meta_key}
+                                </span>
+
+                                <ul className="flex flex-wrap items-start md:items-center text-sm gap-2 mt-1">
+                                    {item.meta_value.split(",").map((value, index, arr) => (
+                                        <li
+                                            key={index}
+                                            className={`relative text-sm sm:text-base font-my-font-semibold pr-5 text-(--color-secondary)
+            ${index !== arr.length - 1
+                                                    ? "after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                                    : ""
+                                                }`}
+                                        >
+                                            {value.trim()}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section >

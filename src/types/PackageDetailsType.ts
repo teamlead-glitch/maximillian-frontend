@@ -29,6 +29,7 @@ export interface PackageResponse {
   sort_order: number;
   show_in_home: number;
 
+  metas:Metas[];
   seoDetail: Seo;
   tags: Tag[];
   countries?: Country[];
@@ -135,3 +136,11 @@ export interface Region {
   type: string;
   short_slug: string;
 }
+export type Metas = {
+  id: number;
+  package_id: number;
+  meta_key: string;
+  meta_value: string;
+  created_at: string;
+  updated_at: string;
+};
