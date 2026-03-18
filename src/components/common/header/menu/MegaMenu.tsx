@@ -48,49 +48,33 @@ export default function MegaMenu({
 
           {/* REGIONS */}
           <div className="space-y-4">
-
-
             {Object.keys(regions).map((region) => {
               const isActive = activeRegion === region;
 
+              const textClasses = `text-lg font-semibold cursor-pointer transition-all duration-300 ${isActive
+                ? "text-[#C43131]"
+                : "text-black hover:text-[#C43131]"
+                }`;
+
               if (region.toLowerCase() === "india") {
-
                 return (
-
-                  <Link href={`/country/india`}
-                    key={region}
-
-                    className={`group w-full flex items-center
-  text-left text-lg font-semibold cursor-pointer pr-6
-  transition-all duration-300
-  ${isActive
-                        ? "text-[#C43131]"
-                        : "text-black hover:text-[#C43131]"
-                      }`}
-                  >
-                    <span>{region}</span>
-
-
-                  </Link>
-
+                  <div key={region} className="w-full pr-6">
+                    <Link href={`/country/india`}>
+                      <span className={textClasses}>{region}</span>
+                    </Link>
+                  </div>
                 );
               } else {
                 return (
-
-                  <button
-                    key={region}
-                    onMouseEnter={() => setActiveRegion(region)}
-                    className={`group w-full flex items-center
-  text-left text-lg font-semibold cursor-pointer pr-6
-  transition-all duration-300
-  ${isActive
-                        ? "text-[#C43131]"
-                        : "text-black hover:text-[#C43131]"
-                      }`}
-                  >
-                    <span>{region}</span>
-                  </button>
-                )
+                  <div key={region} className="w-full pr-6">
+                    <span
+                      onMouseEnter={() => setActiveRegion(region)}
+                      className={textClasses}
+                    >
+                      {region}
+                    </span>
+                  </div>
+                );
               }
             })}
           </div>
