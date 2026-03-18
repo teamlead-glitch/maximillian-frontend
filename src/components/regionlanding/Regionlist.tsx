@@ -149,7 +149,7 @@ px-4 sm:px-0 text-center">
             </section >
 
             <div ref={divRef}
-                className={`top-0 left-0 w-full z-50 bg-white transition-transform duration-500 ${!showSticky ? "translate-y-0 sticky" : "translate-y-fullw fixed "
+                className={`top-0 left-0 w-full z-49 bg-white transition-transform duration-500 ${!showSticky ? "translate-y-0 sticky" : "translate-y-fullw fixed "
                     }`}
             >
                 <div className="max-w-[1300px] mx-auto py-5      md:py-10 xl:py-10 px-5">
