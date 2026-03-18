@@ -185,10 +185,9 @@ px-4 sm:px-0 text-center">
             <section id="overview" className="relative  py-10 md:pt-10 md:pb-10   xl:pt-15 xl:pb-15 px-5  bg-white scroll-mt-16">
                 <div className="max-w-[1300px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5">
-                        <div className="pr-0 md:pr-15 xl:pr-80">
-                            <h2 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">{regionDetails?.title}</h2>
-                            {/* <p>{regionDetails?.short_description}</p> */}
-                            <p className="content" dangerouslySetInnerHTML={{ __html: regionDetails?.description ?? '' }}></p>
+                        <div className="pr-0 md:pr-10 xl:pr-20 content"  dangerouslySetInnerHTML={{ __html: regionDetails?.description ?? '' }}>
+                           
+                           
                         </div>
                         <div className="pl-0 md:pl-10">
                             <div className="aspect-[4/2]">
