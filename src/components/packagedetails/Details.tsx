@@ -19,6 +19,7 @@ import TagListing from "../common/TagListing";
 import Link from "next/link";
 import Inclussions from "./Inclussions";
 import Exclussions from "./Exclussions";
+import SimpleTagList from "../common/SimpleTagList";
 
 
 export default function Details({ details }: { details: PackageResponse }) {
@@ -257,7 +258,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                         ))}
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Duration</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-2"> {duration}</h4>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-3"> {duration}</h4>
                         </div>
                         <div className="pb-2 md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
@@ -289,7 +290,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     Best season
                                 </span>
-                                 <ul className="flex flex-wrap items-center text-sm gap-2 mt-1">
+                                 <ul className="flex flex-wrap items-center text-sm gap-2 mt-3">
                                     {season.map((style, index) => (
                                         <li
                                             key={index}
@@ -311,20 +312,13 @@ export default function Details({ details }: { details: PackageResponse }) {
                                     Journey style
                                 </span>
 
-                                <ul className="flex flex-wrap items-center text-sm gap-2 mt-1">
-                                    {journey_styles.map((style, index) => (
-                                        <li
-                                            key={index}
-                                            className={`relative text-sm sm:text-base font-my-font-semibold pr-5 text-(--color-secondary)
-          ${index !== journey_styles.length - 1
-                                                    ? "after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
-                                                    : ""
-                                                }`}
-                                        >
-                                            {style.trim()}
-                                        </li>
-                                    ))}
-                                </ul>
+                                <SimpleTagList
+
+                                items={journey_styles}
+
+                            />
+
+                               
                             </div>
                         )}
                         {group_size && (
@@ -332,7 +326,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     Group size
                                 </span>
-                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1">
+                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-2">
                                     {group_size}
                                 </h4>
                             </div>
@@ -343,19 +337,10 @@ export default function Details({ details }: { details: PackageResponse }) {
                                     {item.meta_key}
                                 </span>
 
-                                <ul className="flex flex-wrap items-start md:items-center text-sm gap-2 mt-1">
-                                    {item.meta_value.split(",").map((value, index, arr) => (
-                                        <li
-                                            key={index}
-                                            className={`relative text-sm sm:text-base font-my-font-semibold pr-5 text-(--color-secondary)
-            ${index !== arr.length - 1
-                                                    ? "after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
-                                                    : ""
-                                                }`}
-                                        >
-                                            {value.trim()}
-                                        </li>
-                                    ))}
+                                <ul className="flex flex-wrap items-start md:items-center text-sm gap-2 ">
+                                    
+                                        <SimpleTagList  items={item.meta_value.split(",")}/>
+       
                                 </ul>
                             </div>
                         ))}
