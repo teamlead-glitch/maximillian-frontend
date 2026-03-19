@@ -49,7 +49,7 @@ export default function Details({ details }: { details: PackageResponse }) {
     const banner_image = details?.banner_image;
     const title = details?.title ?? "";
     const package_tagline = details?.package_tagline ?? "";
-    const season = details?.season ?? "";
+    const season = details?.season?.split(",") ?? "";
     const duration = details?.duration_text ?? "";
     const group_size = details?.package_size ?? "";
     const countries = details?.country || [];
@@ -289,9 +289,20 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     Best season
                                 </span>
-                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-2">
-                                    {season}
-                                </h4>
+                                 <ul className="flex flex-wrap items-center text-sm gap-2 mt-1">
+                                    {season.map((style, index) => (
+                                        <li
+                                            key={index}
+                                            className={`relative text-sm sm:text-base font-my-font-semibold pr-5 text-(--color-secondary)
+          ${index !== season.length - 1
+                                                    ? "after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                                    : ""
+                                                }`}
+                                        >
+                                            {style.trim()}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         )}
                         {journey_styles.length > 0 && (
