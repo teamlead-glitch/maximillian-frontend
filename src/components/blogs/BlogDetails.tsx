@@ -176,7 +176,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                     <div className="content" dangerouslySetInnerHTML={{ __html: third_descripton }}>
 
                     </div>
-                    <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 ">
+                    <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 items-start">
                         {details?.author ? (
 
                             /* ✅ FULL AUTHOR BLOCK */
