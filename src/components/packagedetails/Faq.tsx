@@ -36,7 +36,7 @@ function Faq({ faq = [], faq_image }: Faqprops) {
           </div>
           <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
           <div className="w-full md:w-[200px]">
-            <p>We know you may have concerns. Check our FAQ’s.</p>
+            <p className="mb-0">We know you may have concerns. Check our FAQ’s.</p>
           </div>
         </div>
 

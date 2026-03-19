@@ -221,9 +221,9 @@ export default function Details({ details }: { details: PackageResponse }) {
                         </p>
                     </div></div>
                 <div className="max-w-[1300px] mx-auto pt-5 lg:pt-16">
-                    <div className="flex flex-wrap align-center justify-center  gap-y-2 gap-x-3 md:gap-8 xl:gap-5">
+                    <div className="flex flex-wrap align-center justify-content-start md:justify-center  gap-y-2  gap-x-0 md:gap-8 xl:gap-5">
                         {taggroups.map((group) => (
-                            <div key={group.group_id} className="pb-2 md:pb-0">
+                            <div key={group.group_id} className="w-1/2 md:w-auto pb-2 md:pb-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     {group.group_title}
 
@@ -234,7 +234,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                                     tags={group.tags.map(tag => ({
                                         id: tag.id,
                                         title: tag.title,
-                                        slug: tag.slug??'#' ,
+                                        slug: tag.slug ?? '#',
                                     }))}
                                 />
 
@@ -256,11 +256,11 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 </ul> */}
                             </div>
                         ))}
-                        <div className="pb-2 md:pb-0">
+                        <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Duration</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-3"> {duration}</h4>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1 md:mt-3"> {duration}</h4>
                         </div>
-                        <div className="pb-2 md:pb-0">
+                        <div className="pb-2 w-1/2 md:w-auto md:pb-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
 
                             <TagListing
@@ -286,11 +286,11 @@ export default function Details({ details }: { details: PackageResponse }) {
                             </ul> */}
                         </div>
                         {season && (
-                            <div className="pb-2 md:pb-0">
+                            <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     Best season
                                 </span>
-                                 <ul className="flex flex-wrap items-center text-sm gap-2 mt-3">
+                                <ul className="flex flex-wrap items-center text-sm gap-2 mt-1 md:mt-3">
                                     {season.map((style, index) => (
                                         <li
                                             key={index}
@@ -307,40 +307,40 @@ export default function Details({ details }: { details: PackageResponse }) {
                             </div>
                         )}
                         {journey_styles.length > 0 && (
-                            <div className="pb-2 md:pb-0">
+                            <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     Journey style
                                 </span>
 
                                 <SimpleTagList
 
-                                items={journey_styles}
+                                    items={journey_styles}
 
-                            />
+                                />
 
-                               
+
                             </div>
                         )}
                         {group_size && (
-                            <div className="pb-2 md:pb-0">
+                            <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     Group size
                                 </span>
-                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-2">
+                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1 md:mt-3">
                                     {group_size}
                                 </h4>
                             </div>
                         )}
                         {meta.map((item) => (
-                            <div key={item.id} className="pb-2 md:pb-0">
+                            <div key={item.id} className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     {item.meta_key}
                                 </span>
 
                                 <ul className="flex flex-wrap items-start md:items-center text-sm gap-2 ">
-                                    
-                                        <SimpleTagList  items={item.meta_value.split(",")}/>
-       
+
+                                    <SimpleTagList items={item.meta_value.split(",")} />
+
                                 </ul>
                             </div>
                         ))}

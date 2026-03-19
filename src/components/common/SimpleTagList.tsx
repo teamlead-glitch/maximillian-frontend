@@ -13,7 +13,7 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
   const hiddenItems = items.slice(2);
 
   return (
-    <ul className="flex flex-wrap items-center justify-center text-sm sm:text-base gap-2 mt-3 font-my-font-semibold">
+    <ul className="flex flex-wrap items-center justify-start md:justify-center text-sm sm:text-base gap-2 mt-1 md:mt-3 font-my-font-semibold">
 
       {/* visible items */}
       {visibleItems.map((item, index) => (
@@ -39,14 +39,19 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
 
           {/* tooltip */}
           <div
-            className={`absolute left-0 bg-white shadow-lg border 
-            rounded-md p-2 z-20 min-w-[200px]
-            ${open ? "block" : "hidden"} md:group-hover/tags:block`}
+            className={`absolute z-20 bg-white shadow-lg border rounded-md p-2 
+  min-w-[100px] max-w-[150px] w-max
+  ${open ? "block" : "hidden"}
+  
+  left-1/2 -translate-x-1/2
+  md:left-auto md:right-0 md:translate-x-0
+  
+  md:group-hover/tags:block`}
           >
             {hiddenItems.map((item, index) => (
               <div
                 key={index}
-                className="block px-2 py-1 hover:bg-gray-100 rounded"
+                className="block px-1 py-1 hover:bg-gray-100 rounded"
               >
                 {item.trim()}
               </div>

@@ -95,6 +95,10 @@ body {
     @apply text-sm sm:text-base mb-4 text-(--color-secondary);
   }
 
+  .content {
+    @apply text-sm sm:text-base mb-4 text-(--color-secondary);
+  }
+
   .content hr {
     @apply my-10;
   }
@@ -120,7 +124,7 @@ body {
   }
 
   .content .checklist li {
-    @apply relative pl-6 text-sm sm:text-base text-(--color-secondary);
+    @apply relative pl-4 text-sm sm:text-base text-(--color-secondary);
   }
 
   .content .checklist li::before {
@@ -138,18 +142,13 @@ body {
 
 
   .content .dotlist li {
-    @apply relative pl-6 text-sm sm:text-base text-(--color-secondary);
+    @apply relative pl-4 text-sm sm:text-base text-(--color-secondary);
   }
 
   .content .dotlist li::before {
     content: "•";
     @apply absolute left-0 top-0 text-[#c43131] font-bold;
   }
-
-
-
-
-
 
   .content .arrowlist {
     @apply pb-3;
@@ -161,7 +160,7 @@ body {
 
 
   .content .arrowlist li {
-    @apply relative pl-6 text-sm sm:text-base text-(--color-secondary);
+    @apply relative pl-4 text-sm sm:text-base text-(--color-secondary);
   }
 
   .content .arrowlist li::before {

@@ -27,40 +27,48 @@ export default function Inclussions({ includes }: { includes: InclusionExclusion
     return (
         <section className="bg-white py-10 px-5">
             <div className="max-w-[1300px] mx-auto">
+                <div className="w-full">
+                    <div className="flex flex-col md:flex-row  w-full gap-2 md:gap-8 py-0 md:py-5 ">
+                        <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right"> Inclusions</h3></div>
+                        <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+                        <div className="w-full md:w-[200px]"><p>What’s included by default in your journey.</p></div>
+                    </div>
 
+                </div>
                 {/* Header */}
-                <div className="flex flex-col md:flex-row gap-2 md:gap-8">
+                {/* <div className="flex flex-col md:flex-row gap-2 md:gap-8">
                     <h3 className="text-3xl md:text-4xl text-(--color-secondary)">
                         Inclusions
                     </h3>
                     <p>What’s included by default in your journey.</p>
-                </div>
+                </div> */}
 
                 {/* Content */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-10 mt-5">
-                    {visibleItems.map((item) => (
-                        <div key={item.id}>
-                            <h3 className="text-xl text-(--color-secondary)">
-                                {item.title}
-                            </h3>
-                            <p>{item.short_description}</p>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Button only on mobile */}
-                {isMobile && includes.length > 2 && (
-                    <div className="mt-4 text-center">
-                        <button
-                            onClick={() => setShowAll(!showAll)}
-                            className="text-(--color-secondary) underline"
-                        >
-                            {showAll ? "Show Less" : "Show More"}
-                        </button>
+                <div className="w-full lg:w-3/4 md:mt-5 mt-2">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-10 mt-5">
+                        {visibleItems.map((item) => (
+                            <div key={item.id}>
+                                <h3 className="text-xl text-(--color-secondary) font-my-font-semibold pb-3">
+                                    {item.title}
+                                </h3>
+                                <p>{item.short_description}</p>
+                            </div>
+                        ))}
                     </div>
-                )}
 
-            </div>
+                    {/* Button only on mobile */}
+                    {isMobile && includes.length > 2 && (
+                        <div className="mt-4 text-center">
+                            <button
+                                onClick={() => setShowAll(!showAll)}
+                                className="text-(--color-secondary) font-my-font-semibold underline cursor-pointer"
+                            >
+                                {showAll ? "Show Less" : "Show More"}
+                            </button>
+                        </div>
+                    )}
+
+                </div></div>
         </section>
     );
 }
