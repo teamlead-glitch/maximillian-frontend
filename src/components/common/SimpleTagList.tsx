@@ -29,6 +29,16 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
         </li>
       ))}
 
+
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/30 z-40 md:hidden"
+          onClick={() => setOpen(false)}
+        />
+      )}
+
+
+
       {/* +more */}
       {hiddenItems.length > 0 && (
         <li
@@ -39,19 +49,26 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
 
           {/* tooltip */}
           <div
-            className={`absolute z-20 bg-white shadow-lg border rounded-md p-2 
-  min-w-[100px] max-w-[150px] w-max
-  ${open ? "block" : "hidden"}
-  
-  left-1/2 -translate-x-1/2
-  md:left-auto md:right-0 md:translate-x-0
-  
-  md:group-hover/tags:block`}
+            className={`
+    z-50 bg-white shadow-lg border rounded-md p-3
+    
+    min-w-[200px] max-w-[90vw] w-max
+    
+    ${open ? "block" : "hidden"}
+    
+    /* MOBILE: bottom centered popup */
+    fixed bottom-4 left-1/2 -translate-x-1/2
+    
+    /* DESKTOP: normal tooltip */
+    md:absolute md:bottom-auto md:left-auto md:right-0 md:translate-x-0
+    
+    md:group-hover/tags:block
+  `}
           >
             {hiddenItems.map((item, index) => (
               <div
                 key={index}
-                className="block px-1 py-1 hover:bg-gray-100 rounded"
+                className="block px-2 py-1 hover:bg-gray-100 rounded"
               >
                 {item.trim()}
               </div>

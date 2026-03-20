@@ -183,6 +183,9 @@ export default function Details({ details }: { details: PackageResponse }) {
 
     return (
 
+
+
+
         <>
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
                 <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]">
@@ -221,7 +224,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                         </p>
                     </div></div>
                 <div className="max-w-[1300px] mx-auto pt-5 lg:pt-16">
-                    <div className="flex flex-wrap align-center justify-content-start md:justify-center  gap-y-2  gap-x-0 md:gap-8 xl:gap-5">
+                    <div className="flex flex-wrap align-center justify-start md:justify-center  gap-y-2  gap-x-0 md:gap-8 xl:gap-5">
                         {taggroups.map((group) => (
                             <div key={group.group_id} className="w-1/2 md:w-auto pb-2 md:pb-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
@@ -260,7 +263,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                             <span className="text-sm sm:text-base text-(--color-secondary)">Duration</span>
                             <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1 md:mt-3"> {duration}</h4>
                         </div>
-                        <div className="pb-2 w-1/2 md:w-auto md:pb-0">
+                        <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
 
                             <TagListing

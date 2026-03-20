@@ -56,6 +56,14 @@ export default function TagListing({
         </li>
       ))}
 
+
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/30 z-40 md:hidden"
+          onClick={() => setOpen(false)}
+        />
+      )}
+
       {/* +more tooltip */}
       {hiddenItems.length > 0 && (
         <li className="relative group/tags cursor-pointer text-(--color-secondary)" onClick={() => setOpen(!open)}>
@@ -63,12 +71,15 @@ export default function TagListing({
 
           {/* tooltip */}
           <div
-            className={`absolute z-20 bg-white shadow-lg border rounded-md p-2 
-  min-w-[200px] max-w-[90vw] w-max
+            className={` z-50 bg-white shadow-lg border rounded-md p-3 
+  min-w-[200px] max-w-[90vw] w-max 
   ${open ? "block" : "hidden"}
   
-  left-1/2 -translate-x-1/2
-  md:left-auto md:right-0 md:translate-x-0
+   /* MOBILE: bottom centered popup */
+    fixed bottom-4 left-1/2 -translate-x-1/2
+    
+    /* DESKTOP: normal tooltip */
+    md:absolute md:bottom-auto md:left-auto md:right-0 md:translate-x-0
   
   md:group-hover/tags:block`}
           >
