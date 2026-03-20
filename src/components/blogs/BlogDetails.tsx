@@ -39,7 +39,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
     const countries = details?.countries || [];
     const region_slug = details?.region?.short_slug
-    const author_description=details?.author?.description??"";
+    const author_description = details?.author?.description ?? "";
 
 
 
@@ -176,7 +176,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                     <div className="content" dangerouslySetInnerHTML={{ __html: third_descripton }}>
 
                     </div>
-                    <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 ">
+                    <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 items-start">
                         {details?.author ? (
 
                             /* ✅ FULL AUTHOR BLOCK */
@@ -190,17 +190,19 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                     className="object-cover rounded-full w-15 h-15"
                                 />
 
-                                <div className="grid gap-2 pl-4">
+                                <div className="grid flex flex-col">
                                     <h5 className="text-break text-sm text-(--color-secondary)">
                                         Written by
                                     </h5>
 
                                     <h4 className="font-my-font-semibold text-break text-xl text-(--color-secondary)">
-                                        {details.author.name}
+                                        {details.author.name.trim()}
                                     </h4>
 
-                                    <p>{details.author.tagline}</p>
-                                    {(details.author.linkedin || details.author.instagram ||details.author.youtube ||details.author.linkedin) && (
+                                    {details.author.tagline?.trim() && (
+                                        <p className="mb-2">{details.author.tagline}</p>
+                                    )}
+                                    {(details.author.linkedin || details.author.instagram || details.author.youtube || details.author.facebook) && (
                                         <div className="flex gap-2 relative">
                                             {details.author.linkedin && (
                                                 <a href={details.author.linkedin} target="_blank">
@@ -226,7 +228,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                         </div>
                                     )}
 
-                                    <div className="content" dangerouslySetInnerHTML={{ __html:author_description }} />
+                                    <div className="content" dangerouslySetInnerHTML={{ __html: author_description }} />
                                 </div>
 
                             </div>
