@@ -234,6 +234,8 @@ export default function Details({ details }: { details: PackageResponse }) {
 
                                 <TagListing
 
+                                 textCenter={false}
+
                                     tags={group.tags.map(tag => ({
                                         id: tag.id,
                                         title: tag.title,
@@ -267,7 +269,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                             <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
 
                             <TagListing
-
+                                textCenter={false}
                                 countries={countries}
 
                             />
