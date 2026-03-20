@@ -73,7 +73,7 @@ function DaywiseCard({ day }: DaywiseCardProps) {
       </div>
 
       {/* Divider */}
-      <div className="py-15 md:py-20 w-full">
+      <div className="py-10 md:py-20 w-full">
         <hr className="border-black/20" />
       </div>
     </>
