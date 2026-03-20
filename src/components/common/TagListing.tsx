@@ -38,7 +38,7 @@ export default function TagListing({
   const hiddenItems = items.slice(2);
 
   return (
-    <ul className="flex flex-wrap items-center  text-sm sm:text-base gap-2 mt-1 md:mt-3 font-my-font-semibold">
+    <ul className="flex flex-wrap items-center justify-center  text-sm sm:text-base gap-2 mt-1 md:mt-3 font-my-font-semibold">
 
       {/* visible tags */}
       {visibleItems.map((item, index) => (
