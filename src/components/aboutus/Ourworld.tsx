@@ -2,11 +2,7 @@
 import LogoCarousel from "@/components/home/LogoCarousel";
 import Image from "next/image";
 
-
-
 export default function Ourworld() {
-
-
 
     return (
 
@@ -15,10 +11,14 @@ export default function Ourworld() {
             <section className="relative  pt-15 pb-10 md:py-20 overflow-hidden bg-white">
                 <div className="h-screen w-full relative"><img src="images/our-worldbg.webp" alt="" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/20"></div>
-                    <div className="absolute top-1/2 left-1/2 
--translate-x-1/2 -translate-y-1/2
-w-[90%] sm:w-[80%] md:w-auto
-px-4 sm:px-0 text-center">
+                    <div
+                        className="
+    absolute bottom-10 left-1/2 
+    -translate-x-1/2
+    w-[90%] sm:w-[80%] md:w-auto
+    px-4 sm:px-0 text-center
+  "
+                    >
                         <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-white text-center ">
                             Travel, seen with intention.
                         </h1>

@@ -54,7 +54,7 @@ export default function LogoCarousel() {
 
 
             {carousel.length > 0 && (
-                <section className="bg-white w-full py-8 md:py-14 border-t border-gray-200">
+                <section className="bg-white w-full py-8 md:py-10 border-t border-gray-200">
                     <Swiper
                         key={carousel.length}
                         modules={[Autoplay]}

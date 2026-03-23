@@ -76,7 +76,7 @@ export default function FeaturedDestinations() {
 
                     </div>
                     <div className="w-full relative">
-                        <Swiper
+                        {/* <Swiper
                             modules={[Autoplay, Navigation]}
                             slidesPerView="auto"
                             spaceBetween={30}
@@ -94,7 +94,25 @@ export default function FeaturedDestinations() {
 
                             allowTouchMove={true}
                             className="w-full"
+                        > */}
+
+                        <Swiper
+                            modules={[Autoplay, Navigation]}
+                            slidesPerView="auto"
+                            spaceBetween={30}
+                            loop={true}
+                            speed={500} // 👈 change to 300–600
+                            autoplay={{
+                                delay: 2500, // 👈 give some delay
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            }}
+                            navigation={{
+                                prevEl: ".featured-prev",
+                                nextEl: ".featured-next",
+                            }}
                         >
+
                             {countries.map((item) => (
                                 <SwiperSlide
                                     key={item.id}

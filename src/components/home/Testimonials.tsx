@@ -64,8 +64,9 @@ export default function Testimonials() {
                                 modules={[Autoplay]}
                                 loop
                                 spaceBetween={10}
+                                speed={1200} // 👈 smooth transition (try 1000–2000)
                                 autoplay={{
-                                    delay: 10000, // 10 seconds
+                                    delay: 4000,
                                     disableOnInteraction: false,
                                 }}
                                 onSwiper={(swiper) => (swiperRef.current = swiper)}
