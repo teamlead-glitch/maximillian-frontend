@@ -234,7 +234,7 @@ export default function Details({ details }: { details: PackageResponse }) {
 
                                 <TagListing
 
-                                 textCenter={false}
+                                    textCenter={false}
 
                                     tags={group.tags.map(tag => ({
                                         id: tag.id,
@@ -356,10 +356,10 @@ export default function Details({ details }: { details: PackageResponse }) {
                 <div className="max-w-[1000px] mx-auto w-full relative">
                     <div className="w-full flex md:flex-row flex-col ">
 
-                        {/* Image Section */}
-                        <div className="w-full md:w-2/4 mb-10 md:mb-0 ">
+
+                        <div className="w-full md:w-2/4 mb-10 md:mb-0 pb-20">
                             <div className="sticky top-20">
-                                <div className="relative aspect-3/4 shadow-2xl ">
+                                <div className="relative aspect-square shadow-xl ">
                                     <Image
                                         src={journey_image}
                                         fill
@@ -370,7 +370,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                             </div>
                         </div>
 
-                        {/* Content Section */}
+
                         <div className="w-full md:w-3/4 pl-0 md:pl-20 flex align-center justify-center flex-col">
                             <h2 className="font-my-font-regular text-break xl:text-4xl text-3xl text-(--color-secondary) mb-10
           relative pb-2
@@ -386,6 +386,51 @@ export default function Details({ details }: { details: PackageResponse }) {
                         </div>
 
                     </div>
+
+
+                    {/* <div className="w-full">
+                        <div className="float-left w-full md:w-[45%] mr-0 md:mr-10 mb-6">
+
+                            <div className="relative aspect-square shadow-md rounded-lg overflow-hidden">
+                                <Image
+                                    src={journey_image}
+                                    fill
+                                    alt=""
+                                    className="object-cover"
+                                />
+                            </div>
+
+                        </div>
+                        <div className="text-(--color-secondary)">
+                            <h2
+                                className="font-my-font-regular text-break xl:text-4xl text-3xl mb-6
+      relative pb-2
+      before:content-[''] before:absolute before:-bottom-3 before:left-0 
+      before:w-16 before:h-[2px] before:bg-gray-300"
+                            >
+                                Journey overview
+                            </h2>
+
+                            <p
+                                className="content mb-4 leading-relaxed"
+                                dangerouslySetInnerHTML={{ __html: journey_overview }}
+                            > </p>
+
+                            <p
+                                className="content leading-relaxed"
+                                dangerouslySetInnerHTML={{ __html: journey_flow }}
+                            ></p>
+
+
+                        </div>
+
+
+                        <div className="clear-both"></div>
+
+                    </div> */}
+
+
+
                 </div>
             </section>
             <section className="relative  py-5 md:py-20 px-5 overflow-hidden bg-white">

@@ -1,5 +1,6 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade } from "swiper/modules";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css";
@@ -69,7 +70,9 @@ export default function Insights({ filterRegionId = false }: { filterRegionId?: 
                                     <Image fill src="/images/right-arrow.svg" alt="" />
                                 </button>
                                 <Swiper
-                                    modules={[Navigation, Autoplay, Pagination]}
+                                    modules={[Navigation, Autoplay, Pagination, EffectFade]}
+                                    effect="fade"
+                                    fadeEffect={{ crossFade: true }}
                                     loop={true}
                                     spaceBetween={0}
                                     autoplay={{

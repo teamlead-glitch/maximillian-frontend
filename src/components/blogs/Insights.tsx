@@ -45,14 +45,22 @@ export default function InsightCard({ blog }: Props) {
       </div>
 
       {/* RIGHT IMAGE */}
-      <div className="relative z-10 w-full md:w-1/2 aspect-[13/9] ">
+      <div
+        className="relative z-10 w-full md:w-1/2 aspect-[13/9] overflow-hidden rounded-2xl"
+        data-swiper-parallax="-100"
+      >
+
+        {/* Image */}
         <Image
           src={blog.image_path}
           alt={blog.title}
-          className="rounded-2xl object-cover shadow-2xl  w-full h-full  "
-          width="650"
-          height="450"
+          className="object-cover w-full h-full"
+          fill
         />
+
+        {/* Gradient Overlay 👇 */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-[1]" />
+
       </div>
     </div>
 

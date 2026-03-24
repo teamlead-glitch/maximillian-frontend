@@ -40,7 +40,7 @@ export default function TagListing({
   const hiddenItems = items.slice(2);
 
   return (
-    <ul className={`flex flex-wrap items-center ${textCenter ? "justify-center" : "mt-1 md:mt-3 font-my-font-semibold"}   text-sm sm:text-base gap-2 `}>
+    <ul className={`flex flex-wrap items-center ${textCenter ? "justify-center text-sm" : "mt-1 md:mt-3 font-my-font-semibold gap-2 text-sm sm:text-base"}     `}>
 
       {/* visible tags */}
       {visibleItems.map((item, index) => (
@@ -69,13 +69,13 @@ export default function TagListing({
       {/* +more tooltip */}
       {hiddenItems.length > 0 && (
         <>
-        <span className="px-1">⬥</span>
-        <li className="relative group/tags cursor-pointer text-(--color-secondary)" onClick={() => setOpen(!open)}>
-          +{hiddenItems.length} more
+          <span className="px-1">⬥</span>
+          <li className="relative group/tags cursor-pointer text-(--color-secondary)" onClick={() => setOpen(!open)}>
+            +{hiddenItems.length} more
 
-          {/* tooltip */}
-          <div
-            className={` z-50 bg-white shadow-lg border rounded-md p-3 
+            {/* tooltip */}
+            <div
+              className={` z-50 bg-white shadow-lg border rounded-md p-3 
   min-w-[200px] max-w-[90vw] w-max 
   ${open ? "block" : "hidden"}
   
@@ -86,18 +86,18 @@ export default function TagListing({
     md:absolute md:bottom-auto md:left-auto md:right-0 md:translate-x-0
   
   md:group-hover/tags:block`}
-          >
-            {hiddenItems.map((item) => (
-              <Link
-                key={item.slug}
-                href={`/${item.slug}`}
-                className="block px-2 py-1 hover:bg-gray-100 rounded"
-              >
-                {item.title}
-              </Link>
-            ))}
-          </div>
-        </li>
+            >
+              {hiddenItems.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/${item.slug}`}
+                  className="block px-2 py-1 hover:bg-gray-100 rounded"
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+          </li>
         </>
       )}
     </ul>

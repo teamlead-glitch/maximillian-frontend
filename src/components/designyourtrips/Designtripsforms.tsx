@@ -64,14 +64,14 @@ export default function Designyourtrip() {
         season: ""
     });
 
-     console.log(formData)  
+    console.log(formData)
     const [errors, setErrors] = useState<DYTFormErrors>({
         title: "",
         name: "",
         phone: "",
         email: "",
         destination: "",
-        travel_date:""
+        travel_date: ""
     });
 
     const handleChange = (
@@ -110,9 +110,9 @@ export default function Designyourtrip() {
             newErrors.phone = "Mobile number should contain only numbers";
         } else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
             newErrors.phone = "Enter a valid mobile number";
-        }else if (!/^\d{1,13}$/.test(formData.phone)) {
-    newErrors.phone = "Mobile number cannot exceed 13 digits";
-}
+        } else if (!/^\d{1,13}$/.test(formData.phone)) {
+            newErrors.phone = "Mobile number cannot exceed 13 digits";
+        }
 
 
         // Email validation
@@ -124,9 +124,9 @@ export default function Designyourtrip() {
         if (!formData.destination.trim()) {
             newErrors.destination = "Destination is required";
         }
-         if (!formData.travel_date) {
-        newErrors.travel_date = "Travel date is required";
-    }
+        if (!formData.travel_date) {
+            newErrors.travel_date = "Travel date is required";
+        }
 
         setErrors(newErrors as DYTFormErrors);
 
@@ -171,7 +171,7 @@ export default function Designyourtrip() {
             console.log(res);
 
             if (res.result === "success") {
-                 router.push("/thankyou");
+                router.push("/thankyou");
 
                 // Reset form
                 setFormData({
@@ -189,7 +189,7 @@ export default function Designyourtrip() {
                     budget: "",
                     season: ""
                 });
-                 setStartDate(null);
+                setStartDate(null);
                 setIsCaptchaVerified(false);
                 setCaptchaResetKey((prev) => prev + 1); // 🔄 refresh captcha
 
@@ -210,27 +210,27 @@ export default function Designyourtrip() {
 
     /* reset button */
 
-const resetForm = () => {
-  setFormData({
-    title: "",
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-    destination: "",
-    travel_date: "",
-    duration: "",
-    group_size: "",
-    trip_type: "",
-    travel_pace: "",
-    budget: `₹${values[0].toLocaleString()} - ₹${values[1].toLocaleString()}`,
-    season: ""
-  });
+    const resetForm = () => {
+        setFormData({
+            title: "",
+            name: "",
+            phone: "",
+            email: "",
+            message: "",
+            destination: "",
+            travel_date: "",
+            duration: "",
+            group_size: "",
+            trip_type: "",
+            travel_pace: "",
+            budget: `₹${values[0].toLocaleString()} - ₹${values[1].toLocaleString()}`,
+            season: ""
+        });
 
-  setStartDate(null);
-  setIsCaptchaVerified(false);
-  setCaptchaResetKey((prev) => prev + 1);
-};
+        setStartDate(null);
+        setIsCaptchaVerified(false);
+        setCaptchaResetKey((prev) => prev + 1);
+    };
     return (
 
         <>
@@ -614,7 +614,7 @@ hover:before:translate-x-full hover:text-white
 
 
                                         <button
-                                        onClick={resetForm}
+                                            onClick={resetForm}
                                             className="
 relative overflow-hidden
 text-(--color-secondary)
