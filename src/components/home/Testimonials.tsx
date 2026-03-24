@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css/effect-fade";
 import { apiService } from "@/services/api";
 import { useRef, useState, useEffect } from "react";
 import "swiper/css";
@@ -61,19 +62,32 @@ export default function Testimonials() {
 
                             {/* MAIN SWIPER */}
                             <Swiper
-                                modules={[Autoplay]}
+                                // modules={[Autoplay]}
+                                // loop
+                                // spaceBetween={10}
+                                // speed={1200}
+                                // onSwiper={(swiper) => (swiperRef.current = swiper)}
+                                // onSlideChange={(swiper) =>
+                                //     setActiveIndex(swiper.realIndex)
+                                // }
+
+
+
+                                modules={[Autoplay, EffectFade]}
+                                effect="fade"
+                                fadeEffect={{ crossFade: true }}
                                 loop
                                 spaceBetween={10}
-                                speed={1200} // 👈 smooth transition (try 1000–2000)
-                                autoplay={{
-                                    delay: 4000,
-                                    disableOnInteraction: false,
-                                }}
+                                speed={1000}
                                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                                 onSlideChange={(swiper) =>
                                     setActiveIndex(swiper.realIndex)
                                 }
                             >
+
+
+
+
                                 {testimonials.map((item) => (
                                     <SwiperSlide key={item.id}>
                                         <div className="flex flex-col items-center">

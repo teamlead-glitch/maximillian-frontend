@@ -23,7 +23,7 @@ export default function TagListing({
   tags = [],
   countries = [],
   region,
-  textCenter=true,
+  textCenter = true,
 }: TagListingProps) {
 
   const [open, setOpen] = useState(false);
@@ -40,7 +40,7 @@ export default function TagListing({
   const hiddenItems = items.slice(2);
 
   return (
-    <ul className={ `flex flex-wrap items-center ${textCenter? "justify-center" : ""}   text-sm sm:text-base gap-2 mt-1 md:mt-3 font-my-font-semibold` }>
+    <ul className={`flex flex-wrap items-center ${textCenter ? "justify-center" : ""}   text-sm sm:text-base gap-2 mt-1 md:mt-3 font-my-font-semibold`}>
 
       {/* visible tags */}
       {visibleItems.map((item, index) => (
