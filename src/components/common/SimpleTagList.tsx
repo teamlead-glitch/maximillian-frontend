@@ -41,6 +41,8 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
 
       {/* +more */}
       {hiddenItems.length > 0 && (
+        <>
+        <span className="px-1">⬥</span>
         <li
           className="relative group/tags cursor-pointer text-(--color-secondary)"
           onClick={() => setOpen(!open)}
@@ -75,6 +77,7 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
             ))}
           </div>
         </li>
+        </>
       )}
     </ul>
   );

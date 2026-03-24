@@ -40,7 +40,7 @@ export default function TagListing({
   const hiddenItems = items.slice(2);
 
   return (
-    <ul className={`flex flex-wrap items-center ${textCenter ? "justify-center" : ""}   text-sm sm:text-base gap-2 mt-1 md:mt-3 font-my-font-semibold`}>
+    <ul className={`flex flex-wrap items-center ${textCenter ? "justify-center" : "mt-1 md:mt-3 font-my-font-semibold"}   text-sm sm:text-base gap-2 `}>
 
       {/* visible tags */}
       {visibleItems.map((item, index) => (
@@ -68,6 +68,8 @@ export default function TagListing({
 
       {/* +more tooltip */}
       {hiddenItems.length > 0 && (
+        <>
+        <span className="px-1">⬥</span>
         <li className="relative group/tags cursor-pointer text-(--color-secondary)" onClick={() => setOpen(!open)}>
           +{hiddenItems.length} more
 
@@ -96,6 +98,7 @@ export default function TagListing({
             ))}
           </div>
         </li>
+        </>
       )}
     </ul>
   );
