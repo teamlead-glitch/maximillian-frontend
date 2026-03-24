@@ -13,22 +13,31 @@ export default function Ourworld() {
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div
                         className="
-    absolute bottom-10 left-1/2 
-    -translate-x-1/2
+    absolute 
+    top-1/2 left-1/2 
+    -translate-x-1/2 -translate-y-1/2
     w-[90%] sm:w-[80%] md:w-auto
-    px-4 sm:px-0 text-center
+    px-4 sm:px-0 
+    text-center pt-20
   "
                     >
                         <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-white text-center ">
                             Travel, seen with intention.
                         </h1>
-                        <p className="text-white text-center">Travel is not simply about destinations.
+                        {/* <p className="text-white text-center">Travel is not simply about destinations.
                         </p>
                         <p className="text-white text-center">It is about perspective.</p>
                         <p className="text-white text-center">Festivon Signature Tours was built on a simple belief — journeys should feel personal, structured, and thoughtfully designed.
                         </p>
                         <p className="text-white text-center">We approach travel the way one approaches any meaningful endeavour: with clarity, care, and attention to detail.
+                        </p> */}
+
+
+
+
+                        <p className="text-white text-center">Travel is not simply about destinations. It is about perspective. Festivon Signature Tours was built on a simple belief — journeys should feel personal, structured, and thoughtfully designed. We approach travel the way one approaches any meaningful endeavour: with clarity, care, and attention to detail.
                         </p>
+
                     </div>
 
                 </div>
@@ -50,10 +59,6 @@ export default function Ourworld() {
                             <p>Because when travel is rushed, perspective is lost.
 
                             </p>
-
-
-
-
                         </div>
                         <div className="w-full md:w-1/2 pl-0 md:pl-15  lg:pl-28  mt-10 md:mt-0 ">
                             <div className="pl-0 md:pr-20 aspect-square">
@@ -143,7 +148,7 @@ export default function Ourworld() {
             </section>
             <section className="relative py-20 lg:py-40  bg-white">
                 <div className="max-w-[1200px] flex mx-auto  md:px-15 px-5">
-                    <div className="flex flex-col  md:flex-row w-full">
+                    {/* <div className="flex flex-col  md:flex-row w-full">
                         <div className="w-full md:w-1/2 pr-0  lg:pr-28">
                             <h2 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">Founder’s Inspiration and His Journey</h2>
                             <p>Festivon was founded with the belief that travel planning deserves the same discipline and clarity as any well-structured profession.
@@ -168,7 +173,55 @@ export default function Ourworld() {
                             </div>
 
                         </div>
-                    </div >
+                    </div> */}
+
+                    <div className="w-full">
+
+
+                        {/* Image floated right */}
+                        <div className="float-none md:float-right w-full md:w-[300px] lg:w-[320px] md:ml-20 mb-10">
+                            <div className="aspect-square">
+                                <img
+                                    src="images/founder.webp"
+                                    alt=""
+                                    className="w-full h-full object-cover rounded-lg"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Text content */}
+                        <div className="space-y-4 text-justify">
+                            <h2 className="font-my-font-regular text-left text-4xl xl:text-5xl text-(--color-secondary) mb-5">
+                                Founder’s Inspiration and His Journey
+                            </h2>
+                            <p>
+                                Festivon was founded with the belief that travel planning deserves the same discipline and clarity as any well-structured profession.
+                            </p>
+
+                            <p>
+                                With over two decades of professional experience in compliance and safety-driven environments — where structure, accountability, and precision are essential — our founder recognised a gap in the travel space. Beautiful destinations were being offered, but without thoughtful guidance behind them.
+                            </p>
+
+                            <p>
+                                Alongside this professional background, he has spent more than fifteen years travelling extensively across India, Europe, the Middle East, and parts of the Americas — personally planning and executing multi-country journeys, gaining practical insights into routing, logistics, cultural nuances, and on-ground realities.
+                            </p>
+
+                            <p>
+                                Festivon was created to bring together structure and passion — applying professional discipline, global exposure, and hands-on travel experience to every journey designed.
+                            </p>
+
+                            <p>
+                                Every group journey is led by an experienced Malayali tour manager, and in many cases personally overseen by the Managing Director — ensuring the philosophy of the brand is reflected on the ground.
+                            </p>
+
+                            <p>This is not about building volume.</p>
+                            <p>It is about building journeys that feel right.</p>
+                        </div>
+
+                        {/* Clear float */}
+                        <div className="clear-both"></div>
+                    </div>
+
                 </div >
             </section>
 
