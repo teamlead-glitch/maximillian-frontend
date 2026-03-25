@@ -98,7 +98,10 @@ export default function Countrylist({ slug, regionDetails }: { slug: string; reg
 
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
                 <div className="w-full relative  aspect-[16/9]   md:aspect-[16/4]">
-                    {regionDetails?.banner_image && <Image fill src={regionDetails?.banner_image} alt="" className="w-full h-full object-cover" />}
+                    
+                    <Image fill src={regionDetails?.banner_mob_image ?? ''} alt={regionDetails?.title??''} className="w-full h-full object-cover  md:hidden" />
+                    <Image fill src={regionDetails?.banner_image??''} alt={regionDetails?.title??''} className="w-full h-full object-cover hidden md:block" />
+
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
 -translate-x-1/2  -translate-y-1/2
