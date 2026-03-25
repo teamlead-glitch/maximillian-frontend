@@ -358,9 +358,9 @@ hover:before:translate-x-full
                         centeredSlides
                         spaceBetween={30}
                         loop={true}
-                        speed={3000}
+                        speed={500}
                         autoplay={{
-                            delay: 0,
+                            delay: 2500,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
                         }}
@@ -371,8 +371,7 @@ hover:before:translate-x-full
 
 
 
-                        allowTouchMove={true}
-                        className="w-full"
+
                     >
                         {gallery?.map((item, index) => (
                             <SwiperSlide

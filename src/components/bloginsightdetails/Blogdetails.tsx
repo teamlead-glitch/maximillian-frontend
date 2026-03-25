@@ -111,7 +111,7 @@ export default function Blogdetails() {
                     <div className="w-full py-15 justify-between items-start grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 ">
                         <div className="flex  gap-3 pr-0 md:pr-20 xl:pr-30">
                             <img src="images/author.png" alt="" className="object-cover rounded-full w-15 h-15" />
-                            <div className="grid gap-2 pl-4">
+                            <div className="flex  flex-col gap-2">
                                 <h5 className=" text-break text-sm text-(--color-secondary)">Written by</h5>
                                 <h4 className="font-my-font-semibold text-break text-xl text-(--color-secondary)">John Doe</h4>
                                 <p>Subtitle / Sub heading</p>

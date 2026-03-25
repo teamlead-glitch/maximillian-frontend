@@ -68,7 +68,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                             {data[0]?.title}
                         </h4>
 
-                        <p className="text-white line-clamp-3 ">
+                        <p className="text-white  ">
                             {data[0]?.short_description}
                         </p>
 

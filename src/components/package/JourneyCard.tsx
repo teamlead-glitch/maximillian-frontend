@@ -15,7 +15,7 @@ export default function JourneyCard({ journey }: Props) {
                 <div className="rounded-md relative aspect-[3/4] overflow-hidden">
 
                     {/* Image */}
-                    <Image src={journey.image_path} className="rounded-md w-full h-full object-cover transition-transform duration-700 ease-out  group-hover:scale-110" alt={journey.title} width="600" height="600"/>
+                    <Image src={journey.image_path} className="rounded-md w-full h-full object-cover transition-transform duration-700 ease-out  group-hover:scale-110" alt={journey.title} width="600" height="600" />
 
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t rounded-md from-black/80 via-black/40 to-transparent">
@@ -28,8 +28,8 @@ export default function JourneyCard({ journey }: Props) {
                         </h3>
 
                         <TagListingForSignature
-                          tags={journey.tags}
-                          region={journey.region}
+                            tags={journey.tags}
+                            region={journey.region}
                         />
 
                         {/* <div className="text-white text-xs">

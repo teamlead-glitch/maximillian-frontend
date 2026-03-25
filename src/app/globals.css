@@ -100,7 +100,7 @@ body {
   }
 
   .content hr {
-    @apply my-10;
+    @apply my-10 border-t border-gray-400;
   }
 
   .content ul {

@@ -190,7 +190,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                     className="object-cover rounded-full w-15 h-15"
                                 />
 
-                                <div className="grid flex flex-col">
+                                <div className="flex  flex-col gap-2">
                                     <h5 className="text-break text-sm text-(--color-secondary)">
                                         Written by
                                     </h5>
@@ -243,7 +243,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                         )}
                         <div className="flex flex-col gap-2 items-start md:items-end  justify-between mt-5 md:mt-0">
                             <div className="w-full flex flex-col items-center md:items-end">
-                                <ul className="flex  flex-wrap justify-center md:justify-end items-center gap-2 pb-3 md:pb-0">
+                                <ul className="flex  flex-wrap justify-center md:justify-end items-center gap-5 pb-3 md:pb-0">
 
                                     {tagItems.map((tag, i) => (
                                         <li
