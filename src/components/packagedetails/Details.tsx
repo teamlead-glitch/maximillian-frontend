@@ -188,7 +188,7 @@ export default function Details({ details }: { details: PackageResponse }) {
 
         <>
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
-                <div className="w-full relative  aspect-[16/9]   md:aspect-[16/4]">
+                <div className="w-full relative  aspect-[16/9]   lg:aspect-[16/4]">
                     {/* MOBILE IMAGE */}
                     {mobile_banner_image && (
                         <Image
@@ -357,7 +357,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                     <div className="w-full flex md:flex-row flex-col ">
 
 
-                        <div className="w-full md:w-2/4 mb-10 md:mb-0 pb-20">
+                        <div className="w-full md:w-2/4 mb-10 md:mb-0 pb-0 md:pb-20">
                             <div className="sticky top-20">
                                 <div className="relative aspect-3/4 shadow-xl ">
                                     <Image
