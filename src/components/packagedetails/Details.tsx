@@ -188,7 +188,7 @@ export default function Details({ details }: { details: PackageResponse }) {
 
         <>
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
-                <div className="w-full relative  aspect-[16/6]   lg:aspect-[16/4]">
+                <div className="w-full relative  aspect-[16/9]   lg:aspect-[16/4]">
                     {/* MOBILE IMAGE */}
                     {mobile_banner_image && (
                         <Image

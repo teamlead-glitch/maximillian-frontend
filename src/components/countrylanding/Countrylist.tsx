@@ -116,7 +116,7 @@ px-4 sm:px-0 text-center">
             </section >
             <section id="overview" className="relative  py-10 md:pt-20 md:pb-10   xl:pt-30 xl:pb-15 px-5 overflow-hidden bg-white scroll-mt-16">
                 <div className="max-w-[1300px] mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5 items-center">
                         <div className="pr-0 md:pr-10 xl:pr-20 content" dangerouslySetInnerHTML={{ __html: regionDetails?.description ?? '' }}>
 
                         </div>
