@@ -64,7 +64,7 @@ export default function Designyourtrip() {
         season: ""
     });
 
-    console.log(formData)
+    /* console.log(formData)   */
     const [errors, setErrors] = useState<DYTFormErrors>({
         title: "",
         name: "",
@@ -91,46 +91,88 @@ export default function Designyourtrip() {
     const validate = (): boolean => {
         const newErrors: Partial<DYTFormErrors> = {};
 
-        //title validation
+        // Title validation
         if (!formData.title) {
-            newErrors.title = "Title required"
+            newErrors.title = "Title required";
         }
 
         // Name validation
         if (!formData.name.trim()) {
             newErrors.name = "Name is required";
         } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
-            newErrors.name = "Name cannot contain numbers or special characters";
+            newErrors.name =
+                "Name cannot contain numbers or special characters";
         }
 
         // Mobile validation
         if (!formData.phone.trim()) {
             newErrors.phone = "Mobile number is required";
-        } else if (!/^[+]?[0-9\s-]+$/.test(formData.phone)) {
-            newErrors.phone = "Mobile number should contain only numbers";
-        } else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
-            newErrors.phone = "Enter a valid mobile number";
-        } else if (!/^\d{1,13}$/.test(formData.phone)) {
-            newErrors.phone = "Mobile number cannot exceed 13 digits";
+        }
+        else if (!/^[+]?[0-9\s-]+$/.test(formData.phone)) {
+            newErrors.phone =
+                "Mobile number should contain only numbers";
+        }
+        else if (!/^[1-9]\d{9,14}$/.test(formData.phone)) {
+            newErrors.phone =
+                "Enter a valid mobile number";
+        }
+        else if (
+            formData.phone.replace(/[^\d]/g, "").length > 13
+        ) {
+            newErrors.phone =
+                "Mobile number cannot exceed 13 digits";
         }
 
-
         // Email validation
-        if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+        if (!formData.email.trim()) {
+            newErrors.email = "Email is required";
+        }
+        else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
             newErrors.email = "Enter a valid email";
         }
 
-        // destination validation
+        // Destination validation
         if (!formData.destination.trim()) {
-            newErrors.destination = "Destination is required";
+            newErrors.destination =
+                "Destination is required";
         }
+
+        // Travel date validation
         if (!formData.travel_date) {
-            newErrors.travel_date = "Travel date is required";
+            newErrors.travel_date =
+                "Travel date is required";
         }
 
         setErrors(newErrors as DYTFormErrors);
 
-        return Object.keys(newErrors).length === 0; // true → no errors
+        // NEW FEATURE — scroll to first error
+        if (Object.keys(newErrors).length > 0) {
+            scrollToFirstError(newErrors);
+            return false;
+        }
+
+        return true;
+    };
+
+    //focus effect
+    const scrollToFirstError = (errors: Partial<DYTFormErrors>) => {
+        const firstErrorKey = Object.keys(errors)[0];
+
+        if (!firstErrorKey) return;
+
+        const element = document.getElementById(firstErrorKey);
+
+        if (element) {
+            element.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+            });
+
+            // focus after scroll
+            setTimeout(() => {
+                (element as HTMLElement).focus();
+            }, 300);
+        }
     };
 
 
@@ -326,7 +368,7 @@ export default function Designyourtrip() {
                                                     </svg>
                                                 </span>
                                             </div>
-                                            {errors.title && <p style={{ color: "red", fontSize: "12px" }}>{errors.title}</p>}
+                                            {errors.title && <p style={{ color: "red", fontSize: "14px" }}>{errors.title}</p>}
                                         </div>
 
 
@@ -350,7 +392,7 @@ export default function Designyourtrip() {
                                                     onChange={handleChange}
                                                 />
                                             </div>
-                                            {errors.name && <p style={{ color: "red", fontSize: "12px" }}>{errors.name}</p>}
+                                            {errors.name && <p style={{ color: "red", fontSize: "14px" }}>{errors.name}</p>}
                                         </div>
 
                                     </div>
@@ -377,7 +419,7 @@ export default function Designyourtrip() {
                                                     className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
                                                 />
                                             </div>
-                                            {errors.email && <p style={{ color: "red", fontSize: "12px" }}>{errors.email}</p>}
+                                            {errors.email && <p style={{ color: "red", fontSize: "14px" }}>{errors.email}</p>}
                                         </div>
 
                                         {/* Phone */}
@@ -400,7 +442,7 @@ export default function Designyourtrip() {
                                                     onChange={handleChange}
                                                 />
                                             </div>
-                                            {errors.phone && <p style={{ color: "red", fontSize: "12px" }}>{errors.phone}</p>}
+                                            {errors.phone && <p style={{ color: "red", fontSize: "14px" }}>{errors.phone}</p>}
                                         </div>
                                     </div>
                                     <div className="pt-3">  <h4 className="font-my-font-semibold text-(--color-secondary) text-xl">Trip details</h4></div>
@@ -413,7 +455,7 @@ export default function Designyourtrip() {
                                             value={formData.destination}
                                             onChange={handleChange}
                                         />
-                                        {errors.destination && <p style={{ color: "red", fontSize: "12px" }}>{errors.destination}</p>}
+                                        {errors.destination && <p style={{ color: "red", fontSize: "14px" }}>{errors.destination}</p>}
 
                                     </div>
                                     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -424,7 +466,7 @@ export default function Designyourtrip() {
                                                 minDate={tomorrow} // disables today and past dates
                                                 placeholderText="Traveling on"
                                                 className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500"
-                                                id="date"
+                                                id="travel_date"
                                                 onChange={(date: Date | null) => {
                                                     setStartDate(date);
 
@@ -440,7 +482,7 @@ export default function Designyourtrip() {
                                                 }}
 
                                             />
-                                            {errors.travel_date && <p style={{ color: "red", fontSize: "12px" }}>{errors.travel_date}</p>}
+                                            {errors.travel_date && <p style={{ color: "red", fontSize: "14px" }}>{errors.travel_date}</p>}
 
                                         </div>
                                         <div className="relative">
@@ -552,18 +594,18 @@ export default function Designyourtrip() {
                                                 )}
                                             />
                                             <div className="flex justify-between mt-4 text-gray-700 font-medium">
-                                                <span>₹{values[0]}</span>
-                                                <span>₹{values[1]}</span>
+                                                <span>₹{values[0].toLocaleString("en-IN")}</span>
+                                                <span>₹{values[1].toLocaleString("en-IN")}</span>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="relative w-full">
-                                        <input
+                                        <textarea
                                             id="message"
                                             value={formData.message}
                                             onChange={handleChange}
-                                            type="text"
+                                            rows={3}
                                             placeholder="Anything specific you want to experience?"
                                             className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md  px-3 py-3 focus:outline-none focus:border-gray-500" />
                                     </div>
@@ -615,6 +657,7 @@ hover:before:translate-x-full hover:text-white
 
                                         <button
                                             onClick={resetForm}
+                                            type="button"
                                             className="
 relative overflow-hidden
 text-(--color-secondary)
