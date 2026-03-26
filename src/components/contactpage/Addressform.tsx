@@ -215,7 +215,7 @@ export default function AddressForm() {
     //number storing
     const whatsappNumber = settings?.whatsapp;
     //message storing
-    const message = encodeURIComponent("Hi! I would like to know more.");
+    const message = encodeURIComponent("Hello! I’m interested in exploring your tour packages.");
 
     const whatsappLink = whatsappNumber
         ? `https://wa.me/${whatsappNumber}?text=${message}`
