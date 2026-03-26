@@ -61,7 +61,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                     <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-black/80 to-transparent rounded-0 md:rounded-b-md"></div>
 
                     {/* TEXT — hidden by default, visible on hover */}
-                    <div className="absolute bottom-0 wifull  md:w-1/2 pl-5 md:pl-15 pb-5 md:pb-15 
+                    <div className="absolute bottom-0 wifull  md:w-3/4 xl:w-1/2   pr-5 md:pr-0   pl-5 md:pl-15 pb-5 md:pb-15 
                    ">
 
                         <h4 className="text-white text-3xl font-my-font-regular">
@@ -91,13 +91,13 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                     </div>
 
                 </div>
-                <div className="w-full lg:w-1/2 px-5 md:px-20  xl:px-40 h-full mt-15   lg:mt-0">
+                <div className="w-full lg:w-1/2 px-5 md:px-20  lg:px-20 xl:px-30 2xl:40 h-full mt-15   lg:mt-0">
                     <div className="w-full flex flex-col items-center justify-between h-full gap-3">
 
 
 
                         {/* first image */}
-                        <div className="w-full aspect-4/3 sm:aspect-4/2 relative group overflow-hidden">
+                        <div className="w-full aspect-4/2 relative group overflow-hidden">
                             {data[1]?.image && <img src={data[1]?.image} className="w-full h-full object-cover rounded-xl opacity-100  md:opacity-0
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0 " />}
@@ -108,7 +108,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                px-5  md:px-10 py-5
               ">
 
-                                <h4 className=" text-white   md:text-(--color-secondary) text-2xl md:text-3xl font-my-font-regular group-hover:text-white">
+                                <h4 className=" text-white   md:text-(--color-secondary) text-2xl md:text-2xl   font-my-font-regular group-hover:text-white">
                                     {data[1]?.title}
                                 </h4>
 
@@ -116,7 +116,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                                 {/* <p className="text-white line-clamp-3"> */}
 
 
-                                <p className="line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
+                                <p className="line-clamp-3 md:line-clamp-2 xl:line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
 
                                     {data[1]?.short_description}
 
@@ -142,7 +142,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                         </div>
 
                         {/* second image */}
-                        <div className="w-full aspect-4/3 sm:aspect-4/2 relative group overflow-hidden">
+                        <div className="w-full  aspect-4/2 relative group overflow-hidden">
                             {data[2]?.image && <img src={data[2]?.image} className="w-full h-full object-cover rounded-xl opacity-100   md:opacity-0
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0 " />}
@@ -153,11 +153,11 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                px-5  md:px-10 py-5
               ">
 
-                                <h4 className="text-white   md:text-(--color-secondary) text-2xl md:text-3xl font-my-font-regular group-hover:text-white">
+                                <h4 className="text-white   md:text-(--color-secondary) text-2xl md:text-2xl   font-my-font-regular group-hover:text-white">
                                     {data[2]?.title}
                                 </h4>
 
-                                <p className="line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
+                                <p className="line-clamp-3 md:line-clamp-2 xl:line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
                                     {data[2]?.short_description}
                                 </p>
 
@@ -181,7 +181,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                         </div>
 
                         {/* third image */}
-                        <div className="w-full aspect-4/3 sm:aspect-4/2 relative group overflow-hidden">
+                        <div className="w-full  aspect-4/2 relative group overflow-hidden">
                             {data[3]?.image && <img src={data[3]?.image} className="w-full h-full object-cover rounded-xl opacity-100   md:opacity-0
                 transition-all duration-500
                 group-hover:opacity-100 group-hover:translate-y-0 " />}
@@ -192,11 +192,11 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                px-5  md:px-10 py-5
               ">
 
-                                <h4 className="text-white   md:text-(--color-secondary) text-2xl md:text-3xl font-my-font-regular group-hover:text-white">
+                                <h4 className="text-white   md:text-(--color-secondary) text-2xl md:text-2xl   font-my-font-regular group-hover:text-white">
                                     {data[3]?.title}
                                 </h4>
 
-                                <p className="line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
+                                <p className=" line-clamp-3 md:line-clamp-2 xl:line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
                                     {data[3]?.short_description}
                                 </p>
 
