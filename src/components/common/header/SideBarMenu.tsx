@@ -57,6 +57,15 @@ export default function SideBarMenu({
   }, [sideOpen]);
 
   if (!mounted) return null;
+  //number storing
+    const whatsappNumber = settings?.whatsapp;
+    //message storing
+    const message = encodeURIComponent("Hello! I’m interested in exploring your tour packages.");
+
+    const whatsappLink = whatsappNumber
+        ? `https://wa.me/${whatsappNumber}?text=${message}`
+        : "#";
+
 
   return (
     <>
@@ -146,7 +155,7 @@ export default function SideBarMenu({
               </a>
 
               <a
-                href={`https://wa.me/${settings.whatsapp}`}
+                href={whatsappLink}
                 className="flex gap-3 text-(--color-secondary)"
               >
                 <img

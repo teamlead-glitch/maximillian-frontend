@@ -3,6 +3,14 @@ import Link from "next/link";
 import { taggroupResponse } from "@/types/taggroupTypes";
 
 export default function Footer({ settings, regions, tagGroups }: { settings: Settings; regions: Regions; tagGroups: taggroupResponse[] }) {
+//number storing
+    const whatsappNumber = settings?.whatsapp;
+    //message storing
+    const message = encodeURIComponent("Hello! I’m interested in exploring your tour packages.");
+
+    const whatsappLink = whatsappNumber
+        ? `https://wa.me/${whatsappNumber}?text=${message}`
+        : "#";
 
     return (
         <>
@@ -125,7 +133,7 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                                         alt="Phone"
                                         className="w-3 h-3"
                                     />
-                                    <a href={`https://wa.me/${settings.whatsapp}`}>   {settings.whatsapp}</a>
+                                    <a href={whatsappLink}>   {settings.whatsapp}</a>
                                 </li>
 
                                 <li className="flex items-center gap-3 text-[#818c94]">
