@@ -357,7 +357,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                     <div className="w-full flex md:flex-row flex-col ">
 
 
-                        <div className="w-full md:w-2/4 mb-10 md:mb-0 pb-20">
+                        <div className="w-full md:w-2/4 mb-10 md:mb-0 pb-0 md:pb-20">
                             <div className="sticky top-20">
                                 <div className="relative aspect-3/4 shadow-xl ">
                                     <Image

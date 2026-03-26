@@ -98,9 +98,9 @@ export default function Countrylist({ slug, regionDetails }: { slug: string; reg
 
             <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
                 <div className="w-full relative  aspect-[16/9]   md:aspect-[16/4]">
-                    
-                    <Image fill src={regionDetails?.banner_mob_image ?? ''} alt={regionDetails?.title??''} className="w-full h-full object-cover  md:hidden" />
-                    <Image fill src={regionDetails?.banner_image??''} alt={regionDetails?.title??''} className="w-full h-full object-cover hidden md:block" />
+
+                    <Image fill src={regionDetails?.banner_mob_image ?? ''} alt={regionDetails?.title ?? ''} className="w-full h-full object-cover  md:hidden" />
+                    <Image fill src={regionDetails?.banner_image ?? ''} alt={regionDetails?.title ?? ''} className="w-full h-full object-cover hidden md:block" />
 
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
@@ -119,7 +119,7 @@ px-4 sm:px-0 text-center">
             </section >
             <section id="overview" className="relative  py-10 md:pt-20 md:pb-10   xl:pt-30 xl:pb-15 px-5 overflow-hidden bg-white scroll-mt-16">
                 <div className="max-w-[1300px] mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5 items-center">
+                    <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5 it">
                         <div className="pr-0 md:pr-10 xl:pr-20 content" dangerouslySetInnerHTML={{ __html: regionDetails?.description ?? '' }}>
 
                         </div>

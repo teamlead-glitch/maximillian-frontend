@@ -67,9 +67,11 @@ export default function LogoCarousel() {
                         slidesPerView={3}
                         spaceBetween={0}
                         breakpoints={{
-                            0: { slidesPerView: 4 },
-                            640: { slidesPerView: 6 },
-                            1024: { slidesPerView: 9 },
+                            0: { slidesPerView: 3 },
+                            640: { slidesPerView: 4 },
+                            992: { slidesPerView: 5 },
+                            1024: { slidesPerView: 7 },
+                            1200: { slidesPerView: 9 },
                         }}
                         className="flex items-center"
                     >
