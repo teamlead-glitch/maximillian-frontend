@@ -10,7 +10,7 @@ import LogoCarousel from "../home/LogoCarousel";
 
 const TAKE = 15;
 
-export default function TagwisePackageList({ slug, title }: { slug: string; title:string }) {
+export default function TagwisePackageList({ slug, title, description }: { slug: string; title:string; description:string }) {
 
     const [packages, setPackages] = useState<PackagesResponse["packages"]>([]);
     const [loading, setLoading] = useState(true);
@@ -100,6 +100,8 @@ export default function TagwisePackageList({ slug, title }: { slug: string; titl
                     <div className="flex flex-col w-full justify-center">
                         <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary) text-center ">
                             {title}</h1>
+                            <p className="text-center mt-4">{description}
+                        </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-10 lg:mt-20">
 
                             {packages.map((pckge) =>

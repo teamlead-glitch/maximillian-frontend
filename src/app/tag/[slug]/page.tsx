@@ -50,7 +50,7 @@ if (!page) {
         />
       )}
      
-     <TagwisePackageList slug={slug} title={page?.title??''}/>
+     <TagwisePackageList slug={slug} title={page?.title??''} description={page?.short_description??''}/>
     
     </>
   );
