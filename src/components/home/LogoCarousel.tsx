@@ -67,7 +67,8 @@ export default function LogoCarousel() {
                         slidesPerView={3}
                         spaceBetween={0}
                         breakpoints={{
-                            0: { slidesPerView: 3 },
+                            0: { slidesPerView: 2 },
+                            480: { slidesPerView: 3 },
                             640: { slidesPerView: 4 },
                             992: { slidesPerView: 5 },
                             1024: { slidesPerView: 7 },
