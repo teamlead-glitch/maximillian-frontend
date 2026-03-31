@@ -9,7 +9,8 @@ import { toast, ToastContainer } from "react-toastify";
 import { apiService } from "@/services/api";
 import SimpleCaptcha from "../Captcha";
 import { useRouter } from "next/navigation";
-
+import PhoneInput, { CountryData } from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'
 
 
 export default function Designyourtrip() {
@@ -52,6 +53,7 @@ export default function Designyourtrip() {
         title: "",
         name: "",
         phone: "",
+        country_code: "+1",
         email: "",
         message: "",
         destination: "",
@@ -64,14 +66,17 @@ export default function Designyourtrip() {
         season: ""
     });
 
-    /* console.log(formData)   */
+    console.log(formData)
     const [errors, setErrors] = useState<DYTFormErrors>({
         title: "",
         name: "",
         phone: "",
         email: "",
         destination: "",
-        travel_date: ""
+        travel_date: "",
+        country_code:"",
+        duration:"",
+        group_size:""
     });
 
     const handleChange = (
@@ -102,6 +107,11 @@ export default function Designyourtrip() {
         } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
             newErrors.name =
                 "Name cannot contain numbers or special characters";
+        }
+
+        //country code
+         if (!formData.country_code) {
+            newErrors.country_code = "Required";
         }
 
         // Mobile validation
@@ -141,6 +151,14 @@ export default function Designyourtrip() {
         if (!formData.travel_date) {
             newErrors.travel_date =
                 "Travel date is required";
+        }
+
+        //duration
+        if (!formData.duration) {
+            newErrors.duration = "Duration is required";
+        }
+        if (!formData.group_size) {
+            newErrors.group_size = "Group size is required";
         }
 
         setErrors(newErrors as DYTFormErrors);
@@ -192,7 +210,7 @@ export default function Designyourtrip() {
 
             const payload = {
                 name: `${formData.title} ${formData.name}`.trim(),
-                phone: formData.phone,
+                phone: `${formData.country_code}${formData.phone}`,
                 email: formData.email,
                 message: formData.message,
                 duration: formData.duration,
@@ -229,7 +247,8 @@ export default function Designyourtrip() {
                     trip_type: "",
                     travel_pace: "",
                     budget: "",
-                    season: ""
+                    season: "",
+                    country_code: ""
                 });
                 setStartDate(null);
                 setIsCaptchaVerified(false);
@@ -266,7 +285,8 @@ export default function Designyourtrip() {
             trip_type: "",
             travel_pace: "",
             budget: `₹${values[0].toLocaleString()} - ₹${values[1].toLocaleString()}`,
-            season: ""
+            season: "",
+            country_code: ""
         });
 
         setStartDate(null);
@@ -424,44 +444,65 @@ export default function Designyourtrip() {
 
                                         {/* Phone */}
                                         <div>
-                                            <div className="flex gap-2 w-full">
+                                            <div className="flex gap-3 w-full">
 
-                                                {/* Country Code Dropdown */}
-                                                <select
-                                                    name="countryCode"
-                                                    value={91}
-                                                    onChange={handleChange}
-                                                    className="bg-transparent border border-gray-300 text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500 text-sm"
-                                                >
-                                                    <option value="+91">🇮🇳 IN (+91)</option>
-                                                    <option value="+1">🇺🇸 US (+1)</option>
-                                                    <option value="+44">🇬🇧 UK (+44)</option>
-                                                    <option value="+971">🇦🇪 AE (+971)</option>
-                                                    <option value="+61">🇦🇺 AU (+61)</option>
-                                                    <option value="+81">🇯🇵 JP (+81)</option>
-                                                    <option value="+49">🇩🇪 DE (+49)</option>
-                                                    <option value="+33">🇫🇷 FR (+33)</option>
-                                                    <option value="+39">🇮🇹 IT (+39)</option>
-                                                    <option value="+86">🇨🇳 CN (+86)</option>
-                                                </select>
-
-                                                {/* Phone Input */}
-                                                <div className="relative w-full">
-                                                    <img
-                                                        src="images/phone-icon.svg"
-                                                        alt="phone"
-                                                        className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
-                                                    />
-
-                                                    <input type="tel" placeholder="Phone number" className="w-full bg-transparent border border-gray-300 text-(--color-secondary) placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500" id="phone" value={formData.phone} onChange={handleChange} />
-                                                </div>
-                                            </div>
-
-                                            {errors.phone && (
+                                               <div>
+                                                    {/* Country Code */}
+                                                    <div className="w-[110px]">
+                                                        <PhoneInput
+                                                            inputProps={{
+                                                                id: "country_code",
+                                                                name: "country_code",
+                                                            }}
+                                                            value={formData.country_code}
+                                                            onChange={(value, country) => {
+                                                                const c = country as CountryData;
+                                                                setFormData((prev) => ({
+                                                                    ...prev,
+                                                                    country_code: "+" + c.dialCode,
+                                                                }));
+                                                            }}
+                                                            country={"us"}
+                                                            containerClass="w-full"
+                                                            inputClass="!w-full !h-[48px] bg-transparent border border-gray-300 text-(--color-secondary) rounded-md px-3 text-sm focus:!border-gray-500 focus:!outline-none content"
+                                                            buttonClass="!h-[48px] !border !border-gray-300 !rounded-l-md !bg-transparent"
+                                                            dropdownClass="!w-[210px] !text-sm"
+                                                        />
+                                                    </div>
+                                                            {errors.country_code && (
+                                                <p style={{ color: "red", fontSize: "14px" }}>
+                                                    {errors.country_code}
+                                                </p>
+                                            )}
+                                               </div>
+                                                <div>
+                                                    {/* Phone Input */}
+                                                    <div className="relative flex-1">
+                                                        <img
+                                                            src="images/phone-icon.svg"
+                                                            alt="phone"
+                                                            className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
+                                                        />
+    
+                                                        <input
+                                                            type="tel"
+                                                            placeholder="Phone number"
+                                                            className="w-full bg-transparent border border-gray-300 text-(--color-secondary) placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
+                                                            id="phone"
+                                                            value={formData.phone}
+                                                            onChange={handleChange}
+                                                        />
+                                                    </div>
+                                                     {errors.phone && (
                                                 <p style={{ color: "red", fontSize: "14px" }}>
                                                     {errors.phone}
                                                 </p>
                                             )}
+                                                </div>
+
+                                            </div>
+
+                                           
                                         </div>
                                     </div>
                                     <div className="pt-3">  <h4 className="font-my-font-semibold text-(--color-secondary) text-xl">Trip details</h4></div>
@@ -512,6 +553,7 @@ export default function Designyourtrip() {
                                                 value={formData.duration}
                                                 onChange={handleChange}
                                             />
+                                            {errors.duration && <p style={{ color: "red", fontSize: "14px" }}>{errors.duration}</p>}
                                         </div>
                                         <div className="relative">
                                             <input type="text"
@@ -521,6 +563,7 @@ export default function Designyourtrip() {
                                                 value={formData.group_size}
                                                 onChange={handleChange}
                                             />
+                                            {errors.group_size && <p style={{ color: "red", fontSize: "14px" }}>{errors.group_size}</p>}
                                         </div>
 
 

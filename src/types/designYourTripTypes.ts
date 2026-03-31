@@ -13,6 +13,7 @@ export interface DYTformtypes {
   travel_pace:string;
   budget:string;
   season :string;
+  country_code:string;
 }
 
 export interface DYTFormErrors {
@@ -21,7 +22,10 @@ export interface DYTFormErrors {
   phone: string;
   email: string;
   destination:string;
-  travel_date:string
+  travel_date:string;
+  country_code:string;
+  duration:string;
+  group_size:string;
 }
 export type DYTEnquiryResponse = {
   result: string;
