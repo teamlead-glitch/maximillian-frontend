@@ -1,9 +1,19 @@
+"use client";
+import { useState } from "react";
 import { Settings, Regions } from "@/types/commonTypes";
 import Link from "next/link";
 import { taggroupResponse } from "@/types/taggroupTypes";
 
 export default function Footer({ settings, regions, tagGroups }: { settings: Settings; regions: Regions; tagGroups: taggroupResponse[] }) {
-//number storing
+
+
+    const [openSection, setOpenSection] = useState<string | null>(null);
+
+    const toggleSection = (section: string) => {
+        setOpenSection(openSection === section ? null : section);
+    };
+
+    //number storing
     const whatsappNumber = settings?.whatsapp;
     //message storing
     const message = encodeURIComponent("Hello! I’m interested in exploring your tour packages.");
@@ -19,10 +29,10 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
             <footer className="bg-white border-t  border-gray-200 py-10 md:py-20 px-5 md:px-10 ">
                 <div className="max-w-[1400px] mx-auto">
 
-                    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-4 md:gap-8">
-                        <div className="border-0  md:border-r border-gray-200 mb-5 md:mb-0 pr-5">
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-0 md:gap-8">
+                        <div className="border-0  md:border-r border-gray-200 mb-0 pr-5">
                             <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Menu</h6>
-                            <ul className="text-body font-medium">
+                            <ul className="text-body font-medium mb-8 md:mb-0">
                                 {[{ label: "Home", href: "/" },
                                 { label: "Destinations", href: "/destinations" },
                                 { label: "Design Your Trip", href: "/designyourtrip" },
@@ -53,134 +63,193 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                             </ul>
 
                         </div>
-                        <div className="border-0  md:border-r border-gray-200 mb-5 md:mb-0">
+                        <div className="border-0  md:border-r border-gray-200 mb-0">
                             <div className="grid grid-cols-1 lg:grid-cols-2">
-                                <div className="div mb-5 md:mb-0">
-                                    <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Specialties</h6>
-                                    <ul className="text-body font-medium mb-5 md:mb-0">
-                                        {tagGroups[1].tags.map((exp) => (
+                                <div className="div mb-0">
+                                    {/* Specialties */}
+                                    <div>
+                                        <div
+                                            className="flex justify-between  cursor-pointer md:cursor-default"
+                                            onClick={() => toggleSection("specialties")}
+                                        >
+                                            <h6 className="mb-6 text-sm text-[#93989b] text-heading line-height-1">
+                                                Specialties
+                                            </h6>
 
-                                            <li key={exp.id} className="mb-2 xl:mb-2 text-[#818c94]">
-                                                <Link href={`/tag/${exp.short_slug}`} className="hover:underline ">{exp.title}</Link>
-                                            </li>
+                                            {/* Icon (mobile only) */}
+                                            <span className="md:hidden text-lg">
+                                                {openSection === "specialties" ? "−" : "+"}
+                                            </span>
+                                        </div>
 
-                                        ))}
+                                        <ul
+                                            className={`text-body font-medium mb-5 md:mb-0 ${openSection === "specialties" ? "block" : "hidden md:block"
+                                                }`}
+                                        >
+                                            {tagGroups[1].tags.map((exp) => (
+                                                <li key={exp.id} className="mb-2 text-[#818c94]">
+                                                    <Link href={`/tag/${exp.short_slug}`} className="hover:underline">
+                                                        {exp.title}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
 
+                                    {/* Regions */}
+                                    <div>
+                                        <div
+                                            className="flex justify-between  cursor-pointer md:cursor-default mt-0 md:mt-6"
+                                            onClick={() => toggleSection("regions")}
+                                        >
+                                            <h6 className="mb-6 text-sm text-[#93989b] text-heading line-height-1">
+                                                Regions
+                                            </h6>
 
-                                    </ul>
+                                            <span className="md:hidden text-lg">
+                                                {openSection === "regions" ? "−" : "+"}
+                                            </span>
+                                        </div>
 
-                                    <h6 className="mb-6 mt-15 text-sm text-[#93989b]  text-heading">Regions</h6>
-                                    <ul className="text-body font-medium">
-
-                                        {regions.map((reg) => (
-
-                                            <li key={reg.id} className="mb-2 xl:mb-2 text-[#818c94]">
-                                                {reg.slug === 'india' ? (
-                                                    <Link href="/country/india" className="hover:underline">{reg.menu_title ? reg.menu_title : reg.title}</Link>
-                                                ) : (
-                                                    <Link href={`/${reg.slug}`} className="hover:underline">{reg.menu_title ? reg.menu_title : reg.title}</Link>
-                                                )}
-
-                                            </li>
-
-                                        ))}
-
-
-                                    </ul>
+                                        <ul
+                                            className={`text-body font-medium ${openSection === "regions" ? "block" : "hidden md:block"
+                                                }`}
+                                        >
+                                            {regions.map((reg) => (
+                                                <li key={reg.id} className="mb-2 text-[#818c94]">
+                                                    {reg.slug === "india" ? (
+                                                        <Link href="/country/india" className="hover:underline">
+                                                            {reg.menu_title ? reg.menu_title : reg.title}
+                                                        </Link>
+                                                    ) : (
+                                                        <Link href={`/${reg.slug}`} className="hover:underline">
+                                                            {reg.menu_title ? reg.menu_title : reg.title}
+                                                        </Link>
+                                                    )}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div className="div mb-5 md:mb-0">
-                                    <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Experience</h6>
-                                    <ul className="text-body font-medium">
-                                        {tagGroups[0].tags.map((spec) => (
+                                <div className="div mb-0">
+                                    {/* Experience */}
+                                    <div>
+                                        <div
+                                            className="flex justify-between  cursor-pointer md:cursor-default"
+                                            onClick={() => toggleSection("experience")}
+                                        >
+                                            <h6 className="mb-6 text-sm text-[#93989b] text-heading line-height-1">
+                                                Experience
+                                            </h6>
 
-                                            <li key={spec.id} className="mb-2 xl:mb-2 text-[#818c94]">
-                                                <Link href={`/tag/${spec.short_slug}`} className="hover:underline ">{spec.title}</Link>
-                                            </li>
+                                            <span className="md:hidden text-lg">
+                                                {openSection === "experience" ? "−" : "+"}
+                                            </span>
+                                        </div>
 
-                                        ))}
-                                    </ul>
+                                        <ul
+                                            className={`text-body font-medium ${openSection === "experience" ? "block" : "hidden md:block"
+                                                }`}
+                                        >
+                                            {tagGroups[0].tags.map((spec) => (
+                                                <li key={spec.id} className="mb-2 text-[#818c94]">
+                                                    <Link href={`/tag/${spec.short_slug}`} className="hover:underline">
+                                                        {spec.title}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
+                        {/* Contact */}
                         <div className="pl-0 md:pl-10">
-                            <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Contact</h6>
-                            <ul className="text-body font-medium mb-5">
-                                <li className="mb-4 text-[#818c94]">
-                                    Registered Office: <br />
-                                    {settings.address}
-                                </li></ul>
-                            <ul className="text-body font-medium mb-5">
-                                <li className="mb-4 text-[#818c94]">
-                                    Corporate Office <br />
-                                    {settings.address_2}
-                                </li>
-                            </ul>
+                            <div
+                                className="flex justify-between  cursor-pointer md:cursor-default"
+                                onClick={() => toggleSection("contact")}
+                            >
+                                <h6 className="mb-6 text-sm text-[#93989b] text-heading line-height-1">
+                                    Contact
+                                </h6>
 
-                            <ul className="text-body font-medium pl-0 md:pl-0 md:-ml-[25px]">
-                                <li className="mb-4 flex items-center gap-3 text-[#818c94]">
-                                    <img
-                                        src="/images/call-icon.svg"
-                                        alt="Phone"
-                                        className="w-3 h-3"
-                                    />
-                                    <a href={`tel:${settings.phone}`}>   {settings.phone}</a>
-                                </li>
+                                {/* Mobile icon */}
+                                <span className="md:hidden text-lg">
+                                    {openSection === "contact" ? "−" : "+"}
+                                </span>
+                            </div>
 
-                                <li className="mb-4 flex items-center gap-3 text-[#818c94]">
-                                    <img
-                                        src="/images/whatsapp-icon.svg"
-                                        alt="Phone"
-                                        className="w-3 h-3"
-                                    />
-                                    <a href={whatsappLink}>   {settings.whatsapp}</a>
-                                </li>
+                            <div
+                                className={`${openSection === "contact" ? "block" : "hidden md:block"
+                                    }`}
+                            >
+                                <ul className="text-body font-medium mb-5">
+                                    <li className="mb-4 text-[#818c94]">
+                                        Registered Office: <br />
+                                        {settings.address}
+                                    </li>
+                                </ul>
 
-                                <li className="flex items-center gap-3 text-[#818c94]">
-                                    <img
-                                        src="/images/mail-icon.svg"
-                                        alt="Email"
-                                        className="w-3 h-3"
-                                    />
-                                    <a href={`mailto:${settings.email}`}>{settings.email}</a>
-                                </li>
-                            </ul>
+                                <ul className="text-body font-medium mb-5">
+                                    <li className="mb-4 text-[#818c94]">
+                                        Corporate Office <br />
+                                        {settings.address_2}
+                                    </li>
+                                </ul>
 
+                                <ul className="text-body font-medium pl-0 md:pl-0 md:-ml-[25px]">
+                                    <li className="mb-4 flex items-center gap-3 text-[#818c94]">
+                                        <img src="/images/call-icon.svg" alt="Phone" className="w-3 h-3" />
+                                        <a href={`tel:${settings.phone}`}>{settings.phone}</a>
+                                    </li>
+
+                                    <li className="mb-4 flex items-center gap-3 text-[#818c94]">
+                                        <img src="/images/whatsapp-icon.svg" alt="Phone" className="w-3 h-3" />
+                                        <a href={whatsappLink}>{settings.whatsapp}</a>
+                                    </li>
+
+                                    <li className="flex items-center gap-3 text-[#818c94]">
+                                        <img src="/images/mail-icon.svg" alt="Email" className="w-3 h-3" />
+                                        <a href={`mailto:${settings.email}`}>{settings.email}</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <hr className="border-gray-200 my-6  sm:mx-auto lg:my-8" />
                     <div className="flex flex-col-reverse md:flex-row items-center md:items-center justify-between w-full gap-5 mt-8 md:mt-16">
 
-                        <span className="text-base text-[#93989b] text-body">
+                        <span className="text-sm md:text-base text-[#93989b] text-body">
                             Made by <a href="https://phitany.com/" className="hover:underline">Phitany</a>
                         </span>
 
                         <div>
                             <ul className="flex flex-wrap justify-center md:justify-center gap-4 mt-1">
-                                <li className="relative text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+                                <li className="relative text-sm md:text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
                                     <Link href="/terms-and-conditions" className="hover:underline">Terms and Conditions</Link>
                                 </li>
 
-                                <li className="relative text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+                                <li className="relative text-sm md:text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
                                     <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
                                 </li>
 
-                                <li className="relative pr-3 text-base text-[#93989b] text-body ">
+                                <li className="relative pr-3 text-sm md:text-base text-[#93989b] text-body ">
                                     <Link href="/health-and-safety-policy" className="hover:underline">Health and Safety Policy</Link>
                                 </li>
 
-                               
+
                             </ul>
 
 
                             <ul className="flex flex-wrap justify-center md:justify-center gap-4 mt-1">
-                                
 
-                                <li className="relative pr-3 text-base text-[#93989b] text-body after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+
+                                <li className="relative pr-3 text-sm md:text-base text-[#93989b] text-body after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
                                     <Link href="/responsible-travel-sustainability-policy" className="hover:underline">Responsible Travel & Sustainability Policy</Link>
                                 </li>
 
-                                <li className="relative pr-3 text-base text-[#93989b] text-body ">
+                                <li className="relative pr-3 text-sm md:text-base text-[#93989b] text-body ">
                                     <Link href="/child-protection-safeguarding-policy" className="hover:underline">Child Protection & Safeguarding Policy</Link>
                                 </li>
                             </ul>
