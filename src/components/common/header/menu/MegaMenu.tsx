@@ -144,7 +144,7 @@ export default function MegaMenu({
               onClick={() => setMegaOpen(false)}
               aria-label="Close menu"
               className="  z-10
-    p-2 cursor-pointer bg-[#36454F] absolute mt-32 -left-3 hover:bg-black hover:text-white
+    p-2 cursor-pointer bg-[#3A3F42] absolute mt-32 -left-3 hover:bg-black hover:text-white
     transition-all duration-300 group"
             >
               <X

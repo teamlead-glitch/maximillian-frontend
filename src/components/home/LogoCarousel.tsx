@@ -54,7 +54,7 @@ export default function LogoCarousel() {
 
 
             {carousel.length > 0 && (
-                <section className="bg-white w-full py-8 md:py-10 border-t border-gray-200">
+                <section className="bg-white w-full py-4 md:py-5 border-t border-gray-200">
                     <Swiper
                         key={carousel.length}
                         modules={[Autoplay]}
@@ -68,8 +68,8 @@ export default function LogoCarousel() {
                         spaceBetween={0}
                         breakpoints={{
                             0: { slidesPerView: 2 },
-                            480: { slidesPerView: 3 },
-                            640: { slidesPerView: 4 },
+                            480: { slidesPerView: 4 },
+                            640: { slidesPerView: 5 },
                             992: { slidesPerView: 5 },
                             1024: { slidesPerView: 7 },
                             1200: { slidesPerView: 9 },
@@ -79,7 +79,7 @@ export default function LogoCarousel() {
                         {carousel.map((item) => (
                             <SwiperSlide key={item.id}>
                                 <div className="flex items-center justify-center">
-                                    <div className="relative h-20 w-auto   px-15 ">
+                                    <div className="relative h-12 md:h-20 w-auto   px-15 ">
                                         <Image
                                             src={item.image}
                                             alt={item.alt_text}
