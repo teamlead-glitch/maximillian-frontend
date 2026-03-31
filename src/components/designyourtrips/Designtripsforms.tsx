@@ -398,7 +398,7 @@ export default function Designyourtrip() {
                                     </div>
 
                                     {/* Row 2 */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-4">
                                         {/* Email */}
                                         <div>
                                             <div className="relative w-full">
@@ -424,25 +424,44 @@ export default function Designyourtrip() {
 
                                         {/* Phone */}
                                         <div>
-                                            <div className="relative w-full">
-                                                {/* Left Icon */}
-                                                <img
-                                                    src="images/phone-icon.svg"   // your SVG icon path
-                                                    alt="User"
-                                                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
-                                                />
+                                            <div className="flex gap-2 w-full">
 
-                                                {/* Input */}
-                                                <input
-                                                    type="text"
-                                                    placeholder="Phone number"
-                                                    className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500"
-                                                    id="phone"
-                                                    value={formData.phone}
+                                                {/* Country Code Dropdown */}
+                                                <select
+                                                    name="countryCode"
+                                                    value={formData.countryCode}
                                                     onChange={handleChange}
-                                                />
+                                                    className="bg-transparent border border-gray-300 text-(--color-secondary) rounded-md px-3 py-3 focus:outline-none focus:border-gray-500 text-sm"
+                                                >
+                                                    <option value="+91">🇮🇳 IN (+91)</option>
+                                                    <option value="+1">🇺🇸 US (+1)</option>
+                                                    <option value="+44">🇬🇧 UK (+44)</option>
+                                                    <option value="+971">🇦🇪 AE (+971)</option>
+                                                    <option value="+61">🇦🇺 AU (+61)</option>
+                                                    <option value="+81">🇯🇵 JP (+81)</option>
+                                                    <option value="+49">🇩🇪 DE (+49)</option>
+                                                    <option value="+33">🇫🇷 FR (+33)</option>
+                                                    <option value="+39">🇮🇹 IT (+39)</option>
+                                                    <option value="+86">🇨🇳 CN (+86)</option>
+                                                </select>
+
+                                                {/* Phone Input */}
+                                                <div className="relative w-full">
+                                                    <img
+                                                        src="images/phone-icon.svg"
+                                                        alt="phone"
+                                                        className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
+                                                    />
+
+                                                    <input type="tel" placeholder="Phone number" className="w-full bg-transparent border border-gray-300 text-(--color-secondary) placeholder:text-(--color-secondary) rounded-md pl-11 pr-3 py-3 focus:outline-none focus:border-gray-500" id="phone" value={formData.phone} onChange={handleChange} />
+                                                </div>
                                             </div>
-                                            {errors.phone && <p style={{ color: "red", fontSize: "14px" }}>{errors.phone}</p>}
+
+                                            {errors.phone && (
+                                                <p style={{ color: "red", fontSize: "14px" }}>
+                                                    {errors.phone}
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="pt-3">  <h4 className="font-my-font-semibold text-(--color-secondary) text-xl">Trip details</h4></div>

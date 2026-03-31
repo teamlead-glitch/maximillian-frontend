@@ -17,6 +17,21 @@ import { testimonialResponse } from "@/types/testimonialTypes";
 
 export default function Testimonials() {
 
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768); // mobile breakpoint
+        };
+
+        handleResize(); // initial check
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+
     const swiperRef = useRef<SwiperType | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -62,37 +77,23 @@ export default function Testimonials() {
 
                             {/* MAIN SWIPER */}
                             <Swiper
-                                // modules={[Autoplay]}
-                                // loop
-                                // spaceBetween={10}
-                                // speed={1200}
-                                // onSwiper={(swiper) => (swiperRef.current = swiper)}
-                                // onSlideChange={(swiper) =>
-                                //     setActiveIndex(swiper.realIndex)
-                                // }
-
-
-
                                 modules={[Autoplay, EffectFade]}
                                 effect="fade"
                                 fadeEffect={{ crossFade: true }}
                                 loop
                                 spaceBetween={10}
                                 speed={1000}
+                                autoHeight={isMobile}   // ✅ only mobile
                                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                                 onSlideChange={(swiper) =>
                                     setActiveIndex(swiper.realIndex)
                                 }
                             >
-
-
-
-
                                 {testimonials.map((item) => (
                                     <SwiperSlide key={item.id}>
                                         <div className="flex flex-col items-center">
 
-                                            <p className="text-lg md:text-xl lg:text-2xl text-(--color-secondary) mb-10 leading-normal">
+                                            <p className="text-base md:text-xl lg:text-2xl text-(--color-secondary) mb-0  md:mb-10 leading-normal">
                                                 {item.message}
                                             </p>
 
