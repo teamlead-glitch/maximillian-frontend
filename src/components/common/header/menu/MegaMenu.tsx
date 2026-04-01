@@ -3,7 +3,8 @@
 import { X } from "lucide-react";
 import Link from "next/link";
 import { RegionFormated } from "@/lib/regionTransformer";
-// import SideBarMenu from "../SideBarMenu";
+import SideBarMenu from "../SideBarMenu";
+import { Settings } from "@/types/commonTypes";
 
 
 interface MegaMenuProps {
@@ -11,6 +12,7 @@ interface MegaMenuProps {
   regions: Record<string, RegionFormated>; // replace with proper type if you have Region type
   activeRegion: any;
   setActiveRegion: (arg1: any) => void;
+  settings:Settings;
 }
 
 export default function MegaMenu({
@@ -18,6 +20,7 @@ export default function MegaMenu({
   regions,
   activeRegion,
   setActiveRegion,
+  settings,
 }: MegaMenuProps) {
 
   return (
@@ -63,7 +66,7 @@ export default function MegaMenu({
             </div>
           </div>
 
-          {/* <SideBarMenu isInner={true} regions={regions} settings={settings} /> */}
+          <SideBarMenu isInner={true} regions={regions} settings={settings} />
 
 
         </div>
@@ -99,12 +102,14 @@ export default function MegaMenu({
                     } else {
                       return (
                         <div key={region} className={containerClasses}>
+                          <Link href={`/region/${region}`}>
                           <span
                             onMouseEnter={() => setActiveRegion(region)}
                             className={textClasses}
                           >
                             {region}
                           </span>
+                          </Link>
                         </div>
                       );
                     }

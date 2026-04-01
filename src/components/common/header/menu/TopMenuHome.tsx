@@ -147,6 +147,7 @@ export default function TopMenuHome({ regions, settings }: { regions: Record<str
                   regions={regions}
                   activeRegion={activeRegion}
                   setActiveRegion={setActiveRegion}
+                  settings={settings}
                 />
               )}
             </div>

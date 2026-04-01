@@ -141,7 +141,7 @@ export default function TopMenuinner({ regions, settings }: { regions: Record<st
 
                             {/* MEGA MENU */}
                             {megaOpen && (
-                                <MegaMenu setMegaOpen={setMegaOpen} regions={regions} activeRegion={activeRegion} setActiveRegion={setActiveRegion} />
+                                <MegaMenu setMegaOpen={setMegaOpen} regions={regions} activeRegion={activeRegion} setActiveRegion={setActiveRegion} settings={settings}/>
                             )}
                         </div>
                     </div>
