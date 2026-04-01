@@ -14,6 +14,21 @@ import Image from "next/image";
 
 export default function Insights({ filterRegionId = false }: { filterRegionId?: boolean | number }) {
 
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
+        };
+
+        handleResize(); // initial check
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+
     const [insights, setBlogs] = useState<BlogsResponse["blogs"]>([]);
     // const [activeIndex, setActiveIndex] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -75,6 +90,7 @@ export default function Insights({ filterRegionId = false }: { filterRegionId?: 
                                     fadeEffect={{ crossFade: true }}
                                     loop={true}
                                     spaceBetween={0}
+                                    autoHeight={isMobile} // 👈 only mobile
                                     autoplay={{
                                         delay: 4000,
                                         disableOnInteraction: false,

@@ -18,7 +18,7 @@ export default function Ourworld() {
     -translate-x-1/2 -translate-y-1/2
     w-[90%] sm:w-[80%] md:w-auto
     px-4 sm:px-0 
-    text-center pt-20
+    text-center pt-48
   "
                     >
                         <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-white text-center ">
@@ -31,10 +31,6 @@ export default function Ourworld() {
                         </p>
                         <p className="text-white text-center">We approach travel the way one approaches any meaningful endeavour: with clarity, care, and attention to detail.
                         </p> */}
-
-
-
-
                         <p className="text-white text-center">Travel is not simply about destinations. It is about perspective. Festivon Signature Tours was built on a simple belief — journeys should feel personal, structured, and thoughtfully designed. We approach travel the way one approaches any meaningful endeavour: with clarity, care, and attention to detail.
                         </p>
 

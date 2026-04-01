@@ -12,7 +12,7 @@ export default function JourneyCard({ journey }: Props) {
     return (
         <div className="div">
             <div className="group block">
-                <div className="rounded-md relative aspect-[3/4] overflow-hidden">
+                <div className="rounded-md relative aspect-[1/1] overflow-hidden">
 
                     {/* Image */}
                     <Image src={journey.image_path} className="rounded-md w-full h-full object-cover transition-transform duration-700 ease-out  group-hover:scale-110" alt={journey.title} width="600" height="600" />

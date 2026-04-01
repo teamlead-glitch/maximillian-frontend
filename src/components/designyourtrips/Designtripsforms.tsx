@@ -277,7 +277,7 @@ export default function Designyourtrip() {
 
         <>
 
-            <section className="relative pt-32 pb-20 md:py-40 overflow-hidden bg-white z-10">
+            <section className="relative pt-24 md:pt-32 pb-10 md:py-40 overflow-hidden bg-white z-10">
                 {/* Background */}
                 <div className="absolute inset-y-0 left-0 w-[40%] bg-[#F5F2EE] -z-10 md:block hidden"></div>
 
@@ -290,14 +290,14 @@ export default function Designyourtrip() {
                                     <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary) text-left">Design <br className="hidden lg:block" />Your Trip</h1>
                                 </div>
                                 <div className="w-1 h-15 bg-gray-300 lg:block hidden "></div>
-                                <div className="w-full md-1/2 pl-0 lg:pl-5 mt-5  ">   <p className="text-(--color-secondary)">Some journeys can’t be templated. Share your idea and we’ll design it around you.</p></div>
+                                <div className="w-full md-1/2 pl-0 lg:pl-5 mt-2 md:mt-5  ">   <p className="text-(--color-secondary) ">Some journeys can’t be templated. Share your idea and we’ll design it around you.</p></div>
                             </div>
 
-                            <div className="w-full mt-15 md:mt-20 flex flex-col gap-10 pr-0 lg:pr-15">
+                            <div className="w-full mt-5 md:mt-20 flex flex-col gap-2 md:gap-10 pr-0 lg:pr-15">
                                 <div className="flex items-center">
                                     <div className="pr-5 font-my-font-regular text-[#D3CABF] text-5xl">01</div>
                                     <div className="div">
-                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-xl md:text-2xl">Tell Us Your Vision</h4>
+                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-lg md:text-2xl">Tell Us Your Vision</h4>
                                         <p className="text-[#46545E] text-sm">Share your interests,travel style, and expectations.</p>
                                     </div>
                                 </div>
@@ -305,7 +305,7 @@ export default function Designyourtrip() {
                                 <div className="flex items-center">
                                     <div className="pr-5 font-my-font-regular text-[#D3CABF] text-5xl">02</div>
                                     <div className="div">
-                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-xl md:text-2xl">We Curate the Experience</h4>
+                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-lg md:text-2xl">We Curate the Experience</h4>
                                         <p className="text-[#46545E] text-sm">Our experts design a personalised itinerary with refined details.</p>
                                     </div>
                                 </div>
@@ -313,14 +313,14 @@ export default function Designyourtrip() {
                                 <div className="flex items-center">
                                     <div className="pr-5 font-my-font-regular text-[#D3CABF] text-5xl">03</div>
                                     <div className="div">
-                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-xl md:text-2xl">Travel Seamlessly</h4>
+                                        <h4 className="font-my-font-semibold text-(--color-secondary) text-lg md:text-2xl">Travel Seamlessly</h4>
                                         <p className="text-[#46545E] text-sm">Enjoy end-to-end concierge support while you travel.</p>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                        <div className="w-full md:w-2/3 pr-0 pl-0 mt-15 md:mt-0">
+                        <div className="w-full md:w-2/3 pr-0 pl-0 mt-5 md:mt-0">
 
                             <div className="w-full  pl-0 md:pl-20  lg:pl-30 xl:pl-60 ">
                                 <form className="w-full max-w-3xl space-y-5" onSubmit={handleSubmit}>
@@ -713,28 +713,28 @@ hover:before:translate-x-full hover:text-white
 
             <section className="relative py-10 md:py-28 overflow-hidden bg-white z-10">
                 <div className="max-w-[1300px] flex mx-auto  px-5  ">
-                    <div className="w-full grid grid-cols-1  md:grid-cols-3  gap-4 items-center justify-content-between">
+                    <div className="w-full grid grid-cols-1  md:grid-cols-3 gap-0  md:gap-4 items-center justify-content-between">
 
-                        <div className="w-full mb-5 md:mb-0 flex items-center pr-10">
+                        <div className="w-full mb-3 md:mb-0 flex items-center pr-10">
 
                             <div className="pr-10"><img src="images/custom-journey-icon.png" alt="" /> </div>
-                            <p className="mt-2 font-my-font-semibold text-xl ">
+                            <p className="mt-2 font-my-font-semibold text-lg md:text-xl mb-0">
                                 Custom journeys, no templates
                             </p>
                         </div>
 
-                        <div className="w-full mb-5 md:mb-0 flex    items-center pr-10">
+                        <div className="w-full mb-3 md:mb-0 flex    items-center pr-10">
 
                             <div className="pr-10"><img src="images/multi-country.png" alt="" /> </div>
-                            <p className="mt-2 font-my-font-semibold text-xl ">
+                            <p className="mt-2 font-my-font-semibold text-lg md:text-xl mb-0">
                                 Multi-country planning specialists
                             </p>
                         </div>
 
-                        <div className="w-full mb-5 md:mb-0 flex items-center pr-10">
+                        <div className="w-full mb-3 md:mb-0 flex items-center pr-10">
 
                             <div className="pr-10"><img src="images/your-review.png" alt="" /> </div>
-                            <p className=" mt-2 font-my-font-semibold text-xl ">
+                            <p className=" mt-2 font-my-font-semibold text-lg md:text-xl mb-0">
                                 You review before you commit.
                             </p>
                         </div>

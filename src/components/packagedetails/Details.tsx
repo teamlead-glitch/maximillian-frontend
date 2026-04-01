@@ -354,83 +354,40 @@ export default function Details({ details }: { details: PackageResponse }) {
             </section >
             <section className="relative py-5 md:py-10 px-5  bg-white">
                 <div className="max-w-[1000px] mx-auto w-full relative">
-                    <div className="w-full flex md:flex-row flex-col ">
+                    <div className="w-full">
 
+                        {/* LEFT IMAGE */}
 
-                        <div className="w-full md:w-2/4 mb-10 md:mb-0 pb-0 md:pb-20">
-                            <div className="sticky top-20">
-                                <div className="relative aspect-3/4 shadow-xl ">
-                                    <Image
-                                        src={journey_image}
-                                        fill
-                                        alt=""
-                                        className="w-full object-cover rounded-lg"
-                                    />
-                                </div>
+                        <div className="float-none md:float-left w-full md:w-[300px] lg:w-[320px] md:mr-10 mb-10">
+                            <div className="aspect-square">
+                                <img
+                                    src={journey_image}
+                                    alt=""
+                                    className="w-full h-full object-cover rounded-lg"
+                                />
                             </div>
                         </div>
 
 
-                        <div className="w-full md:w-3/4 pl-0 md:pl-20 flex align-center justify-center flex-col">
-                            <h2 className="font-my-font-regular text-break xl:text-4xl text-3xl text-(--color-secondary) mb-10
-          relative pb-2
-          before:content-[''] before:absolute before:-bottom-3 before:left-0 
-          before:w-16 before:h-[2px] before:bg-gray-300">
+                        {/* RIGHT CONTENT */}
+                        <div className="space-y-4 text-justify">
+                            <h2 className="font-my-font-regular xl:text-4xl text-3xl text-(--color-secondary) mb-6 relative pb-2">
                                 Journey overview
                             </h2>
 
-                            <p className="content" dangerouslySetInnerHTML={{ __html: journey_overview }}></p>
-
-                            <p className="content" dangerouslySetInnerHTML={{ __html: journey_flow }}></p>
-
+                            <div className="space-y-6">
+                                <p
+                                    className="content leading-relaxed text-justify"
+                                    dangerouslySetInnerHTML={{ __html: journey_overview }}
+                                />
+                                <p
+                                    className="content leading-relaxed text-justify"
+                                    dangerouslySetInnerHTML={{ __html: journey_flow }}
+                                />
+                            </div>
                         </div>
 
                     </div>
-
-
-                    {/* <div className="w-full">
-                        <div className="float-left w-full md:w-[45%] mr-0 md:mr-10 mb-6">
-
-                            <div className="relative aspect-square shadow-md rounded-lg overflow-hidden">
-                                <Image
-                                    src={journey_image}
-                                    fill
-                                    alt=""
-                                    className="object-cover"
-                                />
-                            </div>
-
-                        </div>
-                        <div className="text-(--color-secondary)">
-                            <h2
-                                className="font-my-font-regular text-break xl:text-4xl text-3xl mb-6
-      relative pb-2
-      before:content-[''] before:absolute before:-bottom-3 before:left-0 
-      before:w-16 before:h-[2px] before:bg-gray-300"
-                            >
-                                Journey overview
-                            </h2>
-
-                            <p
-                                className="content mb-4 leading-relaxed"
-                                dangerouslySetInnerHTML={{ __html: journey_overview }}
-                            > </p>
-
-                            <p
-                                className="content leading-relaxed"
-                                dangerouslySetInnerHTML={{ __html: journey_flow }}
-                            ></p>
-
-
-                        </div>
-
-
-                        <div className="clear-both"></div>
-
-                    </div> */}
-
-
-
                 </div>
             </section>
             <section className="relative  py-5 md:py-20 px-5 overflow-hidden bg-white">
