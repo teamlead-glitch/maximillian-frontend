@@ -64,7 +64,7 @@ export default function ExperienceTour() {
                             <div className="w-full  mx-auto ">
                                 <div className={`flex gap-8 ${index % 2 == 0 ? "flex-col md:flex-row" : "flex-col md:flex-row-reverse sm:flex-col"} `} >
                                     <div className={` w-full md:w-2/4 relative mr-0 ${index % 2 == 0 ? "md:pr-10" : "md:pl-10"} `}>
-                                        <div className="relative w-full h-full">
+                                        <div className="relative w-full h-[350px] sm:h-[600px] md:h-full">
                                             <Image
                                                 src="/images/experiencetourbg.jpg"
                                                 alt="Logo"

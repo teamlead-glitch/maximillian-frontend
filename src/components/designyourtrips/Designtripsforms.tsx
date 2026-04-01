@@ -74,9 +74,9 @@ export default function Designyourtrip() {
         email: "",
         destination: "",
         travel_date: "",
-        country_code:"",
-        duration:"",
-        group_size:""
+        country_code: "",
+        duration: "",
+        group_size: ""
     });
 
     const handleChange = (
@@ -110,7 +110,7 @@ export default function Designyourtrip() {
         }
 
         //country code
-         if (!formData.country_code) {
+        if (!formData.country_code) {
             newErrors.country_code = "Required";
         }
 
@@ -446,7 +446,7 @@ export default function Designyourtrip() {
                                         <div>
                                             <div className="flex gap-3 w-full">
 
-                                               <div>
+                                                <div>
                                                     {/* Country Code */}
                                                     <div className="w-[110px]">
                                                         <PhoneInput
@@ -469,12 +469,12 @@ export default function Designyourtrip() {
                                                             dropdownClass="!w-[210px] !text-sm"
                                                         />
                                                     </div>
-                                                            {errors.country_code && (
-                                                <p style={{ color: "red", fontSize: "14px" }}>
-                                                    {errors.country_code}
-                                                </p>
-                                            )}
-                                               </div>
+                                                    {errors.country_code && (
+                                                        <p style={{ color: "red", fontSize: "14px" }}>
+                                                            {errors.country_code}
+                                                        </p>
+                                                    )}
+                                                </div>
                                                 <div>
                                                     {/* Phone Input */}
                                                     <div className="relative flex-1">
@@ -483,7 +483,7 @@ export default function Designyourtrip() {
                                                             alt="phone"
                                                             className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
                                                         />
-    
+
                                                         <input
                                                             type="tel"
                                                             placeholder="Phone number"
@@ -493,16 +493,16 @@ export default function Designyourtrip() {
                                                             onChange={handleChange}
                                                         />
                                                     </div>
-                                                     {errors.phone && (
-                                                <p style={{ color: "red", fontSize: "14px" }}>
-                                                    {errors.phone}
-                                                </p>
-                                            )}
+                                                    {errors.phone && (
+                                                        <p style={{ color: "red", fontSize: "14px" }}>
+                                                            {errors.phone}
+                                                        </p>
+                                                    )}
                                                 </div>
 
                                             </div>
 
-                                           
+
                                         </div>
                                     </div>
                                     <div className="pt-3">  <h4 className="font-my-font-semibold text-(--color-secondary) text-xl">Trip details</h4></div>
