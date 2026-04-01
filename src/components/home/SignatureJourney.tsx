@@ -44,7 +44,7 @@ export default function SignatureJourney() {
                 // <p>No journeys available</p>
                 <></>
             ) : (
-                <section className=" pt-0 md:pt-20 md:pb-20 bg-white">
+                <section className=" pt-0 pb-20 md:pt-20 md:pb-20 bg-white">
                     <div className="max-w-[1300px]  mx-auto px-5">
                         <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
                             <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />

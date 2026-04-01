@@ -43,8 +43,8 @@ export default function ExperienceTour() {
     // };
     function chunkArray<T>(array: T[], size: number): T[][] {
         const result: T[][] = [];
-        for (let i = 0; i < array.length; i += 3) {
-            result.push(array.slice(i, i + 3));
+        for (let i = 0; i < array.length; i += 2) {
+            result.push(array.slice(i, i + 2));
         }
         return result;
     }
@@ -60,27 +60,40 @@ export default function ExperienceTour() {
             ) : (
                 <>
                     {taggroups.map((group, index) => (
-                        <section className="bg-white pt-15 pb-10 md:pt-10 md:py-10    xl:py-20" key={group.id}>
-                            <div className="max-w-[1300px]  mx-auto px-5">
+                        <section className="bg-white pt-0 pb-10 md:pt-10 md:py-10    xl:py-20" key={group.id}>
+                            <div className="w-full  mx-auto ">
                                 <div className={`flex gap-8 ${index % 2 == 0 ? "flex-col md:flex-row" : "flex-col md:flex-row-reverse sm:flex-col"} `} >
-                                    <div className={` w-full md:w-1/4 relative mr-0 ${index % 2 == 0 ? "md:pr-10" : "md:pl-10"} `}>
-                                        <h3 className={`font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) ${index % 2 == 0 ? "md:text-right" : "md:text-left"}`}>{group.title} <br /> Tours</h3>
-                                        <div className={`absolute w-px h-10 bg-gray-400 md:block hidden ${index % 2 === 1 ? "left-0 top-0" : "right-0 top-0"}`}></div>
+                                    <div className={` w-full md:w-2/4 relative mr-0 ${index % 2 == 0 ? "md:pr-10" : "md:pl-10"} `}>
+                                        <div className="relative w-full h-full">
+                                            <Image
+                                                src="/images/experiencetourbg.jpg"
+                                                alt="Logo"
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+
+
+                                        <h3
+                                            className={`font-my-font-regular text-2xl md:text-3xl  absolute top-16 p-3 
+  text-white
+  bg-black/40 backdrop-blur-md 
+  ${index % 2 == 0 ? "md:text-right right-0" : "md:text-left left-0"}`}
+                                        >
+                                            {group.title} <br /> Tours
+                                        </h3>
+                                        {/* <div className={`absolute w-px h-10 bg-gray-400 md:block hidden ${index % 2 === 1 ? "left-0 top-0" : "right-0 top-0"}`}></div> */}
                                     </div>
-                                    <div className="w-full md:w-3/4">
+                                    <div className="w-full md:w-3/4 px-8 sm:px-16  md:px-8 lg:px-24 pt-0   lg:pt-16">
                                         {/* <div class="flex flex-col sm:flex-row w-full gap-5 md:gap-10 mb-4 md:mb-10"></div> */}
                                         {chunkArray(group.tags, 2).map((row, rowIndex) => (
                                             <div
                                                 key={rowIndex}
-                                                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+                                                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-0 md:gap-6"
                                             >
                                                 {row.map((item) => (
                                                     <TagCard key={item.id} tag={item} />
                                                 ))}
-
-
-
-
 
                                             </div>
 
