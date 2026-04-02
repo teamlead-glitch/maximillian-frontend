@@ -70,7 +70,7 @@ export default function MegaMenu({
               transition-all duration-300"
               > Design Your trip
               </Link>
-              <a href="#">
+              <a  href={`tel:${settings.phone}`}>
                 <img src="/images/call-top-icon-black.svg" alt="Call" />
               </a>
             </div>
