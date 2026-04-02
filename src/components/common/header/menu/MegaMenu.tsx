@@ -25,6 +25,14 @@ export default function MegaMenu({
   setSideOpenParent
 }: MegaMenuProps) {
 
+  const whatsappNumber = settings?.whatsapp;
+    //message storing
+    const message = encodeURIComponent("Hello! I’m interested in exploring your tour packages.");
+
+    const whatsappLink = whatsappNumber
+        ? `https://wa.me/${whatsappNumber}?text=${message}`
+        : "#";
+
   return (
     <>
 
@@ -101,7 +109,7 @@ export default function MegaMenu({
                     if (region.toLowerCase() === "india") {
                       return (
                         <div key={region} className={containerClasses}>
-                          <Link href={`/country/india`}>
+                          <Link href={`/country/india`}  onClick={() => setMegaOpen(false)}>
                             <span className={textClasses}>{region}</span>
                           </Link>
                         </div>
@@ -109,7 +117,7 @@ export default function MegaMenu({
                     } else {
                       return (
                         <div key={region} className={containerClasses}>
-                          <Link href={`/region/${region}`}>
+                          <Link href={`/region/${region}`}  onClick={() => setMegaOpen(false)}>
                             <span
                               onMouseEnter={() => setActiveRegion(region)}
                               className={textClasses}
@@ -127,7 +135,7 @@ export default function MegaMenu({
                 <div className="flex flex-col">
                   <ul className="grid grid-cols-2 gap-3">
                     {regions[activeRegion]?.countries?.length > 0 && regions[activeRegion].countries.map((country) => (
-                      <Link href={`/${country?.slug}`} key={country.title} className="cursor-pointer hover:text-[#C43131] transition-all duration-300 ">{country.title}</Link>
+                      <Link href={`/${country?.slug}`} onClick={() => setMegaOpen(false)} key={country.title} className="cursor-pointer hover:text-[#C43131] transition-all duration-300 ">{country.title}</Link>
                     ))}
                   </ul>
 
@@ -135,7 +143,7 @@ export default function MegaMenu({
               View all journeys in {activeRegion}
             </Link> */}
 
-                  <Link href={`/${regions[activeRegion]?.slug}`} className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-5 cursor-pointer">
+                  <Link href={`/${regions[activeRegion]?.slug}`} onClick={() => setMegaOpen(false)} className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-5 cursor-pointer">
                     <span className="mr-3">   View all journeys in {activeRegion}</span>
 
                     <svg
@@ -155,16 +163,17 @@ export default function MegaMenu({
                 </div>
               </div>
             </div>
+           
             <div className="w-full  pl-10">
               <div className=" flex flex-wrap gap-10  pb-10 ">
                 <a
-                  href="tel: +91 999 886 8866"
+                   href={`tel:${settings.phone}`}
                   className="flex text-sm  text-(--color-secondary)">
-                  <img src="/images/call-icon.svg" className="w-4 mr-2" alt="Call" /> +91 999 886 8866
+                  <img src="/images/call-icon.svg" className="w-4 mr-2" alt="Call" />{settings.phone}
                 </a>
 
                 <a
-                  href="https://wa.me/91 999 886 8866"
+                 href={whatsappLink}
                   className="flex text-sm  text-(--color-secondary)">
                   <img
                     src="/images/whatsapp-icon.svg"
@@ -173,13 +182,15 @@ export default function MegaMenu({
                 </a>
 
                 <a
-                  href="hello@festivontours.com"
+                  href={`mailto:${settings.email}`}
                   className="flex text-sm text-(--color-secondary)"
                 >
-                  <img src="/images/mail-icon.svg" className="w-4 mr-2" alt="Mail" /> hello@festivontours.com
+                  <img src="/images/mail-icon.svg" className="w-4 mr-2" alt="Mail" /> {settings.email}
                 </a>
               </div>
             </div>
+
+
           </div>
 
           <div className="w-full h-[100dvh] relative">
