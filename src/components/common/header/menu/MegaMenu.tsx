@@ -5,6 +5,9 @@ import Link from "next/link";
 import { RegionFormated } from "@/lib/regionTransformer";
 import SideBarMenu from "../SideBarMenu";
 import { Settings } from "@/types/commonTypes";
+import { apiService } from "@/services/api";
+import { IndiaOnlyData } from "@/types/countryType";
+import { useEffect, useState } from "react";
 
 
 interface MegaMenuProps {
@@ -26,12 +29,37 @@ export default function MegaMenu({
 }: MegaMenuProps) {
 
   const whatsappNumber = settings?.whatsapp;
-    //message storing
-    const message = encodeURIComponent("Hello! I’m interested in exploring your tour packages.");
+  //message storing
+  const message = encodeURIComponent("Hello! I’m interested in exploring your tour packages.");
 
-    const whatsappLink = whatsappNumber
-        ? `https://wa.me/${whatsappNumber}?text=${message}`
-        : "#";
+  const whatsappLink = whatsappNumber
+    ? `https://wa.me/${whatsappNumber}?text=${message}`
+    : "#";
+  const [data, setData] = useState<IndiaOnlyData[]>([]);
+  const fetchData = async () => {
+
+
+    try {
+
+
+      const res = await apiService.get<IndiaOnlyData[]>(
+        `/tags?taggroup_id=3`
+      );
+
+
+
+      setData(res);
+
+    } catch (error) {
+      console.error("details fetch API error:", error);
+
+    }
+  };
+
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -70,7 +98,7 @@ export default function MegaMenu({
               transition-all duration-300"
               > Design Your trip
               </Link>
-              <a  href={`tel:${settings.phone}`}>
+              <a href={`tel:${settings.phone}`}>
                 <img src="/images/call-top-icon-black.svg" alt="Call" />
               </a>
             </div>
@@ -80,7 +108,7 @@ export default function MegaMenu({
 
           <button
             className="pl-5 cursor-pointer"
-            onClick={() => {setMegaOpen(false);setSideOpenParent(true)}}
+            onClick={() => { setMegaOpen(false); setSideOpenParent(true) }}
           ><img src="/images/hamburg-menu-inner.svg" alt="Menu" /></button>
 
 
@@ -109,15 +137,16 @@ export default function MegaMenu({
                     if (region.toLowerCase() === "india") {
                       return (
                         <div key={region} className={containerClasses}>
-                          <Link href={`/country/india`}  onClick={() => setMegaOpen(false)}>
-                            <span className={textClasses}>{region}</span>
+                          <Link href={`/country/india`} onClick={() => setMegaOpen(false)}>
+                            <span onMouseEnter={() => setActiveRegion(region)}
+                              className={textClasses}>{region}</span>
                           </Link>
                         </div>
                       );
                     } else {
                       return (
                         <div key={region} className={containerClasses}>
-                          <Link href={`/region/${region}`}  onClick={() => setMegaOpen(false)}>
+                          <Link href={`/region/${region}`} onClick={() => setMegaOpen(false)}>
                             <span
                               onMouseEnter={() => setActiveRegion(region)}
                               className={textClasses}
@@ -134,16 +163,21 @@ export default function MegaMenu({
                 {/* COUNTRIES */}
                 <div className="flex flex-col">
                   <ul className="grid grid-cols-2 gap-3">
-                    {regions[activeRegion]?.countries?.length > 0 && regions[activeRegion].countries.map((country) => (
+                    {regions[activeRegion]?.slug != "region/india" && regions[activeRegion]?.countries?.length > 0 && regions[activeRegion].countries.map((country) => (
                       <Link href={`/${country?.slug}`} onClick={() => setMegaOpen(false)} key={country.title} className="cursor-pointer hover:text-[#C43131] transition-all duration-300 ">{country.title}</Link>
                     ))}
+
+                    {regions[activeRegion]?.slug === "region/india" && data?.length > 0 && data.map((country) => (
+                      <Link href={`/${country?.slug}`} onClick={() => setMegaOpen(false)} key={country.title} className="cursor-pointer hover:text-[#C43131] transition-all duration-300 ">{country.title}</Link>
+                    ))}
+                    
                   </ul>
 
                   {/* <Link href={`/${regions[activeRegion]?.slug}`} className="mt-8 border border-[#C43131] block w-fit px-6 py-2 rounded-full text-sm hover:bg-[#C43131] cursor-pointer hover:text-white hover:tracking-wide transition-all duration-300">
               View all journeys in {activeRegion}
             </Link> */}
 
-                  <Link href={`/${regions[activeRegion]?.slug}`} onClick={() => setMegaOpen(false)} className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-5 cursor-pointer">
+                  <Link href={`/${regions[activeRegion]?.slug != "region/india"?regions[activeRegion]?.slug:'country/india'}`} onClick={() => setMegaOpen(false)} className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-5 cursor-pointer">
                     <span className="mr-3">   View all journeys in {activeRegion}</span>
 
                     <svg
@@ -163,17 +197,17 @@ export default function MegaMenu({
                 </div>
               </div>
             </div>
-           
+
             <div className="w-full  pl-10">
               <div className=" flex flex-wrap gap-10  pb-10 ">
                 <a
-                   href={`tel:${settings.phone}`}
+                  href={`tel:${settings.phone}`}
                   className="flex text-sm  text-(--color-secondary)">
                   <img src="/images/call-icon.svg" className="w-4 mr-2" alt="Call" />{settings.phone}
                 </a>
 
                 <a
-                 href={whatsappLink}
+                  href={whatsappLink}
                   className="flex text-sm  text-(--color-secondary)">
                   <img
                     src="/images/whatsapp-icon.svg"
