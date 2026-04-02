@@ -218,7 +218,7 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                         </div>
                     </div>
                     <hr className="border-gray-200 my-0  sm:mx-auto lg:my-8" />
-                    <div className="flex flex-col-reverse md:flex-row items-center md:items-center justify-between w-full gap-5 mt-8 md:mt-16">
+                    <div className="flex flex-col-reverse md:grid md:grid-cols-[3fr_6fr_3fr] items-center w-full gap-5 mt-8 md:mt-16">
 
                         <span className="text-sm md:text-base text-[#93989b] text-body">
                             Made by <a href="https://phitany.com/" className="hover:underline">Phitany</a>
@@ -234,15 +234,12 @@ export default function Footer({ settings, regions, tagGroups }: { settings: Set
                                     <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
                                 </li>
 
-                                <li className="relative pr-3 text-sm md:text-base text-[#93989b] text-body ">
+                                <li className="relative text-sm md:text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
                                     <Link href="/health-and-safety-policy" className="hover:underline">Health and Safety Policy</Link>
                                 </li>
 
 
-                            </ul>
 
-
-                            <ul className="flex flex-wrap justify-center md:justify-center gap-4 mt-1">
 
 
                                 <li className="relative pr-3 text-sm md:text-base text-[#93989b] text-body after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">

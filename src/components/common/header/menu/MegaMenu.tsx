@@ -12,7 +12,7 @@ interface MegaMenuProps {
   regions: Record<string, RegionFormated>; // replace with proper type if you have Region type
   activeRegion: any;
   setActiveRegion: (arg1: any) => void;
-  settings:Settings;
+  settings: Settings;
 }
 
 export default function MegaMenu({
@@ -31,7 +31,7 @@ export default function MegaMenu({
         {/* header menu */}
 
 
-        <div className="max-w-[1600px] w-full mx-auto flex justify-between py-3 md:py-5 px-3 md:px-10  top-0 left-0 z-50">
+        <div className="max-w-[1600px] w-full mx-auto flex justify-between py-3 md:py-5 px-3 md:px-10 absolute top-0 left-0 right-0 z-50">
           <div className="flex items-center justify-between w-full gap-2">
             <a href="/"><img
               src="/images/logo-black.svg"
@@ -103,12 +103,12 @@ export default function MegaMenu({
                       return (
                         <div key={region} className={containerClasses}>
                           <Link href={`/region/${region}`}>
-                          <span
-                            onMouseEnter={() => setActiveRegion(region)}
-                            className={textClasses}
-                          >
-                            {region}
-                          </span>
+                            <span
+                              onMouseEnter={() => setActiveRegion(region)}
+                              className={textClasses}
+                            >
+                              {region}
+                            </span>
                           </Link>
                         </div>
                       );

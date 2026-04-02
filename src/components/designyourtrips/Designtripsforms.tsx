@@ -783,11 +783,6 @@ hover:before:translate-x-full hover:text-white
                         </div>
                     </div>
                 </div></section>
-
-
-
-
-
             <LogoCarousel />
             {/* Toast */}
             <ToastContainer position="top-right" autoClose={2000} theme="colored" />
