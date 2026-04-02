@@ -28,13 +28,15 @@ export default function SideBarMenu({
   regions,
   isInner = false,
   settings,
-  sideOpenParent=false
+  sideOpenParent=false,
+  setSideOpenParent
 
 }: {
   regions: Record<string, RegionFormated>;
   isInner?: boolean;
   settings: Settings;
   sideOpenParent?: Boolean;
+  setSideOpenParent: (arg0: boolean) => void;
 }) {
 
   const pathname = usePathname();
@@ -92,7 +94,7 @@ export default function SideBarMenu({
         <>
           {/* OVERLAY */}
           <div
-            onClick={() => setSideOpen(false)}
+            onClick={() => {setSideOpenParent(false);setSideOpen(false);}}
             className={`fixed inset-0 bg-black/50 z-[999]
             transition-opacity duration-300
             ${sideOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
@@ -108,7 +110,7 @@ export default function SideBarMenu({
             {/* HEADER */}
             <div className="h-[72px] px-6 flex justify-end items-center">
               <button
-                onClick={() => setSideOpen(false)}
+                onClick={() => {setSideOpenParent(false); setSideOpen(false);}}
                 className="text-(--color-secondary) cursor-pointer"
               >
                 <X />
@@ -136,6 +138,7 @@ export default function SideBarMenu({
                   href={item.href}
                   onClick={() => {
                     setActiveLink(item.href);
+                    setSideOpenParent(false);
                     setSideOpen(false);
                   }}
                   className={`relative block font-my-font-semibold text-(--color-secondary)
@@ -216,6 +219,7 @@ export default function SideBarMenu({
                         key={region}
                         href={`/country/india`}
                         onClick={() => {
+                          setSideOpenParent(false);
                           setSideOpen(false);
                           setDestinationPanel(false);
                         }}
@@ -255,6 +259,7 @@ export default function SideBarMenu({
                       key={country.slug}
                       className="cursor-pointer text-(--color-secondary) "
                       onClick={() => {
+                        setSideOpenParent(false);
                         setSideOpen(false);
                         setDestinationPanel(false);
                         setActiveRegion(null);
@@ -269,6 +274,7 @@ export default function SideBarMenu({
                 <Link
                   href={`/${regions[activeRegion]?.slug}`}
                   onClick={() => {
+                    setSideOpenParent(false);
                     setSideOpen(false);
                     setDestinationPanel(false);
                     setActiveRegion(null);

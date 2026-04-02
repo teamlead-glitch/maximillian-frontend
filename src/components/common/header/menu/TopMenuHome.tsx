@@ -156,7 +156,7 @@ export default function TopMenuHome({ regions, settings }: { regions: Record<str
           </div>
 
           {/* Sidebar Menu */}
-          <SideBarMenu regions={regions} settings={settings} sideOpenParent={sideOpenParent}/>
+          <SideBarMenu regions={regions} settings={settings} sideOpenParent={sideOpenParent} setSideOpenParent={setSideOpenParent}/>
 
         </div>
       </div>

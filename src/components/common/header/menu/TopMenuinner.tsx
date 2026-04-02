@@ -154,7 +154,7 @@ export default function TopMenuinner({ regions, settings }: { regions: Record<st
                         </div>
                     </div>
 
-                    <SideBarMenu isInner={true} regions={regions} settings={settings} sideOpenParent={sideOpenParent}/>
+                    <SideBarMenu isInner={true} regions={regions} settings={settings} sideOpenParent={sideOpenParent} setSideOpenParent={setSideOpenParent}/>
                 </div>
             </div>
 
