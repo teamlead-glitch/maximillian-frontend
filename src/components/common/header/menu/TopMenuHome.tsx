@@ -13,6 +13,7 @@ export default function TopMenuHome({ regions, settings }: { regions: Record<str
   const [megaOpen, setMegaOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [sideOpenParent, setSideOpenParent] = useState(false);
 
   /*  console.log(regions, 'regions---') */
   const regionKeys = Object.keys(regions) as (keyof typeof regions)[];
@@ -148,13 +149,14 @@ export default function TopMenuHome({ regions, settings }: { regions: Record<str
                   activeRegion={activeRegion}
                   setActiveRegion={setActiveRegion}
                   settings={settings}
+                  setSideOpenParent={setSideOpenParent}
                 />
               )}
             </div>
           </div>
 
           {/* Sidebar Menu */}
-          <SideBarMenu regions={regions} settings={settings} />
+          <SideBarMenu regions={regions} settings={settings} sideOpenParent={sideOpenParent}/>
 
         </div>
       </div>

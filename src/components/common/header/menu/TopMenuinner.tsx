@@ -13,6 +13,8 @@ export default function TopMenuinner({ regions, settings }: { regions: Record<st
     const [megaOpen, setMegaOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [sideOpenParent, setSideOpenParent] = useState(false);
+    
 
     /* ✅ STRICT & SAFE */
     /* console.log(regions, 'regions---') */
@@ -141,12 +143,18 @@ export default function TopMenuinner({ regions, settings }: { regions: Record<st
 
                             {/* MEGA MENU */}
                             {megaOpen && (
-                                <MegaMenu setMegaOpen={setMegaOpen} regions={regions} activeRegion={activeRegion} setActiveRegion={setActiveRegion} settings={settings}/>
+                                <MegaMenu 
+                                setMegaOpen={setMegaOpen} 
+                                regions={regions} 
+                                activeRegion={activeRegion} 
+                                setActiveRegion={setActiveRegion} 
+                                settings={settings}
+                                setSideOpenParent={setSideOpenParent}/>
                             )}
                         </div>
                     </div>
 
-                    <SideBarMenu isInner={true} regions={regions} settings={settings} />
+                    <SideBarMenu isInner={true} regions={regions} settings={settings} sideOpenParent={sideOpenParent}/>
                 </div>
             </div>
 

@@ -13,6 +13,7 @@ interface MegaMenuProps {
   activeRegion: any;
   setActiveRegion: (arg1: any) => void;
   settings: Settings;
+  setSideOpenParent: (arg0: boolean) => void;
 }
 
 export default function MegaMenu({
@@ -21,6 +22,7 @@ export default function MegaMenu({
   activeRegion,
   setActiveRegion,
   settings,
+  setSideOpenParent
 }: MegaMenuProps) {
 
   return (
@@ -66,7 +68,12 @@ export default function MegaMenu({
             </div>
           </div>
 
-          <SideBarMenu isInner={true} regions={regions} settings={settings} />
+          {/* <SideBarMenu isInner={true} regions={regions} settings={settings} /> */}
+
+          <button
+            className="pl-5 cursor-pointer"
+            onClick={() => {setMegaOpen(false);setSideOpenParent(true)}}
+          ><img src="/images/hamburg-menu-inner.svg" alt="Menu" /></button>
 
 
         </div>

@@ -27,11 +27,14 @@ const ChevronLeft = () => (
 export default function SideBarMenu({
   regions,
   isInner = false,
-  settings
+  settings,
+  sideOpenParent=false
+
 }: {
   regions: Record<string, RegionFormated>;
   isInner?: boolean;
-  settings: Settings
+  settings: Settings;
+  sideOpenParent?: Boolean;
 }) {
 
   const pathname = usePathname();
@@ -39,7 +42,7 @@ export default function SideBarMenu({
 
   const regionKeys = Object.keys(regions);
 
-  const [sideOpen, setSideOpen] = useState(false);
+  const [sideOpen, setSideOpen] = useState(sideOpenParent);
   const [destinationPanel, setDestinationPanel] = useState(false);
   const [activeRegion, setActiveRegion] = useState<string | null>(null);
   const [activeLink, setActiveLink] = useState(pathname);
@@ -48,6 +51,10 @@ export default function SideBarMenu({
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+  setSideOpen(sideOpenParent);
+}, [sideOpenParent]);
 
   useEffect(() => {
     document.body.style.overflow = sideOpen ? "hidden" : "auto";
