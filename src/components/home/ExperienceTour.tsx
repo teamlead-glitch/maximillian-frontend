@@ -66,7 +66,7 @@ export default function ExperienceTour() {
                                     <div className={` w-full md:w-2/4 relative mr-0 ${index % 2 == 0 ? "md:pr-10" : "md:pl-10"} `}>
                                         <div className="relative w-full h-[350px] sm:h-[600px] md:h-full">
                                             <Image
-                                                src="/images/experiencetourbg.jpg"
+                                                src={index % 2 == 0 ? "/images/experiencetourbg.jpg" : "/images/specialitybg.jpg"}
                                                 alt="Logo"
                                                 fill
                                                 className="object-cover"
