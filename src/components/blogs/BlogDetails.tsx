@@ -162,7 +162,31 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
                         </div>
                     </div>
-                    <div className="w-full justify-center  grid grid-cols-1 sm:grid-cols-[7fr_3fr] gap-3 py-10 items-start">
+
+                    <div className="w-full">
+
+                        <div className="float-none md:float-right w-[300px] h-[300px] md:ml-20 mb-10 relative">
+
+                            <Image
+                                src={image}
+                                alt=""
+                                fill
+                                className="object-cover rounded-lg"
+                            />
+
+                        </div>
+
+                        <div className="space-y-4 text-justify">
+                            <div
+                                className="content"
+                                dangerouslySetInnerHTML={{ __html: second_descrption }}
+                            />
+                        </div>
+
+                    </div>
+
+
+                    {/* <div className="w-full justify-center  grid grid-cols-1 sm:grid-cols-[7fr_3fr] gap-3 py-10 items-start">
                         <div className="content" dangerouslySetInnerHTML={{ __html: second_descrption }}>
 
                         </div>
@@ -171,7 +195,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                 <Image src={image} alt="" fill className="rounded-lg object-cover" />
                             )}
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="content" dangerouslySetInnerHTML={{ __html: third_descripton }}>
 
