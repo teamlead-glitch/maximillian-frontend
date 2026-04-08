@@ -4,7 +4,7 @@ import LogoCarousel from "@/components/home/LogoCarousel";
 import "swiper/css/navigation";
 import "swiper/css";
 import { useState } from "react";
-import { Circle, } from "lucide-react";
+import { Circle, MapPin } from "lucide-react";
 import DaywiseCard from "./daywiseCard";
 import PackagedetailsSlider from "./packagedetailsSlider";
 import Faq from "./Faq";
@@ -218,8 +218,26 @@ export default function Details({ details }: { details: PackageResponse }) {
                 </div></section>
             <section className=" bg-white py-10 md:py-30  px-5">
                 <div className="max-w-[800px] mx-auto   ">
-                    <div className="flex flex-wrap items-center gap-5 justify-center">
+                    <div className="flex flex-col flex-wrap items-center gap-5 justify-center">
                         <h1 className="font-my-font-regular text-break xl:text-5xl md:text-4xl text-3xl text-(--color-secondary) text-center ">{title}</h1>
+
+                        {/* Destinations Placement
+ */}
+
+                        <div className="flex items-center justify-center gap-2 flex-wrap text-(--color-secondary) py-2 text-sm md:text-base">
+                            <MapPin size={18} />
+                            <span>Paris</span>
+                            <span className="mx-1 text-gray-400">|</span>
+                            <span>Amsterdam</span>
+                            <span className="mx-1 text-gray-400">|</span>
+                            <span>Rome</span>
+                            <span className="mx-1 text-gray-400">|</span>
+                            <span>Germany</span>
+                        </div>
+                        {/* Destinations Placement
+ */}
+
+
                         <p className="text-center">{package_tagline}
                         </p>
                     </div></div>
@@ -388,6 +406,18 @@ export default function Details({ details }: { details: PackageResponse }) {
                         </div>
 
                     </div>
+
+
+                    <div className="w-full"><div className="flex items-center  gap-2 flex-wrap text-(--color-secondary) py-2 text-sm md:text-base">
+
+                        <span>  Island Leisure, Honeymoon</span>
+                        <span className="mx-1 text-gray-400">|</span>
+                        <span> Private Trip, Couples</span>
+
+                    </div></div>
+
+
+
                 </div>
             </section>
             <section className="relative  py-5 md:py-20 px-5 overflow-hidden bg-white">
@@ -519,9 +549,16 @@ hover:before:translate-x-full
             <PackagedetailsSlider gallery={details?.gallery} price_text={price_text} title={title} id={tour_id} />
             <Faq faq={faq} faq_image={faq_image} />
 
-            <Inclussions includes={includes} />
 
-            <Exclussions excludes={excludes} />
+            <div className="div">
+                <div className="max-w-[1300px] mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-[8fr_4fr] gap-0 md:gap-8">
+                        <Inclussions includes={includes} />
+
+                        <Exclussions excludes={excludes} />
+                    </div>
+                </div>
+            </div>
 
             {/*related journels component  */}
             <Related_journels region_slug={region_slug} tour_id={tour_id} />
