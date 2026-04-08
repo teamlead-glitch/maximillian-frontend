@@ -242,11 +242,25 @@ export default function MegaMenu({
                 className="text-white group-hover:text-white"
               />
             </button>
-            <img
+            {/* <img
               src={regions[activeRegion].image}
               alt={activeRegion}
               className="w-full h-full object-cover"
-            />
+            /> */}
+
+            {regions[activeRegion]?.slug === "region/india" ? (
+  <img
+    src={regions[activeRegion].countries[0].image}
+    alt="india123"
+    className="w-full h-full object-cover"
+  />
+) : (
+  <img
+    src={regions[activeRegion].image}
+    alt={activeRegion}
+    className="w-full h-full object-cover"
+  />
+)}
           </div>
         </div>
       </div>

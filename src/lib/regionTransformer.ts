@@ -9,6 +9,7 @@ export interface RegionFormated {
 export interface CountryFormatted {
   title: string;
   slug: string;
+  image?: string;
 }
 
 
@@ -20,9 +21,10 @@ export function transformRegions(
   apiData.forEach((region) => {
     result[region.title] = {
        countries:
-          region.countries?.map(({ title, slug }) => ({
+          region.countries?.map(({ title, slug, image }) => ({
             title,
             slug,
+            image
           })) ?? [],
       image: region.image, 
       slug:region.slug

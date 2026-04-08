@@ -26,6 +26,7 @@ export interface Country {
   id: number;
   title: string;
   slug: string;
+  image?: string;
 }
 
 export interface Region {
