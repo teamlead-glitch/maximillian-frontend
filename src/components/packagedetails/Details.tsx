@@ -225,14 +225,19 @@ export default function Details({ details }: { details: PackageResponse }) {
  */}
 
                         <div className="flex items-center justify-center gap-2 flex-wrap text-(--color-secondary) py-2 text-sm md:text-base">
-                            <MapPin size={18} />
-                            <span>Paris</span>
+                            <MapPin className="mt-2" size={18} />
+                            <TagListing
+                                textCenter={false}
+                                countries={countries}
+
+                            />
+                            {/* <span>Paris</span>
                             <span className="mx-1 text-gray-400">|</span>
                             <span>Amsterdam</span>
                             <span className="mx-1 text-gray-400">|</span>
                             <span>Rome</span>
                             <span className="mx-1 text-gray-400">|</span>
-                            <span>Germany</span>
+                            <span>Germany</span> */}
                         </div>
                         {/* Destinations Placement
  */}
@@ -243,7 +248,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                     </div></div>
                 <div className="max-w-[1300px] mx-auto pt-5 lg:pt-16">
                     <div className="flex flex-wrap align-center justify-start md:justify-center  gap-y-2  gap-x-0 md:gap-8 xl:gap-5">
-                        {taggroups.map((group) => (
+                        {/* {taggroups.map((group) => (
                             <div key={group.group_id} className="w-1/2 md:w-auto pb-2 md:pb-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     {group.group_title}
@@ -261,36 +266,21 @@ export default function Details({ details }: { details: PackageResponse }) {
                                     }))}
                                 />
 
-                                {/* <ul className="flex flex-wrap items-start md:items-center text-sm gap-2 mt-1">
-                                    {group.tags.map((tag, index) => (
-                                        <li
-                                            key={tag.id}
-                                            className={`relative text-sm sm:text-base font-my-font-semibold pr-5 text-(--color-secondary)
-                                                 ${index !== group.tags.length - 1
-                                                    ? "after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
-                                                    : ""
-                                                }`}
-                                        >
-                                            <Link href={`/tag/${tag.short_slug}`} className="hover:underline">
-                                                {tag.title}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul> */}
+                               
                             </div>
-                        ))}
+                        ))} */}
                         <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
                             <span className="text-sm sm:text-base text-(--color-secondary)">Duration</span>
                             <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1 md:mt-3"> {duration}</h4>
                         </div>
                         <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
-                            <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
+                            {/* <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
 
                             <TagListing
                                 textCenter={false}
                                 countries={countries}
 
-                            />
+                            /> */}
 
                             {/* <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1">
                                 {countries.map((country, index) => (
@@ -354,7 +344,9 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 </h4>
                             </div>
                         )}
-                        {meta.map((item) => (
+
+                        {/* other metas hided */}
+                        {/* {meta.map((item) => (
                             <div key={item.id} className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     {item.meta_key}
@@ -366,7 +358,7 @@ export default function Details({ details }: { details: PackageResponse }) {
 
                                 </ul>
                             </div>
-                        ))}
+                        ))} */}
                     </div>
                 </div>
             </section >
@@ -410,10 +402,30 @@ export default function Details({ details }: { details: PackageResponse }) {
 
                     <div className="w-full"><div className="flex items-center  gap-2 flex-wrap text-(--color-secondary) py-2 text-sm md:text-base">
 
-                        <span>  Island Leisure, Honeymoon</span>
-                        <span className="mx-1 text-gray-400">|</span>
-                        <span> Private Trip, Couples</span>
+                         
+                             <TagListing
 
+                                    textCenter={false}
+
+                                    tags={taggroups[0]?.tags.map(tag => ({
+                                        id: tag.id,
+                                        title: tag.title,
+                                        slug: tag.slug ?? '#',
+                                    }))}
+                                />
+                        
+                        <span className="mt-2 text-gray-400">|</span>
+                        
+                        <TagListing
+
+                                    textCenter={false}
+
+                                    tags={taggroups[1]?.tags.map(tag => ({
+                                        id: tag.id,
+                                        title: tag.title,
+                                        slug: tag.slug ?? '#',
+                                    }))}
+                                />
                     </div></div>
 
 
