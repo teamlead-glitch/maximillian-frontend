@@ -16,8 +16,10 @@ export default function BlogCard({
   variant = "default",
 }: Props) {
   return (
-    <div className="group flex flex-col">
+    <Link href={`/blogs/${blog.short_slug}`}>   <div className="group flex flex-col">
       {/* IMAGE */}
+
+
       <div
         className={`relative overflow-hidden rounded-lg ${variant === "large"
           ? "aspect-[2/1]"
@@ -28,16 +30,16 @@ export default function BlogCard({
 
 
         {blog?.image_path && (
-          <Link href={`/blogs/${blog.short_slug}`}>
-            <Image
-              src={blog.image_path}
-              alt={blog.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-              priority={variant === "large"}
-            />
-          </Link>
+
+          <Image
+            src={blog.image_path}
+            alt={blog.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            priority={variant === "large"}
+          />
+
         )}
 
         <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
@@ -55,13 +57,13 @@ export default function BlogCard({
 
       {/* CONTENT */}
       <div className="pt-5 flex flex-col flex-grow">
-        <Link href={`/blogs/${blog.short_slug}`}>
-          <h3
-            className="font-my-font-semibold text-break  text-xl md:text-2xl text-(--color-secondary)  line-clamp-2"
-          >
-            {blog.title}
-          </h3>
-        </Link>
+
+        <h3
+          className="font-my-font-semibold text-break  text-xl md:text-2xl text-(--color-secondary)  line-clamp-2"
+        >
+          {blog.title}
+        </h3>
+
 
 
         <TagListing
@@ -119,6 +121,6 @@ export default function BlogCard({
           {formatLongDate(blog.created_at)}
         </p> */}
       </div>
-    </div>
+    </div > </Link>
   );
 }
