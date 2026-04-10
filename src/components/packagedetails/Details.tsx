@@ -414,7 +414,12 @@ export default function Details({ details }: { details: PackageResponse }) {
                                     }))}
                                 />
                         
+                        {(taggroups[1] && taggroups[1].tags.length > 0) && (
+
+                        
                         <span className="mt-2 text-gray-400">|</span>
+
+                        )}
                         
                         <TagListing
 
