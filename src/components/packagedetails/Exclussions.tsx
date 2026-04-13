@@ -48,7 +48,7 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
                     {/* bulletpoint */}
                     <div className="w-full">
                         <ul className="space-y-3">
-                            <li className="flex items-start gap-2">
+                            <li className="flex items-start gap-2 text-(--color-secondary)">
                                 <svg
                                     className="mt-2 w-2.5 h-2.5 text-secondary flex-shrink-0"
                                     viewBox="0 0 8 8"
@@ -59,7 +59,7 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
                                 <span>International & domestic airfare (can be arranged upon request)</span>
                             </li>
 
-                            <li className="flex items-start gap-2">
+                            <li className="flex items-start gap-2 text-(--color-secondary)">
                                 <svg
                                     className="mt-2 w-2.5 h-2.5 text-secondary flex-shrink-0"
                                     viewBox="0 0 8 8"
@@ -70,7 +70,7 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
                                 <span>Visa charges (assistance and processing can be arranged upon request)</span>
                             </li>
 
-                            <li className="flex items-start gap-2">
+                            <li className="flex items-start gap-2 text-(--color-secondary)">
                                 <svg
                                     className="mt-2 w-2.5 h-2.5 text-secondary flex-shrink-0"
                                     viewBox="0 0 8 8"
@@ -81,7 +81,7 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
                                 <span>Travel insurance (can be arranged upon request)</span>
                             </li>
 
-                            <li className="flex items-start gap-2">
+                            <li className="flex items-start gap-2 text-(--color-secondary)">
                                 <svg
                                     className="mt-2 w-2.5 h-2.5 text-secondary flex-shrink-0"
                                     viewBox="0 0 8 8"
@@ -92,7 +92,7 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
                                 <span>Meals not mentioned in the itinerary</span>
                             </li>
 
-                            <li className="flex items-start gap-2">
+                            <li className="flex items-start gap-2 text-(--color-secondary)">
                                 <svg
                                     className="mt-2 w-2.5 h-2.5 text-secondary flex-shrink-0"
                                     viewBox="0 0 8 8"
