@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { InclusionExclusion } from "@/types/PackageDetailsType";
+import Image from "next/image";
 
 export default function Inclussions({ includes }: { includes: InclusionExclusion[] }) {
 
@@ -51,8 +52,10 @@ export default function Inclussions({ includes }: { includes: InclusionExclusion
                               <h3 className="flex items-center gap-2 text-base md:text-lg text-(--color-secondary)  pb-3">
         
         {/* Image Icon */}
-        <img 
-          src="/images/alpine -ail-journey.png" 
+        <Image
+          width={8}
+          height={8}
+          src={item.icon}
           alt="icon"
           className="w-8 h-8 pr-2 object-contain"
         />
