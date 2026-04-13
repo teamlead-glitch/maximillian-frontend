@@ -4,6 +4,8 @@ import { PackageItem } from "@/types/packages";
 import Image from "next/image";
 import Link from "next/link";
 import TagListingForSignature from "../common/TagListingForSignature";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
 export default function PackageCard({ details }: { details: PackageItem }) {
   return (
@@ -80,6 +82,35 @@ export default function PackageCard({ details }: { details: PackageItem }) {
             {details.title}
           </h4>
         </Link>
+
+        <div className="md:hidden mt-1">
+  <Swiper
+  modules={[Autoplay]}
+  direction="horizontal"
+  slidesPerView={1}
+  loop={true}
+  autoplay={{
+    delay: 2200,
+    disableOnInteraction: true,
+  }}
+  className="h-6"
+>
+  {details.tags?.map((item, i) => {
+    const href =
+      item.type === "region"
+        ? `/region/${item.short_slug}`
+        : `/tag/${item.short_slug}`;
+
+    return (
+      <SwiperSlide key={i}>
+        <Link href={href} className="text-sm text-black-500 text-center block">
+          {item.title}
+        </Link>
+      </SwiperSlide>
+    );
+  })}
+</Swiper>
+</div>
 
       </div>
     </div>
