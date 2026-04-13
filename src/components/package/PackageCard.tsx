@@ -33,7 +33,7 @@ export default function PackageCard({ details }: { details: PackageItem }) {
           <div className="absolute bottom-0 left-0 right-0 p-4 z-10 overflow-hidden">
             
             <div
-              className="flex flex-col items-center gap-2
+              className="flex flex-col items-center gap-1
               translate-y-[40%]
               group-hover:translate-y-0
               transition-all duration-500 ease-out"
