@@ -567,7 +567,7 @@ hover:before:translate-x-full
             <Faq faq={faq} faq_image={faq_image} />
 
 
-            <div className="div">
+            <section className=" py-5 md:py-20 bg-white" >
                 <div className="max-w-[1300px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[8fr_4fr] gap-0 md:gap-8">
                         <Inclussions includes={includes} />
@@ -575,7 +575,7 @@ hover:before:translate-x-full
                         <Exclussions excludes={excludes} />
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/*related journels component  */}
             <Related_journels region_slug={region_slug} tour_id={tour_id} />

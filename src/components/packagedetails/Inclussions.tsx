@@ -45,13 +45,21 @@ export default function Inclussions({ includes }: { includes: InclusionExclusion
 
                 {/* Content */}
                 <div className="w-full  md:mt-5 mt-2">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-10 mt-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 md:gap-3 mt-5">
                         {visibleItems.map((item) => (
                             <div key={item.id}>
-                                <h3 className="text-xl text-(--color-secondary) font-my-font-semibold pb-3">
-                                    {item.title}
-                                </h3>
-                                <p>{item.short_description}</p>
+                              <h3 className="flex items-center gap-2 text-base md:text-lg text-(--color-secondary)  pb-3">
+        
+        {/* Image Icon */}
+        <img 
+          src="/images/alpine -ail-journey.png" 
+          alt="icon"
+          className="w-8 h-8 pr-2 object-contain"
+        />
+
+        {item.title}
+      </h3>
+                                {/* <p>{item.short_description}</p> */}
                             </div>
                         ))}
                     </div>
