@@ -5,7 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import TagListingForSignature from "../common/TagListingForSignature";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, EffectFade  } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
 
 export default function PackageCard({ details }: { details: PackageItem }) {
   return (
@@ -85,14 +87,16 @@ export default function PackageCard({ details }: { details: PackageItem }) {
 
         <div className="md:hidden mt-1">
   <Swiper
-  modules={[Autoplay]}
-  direction="horizontal"
+  modules={[Autoplay, EffectFade]}
+  effect="fade"
+   fadeEffect={{ crossFade: true }} 
   slidesPerView={1}
   loop={true}
   autoplay={{
-    delay: 2200,
+    delay: 2000,
     disableOnInteraction: true,
   }}
+  speed={800}
   className="h-6"
 >
   {details.tags?.map((item, i) => {
