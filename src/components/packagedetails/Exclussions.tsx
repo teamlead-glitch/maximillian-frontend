@@ -48,6 +48,8 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
                     {/* bulletpoint */}
                     <div className="w-full">
                         <ul className="space-y-3">
+                            
+                            {excludes?.map((item) => (
                             <li className="flex items-start gap-2 text-(--color-secondary)">
                                 <svg
                                     className="mt-2 w-2.5 h-2.5 text-secondary flex-shrink-0"
@@ -56,52 +58,11 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
                                 >
                                     <circle cx="4" cy="4" r="4" />
                                 </svg>
-                                <span>International & domestic airfare (can be arranged upon request)</span>
+                                <span>{item.title}</span>
                             </li>
+                            ))}
 
-                            <li className="flex items-start gap-2 text-(--color-secondary)">
-                                <svg
-                                    className="mt-2 w-2.5 h-2.5 text-secondary flex-shrink-0"
-                                    viewBox="0 0 8 8"
-                                    fill="currentColor"
-                                >
-                                    <circle cx="4" cy="4" r="4" />
-                                </svg>
-                                <span>Visa charges (assistance and processing can be arranged upon request)</span>
-                            </li>
-
-                            <li className="flex items-start gap-2 text-(--color-secondary)">
-                                <svg
-                                    className="mt-2 w-2.5 h-2.5 text-secondary flex-shrink-0"
-                                    viewBox="0 0 8 8"
-                                    fill="currentColor"
-                                >
-                                    <circle cx="4" cy="4" r="4" />
-                                </svg>
-                                <span>Travel insurance (can be arranged upon request)</span>
-                            </li>
-
-                            <li className="flex items-start gap-2 text-(--color-secondary)">
-                                <svg
-                                    className="mt-2 w-2.5 h-2.5 text-secondary flex-shrink-0"
-                                    viewBox="0 0 8 8"
-                                    fill="currentColor"
-                                >
-                                    <circle cx="4" cy="4" r="4" />
-                                </svg>
-                                <span>Meals not mentioned in the itinerary</span>
-                            </li>
-
-                            <li className="flex items-start gap-2 text-(--color-secondary)">
-                                <svg
-                                    className="mt-2 w-2.5 h-2.5 text-secondary flex-shrink-0"
-                                    viewBox="0 0 8 8"
-                                    fill="currentColor"
-                                >
-                                    <circle cx="4" cy="4" r="4" />
-                                </svg>
-                                <span>Early check-in & late check-out charges</span>
-                            </li>
+                           
                         </ul>
                     </div>
                     {/* bulletpoint */}
