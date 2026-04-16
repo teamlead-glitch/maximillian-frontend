@@ -594,7 +594,7 @@ hover:before:translate-x-full
 
 
 
-            <BespokeJourney />
+            <BespokeJourney bescope_image={details.bescope_image}/>
             <LogoCarousel />
 
         </>
