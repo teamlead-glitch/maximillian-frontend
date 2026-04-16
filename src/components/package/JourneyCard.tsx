@@ -31,6 +31,7 @@ export default function JourneyCard({ journey }: Props) {
                             <TagListingForSignature
                                 tags={journey.tags}
                                 region={journey.region}
+                                initialShowCount={6}
                             />
 
 
