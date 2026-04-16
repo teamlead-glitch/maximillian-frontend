@@ -4,7 +4,7 @@ import LogoCarousel from "@/components/home/LogoCarousel";
 import "swiper/css/navigation";
 import "swiper/css";
 import { useState } from "react";
-import { Circle, MapPin } from "lucide-react";
+
 import DaywiseCard from "./daywiseCard";
 import PackagedetailsSlider from "./packagedetailsSlider";
 import Faq from "./Faq";
@@ -208,37 +208,50 @@ export default function Details({ details }: { details: PackageResponse }) {
                             className="object-cover w-full h-full hidden md:block"
                         />
                     )}
-                    <div className="absolute inset-0 bg-black/20"></div>
-                    <div className="absolute bottom-0  md:bottom-[50px] left-1/2 
-                        -translate-x-1/2  -translate-y-1/2
-                        w-[90%] sm:w-[80%] md:w-auto
-                        px-4 sm:px-0 text-center">
+                    <div className="absolute bottom-0 w-full h-[60%] bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
-                    </div>
+
+
+                    <div className="absolute bottom-10 w-full left-0 ">
+                        <div className="max-w-[1000px] mx-auto pt-5 lg:pt-16 flex">
+                            <div className="grid w-full grid-cols-[70%_30%]">
+                                <div className="pl-2"> <h1 className="font-my-font-regular text-break xl:text-5xl md:text-4xl text-3xl text-white ">{title}</h1></div>
+                                <div >
+                                    <div className="flex items-center justify-end gap-2 flex-wrap text-white  py-2 text-sm md:text-base">
+                                        {/* <MapPin className="mt-2" size={18} /> */}
+                                        <TagListing
+                                            textCenter={false}
+                                            countries={countries} />
+                                        {/* <span>Paris</span>
+                                        <span className="mx-1 text-gray-400">|</span>
+                                        <span>Amsterdam</span>
+                                        <span className="mx-1 text-gray-400">|</span>
+                                        <span>Rome</span>
+                                        <span className="mx-1 text-gray-400">|</span>
+                                        <span>Rome</span> */}
+                                    </div></div>
+                            </div>
+                        </div></div>
+
+
                 </div></section>
-            <section className=" bg-white py-10 md:py-30  px-5">
+            <section className=" bg-white py-10 md:py-10  px-5">
                 <div className="max-w-[800px] mx-auto   ">
                     <div className="flex flex-col flex-wrap items-center gap-5 justify-center">
-                        <h1 className="font-my-font-regular text-break xl:text-5xl md:text-4xl text-3xl text-(--color-secondary) text-center ">{title}</h1>
+                        {/* <h1 className="font-my-font-regular text-break xl:text-5xl md:text-4xl text-3xl text-(--color-secondary) text-center ">{title}</h1> */}
 
                         {/* Destinations Placement
  */}
 
-                        <div className="flex items-center justify-center gap-2 flex-wrap text-(--color-secondary) py-2 text-sm md:text-base">
+                        {/* <div className="flex items-center justify-center gap-2 flex-wrap text-(--color-secondary) py-2 text-sm md:text-base">
                             <MapPin className="mt-2" size={18} />
                             <TagListing
                                 textCenter={false}
                                 countries={countries}
 
                             />
-                            {/* <span>Paris</span>
-                            <span className="mx-1 text-gray-400">|</span>
-                            <span>Amsterdam</span>
-                            <span className="mx-1 text-gray-400">|</span>
-                            <span>Rome</span>
-                            <span className="mx-1 text-gray-400">|</span>
-                            <span>Germany</span> */}
-                        </div>
+                           
+                        </div> */}
                         {/* Destinations Placement
  */}
 
@@ -246,8 +259,8 @@ export default function Details({ details }: { details: PackageResponse }) {
                         <p className="text-center">{package_tagline}
                         </p>
                     </div></div>
-                <div className="max-w-[1300px] mx-auto pt-5 lg:pt-16">
-                    <div className="flex flex-wrap align-center justify-start md:justify-center  gap-y-2  gap-x-0 md:gap-8 xl:gap-5">
+                <div className="max-w-[1000px] mx-auto pt-5 lg:pt-16">
+                    <div className="flex flex-wrap align-center justify-start md:justify-between  gap-y-2  gap-x-0 md:gap-8 xl:gap-5">
                         {/* {taggroups.map((group) => (
                             <div key={group.group_id} className="w-1/2 md:w-auto pb-2 md:pb-0">
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
@@ -270,8 +283,8 @@ export default function Details({ details }: { details: PackageResponse }) {
                             </div>
                         ))} */}
                         <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
-                            <span className="text-sm sm:text-base text-(--color-secondary)">Duration</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1 md:mt-3"> {duration}</h4>
+                            <span className="text-sm  text-(--color-secondary)">Duration</span>
+                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-bold "> {duration}</h4>
                         </div>
                         <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
                             {/* <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
@@ -300,14 +313,14 @@ export default function Details({ details }: { details: PackageResponse }) {
                         </div>
                         {season && (
                             <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
-                                <span className="text-sm sm:text-base text-(--color-secondary)">
+                                <span className="text-sm text-(--color-secondary)">
                                     Best season
                                 </span>
-                                <ul className="flex flex-wrap items-center text-sm gap-2 mt-1 md:mt-3">
+                                <ul className="flex flex-wrap items-center text-sm gap-2 font-bold">
                                     {season.map((style, index) => (
                                         <li
                                             key={index}
-                                            className={`relative text-sm sm:text-base font-my-font-semibold pr-5 text-(--color-secondary)
+                                            className={`relative text-sm sm:text-base  font-bold pr-5 text-(--color-secondary)
           ${index !== season.length - 1
                                                     ? "after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
                                                     : ""
@@ -321,7 +334,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                         )}
                         {journey_styles.length > 0 && (
                             <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
-                                <span className="text-sm sm:text-base text-(--color-secondary)">
+                                <span className="text-sm  text-(--color-secondary)">
                                     Journey style
                                 </span>
 
@@ -339,7 +352,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 <span className="text-sm sm:text-base text-(--color-secondary)">
                                     Group size
                                 </span>
-                                <h4 className="text-sm sm:text-base text-(--color-secondary) font-my-font-semibold mt-1 md:mt-3">
+                                <h4 className="text-sm sm:text-base font-bold text-(--color-secondary) ">
                                     {group_size}
                                 </h4>
                             </div>
@@ -396,47 +409,46 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 />
                             </div>
                         </div>
-
                     </div>
-
-
-                    <div className="w-full"><div className="flex items-center  gap-2 flex-wrap text-(--color-secondary) py-2 text-sm md:text-base">
-
-                         
-                             <TagListing
-
-                                    textCenter={false}
-
-                                    tags={taggroups[0]?.tags.map(tag => ({
-                                        id: tag.id,
-                                        title: tag.title,
-                                        slug: tag.slug ?? '#',
-                                    }))}
-                                />
-                        
-                        {(taggroups[1] && taggroups[1].tags.length > 0) && (
-
-                        
-                        <span className="mt-2 text-gray-400">|</span>
-
-                        )}
-                        
-                        <TagListing
-
-                                    textCenter={false}
-
-                                    tags={taggroups[1]?.tags.map(tag => ({
-                                        id: tag.id,
-                                        title: tag.title,
-                                        slug: tag.slug ?? '#',
-                                    }))}
-                                />
-                    </div></div>
-
-
-
                 </div>
             </section>
+
+            <section className="relative py-5 md:py-10 px-5  bg-[#F5F2EE]">
+                <div className="max-w-[1000px] mx-auto w-full relative">
+                    <div className="flex items-center justify-center  gap-2 flex-wrap text-(--color-secondary) py-2 text-sm md:text-base">
+                        <TagListing
+
+                            textCenter={false}
+
+                            tags={taggroups[0]?.tags.map(tag => ({
+                                id: tag.id,
+                                title: tag.title,
+                                slug: tag.slug ?? '#',
+                            }))}
+                        />
+
+                        {(taggroups[1] && taggroups[1].tags.length > 0) && (
+
+
+                            <span className="mt-2 text-gray-400">|</span>
+
+                        )}
+
+                        <TagListing
+
+                            textCenter={false}
+
+                            tags={taggroups[1]?.tags.map(tag => ({
+                                id: tag.id,
+                                title: tag.title,
+                                slug: tag.slug ?? '#',
+                            }))}
+                        />
+                    </div>
+                </div>
+            </section>
+
+
             <section className="relative  py-5 md:py-20 px-5 overflow-hidden bg-white">
                 <div className="max-w-[900px] mx-auto w-full relative  ">
                     <div className="w-full py-10 md:py-15">
