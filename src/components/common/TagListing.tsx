@@ -53,7 +53,8 @@ export default function TagListing({
           </Link>
 
           {index !== visibleItems.length - 1 && (
-            <span className="px-1">⬥</span>
+            <span className="px-1">|</span>
+            // ⬥
           )}
         </li>
       ))}
@@ -69,7 +70,7 @@ export default function TagListing({
       {/* +more tooltip */}
       {hiddenItems.length > 0 && (
         <>
-          <span className="px-1">⬥</span>
+          <span className="px-1">|</span>
           <li className="relative group/tags cursor-pointer text-(--color-secondary)" onClick={() => setOpen(!open)}>
             +{hiddenItems.length} more
 

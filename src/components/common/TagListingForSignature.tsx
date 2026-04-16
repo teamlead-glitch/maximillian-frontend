@@ -18,11 +18,13 @@ interface Region {
 interface TagListingProps {
   tags?: Tag[];
   region?: Region | null;
+  initialShowCount?: number;
 }
 
 export default function TagListingForSignature({
   tags = [],
   region,
+  initialShowCount=2,
 }: TagListingProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -47,8 +49,8 @@ export default function TagListingForSignature({
 
   if (items.length === 0) return null;
 
-  const visibleItems = items.slice(0, 2);
-  const hiddenItems = items.slice(2);
+  const visibleItems = items.slice(0, initialShowCount);
+  const hiddenItems = items.slice(initialShowCount);
 
   const show = () => {
     if (hideTimeout.current) clearTimeout(hideTimeout.current);
@@ -86,7 +88,7 @@ export default function TagListingForSignature({
                 key={`${item.type}-${item.short_slug}`}
                 className={
                   index !== visibleItems.length - 1 || hiddenItems.length > 0
-                    ? "relative pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white"
+                    ? "relative pr-3 after:content-['|'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-white"
                     : "relative"
                 }
               >
