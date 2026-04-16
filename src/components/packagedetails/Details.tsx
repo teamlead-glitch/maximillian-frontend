@@ -221,7 +221,8 @@ export default function Details({ details }: { details: PackageResponse }) {
                                         {/* <MapPin className="mt-2" size={18} /> */}
                                         <TagListing
                                             textCenter={false}
-                                            countries={countries} />
+                                            countries={countries} 
+                                            textColor={true}/>
                                         {/* <span>Paris</span>
                                         <span className="mx-1 text-gray-400">|</span>
                                         <span>Amsterdam</span>
