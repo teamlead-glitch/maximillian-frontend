@@ -22,7 +22,7 @@ export default function Inclussions({ includes }: { includes: InclusionExclusion
 
     // Apply slice ONLY for mobile
     const visibleItems = isMobile && !showAll
-        ? includes.slice(0, 2)
+        ? includes//includes.slice(0, 2)
         : includes;
 
     return (
@@ -68,7 +68,7 @@ export default function Inclussions({ includes }: { includes: InclusionExclusion
                     </div>
 
                     {/* Button only on mobile */}
-                    {isMobile && includes.length > 2 && (
+                    {false && isMobile && includes.length > 2 && (
                         <div className="mt-4 text-center">
                             <button
                                 onClick={() => setShowAll(!showAll)}
