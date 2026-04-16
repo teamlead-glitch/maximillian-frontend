@@ -322,7 +322,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                                             key={index}
                                             className={`relative text-sm sm:text-base  font-bold pr-5 text-(--color-secondary)
           ${index !== season.length - 1
-                                                    ? "after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                                    ? "after:content-['|'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
                                                     : ""
                                                 }`}
                                         >
