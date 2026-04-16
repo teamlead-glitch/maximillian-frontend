@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-export default function BespokeJourney({bescope_image=''}:{bescope_image?:string}) {
+export default function BespokeJourney({bescope_image=''}:{bescope_image?:string | null}) {
 
   const bgImage = bescope_image
     ? `url(${bescope_image})`
