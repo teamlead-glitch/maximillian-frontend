@@ -3,7 +3,7 @@ import BespokeJourney from "@/components/home/BespokeJourney";
 import LogoCarousel from "@/components/home/LogoCarousel";
 import { apiService } from "@/services/api";
 import { ContactEnquiryResponse, FormErrors, Formtypes, SettingsResponse } from "@/types/addressformTypes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import SimpleCaptcha from "../Captcha";
 import Link from "next/link";
@@ -42,6 +42,22 @@ export default function AddressForm() {
         message: "",
         is_agreed: "",
     });
+
+       // 1. Add the ref at the top of your component
+        const textareaRef = useRef<HTMLTextAreaElement>(null);
+    
+        // 2. Create the resize function
+        const autoResize = () => {
+            const el = textareaRef.current;
+            if (!el) return;
+            el.style.height = "auto";        // reset first so it can shrink
+            el.style.height = `${el.scrollHeight}px`; // expand to content
+        };
+    
+        // 3. Optional: Trigger on initial load if message has value
+        useEffect(() => {
+            autoResize();
+        }, [formData.message]);
 
     /* -----------------------------------------------------------------------
       HANDLE FORM INPUT CHANGES (WITH TYPESCRIPT SAFETY)
@@ -375,10 +391,14 @@ export default function AddressForm() {
                                     <div className="flex flex-col">
 
                                         <textarea
-                                            onChange={handleChange}
+                                            ref={textareaRef}
+                                            onChange={(e) => {
+                                                handleChange(e); // Keep your existing handler
+                                                autoResize();    // 5. Trigger resize on change
+                                            }}
                                             value={formData.message}
                                             id="message"
-                                            rows={2}
+                                            rows={5}
                                             placeholder="Your message"
                                             className="w-full bg-transparent border border-gray-300 text-(--color-secondary) placeholder:text-(--color-secondary) rounded-xl px-4 py-4 focus:outline-none focus:border-gray-500 resize-none"
                                         />

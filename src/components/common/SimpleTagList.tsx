@@ -13,20 +13,25 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
   const hiddenItems = items.slice(2);
 
   return (
-    <ul className="flex flex-wrap items-center justify-start md:justify-center text-sm sm:text-base gap-2 mt-1 md:mt-3 font-my-font-semibold">
+    <ul className="flex flex-wrap items-center text-sm gap-2 font-bold">
 
       {/* visible items */}
       {visibleItems.map((item, index) => (
+        <>
         <li
           key={index}
-          className="relative text-(--color-secondary)"
+          className={`relative text-sm sm:text-base  font-bold  text-(--color-secondary)
+          ${index !== visibleItems.length - 1
+                                                    ? " after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                                    : ""
+                                                }`}
         >
           {item.trim()}
-
-          {index !== visibleItems.length - 1 && (
-            <span className="px-1">⬥</span>
-          )}
         </li>
+          {index !== visibleItems.length - 1?
+        <span className=" text-(--color-secondary) font-bold  ">|</span>:
+        ""}
+        </>
       ))}
 
 
@@ -42,9 +47,9 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
       {/* +more */}
       {hiddenItems.length > 0 && (
         <>
-        <span className="px-1">⬥</span>
+        <span className=" text-(--color-secondary) font-bold  ">|</span>
         <li
-          className="relative group/tags cursor-pointer text-(--color-secondary)"
+          className="relative group/tags cursor-pointer font-bold text-(--color-secondary)"
           onClick={() => setOpen(!open)}
         >
           +{hiddenItems.length} more
