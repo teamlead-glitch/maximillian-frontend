@@ -32,28 +32,57 @@ export default function PackageCard({ details }: { details: PackageItem }) {
           <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
 
           {/* 🔥 Animated Content (Days + Tags together) */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 z-10 overflow-hidden">
-            
-            <div
-              className="flex flex-col items-center gap-1
-              translate-y-[40%]
-              group-hover:translate-y-0
-              transition-all duration-500 ease-out"
-            >
-              
-              {/* Days */}
-              <p className="text-white text-lg font-my-font-semibold text-center">
-                {details.days} Days
-              </p>
+         
+         <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
+  <div
+    className="flex flex-col items-center gap-1
+    translate-y-0
+    md:translate-y-[40%]
+    md:group-hover:translate-y-0
+    transition-all duration-500 ease-out"
+  >
+    
+    {/* Days */}
+    <p className="text-white text-lg text-center">
+      {details.days} Days
+    </p>
 
-              {/* Tags */}
-              <div className="opacity-0 group-hover:opacity-100 transition duration-500 delay-100">
-                <TagListingForSignature tags={details.tags} />
-              </div>
+    {/* ✅ Swiper INSIDE (mobile only) */}
+    <div className="md:hidden mt-1 w-full">
+      <Swiper
+        modules={[Autoplay, EffectFade]}
+        effect="fade"
+        fadeEffect={{ crossFade: true }}
+        slidesPerView={1}
+        loop={true}
+        autoplay={{ delay: 2000 }}
+        speed={800}
+        className="h-[28px] flex items-center justify-center"
+      >
+        {details.tags?.map((item, i) => {
+          const href =
+            item.type === "region"
+              ? `/region/${item.short_slug}`
+              : `/tag/${item.short_slug}`;
 
-            </div>
+          return (
+            <SwiperSlide key={i}>
+              <Link href={href} className="text-sm text-white text-center block">
+                {item.title}
+              </Link>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </div>
 
-          </div>
+    {/* Desktop tags */}
+    <div className="hidden md:block opacity-0 group-hover:opacity-100 transition duration-500 delay-100">
+      <TagListingForSignature tags={details.tags} initialShowCount={6}/>
+    </div>
+
+  </div>
+</div>
 
         </Link>
       </div>
@@ -84,37 +113,6 @@ export default function PackageCard({ details }: { details: PackageItem }) {
             {details.title}
           </h4>
         </Link>
-
-        <div className="md:hidden mt-1">
-  <Swiper
-  modules={[Autoplay, EffectFade]}
-  effect="fade"
-   fadeEffect={{ crossFade: true }} 
-  slidesPerView={1}
-  loop={true}
-  autoplay={{
-    delay: 2000,
-    disableOnInteraction: true,
-  }}
-  speed={800}
-  className="h-6"
->
-  {details.tags?.map((item, i) => {
-    const href =
-      item.type === "region"
-        ? `/region/${item.short_slug}`
-        : `/tag/${item.short_slug}`;
-
-    return (
-      <SwiperSlide key={i}>
-        <Link href={href} className="text-sm text-black-500 text-center block">
-          {item.title}
-        </Link>
-      </SwiperSlide>
-    );
-  })}
-</Swiper>
-</div>
 
       </div>
     </div>

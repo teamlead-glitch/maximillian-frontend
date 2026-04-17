@@ -61,6 +61,15 @@ export default function MegaMenu({
     fetchData();
   }, []);
 
+  const slugify = (text:string) =>
+  text
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, "and")        // optional: replace &
+    .replace(/[^\w\s-]/g, "")    // remove special chars
+    .replace(/\s+/g, "-")        // spaces → hyphen
+    .replace(/-+/g, "-");        // remove duplicate -
+
   return (
     <>
 
@@ -146,7 +155,7 @@ export default function MegaMenu({
                     } else {
                       return (
                         <div key={region} className={containerClasses}>
-                          <Link href={`/region/${region}`} onClick={() => setMegaOpen(false)}>
+                          <Link href={`/region/${slugify(region)}`} onClick={() => setMegaOpen(false)}>
                             <span
                               onMouseEnter={() => setActiveRegion(region)}
                               className={textClasses}

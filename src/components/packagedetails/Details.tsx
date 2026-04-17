@@ -221,7 +221,8 @@ export default function Details({ details }: { details: PackageResponse }) {
                                         {/* <MapPin className="mt-2" size={18} /> */}
                                         <TagListing
                                             textCenter={false}
-                                            countries={countries} />
+                                            countries={countries} 
+                                            textColor={true}/>
                                         {/* <span>Paris</span>
                                         <span className="mx-1 text-gray-400">|</span>
                                         <span>Amsterdam</span>
@@ -322,7 +323,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                                             key={index}
                                             className={`relative text-sm sm:text-base  font-bold pr-5 text-(--color-secondary)
           ${index !== season.length - 1
-                                                    ? "after:content-['⬥'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                                    ? "after:content-['|'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
                                                     : ""
                                                 }`}
                                         >
@@ -594,7 +595,7 @@ hover:before:translate-x-full
 
 
 
-            <BespokeJourney />
+            <BespokeJourney bescope_image={details.bescope_image}/>
             <LogoCarousel />
 
         </>

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import LogoCarousel from "@/components/home/LogoCarousel";
@@ -78,6 +78,21 @@ export default function Designyourtrip() {
         duration: "",
         group_size: ""
     });
+    // 1. Add the ref at the top of your component
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+    // 2. Create the resize function
+    const autoResize = () => {
+        const el = textareaRef.current;
+        if (!el) return;
+        el.style.height = "auto";        // reset first so it can shrink
+        el.style.height = `${el.scrollHeight}px`; // expand to content
+    };
+
+    // 3. Optional: Trigger on initial load if message has value
+    useEffect(() => {
+        autoResize();
+    }, [formData.message]);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -664,10 +679,14 @@ export default function Designyourtrip() {
 
                                     <div className="relative w-full">
                                         <textarea
+                                            ref={textareaRef}
                                             id="message"
                                             value={formData.message}
-                                            onChange={handleChange}
-                                            rows={3}
+                                            onChange={(e) => {
+                                                handleChange(e); // Keep your existing handler
+                                                autoResize();    // 5. Trigger resize on change
+                                            }}
+                                            rows={6}
                                             placeholder="Anything specific you want to experience?"
                                             className="w-full bg-transparent border border-gray-300 text-(--color-secondary)  placeholder:text-(--color-secondary) rounded-md  px-3 py-3 focus:outline-none focus:border-gray-500" />
                                     </div>

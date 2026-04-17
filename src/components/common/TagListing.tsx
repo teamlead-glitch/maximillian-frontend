@@ -17,6 +17,7 @@ interface TagListingProps {
   countries?: Tag[];
   region?: Region | null;
   textCenter?: Boolean;
+  textColor?: Boolean;
 }
 
 export default function TagListing({
@@ -24,6 +25,7 @@ export default function TagListing({
   countries = [],
   region,
   textCenter = true,
+  textColor = false, //false default for secondary 1 for primary
 }: TagListingProps) {
 
   const [open, setOpen] = useState(false);
@@ -46,14 +48,15 @@ export default function TagListing({
       {visibleItems.map((item, index) => (
         <li
           key={`${item.type}-${item.slug}`}
-          className="relative text-(--color-secondary)"
+          className={`relative ${textColor?"text-(--color-primary)":"text-(--color-secondary)"}`}
         >
           <Link href={`/${item.slug}`}>
             {item.title}
           </Link>
 
           {index !== visibleItems.length - 1 && (
-            <span className="px-1">⬥</span>
+            <span className="px-1">|</span>
+            // ⬥
           )}
         </li>
       ))}
@@ -69,9 +72,10 @@ export default function TagListing({
       {/* +more tooltip */}
       {hiddenItems.length > 0 && (
         <>
-          <span className="px-1">⬥</span>
-          <li className="relative group/tags cursor-pointer text-(--color-secondary)" onClick={() => setOpen(!open)}>
-            +{hiddenItems.length} more
+          <span className="px-1">|</span>
+          <li className="relative group/tags cursor-pointer" onClick={() => setOpen(!open)}>
+          <span className={` ${textColor?"text-(--color-primary)":"text-(--color-secondary)"}`}> +{hiddenItems.length} more</span>
+           
 
             {/* tooltip */}
             <div
@@ -91,7 +95,7 @@ export default function TagListing({
                 <Link
                   key={item.slug}
                   href={`/${item.slug}`}
-                  className="block px-2 py-1 hover:bg-gray-100 rounded"
+                  className="block px-2 py-1 hover:bg-gray-100 rounded text-(--color-secondary)"
                 >
                   {item.title}
                 </Link>
