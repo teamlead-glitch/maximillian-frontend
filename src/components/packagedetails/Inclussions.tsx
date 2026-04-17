@@ -50,20 +50,7 @@ export default function Inclussions({ includes }: { includes: InclusionExclusion
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 md:gap-3 mt-5">
                         {visibleItems.map((item) => (
                             <div key={item.id}>
-<<<<<<< HEAD
                                 <h3 className="flex items-center gap-2 text-base md:text-lg text-(--color-secondary)  pb-3">
-=======
-                              <h3 className="flex items-center gap-2 text-base md:text-lg text-(--color-secondary)  pb-3">
-        
-        {/* Image Icon */}
-        <Image
-          width={8}
-          height={8}
-          src={item.icon}
-          alt="icon"
-          className="w-8 h-8 pr-2 object-contain"
-        />
->>>>>>> 1fef99e0a2810e941b377b98b4454c4c14d76266
 
                                     {/* Image Icon */}
                                     <img
