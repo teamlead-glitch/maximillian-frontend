@@ -18,19 +18,19 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
       {/* visible items */}
       {visibleItems.map((item, index) => (
         <>
-        <li
-          key={index}
-          className={`relative text-sm sm:text-base  font-bold  text-(--color-secondary)
+          <li
+            key={index}
+            className={`relative text-sm   font-bold  text-black
           ${index !== visibleItems.length - 1
-                                                    ? " after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
-                                                    : ""
-                                                }`}
-        >
-          {item.trim()}
-        </li>
-          {index !== visibleItems.length - 1?
-        <span className=" text-(--color-secondary) font-bold  ">|</span>:
-        ""}
+                ? " after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                : ""
+              }`}
+          >
+            {item.trim()}
+          </li>
+          {index !== visibleItems.length - 1 ?
+            <span className=" text-(--color-secondary) font-bold  ">|</span> :
+            ""}
         </>
       ))}
 
@@ -47,16 +47,16 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
       {/* +more */}
       {hiddenItems.length > 0 && (
         <>
-        <span className=" text-(--color-secondary) font-bold  ">|</span>
-        <li
-          className="relative group/tags cursor-pointer font-bold text-(--color-secondary)"
-          onClick={() => setOpen(!open)}
-        >
-          +{hiddenItems.length} more
+          <span className=" text-(--color-secondary) font-bold  ">|</span>
+          <li
+            className="relative group/tags cursor-pointer font-bold text-(--color-secondary)"
+            onClick={() => setOpen(!open)}
+          >
+            +{hiddenItems.length} more
 
-          {/* tooltip */}
-          <div
-            className={`
+            {/* tooltip */}
+            <div
+              className={`
     z-50 bg-white shadow-lg border rounded-md p-3
     
     min-w-[200px] max-w-[90vw] w-max
@@ -71,17 +71,17 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
     
     md:group-hover/tags:block
   `}
-          >
-            {hiddenItems.map((item, index) => (
-              <div
-                key={index}
-                className="block px-2 py-1 hover:bg-gray-100 rounded"
-              >
-                {item.trim()}
-              </div>
-            ))}
-          </div>
-        </li>
+            >
+              {hiddenItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="block px-2 py-1 hover:bg-gray-100 rounded"
+                >
+                  {item.trim()}
+                </div>
+              ))}
+            </div>
+          </li>
         </>
       )}
     </ul>

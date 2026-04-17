@@ -26,7 +26,7 @@ export default function Inclussions({ includes }: { includes: InclusionExclusion
         : includes;
 
     return (
-        <section className="bg-white py-10 px-5">
+        <section className="bg-white pb-3 md:py-5 px-5">
             <div className="max-w-[1300px] mx-auto">
                 <div className="w-full">
                     <div className="flex flex-col lg:flex-row  w-full gap-2 lg:gap-8 py-0 md:py-5 ">
@@ -46,15 +46,17 @@ export default function Inclussions({ includes }: { includes: InclusionExclusion
                 </div> */}
 
                 {/* Content */}
-                <div className="w-full  md:mt-5 mt-2">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 md:gap-3 mt-5">
+                <div className="w-full">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2 md:gap-0 ">
                         {visibleItems.map((item) => (
                             <div key={item.id}>
-                                <h3 className="flex items-center gap-2 text-base md:text-lg text-(--color-secondary)  pb-3">
+                                <h3 className="flex items-center gap-2 text-base md:text-lg text-(--color-secondary)  pb-4">
 
                                     {/* Image Icon */}
-                                    <img
-                                        src="/images/alpine -ail-journey.png"
+                                    <Image
+                                        width={8}
+                                        height={8}
+                                        src={item.icon}
                                         alt="icon"
                                         className="w-8 h-8 pr-2 object-contain"
                                     />

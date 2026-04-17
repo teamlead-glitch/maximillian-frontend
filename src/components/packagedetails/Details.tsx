@@ -22,7 +22,18 @@ import Exclussions from "./Exclussions";
 import SimpleTagList from "../common/SimpleTagList";
 
 
+
+
+
 export default function Details({ details }: { details: PackageResponse }) {
+
+
+    const scrollToNext = () => {
+        const nextSection = document.getElementById("next-section");
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
 
     const [open, setOpen] = useState(false);
@@ -179,7 +190,15 @@ export default function Details({ details }: { details: PackageResponse }) {
         } finally {
             setLoading(false); // ⭐ stop loader
         }
+
+
+
+
+
     };
+
+
+
 
     return (
 
@@ -187,8 +206,8 @@ export default function Details({ details }: { details: PackageResponse }) {
 
 
         <>
-            <section className="relative  pt-15 pb-0 md:pt-20 overflow-hidden bg-white">
-                <div className="w-full relative  aspect-[16/9]   lg:aspect-[16/4]">
+            <section className="relative  overflow-hidden bg-white">
+                <div className="w-full relative  aspect-[1/1]   lg:aspect-[16/5.5]">
                     {/* MOBILE IMAGE */}
                     {mobile_banner_image && (
                         <Image
@@ -208,21 +227,23 @@ export default function Details({ details }: { details: PackageResponse }) {
                             className="object-cover w-full h-full hidden md:block"
                         />
                     )}
-                    <div className="absolute bottom-0 w-full h-[60%] bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    {/* <div className="absolute bottom-0 w-full h-[60%] bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div> */}
+
+                    <div className="absolute top-0 w-full h-[30%] bg-gradient-to-b from-black/80 via-black/0 to-transparent"></div>
 
 
 
                     <div className="absolute bottom-2 md:bottom-10 w-full left-0 ">
                         <div className="max-w-[1000px] mx-auto pt-5 lg:pt-16 flex">
-                            <div className="grid w-full grid-cols-1 md:grid-cols-[70%_30%]">
+                            <div className="grid w-full grid-cols-1 md:grid-cols-[60%_40%] lg:grid-cols-[70%_30%] px-5  lg:px-0">
                                 <div className="pl-2"> <h1 className="font-my-font-regular text-break xl:text-5xl md:text-4xl text-3xl text-white ">{title}</h1></div>
                                 <div className="pl-2">
-                                    <div className="flex items-center justify-start md:justify-end gap-2 flex-wrap text-white  py-2 text-sm md:text-base">
+                                    <div className="flex items-center justify-start md:justify-end gap-2 flex-wrap text-white  py-2 text-xs md:text-sm">
                                         {/* <MapPin className="mt-2" size={18} /> */}
                                         <TagListing
                                             textCenter={false}
-                                            countries={countries} 
-                                            textColor={true}/>
+                                            countries={countries}
+                                            textColor={true} />
                                         {/* <span>Paris</span>
                                         <span className="mx-1 text-gray-400">|</span>
                                         <span>Amsterdam</span>
@@ -236,9 +257,9 @@ export default function Details({ details }: { details: PackageResponse }) {
 
 
                 </div></section>
-            <section className=" bg-white py-10 md:py-10  px-5">
-                <div className="max-w-[800px] mx-auto   ">
-                    <div className="flex flex-col flex-wrap items-center gap-5 justify-center">
+            <section className=" bg-white py-10 md:py-20  px-5">
+                <div className="max-w-[1000px] mx-auto   ">
+                    <div className="flex flex-col flex-wrap gap-5 justify-center">
                         {/* <h1 className="font-my-font-regular text-break xl:text-5xl md:text-4xl text-3xl text-(--color-secondary) text-center ">{title}</h1> */}
 
                         {/* Destinations Placement
@@ -257,7 +278,7 @@ export default function Details({ details }: { details: PackageResponse }) {
  */}
 
 
-                        <p className="text-center">{package_tagline}
+                        <p>{package_tagline}
                         </p>
                     </div></div>
                 <div className="max-w-[1000px] mx-auto pt-5 lg:pt-16">
@@ -285,10 +306,10 @@ export default function Details({ details }: { details: PackageResponse }) {
                         ))} */}
                         <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
                             <span className="text-sm  text-(--color-secondary)">Duration</span>
-                            <h4 className="text-sm sm:text-base text-(--color-secondary) font-bold "> {duration}</h4>
+                            <h4 className="text-sm text-black font-bold "> {duration}</h4>
                         </div>
-                        <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
-                            {/* <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
+                        {/* <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0"> */}
+                        {/* <span className="text-sm sm:text-base text-(--color-secondary)">Countries covered</span>
 
                             <TagListing
                                 textCenter={false}
@@ -296,7 +317,7 @@ export default function Details({ details }: { details: PackageResponse }) {
 
                             /> */}
 
-                            {/* <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1">
+                        {/* <ul className="flex flex-wrap  items-center text-sm gap-2 mt-1">
                                 {countries.map((country, index) => (
                                     <li
                                         key={country.id}
@@ -311,7 +332,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                                     </li>
                                 ))}
                             </ul> */}
-                        </div>
+                        {/* </div> */}
                         {season && (
                             <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
                                 <span className="text-sm text-(--color-secondary)">
@@ -321,7 +342,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                                     {season.map((style, index) => (
                                         <li
                                             key={index}
-                                            className={`relative text-sm sm:text-base  font-bold pr-5 text-(--color-secondary)
+                                            className={`relative text-sm  font-bold pr-5 text-black
           ${index !== season.length - 1
                                                     ? "after:content-['|'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
                                                     : ""
@@ -350,10 +371,10 @@ export default function Details({ details }: { details: PackageResponse }) {
                         )}
                         {group_size && (
                             <div className="pb-2 w-1/2 md:w-auto md:pb-0 pr-3 md:pr-0">
-                                <span className="text-sm sm:text-base text-(--color-secondary)">
+                                <span className="text-sm text-(--color-secondary)">
                                     Group size
                                 </span>
-                                <h4 className="text-sm sm:text-base font-bold text-(--color-secondary) ">
+                                <h4 className="text-sm font-bold text-black">
                                     {group_size}
                                 </h4>
                             </div>
@@ -375,15 +396,25 @@ export default function Details({ details }: { details: PackageResponse }) {
                         ))} */}
                     </div>
                 </div>
+                <div
+                    onClick={scrollToNext}
+                    className="relative w-full pt-15 flex justify-center cursor-pointer animate-bounce"
+                >
+                    <img
+                        src="/images/arrow-bottom.svg"
+                        alt="Scroll Down"
+                        className="h-10"
+                    />
+                </div>
             </section >
-            <section className="relative py-5 md:py-10 px-5  bg-white">
+            <section className="relative py-5 md:py-10 px-5  bg-white" id="next-section">
                 <div className="max-w-[1000px] mx-auto w-full relative">
                     <div className="w-full">
 
                         {/* LEFT IMAGE */}
 
-                        <div className="float-none md:float-left w-full md:w-[300px] lg:w-[320px] md:mr-10 mb-10">
-                            <div className="aspect-square">
+                        <div className="float-none md:float-left w-full md:w-[450px] lg:w-[400px] md:mr-15 mb-15">
+                            <div className="aspect-[3/2]">
                                 <img
                                     src={journey_image}
                                     alt=""
@@ -417,8 +448,11 @@ export default function Details({ details }: { details: PackageResponse }) {
             <section className="relative py-5 md:py-10 px-5  bg-[#F5F2EE]">
                 <div className="max-w-[1000px] mx-auto w-full relative">
                     <div className="flex items-center justify-center  gap-2 flex-wrap text-(--color-secondary) py-2 text-sm md:text-base">
-                        <TagListing
 
+
+
+
+                        <TagListing
                             textCenter={false}
 
                             tags={taggroups[0]?.tags.map(tag => ({
@@ -580,24 +614,32 @@ hover:before:translate-x-full
             <Faq faq={faq} faq_image={faq_image} />
 
 
-            <section className=" py-5 md:py-20 bg-white" >
+            {/* <section className=" py-5 md:py-20 bg-white" >
                 <div className="max-w-[1300px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[8fr_4fr] gap-0 md:gap-8">
-                        <Inclussions includes={includes} />
-
-                        <Exclussions excludes={excludes} />
+                        
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/*related journels component  */}
+
+            <Inclussions includes={includes} />
+
+            <Exclussions excludes={excludes} />
+
+
+
             <Related_journels region_slug={region_slug} tour_id={tour_id} />
 
 
 
-            <BespokeJourney bescope_image={details.bescope_image}/>
+            <BespokeJourney bescope_image={details.bescope_image} />
             <LogoCarousel />
 
         </>
+
+
     );
 }
+

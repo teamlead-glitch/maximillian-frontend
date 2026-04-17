@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { InclusionExclusion } from "@/types/PackageDetailsType";
-
+import { ArrowRight } from "lucide-react";
 
 export default function Exclussions({ excludes }: { excludes: InclusionExclusion[] }) {
 
@@ -26,7 +26,7 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
         : excludes;
 
     return (
-        <section className="bg-white pt-0 pb-10 md:py-10 px-5 mt-0">
+        <section className="bg-white pt-0 pb-10 md:py-5 px-5 mt-0">
             <div className="max-w-[1300px] mx-auto flex flex-col items-end">
 
                 <div className="w-full flex flex-col">
@@ -48,21 +48,16 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
                     {/* bulletpoint */}
                     <div className="w-full">
                         <ul className="space-y-3">
-                            
+
                             {excludes?.map((item) => (
-                            <li className="flex items-start gap-2 text-(--color-secondary)">
-                                <svg
-                                    className="mt-2 w-2.5 h-2.5 text-secondary flex-shrink-0"
-                                    viewBox="0 0 8 8"
-                                    fill="currentColor"
-                                >
-                                    <circle cx="4" cy="4" r="4" />
-                                </svg>
-                                <span>{item.title}</span>
-                            </li>
+                                <li className="flex items-start gap-2 text-(--color-secondary)">
+                                    <ArrowRight className="mt-1 w-5 h-5 text-secondary flex-shrink-0" />
+                                    <span>{item.title}</span>
+                                    {/* <span>{item.title}</span> */}
+                                </li>
                             ))}
 
-                           
+
                         </ul>
                     </div>
                     {/* bulletpoint */}

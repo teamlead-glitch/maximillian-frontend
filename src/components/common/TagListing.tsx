@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-
+import Image from "next/image";
 interface Tag {
   id?: number;
   title: string;
@@ -42,14 +42,24 @@ export default function TagListing({
   const hiddenItems = items.slice(2);
 
   return (
-    <ul className={`flex flex-wrap items-center ${textCenter ? "justify-center text-sm" : "mt-1 md:mt-3 font-my-font-semibold gap-2 text-sm sm:text-base"}     `}>
+    <ul className={`flex flex-wrap items-center ${textCenter ? "justify-center text-sm" : "mt-1 md:mt-3  gap-2 text-sm sm:text-base"}     `}>
 
       {/* visible tags */}
       {visibleItems.map((item, index) => (
         <li
           key={`${item.type}-${item.slug}`}
-          className={`relative ${textColor?"text-(--color-primary)":"text-(--color-secondary)"}`}
+          className={`relative flex items-center ${textColor ? "text-(--color-primary)" : "text-(--color-secondary)"}`}
         >
+          <Image
+            width={8}
+            height={8}
+            // src={item.icon}
+            src="/images/bed.png"
+            alt="icon"
+            className="w-8 h-8 pr-2 object-contain"
+          />
+
+
           <Link href={`/${item.slug}`}>
             {item.title}
           </Link>
@@ -74,8 +84,8 @@ export default function TagListing({
         <>
           <span className="px-1">|</span>
           <li className="relative group/tags cursor-pointer" onClick={() => setOpen(!open)}>
-          <span className={` ${textColor?"text-(--color-primary)":"text-(--color-secondary)"}`}> +{hiddenItems.length} more</span>
-           
+            <span className={` ${textColor ? "text-(--color-primary)" : "text-(--color-secondary)"}`}> +{hiddenItems.length} more</span>
+
 
             {/* tooltip */}
             <div
