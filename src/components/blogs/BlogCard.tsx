@@ -4,7 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { BlogType } from "@/types/blogs";
 import { formatLongDate } from "@/utils/formatDate";
-import TagListing from "../common/TagListing";
+import TagListingForSignature from "../common/TagListingForSignature";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade  } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
 
 type Props = {
   blog: BlogType;
@@ -43,13 +47,61 @@ export default function BlogCard({
         )}
 
         <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent rounded-b-md"></div>
-        <div className="absolute bottom-0 left-0 right-2 p-4 ">
-          {blog.estimated_time && (
+        <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
+  <div
+    className="
+      flex flex-col items-center gap-1
+      translate-y-0
+      md:translate-y-[40%]
+      md:group-hover:translate-y-0
+      transition-all duration-500 ease-out
+    "
+  >
+    
+    {/* ⏱ Estimated Time */}
+    {blog.estimated_time && (
+      <p className="text-white text-sm md:text-lg text-center">
+        {blog.estimated_time} min read
+      </p>
+    )}
 
+    {/* ✅ Swiper INSIDE (mobile only) */}
+    <div className="md:hidden mt-1 w-full">
+      <Swiper
+        modules={[Autoplay, EffectFade]}
+        effect="fade"
+        fadeEffect={{ crossFade: true }}
+        slidesPerView={1}
+        loop={true}
+        autoplay={{ delay: 2000 }}
+        speed={800}
+        className="h-[28px] flex items-center justify-center"
+      >
+        {blog.tags?.map((item, i) => {
+          const href = item.slug;
+          return (
+            <SwiperSlide key={i}>
+              <Link href={href} className="text-sm text-white text-center block">
+                {item.title}
+              </Link>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </div>
 
-            <p className="text-white text-sm md:text-lg  text-right">{blog.estimated_time ?? '-'} min read</p>
-          )}
-        </div>
+    {/* 💻 Tags (hover on desktop, always visible on mobile) */}
+    <div className="hidden md:block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition duration-500 delay-100">
+      <TagListingForSignature
+        tags={blog.tags}
+        countries={blog.countries}
+        region={blog.region}
+        initialShowCount={6}
+      />
+    </div>
+
+  </div>
+</div>
 
 
 
@@ -66,11 +118,7 @@ export default function BlogCard({
 
 
 
-        <TagListing
-          tags={blog.tags}
-          countries={blog.countries}
-          region={blog.region}
-        />
+     
 
         {/* Tags */}
         {/* {(blog.tags?.length > 0 || blog.countries.length >0 || blog.region) && (
