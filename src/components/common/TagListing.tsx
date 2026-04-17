@@ -5,6 +5,7 @@ interface Tag {
   id?: number;
   title: string;
   slug: string;
+  icon?:string;
 }
 
 interface Region {
@@ -18,6 +19,7 @@ interface TagListingProps {
   region?: Region | null;
   textCenter?: Boolean;
   textColor?: Boolean;
+  tagIcon?: Boolean;
 }
 
 export default function TagListing({
@@ -26,6 +28,7 @@ export default function TagListing({
   region,
   textCenter = true,
   textColor = false, //false default for secondary 1 for primary
+  tagIcon = false,
 }: TagListingProps) {
 
   const [open, setOpen] = useState(false);
@@ -50,14 +53,14 @@ export default function TagListing({
           key={`${item.type}-${item.slug}`}
           className={`relative flex items-center ${textColor ? "text-(--color-primary)" : "text-(--color-secondary)"}`}
         >
-          <Image
+          {(tagIcon && item.icon) && (<Image
             width={8}
             height={8}
-            // src={item.icon}
-            src="/images/bed.png"
+             src={item.icon}
+            //src="/images/bed.png"
             alt="icon"
             className="w-8 h-8 pr-2 object-contain"
-          />
+          />)}
 
 
           <Link href={`/${item.slug}`}>

@@ -128,6 +128,7 @@ export interface TagGroupTag {
   slug: string | null;
   group_id: number;
   short_slug: string;
+  icon?: string;
 }
 export interface Region {
   id: number;

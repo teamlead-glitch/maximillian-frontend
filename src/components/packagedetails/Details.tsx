@@ -454,11 +454,12 @@ export default function Details({ details }: { details: PackageResponse }) {
 
                         <TagListing
                             textCenter={false}
-
+                            tagIcon={true}
                             tags={taggroups[0]?.tags.map(tag => ({
                                 id: tag.id,
                                 title: tag.title,
                                 slug: tag.slug ?? '#',
+                                icon: tag.icon
                             }))}
                         />
 
@@ -472,11 +473,12 @@ export default function Details({ details }: { details: PackageResponse }) {
                         <TagListing
 
                             textCenter={false}
-
+                            tagIcon={true}
                             tags={taggroups[1]?.tags.map(tag => ({
                                 id: tag.id,
                                 title: tag.title,
                                 slug: tag.slug ?? '#',
+                                icon: tag.icon
                             }))}
                         />
                     </div>
