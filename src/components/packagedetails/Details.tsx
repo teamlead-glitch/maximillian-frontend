@@ -212,12 +212,12 @@ export default function Details({ details }: { details: PackageResponse }) {
 
 
 
-                    <div className="absolute bottom-10 w-full left-0 ">
+                    <div className="absolute bottom-2 md:bottom-10 w-full left-0 ">
                         <div className="max-w-[1000px] mx-auto pt-5 lg:pt-16 flex">
-                            <div className="grid w-full grid-cols-[70%_30%]">
+                            <div className="grid w-full grid-cols-1 md:grid-cols-[70%_30%]">
                                 <div className="pl-2"> <h1 className="font-my-font-regular text-break xl:text-5xl md:text-4xl text-3xl text-white ">{title}</h1></div>
-                                <div >
-                                    <div className="flex items-center justify-end gap-2 flex-wrap text-white  py-2 text-sm md:text-base">
+                                <div className="pl-2">
+                                    <div className="flex items-center justify-start md:justify-end gap-2 flex-wrap text-white  py-2 text-sm md:text-base">
                                         {/* <MapPin className="mt-2" size={18} /> */}
                                         <TagListing
                                             textCenter={false}

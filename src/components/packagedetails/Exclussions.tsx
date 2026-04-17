@@ -32,13 +32,13 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
                 <div className="w-full flex flex-col">
 
                     {/* Header */}
-                    <div className="flex flex-col md:flex-row w-full gap-4 md:gap-8 py-5">
+                    <div className="flex flex-col lg:flex-row w-full gap-4 lg:gap-8 py-5">
                         <div>
                             <h3 className="font-my-font-regular text-3xl md:text-4xl text-(--color-secondary)">
                                 Exclusions
                             </h3>
                         </div>
-                        <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+                        <div className="w-px h-10 bg-gray-300 hidden lg:block"></div>
                         <div className="w-full md:w-[200px]">
                             <p>What’s not included by default in your journey.</p>
                         </div>

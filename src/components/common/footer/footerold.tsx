@@ -4,25 +4,19 @@ import { Settings, Regions } from "@/types/commonTypes";
 import Link from "next/link";
 import { taggroupResponse } from "@/types/taggroupTypes";
 
-export default function Footer({
-    settings,
-    regions,
-    tagGroups,
-}: {
-    settings: Settings;
-    regions: Regions;
-    tagGroups: taggroupResponse[];
-}) {
+export default function Footer({ settings, regions, tagGroups }: { settings: Settings; regions: Regions; tagGroups: taggroupResponse[] }) {
+
+
     const [openSection, setOpenSection] = useState<string | null>(null);
 
     const toggleSection = (section: string) => {
         setOpenSection(openSection === section ? null : section);
     };
 
+    //number storing
     const whatsappNumber = settings?.whatsapp;
-    const message = encodeURIComponent(
-        "Hello! I’m interested in exploring your tour packages."
-    );
+    //message storing
+    const message = encodeURIComponent("Hello! I’m interested in exploring your tour packages.");
 
     const whatsappLink = whatsappNumber
         ? `https://wa.me/${whatsappNumber}?text=${message}`
@@ -31,23 +25,19 @@ export default function Footer({
     return (
         <>
             {/* footer */}
-            <footer className="bg-white border-t border-gray-200 py-10 md:py-20 px-5 md:px-10">
-                <div className="max-w-[1400px] mx-auto">
 
+            <footer className="bg-white border-t  border-gray-200 py-10 md:py-20 px-5 md:px-10 ">
+                <div className="max-w-[1400px] mx-auto">
                     {/* ================= MAIN GRID ================= */}
                     <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-0 md:gap-8">
-
-                        {/* MENU */}
-                        <div className="border-0 md:border-r border-gray-200 pr-5 mb-5 md:mb-0">
-                            <h6 className="mb-6 text-sm text-[#93989b]">Menu</h6>
-                            <ul>
-                                {[
-                                    { label: "Home", href: "/" },
-                                    { label: "Destinations", href: "/destinations" },
-                                    { label: "Design Your Trip", href: "/designyourtrip" },
-                                    { label: "Our World", href: "/ourworld" },
-                                    { label: "Contact Us", href: "/contact" },
-                                ].map((item) => (
+                        <div className="border-0  md:border-r border-gray-200 mb-0 pr-5">
+                            <h6 className="mb-6 text-sm text-[#93989b]  text-heading">Menu</h6>
+                            <ul className="text-body font-medium mb-8 md:mb-0">
+                                {[{ label: "Home", href: "/" },
+                                { label: "Destinations", href: "/destinations" },
+                                { label: "Design Your Trip", href: "/designyourtrip" },
+                                { label: "Our World", href: "/ourworld" },
+                                { label: "Contact Us", href: "/contact" }].map((item) => (
                                     <li
                                         key={item.label}
                                         className="mb-4 text-2xl md:text-3xl lg:text-4xl font-my-font-regular text-(--color-secondary)"
@@ -65,24 +55,31 @@ export default function Footer({
           after:transition-transform after:duration-500 after:ease-out
           hover:after:scale-x-100
         "
-                                        >{item.label}</Link>
+                                        >
+                                            {item.label}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
+
                         </div>
 
                         {/* TAGS + REGIONS */}
-                        <div className="border-0 md:border-r border-gray-200 mb-0">
+                        <div className="border-0  md:border-r border-gray-200 mb-0">
                             <div className="grid grid-cols-1 lg:grid-cols-2">
                                 <div className="div mb-0">
-                                    {/* SPECIALTIES */}
+                                    {/* Specialties */}
                                     <div>
                                         <div
-                                            className="flex justify-between cursor-pointer md:cursor-default"
+                                            className="flex justify-between  cursor-pointer md:cursor-default"
                                             onClick={() => toggleSection("specialties")}
                                         >
-                                            <h6 className="mb-6 text-sm text-[#93989b] text-heading line-height-1">Specialties</h6>
-                                            <span className="md:hidden">
+                                            <h6 className="mb-6 text-sm text-[#93989b] text-heading line-height-1">
+                                                Specialties
+                                            </h6>
+
+                                            {/* Icon (mobile only) */}
+                                            <span className="md:hidden text-lg">
                                                 {openSection === "specialties" ? "−" : "+"}
                                             </span>
                                         </div>
@@ -101,13 +98,16 @@ export default function Footer({
                                         </ul>
                                     </div>
 
-                                    {/* REGIONS */}
+                                    {/* Regions */}
                                     <div>
                                         <div
-                                            className="flex justify-between cursor-pointer md:cursor-default mt-0 md:mt-6"
+                                            className="flex justify-between  cursor-pointer md:cursor-default mt-0 md:mt-6"
                                             onClick={() => toggleSection("regions")}
                                         >
-                                            <h6 className="mb-6 text-sm text-[#93989b] text-heading line-height-1">Regions</h6>
+                                            <h6 className="mb-6 text-sm text-[#93989b] text-heading line-height-1">
+                                                Regions
+                                            </h6>
+
                                             <span className="md:hidden text-lg">
                                                 {openSection === "regions" ? "−" : "+"}
                                             </span>
@@ -164,18 +164,18 @@ export default function Footer({
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-
-
-                        {/* CONTACT */}
+                        {/* Contact */}
                         <div className="pl-0 md:pl-10">
                             <div
-                                className="flex justify-between cursor-pointer md:cursor-default"
+                                className="flex justify-between  cursor-pointer md:cursor-default"
                                 onClick={() => toggleSection("contact")}
                             >
                                 <h6 className="mb-6 text-sm text-[#93989b] text-heading line-height-1">
                                     Contact
                                 </h6>
+
                                 {/* Mobile icon */}
                                 <span className="md:hidden text-lg">
                                     {openSection === "contact" ? "−" : "+"}
@@ -218,122 +218,43 @@ export default function Footer({
                                 </ul>
                             </div>
                         </div>
-
-
-
-                        <div className="w-full text-center block md:hidden">
-
-                            {/* Mobile Accordion Header */}
-
-
-                            <div
-                                className="flex justify-between cursor-pointer md:cursor-default"
-                                onClick={() => toggleSection("policies")}
-                            >
-                                <h6 className="text-sm text-[#93989b] md:hidden block">Policies</h6>
-
-                                <span className="md:hidden">
-                                    {openSection === "policies" ? "−" : "+"}
-                                </span>
-                            </div>
-
-                            <ul
-                                className={`mt-3 mb-4 text-[#818c94] ${openSection === "policies"
-                                    ? "block"
-                                    : "hidden md:flex"
-                                    } md:font-medium md:flex md:flex-wrap md:justify-center md:gap-4`}
-                            >
-
-                                {/* Common LI style */}
-                                {[
-                                    { href: "/terms-and-conditions", label: "Terms and Conditions", hideMobile: true },
-                                    { href: "/privacy-policy", label: "Privacy Policy" },
-                                    { href: "/health-and-safety-policy", label: "Health and Safety Policy" },
-                                    { href: "/responsible-travel-sustainability-policy", label: "Responsible Travel & Sustainability Policy" },
-                                    { href: "/child-protection-safeguarding-policy", label: "Child Protection Policy" },
-                                ].map((item) => (
-                                    <li
-                                        key={item.href}
-                                        className={`flex justify-start mb-4 md:inline-block md:relative md:text-sm md:text-[#93989b] md:pr-4
-        md:after:content-['•'] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2
-        last:md:after:hidden
-        ${item.hideMobile ? "hidden md:inline-block" : ""}`}
-                                    >
-                                        <Link href={item.href} className="hover:underline">
-                                            {item.label}
-                                        </Link>
-                                    </li>
-                                ))}
-
-                            </ul>
-
-                            <div className="w-full flex justify-start mt-3 mb-5"><Link href="/terms-and-conditions"><h6 className="text-sm text-[#93989b] md:hidden block">Terms and Conditions</h6>
-                            </Link></div>
-                        </div>
-
                     </div>
-
                     <hr className="border-gray-200 my-0  sm:mx-auto lg:my-8" />
 
                     {/* ================= BOTTOM SECTION ================= */}
                     <div className="flex flex-col-reverse md:grid md:grid-cols-[3fr_6fr_3fr] items-center w-full gap-5 mt-8 md:mt-16">
 
-                        {/* MADE BY */}
                         <span className="text-sm md:text-base text-[#93989b] text-body">
                             Made by <a href="https://phitany.com/" className="hover:underline">Phitany</a>
                         </span>
-
                         {/* ✅ POLICIES ACCORDION */}
-                        <div className="w-full text-center hidden md:block">
+                        <div>
+                            <ul className="flex flex-wrap justify-center md:justify-center gap-4 mt-1">
+                                <li className="relative text-sm md:text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+                                    <Link href="/terms-and-conditions" className="hover:underline">Terms and Conditions</Link>
+                                </li>
 
-                            {/* Mobile Accordion Header */}
+                                <li className="relative text-sm md:text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+                                    <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
+                                </li>
+
+                                <li className="relative text-sm md:text-base text-[#93989b] text-body pr-3 after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+                                    <Link href="/health-and-safety-policy" className="hover:underline">Health and Safety Policy</Link>
+                                </li>
 
 
-                            <div
-                                className="flex justify-between cursor-pointer md:cursor-default"
-                                onClick={() => toggleSection("policies")}
-                            >
-                                <h6 className="text-sm text-[#93989b] md:hidden block">Policies</h6>
 
-                                <span className="md:hidden">
-                                    {openSection === "policies" ? "−" : "+"}
-                                </span>
-                            </div>
 
-                            <ul
-                                className={`mt-3 mb-4 text-[#818c94] ${openSection === "policies"
-                                    ? "block"
-                                    : "hidden md:flex"
-                                    } md:font-medium md:flex md:flex-wrap md:justify-center md:gap-4`}
-                            >
 
-                                {/* Common LI style */}
-                                {[
-                                    { href: "/terms-and-conditions", label: "Terms and Conditions", hideMobile: true },
-                                    { href: "/privacy-policy", label: "Privacy Policy" },
-                                    { href: "/health-and-safety-policy", label: "Health and Safety Policy" },
-                                    { href: "/responsible-travel-sustainability-policy", label: "Responsible Travel & Sustainability Policy" },
-                                    { href: "/child-protection-safeguarding-policy", label: "Child Protection Policy" },
-                                ].map((item) => (
-                                    <li
-                                        key={item.href}
-                                        className={`flex justify-start md:inline-block md:relative md:text-sm md:text-[#93989b] md:pr-4
-        md:after:content-['•'] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2
-        last:md:after:hidden
-        ${item.hideMobile ? "hidden md:inline-block" : ""}`}
-                                    >
-                                        <Link href={item.href} className="hover:underline">
-                                            {item.label}
-                                        </Link>
-                                    </li>
-                                ))}
+                                <li className="relative pr-3 text-sm md:text-base text-[#93989b] text-body after:content-['•'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-[#93989b]">
+                                    <Link href="/responsible-travel-sustainability-policy" className="hover:underline">Responsible Travel & Sustainability Policy</Link>
+                                </li>
 
+                                <li className="relative pr-3 text-sm md:text-base text-[#93989b] text-body ">
+                                    <Link href="/child-protection-safeguarding-policy" className="hover:underline">Child Protection & Safeguarding Policy</Link>
+                                </li>
                             </ul>
-
-                            <div className="w-full flex justify-start mt-3"><Link href="/terms-and-conditions"><h6 className="text-sm text-[#93989b] md:hidden block">Terms and Conditions</h6>
-                            </Link></div>
                         </div>
-
 
                         <div className="flex justify-center md:justify-end mt-0">
                             <a target="_blank" href={settings.fb_url ?? '#'} className="text-body text-[#818c94] hover:text-heading">
@@ -390,13 +311,14 @@ export default function Footer({
                 </div>
             </footer >
 
-            {/* SECOND FOOTER */}
-            < footer className="bg-[#C43131] py-6 text-center" >
-                <img src="/images/logo-footer.svg" className="mx-auto w-40" />
-                <p className="text-white text-sm mt-2">
-                    A premium travel brand owned by Maximilian Holidays Private Ltd.
-                </p>
-            </footer >
+            <footer className="bg-[#C43131] py-4 md:py-12 px-5 md:px-10">
+                <div className="max-w-[1300px] flex flex-col items-center justify-center mx-auto text-center">
+                    <a href="/"> <img src="/images/logo-footer.svg" alt="" className="w-50 md:w-80" /></a>
+                    <p className="text-white text-sm mt-3">A premium travel brand owned by Maximilian Holidays Private Ltd.</p>
+                </div>
+            </footer>
+
+            {/* footer close */}
         </>
-    );
+    )
 }

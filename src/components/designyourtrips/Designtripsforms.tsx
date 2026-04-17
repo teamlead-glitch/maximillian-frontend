@@ -756,27 +756,27 @@ hover:before:translate-x-full hover:text-white
 
             <section className="relative py-10 md:py-28 overflow-hidden bg-white z-10">
                 <div className="max-w-[1300px] flex mx-auto  px-5  ">
-                    <div className="w-full grid grid-cols-1  md:grid-cols-3 gap-0  md:gap-4 items-center justify-content-between">
+                    <div className="w-full grid grid-cols-1  md:grid-cols-3 gap-0  md:gap-4 items-center justify-center md:justify-between">
 
-                        <div className="w-full mb-3 md:mb-0 flex items-center pr-10">
+                        <div className="w-full mb-3 md:mb-0 flex items-center  pr-0 md:pr-10">
 
-                            <div className="pr-10"><img src="images/custom-journey-icon.png" alt="" /> </div>
+                            <div className="pr-5 md:pr-10"><img src="images/custom-journey-icon.png" alt="" className="w-6 md:w-10" /> </div>
                             <p className="mt-2 font-my-font-semibold text-lg md:text-xl mb-0">
                                 Custom journeys, no templates
                             </p>
                         </div>
 
-                        <div className="w-full mb-3 md:mb-0 flex    items-center pr-10">
+                        <div className="w-full mb-3 md:mb-0 flex    items-center pr-0 md:pr-10">
 
-                            <div className="pr-10"><img src="images/multi-country.png" alt="" /> </div>
+                            <div className="pr-5 md:pr-10"><img src="images/multi-country.png" alt="" className="w-6 md:w-10" /> </div>
                             <p className="mt-2 font-my-font-semibold text-lg md:text-xl mb-0">
                                 Multi-country planning specialists
                             </p>
                         </div>
 
-                        <div className="w-full mb-3 md:mb-0 flex items-center pr-10">
+                        <div className="w-full mb-3 md:mb-0 flex items-center pr-0 md:pr-10">
 
-                            <div className="pr-10"><img src="images/your-review.png" alt="" /> </div>
+                            <div className="pr-5 md:pr-10"><img src="images/your-review.png" alt="" className="w-6 md:w-10" /> </div>
                             <p className=" mt-2 font-my-font-semibold text-lg md:text-xl mb-0">
                                 You review before you commit.
                             </p>

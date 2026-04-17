@@ -2,7 +2,8 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import Link from "next/link";
 
@@ -68,33 +69,33 @@ export default function WhatMakeExc() {
                         {/* ✅ MOBILE — SWIPER */}
                         <div className="md:hidden">
                             <Swiper
-                                modules={[Pagination, Autoplay]}
+                                modules={[Pagination, Autoplay, EffectFade]}
+                                effect="fade"
+                                fadeEffect={{ crossFade: true }}
+                                spaceBetween={0}
+                                slidesPerView={1}
+                                speed={1000}
+                                autoplay={{
+                                    delay: 2500,
+                                    disableOnInteraction: false,
+                                }}
+                                loop={true}
                                 pagination={{
                                     el: ".whatmakes-pagination",
                                     clickable: true,
                                 }}
-                                spaceBetween={16}
-                                slidesPerView={1}
-                                grabCursor
-
-                                autoplay={{
-                                    delay: 2000, // time between slides (ms)
-                                    disableOnInteraction: false, // keep autoplay after swipe
-                                    pauseOnMouseEnter: true, // optional (pause on hover)
-                                }}
-                                loop={true} // recommended for smooth infinite sliding
                             >
                                 {items.map((item, i) => (
                                     <SwiperSlide key={i}>
-                                        <div className="group block pb-10 pr-5">
-                                            <div className="pb-5">
+                                        <div className="group block pb-5 md:pb-10 pr-5 transition-all duration-700 scale-95 opacity-80 swiper-slide-active:scale-100 swiper-slide-active:opacity-100">
+                                            <div className="pb-5 flex justify-center items-center">
                                                 <img
                                                     src={`images/package-exception-icon-${item.icon}.svg`}
                                                     alt=""
-                                                    className="transition-transform duration-500 group-hover:translate-x-[10px] w-[45px] h-[45px]"
+                                                    className="transition-transform duration-500  w-[65px] h-[65px]"
                                                 />
                                             </div>
-                                            <p>{item.text}</p>
+                                            <p className="text-center">{item.text}</p>
                                         </div>
                                     </SwiperSlide>
                                 ))}

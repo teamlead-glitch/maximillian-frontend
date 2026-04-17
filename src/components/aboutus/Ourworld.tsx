@@ -1,6 +1,7 @@
 "use client";
 import LogoCarousel from "@/components/home/LogoCarousel";
 import Image from "next/image";
+import { Facebook, Linkedin, Instagram } from "lucide-react";
 
 export default function Ourworld() {
 
@@ -92,20 +93,7 @@ export default function Ourworld() {
 
 
             <section className="relative pt-20 lg:pt-40  bg-[#F5F2EE]  ">
-                <div className="absolute 
-  bottom-0 
-  left-0 sm:left-3 md:left-12 lg:left-15 
-  -translate-y-[-120px] sm:-translate-y-[-120px] md:-translate-y-[-140px] lg:-translate-y-[-190px] 
-  z-10"
-                >
-                    <Image
-                        src="/images/festivon-icon.svg"
-                        alt="Festivon Icon"
-                        width={340}
-                        height={340}
-                        className="w-[210px] sm:w-[200px] md:w-[260px] lg:w-[340px] h-auto"
-                    />
-                </div>
+
                 <div className="max-w-[1200px] flex mx-auto  md:px-15 px-5  ">
                     <div className="flex flex-col  md:flex-row w-full">
                         <div className="w-full md:w-1/2">
@@ -143,6 +131,22 @@ export default function Ourworld() {
                 <div className="w-full "><img src="images/brandphilosaphy-bg.webp" alt="" className="w-full h-full object-cover" /></div>
             </section>
             <section className="relative py-20 lg:py-40  bg-white">
+                <div className="absolute 
+  top-0 
+  left-0 sm:left-3 md:left-12 lg:left-15 
+  -
+  z-10"
+                >
+                    <Image
+                        src="/images/festivon-icon.svg"
+                        alt="Festivon Icon"
+                        width={340}
+                        height={340}
+                        className="w-[210px] sm:w-[200px] md:w-[260px] lg:w-[340px] h-auto"
+                    />
+                </div>
+
+
                 <div className="max-w-[1200px] flex mx-auto  md:px-15 px-5">
                     {/* <div className="flex flex-col  md:flex-row w-full">
                         <div className="w-full md:w-1/2 pr-0  lg:pr-28">
@@ -182,6 +186,19 @@ export default function Ourworld() {
                                     alt=""
                                     className="w-full h-full object-cover rounded-lg"
                                 />
+                            </div>
+                            <div className="flex justify-center gap-4 items-center pt-4">
+                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                    <Facebook className="w-5 h-5 text-gray-600 hover:text-blue-600" />
+                                </a>
+
+                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                    <Linkedin className="w-5 h-5 text-gray-600 hover:text-blue-700" />
+                                </a>
+
+                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                    <Instagram className="w-5 h-5 text-gray-600 hover:text-pink-500" />
+                                </a>
                             </div>
                         </div>
 
