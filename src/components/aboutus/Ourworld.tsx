@@ -188,15 +188,15 @@ export default function Ourworld() {
                                 />
                             </div>
                             <div className="flex justify-center gap-4 items-center pt-4">
-                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.facebook.com/share/1B2FBvuD6b/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
                                     <Facebook className="w-5 h-5 text-gray-600 hover:text-blue-600" />
                                 </a>
 
-                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.linkedin.com/in/arun-jyothi?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer">
                                     <Linkedin className="w-5 h-5 text-gray-600 hover:text-blue-700" />
                                 </a>
 
-                                <a href="#" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.instagram.com/arun__jyothi__?igsh=cGFpYXRjMW05NDNm&utm_source=qr" target="_blank" rel="noopener noreferrer">
                                     <Instagram className="w-5 h-5 text-gray-600 hover:text-pink-500" />
                                 </a>
                             </div>
