@@ -17,7 +17,7 @@ export default function TopMenu({ regions, settings }:{regions:Regions; settings
   return (
     <>
 
-    {pathname === "/" ? <TopMenuHome regions={formattedRegions} settings={settings}/> : <TopMenuinner regions={formattedRegions} settings={settings}/>}
+    {(pathname === "/" || pathname.startsWith("/package/")) ? <TopMenuHome regions={formattedRegions} settings={settings}/> : <TopMenuinner regions={formattedRegions} settings={settings}/>}
      
     </>
   );
