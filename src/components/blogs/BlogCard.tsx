@@ -77,7 +77,7 @@ export default function BlogCard({
         speed={800}
         className="h-[28px] flex items-center justify-center"
       >
-        {blog.tags?.map((item, i) => {
+        {[blog.region??[], ...(blog.tags??[]), ...(blog.countries??[])]?.map((item, i) => {
           const href = item.slug;
           return (
             <SwiperSlide key={i}>
