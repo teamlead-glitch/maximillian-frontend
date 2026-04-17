@@ -90,14 +90,14 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                         </h1>
                         <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1 py-4">
                             {category && (
-                                <li className={`relative text-(--color-secondary) ${(region.length > 0 || countries.length > 0) ? "relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)" : ""}`}>
+                                <li className={`relative text-(--color-secondary) ${(region.length > 0 || countries.length > 0) ? "relative pr-5 text-(--color-secondary) after:content-['|'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)" : ""}`}>
                                     {category}
                                 </li>
                             )}
 
                             {region && (
                                 <li>
-                                    <Link href={`/region/${region_slug}`} className={`relative text-(--color-secondary) hover:underline ${(countries.length > 0) ? "relative pr-5 text-(--color-secondary) after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)" : ""}`}>
+                                    <Link href={`/region/${region_slug}`} className={`relative text-(--color-secondary) hover:underline ${(countries.length > 0) ? "relative pr-5 text-(--color-secondary) after:content-['|'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)" : ""}`}>
                                         {region}
                                     </Link>
                                 </li>
@@ -111,7 +111,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                             key={country.id}
                                             className={`relative pr-5 text-(--color-secondary) ${!estimated_time && isLastCountry
                                                 ? ""
-                                                : "after:content-['⬥'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
+                                                : "after:content-['|'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
                                                 }`}
                                         >
                                             <Link href={`/country/${country.short_slug}`} className="hover:underline">
@@ -279,7 +279,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                             </Link>
 
                                             {i < tagItems.length - 1 && (
-                                                <span className="mx-2 shrink-0">/</span>
+                                                <span className="mx-2 shrink-0">|</span>
                                             )}
                                         </li>
                                     ))}
