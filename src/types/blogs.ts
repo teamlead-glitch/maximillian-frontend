@@ -1,3 +1,5 @@
+
+import { Tag, Country, Region } from "./packages";
 export type BlogsResponse = {
   blogs: BlogType[];
   total: number;
@@ -16,25 +18,30 @@ export type BlogType = {
   category:{
     title: string,
   };
-  region: {
-    title: string;
-    slug: string;
-  };
+  // region: {
+  //   title: string;
+  //   slug: string;
+  // };
+  region: Region;
 
   created_at: string;
   updated_at: string;
 
-  tags: {
-    id: number;
-    title: string;
-    slug: string;
-  }[];
+  // tags: {
+  //   id: number;
+  //   title: string;
+  //   slug: string;
+  // }[];
 
-  countries: {
-    id: number;
-    title: string;
-    slug: string;
-  }[];
+ tags:Tag[];
+
+  // countries: {
+  //   id: number;
+  //   title: string;
+  //   slug: string;
+  // }[];
+
+  countries:Country[];
 
   author: {
     name: string;

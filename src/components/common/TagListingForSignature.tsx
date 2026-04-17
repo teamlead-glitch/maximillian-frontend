@@ -17,6 +17,7 @@ interface Region {
 
 interface TagListingProps {
   tags?: Tag[];
+  countries?: Tag[];
   region?: Region | null;
   initialShowCount?: number;
 }
@@ -24,7 +25,8 @@ interface TagListingProps {
 export default function TagListingForSignature({
   tags = [],
   region,
-  initialShowCount=2,
+  initialShowCount = 2,
+  countries = [],
 }: TagListingProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -45,6 +47,7 @@ export default function TagListingForSignature({
   const items = [
     ...(region ? [{ ...region, type: "region" }] : []),
     ...tags.map((t) => ({ ...t, type: "tag" })),
+    ...countries.map((c) => ({ ...c, type: "country" })),
   ];
 
   if (items.length === 0) return null;
@@ -81,7 +84,9 @@ export default function TagListingForSignature({
             const href =
               item.type === "region"
                 ? `/region/${item.short_slug}`
-                : `/tag/${item.short_slug}`;
+                : item.type === "country"
+                  ? `/country/${item.short_slug}`
+                  : `/tag/${item.short_slug}`;
 
             return (
               <li
