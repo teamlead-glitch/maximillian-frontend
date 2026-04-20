@@ -61,7 +61,7 @@ export default function Experiencespeciality() {
                     <div className="flex flex-col w-full justify-center">
                         <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary) text-center ">
                             Destinations</h1>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-5 lg:gap-5 mt-2 lg:mt-2">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-5 lg:gap-5 mt-2 lg:mt-2">
 
                             {countries.map((country) =>
 
