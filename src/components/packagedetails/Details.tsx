@@ -191,19 +191,9 @@ export default function Details({ details }: { details: PackageResponse }) {
             setLoading(false); // ⭐ stop loader
         }
 
-
-
-
-
     };
 
-
-
-
     return (
-
-
-
 
         <>
             <section className="relative  overflow-hidden bg-white">
