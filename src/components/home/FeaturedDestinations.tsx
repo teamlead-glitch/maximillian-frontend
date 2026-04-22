@@ -118,7 +118,7 @@ export default function FeaturedDestinations() {
                                     key={item.id}
                                     className="!w-[260px] md:!w-[280px] lg:!w-[300px]"
                                 >
-                                    <div
+                                    <Link href={`/country/${item.short_slug}`}>    <div
                                         className="bg-white rounded-xl overflow-hidden
   transition-all duration-300 my-10 md:my-15
   hover:shadow-2xl
@@ -140,8 +140,8 @@ export default function FeaturedDestinations() {
                                         {/* Content */}
                                         <div className="py-5 px-6 text-center relative h-full flex flex-col min-h-[120px]">
 
-                                            <Link href={`/country/${item.short_slug}`}>
-                                                <div
+
+                                            {/* <div
                                                     className="absolute -top-[40px] right-4 z-10
       w-12 h-12 rounded-full
       flex items-center justify-center
@@ -156,8 +156,8 @@ export default function FeaturedDestinations() {
         transition-all duration-300
         group-hover:rotate-45 "
                                                     />
-                                                </div>
-                                            </Link>
+                                                </div> */}
+
 
                                             <h3 className="text-lg font-semibold mt-1 font-my-font-regular text-(--color-secondary) line-clamp-1">
                                                 {item.title}
@@ -167,7 +167,7 @@ export default function FeaturedDestinations() {
                                                 {item.short_description}
                                             </p>
                                         </div>
-                                    </div>
+                                    </div></Link>
 
                                 </SwiperSlide>
                             ))}

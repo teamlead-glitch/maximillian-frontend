@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { InclusionExclusion } from "@/types/PackageDetailsType";
-import { ArrowRight } from "lucide-react";
+import { CircleArrowRight } from "lucide-react";
 
 export default function Exclussions({ excludes }: { excludes: InclusionExclusion[] }) {
 
@@ -26,41 +26,49 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
         : excludes;
 
     return (
-        <section className="bg-white pt-0 pb-10 md:py-5 px-5 mt-0">
+        <section className="bg-white pt-10 pb-10 md:py-5 px-5 mt-0">
             <div className="max-w-[1300px] mx-auto flex flex-col items-end">
 
-                <div className="w-full flex flex-col">
+                <div className="w-full">
 
                     {/* Header */}
-                    <div className="flex flex-col lg:flex-row w-full gap-4 lg:gap-8 py-5">
-                        <div>
+                    <div className="grid grid-cols-1 md:grid-cols-[25%_75%] lg:grid-cols-[15%_85%] w-full gap-4 lg:gap-8 py-0 md:py-5">
+
+                        <div className="flex  gap-4">
                             <h3 className="font-my-font-regular text-3xl md:text-4xl text-(--color-secondary)">
                                 Exclusions
                             </h3>
+                            <div className="w-px h-10 bg-gray-300 hidden lg:block"></div>
                         </div>
-                        <div className="w-px h-10 bg-gray-300 hidden lg:block"></div>
-                        <div className="w-full md:w-[200px]">
+                        <div><div className="w-full md:w-[200px]">
                             <p>What’s not included by default in your journey.</p>
                         </div>
+                            <div className="w-full mt-5 md:mt-10">
+                                {/* bulletpoint */}
+                                <div className="w-full">
+                                    <ul className=" gap-5 flex flex-wrap">
+
+                                        {excludes?.map((item) => (
+                                            <li className="flex items-start gap-2 text-(--color-secondary)">
+                                                <CircleArrowRight className="mt-1 w-4 h-4 text-secondary flex-shrink-0" />
+                                                <span>{item.title}</span>
+                                                {/* <span>{item.title}</span> */}
+                                            </li>
+                                        ))}
+
+
+                                    </ul>
+                                </div>
+                                {/* bulletpoint */}
+                            </div>
+
+                        </div>
+
+
                     </div>
 
 
-                    {/* bulletpoint */}
-                    <div className="w-full">
-                        <ul className="space-y-3">
 
-                            {excludes?.map((item) => (
-                                <li className="flex items-start gap-2 text-(--color-secondary)">
-                                    <ArrowRight className="mt-1 w-5 h-5 text-secondary flex-shrink-0" />
-                                    <span>{item.title}</span>
-                                    {/* <span>{item.title}</span> */}
-                                </li>
-                            ))}
-
-
-                        </ul>
-                    </div>
-                    {/* bulletpoint */}
 
 
 

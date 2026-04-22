@@ -61,14 +61,14 @@ export default function MegaMenu({
     fetchData();
   }, []);
 
-  const slugify = (text:string) =>
-  text
-    .toLowerCase()
-    .trim()
-    .replace(/&/g, "and")        // optional: replace &
-    .replace(/[^\w\s-]/g, "")    // remove special chars
-    .replace(/\s+/g, "-")        // spaces → hyphen
-    .replace(/-+/g, "-");        // remove duplicate -
+  const slugify = (text: string) =>
+    text
+      .toLowerCase()
+      .trim()
+      .replace(/&/g, "and")        // optional: replace &
+      .replace(/[^\w\s-]/g, "")    // remove special chars
+      .replace(/\s+/g, "-")        // spaces → hyphen
+      .replace(/-+/g, "-");        // remove duplicate -
 
   return (
     <>
@@ -128,7 +128,7 @@ export default function MegaMenu({
 
         <div className=" mx-auto  grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-10 text-black ">
           <div className="flex flex-col justify-between ">
-            <div className="w-full relative">
+            <div className="w-full relative flex-[9.5]">
               <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] mt-32">
                 {/* REGIONS */}
                 <div className="space-y-4 pl-10 pr-20">
@@ -171,7 +171,12 @@ export default function MegaMenu({
 
                 {/* COUNTRIES */}
                 <div className="flex flex-col">
-                  <ul className="grid grid-cols-2 gap-3">
+
+
+
+
+
+                  <ul className="grid grid-flow-col grid-rows-12 gap-3">
                     {regions[activeRegion]?.slug != "region/india" && regions[activeRegion]?.countries?.length > 0 && regions[activeRegion].countries.map((country) => (
                       <Link href={`/${country?.slug}`} onClick={() => setMegaOpen(false)} key={country.title} className="cursor-pointer hover:text-[#C43131] transition-all duration-300 ">{country.title}</Link>
                     ))}
@@ -179,14 +184,14 @@ export default function MegaMenu({
                     {regions[activeRegion]?.slug === "region/india" && data?.length > 0 && data.map((country) => (
                       <Link href={`/${country?.slug}`} onClick={() => setMegaOpen(false)} key={country.title} className="cursor-pointer hover:text-[#C43131] transition-all duration-300 ">{country.title}</Link>
                     ))}
-                    
+
                   </ul>
 
                   {/* <Link href={`/${regions[activeRegion]?.slug}`} className="mt-8 border border-[#C43131] block w-fit px-6 py-2 rounded-full text-sm hover:bg-[#C43131] cursor-pointer hover:text-white hover:tracking-wide transition-all duration-300">
               View all journeys in {activeRegion}
             </Link> */}
 
-                  <Link href={`/${regions[activeRegion]?.slug != "region/india"?regions[activeRegion]?.slug:'country/india'}`} onClick={() => setMegaOpen(false)} className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-5 cursor-pointer">
+                  <Link href={`/${regions[activeRegion]?.slug != "region/india" ? regions[activeRegion]?.slug : 'country/india'}`} onClick={() => setMegaOpen(false)} className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-5 cursor-pointer">
                     <span className="mr-3">   View all journeys in {activeRegion}</span>
 
                     <svg
@@ -207,8 +212,8 @@ export default function MegaMenu({
               </div>
             </div>
 
-            <div className="w-full  pl-10">
-              <div className=" flex flex-wrap gap-10  pb-10 ">
+            <div className="w-full  pl-10 flex-[.5]">
+              <div className=" flex flex-wrap gap-10  pb-5 ">
                 <a
                   href={`tel:${settings.phone}`}
                   className="flex text-sm  text-(--color-secondary)">
@@ -258,18 +263,18 @@ export default function MegaMenu({
             /> */}
 
             {regions[activeRegion]?.slug === "region/india" ? (
-  <img
-    src={regions[activeRegion].countries[0].image}
-    alt="india123"
-    className="w-full h-full object-cover"
-  />
-) : (
-  <img
-    src={regions[activeRegion].image}
-    alt={activeRegion}
-    className="w-full h-full object-cover"
-  />
-)}
+              <img
+                src={regions[activeRegion].countries[0].image}
+                alt="india123"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <img
+                src={regions[activeRegion].image}
+                alt={activeRegion}
+                className="w-full h-full object-cover"
+              />
+            )}
           </div>
         </div>
       </div>
