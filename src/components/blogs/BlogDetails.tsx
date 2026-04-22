@@ -200,11 +200,11 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                     <div className="content" dangerouslySetInnerHTML={{ __html: third_descripton }}>
 
                     </div>
-                    <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 items-start">
+                    <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-3 border-t border-[#bfbdbd] pt-15 items-start">
                         {details?.author ? (
 
                             /* ✅ FULL AUTHOR BLOCK */
-                            <div className="flex gap-3 pr-0 md:pr-20 xl:pr-30 relative">
+                            <div className="flex gap-3 pr-0 md:pr-10 xl:pr-10 relative">
 
                                 <Image
                                     src={details.author.image_path}
@@ -267,7 +267,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                         )}
                         <div className="flex flex-col gap-2 items-start md:items-end  justify-between mt-5 md:mt-0">
                             <div className="w-full flex flex-col items-center md:items-end">
-                                <ul className="flex  flex-wrap justify-center md:justify-end items-center gap-5 pb-3 md:pb-0">
+                                <ul className="flex  flex-wrap justify-center md:justify-end items-center  pb-3">
 
                                     {tagItems.map((tag, i) => (
                                         <li
