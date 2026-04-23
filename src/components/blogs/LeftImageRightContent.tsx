@@ -9,16 +9,16 @@ export default function LeftRightContent({description, image}:{description:strin
         <section className="bg-white py-10   ">
             <div className="w-full">
 
-                <div className="float-none md:float-left w-[300px] h-[300px] md:mr-20 mb-10 relative">
-                    {image && <Image
+                {image &&<div className="float-none md:float-left w-[300px] h-[300px] md:mr-20 mb-10 relative">
+                     <Image
                         src={image}
                         alt=""
                         fill
                         className="object-cover rounded-lg"
-                    />}
+                    />
 
 
-                </div>
+                </div>}
 
                 <div className="space-y-4 text-justify">
                     <div
