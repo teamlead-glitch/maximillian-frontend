@@ -97,7 +97,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
                             {region && (
                                 <li>
-                                    <Link href={`/region/${region_slug}`} className={`relative text-(--color-secondary) hover:underline ${(countries.length > 0) ? "relative pr-3 text-(--color-secondary) after:content-['|'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)" : ""}`}>
+                                    <Link href={`/region/${region_slug}`} className={`relative text-(--color-secondary) hover:underline ${((countries.length > 0)|| (estimated_time && countries.length ==0)) ? "relative pr-3 text-(--color-secondary) after:content-['|'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)" : ""}`}>
                                         {region}
                                     </Link>
                                 </li>
