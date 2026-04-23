@@ -59,7 +59,9 @@ export async function generateMetadata({
   const { slug } = await params;
   const blog_pages = await fetchDetailsBySlug(slug);
 
-  return mapSeoToMetadata(blog_pages?.seoDetail ?? null);
+  const currentUrl = `https://festivontours.com/blogs/${slug}`;
+
+  return mapSeoToMetadata(blog_pages?.seoDetail ?? null, currentUrl);
 }
 
 

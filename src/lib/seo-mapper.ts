@@ -2,11 +2,13 @@
 import { Metadata } from "next";
 import { Seo } from "@/types/commonTypes";
 
-export function mapSeoToMetadata(seo?: Seo | null): Metadata {
+export function mapSeoToMetadata(seo?: Seo | null, currentUrl?:string): Metadata {
 
   console.log("seo to map", seo);
   const title = seo?.meta_title || "Festivon Tours";
   const description = seo?.meta_description || "Plan your perfect holiday with Festivon Tours";
+
+  const canonicalUrl = seo?.canonical_url || currentUrl;
 
   const ogImage = seo?.og_image
     ? [
@@ -33,9 +35,9 @@ export function mapSeoToMetadata(seo?: Seo | null): Metadata {
     description,
     keywords: seo?.meta_keywords || [],
 
-    alternates: seo?.canonical_url
+    alternates: canonicalUrl
       ? {
-          canonical: seo.canonical_url,
+          canonical: canonicalUrl,
         }
       : undefined,
 
@@ -47,7 +49,7 @@ export function mapSeoToMetadata(seo?: Seo | null): Metadata {
     openGraph: {
       title: seo?.og_title ?? title,
       description: seo?.og_description ?? description,
-      url: seo?.canonical_url,
+      url: canonicalUrl,
       type: "website",
       images: ogImage,
     },
@@ -65,9 +67,9 @@ export function mapSeoToMetadata(seo?: Seo | null): Metadata {
     description,
     keywords: seo?.meta_keywords || [],
 
-    alternates: seo?.canonical_url
+    alternates: canonicalUrl
       ? {
-          canonical: seo.canonical_url,
+          canonical: canonicalUrl,
         }
       : undefined,
 
@@ -79,7 +81,7 @@ export function mapSeoToMetadata(seo?: Seo | null): Metadata {
     openGraph: {
       title: seo?.og_title ?? title,
       description: seo?.og_description ?? description,
-      url: seo?.canonical_url,
+      url: canonicalUrl,
       type: "website",
       images: ogImage,
     },
