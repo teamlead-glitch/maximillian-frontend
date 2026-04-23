@@ -157,6 +157,27 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
             <section className="relative py-5 overflow-hidden bg-white">
                 <div className="max-w-[1200px]  mx-auto  px-5 md:px-10">
+
+                    <div className="w-full py-4 flex justify-center"> <ul className="flex  flex-wrap justify-center  items-center  pb-5">
+
+                        {tagItems.map((tag, i) => (
+                            <li
+                                key={tag.id}
+                                className="flex items-center    text-sm  md:text-base text-(--color-secondary)"
+                            >
+                                <Link href={`/tag/${tag.short_slug}`} className="hover:underline">
+                                    {tag.title}
+                                </Link>
+
+                                {i < tagItems.length - 1 && (
+                                    <span className="mx-2 shrink-0 text-gray-500">|</span>
+                                )}
+                            </li>
+                        ))}
+
+                    </ul></div>
+
+
                     <div className="w-full">
                         <div className="content" dangerouslySetInnerHTML={{ __html: description }}>
 
@@ -200,7 +221,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                     <div className="content" dangerouslySetInnerHTML={{ __html: third_descripton }}>
 
                     </div>
-                    <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-3 border-t border-[#bfbdbd] pt-15 items-start">
+                    <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 items-start">
                         {details?.author ? (
 
                             /* ✅ FULL AUTHOR BLOCK */
@@ -267,24 +288,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                         )}
                         <div className="flex flex-col gap-2 items-start md:items-end  justify-between mt-5 md:mt-0">
                             <div className="w-full flex flex-col items-center md:items-end">
-                                <ul className="flex  flex-wrap justify-center md:justify-end items-center  pb-3">
 
-                                    {tagItems.map((tag, i) => (
-                                        <li
-                                            key={tag.id}
-                                            className="flex items-center text-sm text-(--color-secondary)"
-                                        >
-                                            <Link href={`/tag/${tag.short_slug}`} className="hover:underline">
-                                                {tag.title}
-                                            </Link>
-
-                                            {i < tagItems.length - 1 && (
-                                                <span className="mx-2 shrink-0">|</span>
-                                            )}
-                                        </li>
-                                    ))}
-
-                                </ul>
                                 <p className="mt-2"><span className="text-sm">{published_date}</span></p></div>
                             <div className="w-full flex items-center md:items-end">
                                 <div className=" w-full flex justify-center md:justify-end  gap-4 mt-5 md:mt-0">
