@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function RightLeftContent({description}:{description:string}) {
+export default function RightLeftContent({description, image}:{description:string;image:string}) {
 
 
     return (
@@ -10,12 +10,12 @@ export default function RightLeftContent({description}:{description:string}) {
             <div className="w-full">
 
                 <div className="float-none md:float-right w-[300px] h-[300px] md:ml-20 mb-10 relative">
-                    <Image
-                        src="/images/signature-journey-1.jpg"
+                    {image && <Image
+                        src={image}
                         alt=""
                         fill
                         className="object-cover rounded-lg"
-                    />
+                    />}
 
 
                 </div>
