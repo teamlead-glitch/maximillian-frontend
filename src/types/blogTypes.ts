@@ -50,6 +50,13 @@ export type BlogDetailType = {
   description: string;
   second_description: string;
   third_description: string;
+  overview_1?: string;
+  overview_2?: string;
+  overview_3?: string;
+  position_1?: boolean;
+  position_2?: boolean;
+  position_3?: boolean;
+  quote?: string;
   short_description:string;
   image: string;
   image_path: string;

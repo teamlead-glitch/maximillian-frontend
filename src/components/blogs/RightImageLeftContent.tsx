@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function Quotes() {
+export default function RightLeftContent({description}:{description:string}) {
 
 
     return (
@@ -22,10 +22,9 @@ export default function Quotes() {
 
                 <div className="space-y-4 text-justify">
                     <div
-                        className="content">
-                        <h2>Left Content Right Image </h2>
+                        className="content" dangerouslySetInnerHTML={{ __html: description }}>
 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem neque unde maxime, sint vero ducimus illo inventore rem quisquam qui eos voluptas amet nesciunt nam odit, ad velit laborum consequuntur? Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto impedit, quae, illum neque nihil unde corporis iure aut eum culpa hic perspiciatis ratione nam accusamus. Eveniet optio assumenda impedit tempore. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident voluptatibus suscipit, ullam delectus praesentium, porro numquam ad voluptate maxime voluptatem architecto qui esse veniam! Omnis, ab impedit? Tempore, impedit incidunt.  Architecto impedit, quae, illum neque nihil unde corporis iure aut eum culpa hic perspiciatis ratione nam accusamus. Eveniet optio assumenda impedit tempore. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident voluptatibus suscipit, ullam delectus praesentium, porro numquam ad voluptate maxime voluptatem architecto qui esse veniam! Omnis, ab impedit? Tempore, impedit incidunt. Architecto impedit, quae, illum neque nihil unde corporis iure aut eum culpa hic perspiciatis ratione nam accusamus. Eveniet optio assumenda impedit tempore. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident voluptatibus suscipit, ullam delectus praesentium, porro numquam ad voluptate maxime voluptatem architecto qui esse veniam! Omnis, ab impedit? Tempore, impedit incidunt. </div>
+                        </div>
 
 
                 </div>

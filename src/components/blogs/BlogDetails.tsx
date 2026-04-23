@@ -29,6 +29,16 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
     const second_descrption = details?.second_description ?? "";
     const image = details?.image ?? "";
     const third_descripton = details?.third_description ?? "";
+    const overview_1 = details?.overview_1 ?? "";
+    const overview_2 = details?.overview_2 ?? "";
+
+    const position_1 = details?.position_1;
+    const position_2 = details?.position_2;
+    const position_3 = details?.position_3;
+
+    const quote = details?.quote;
+
+
     const estimated_time = details?.estimated_time ?? "";
 
     const published_date = details?.created_at
@@ -182,13 +192,17 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                     </ul></div>
 
 
-                    <div className="w-full">
+                    {/* <div className="w-full">
                         <div className="content" dangerouslySetInnerHTML={{ __html: description }}>
 
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="w-full">
+                  {position_1 ? <LeftImageRightContent description={description}/> : <RightImageLeftContent description={description}/>}
+
+                   {position_2 ? <LeftImageRightContent description={second_descrption}/> : <RightImageLeftContent description={second_descrption}/>}
+
+                    {/* <div className="w-full">
 
                         <div className="float-none md:float-right w-[300px] h-[300px] md:ml-20 mb-10 relative">
 
@@ -208,14 +222,13 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                             />
                         </div>
 
-                    </div>
+                    </div> */}
 
 
 
 
-                    <Quotes />
-                    <LeftImageRightContent />
-                    <RightImageLeftContent />
+                    {quote &&<Quotes quote={quote}/>}
+                  
 
                     {/* <div className="w-full justify-center  grid grid-cols-1 sm:grid-cols-[7fr_3fr] gap-3 py-10 items-start">
                         <div className="content" dangerouslySetInnerHTML={{ __html: second_descrption }}>
@@ -227,10 +240,13 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                             )}
                         </div>
                     </div> */}
-
+{/* 
                     <div className="content" dangerouslySetInnerHTML={{ __html: third_descripton }}>
 
-                    </div>
+                    </div> */}
+
+                     {position_3 ? <LeftImageRightContent description={third_descripton}/> : <RightImageLeftContent description={third_descripton}/>}
+
                     <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 items-start">
                         {details?.author ? (
 

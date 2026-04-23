@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function Quotes() {
+export default function Quotes({quote}:{quote:string}) {
 
 
     return (
@@ -24,7 +24,7 @@ export default function Quotes() {
 
 
                     </div>
-                    <p className="text-center font-italic italic  text-lg md:text-xl text-(--color-secondary)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo vulputate, dictum ante sit amet, tincidunt dui. Etiam vel ex a orci tempus tristique sit amet.</p>
+                    <p className="text-center font-italic italic  text-lg md:text-xl text-(--color-secondary)" dangerouslySetInnerHTML={{ __html: quote }}></p>
                     <div className="py-5">
                         <Image
                             src="/images/quote-bottom.png"
