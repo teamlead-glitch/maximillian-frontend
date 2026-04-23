@@ -2,10 +2,14 @@
 
 import { useEffect, useState } from "react";
 import LogoCarousel from "@/components/home/LogoCarousel";
+import Quotes from "@/components/blogs/Quotes";
+import LeftImageRightContent from "@/components/blogs/LeftImageRightContent";
+import RightImageLeftContent from "@/components/blogs/RightImageLeftContent";
 import Image from "next/image";
 import { BlogDetailType } from "@/types/blogTypes";
 import { formatShortDate } from "@/utils/formatDate";
 import Link from "next/link";
+
 export default function Blogdetails({ details }: { details: BlogDetailType }) {
     const [shareUrl, setShareUrl] = useState("");
 
@@ -158,7 +162,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
             <section className="relative py-5 overflow-hidden bg-white">
                 <div className="max-w-[1200px]  mx-auto  px-5 md:px-10">
 
-                    <div className="w-full py-4 flex justify-center"> <ul className="flex  flex-wrap justify-center  items-center  pb-5">
+                    <div className="w-full py-4 flex justify-center"> <ul className="flex  flex-wrap justify-center  items-center  pb-10">
 
                         {tagItems.map((tag, i) => (
                             <li
@@ -206,6 +210,12 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
                     </div>
 
+
+
+
+                    <Quotes />
+                    <LeftImageRightContent />
+                    <RightImageLeftContent />
 
                     {/* <div className="w-full justify-center  grid grid-cols-1 sm:grid-cols-[7fr_3fr] gap-3 py-10 items-start">
                         <div className="content" dangerouslySetInnerHTML={{ __html: second_descrption }}>
