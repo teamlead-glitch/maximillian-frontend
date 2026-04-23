@@ -24,7 +24,11 @@ export default function AboutSection({
                     <div >
                         <div className="w-full  md:w-[70%] lg:w-[60%]" >
                             <h2 className=" font-my-font-regular text-3xl md:text-4xl  text-(--color-secondary) mb-5">Travel, Thoughtfully <br /> Designed.</h2>
-                            <div className="grid md:grid-cols-2 grid-cols-1 gap-5" dangerouslySetInnerHTML={{ __html: page?.content ?? '' }} />
+                            <div className="grid md:grid-cols-2 grid-cols-1 gap-5"  >
+                                <div dangerouslySetInnerHTML={{ __html: page?.content ?? '' }}></div>
+                                <div dangerouslySetInnerHTML={{ __html: page?.description ?? '' }}></div>
+                                </div>
+                            
 
 
                             <Link href="/ourworld" className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-3 cursor-pointer">

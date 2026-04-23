@@ -5,6 +5,7 @@ export interface PageResponse {
   title: string;
   short_description: string | null;
   content: string | null;
+  description? : string | null;
   is_removable: "yes" | "no";
   is_active: number;
   banner_image: string | null;
