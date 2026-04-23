@@ -332,7 +332,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                                     {season.map((style, index) => (
                                         <li
                                             key={index}
-                                            className={`relative text-sm  font-bold pr-5 text-black
+                                            className={`relative text-sm  font-bold pr-3 text-black
           ${index !== season.length - 1
                                                     ? "after:content-['|'] after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
                                                     : ""
@@ -456,7 +456,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                         {(taggroups[1] && taggroups[1].tags.length > 0) && (
 
 
-                            <span className="mt-2 text-gray-400">|</span>
+                            <span className="mt-2 text-gray-400 px-4">|</span>
 
                         )}
 
