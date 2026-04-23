@@ -233,7 +233,8 @@ export default function Details({ details }: { details: PackageResponse }) {
                                         <TagListing
                                             textCenter={false}
                                             countries={countries}
-                                            textColor={true} />
+                                            textColor={true} 
+                                            initialShowCount={6}/>
                                         {/* <span>Paris</span>
                                         <span className="mx-1 text-gray-400">|</span>
                                         <span>Amsterdam</span>

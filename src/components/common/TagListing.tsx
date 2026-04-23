@@ -20,6 +20,7 @@ interface TagListingProps {
   textCenter?: Boolean;
   textColor?: Boolean;
   tagIcon?: Boolean;
+  initialShowCount?: number;
 }
 
 export default function TagListing({
@@ -29,6 +30,7 @@ export default function TagListing({
   textCenter = true,
   textColor = false, //false default for secondary 1 for primary
   tagIcon = false,
+  initialShowCount = 2,
 }: TagListingProps) {
 
   const [open, setOpen] = useState(false);
@@ -41,8 +43,8 @@ export default function TagListing({
 
   if (items.length === 0) return null;
 
-  const visibleItems = items.slice(0, 2);
-  const hiddenItems = items.slice(2);
+  const visibleItems = items.slice(0, initialShowCount);
+  const hiddenItems = items.slice(initialShowCount);
 
   return (
     <ul className={`flex flex-wrap items-center ${textCenter ? "justify-center text-sm" : "mt-1 md:mt-3  gap-2 text-sm sm:text-base"}     `}>
