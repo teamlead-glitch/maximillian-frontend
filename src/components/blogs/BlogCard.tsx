@@ -36,7 +36,7 @@ export default function BlogCard({
         {blog?.image_path && (
 
           <Image
-            src={blog.image_path}
+            src={variant === "large"? (blog.banner_image??blog.image_path) :blog.image_path}
             alt={blog.title}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"

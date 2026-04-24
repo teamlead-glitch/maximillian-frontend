@@ -15,6 +15,7 @@ export type BlogType = {
   short_description: string;
   description: string;
   image_path: string;
+  banner_image?: string;
   category:{
     title: string,
   };
