@@ -74,7 +74,7 @@ export default function Details({ details }: { details: PackageResponse }) {
     const faq_image = details?.faq_image ?? "";
     const includes = details?.inclusion || [];
     const excludes = details?.exclusion || [];
-    const mobile_banner_image = details?.banner_mob_image;
+    const mobile_banner_image = details?.banner_mob_image ?? banner_image;
     const taggroups = details?.taggroups || [];
     const region_slug = details?.regions?.short_slug;
     const tour_id = details?.id;

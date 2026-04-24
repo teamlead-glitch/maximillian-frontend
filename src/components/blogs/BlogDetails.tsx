@@ -24,7 +24,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
     const title = details?.title ?? "";
     const banner_image = details?.banner_image ?? "";
-    const mobile_banner_image = details?.banner_mob_image ?? "";
+    const mobile_banner_image = details?.banner_mob_image ?? banner_image;
     const description = details?.description ?? "";
     const second_descrption = details?.second_description ?? "";
     const image = details?.image ?? "";
