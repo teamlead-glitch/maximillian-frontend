@@ -7,6 +7,8 @@ import Link from "next/link";
 import { RegionFormated } from "@/lib/regionTransformer";
 import { Settings } from "@/types/commonTypes";
 import { usePathname } from "next/navigation";
+import { IndiaOnlyData } from "@/types/countryType";
+import { apiService } from "@/services/api";
 
 
 /* ===================== ICONS ===================== */
@@ -49,6 +51,32 @@ export default function SideBarMenu({
   const [activeRegion, setActiveRegion] = useState<string | null>(null);
   const [activeLink, setActiveLink] = useState(pathname);
   const [mounted, setMounted] = useState(false);
+
+
+  const [indiaData, setIndiaData] = useState<IndiaOnlyData[]>([]);
+    const fetchData = async () => {
+  
+  
+      try {
+  
+  
+        const res = await apiService.get<IndiaOnlyData[]>(
+          `/tags?taggroup_id=3`
+        );
+  
+  
+  
+        setIndiaData(res);
+  
+      } catch (error) {
+        console.error("details fetch API error:", error);
+  
+      }
+    };
+
+    useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -213,22 +241,22 @@ export default function SideBarMenu({
 
                 {regionKeys.map((region) => {
 
-                  if (region.toLowerCase() === "india") {
-                    return (
-                      <Link
-                        key={region}
-                        href={`/country/india`}
-                        onClick={() => {
-                          setSideOpenParent(false);
-                          setSideOpen(false);
-                          setDestinationPanel(false);
-                        }}
-                        className="flex justify-between w-full font-semibold text-(--color-secondary) cursor-pointer"
-                      >
-                        {region}
-                      </Link>
-                    );
-                  }
+                  // if (region.toLowerCase() === "india") {
+                  //   return (
+                  //     <Link
+                  //       key={region}
+                  //       href={`/country/india`}
+                  //       onClick={() => {
+                  //         setSideOpenParent(false);
+                  //         setSideOpen(false);
+                  //         setDestinationPanel(false);
+                  //       }}
+                  //       className="flex justify-between w-full font-semibold text-(--color-secondary) cursor-pointer"
+                  //     >
+                  //       {region}
+                  //     </Link>
+                  //   );
+                  // }
 
                   return (
                     <button
@@ -253,7 +281,24 @@ export default function SideBarMenu({
 
                 <ul className="grid grid-cols-2 gap-3 mb-6">
 
-                  {regions[activeRegion]?.countries?.map((country) => (
+                  {regions[activeRegion]?.slug != "region/india" && regions[activeRegion]?.countries?.map((country) => (
+                    <Link
+                      href={`/${country.slug}`}
+                      key={country.slug}
+                      className="cursor-pointer text-(--color-secondary) "
+                      onClick={() => {
+                        setSideOpenParent(false);
+                        setSideOpen(false);
+                        setDestinationPanel(false);
+                        setActiveRegion(null);
+                      }}
+                    >
+                      {country.title}
+                    </Link>
+                  ))}
+
+
+                      {regions[activeRegion]?.slug == "region/india" && indiaData?.length > 0 && indiaData.map((country) => (
                     <Link
                       href={`/${country.slug}`}
                       key={country.slug}
@@ -272,7 +317,8 @@ export default function SideBarMenu({
                 </ul>
 
                 <Link
-                  href={`/${regions[activeRegion]?.slug}`}
+                  // href={`/${regions[activeRegion]?.slug}`}
+                  href={`/${regions[activeRegion]?.slug != "region/india" ? regions[activeRegion]?.slug : 'country/india'}`}
                   onClick={() => {
                     setSideOpenParent(false);
                     setSideOpen(false);
