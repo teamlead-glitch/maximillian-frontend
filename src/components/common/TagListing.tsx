@@ -69,7 +69,7 @@ export default function TagListing({
             {item.title}
           </Link>
 
-          {index !== visibleItems.length - 1 && (
+          {index !== visibleItems.length - 1 && !tagIcon && (
             <span className="px-1">|</span>
             // ⬥
           )}

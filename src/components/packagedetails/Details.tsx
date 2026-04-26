@@ -446,6 +446,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                         <TagListing
                             textCenter={false}
                             tagIcon={true}
+                            initialShowCount={4}
                             tags={taggroups[0]?.tags.map(tag => ({
                                 id: tag.id,
                                 title: tag.title,
@@ -454,17 +455,18 @@ export default function Details({ details }: { details: PackageResponse }) {
                             }))}
                         />
 
-                        {(taggroups[1] && taggroups[1].tags.length > 0) && (
+                        {/* {(taggroups[1] && taggroups[1].tags.length > 0) && (
 
 
                             <span className="mt-2 text-gray-400 px-4">|</span>
 
-                        )}
+                        )} */}
 
                         <TagListing
 
                             textCenter={false}
                             tagIcon={true}
+                            initialShowCount={4}
                             tags={taggroups[1]?.tags.map(tag => ({
                                 id: tag.id,
                                 title: tag.title,
