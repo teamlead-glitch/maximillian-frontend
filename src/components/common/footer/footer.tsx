@@ -391,10 +391,11 @@ export default function Footer({
             </footer >
 
             {/* SECOND FOOTER */}
-            < footer className="bg-[#C43131] py-6 text-center" >
+            < footer className="bg-[#C43131] py-4 md:py-6 text-center" >
                 <img src="/images/logo-footer.svg" className="mx-auto w-40" />
-                <p className="text-white text-sm mt-2">
-                    A premium travel brand owned by Maximilian Holidays Private Ltd.
+                <p className="text-white text-xs mt-2 ">
+
+                    A premium travel brand owned by Maximilian Holidays Private Limited.
                 </p>
             </footer >
         </>
