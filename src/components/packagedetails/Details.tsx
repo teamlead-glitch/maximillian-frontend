@@ -83,6 +83,11 @@ export default function Details({ details }: { details: PackageResponse }) {
     const meta = details?.metas || [];
     console.log("metas" + meta);
 
+     const allTags = [
+  ...(taggroups?.[0]?.tags || []),
+  ...(taggroups?.[1]?.tags || [])
+];
+
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -193,6 +198,8 @@ export default function Details({ details }: { details: PackageResponse }) {
         }
 
     };
+
+   
 
     return (
 
@@ -443,7 +450,7 @@ export default function Details({ details }: { details: PackageResponse }) {
                 <div className="max-w-[1000px] mx-auto w-full relative">
                     <div className="flex justify-center items-center text-(--color-secondary)  text-sm md:text-base">
 <TagListingWithIcon  initialShowCount={4}
-                            tags={[...taggroups[0]?.tags, ...taggroups[1]?.tags].map(tag => ({
+                            tags={allTags.map(tag => ({
                                 id: tag.id,
                                 title: tag.title,
                                 slug: tag.slug ?? '#',
