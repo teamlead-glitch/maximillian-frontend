@@ -20,6 +20,7 @@ import Link from "next/link";
 import Inclussions from "./Inclussions";
 import Exclussions from "./Exclussions";
 import SimpleTagList from "../common/SimpleTagList";
+import TagListingWithIcon from "../common/TagListingWithIcon";
 
 
 
@@ -441,42 +442,13 @@ export default function Details({ details }: { details: PackageResponse }) {
             <section className="relative py-5 md:py-10 px-5  bg-[#F5F2EE]">
                 <div className="max-w-[1000px] mx-auto w-full relative">
                     <div className="flex justify-center items-center text-(--color-secondary)  text-sm md:text-base">
-
-                        <ul className="flex flex-wrap items-center justify-center text-sm gap-2 md:gap-10" >
-                            <li className="relative flex items-center text-(--color-primary) pr-2.5" >
-                                <Image width={8} height={8} src="/images/bed.png"
-                                    alt="icon"
-                                    className="w-8 h-8 pr-2   object-contain"
-                                />
-                                Family
-
-                            </li>
-                            <li className="relative flex items-center text-(--color-primary) pr-2.5" >
-                                <Image width={8} height={8} src="/images/bed.png"
-                                    alt="icon"
-                                    className="w-8 h-8 pr-2  object-contain"
-                                />
-                                Urban Experiences
-
-                            </li>
-                            <li className="relative flex items-center text-(--color-primary) pr-2.5" >
-                                <Image width={8} height={8} src="/images/bed.png"
-                                    alt="icon"
-                                    className="w-8 h-8 pr-2  object-contain"
-                                />
-
-                                Scenic & Waterfront Experiences
-
-                            </li>
-                            <li className="relative flex items-center text-(--color-primary)" >
-                                <Image width={8} height={8} src="/images/bed.png"
-                                    alt="icon"
-                                    className="w-8 h-8 pr-2  object-contain"
-                                />
-
-                                Easy-Paced Discovery
-
-                            </li>  </ul>
+<TagListingWithIcon  initialShowCount={4}
+                            tags={[...taggroups[0]?.tags, ...taggroups[1]?.tags].map(tag => ({
+                                id: tag.id,
+                                title: tag.title,
+                                slug: tag.slug ?? '#',
+                                icon: tag.icon
+                            }))}/>
                     </div>
                 </div>
             </section>
@@ -484,47 +456,6 @@ export default function Details({ details }: { details: PackageResponse }) {
 
 
 
-            <section className="relative py-5 md:py-10 px-5  bg-[#F5F2EE]">
-                <div className="max-w-[1000px] mx-auto w-full relative">
-                    <div className="flex items-center justify-center  gap-2 flex-wrap text-(--color-secondary) py-2 text-sm md:text-base">
-
-
-
-
-                        <TagListing
-                            textCenter={false}
-                            tagIcon={true}
-                            initialShowCount={4}
-                            tags={taggroups[0]?.tags.map(tag => ({
-                                id: tag.id,
-                                title: tag.title,
-                                slug: tag.slug ?? '#',
-                                icon: tag.icon
-                            }))}
-                        />
-
-                        {/* {(taggroups[1] && taggroups[1].tags.length > 0) && (
-
-
-                            <span className="mt-2 text-gray-400 px-4">|</span>
-
-                        )} */}
-
-                        <TagListing
-
-                            textCenter={false}
-                            tagIcon={true}
-                            initialShowCount={4}
-                            tags={taggroups[1]?.tags.map(tag => ({
-                                id: tag.id,
-                                title: tag.title,
-                                slug: tag.slug ?? '#',
-                                icon: tag.icon
-                            }))}
-                        />
-                    </div>
-                </div>
-            </section>
 
 
             <section className="relative  py-5 md:py-20 px-5 overflow-hidden bg-white">
