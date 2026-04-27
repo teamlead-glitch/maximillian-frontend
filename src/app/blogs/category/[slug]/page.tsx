@@ -9,18 +9,24 @@ import { BlogCategory } from "@/types/blogs";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-const slug = PAGE_SLUGS.BLOGS;
-
-export const generateMetadata = async () => {
-  return generateSeoMetadata(slug);
-};
 
 
+// export const generateMetadata = async () => {
+//   return generateSeoMetadata(slug);
+// };
+
+
+
+
+
+export default async function Blogs({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) { // ✅ renamed component
+
+  const { slug } = await params;
 const page = await fetchPageBySlug(slug);
-
-
-export default async function Blogs() { // ✅ renamed component
-
 const categories:BlogCategory[] = await getCategories();
 
   return (
@@ -34,7 +40,7 @@ const categories:BlogCategory[] = await getCategories();
           }}
         />
       )}
-     <BlogsList categories={categories} />   
+     <BlogsList categories={categories} slug={slug}/>   
     
     </>
   );

@@ -6,10 +6,12 @@ import Loader from "../common/Loader";
 import BlogCard from "./BlogCard";
 import { BlogsResponse } from "@/types/blogs";
 import { apiService } from "@/services/api";
+import BlogTabs from "./BlogTabs";
+import { BlogCategory } from "@/types/blogs";
 
 const TAKE = 5;
 
-export default function BlogsList() {
+export default function BlogsList({categories, slug = 'All Blogs'}:{categories:BlogCategory[]; slug?:string}) {
   const [blogs, setBlogs] = useState<BlogsResponse["blogs"]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,31 +20,15 @@ export default function BlogsList() {
 
   const observerRef = useRef<HTMLDivElement | null>(null);
 
-  // ✅ Sticky Tabs
-  const tabsRef = useRef<HTMLDivElement | null>(null);
-  const [isSticky, setIsSticky] = useState(false);
-  const [tabsOffset, setTabsOffset] = useState(0);
+  const [catId, setCatId] = useState<string|number>('');
 
-  // ✅ Get original position ONCE
-  useEffect(() => {
-    if (tabsRef.current) {
-      setTabsOffset(tabsRef.current.offsetTop);
-    }
-  }, []);
+  const slugToTitle = (slug: string) =>
+  slug
+    .split("-")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 
-  // ✅ Scroll logic
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY >= tabsOffset) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [tabsOffset]);
+ 
 
   // ✅ Fetch blogs
   const fetchBlogs = async () => {
@@ -52,7 +38,7 @@ export default function BlogsList() {
       setLoading(true);
 
       const res = await apiService.get<BlogsResponse>(
-        `/blogs?take=${TAKE}&skip=${skip}`
+        `/blogs?take=${TAKE}&skip=${skip}&category_id=${(slug != 'All Blogs') ? slug : ''}`
       );
 
       if (res.blogs.length < TAKE) {
@@ -73,6 +59,8 @@ export default function BlogsList() {
   useEffect(() => {
     fetchBlogs();
   }, []);
+
+  
 
   // ✅ Infinite scroll
   const handleObserver = useCallback(
@@ -99,79 +87,36 @@ export default function BlogsList() {
   }, [handleObserver]);
 
   // ✅ Empty state
-  if (!loading && !blogs.length) {
-    return (
-      <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center">
-        <h2>No blogs available</h2>
-      </section>
-    );
-  }
+  // if (!loading && !blogs.length) {
+  //   return (
+  //     <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center">
+  //       <h2>No blogs available</h2>
+  //     </section>
+  //   );
+  // }
 
   return (
     <>
       <section className="pt-20 md:pt-30 xl:pt-28 pb-20 bg-white">
-        <div className="max-w-[1300px] mx-auto px-5 ">
-          {/* ✅ Spacer to prevent jump */}
-          {isSticky && <div className="h-[70px]" />}
-
-          {/* ✅ Tabs */}
-          <div
-            ref={tabsRef}
-            className={`
-    flex items-center gap-6 px-2
-
-    overflow-x-auto whitespace-nowrap no-scrollbar scroll-smooth
-    [@media(min-width:576px)]:overflow-visible
-    [@media(min-width:576px)]:flex-wrap
-    [@media(min-width:576px)]:justify-center
-
-    md:gap-28
-
-    bg-white z-45 transition-all duration-300
-
-    ${isSticky
-                ? "fixed top-0 left-0 right-0 border-b border-gray-200 py-2"
-                : "relative"}
-  `}
-          >
-            <a
-              href="#"
-              className="font-my-font-semibold text-(--color-secondary) text-base cursor-pointer pb-1 border-b-2 border-[#c43131]"
-            >
-              Travel Stories
-            </a>
-
-            <a
-              href="#"
-              className="font-my-font-semibold text-(--color-secondary) text-base cursor-pointer pb-1 border-b-2 border-transparent hover:border-red-300"
-            >
-              Travel Insights
-            </a>
-
-            <a
-              href="#"
-              className="font-my-font-semibold text-(--color-secondary) text-base cursor-pointer pb-1 border-b-2 border-transparent hover:border-red-300"
-            >
-              Travel News
-            </a>
-
-            <a
-              href="#"
-              className="font-my-font-semibold text-(--color-secondary) text-base cursor-pointer pb-1 border-b-2 border-transparent hover:border-red-300"
-            >
-              Articles
-            </a>
-          </div>
-        </div>
+       
+       <BlogTabs categories={categories} setCatId={setCatId}/>
 
         <div className="max-w-[1300px] pt-10 mx-auto px-5">
           {/* Heading */}
           <div className="mb-10 text-center">
             <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary)">
-              Travel Insights
+              {slugToTitle(slug)}
             </h1>
           </div>
 
+
+{(!loading && !blogs.length) ? (
+   <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center">
+        <h2>No blogs available</h2>
+      </section>
+
+) :(
+<>
           {/* Blog Layout */}
           <div className="space-y-16">
             {(() => {
@@ -251,6 +196,8 @@ export default function BlogsList() {
           <div ref={observerRef} className="h-10 flex justify-center mt-10">
             {loading && <Loader />}
           </div>
+          </>
+)}
         </div>
       </section>
 

@@ -133,3 +133,21 @@ export async function fetchTagGroupeBySlug(
     return null;
   }
 }
+
+
+export async function getCategories() {
+  try {
+    const res = await fetch(`${API_CONFIG.BASE_URL}/blogcategory/`, {
+      next: { revalidate: 3600 }, // 3600 : ISR – cache for 1 hour
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch blogcategory");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("blogcategory API error:", error);
+    return [];
+  }
+}

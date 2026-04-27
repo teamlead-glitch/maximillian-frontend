@@ -50,3 +50,11 @@ export type BlogType = {
   };
   estimated_time?:number;
 };
+
+export type BlogCategory = {
+
+  id: number;
+  title: string;
+  slug: string;
+  short_slug: string;
+}

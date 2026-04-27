@@ -74,6 +74,37 @@ export default function Footer({
                         {/* TAGS + REGIONS */}
                         <div className="border-0 md:border-r border-gray-200 mb-0">
                             <div className="grid grid-cols-1 lg:grid-cols-2">
+
+                                 <div className="div mb-0">
+                                    {/* Experience */}
+                                    <div>
+                                        <div
+                                            className="flex justify-between  cursor-pointer md:cursor-default"
+                                            onClick={() => toggleSection("experience")}
+                                        >
+                                            <h6 className="mb-6 text-sm text-[#93989b] text-heading line-height-1">
+                                                Experience
+                                            </h6>
+
+                                            <span className="md:hidden text-lg">
+                                                {openSection === "experience" ? "−" : "+"}
+                                            </span>
+                                        </div>
+
+                                        <ul
+                                            className={`text-body font-medium ${openSection === "experience" ? "block" : "hidden md:block"
+                                                }`}
+                                        >
+                                            {tagGroups[0].tags.map((spec) => (
+                                                <li key={spec.id} className="mb-2 text-[#818c94]">
+                                                    <Link href={`/tag/${spec.short_slug}`} className="hover:underline">
+                                                        {spec.title}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
                                 <div className="div mb-0">
                                     {/* SPECIALTIES */}
                                     <div>
@@ -100,8 +131,13 @@ export default function Footer({
                                             ))}
                                         </ul>
                                     </div>
+                                </div>
 
-                                    {/* REGIONS */}
+                               
+                               
+
+                                 {/* REGIONS */}
+                                <div className="div mb-0">
                                     <div>
                                         <div
                                             className="flex justify-between cursor-pointer md:cursor-default mt-0 md:mt-6"
@@ -128,36 +164,6 @@ export default function Footer({
                                                             {reg.menu_title ? reg.menu_title : reg.title}
                                                         </Link>
                                                     )}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="div mb-0">
-                                    {/* Experience */}
-                                    <div>
-                                        <div
-                                            className="flex justify-between  cursor-pointer md:cursor-default"
-                                            onClick={() => toggleSection("experience")}
-                                        >
-                                            <h6 className="mb-6 text-sm text-[#93989b] text-heading line-height-1">
-                                                Experience
-                                            </h6>
-
-                                            <span className="md:hidden text-lg">
-                                                {openSection === "experience" ? "−" : "+"}
-                                            </span>
-                                        </div>
-
-                                        <ul
-                                            className={`text-body font-medium ${openSection === "experience" ? "block" : "hidden md:block"
-                                                }`}
-                                        >
-                                            {tagGroups[0].tags.map((spec) => (
-                                                <li key={spec.id} className="mb-2 text-[#818c94]">
-                                                    <Link href={`/tag/${spec.short_slug}`} className="hover:underline">
-                                                        {spec.title}
-                                                    </Link>
                                                 </li>
                                             ))}
                                         </ul>
