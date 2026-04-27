@@ -5,7 +5,7 @@ interface Tag {
   id?: number;
   title: string;
   slug: string;
-  icon?:string;
+  icon?: string;
 }
 
 interface Region {
@@ -58,7 +58,7 @@ export default function TagListing({
           {(tagIcon && item.icon) && (<Image
             width={8}
             height={8}
-             src={item.icon}
+            src={item.icon}
             //src="/images/bed.png"
             alt="icon"
             className="w-8 h-8 pr-2 object-contain"

@@ -233,8 +233,8 @@ export default function Details({ details }: { details: PackageResponse }) {
                                         <TagListing
                                             textCenter={false}
                                             countries={countries}
-                                            textColor={true} 
-                                            initialShowCount={6}/>
+                                            textColor={true}
+                                            initialShowCount={6} />
                                         {/* <span>Paris</span>
                                         <span className="mx-1 text-gray-400">|</span>
                                         <span>Amsterdam</span>
@@ -435,6 +435,54 @@ export default function Details({ details }: { details: PackageResponse }) {
                     </div>
                 </div>
             </section>
+
+            {/* new taglist */}
+
+            <section className="relative py-5 md:py-10 px-5  bg-[#F5F2EE]">
+                <div className="max-w-[1000px] mx-auto w-full relative">
+                    <div className="flex justify-center items-center text-(--color-secondary)  text-sm md:text-base">
+
+                        <ul className="flex flex-wrap items-center justify-center text-sm gap-2 md:gap-10" >
+                            <li className="relative flex items-center text-(--color-primary) pr-2.5" >
+                                <Image width={8} height={8} src="/images/bed.png"
+                                    alt="icon"
+                                    className="w-8 h-8 pr-2   object-contain"
+                                />
+                                Family
+
+                            </li>
+                            <li className="relative flex items-center text-(--color-primary) pr-2.5" >
+                                <Image width={8} height={8} src="/images/bed.png"
+                                    alt="icon"
+                                    className="w-8 h-8 pr-2  object-contain"
+                                />
+                                Urban Experiences
+
+                            </li>
+                            <li className="relative flex items-center text-(--color-primary) pr-2.5" >
+                                <Image width={8} height={8} src="/images/bed.png"
+                                    alt="icon"
+                                    className="w-8 h-8 pr-2  object-contain"
+                                />
+
+                                Scenic & Waterfront Experiences
+
+                            </li>
+                            <li className="relative flex items-center text-(--color-primary)" >
+                                <Image width={8} height={8} src="/images/bed.png"
+                                    alt="icon"
+                                    className="w-8 h-8 pr-2  object-contain"
+                                />
+
+                                Easy-Paced Discovery
+
+                            </li>  </ul>
+                    </div>
+                </div>
+            </section>
+            {/* new taglist */}
+
+
 
             <section className="relative py-5 md:py-10 px-5  bg-[#F5F2EE]">
                 <div className="max-w-[1000px] mx-auto w-full relative">

@@ -111,7 +111,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
                             {region && (
                                 <li>
-                                    <Link href={`/region/${region_slug}`} className={`relative text-(--color-secondary) hover:underline ${((countries.length > 0)|| (estimated_time && countries.length ==0)) ? "relative pr-3 text-(--color-secondary) after:content-['|'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)" : ""}`}>
+                                    <Link href={`/region/${region_slug}`} className={`relative text-(--color-secondary) hover:underline ${((countries.length > 0) || (estimated_time && countries.length == 0)) ? "relative pr-3 text-(--color-secondary) after:content-['|'] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)" : ""}`}>
                                         {region}
                                     </Link>
                                 </li>
@@ -198,9 +198,9 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                         </div>
                     </div> */}
 
-                  {position_1 ? <LeftImageRightContent description={description} image={image}/> : <RightImageLeftContent description={description} image={image}/>}
+                    {position_1 ? <LeftImageRightContent description={description} image={image} /> : <RightImageLeftContent description={description} image={image} />}
 
-                   {position_2 ? <LeftImageRightContent description={second_descrption} image={overview_1}/> : <RightImageLeftContent description={second_descrption} image={overview_1}/>}
+                    {position_2 ? <LeftImageRightContent description={second_descrption} image={overview_1} /> : <RightImageLeftContent description={second_descrption} image={overview_1} />}
 
                     {/* <div className="w-full">
 
@@ -227,8 +227,8 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
 
 
-                    {quote &&<Quotes quote={quote}/>}
-                  
+                    {quote && <Quotes quote={quote} />}
+
 
                     {/* <div className="w-full justify-center  grid grid-cols-1 sm:grid-cols-[7fr_3fr] gap-3 py-10 items-start">
                         <div className="content" dangerouslySetInnerHTML={{ __html: second_descrption }}>
@@ -240,12 +240,12 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                             )}
                         </div>
                     </div> */}
-{/* 
+                    {/* 
                     <div className="content" dangerouslySetInnerHTML={{ __html: third_descripton }}>
 
                     </div> */}
 
-                     {position_3 ? <LeftImageRightContent description={third_descripton} image={overview_2}/> : <RightImageLeftContent description={third_descripton} image={overview_2}/>}
+                    {position_3 ? <LeftImageRightContent description={third_descripton} image={overview_2} /> : <RightImageLeftContent description={third_descripton} image={overview_2} />}
 
                     <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 items-start">
                         {details?.author ? (
