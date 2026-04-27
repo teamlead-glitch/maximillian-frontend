@@ -10,7 +10,6 @@ import { apiService } from "@/services/api";
 const TAKE = 5;
 
 export default function BlogsList() {
-  // const [blogData, setBlogData] = useState<BlogsResponse | null>(null);
   const [blogs, setBlogs] = useState<BlogsResponse["blogs"]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,30 +18,33 @@ export default function BlogsList() {
 
   const observerRef = useRef<HTMLDivElement | null>(null);
 
-  // useEffect(() => {
+  // ✅ Sticky Tabs
+  const tabsRef = useRef<HTMLDivElement | null>(null);
+  const [isSticky, setIsSticky] = useState(false);
+  const [tabsOffset, setTabsOffset] = useState(0);
 
-  //   if (!hasMore) return;
+  // ✅ Get original position ONCE
+  useEffect(() => {
+    if (tabsRef.current) {
+      setTabsOffset(tabsRef.current.offsetTop);
+    }
+  }, []);
 
-  //   const fetchBlogs = async () => {
-  //     try {
-  //       setLoading(true);
+  // ✅ Scroll logic
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= tabsOffset) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
 
-  //       const res = await apiService.get<BlogsResponse>(
-  //         "/blogs?take=50&skip=0"
-  //       );
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [tabsOffset]);
 
-  //       setBlogData(res);
-  //     } catch (error) {
-  //       console.error("Blog API error:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchBlogs();
-  // }, []);
-
-  // Fetch blogs
+  // ✅ Fetch blogs
   const fetchBlogs = async () => {
     if (!hasMore) return;
 
@@ -67,18 +69,17 @@ export default function BlogsList() {
     }
   };
 
-  // Initial Load
+  // ✅ Initial load
   useEffect(() => {
     fetchBlogs();
   }, []);
 
-  // Infinite Scroll Observer
+  // ✅ Infinite scroll
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
-
       const target = entries[0];
+
       if (target.isIntersecting && !loading) {
-        //alert(1)
         fetchBlogs();
       }
     },
@@ -86,25 +87,18 @@ export default function BlogsList() {
   );
 
   useEffect(() => {
-    const option = {
+    const observer = new IntersectionObserver(handleObserver, {
       root: null,
       rootMargin: "200px",
       threshold: 0,
-    };
-
-    const observer = new IntersectionObserver(handleObserver, option);
+    });
 
     if (observerRef.current) observer.observe(observerRef.current);
 
     return () => observer.disconnect();
   }, [handleObserver]);
 
-  // if (loading) return (
-  // <section className="pt-32 xl:pt-40 pb-20 bg-white">
-  // <Loader />
-  // </section>
-  // );
-
+  // ✅ Empty state
   if (!loading && !blogs.length) {
     return (
       <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center">
@@ -115,39 +109,89 @@ export default function BlogsList() {
 
   return (
     <>
-      <section className="pt-32 xl:pt-40 pb-20 bg-white">
-        <div className="max-w-[1300px] mx-auto px-5">
+      <section className="pt-20 md:pt-30 xl:pt-28 pb-20 bg-white">
+        <div className="max-w-[1300px] mx-auto px-5 ">
+          {/* ✅ Spacer to prevent jump */}
+          {isSticky && <div className="h-[70px]" />}
+
+          {/* ✅ Tabs */}
+          <div
+            ref={tabsRef}
+            className={`
+    flex items-center gap-6 px-2
+
+    overflow-x-auto whitespace-nowrap no-scrollbar scroll-smooth
+    [@media(min-width:576px)]:overflow-visible
+    [@media(min-width:576px)]:flex-wrap
+    [@media(min-width:576px)]:justify-center
+
+    md:gap-28
+
+    bg-white z-45 transition-all duration-300
+
+    ${isSticky
+                ? "fixed top-0 left-0 right-0 border-b border-gray-200 py-2"
+                : "relative"}
+  `}
+          >
+            <a
+              href="#"
+              className="font-my-font-semibold text-(--color-secondary) text-base cursor-pointer pb-1 border-b-2 border-[#c43131]"
+            >
+              Travel Stories
+            </a>
+
+            <a
+              href="#"
+              className="font-my-font-semibold text-(--color-secondary) text-base cursor-pointer pb-1 border-b-2 border-transparent hover:border-red-300"
+            >
+              Travel Insights
+            </a>
+
+            <a
+              href="#"
+              className="font-my-font-semibold text-(--color-secondary) text-base cursor-pointer pb-1 border-b-2 border-transparent hover:border-red-300"
+            >
+              Travel News
+            </a>
+
+            <a
+              href="#"
+              className="font-my-font-semibold text-(--color-secondary) text-base cursor-pointer pb-1 border-b-2 border-transparent hover:border-red-300"
+            >
+              Articles
+            </a>
+          </div>
+        </div>
+
+        <div className="max-w-[1300px] pt-10 mx-auto px-5">
           {/* Heading */}
           <div className="mb-10 text-center">
-            <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary) text-center ">
-                            Travel Insights
-                        </h1>
+            <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary)">
+              Travel Insights
+            </h1>
           </div>
 
-          {/* 🔥 Alternating Layout */}
+          {/* Blog Layout */}
           <div className="space-y-16">
             {(() => {
               const rows: React.ReactNode[] = [];
               let index = 0;
-              let useHeroRow = true; // Start with 3:1 row
+              let useHeroRow = true;
 
               while (index < blogs.length) {
                 if (useHeroRow) {
-                  // ---- 2 Column Layout ----
                   const rowItems = blogs.slice(index, index + 2);
-
                   const isReversed = Math.floor(index / 5) % 2 === 1;
-                  // Explanation:
-                  // Every hero row alternates direction
 
                   rows.push(
                     <div
                       key={index}
                       className={`grid gap-10 ${rowItems.length === 1
-                          ? "grid-cols-1"
-                          : isReversed
-                            ? "grid-cols-1 sm:grid-cols-[1fr_2fr]"
-                            : "grid-cols-1 sm:grid-cols-[2fr_1fr]"
+                        ? "grid-cols-1"
+                        : isReversed
+                          ? "grid-cols-1 sm:grid-cols-[1fr_2fr]"
+                          : "grid-cols-1 sm:grid-cols-[2fr_1fr]"
                         }`}
                     >
                       {rowItems.length === 1 && (
@@ -158,14 +202,18 @@ export default function BlogsList() {
                         <>
                           {isReversed ? (
                             <>
-                              {/* Small First */}
                               <BlogCard blog={rowItems[1]} />
-                              <BlogCard blog={rowItems[0]} variant="large" />
+                              <BlogCard
+                                blog={rowItems[0]}
+                                variant="large"
+                              />
                             </>
                           ) : (
                             <>
-                              {/* Large First */}
-                              <BlogCard blog={rowItems[0]} variant="large" />
+                              <BlogCard
+                                blog={rowItems[0]}
+                                variant="large"
+                              />
                               <BlogCard blog={rowItems[1]} />
                             </>
                           )}
@@ -176,7 +224,6 @@ export default function BlogsList() {
 
                   index += 2;
                 } else {
-                  // ---- 3 Column Layout ----
                   const rowItems = blogs.slice(index, index + 3);
 
                   rows.push(
@@ -196,13 +243,11 @@ export default function BlogsList() {
                 useHeroRow = !useHeroRow;
               }
 
-
-
               return rows;
             })()}
           </div>
 
-          {/* Loader Trigger */}
+          {/* Loader */}
           <div ref={observerRef} className="h-10 flex justify-center mt-10">
             {loading && <Loader />}
           </div>
