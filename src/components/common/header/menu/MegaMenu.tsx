@@ -157,7 +157,7 @@ export default function MegaMenu({
                         <div key={region} className={containerClasses}>
                           {/* regions[region].slug */}
                           {/* href={`/region/${slugify(region)}`} */}
-                          <Link href={`/${regions[region].slug}`}  onClick={() => setMegaOpen(false)}>
+                          <Link href={`/${regions[region].slug}`} onClick={() => setMegaOpen(false)}>
                             <span
                               onMouseEnter={() => setActiveRegion(region)}
                               className={textClasses}
@@ -210,14 +210,6 @@ export default function MegaMenu({
                       />
                     </svg>
                   </Link>
-
-
-
-
-
-
-
-
                 </div>
               </div>
             </div>
