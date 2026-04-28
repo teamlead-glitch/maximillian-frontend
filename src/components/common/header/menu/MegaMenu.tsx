@@ -146,7 +146,7 @@ export default function MegaMenu({
                     if (region.toLowerCase() === "india") {
                       return (
                         <div key={region} className={containerClasses}>
-                          <Link href={`/country/india`} onClick={() => setMegaOpen(false)}>
+                          <Link href={`/${regions[region].countries[0].slug}`} onClick={() => setMegaOpen(false)}>
                             <span onMouseEnter={() => setActiveRegion(region)}
                               className={textClasses}>{region}</span>
                           </Link>
@@ -193,7 +193,7 @@ export default function MegaMenu({
               View all journeys in {activeRegion}
             </Link> */}
 
-                  <Link href={`/${regions[activeRegion]?.slug != "region/india" ? regions[activeRegion]?.slug : 'country/india'}`} onClick={() => setMegaOpen(false)} className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-5 cursor-pointer">
+                  <Link href={`/${regions[activeRegion]?.slug != "region/india" ? regions[activeRegion]?.slug : regions[activeRegion]?.countries[0]?.slug}`} onClick={() => setMegaOpen(false)} className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-5 cursor-pointer">
                     <span className="mr-3">   View all journeys in {activeRegion}</span>
 
                     <svg
