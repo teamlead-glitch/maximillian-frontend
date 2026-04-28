@@ -156,7 +156,7 @@ export default function Footer({
                                             {regions.map((reg) => (
                                                 <li key={reg.id} className="mb-2 text-[#818c94]">
                                                     {reg.slug === "region/india" ? (
-                                                        <Link href="/country/india" className="hover:underline">
+                                                        <Link href={reg?.countries[0]?.slug} className="hover:underline">
                                                             {reg.menu_title ? reg.menu_title : reg.title}
                                                         </Link>
                                                     ) : (
