@@ -779,16 +779,16 @@ hover:before:translate-x-full hover:text-white
 
                         <div className="w-full mb-3 md:mb-0 flex items-center  pr-0 md:pr-10">
 
-                            <div className="pr-5 md:pr-10"><img src="images/custom-journey-icon.png" alt="" className="w-6 md:w-10" /> </div>
-                            <p className="mt-2 font-my-font-semibold text-lg md:text-xl mb-0">
+                            <div className="pr-5 md:pr-5"><img src="images/custom-journey-icon.png" alt="" className="w-6 md:w-10" /> </div>
+                            <p className="mt-2 font-my-font-semibold text-base md:text-base mb-0">
                                 Custom journeys, no templates
                             </p>
                         </div>
 
                         <div className="w-full mb-3 md:mb-0 flex    items-center pr-0 md:pr-10">
 
-                            <div className="pr-5 md:pr-10"><img src="images/multi-country.png" alt="" className="w-6 md:w-10" /> </div>
-                            <p className="mt-2 font-my-font-semibold text-lg md:text-xl mb-0">
+                            <div className="pr-3 md:pr-5"><img src="images/multi-country.png" alt="" className="w-6 md:w-10" /> </div>
+                            <p className="mt-2 font-my-font-semibold text-base md:text-base mb-0">
                                 Multi-country planning specialists
                             </p>
                         </div>
@@ -796,7 +796,7 @@ hover:before:translate-x-full hover:text-white
                         <div className="w-full mb-3 md:mb-0 flex items-center pr-0 md:pr-10">
 
                             <div className="pr-5 md:pr-10"><img src="images/your-review.png" alt="" className="w-6 md:w-10" /> </div>
-                            <p className=" mt-2 font-my-font-semibold text-lg md:text-xl mb-0">
+                            <p className="mt-2 font-my-font-semibold text-base md:text-base mb-0">
                                 You review before you commit.
                             </p>
                         </div>

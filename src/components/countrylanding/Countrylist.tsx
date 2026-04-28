@@ -116,22 +116,16 @@ px-4 sm:px-0 text-center">
             <section id="overview" className="relative  py-10 md:pt-20 md:pb-10   xl:pt-30 xl:pb-15 px-5 overflow-hidden bg-white scroll-mt-16">
                 <div className="max-w-[1300px] mx-auto">
 
-                    <div className="w-full">
-                        <div className="float-none md:float-right w-full md:w-[450px] lg:w-[500px] md:ml-15 mb-10">
+                    <div className="w-full flex flex-col-reverse gap-6 md:block md:gap-0">
+                        <div className="float-none md:float-right w-full md:w-[400px] lg:w-[500px] md:ml-15 mb-0 md:mb-10">
 
                             <div className="aspect-[4/3]">
                                 <img src={regionDetails?.image_path} alt="" className="w-full h-full object-cover rounded-md" />
                             </div>
-
                         </div>
-
-
                         <div className="space-y-4 text-justify">
                             <div className="pr-0 md:pr-10 xl:pr-20 content" dangerouslySetInnerHTML={{ __html: regionDetails?.description ?? '' }}>
                             </div></div>
-
-
-
                     </div>
 
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-export default function BespokeJourney({bescope_image=''}:{bescope_image?:string | null}) {
+export default function BespokeJourney({ bescope_image = '' }: { bescope_image?: string | null }) {
 
   const bgImage = bescope_image
     ? `url(${bescope_image})`
@@ -10,17 +10,17 @@ export default function BespokeJourney({bescope_image=''}:{bescope_image?:string
     <>
       {/* bespoke journey */}
       <section
-      style={{ backgroundImage: bgImage }}
+        style={{ backgroundImage: bgImage }}
         className="
     py-10 md:py-20 h-[450px] md:h-screen
     
     bg-cover bg-center bg-no-repeat px-5"
       >
-        
+
         <div className="max-w-[1300px] flex items-center justify-between h-full flex-col gap-8 mx-auto  ">
           <div className="w-full flex flex-col  items-end gap-3  md:gap-5   ">
-            <img src="/images/google-review.svg" alt="" className="w-40 md:w-60 " />
-            <img src="/images/tripadvisor-reviews.svg" alt="" className="w-40 md:w-60 " />
+            <img src="/images/google-review-four.svg" alt="" className="w-40 md:w-60 " />
+            <img src="/images/tripadvisor-reviews-four.svg" alt="" className="w-40 md:w-60 " />
 
           </div>
           <div className="w-full">

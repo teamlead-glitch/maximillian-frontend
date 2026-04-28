@@ -45,7 +45,23 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
 
     return (
         <>
-            <div className="w-full py-10  md:py-20 mx-auto flex  flex-col lg:flex-row justify-between items-center bg-white">
+            <section className=" w-full bg-white">
+                <div className="max-w-[1300px]  mx-auto px-5">
+
+
+
+                    <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
+                        <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">India  <br />
+                            Themed Journeys</h3></div>
+                        <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+                        <div className="w-full md:w-[200px]"><p>Curated journeys across India, shaped by theme and experience
+                        </p></div>
+
+
+                    </div></div></section>
+
+
+            <div className="w-full py-10 md:pt-10  md:py-20 mx-auto flex  flex-col lg:flex-row justify-between items-center bg-white">
                 <div className=" w-full lg:w-1/2 aspect-square relative group overflow-hidden">
 
                     {data[0]?.image && <img
@@ -92,6 +108,9 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
 
                 </div>
                 <div className="w-full lg:w-1/2 px-5 md:px-20  lg:px-20 xl:px-30 2xl:40 h-full mt-15   lg:mt-0">
+
+
+
                     <div className="w-full flex flex-col items-center justify-between h-full gap-3">
 
 
@@ -226,7 +245,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                 <div className="max-w-[1000px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5 items-center">
                         <div className="pr-0 md:pr-15 xl:pr-36">
-                            <h3 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">What Makes Our India Journeys Different/Exceptional?</h3>
+                            <h3 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">What makes our India journeys exceptional?</h3>
                             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut. Aenean ultrices convallis sagittis. Nullam posuere, tortor a fringilla condimentum, dui justo facilisis sem, ac varius dolor leo ac ex.</p> */}
                             <p className="content" dangerouslySetInnerHTML={{ __html: what_makes_us_exceptional }}></p>
 
