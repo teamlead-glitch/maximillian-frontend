@@ -146,72 +146,79 @@ export default function SideBarMenu({
             </div>
 
             {/* NAV */}
-            <nav className="flex-1 overflow-y-auto px-6 py-5 space-y-6">
-              <button
-                onClick={() => setDestinationPanel(true)}
-                className="flex justify-between w-full font-my-font-semibold md:hidden text-(--color-secondary) cursor-pointer"
-              >
-                Explore Destinations <ChevronRight />
-              </button>
 
-              {[
-                { name: "Home", href: "/" },
-                { name: "Design Your Trip", href: "/designyourtrip" },
-                { name: "Our World", href: "/ourworld" },
-                { name: "Blogs", href: "/blogs" },
-                { name: "Contact Us", href: "/contact" },
-              ].map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => {
-                    setActiveLink(item.href);
-                    setSideOpenParent(false);
-                    setSideOpen(false);
-                  }}
-                  className={`relative block font-my-font-semibold text-(--color-secondary)
+
+            <div className="flex-1 overflow-y-auto flex flex-col justify-between">
+              <nav className="px-6 py-5 space-y-6">
+                <button
+                  onClick={() => setDestinationPanel(true)}
+                  className="flex justify-between w-full font-my-font-semibold md:hidden text-(--color-secondary) cursor-pointer"
+                >
+                  Explore Destinations <ChevronRight />
+                </button>
+
+                {[
+                  { name: "Home", href: "/" },
+                  { name: "Design Your Trip", href: "/designyourtrip" },
+                  { name: "Our World", href: "/ourworld" },
+                  { name: "Blogs", href: "/blogs" },
+                  { name: "Contact Us", href: "/contact" },
+                ].map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => {
+                      setActiveLink(item.href);
+                      setSideOpenParent(false);
+                      setSideOpen(false);
+                    }}
+                    className={`relative block font-my-font-semibold text-(--color-secondary)
                   after:absolute after:left-0 after:-bottom-1 after:h-[2px]
                   after:w-[30px] after:bg-[#C43131] after:transition-opacity
                   ${activeLink === item.href
-                      ? "after:opacity-100"
-                      : "after:opacity-0"
-                    }`}
+                        ? "after:opacity-100"
+                        : "after:opacity-0"
+                      }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </nav>
+
+              {/* CONTACT */}
+              <div className="px-6 pb-20 space-y-4">
+                <a
+                  href={`tel:${settings.phone}`}
+                  className="flex gap-3 text-(--color-secondary)"
                 >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
+                  <img src="/images/call-icon.svg" className="w-5" alt="Call" />
+                  {settings.phone}
+                </a>
 
-            {/* CONTACT */}
-            <div className="px-6 pb-20 space-y-4">
-              <a
-                href={`tel:${settings.phone}`}
-                className="flex gap-3 text-(--color-secondary)"
-              >
-                <img src="/images/call-icon.svg" className="w-5" alt="Call" />
-                {settings.phone}
-              </a>
+                <a
+                  href={whatsappLink}
+                  className="flex gap-3 text-(--color-secondary)"
+                >
+                  <img
+                    src="/images/whatsapp-icon.svg"
+                    className="w-5"
+                    alt="WhatsApp"
+                  />
+                  WhatsApp
+                </a>
 
-              <a
-                href={whatsappLink}
-                className="flex gap-3 text-(--color-secondary)"
-              >
-                <img
-                  src="/images/whatsapp-icon.svg"
-                  className="w-5"
-                  alt="WhatsApp"
-                />
-                WhatsApp
-              </a>
-
-              <a
-                href={`mailto:${settings.email}`}
-                className="flex gap-3 text-(--color-secondary)"
-              >
-                <img src="/images/mail-icon.svg" className="w-5" alt="Mail" />
-                {settings.email}
-              </a>
+                <a
+                  href={`mailto:${settings.email}`}
+                  className="flex gap-3 text-(--color-secondary)"
+                >
+                  <img src="/images/mail-icon.svg" className="w-5" alt="Mail" />
+                  {settings.email}
+                </a>
+              </div>
             </div>
+
+
+
           </div>
 
           {/* DESTINATION PANEL */}
@@ -315,11 +322,6 @@ export default function SideBarMenu({
                   ))}
 
                 </ul>
-
-
-
-
-
                 <Link
                   // href={`/${regions[activeRegion]?.slug}`}
                   href={`/${regions[activeRegion]?.slug != "region/india" ? regions[activeRegion]?.slug : 'country/india'}`}
