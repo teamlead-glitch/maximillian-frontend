@@ -324,7 +324,7 @@ export default function SideBarMenu({
                 </ul>
                 <Link
                   // href={`/${regions[activeRegion]?.slug}`}
-                  href={`/${regions[activeRegion]?.slug != "region/india" ? regions[activeRegion]?.slug : 'country/india'}`}
+                  href={`/${regions[activeRegion]?.slug != "region/india" ? regions[activeRegion]?.slug : regions[activeRegion]?.countries[0]?.slug}`}
                   onClick={() => {
                     setSideOpenParent(false);
                     setSideOpen(false);
