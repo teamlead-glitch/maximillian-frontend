@@ -449,7 +449,7 @@ export default function Details({ details }: { details: PackageResponse }) {
             <section className="relative py-5 md:py-10 px-5  bg-[#F5F2EE]">
                 <div className="max-w-[1000px] mx-auto w-full relative">
                     <div className="flex justify-center items-center text-(--color-secondary)  text-sm md:text-base">
-<TagListingWithIcon  initialShowCount={4}
+<TagListingWithIcon  initialShowCount={8}
                             tags={allTags.map(tag => ({
                                 id: tag.id,
                                 title: tag.title,

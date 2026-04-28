@@ -19,8 +19,8 @@ export default function BespokeJourney({ bescope_image = '' }: { bescope_image?:
 
         <div className="max-w-[1300px] flex items-center justify-between h-full flex-col gap-8 mx-auto  ">
           <div className="w-full flex flex-col  items-end gap-3  md:gap-5   ">
-            <img src="/images/google-review-four.svg" alt="" className="w-40 md:w-60 " />
-            <img src="/images/tripadvisor-reviews-four.svg" alt="" className="w-40 md:w-60 " />
+            <img src="/images/google-review-four-half.svg" alt="" className="w-40 md:w-60 " />
+            <img src="/images/tripadvisor-reviews-four-half.svg" alt="" className="w-40 md:w-60 " />
 
           </div>
           <div className="w-full">
