@@ -26,7 +26,7 @@ export default function BlogCard({
 
       <div
         className={`relative overflow-hidden rounded-lg ${variant === "large"
-          ? "aspect-[2/1]"
+          ? "aspect-square sm:aspect-[2/1]"
           : "aspect-square"
           }`}
       >
