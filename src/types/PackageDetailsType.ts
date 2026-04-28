@@ -27,6 +27,7 @@ export interface PackageResponse {
   banner_image: string | null;
   banner_mob_image: string | null;
   price_text: string | null;
+  price_caption?: string | null;
   sort_order: number;
   show_in_home: number;
 

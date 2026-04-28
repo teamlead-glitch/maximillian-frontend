@@ -19,9 +19,10 @@ interface PackageSliderprops {
     title?: string;
     id?: number;
     has_emi?: Boolean;
+    price_caption?: string;
 }
 
-function PackagedetailsSlider({ gallery, price_text, title, id, has_emi=false }: PackageSliderprops) {
+function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false, price_caption = '' }: PackageSliderprops) {
 
 
     useEffect(() => {
@@ -206,15 +207,31 @@ function PackagedetailsSlider({ gallery, price_text, title, id, has_emi=false }:
                 <div className="flex flex-col md:flex-row justify-center items-start md:items-center w-full gap-4 md:gap-8 px-5">
                     <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right w-[200px]">{price_text} </h3></div>
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
-                    <div className="w-3/4 md:w-[400px] px-0 md:px-5"><p>{title} is a <span className="font-bold">customisable FIT journey</span>. Pricing varies based on travel dates, hotel category, and personal preferences.
-                    </p></div>
+
+
+                    <div className="w-3/4 md:w-[400px] px-0 md:px-5">
+
+                        {price_caption ? (
+                            <p dangerouslySetInnerHTML={{ __html: price_caption }} />
+                        ) : (
+                            <p>
+                                {title} is a{" "}
+                                <span className="font-bold">customisable FIT journey</span>.
+                                Pricing varies based on travel dates, hotel category, and personal preferences.
+                            </p>
+                        )}
+
+
+                    </div>
+
+
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                     <div className="inline-block">
 
-                        {(has_emi==true) && (
-                            <div className="text-sm md:text-base text-(--color-secondary) font-my-font-semibold">   
-                            Easy EMI Options Available
-                            </div>) }
+                        {(has_emi == true) && (
+                            <div className="text-sm md:text-base text-(--color-secondary) font-my-font-semibold">
+                                Easy EMI Options Available
+                            </div>)}
 
                         <button onClick={() => setTalkOpen(true)} className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-2 md:py-3 mt-3 cursor-pointer">
                             <span className="mr-3">Talk to Us</span>
