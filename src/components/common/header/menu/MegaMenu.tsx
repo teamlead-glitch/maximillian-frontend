@@ -236,7 +236,7 @@ export default function MegaMenu({
                   <img
                     src="/images/whatsapp-icon.svg"
                     className="w-4 mr-2"
-                    alt="WhatsApp" /> +91 999 886 8866
+                    alt="WhatsApp" /> {whatsappNumber}
                 </a>
 
                 <a
