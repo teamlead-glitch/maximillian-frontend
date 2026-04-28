@@ -155,7 +155,9 @@ export default function MegaMenu({
                     } else {
                       return (
                         <div key={region} className={containerClasses}>
-                          <Link href={`/region/${slugify(region)}`} onClick={() => setMegaOpen(false)}>
+                          {/* regions[region].slug */}
+                          {/* href={`/region/${slugify(region)}`} */}
+                          <Link href={`/${regions[region].slug}`}  onClick={() => setMegaOpen(false)}>
                             <span
                               onMouseEnter={() => setActiveRegion(region)}
                               className={textClasses}
