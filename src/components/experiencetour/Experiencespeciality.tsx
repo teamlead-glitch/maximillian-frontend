@@ -101,7 +101,7 @@ export default function Experiencespeciality({ type = "experience-journeys" }: {
                     <div className="flex flex-col w-full justify-center">
                         <h1 className="font-my-font-regular text-break xl:text-5xl text-4xl text-(--color-secondary) text-center ">
                             {type === "experience-journeys" ? "Experience Journeys" : "Specialty Tours"}</h1>
-                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-10 lg:mt-20">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-10 lg:mt-20">
 
                             {packages.map((pckge) =>
 

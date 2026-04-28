@@ -30,7 +30,7 @@ export default function SideBarMenu({
   regions,
   isInner = false,
   settings,
-  sideOpenParent=false,
+  sideOpenParent = false,
   setSideOpenParent
 
 }: {
@@ -54,27 +54,27 @@ export default function SideBarMenu({
 
 
   const [indiaData, setIndiaData] = useState<IndiaOnlyData[]>([]);
-    const fetchData = async () => {
-  
-  
-      try {
-  
-  
-        const res = await apiService.get<IndiaOnlyData[]>(
-          `/tags?taggroup_id=3`
-        );
-  
-  
-  
-        setIndiaData(res);
-  
-      } catch (error) {
-        console.error("details fetch API error:", error);
-  
-      }
-    };
+  const fetchData = async () => {
 
-    useEffect(() => {
+
+    try {
+
+
+      const res = await apiService.get<IndiaOnlyData[]>(
+        `/tags?taggroup_id=3`
+      );
+
+
+
+      setIndiaData(res);
+
+    } catch (error) {
+      console.error("details fetch API error:", error);
+
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -83,8 +83,8 @@ export default function SideBarMenu({
   }, []);
 
   useEffect(() => {
-  setSideOpen(sideOpenParent);
-}, [sideOpenParent]);
+    setSideOpen(sideOpenParent);
+  }, [sideOpenParent]);
 
   useEffect(() => {
     document.body.style.overflow = sideOpen ? "hidden" : "auto";
@@ -95,13 +95,13 @@ export default function SideBarMenu({
 
   if (!mounted) return null;
   //number storing
-    const whatsappNumber = settings?.whatsapp;
-    //message storing
-    const message = encodeURIComponent("Hello! I’m interested in exploring your tour packages.");
+  const whatsappNumber = settings?.whatsapp;
+  //message storing
+  const message = encodeURIComponent("Hello! I’m interested in exploring your tour packages.");
 
-    const whatsappLink = whatsappNumber
-        ? `https://wa.me/${whatsappNumber}?text=${message}`
-        : "#";
+  const whatsappLink = whatsappNumber
+    ? `https://wa.me/${whatsappNumber}?text=${message}`
+    : "#";
 
 
   return (
@@ -122,7 +122,7 @@ export default function SideBarMenu({
         <>
           {/* OVERLAY */}
           <div
-            onClick={() => {setSideOpenParent(false);setSideOpen(false);}}
+            onClick={() => { setSideOpenParent(false); setSideOpen(false); }}
             className={`fixed inset-0 bg-black/50 z-[999]
             transition-opacity duration-300
             ${sideOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
@@ -138,7 +138,7 @@ export default function SideBarMenu({
             {/* HEADER */}
             <div className="h-[72px] px-6 flex justify-end items-center">
               <button
-                onClick={() => {setSideOpenParent(false); setSideOpen(false);}}
+                onClick={() => { setSideOpenParent(false); setSideOpen(false); }}
                 className="text-(--color-secondary) cursor-pointer"
               >
                 <X />
@@ -298,7 +298,7 @@ export default function SideBarMenu({
                   ))}
 
 
-                      {regions[activeRegion]?.slug == "region/india" && indiaData?.length > 0 && indiaData.map((country) => (
+                  {regions[activeRegion]?.slug == "region/india" && indiaData?.length > 0 && indiaData.map((country) => (
                     <Link
                       href={`/${country.slug}`}
                       key={country.slug}
@@ -316,6 +316,10 @@ export default function SideBarMenu({
 
                 </ul>
 
+
+
+
+
                 <Link
                   // href={`/${regions[activeRegion]?.slug}`}
                   href={`/${regions[activeRegion]?.slug != "region/india" ? regions[activeRegion]?.slug : 'country/india'}`}
@@ -324,11 +328,25 @@ export default function SideBarMenu({
                     setSideOpen(false);
                     setDestinationPanel(false);
                     setActiveRegion(null);
-                  }}
-                  className="block border border-[#C43131] w-fit px-4 py-2 rounded-full text-sm text-(--color-secondary) cursor-pointer hover:bg-[#C43131] hover:text-white transition"
-                >
-                  View all journeys in {activeRegion}
+                  }} className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-3 cursor-pointer">
+                  <span className="mr-3">View all journeys in {activeRegion}</span>
+
+                  <svg
+                    className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
+                    width="53"
+                    height="8"
+                    viewBox="0 0 53 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
+                      fill="#3A3F42"
+                    />
+                  </svg>
                 </Link>
+
+
 
               </div>
             )}
