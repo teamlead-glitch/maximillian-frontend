@@ -189,10 +189,10 @@ px-4 sm:px-0 text-center">
                 </div>
             </section>}
 
-            {slug == 'india' && <IndiaOnly what_makes_us_exceptional={regionDetails?.what_makes_us_exceptional ?? ''} />}
+            {/*slug == 'india'*/ regionDetails?.id==1 && <IndiaOnly what_makes_us_exceptional={regionDetails?.what_makes_us_exceptional ?? ''} />}
 
 
-            {slug == 'india' && <Insights filterRegionId={1} />}
+            {/*slug == 'india'*/ regionDetails?.id==1  && <Insights filterRegionId={1} />}
 
 
             <BespokeJourney />
