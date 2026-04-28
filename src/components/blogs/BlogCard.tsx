@@ -80,11 +80,11 @@ export default function BlogCard({
                 {[blog.region ?? [], ...(blog.tags ?? []), ...(blog.countries ?? [])]?.map((item, i) => {
                   const href = item.slug;
                   return (
-                    <SwiperSlide key={i}>
+                    item.title != null && (<SwiperSlide key={i}>
                       <Link href={href} className="text-sm text-white text-center block">
                         {item.title}
                       </Link>
-                    </SwiperSlide>
+                    </SwiperSlide>)
                   );
                 })}
               </Swiper>
