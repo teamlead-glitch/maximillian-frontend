@@ -591,7 +591,7 @@ hover:before:translate-x-full
                 </div>
             </section >
 
-            <PackagedetailsSlider gallery={details?.gallery} price_text={price_text} title={title} id={tour_id} />
+            <PackagedetailsSlider has_emi={details?.has_emi} gallery={details?.gallery} price_text={price_text} title={title} id={tour_id} />
             <Faq faq={faq} faq_image={faq_image} />
 
 

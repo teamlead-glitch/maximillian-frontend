@@ -21,6 +21,7 @@ export interface PackageResponse {
   bescope_image: string | null;
   faq_image: string | null;
   is_active: number;
+  has_emi?: Boolean;
   created_at: string;
   updated_at: string;
   banner_image: string | null;

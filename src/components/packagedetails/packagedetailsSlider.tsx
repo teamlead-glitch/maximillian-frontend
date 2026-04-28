@@ -18,9 +18,10 @@ interface PackageSliderprops {
     price_text?: string;
     title?: string;
     id?: number;
+    has_emi?: Boolean;
 }
 
-function PackagedetailsSlider({ gallery, price_text, title, id }: PackageSliderprops) {
+function PackagedetailsSlider({ gallery, price_text, title, id, has_emi=false }: PackageSliderprops) {
 
 
     useEffect(() => {
@@ -210,7 +211,10 @@ function PackagedetailsSlider({ gallery, price_text, title, id }: PackageSliderp
                     <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                     <div className="inline-block">
 
-                        <div className="text-sm md:text-base text-(--color-secondary) font-my-font-semibold">   Easy EMI Options Available</div>
+                        {(has_emi==true) && (
+                            <div className="text-sm md:text-base text-(--color-secondary) font-my-font-semibold">   
+                            Easy EMI Options Available
+                            </div>) }
 
                         <button onClick={() => setTalkOpen(true)} className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-2 md:py-3 mt-3 cursor-pointer">
                             <span className="mr-3">Talk to Us</span>
