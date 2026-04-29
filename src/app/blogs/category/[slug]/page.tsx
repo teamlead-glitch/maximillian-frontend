@@ -1,19 +1,35 @@
 
 import { PAGE_SLUGS } from "@/constants/pageSlugs";
-import { fetchPageBySlug } from "@/lib/page-api";
-import { generateSeoMetadata } from "@/lib/seo";
+import { fetchCategoryBySlug } from "@/lib/server-fetchs";
+import { mapSeoToMetadata } from "@/lib/seo-mapper";
 import BlogsList from "@/components/blogs/BlogsList";
 import { getCategories } from "@/lib/server-fetchs";
 import { BlogCategory } from "@/types/blogs";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
+type PageProps = {
+    params: Promise<{
+        slug: string;
+    }>;
+};
 
 
-// export const generateMetadata = async () => {
-//   return generateSeoMetadata(slug);
-// };
+
+/* ---------- SEO (SERVER) ---------- */
+export async function generateMetadata({
+    params,
+}: PageProps): Promise<Metadata> {
+
+    const { slug } = await params;
+    const cateory_pages = await fetchCategoryBySlug(slug);
+    //console.log(region_pages,'region_pages++')
+
+    return mapSeoToMetadata(cateory_pages?.seoDetail ?? null);
+}
+
 
 
 
@@ -26,7 +42,7 @@ export default async function Blogs({
 }) { // ✅ renamed component
 
   const { slug } = await params;
-const page = await fetchPageBySlug(slug);
+const page = await fetchCategoryBySlug(slug);
 const categories:BlogCategory[] = await getCategories();
 
   return (

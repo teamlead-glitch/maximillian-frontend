@@ -151,3 +151,23 @@ export async function getCategories() {
     return [];
   }
 }
+
+export async function fetchCategoryBySlug(
+  slug: string
+): Promise<Region | null> {
+  try {
+    const res = await fetch(
+      `${API_CONFIG.BASE_URL}/blogs/category/${slug}`,
+      { cache: "no-store" }
+    );
+
+    if (!res.ok) return null;
+
+    const json: Region = await res.json();
+//console.log(json,'json+++')
+    return json;
+  } catch (error) {
+    console.error("SERVER FETCH ERROR:", error);
+    return null;
+  }
+}
