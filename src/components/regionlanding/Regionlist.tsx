@@ -137,7 +137,7 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
             <section className="relative  pt-15 pb-0 md:pt-20  bg-white">
                 <div className="w-full relative  aspect-[16/9]   md:aspect-[16/4]">
 
-                    <Image fill src={regionDetails?.banner_mob_image ?? ''} alt={regionDetails?.title ?? ''} className="w-full h-full object-cover  md:hidden" />
+                    <Image fill src={regionDetails?.banner_mob_image ? regionDetails?.banner_mob_image : regionDetails?.banner_image ?? ''} alt={regionDetails?.title ?? ''} className="w-full h-full object-cover  md:hidden" />
 
                     <Image fill src={regionDetails?.banner_image ?? ''} alt={regionDetails?.title ?? ''} className="w-full h-full object-cover hidden md:block" />
 
