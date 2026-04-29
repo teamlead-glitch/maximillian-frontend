@@ -205,10 +205,23 @@ function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false,
         <>
             <section className="bg-[#F5F2EE] w-full py-15 md:py-30 ">
                 <div className="flex flex-col md:flex-row justify-center items-start md:items-center w-full gap-4 md:gap-8 px-5">
-                    <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right w-[200px]">{price_text} </h3></div>
-                    <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+                    {/* <div className="inline-block">
+                        <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right w-[300px]">{price_text} </h3>
+                        </div> */}
 
-
+                    <div className=" flex flex-col gap-y-2">
+                        <h5 className=" font-my-font-regular text-xl md:text-2xl text-(--color-secondary) md:text-right ">Starting From </h5>
+                        <h3 className=" font-my-font-semibold text-2xl md:text-3xl lg:text-4xl text-(--color-secondary) md:text-right ">INR 46,000   <span className="mx-2 text-gray-400">|</span> USD 491 </h3>
+                        <h6 className="  text-base md:xl text-(--color-secondary) md:text-right ">Per Person </h6>
+                        {/* {(has_emi == true) && (
+                            <div className="text-sm md:text-base text-(--color-secondary) font-my-font-semibold">
+                                Easy EMI Options Available
+                            </div>)} */}
+                        <div className="text-sm md:text-base text-(--color-secondary) font-my-font-semibold md:text-right">
+                            Easy EMI Options Available
+                        </div>
+                    </div>
+                    <div className="w-px h-15 bg-gray-300 hidden md:block"></div>
                     <div className="w-3/4 md:w-[400px] px-0 md:px-5">
 
                         {price_caption ? (
@@ -225,13 +238,10 @@ function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false,
                     </div>
 
 
-                    <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+                    <div className="w-px h-15 bg-gray-300 hidden md:block"></div>
                     <div className="inline-block">
 
-                        {(has_emi == true) && (
-                            <div className="text-sm md:text-base text-(--color-secondary) font-my-font-semibold">
-                                Easy EMI Options Available
-                            </div>)}
+
 
                         <button onClick={() => setTalkOpen(true)} className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-2 md:py-3 mt-3 cursor-pointer">
                             <span className="mr-3">Talk to Us</span>
