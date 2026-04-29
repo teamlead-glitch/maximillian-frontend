@@ -87,6 +87,10 @@ export default function SideBarMenu({
   }, [sideOpenParent]);
 
   useEffect(() => {
+    setActiveLink(pathname);
+  }, [pathname]);
+
+  useEffect(() => {
     document.body.style.overflow = sideOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
@@ -102,6 +106,14 @@ export default function SideBarMenu({
   const whatsappLink = whatsappNumber
     ? `https://wa.me/${whatsappNumber}?text=${message}`
     : "#";
+
+  const isActiveMenuItem = (href: string) => {
+    if (href === "/") {
+      return activeLink === href;
+    }
+
+    return activeLink === href || activeLink.startsWith(`${href}/`);
+  };
 
 
   return (
@@ -175,7 +187,7 @@ export default function SideBarMenu({
                     className={`relative block font-my-font-semibold text-(--color-secondary)
                   after:absolute after:left-0 after:-bottom-1 after:h-[2px]
                   after:w-[30px] after:bg-[#C43131] after:transition-opacity
-                  ${activeLink === item.href
+                  ${isActiveMenuItem(item.href)
                         ? "after:opacity-100"
                         : "after:opacity-0"
                       }`}
