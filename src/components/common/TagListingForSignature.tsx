@@ -89,7 +89,7 @@ export default function TagListingForSignature({
                   : `/tag/${item.short_slug}`;
 
             return (
-              <li
+              item.title ? (<li
                 key={`${item.type}-${item.short_slug}`}
                 className={
                   index !== visibleItems.length - 1 || hiddenItems.length > 0
@@ -98,7 +98,7 @@ export default function TagListingForSignature({
                 }
               >
                 <Link href={href}>{item.title}</Link>
-              </li>
+              </li>):null
             );
           })}
 
