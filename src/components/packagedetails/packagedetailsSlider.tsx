@@ -110,9 +110,10 @@ function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false,
             : `${currency} ${trimmedValue}`;
     };
 
-    const currencyPriceText = hasPriceInr
-        ? formatCurrencyValue("INR", price_inr)
-        : formatCurrencyValue("USD", price_usd);
+    const currencyPriceText = [
+        formatCurrencyValue("INR", price_inr),
+        formatCurrencyValue("USD", price_usd),
+    ].filter(Boolean);
 
     /* -----------------------------------------------------------------------
           FORM VALIDATION (STRONG + CLEAN)
@@ -234,7 +235,12 @@ function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false,
                             <>
                                 <h5 className=" font-my-font-regular text-xl md:text-2xl text-(--color-secondary) md:text-right ">Starting From </h5>
                                 <h3 className=" font-my-font-semibold text-2xl md:text-3xl lg:text-4xl text-(--color-secondary) md:text-right ">
-                                    {currencyPriceText}
+                                    {currencyPriceText.map((item, index) => (
+                                        <React.Fragment key={item}>
+                                            {index > 0 && <span className="mx-2 text-gray-400">|</span>}
+                                            {item}
+                                        </React.Fragment>
+                                    ))}
                                 </h3>
                                 <h6 className="  text-base md:xl text-(--color-secondary) md:text-right ">Per Person </h6>
                             </>
