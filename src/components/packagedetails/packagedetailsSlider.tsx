@@ -20,9 +20,11 @@ interface PackageSliderprops {
     id?: number;
     has_emi?: Boolean;
     price_caption?: string;
+    price_inr?: string;
+    price_usd?: string;
 }
 
-function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false, price_caption = '' }: PackageSliderprops) {
+function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false, price_caption = '', price_inr, price_usd }: PackageSliderprops) {
 
 
     useEffect(() => {
@@ -93,6 +95,24 @@ function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false,
 
 
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+    const hasPriceInr = Boolean(price_inr?.trim());
+    const hasPriceUsd = Boolean(price_usd?.trim());
+    const hasPriceText = Boolean(price_text?.trim());
+
+    const formatCurrencyValue = (currency: "INR" | "USD", value?: string) => {
+        const trimmedValue = value?.trim();
+
+        if (!trimmedValue) return "";
+
+        return trimmedValue.toUpperCase().startsWith(currency)
+            ? trimmedValue
+            : `${currency} ${trimmedValue}`;
+    };
+
+    const currencyPriceText = hasPriceInr
+        ? formatCurrencyValue("INR", price_inr)
+        : formatCurrencyValue("USD", price_usd);
 
     /* -----------------------------------------------------------------------
           FORM VALIDATION (STRONG + CLEAN)
@@ -210,16 +230,24 @@ function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false,
                         </div> */}
 
                     <div className=" flex flex-col gap-y-2">
-                        <h5 className=" font-my-font-regular text-xl md:text-2xl text-(--color-secondary) md:text-right ">Starting From </h5>
-                        <h3 className=" font-my-font-semibold text-2xl md:text-3xl lg:text-4xl text-(--color-secondary) md:text-right ">INR 46,000   <span className="mx-2 text-gray-400">|</span> USD 491 </h3>
-                        <h6 className="  text-base md:xl text-(--color-secondary) md:text-right ">Per Person </h6>
-                        {/* {(has_emi == true) && (
-                            <div className="text-sm md:text-base text-(--color-secondary) font-my-font-semibold">
-                                Easy EMI Options Available
-                            </div>)} */}
+                        {hasPriceInr || hasPriceUsd ? (
+                            <>
+                                <h5 className=" font-my-font-regular text-xl md:text-2xl text-(--color-secondary) md:text-right ">Starting From </h5>
+                                <h3 className=" font-my-font-semibold text-2xl md:text-3xl lg:text-4xl text-(--color-secondary) md:text-right ">
+                                    {currencyPriceText}
+                                </h3>
+                                <h6 className="  text-base md:xl text-(--color-secondary) md:text-right ">Per Person </h6>
+                            </>
+                        ) : (
+                            <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right w-[300px]">
+                                {hasPriceText ? price_text : "Price on request"}
+                            </h3>
+                        )}
+                       
+                            {(has_emi == true) && (
                         <div className="text-sm md:text-base text-(--color-secondary) font-my-font-semibold md:text-right">
                             Easy EMI Options Available
-                        </div>
+                        </div>)}
                     </div>
                     <div className="w-px h-15 bg-gray-300 hidden md:block"></div>
                     <div className="w-3/4 md:w-[400px] px-0 md:px-5">
