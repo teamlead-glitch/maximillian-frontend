@@ -32,7 +32,7 @@ export default function Exclussions({ excludes }: { excludes: InclusionExclusion
                 <div className="w-full">
 
                     {/* Header */}
-                    <div className="grid grid-cols-1 md:grid-cols-[25%_75%] lg:grid-cols-[15%_85%] w-full gap-4 lg:gap-8 py-0 md:py-5">
+                    <div className="grid grid-cols-1 md:grid-cols-[25%_75%] lg:grid-cols-[15%_85%] w-full  py-0 md:py-5">
 
                         <div className="flex  gap-4">
                             <h3 className="font-my-font-regular text-3xl md:text-4xl text-(--color-secondary)">

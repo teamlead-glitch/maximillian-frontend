@@ -29,7 +29,7 @@ export default function Inclussions({ includes }: { includes: InclusionExclusion
         <section className="bg-white pb-5 py-15  md:pb-10 md:py-20 xl:pb-15  xl:py-30 px-5">
             <div className="max-w-[1300px] mx-auto">
                 <div className="w-full">
-                    <div className="grid grid-cols-1 md:grid-cols-[25%_75%] lg:grid-cols-[15%_85%] w-full gap-4 lg:gap-8 py-0 md:py-5">
+                    <div className="grid grid-cols-1 md:grid-cols-[25%_75%] lg:grid-cols-[15%_85%] w-full  py-0 md:py-5">
 
 
                         <div className="flex  gap-4">
