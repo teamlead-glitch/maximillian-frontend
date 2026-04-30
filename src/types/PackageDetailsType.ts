@@ -12,6 +12,7 @@ export interface PackageResponse {
   price_per_person: number | null;
   duration: string;
   journey_style: string | null;
+  destination?: string | null;
   package_size: string | null;
   group_count: number;
   duration_text: string;

@@ -66,6 +66,7 @@ export default function Details({ details }: { details: PackageResponse }) {
     const duration = details?.duration_text ?? "";
     const group_size = details?.package_size ?? "";
     const countries = details?.country || [];
+    const destinations = details?.destination?.split(",") ?? [];
     const journey_overview = details?.description ?? "";
     const journey_flow = details?.journey_flow ?? "";
     const journey_image = details?.image_path ?? "";
@@ -238,11 +239,17 @@ export default function Details({ details }: { details: PackageResponse }) {
                                 <div className="pl-2">
                                     <div className="flex items-center justify-start md:justify-end gap-2 flex-wrap text-white  py-2 text-xs md:text-sm">
                                         {/* <MapPin className="mt-2" size={18} /> */}
-                                        <TagListing
+                                        {/* <TagListing
                                             textCenter={false}
-                                            countries={countries}
+                                            countries={destinations}
                                             textColor={true}
-                                            initialShowCount={6} />
+                                            initialShowCount={6} /> */}
+                                            <SimpleTagList
+textColor={true}
+initialShowCount={6}
+                                    items={destinations}
+
+                                />
                                         {/* <span>Paris</span>
                                         <span className="mx-1 text-gray-400">|</span>
                                         <span>Amsterdam</span>

@@ -2,15 +2,17 @@ import { useState } from "react";
 
 interface SimpleTagListProps {
   items: string[];
+   textColor?: Boolean;
+   initialShowCount?: number;
 }
 
-export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
+export default function SimpleTagList({ items = [], textColor = false,  initialShowCount = 2, }: SimpleTagListProps) {
   const [open, setOpen] = useState(false);
 
   if (items.length === 0) return null;
 
-  const visibleItems = items.slice(0, 2);
-  const hiddenItems = items.slice(2);
+  const visibleItems = items.slice(0, initialShowCount);
+  const hiddenItems = items.slice(initialShowCount);
 
   return (
     <ul className="flex flex-wrap items-center text-sm gap-2 font-bold">
@@ -20,7 +22,7 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
         <>
           <li
             key={index}
-            className={`relative text-sm   font-bold  text-black
+            className={`relative text-sm   font-bold  ${textColor ? "text-white" : "text-black"}
           ${index !== visibleItems.length - 1
                 ? " after:text-base after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-(--color-secondary)"
                 : ""
@@ -29,7 +31,7 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
             {item.trim()}
           </li>
           {index !== visibleItems.length - 1 ?
-            <span className=" text-(--color-secondary) font-bold  ">|</span> :
+            <span className={` ${textColor ? "text-white" : "text-(--color-secondary)"}  font-bold  `}>|</span> :
             ""}
         </>
       ))}
@@ -47,9 +49,9 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
       {/* +more */}
       {hiddenItems.length > 0 && (
         <>
-          <span className=" text-(--color-secondary) font-bold  ">|</span>
+          <span className={`${textColor ? "text-white" : "text-(--color-secondary)"} font-bold  `}>|</span>
           <li
-            className="relative group/tags cursor-pointer font-bold text-(--color-secondary)"
+            className={`relative group/tags cursor-pointer font-bold  ${textColor ? "text-white" : "text-(--color-secondary)"}`}
             onClick={() => setOpen(!open)}
           >
             +{hiddenItems.length} more
@@ -75,7 +77,7 @@ export default function SimpleTagList({ items = [] }: SimpleTagListProps) {
               {hiddenItems.map((item, index) => (
                 <div
                   key={index}
-                  className="block px-2 py-1 hover:bg-gray-100 rounded"
+                  className={`block px-2 py-1 hover:bg-gray-100 rounded ${textColor ? "text-black" : "text-(--color-secondary)"}`}
                 >
                   {item.trim()}
                 </div>
