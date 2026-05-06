@@ -108,7 +108,7 @@ export default function PackageCard({ details }: { details: PackageItem }) {
 
         {/* Title */}
         <Link href={`/${details.slug}`}>
-          <h4 className="text-(--color-secondary) font-my-font-semibold text-sm md:text-xl text-center py-2 line-clamp-2">
+          <h4 className="text-(--color-secondary) font-my-font-semibold text-sm md:text-xl text-center  line-clamp-2">
             {details.title}
           </h4>
         </Link>

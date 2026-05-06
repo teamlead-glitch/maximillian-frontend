@@ -2,11 +2,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function Quotes({quote}:{quote:string}) {
+export default function Quotes({ quote }: { quote: string }) {
 
 
     return (
-        <section className="bg-white py-10  md:py-15 ">
+        <section className="bg-white ">
             <div className="max-w-[800px] mx-auto w-full relative  ">
 
                 <div className="w-full flex flex-col items-center">

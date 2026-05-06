@@ -10,34 +10,12 @@ import { Swiper as SwiperType } from "swiper";
 import Loader from "../common/Loader";
 import { testimonialResponse } from "@/types/testimonialTypes";
 
-
-
-
-
-
 export default function Testimonials() {
-
-
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768); // mobile breakpoint
-        };
-
-        handleResize(); // initial check
-        window.addEventListener("resize", handleResize);
-
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-
     const swiperRef = useRef<SwiperType | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
-
     const [testimonials, settestimonials] = useState<testimonialResponse[]>([]);
-    // const [activeIndex, setActiveIndex] = useState(0);
     const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         const fetchtestimonials = async () => {
             try {
@@ -45,7 +23,6 @@ export default function Testimonials() {
 
                 if (res) {
                     settestimonials(res || []);
-
                 } else {
                     console.error("Failed to load tags groups");
                 }
@@ -54,7 +31,6 @@ export default function Testimonials() {
             } finally {
                 setLoading(false);
             }
-
         };
 
         fetchtestimonials();
@@ -65,17 +41,15 @@ export default function Testimonials() {
             {loading ? (
                 <Loader />
             ) : testimonials.length === 0 ? (
-                // <p>No journeys available</p>
                 <></>
             ) : (
-                <section className="bg-[#f9f7f5] pt-20 md:pt-20 xl:pt-40 pb-10 md:pb-20">
-                    <div className=" mx-auto px-5">
-                        <div className="mb-4 mx-auto flex justify-center"> <img src="images/quote-icon.svg" alt="" /> </div>
+                <section className="bg-[#f9f7f5] pt-20 pb-10 md:pt-20 md:pb-20 xl:pt-40">
+                    <div className="mx-auto max-w-6xl px-5">
+                        <div className="mx-auto mb-4 flex justify-center">
+                            <img src="/images/quote-icon.svg" alt="" />
+                        </div>
 
-
-                        <div className="max-w-4xl mx-auto text-center w-full my-10 md:py-10">
-
-                            {/* MAIN SWIPER */}
+                        <div className="mx-auto my-10 w-full max-w-4xl text-center md:py-10">
                             <Swiper
                                 modules={[Autoplay, EffectFade]}
                                 effect="fade"
@@ -83,60 +57,50 @@ export default function Testimonials() {
                                 loop
                                 spaceBetween={10}
                                 speed={1000}
-                                autoHeight={isMobile}   // ✅ only mobile
+                                autoHeight
                                 onSwiper={(swiper) => (swiperRef.current = swiper)}
-                                onSlideChange={(swiper) =>
-                                    setActiveIndex(swiper.realIndex)
-                                }
+                                onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                             >
                                 {testimonials.map((item) => (
                                     <SwiperSlide key={item.id}>
-                                        <div className="flex flex-col items-center">
-
-                                            <p className="text-base md:text-xl lg:text-2xl text-(--color-secondary) mb-0  md:mb-10 leading-normal">
+                                        <div className="flex flex-col items-center px-1 sm:px-4">
+                                            <p className="mb-0 break-words text-base leading-normal text-(--color-secondary) md:mb-10 md:text-xl lg:text-2xl">
                                                 {item.message}
                                             </p>
 
                                             <div className="py-3">
                                                 <h4 className="font-grape-nuts text-2xl text-(--color-secondary)">{item.name}</h4>
                                                 {item.designation && (
-                                                    <p className="text-sm text-gray-600 mt-1">
+                                                    <p className="mt-1 text-sm text-gray-600">
                                                         {item.designation}
                                                     </p>
                                                 )}
                                             </div>
-
                                         </div>
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
 
-                            {/* AVATAR THUMBNAILS */}
-                            <div className="flex items-center justify-center gap-6 mt-5">
-
+                            <div className="mt-5 flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6">
                                 {testimonials.map((u, index) => (
                                     <Image
                                         key={index}
                                         src={u.author_image}
                                         alt={u.name}
-                                        width='70'
-                                        height='70'
-                                        onClick={() =>
-                                            swiperRef.current?.slideToLoop(index)
-                                        }
-                                        className={`w-14 h-14 rounded-full object-cover cursor-pointer transition-all duration-300
-
+                                        width={70}
+                                        height={70}
+                                        onClick={() => swiperRef.current?.slideToLoop(index)}
+                                        className={`h-12 w-12 rounded-full object-cover cursor-pointer transition-all duration-300 sm:h-14 sm:w-14
                                 ${index === activeIndex
                                                 ? "scale-125 opacity-100"
-                                                : "opacity-40 scale-90 grayscale"
+                                                : "scale-90 opacity-40 grayscale"
                                             }
                             `}
                                     />
                                 ))}
-
                             </div>
-
-                        </div> </div>
+                        </div>
+                    </div>
                 </section>
             )}
         </>

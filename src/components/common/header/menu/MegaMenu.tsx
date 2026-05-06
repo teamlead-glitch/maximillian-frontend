@@ -128,7 +128,7 @@ export default function MegaMenu({
 
         <div className=" mx-auto  grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-10 text-black ">
           <div className="flex flex-col justify-between ">
-            <div className="w-full relative flex-[9.5]">
+            <div className="w-full relative flex-[9]">
               <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] mt-32">
                 {/* REGIONS */}
                 <div className="space-y-4 pl-10 pr-20">
@@ -193,7 +193,7 @@ export default function MegaMenu({
               View all journeys in {activeRegion}
             </Link> */}
 
-                  <Link href={`/${regions[activeRegion]?.slug != "region/india" ? regions[activeRegion]?.slug : regions[activeRegion]?.countries[0]?.slug}`} onClick={() => setMegaOpen(false)} className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start py-3 mt-5 cursor-pointer">
+                  <Link href={`/${regions[activeRegion]?.slug != "region/india" ? regions[activeRegion]?.slug : regions[activeRegion]?.countries[0]?.slug}`} onClick={() => setMegaOpen(false)} className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-start  cursor-pointer">
                     <span className="mr-3">   View all journeys in {activeRegion}</span>
 
                     <svg
@@ -214,8 +214,9 @@ export default function MegaMenu({
               </div>
             </div>
 
-            <div className="w-full  pl-10 flex-[.5]">
-              <div className=" flex flex-wrap gap-10  pb-5 ">
+            <div className="w-full pl-10 flex-1 flex items-center">
+              <div className="flex flex-wrap gap-10 items-center">
+
                 <a
                   href={`tel:${settings.phone}`}
                   className="flex text-sm  text-(--color-secondary)">

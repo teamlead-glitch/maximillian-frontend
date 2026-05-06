@@ -2,15 +2,15 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function LeftRightContent({description, image}:{description:string;image:string}) {
+export default function LeftRightContent({ description, image }: { description: string; image: string }) {
 
 
     return (
-        <section className="bg-white py-10   ">
+        <section className="bg-white ">
             <div className="w-full">
 
-                {image &&<div className="float-none md:float-left w-[300px] h-[300px] md:mr-20 mb-10 relative">
-                     <Image
+                {image && <div className="float-none md:float-left w-[300px] h-[300px] md:mr-20 mb-10 relative">
+                    <Image
                         src={image}
                         alt=""
                         fill
@@ -23,9 +23,9 @@ export default function LeftRightContent({description, image}:{description:strin
                 <div className="space-y-4 text-justify">
                     <div
                         className="content" dangerouslySetInnerHTML={{ __html: description }}>
-                        
 
-                        </div>
+
+                    </div>
 
 
                 </div>

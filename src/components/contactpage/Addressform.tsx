@@ -43,21 +43,21 @@ export default function AddressForm() {
         is_agreed: "",
     });
 
-       // 1. Add the ref at the top of your component
-        const textareaRef = useRef<HTMLTextAreaElement>(null);
-    
-        // 2. Create the resize function
-        const autoResize = () => {
-            const el = textareaRef.current;
-            if (!el) return;
-            el.style.height = "auto";        // reset first so it can shrink
-            el.style.height = `${el.scrollHeight}px`; // expand to content
-        };
-    
-        // 3. Optional: Trigger on initial load if message has value
-        useEffect(() => {
-            autoResize();
-        }, [formData.message]);
+    // 1. Add the ref at the top of your component
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+    // 2. Create the resize function
+    const autoResize = () => {
+        const el = textareaRef.current;
+        if (!el) return;
+        el.style.height = "auto";        // reset first so it can shrink
+        el.style.height = `${el.scrollHeight}px`; // expand to content
+    };
+
+    // 3. Optional: Trigger on initial load if message has value
+    useEffect(() => {
+        autoResize();
+    }, [formData.message]);
 
     /* -----------------------------------------------------------------------
       HANDLE FORM INPUT CHANGES (WITH TYPESCRIPT SAFETY)

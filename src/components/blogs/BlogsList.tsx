@@ -11,7 +11,7 @@ import { BlogCategory } from "@/types/blogs";
 
 const TAKE = 5;
 
-export default function BlogsList({categories, slug = 'All Blogs'}:{categories:BlogCategory[]; slug?:string}) {
+export default function BlogsList({ categories, slug = 'All Blogs' }: { categories: BlogCategory[]; slug?: string }) {
   const [blogs, setBlogs] = useState<BlogsResponse["blogs"]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -20,15 +20,15 @@ export default function BlogsList({categories, slug = 'All Blogs'}:{categories:B
 
   const observerRef = useRef<HTMLDivElement | null>(null);
 
-  const [catId, setCatId] = useState<string|number>('');
+  const [catId, setCatId] = useState<string | number>('');
 
   const slugToTitle = (slug: string) =>
-  slug
-    .split("-")
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+    slug
+      .split("-")
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
 
- 
+
 
   // ✅ Fetch blogs
   const fetchBlogs = async () => {
@@ -60,7 +60,7 @@ export default function BlogsList({categories, slug = 'All Blogs'}:{categories:B
     fetchBlogs();
   }, []);
 
-  
+
 
   // ✅ Infinite scroll
   const handleObserver = useCallback(
@@ -98,8 +98,8 @@ export default function BlogsList({categories, slug = 'All Blogs'}:{categories:B
   return (
     <>
       <section className="pt-20 md:pt-30 xl:pt-28 pb-20 bg-white">
-       
-       <BlogTabs categories={categories} setCatId={setCatId}/>
+
+        <BlogTabs categories={categories} setCatId={setCatId} />
 
         <div className="max-w-[1300px] pt-10 mx-auto px-5">
           {/* Heading */}
@@ -110,94 +110,94 @@ export default function BlogsList({categories, slug = 'All Blogs'}:{categories:B
           </div>
 
 
-{(!loading && !blogs.length) ? (
-   <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center">
-        <h2>No blogs available</h2>
-      </section>
+          {(!loading && !blogs.length) ? (
+            <section className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center text-center bg-white">
+              <h2>No blogs available</h2>
+            </section>
 
-) :(
-<>
-          {/* Blog Layout */}
-          <div className="space-y-16">
-            {(() => {
-              const rows: React.ReactNode[] = [];
-              let index = 0;
-              let useHeroRow = true;
+          ) : (
+            <>
+              {/* Blog Layout */}
+              <div className="space-y-16">
+                {(() => {
+                  const rows: React.ReactNode[] = [];
+                  let index = 0;
+                  let useHeroRow = true;
 
-              while (index < blogs.length) {
-                if (useHeroRow) {
-                  const rowItems = blogs.slice(index, index + 2);
-                  const isReversed = Math.floor(index / 5) % 2 === 1;
+                  while (index < blogs.length) {
+                    if (useHeroRow) {
+                      const rowItems = blogs.slice(index, index + 2);
+                      const isReversed = Math.floor(index / 5) % 2 === 1;
 
-                  rows.push(
-                    <div
-                      key={index}
-                      className={`grid gap-10 ${rowItems.length === 1
-                        ? "grid-cols-1"
-                        : isReversed
-                          ? "grid-cols-1 sm:grid-cols-[1fr_2fr]"
-                          : "grid-cols-1 sm:grid-cols-[2fr_1fr]"
-                        }`}
-                    >
-                      {rowItems.length === 1 && (
-                        <BlogCard blog={rowItems[0]} variant="large" />
-                      )}
+                      rows.push(
+                        <div
+                          key={index}
+                          className={`grid gap-10 ${rowItems.length === 1
+                            ? "grid-cols-1"
+                            : isReversed
+                              ? "grid-cols-1 sm:grid-cols-[1fr_2fr]"
+                              : "grid-cols-1 sm:grid-cols-[2fr_1fr]"
+                            }`}
+                        >
+                          {rowItems.length === 1 && (
+                            <BlogCard blog={rowItems[0]} variant="large" />
+                          )}
 
-                      {rowItems.length === 2 && (
-                        <>
-                          {isReversed ? (
+                          {rowItems.length === 2 && (
                             <>
-                              <BlogCard blog={rowItems[1]} />
-                              <BlogCard
-                                blog={rowItems[0]}
-                                variant="large"
-                              />
-                            </>
-                          ) : (
-                            <>
-                              <BlogCard
-                                blog={rowItems[0]}
-                                variant="large"
-                              />
-                              <BlogCard blog={rowItems[1]} />
+                              {isReversed ? (
+                                <>
+                                  <BlogCard blog={rowItems[1]} />
+                                  <BlogCard
+                                    blog={rowItems[0]}
+                                    variant="large"
+                                  />
+                                </>
+                              ) : (
+                                <>
+                                  <BlogCard
+                                    blog={rowItems[0]}
+                                    variant="large"
+                                  />
+                                  <BlogCard blog={rowItems[1]} />
+                                </>
+                              )}
                             </>
                           )}
-                        </>
-                      )}
-                    </div>
-                  );
+                        </div>
+                      );
 
-                  index += 2;
-                } else {
-                  const rowItems = blogs.slice(index, index + 3);
+                      index += 2;
+                    } else {
+                      const rowItems = blogs.slice(index, index + 3);
 
-                  rows.push(
-                    <div
-                      key={index}
-                      className="grid gap-10 grid-cols-1 sm:grid-cols-3"
-                    >
-                      {rowItems.map((blog) => (
-                        <BlogCard key={blog.id} blog={blog} />
-                      ))}
-                    </div>
-                  );
+                      rows.push(
+                        <div
+                          key={index}
+                          className="grid gap-10 grid-cols-1 sm:grid-cols-3"
+                        >
+                          {rowItems.map((blog) => (
+                            <BlogCard key={blog.id} blog={blog} />
+                          ))}
+                        </div>
+                      );
 
-                  index += 3;
-                }
+                      index += 3;
+                    }
 
-                useHeroRow = !useHeroRow;
-              }
+                    useHeroRow = !useHeroRow;
+                  }
 
-              return rows;
-            })()}
-          </div>
+                  return rows;
+                })()}
+              </div>
 
-          {/* Loader */}
-          <div ref={observerRef} className="h-10 flex justify-center mt-10">
-            {loading && <Loader />}
-          </div>
-          </>
-)}
+              {/* Loader */}
+              <div ref={observerRef} className="h-10 flex justify-center mt-10">
+                {loading && <Loader />}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
