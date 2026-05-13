@@ -142,7 +142,7 @@ export default function SideBarMenu({
 
           {/* SIDEBAR */}
           <div
-            className={`fixed top-0 right-0 h-screen w-[85%] max-w-[320px]
+            className={`fixed top-0 right-0 h-dvh w-[85%] max-w-[320px]
             bg-white z-[1000] flex flex-col
             transition-transform duration-300
             ${sideOpen ? "translate-x-0" : "translate-x-full"}`}
@@ -198,10 +198,10 @@ export default function SideBarMenu({
               </nav>
 
               {/* CONTACT */}
-              <div className="px-6 pb-20 space-y-4">
+              <div className="px-6 pb-14 space-y-4">
                 <a
                   href={`tel:${settings.phone}`}
-                  className="flex gap-3 text-(--color-secondary)"
+                  className="flex gap-3 text-sm  md:text-base text-(--color-secondary)"
                 >
                   <img src="/images/call-icon.svg" className="w-5" alt="Call" />
                   {settings.phone}
@@ -209,7 +209,7 @@ export default function SideBarMenu({
 
                 <a
                   href={whatsappLink}
-                  className="flex gap-3 text-(--color-secondary)"
+                  className="flex gap-3 text-sm  md:text-base text-(--color-secondary)"
                 >
                   <img
                     src="/images/whatsapp-icon.svg"
@@ -221,7 +221,7 @@ export default function SideBarMenu({
 
                 <a
                   href={`mailto:${settings.email}`}
-                  className="flex gap-3 text-(--color-secondary)"
+                  className="flex gap-3 text-sm  md:text-base text-(--color-secondary)"
                 >
                   <img src="/images/mail-icon.svg" className="w-5" alt="Mail" />
                   {settings.email}
@@ -235,7 +235,7 @@ export default function SideBarMenu({
 
           {/* DESTINATION PANEL */}
           <div
-            className={`fixed top-0 right-0 h-screen w-[85%] max-w-[320px]
+            className={`fixed top-0 right-0 h-dvh w-[85%] max-w-[320px]
             bg-white z-[1100] md:hidden transition-transform duration-300
             ${destinationPanel ? "translate-x-0" : "translate-x-full"}`}
           >
