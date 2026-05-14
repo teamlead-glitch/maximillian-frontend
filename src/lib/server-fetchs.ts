@@ -25,7 +25,7 @@ export async function fetchRegionBySlug(
   try {
     const res = await fetch(
       `${API_CONFIG.BASE_URL}/region/${slug}`,
-      { cache: "no-store" }
+      { next: { revalidate: 30 } }
     );
 
     if (!res.ok) return null;
