@@ -312,7 +312,7 @@ export default function Designyourtrip() {
 
         <>
 
-            <section className="relative pt-24 md:pt-32 pb-10 md:py-40 overflow-hidden bg-white z-10">
+            <section className="relative pt-24 md:pt-32 md:py-40 overflow-hidden bg-white z-10">
                 {/* Background */}
                 <div className="absolute inset-y-0 left-0 w-[40%] bg-[#F5F2EE] -z-10 md:block hidden"></div>
 
@@ -773,31 +773,31 @@ hover:before:translate-x-full hover:text-white
             </section >
 
 
-            <section className="relative py-10 md:py-28 overflow-hidden bg-white z-10">
+            <section className="relative py-16 md:py-28 overflow-hidden bg-white z-10">
                 <div className="max-w-[1300px] flex mx-auto  px-5  ">
-                    <div className="w-full grid grid-cols-1  md:grid-cols-3 gap-0  md:gap-4 items-center justify-center md:justify-between">
+                    <div className="w-full grid grid-cols-1  md:grid-cols-3 gap-5  md:gap-4 items-center justify-center md:justify-between">
 
-                        <div className="w-full mb-3 md:mb-0 flex justify-center  md:justify-content-start   items-center pr-0 md:pr-10">
+                        <div className="w-full mb-3 md:mb-0 flex justify-start   md:justify-center     items-center md:border-r md:border-gray-400 md:pr-4">
 
-                            <div className="pr-2 md:pr-3"><img src="images/custom-journey-icon.png" alt="" className="w-5 md:w-8" /> </div>
-                            <p className="mt-2 font-my-font-semibold text-base md:text-base mb-0">
-                                Custom journeys, no templates
+                              <div className="pr-3 md:pr-5"><img src="images/custom-journey-icon.png" alt="" className="w-6 md:w-8" /> </div>
+                            <p className="font-my-font-semibold text-base mb-0">
+                                Custom journeys, <br className="hidden md:block" /> no templates
                             </p>
                         </div>
 
-                        <div className="w-full mb-3 md:mb-0 flex justify-center  md:justify-content-start   items-center pr-0 md:pr-10">
+                        <div className="w-full mb-3 md:mb-0 flex  justify-start   md:justify-center     items-center md:border-r md:border-gray-400 md:pr-4">
 
-                            <div className="pr-2 md:pr-3"><img src="images/multi-country.png" alt="" className="w-5 md:w-8" /> </div>
-                            <p className="mt-2 font-my-font-semibold text-base md:text-base mb-0">
-                                Multi-country planning specialists
+                            <div className="pr-3 md:pr-5"><img src="images/multi-country.png" alt="" className="w-6 md:w-8" /> </div>
+                            <p className="font-my-font-semibold text-base mb-0">
+                                Multi-country  <br className="hidden md:block" /> planning specialists
                             </p>
                         </div>
 
-                        <div className="w-full mb-3 md:mb-0 flex justify-center  md:justify-content-start   items-center pr-0 md:pr-10">
+                        <div className="w-full mb-3 md:mb-0 flex  justify-start   md:justify-center    items-center ">
 
-                            <div className="pr-2 md:pr-3"><img src="images/your-review.png" alt="" className="w-5 md:w-8" /> </div>
-                            <p className="mt-2 font-my-font-semibold text-base md:text-base mb-0">
-                                You review before you commit.
+                              <div className="pr-3 md:pr-5"><img src="images/your-review.png" alt="" className="w-6 md:w-8" /> </div>
+                            <p className="font-my-font-semibold text-base mb-0">
+                                You review before  <br className="hidden md:block" /> you commit.
                             </p>
                         </div>
                     </div>
