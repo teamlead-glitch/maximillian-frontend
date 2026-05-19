@@ -24,15 +24,19 @@ export default function JourneyCard({ journey }: Props) {
 
                         {/* Bottom Content */}
                         <div className=" absolute w-full bottom-0 left-0 p-5 flex flex-col items-center transition-transform duration-500 ease-out group-hover:-translate-y-5">
-                            <h3 className="font-my-font-regular text-white text-2xl text-center">
+                            <h3 className="font-my-font-regular text-white text-2xl text-center line-clamp-2">
                                 {journey.title}
                             </h3>
 
-                            <TagListingForSignature
-                                tags={journey.tags}
-                                region={journey.region}
-                                initialShowCount={6}
-                            />
+                           
+                            {/* Tags: one line default, full on hover */}
+                            <div className="w-full overflow-hidden max-h-5 group-hover:max-h-40 transition-all duration-500 ease-out">
+                                <TagListingForSignature
+                                    tags={journey.tags}
+                                    region={journey.region}
+                                    initialShowCount={6}
+                                />
+                            </div>
 
 
                         </div>
