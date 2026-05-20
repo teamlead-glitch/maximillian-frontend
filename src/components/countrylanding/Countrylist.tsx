@@ -23,14 +23,19 @@ export default function Countrylist({ slug, regionDetails }: { slug: string; reg
 
 
     const [packages, setPackages] = useState<PackagesResponse["packages"]>([]);
+      const [nonSignaturePackages, setnonSignaturePackages] = useState<PackagesResponse["packages"]>([]);
     const [loading, setLoading] = useState(true);
+     const [showAll, setShowAll] = useState(false);
 
     const [skip, setSkip] = useState(0);
     const [hasMore, setHasMore] = useState(true);
 
     const observerRef = useRef<HTMLDivElement | null>(null);
+ const country_name=regionDetails?.title;
 
-
+const visibleCountries = showAll
+        ? nonSignaturePackages
+        : nonSignaturePackages.slice(0, 6);
 
 
 
@@ -42,7 +47,7 @@ export default function Countrylist({ slug, regionDetails }: { slug: string; reg
             setLoading(true);
 
             const res = await apiService.get<PackagesResponse>(
-                `/packages?type=country&slug=${slug}&take=${TAKE}&skip=${skip}`
+                `/packages?type=country&slug=${slug}&take=${TAKE}&skip=${skip}&signature=1`
             );
 
             if (res.packages.length < TAKE) {
@@ -59,9 +64,36 @@ export default function Countrylist({ slug, regionDetails }: { slug: string; reg
         }
     };
 
+    //fetch non signature package
+     const fetchnonSignaturePackages = async () => {
+        if (!hasMore) return;
+
+        try {
+            setLoading(true);
+
+            const res = await apiService.get<PackagesResponse>(
+                `/packages?type=country&slug=${slug}&take=${TAKE}&skip=${skip}&signature=0`
+            );
+
+            if (res.packages.length < TAKE) {
+                setHasMore(false);
+            }
+
+            setnonSignaturePackages((prev) => [...prev, ...res.packages]);
+            setSkip((prev) => prev + TAKE);
+        } catch (error) {
+            console.error("packages API error:", error);
+            setHasMore(false);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
     // Initial Load
     useEffect(() => {
         fetchPackages();
+         fetchnonSignaturePackages();
     }, []);
 
     // Infinite Scroll Observer
@@ -141,7 +173,7 @@ px-4 sm:px-0 text-center">
                 </div>
             </section>
 
-            {packages.length > 0 && <section id="journeys" className="relative py-10  md:py-15 px-5 overflow-hidden bg-white scroll-mt-16">
+            {packages.length > 0 && <section id="journeys" className="relative py-5  md:py-5 px-5 overflow-hidden bg-white scroll-mt-16">
                 <div className="max-w-[1000px] mx-auto">
                     <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
                         <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />
@@ -161,6 +193,63 @@ px-4 sm:px-0 text-center">
 
 
                     </div>
+
+                    {/* Loader Trigger */}
+                    <div ref={observerRef} className="h-10 flex justify-center mt-10">
+                        {loading && <Loader />}
+                    </div>
+
+                    {/* <div className="w-full flex justify-center">
+                        <button className="group flex items-center font-my-font-semibold  text-sm text-black sm:text-base justify-center py-3 mt-3 cursor-pointer">
+                            <span className="mr-3">View More Journeys</span>
+
+                            <svg
+                                className="transition-transform duration-300 ease-out group-hover:translate-x-[10px]"
+                                width="53"
+                                height="8"
+                                viewBox="0 0 53 8"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M52.3536 4.03556C52.5488 3.8403 52.5488 3.52372 52.3536 3.32845L49.1716 0.146473C48.9763 -0.0487893 48.6597 -0.0487893 48.4645 0.146473C48.2692 0.341735 48.2692 0.658318 48.4645 0.85358L51.2929 3.68201L48.4645 6.51043C48.2692 6.7057 48.2692 7.02228 48.4645 7.21754C48.6597 7.4128 48.9763 7.4128 49.1716 7.21754L52.3536 4.03556ZM0 3.68201V4.18201H52V3.68201V3.18201H0V3.68201Z"
+                                    fill="#3A3F42"
+                                />
+                            </svg>
+                        </button>
+                    </div> */}
+                </div>
+            </section>}
+            
+            {nonSignaturePackages.length > 0 && <section id="nonsignaturejourneys" className="relative py-5  md:py-5 px-5 overflow-hidden bg-white scroll-mt-16">
+                <div className="max-w-[1000px] mx-auto">
+                    <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
+                        <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">More Journeys <br />
+                            in {country_name} </h3></div>
+                        <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+                        <div className="w-full md:w-[200px]"><p>A curated selection of journeys crafted for meaningful travel experiences.</p></div>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 lg:gap-15 mt-10 lg:mt-20">
+
+
+
+                        {visibleCountries.map((pckge) =>
+
+                            <PackageCard key={pckge.id} details={pckge} />
+                        )}
+
+                    </div>
+                     {/* View More Button */}
+                    {visibleCountries.length > 6 && (
+                        <div className="flex justify-center mt-6">
+                            <button
+                                onClick={() => setShowAll(!showAll)}
+                                className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer"
+                            >
+                                {showAll ? "View Less Journeys" : "View More Journeys"}
+                            </button>
+                        </div>
+                    )}
 
                     {/* Loader Trigger */}
                     <div ref={observerRef} className="h-10 flex justify-center mt-10">

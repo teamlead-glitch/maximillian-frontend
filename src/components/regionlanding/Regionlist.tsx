@@ -14,6 +14,8 @@ import { apiService } from "@/services/api";
 import PackageCard from "../package/PackageCard";
 import { Region } from "@/types/region";
 import Insights from "../home/Insights";
+import DestinationCardForRegion from "./DesinationCardForRegion";
+import { CountryResponse } from "@/types/countryType";
 
 const TAKE = 15;
 
@@ -22,6 +24,14 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
 
 
     const [packages, setPackages] = useState<PackagesResponse["packages"]>([]);
+    const [countries, setCountries] = useState<CountryResponse[]>([]);
+
+    const [showAll, setShowAll] = useState(false);
+
+   
+
+
+
     const [loading, setLoading] = useState(true);
 
     const [skip, setSkip] = useState(0);
@@ -34,6 +44,13 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
     const [showSticky, setShowSticky] = useState(false);
     const lastScrollY = useRef(0);
 
+    const region = regionDetails?.id;
+    const region_name = regionDetails?.title;
+
+     // show only first 6 cards initially (2 rows in lg:grid-cols-3)
+    const visibleCountries = showAll
+        ? countries
+        : countries.slice(0, 6);
 
 
     const divRef = useRef<HTMLDivElement | null>(null);
@@ -71,7 +88,6 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
 
 
 
-
     // Fetch packages
     const fetchPackages = async () => {
         if (!hasMore) return;
@@ -80,7 +96,7 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
             setLoading(true);
 
             const res = await apiService.get<PackagesResponse>(
-                `/packages?type=region&slug=${slug}&take=${TAKE}&skip=${skip}`
+                `/packages?type=region&slug=${slug}&take=${TAKE}&skip=${skip}&signature=1`
             );
 
             if (res.packages.length < TAKE) {
@@ -97,10 +113,32 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
         }
     };
 
+
+    // Fetch countries
+    const fetchCountries = async () => {
+
+        try {
+            setLoading(true);
+
+            const res = await apiService.get<CountryResponse[]>(
+                `/countries?region_id=${region}`
+            );
+            setCountries(res);
+        } catch (error) {
+            console.error("Countries API error:", error);
+
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
     // Initial Load
     useEffect(() => {
         fetchPackages();
+        fetchCountries();
     }, []);
+
 
     // Infinite Scroll Observer
     const handleObserver = useCallback(
@@ -128,7 +166,6 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
 
         return () => observer.disconnect();
     }, [handleObserver]);
-
 
     return (
 
@@ -290,6 +327,41 @@ px-4 sm:px-0 text-center">
                     </div>
                 </div>
             </section> */}
+            <section id="countires" className="relative pt-20  xl:pt-20  pb-4 overflow-hidden bg-white ">
+                <div className="max-w-[1300px] mx-auto">
+                    <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
+                        <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">More Destinations<br />
+                            in {region_name} </h3></div>
+                        <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
+                        <div className="w-full md:w-[200px]"><p>Discover exceptional destinations curated for unforgettable experiences.</p></div>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-5 lg:gap-5 mt-2 lg:mt-2">
+
+                        {visibleCountries.map((item) => (
+                            <DestinationCardForRegion
+                                key={item.id}
+                                country={item}
+                            />
+                        ))}
+                    </div>
+                    {/* View More Button */}
+                    {countries.length > 6 && (
+                        <div className="flex justify-center mt-6">
+                            <button
+                                onClick={() => setShowAll(!showAll)}
+                                className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer"
+                            >
+                                {showAll ? "View Less Journeys" : "View More Journeys"}
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Loader Trigger */}
+                    <div ref={observerRef} className=" flex justify-center mt-2">
+                        {loading && <Loader />}
+                    </div>
+                </div>
+            </section>
             {/* insights */}
             <div id="inspirations" className="scroll-mt-16">
                 <Insights filterRegionId={regionDetails?.id} />
