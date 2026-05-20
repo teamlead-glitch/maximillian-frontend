@@ -42,13 +42,13 @@ export default function MegaMenu({
     try {
 
 
-      // const res = await apiService.get<IndiaOnlyData[]>(
-      //   `/tags?taggroup_id=3`
-      // );
+      const res = await apiService.get<IndiaOnlyData[]>(
+        `/tags?taggroup_id=3`
+      );
 
 
 
-      // setData(res);
+      setData(res);
 
     } catch (error) {
       console.error("details fetch API error:", error);
