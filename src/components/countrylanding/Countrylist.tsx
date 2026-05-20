@@ -240,7 +240,7 @@ px-4 sm:px-0 text-center">
 
                     </div>
                      {/* View More Button */}
-                    {visibleCountries.length > 6 && (
+                    {nonSignaturePackages.length >6 && (
                         <div className="flex justify-center mt-6">
                             <button
                                 onClick={() => setShowAll(!showAll)}
