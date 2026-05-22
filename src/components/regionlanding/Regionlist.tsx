@@ -354,7 +354,7 @@ px-4 sm:px-0 text-center">
                                     onClick={() => setShowAll(!showAll)}
                                     className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer"
                                 >
-                                    {showAll ? "View Less Journeys" : "View More Journeys"}
+                                    {showAll ? "View Less Destinations" : "View More Destinations"}
                                 </button>
                             </div>
                         )}

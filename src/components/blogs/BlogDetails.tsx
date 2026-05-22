@@ -12,6 +12,7 @@ import Link from "next/link";
 
 export default function Blogdetails({ details }: { details: BlogDetailType }) {
     const [shareUrl, setShareUrl] = useState("");
+    const [copied, setCopied] = useState(false);
 
     // Get current page URL safely
     useEffect(() => {
@@ -20,6 +21,15 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
         }
     }, []);
 
+    const copyLink = async () => {
+        await navigator.clipboard.writeText(shareUrl);
+
+        setCopied(true);
+
+        setTimeout(() => {
+            setCopied(false);
+        }, 2000);
+    };
 
 
     const title = details?.title ?? "";
@@ -58,6 +68,10 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
 
     const shareLinks = [
+        {
+            icon: "/images/copy_blog.svg",
+            name: "Copy Link",
+        },
         {
             icon: "/images/facebook.svg",
             url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
@@ -317,23 +331,68 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
                                 <p className="mt-2"><span className="text-sm">{published_date}</span></p></div>
                             <div className="w-full flex items-center md:items-end">
-                                <div className=" w-full flex justify-center md:justify-end  gap-4 mt-5 md:mt-0">
-                                    {shareLinks.map((link, index) => (
-                                        <a
-                                            key={index} href={link.url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            aria-label={link.name}
-                                            className="hover:scale-110 transition"
-                                        >
-                                            <Image
-                                                src={link.icon}
-                                                alt={link.name}
-                                                width={24}
-                                                height={24}
-                                            />
-                                        </a>
-                                    ))}
+                                <div className="w-full flex justify-center md:justify-end gap-4 mt-5 md:mt-0">
+                                    {shareLinks.map((link, index) =>
+                                        link.name === "Copy Link" ? (
+                                            <button
+                                                key={index}
+                                                onClick={copyLink}
+                                                aria-label={link.name}
+                                                className="group relative hover:scale-110 transition cursor-pointer"
+                                            >
+                                                <Image
+                                                    src={link.icon}
+                                                    alt={link.name}
+                                                    width={24}
+                                                    height={24}
+                                                />
+                                                {/* Show on hover */}
+                                                {!copied && (
+                                                    <span
+                                                        className="
+        absolute top-full left-1/2 -translate-x-1/2 mt-1
+        text-xs whitespace-nowrap text-gray-600
+        opacity-0 group-hover:opacity-100
+        transition-opacity
+      "
+                                                    >
+                                                        Copy Link
+                                                    </span>
+                                                )}
+
+                                                {/* Show after click */}
+                                                {copied && (
+                                                    <span
+                                                        className="
+        absolute top-full left-1/2 -translate-x-1/2 mt-1
+        text-xs whitespace-nowrap text-green-600
+      "
+                                                    >
+                                                        Link Copied!
+                                                    </span>
+                                                )}
+
+                                            </button>
+
+
+                                        ) : (
+                                            <a
+                                                key={index}
+                                                href={link.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                aria-label={link.name}
+                                                className="hover:scale-110 transition"
+                                            >
+                                                <Image
+                                                    src={link.icon}
+                                                    alt={link.name}
+                                                    width={24}
+                                                    height={24}
+                                                />
+                                            </a>
+                                        )
+                                    )}
                                 </div>
                             </div>
 
