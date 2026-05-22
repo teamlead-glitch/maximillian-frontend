@@ -28,7 +28,7 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
 
     const [showAll, setShowAll] = useState(false);
 
-   
+
 
 
 
@@ -47,7 +47,7 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
     const region = regionDetails?.id;
     const region_name = regionDetails?.title;
 
-     // show only first 6 cards initially (2 rows in lg:grid-cols-3)
+    // show only first 6 cards initially (2 rows in lg:grid-cols-3)
     const visibleCountries = showAll
         ? countries
         : countries.slice(0, 6);
@@ -327,39 +327,44 @@ px-4 sm:px-0 text-center">
                     </div>
                 </div>
             </section> */}
-            <section id="countires" className="relative pt-20  xl:pt-20  pb-4 overflow-hidden bg-white ">
-                <div className="max-w-[1300px] mx-auto">
-                    <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
-                        <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">More Destinations<br />
-                            in {region_name} </h3></div>
+            <section className="relative pt-10  xl:pt-10  pb-8 overflow-hidden bg-white ">
+                <div className="max-w-[1300px] flex mx-auto  px-5">
+                    <div className="flex flex-col w-full justify-center">
+                        <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
+                        <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">More <br />
+                            Destinations in {region_name}</h3></div>
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                         <div className="w-full md:w-[200px]"><p>Discover exceptional destinations curated for unforgettable experiences.</p></div>
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-5 lg:gap-5 mt-2 lg:mt-2">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-5 lg:gap-5 mt-2 lg:mt-2">
 
-                        {visibleCountries.map((item) => (
-                            <DestinationCardForRegion
-                                key={item.id}
-                                country={item}
-                            />
-                        ))}
-                    </div>
-                    {/* View More Button */}
-                    {countries.length > 6 && (
-                        <div className="flex justify-center mt-6">
-                            <button
-                                onClick={() => setShowAll(!showAll)}
-                                className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer"
-                            >
-                                {showAll ? "View Less Journeys" : "View More Journeys"}
-                            </button>
+                            {visibleCountries.map((item) => (
+                                <DestinationCardForRegion
+                                    key={item.id}
+                                    country={item}
+                                />
+                            ))}
+
+
                         </div>
-                    )}
+                        {/* View More Button */}
+                        {countries.length > 6 && (
+                            <div className="flex justify-center mt-6">
+                                <button
+                                    onClick={() => setShowAll(!showAll)}
+                                    className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer"
+                                >
+                                    {showAll ? "View Less Journeys" : "View More Journeys"}
+                                </button>
+                            </div>
+                        )}
 
-                    {/* Loader Trigger */}
-                    <div ref={observerRef} className=" flex justify-center mt-2">
-                        {loading && <Loader />}
+                        {/* Loader Trigger */}
+                        <div ref={observerRef} className=" flex justify-center mt-2">
+                            {loading && <Loader />}
+                        </div>
                     </div>
+
                 </div>
             </section>
             {/* insights */}
