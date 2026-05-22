@@ -23,12 +23,11 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
     const copyLink = async () => {
         await navigator.clipboard.writeText(shareUrl);
-
-        setCopied(true);
-
         setTimeout(() => {
             setCopied(false);
-        }, 2000);
+        }, 5000);
+        setCopied(true);
+
     };
 
 
@@ -69,7 +68,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
     const shareLinks = [
         {
-            icon: "/images/copy_blog.svg",
+            icon: "/images/copy_link.svg",
             name: "Copy Link",
         },
         {
@@ -346,26 +345,14 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                                                     width={24}
                                                     height={24}
                                                 />
-                                                {/* Show on hover */}
-                                                {!copied && (
-                                                    <span
-                                                        className="
-        absolute top-full left-1/2 -translate-x-1/2 mt-1
-        text-xs whitespace-nowrap text-gray-600
-        opacity-0 group-hover:opacity-100
-        transition-opacity
-      "
-                                                    >
-                                                        Copy Link
-                                                    </span>
-                                                )}
 
                                                 {/* Show after click */}
                                                 {copied && (
                                                     <span
                                                         className="
         absolute top-full left-1/2 -translate-x-1/2 mt-1
-        text-xs whitespace-nowrap text-green-600
+        text-xs whitespace-nowrap  text-gray-800
+
       "
                                                     >
                                                         Link Copied!
