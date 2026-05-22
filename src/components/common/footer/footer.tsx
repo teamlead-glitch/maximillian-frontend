@@ -75,7 +75,7 @@ export default function Footer({
                         <div className="border-0 md:border-r border-gray-200 mb-0">
                             <div className="grid grid-cols-1 lg:grid-cols-2">
 
-                                 <div className="div mb-0">
+                                <div className="div mb-0">
                                     {/* Experience */}
                                     <div>
                                         <div
@@ -133,11 +133,11 @@ export default function Footer({
                                     </div>
                                 </div>
 
-                               
-                               
 
-                                 {/* REGIONS */}
-                                <div className="div mb-0">
+
+
+                                {/* REGIONS */}
+                                <div className="lg:col-span-2 mb-0">
                                     <div>
                                         <div
                                             className="flex justify-between cursor-pointer md:cursor-default mt-0 md:mt-6"
@@ -150,7 +150,7 @@ export default function Footer({
                                         </div>
 
                                         <ul
-                                            className={`text-body font-medium ${openSection === "regions" ? "block" : "hidden md:block"
+                                            className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 mb-5 text-body font-medium ${openSection === "regions" ? "block" : "hidden md:grid"
                                                 }`}
                                         >
                                             {regions.map((reg) => (
