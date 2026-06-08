@@ -150,7 +150,7 @@ export default function Footer({
                                         </div>
 
                                         <ul
-                                            className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 mb-5 text-body font-medium ${openSection === "regions" ? "block" : "hidden md:grid"
+                                            className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2 mb-5 text-body font-medium ${openSection === "regions" ? "grid" : "hidden md:grid"
                                                 }`}
                                         >
                                             {regions.map((reg) => (
