@@ -195,7 +195,7 @@ px-4 sm:px-0 text-center">
                     </div>
 
                     {/* Loader Trigger */}
-                    <div ref={observerRef} className="h-10 flex justify-center mt-10">
+                    <div ref={observerRef} className="flex h-0 justify-center mt-0 md:h-10 md:mt-10">
                         {loading && <Loader />}
                     </div>
 
@@ -241,10 +241,10 @@ px-4 sm:px-0 text-center">
                     </div>
                      {/* View More Button */}
                     {nonSignaturePackages.length >6 && (
-                        <div className="flex justify-center mt-6">
+                        <div className="flex justify-center mt-2 md:mt-6">
                             <button
                                 onClick={() => setShowAll(!showAll)}
-                                className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-3 cursor-pointer"
+                                className="group flex items-center font-my-font-semibold text-black text-sm sm:text-base justify-center py-3 mt-0 md:mt-3 cursor-pointer"
                             >
                                 {showAll ? "View Less Journeys" : "View More Journeys"}
                             </button>
@@ -252,7 +252,7 @@ px-4 sm:px-0 text-center">
                     )}
 
                     {/* Loader Trigger */}
-                    <div ref={observerRef} className="h-10 flex justify-center mt-10">
+                    <div ref={observerRef} className="flex h-0 justify-center mt-0 md:h-10 md:mt-10">
                         {loading && <Loader />}
                     </div>
 

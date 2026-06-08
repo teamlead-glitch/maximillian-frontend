@@ -45,7 +45,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
 
     return (
         <>
-            <section className=" w-full bg-white mb-10 lg:mb-20">
+            <section className=" w-full bg-white mb-4 md:mb-10 lg:mb-20">
                 <div className="max-w-[1300px]  mx-auto px-5">
 
 
@@ -107,7 +107,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                     </div>
 
                 </div>
-                <div className="w-full lg:w-1/2 px-5 md:px-20  lg:px-20 xl:px-30 2xl:40 h-full mt-15   lg:mt-0">
+                <div className="w-full lg:w-1/2 px-5 md:px-20  lg:px-20 xl:px-30 2xl:40 h-full mt-5 md:mt-15 lg:mt-0">
 
 
 
@@ -135,7 +135,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                                 {/* <p className="text-white line-clamp-3"> */}
 
 
-                                <p className="line-clamp-3 md:line-clamp-2 xl:line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
+                                <p className="line-clamp-1 md:line-clamp-2 xl:line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
 
                                     {data[1]?.short_description}
 
@@ -176,7 +176,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                                     {data[2]?.title}
                                 </h4>
 
-                                <p className="line-clamp-3 md:line-clamp-2 xl:line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
+                                <p className="line-clamp-1 md:line-clamp-2 xl:line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
                                     {data[2]?.short_description}
                                 </p>
 
@@ -215,7 +215,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                                     {data[3]?.title}
                                 </h4>
 
-                                <p className=" line-clamp-3 md:line-clamp-2 xl:line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
+                                <p className=" line-clamp-1 md:line-clamp-2 xl:line-clamp-3 text-white   md:text-(--color-secondary)   group-hover:text-white">
                                     {data[3]?.short_description}
                                 </p>
 
