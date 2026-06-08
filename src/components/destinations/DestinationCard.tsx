@@ -22,7 +22,15 @@ export default function DestinationCard({ destination }: Props) {
         {/* 📱 Mobile only text over image */}
         <div className="absolute inset-x-0 bottom-0 md:hidden">
           <div className="bg-gradient-to-t from-black/80 via-black/40 to-transparent  px-3 py-3">
-            <p className="text-white line-clamp-2 pb-0 text-xs mb-0">
+            <p
+              className="text-white text-sm leading-snug overflow-hidden pb-0 mb-0"
+              style={{
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 2,
+                maxHeight: "2.8em",
+              }}
+            >
               {destination.short_description}
             </p>
           </div>
@@ -46,9 +54,19 @@ export default function DestinationCard({ destination }: Props) {
           {destination.title}
         </h3>
 
-        <p className="hidden md:block text-xs text-gray-600 mt-2 line-clamp-2">
-          {destination.short_description}
-        </p>
+        <div className="hidden md:block">
+          <p
+            className="text-base text-gray-600 mt-2 leading-snug overflow-hidden"
+            style={{
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: 2,
+              maxHeight: "2.8em",
+            }}
+          >
+            {destination.short_description}
+          </p>
+        </div>
       </div>
     </Link>
   );
