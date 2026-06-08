@@ -336,7 +336,7 @@ px-4 sm:px-0 text-center">
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                         <div className="w-full md:w-[200px]"><p>Discover exceptional destinations curated for unforgettable experiences.</p></div>
                     </div>
-                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-5 lg:gap-5 mt-2 lg:mt-2">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-5 lg:gap-5 mt-2 lg:mt-2">
 
                             {visibleCountries.map((item) => (
                                 <DestinationCardForRegion
