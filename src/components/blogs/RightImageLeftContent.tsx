@@ -7,9 +7,9 @@ export default function RightLeftContent({ description, image }: { description: 
 
     return (
         <section className="bg-white ">
-            <div className="w-full">
+            <div className="w-full flex flex-col-reverse md:block">
 
-                {image && <div className="float-none md:float-right w-[300px] h-[300px] md:ml-20 mb-10 relative">
+                {image && <div className="float-none md:float-right w-full max-w-[300px] aspect-square mx-auto md:mx-0 md:ml-20 mt-1 md:mt-0 mb-12 md:mb-10 relative">
                     <Image
                         src={image}
                         alt=""
