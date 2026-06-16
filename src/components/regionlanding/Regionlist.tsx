@@ -18,6 +18,7 @@ import DestinationCardForRegion from "./DesinationCardForRegion";
 import { CountryResponse } from "@/types/countryType";
 
 const TAKE = 15;
+const INITIAL_COUNTRY_COUNT = 10;
 
 
 export default function Regionlist({ slug, regionDetails }: { slug: string; regionDetails: Region | null }) {
@@ -47,10 +48,10 @@ export default function Regionlist({ slug, regionDetails }: { slug: string; regi
     const region = regionDetails?.id;
     const region_name = regionDetails?.title;
 
-    // show only first 6 cards initially (2 rows in lg:grid-cols-3)
+    // Show two full rows on the lg 5-column grid.
     const visibleCountries = showAll
         ? countries
-        : countries.slice(0, 6);
+        : countries.slice(0, INITIAL_COUNTRY_COUNT);
 
 
     const divRef = useRef<HTMLDivElement | null>(null);
@@ -348,7 +349,7 @@ px-4 sm:px-0 text-center">
 
                         </div>
                         {/* View More Button */}
-                        {countries.length > 6 && (
+                        {countries.length > INITIAL_COUNTRY_COUNT && (
                             <div className="flex justify-center mt-6">
                                 <button
                                     onClick={() => setShowAll(!showAll)}
