@@ -399,9 +399,15 @@ export default function Footer({
             {/* SECOND FOOTER */}
             < footer className="bg-[#C43131] py-4 md:py-6 px-5 md:px-10 text-center" >
                 <img src="/images/logo-footer.svg" className="mx-auto w-40" />
-                <p className="text-white text-xs mt-5 mb-0 ">
-
-                    A premium travel brand owned by Maximilian Holidays Private Limited.
+                <p className="text-white text-xs mt-5 mb-0 leading-relaxed">
+                    <span className="block md:hidden">
+                        A Premium Travel Brand from
+                        <br />
+                        Maximilian Holidays Pvt. Ltd.
+                    </span>
+                    <span className="hidden md:inline">
+                        A premium travel brand owned by Maximilian Holidays Private Limited.
+                    </span>
                 </p>
             </footer >
         </>
