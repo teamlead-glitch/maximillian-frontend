@@ -406,7 +406,7 @@ export default function Footer({
                         Maximilian Holidays Pvt. Ltd.
                     </span>
                     <span className="hidden md:inline">
-                        A premium travel brand owned by Maximilian Holidays Private Limited.
+                        A Premium Travel Brand from Maximilian Holidays Pvt. Ltd.
                     </span>
                 </p>
             </footer >
