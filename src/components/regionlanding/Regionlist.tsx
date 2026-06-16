@@ -309,7 +309,7 @@ px-4 sm:px-0 text-center">
 
 
 
-            <div className="content px-5 text-center md:px-0 md:text-left" dangerouslySetInnerHTML={{ __html: regionDetails?.what_makes_us_exceptional || "" }}></div>
+            <div className="content px-10 text-center md:px-0 md:text-left" dangerouslySetInnerHTML={{ __html: regionDetails?.what_makes_us_exceptional || "" }}></div>
             {/* <section className="bg-white py-10">
                 <div className="max-w-[1300px] flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mx-auto  px-5  ">
                     <div className="inline-block]">
