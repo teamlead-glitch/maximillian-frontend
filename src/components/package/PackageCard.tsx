@@ -43,7 +43,7 @@ export default function PackageCard({ details }: { details: PackageItem }) {
             >
 
               {/* Days */}
-              <p className="text-white text-lg text-center">
+              <p className="text-white text-base md:text-lg text-center">
                 {details.days} Days
               </p>
 
@@ -91,7 +91,7 @@ export default function PackageCard({ details }: { details: PackageItem }) {
       <div className="px-0 md:px-5 py-5">
 
         {/* Countries */}
-        <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1">
+        <ul className="flex flex-wrap justify-center items-center text-sm gap-2 mt-1 mb-2">
           {details.countries.map((country, index) => (
             <Link href={`/${country.slug}`} key={country.id}>
               <li
@@ -108,7 +108,7 @@ export default function PackageCard({ details }: { details: PackageItem }) {
 
         {/* Title */}
         <Link href={`/${details.slug}`}>
-          <h4 className="text-(--color-secondary) font-my-font-semibold text-sm md:text-xl text-center  line-clamp-2">
+          <h4 className="text-(--color-secondary) font-my-font-semibold text-xl md:text-xl text-center leading-snug line-clamp-2">
             {details.title}
           </h4>
         </Link>
