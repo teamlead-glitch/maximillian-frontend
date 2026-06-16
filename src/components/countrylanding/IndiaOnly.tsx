@@ -45,7 +45,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
 
     return (
         <>
-            <section className=" w-full bg-white mb-4 md:mb-10 lg:mb-20">
+            <section className=" w-full bg-white mb-4 md:mb-10 lg:mb-0">
                 <div className="max-w-[1300px]  mx-auto px-5">
 
 
@@ -61,7 +61,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                     </div></div></section>
 
 
-            <div className="w-full py-10 pt-0  md:py-20 mx-auto flex  flex-col lg:flex-row justify-between items-center bg-white">
+            <div className="w-full py-10 pt-0 md:pt-10 md:pb-20 lg:pt-20 mx-auto flex  flex-col lg:flex-row justify-between items-center bg-white">
                 <div className=" w-full lg:w-1/2 aspect-square relative group overflow-hidden">
 
                     {data[0]?.image && <img
