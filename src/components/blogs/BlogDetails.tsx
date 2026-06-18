@@ -34,6 +34,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
     const title = details?.title ?? "";
     const banner_image = details?.banner_image ?? "";
     const mobile_banner_image = details?.banner_mob_image ?? banner_image;
+    const seo_og_image = details?.seoDetail?.og_image ?? "";
     const description = details?.description ?? "";
     const second_descrption = details?.second_description ?? "";
     const image = details?.image ?? "";
@@ -159,6 +160,16 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                     </div>
                 </div >
                 <div className="py-3 md:py-6 aspect-[4/2.5] md:aspect-[4/1.5] relative">
+
+                    {seo_og_image && (
+                        <Image
+                            src={seo_og_image}
+                            alt={title}
+                            fill
+                            className="hidden object-cover w-full h-full"
+                            
+                        />
+                    )}
 
                     {/* MOBILE IMAGE */}
                     {mobile_banner_image && (
