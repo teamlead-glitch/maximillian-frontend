@@ -197,7 +197,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
             </section >
 
             <section className="relative py-5 overflow-hidden bg-white">
-                <div className="max-w-[1200px]  mx-auto  px-5 md:px-10">
+                <div className="max-w-[1200px]  mx-auto  px-5 md:px-3">
 
                     <div className="w-full py-4 flex justify-center"> <ul className="flex  flex-wrap justify-center  items-center  pb-10">
 
