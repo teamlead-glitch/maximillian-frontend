@@ -50,7 +50,7 @@ export default function Footer({
                                 ].map((item) => (
                                     <li
                                         key={item.label}
-                                        className="mb-4 text-2xl md:text-3xl lg:text-4xl font-my-font-regular text-(--color-secondary)"
+                                        className="mb-4 text-2xl md:text-2xl lg:text-2xl font-my-font-regular text-(--color-secondary)"
                                     >
                                         <Link
                                             href={item.href}
