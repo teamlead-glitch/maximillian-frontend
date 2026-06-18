@@ -60,4 +60,7 @@ export interface Settings {
   youtube_url: string | null;
   linked_in: string | null;
   insta_url: string | null;
+  banner_media_type?: string | number | null;
+  banner_video_url?: string | null;
+  banner_image_path?: string | null;
 }

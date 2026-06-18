@@ -2,7 +2,9 @@ import HomePage from "@/components/home/HomePage";
 import { generateSeoMetadata } from "@/lib/seo";
 import { PAGE_SLUGS } from "@/constants/pageSlugs";
 import { fetchPageBySlug } from "@/lib/page-api";
-import { PageResponse } from "@/types/pagesTypes";
+import { getSettings } from "@/lib/server-fetchs";
+import type { Settings } from "@/types/commonTypes";
+import type { PageResponse } from "@/types/pagesTypes";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -16,7 +18,10 @@ export const generateMetadata = async () => {
 
 export default async function Home() {
   // ✅ Fetch data on server
-  const page: PageResponse | null = await fetchPageBySlug(slug);
+  const [page, settings]: [PageResponse | null, Settings] = await Promise.all([
+    fetchPageBySlug(slug),
+    getSettings(),
+  ]);
 
   if (!page) {
     notFound();
@@ -35,7 +40,7 @@ export default async function Home() {
       )}
 
       {/* ✅ Pass data to HomePage */}
-      <HomePage page={page} />
+      <HomePage page={page} settings={settings} />
     </>
   );
 }

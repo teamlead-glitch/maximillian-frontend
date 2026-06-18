@@ -12,17 +12,20 @@ import WhatMakeExc from "./WhatMakeExc";
 import Insights from "./Insights";
 import BespokeJourney from "./BespokeJourney";
 import LogoCarousel from "./LogoCarousel";
-import { PageResponse } from "@/types/pagesTypes";
+import type { Settings } from "@/types/commonTypes";
+import type { PageResponse } from "@/types/pagesTypes";
 export default function HomePage({
-  page
+  page,
+  settings,
 }: {
-  page: PageResponse
+  page: PageResponse;
+  settings: Settings;
 }) {
 
     return (
 
         <>
-            <BannerSection />
+            <BannerSection settings={settings} />
             <AboutSection page={ page }/>
             <SignatureJourney />
             <ExperienceTour />
