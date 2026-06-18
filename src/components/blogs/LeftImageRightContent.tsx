@@ -1,15 +1,27 @@
 "use client";
-import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function LeftRightContent({ description, image }: { description: string; image: string }) {
+type LeftRightContentProps = {
+    description: string;
+    image: string;
+    overviewImageSizePx?: number | string | null;
+};
+
+const getImageMaxWidth = (overviewImageSizePx?: number | string | null) => {
+    const size = Number.parseInt(String(overviewImageSizePx ?? ""), 10);
+
+    return Number.isFinite(size) && size > 0 ? `${size}px` : "300px";
+};
+
+export default function LeftRightContent({ description, image, overviewImageSizePx }: LeftRightContentProps) {
+    const imageMaxWidth = getImageMaxWidth(overviewImageSizePx);
 
 
     return (
         <section className="bg-white ">
             <div className="w-full">
 
-                {image && <div className="float-none md:float-left w-full max-w-[300px] aspect-square mx-auto md:mx-0 md:mr-20 mt-1 md:mt-0 mb-12 md:mb-10 relative">
+                {image && <div className="float-none md:float-left w-full aspect-square mx-auto md:mx-0 md:mr-20 mt-1 md:mt-0 mb-12 md:mb-10 relative" style={{ maxWidth: imageMaxWidth }}>
                     <Image
                         src={image}
                         alt=""
