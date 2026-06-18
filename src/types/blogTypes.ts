@@ -54,6 +54,8 @@ export type BlogDetailType = {
   overview_2?: string;
   overview_3?: string;
   overview_image_size_px?: number | string | null;
+  overview_image_size_2_px?: number | string | null;
+  overview_image_size_3_px?: number | string | null;
   position_1?: boolean;
   position_2?: boolean;
   position_3?: boolean;
