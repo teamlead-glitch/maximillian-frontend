@@ -35,7 +35,7 @@ export default function BackToTop() {
             {isVisible && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 z-50 
+                    className="fixed bottom-15 right-8 z-50 
             bg-[#C43131] hover:bg-[#a02828] 
             text-white 
             w-12 h-12 

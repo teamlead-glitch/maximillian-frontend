@@ -401,12 +401,12 @@ export default function Footer({
                 <img src="/images/logo-footer.svg" className="mx-auto w-40" />
                 <p className="text-white text-xs mt-5 mb-0 leading-relaxed">
                     <span className="block md:hidden">
-                        A Premium Travel Brand from
+                        A Premium Travel Brand owned & operated by
                         <br />
                         Maximilian Holidays Pvt. Ltd.
                     </span>
                     <span className="hidden md:inline">
-                        A Premium Travel Brand from Maximilian Holidays Pvt. Ltd.
+                        A Premium Travel Brand owned & operated by Maximilian Holidays Pvt. Ltd.
                     </span>
                 </p>
             </footer >
