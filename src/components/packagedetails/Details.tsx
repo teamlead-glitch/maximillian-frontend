@@ -61,6 +61,7 @@ export default function Details({ details }: { details: PackageResponse }) {
 
     const banner_image = details?.banner_image;
     const title = details?.title ?? "";
+    const seo_og_image = details?.seoDetail?.og_image ?? "";
     const package_tagline = details?.package_tagline ?? "";
     const season = details?.season?.split(",") ?? "";
     const duration = details?.duration_text ?? "";
@@ -207,6 +208,15 @@ export default function Details({ details }: { details: PackageResponse }) {
         <>
             <section className="relative  overflow-hidden bg-white">
                 <div className="w-full relative  aspect-[1/1]   lg:aspect-[16/5.5]">
+                    {seo_og_image && (
+                        <Image
+                            src={seo_og_image}
+                            alt={title}
+                            fill
+                            className="hidden object-cover w-full h-full"
+                        />
+                    )}
+
                     {/* MOBILE IMAGE */}
                     {mobile_banner_image && (
                         <Image
