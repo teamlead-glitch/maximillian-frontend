@@ -245,7 +245,7 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                 <div className="max-w-[1000px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5 items-center">
                         <div className="pr-0 md:pr-15 xl:pr-36">
-                            <h2 className="mb-10 font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) ">What makes our India journeys exceptional?</h2>
+                            <h2 className="mb-10 font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) ">What makes our India Journeys Exceptional?</h2>
                             
                             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut. Aenean ultrices convallis sagittis. Nullam posuere, tortor a fringilla condimentum, dui justo facilisis sem, ac varius dolor leo ac ex.</p> */}
                             <p className="content" dangerouslySetInnerHTML={{ __html: what_makes_us_exceptional }}></p>
