@@ -241,18 +241,19 @@ export default function IndiaOnly({ what_makes_us_exceptional }: { what_makes_us
                     </div>
                 </div>
             </div>
-            {what_makes_us_exceptional && <section className="relative  py-10 md:pt-20 md:pb-10   xl:pt-30 xl:pb-15 px-5 overflow-hidden bg-white">
+            {what_makes_us_exceptional && <section className="relative  py-10 md:pt-12 md:pb-10   xl:pt-15 xl:pb-15 px-5 overflow-hidden bg-white">
                 <div className="max-w-[1000px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5 items-center">
                         <div className="pr-0 md:pr-15 xl:pr-36">
-                            <h3 className="font-my-font-regular text-break text-4xl xl:text-5xl  text-(--color-secondary) mb-5 ">What makes our India journeys exceptional?</h3>
+                            <h2 className="mb-10 font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) ">What makes our India journeys exceptional?</h2>
+                            
                             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet malesuada est, id laoreet mi mattis ut. Aenean ultrices convallis sagittis. Nullam posuere, tortor a fringilla condimentum, dui justo facilisis sem, ac varius dolor leo ac ex.</p> */}
                             <p className="content" dangerouslySetInnerHTML={{ __html: what_makes_us_exceptional }}></p>
 
                         </div>
                         <div className="pl-0 md:pl-10">
                             <div className="aspect-[2/3]">
-                                <img src="../../images/region_landing_sideimg2.webp" alt="" className="w-full h-full object-cover rounded-md" />
+                                <img src="../../images/region_landing_sideimg2.webp" alt="" className="w-full h-full object-cover rounded-md mt-0 lg:mt-30" />
                             </div>
                         </div>
                     </div>
