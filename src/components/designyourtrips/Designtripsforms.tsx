@@ -774,36 +774,36 @@ hover:before:translate-x-full hover:text-white
 
 
             <section className="relative py-16 md:py-28 overflow-hidden bg-white z-10">
-                <div className="max-w-[1300px] flex mx-auto  px-5  ">
-                    <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 items-center justify-center md:justify-between">
+                <div className="max-w-[1300px] flex mx-auto  px-10  ">
+                    <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-4 items-center justify-center md:justify-between">
 
-                        <div className="w-full flex justify-start md:justify-center items-center gap-4 md:gap-5 md:border-r md:border-gray-400 md:pr-4">
+                        <div className="w-full flex justify-start md:justify-center items-center gap-6 md:gap-5 md:border-r md:border-gray-400 md:pr-4">
 
-                            <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 flex items-center justify-center">
-                                <img src="images/custom-journey-icon.png" alt="" className="w-9 md:w-11 h-auto" />
+                            <div className="w-16 h-16 md:w-14 md:h-14 shrink-0 flex items-center justify-center">
+                                <img src="images/custom-journey-icon.png" alt="" className="w-14 h-14 md:w-11 md:h-11 object-contain" />
                             </div>
-                            <p className="font-my-font-semibold text-base md:text-lg leading-snug mb-0">
-                                Custom journeys, <br className="hidden md:block" /> no templates
+                            <p className="font-my-font-semibold text-lg md:text-lg leading-snug mb-0">
+                                Custom journeys, <br /> no templates
                             </p>
                         </div>
 
-                        <div className="w-full flex justify-start md:justify-center items-center gap-4 md:gap-5 md:border-r md:border-gray-400 md:pr-4">
+                        <div className="w-full flex justify-start md:justify-center items-center gap-6 md:gap-5 md:border-r md:border-gray-400 md:pr-4">
 
-                            <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 flex items-center justify-center -ml-1 md:ml-0">
-                                <img src="images/multi-country.png" alt="" className="w-9 md:w-11 h-auto" />
+                            <div className="w-16 h-16 md:w-14 md:h-14 shrink-0 flex items-center justify-center">
+                                <img src="images/multi-country.png" alt="" className="w-14 h-14 md:w-11 md:h-11 object-contain" />
                             </div>
-                            <p className="font-my-font-semibold text-base md:text-lg leading-snug mb-0">
-                                Multi-country  <br className="hidden md:block" /> planning specialists
+                            <p className="font-my-font-semibold text-lg md:text-lg leading-snug mb-0">
+                                Multi-country <br /> planning specialists
                             </p>
                         </div>
 
-                        <div className="w-full flex justify-start md:justify-center items-center gap-4 md:gap-5">
+                        <div className="w-full flex justify-start md:justify-center items-center gap-6 md:gap-5">
 
-                            <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 flex items-center justify-center">
-                                <img src="images/your-review.png" alt="" className="w-9 md:w-11 h-auto" />
+                            <div className="w-16 h-16 md:w-14 md:h-14 shrink-0 flex items-center justify-center">
+                                <img src="images/your-review.png" alt="" className="w-14 h-14 md:w-11 md:h-11 object-contain" />
                             </div>
-                            <p className="font-my-font-semibold text-base md:text-lg leading-snug mb-0">
-                                You review before  <br className="hidden md:block" /> you commit.
+                            <p className="font-my-font-semibold text-lg md:text-lg leading-snug mb-0">
+                                You review before <br /> you commit.
                             </p>
                         </div>
                     </div>
