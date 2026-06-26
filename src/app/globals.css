@@ -248,6 +248,24 @@ body {
   }
 }
 
+.what-makes-exceptional > section > div:first-child {
+  justify-content: flex-start !important;
+}
+
+.what-makes-exceptional > section > div:first-child > div {
+  display: block !important;
+  width: 100% !important;
+  text-align: left !important;
+}
+
+.what-makes-exceptional h1,
+.what-makes-exceptional h2,
+.what-makes-exceptional h3,
+.what-makes-exceptional h4,
+.what-makes-exceptional h5 {
+  text-align: left !important;
+}
+
 .insights-swiper::after {
   content: "";
   position: absolute;

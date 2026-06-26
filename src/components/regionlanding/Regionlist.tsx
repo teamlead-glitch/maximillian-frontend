@@ -255,7 +255,7 @@ px-4 sm:px-0 text-center">
                 </div>
             </section>
 
-            {packages.length > 0 && <section id="journeys" className="relative py-10  md:py-15 px-5  bg-white scroll-mt-16">
+            {packages.length > 0 && <section id="journeys" className="relative pt-10 pb-5 md:pt-15 md:pb-8 px-5  bg-white scroll-mt-16">
                 <div className="max-w-[1000px] mx-auto">
                     <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
                         <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">Our <br />
@@ -309,7 +309,7 @@ px-4 sm:px-0 text-center">
 
 
 
-            <div className="content bg-white px-10 text-center md:px-0 md:text-left" dangerouslySetInnerHTML={{ __html: regionDetails?.what_makes_us_exceptional || "" }}></div>
+            <div className="content what-makes-exceptional bg-white px-5 md:px-0" dangerouslySetInnerHTML={{ __html: regionDetails?.what_makes_us_exceptional || "" }}></div>
             {/* <section className="bg-white py-10">
                 <div className="max-w-[1300px] flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mx-auto  px-5  ">
                     <div className="inline-block]">
@@ -337,7 +337,7 @@ px-4 sm:px-0 text-center">
                         <div className="w-px h-10 bg-gray-300 hidden md:block"></div>
                         <div className="w-full md:w-[200px]"><p>Discover exceptional destinations curated for unforgettable experiences.</p></div>
                     </div>
-                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-5 lg:gap-5 mt-2 lg:mt-2">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-5 lg:gap-5 mt-6 md:mt-8">
 
                             {visibleCountries.map((item) => (
                                 <DestinationCardForRegion
