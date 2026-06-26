@@ -20,7 +20,7 @@ export default function LeftRightContent({ description, image, overviewImageSize
 
     return (
         <section className="bg-white ">
-            {title && <h2 className="font-my-font-regular text-2xl md:text-3xl text-(--color-secondary) mb-6">{title}</h2>}
+            {title && <h2 className="font-my-font-regular text-2xl md:text-3xl text-(--color-secondary) mb-12">{title}</h2>}
             <div className="w-full">
 
                 {image && <div className="float-none md:float-left w-full aspect-square mx-auto md:mx-0 md:mr-20 mt-1 md:mt-0 mb-12 md:mb-10 relative" style={{ maxWidth: imageMaxWidth }}>
