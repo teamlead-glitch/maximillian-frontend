@@ -36,9 +36,12 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
     const mobile_banner_image = details?.banner_mob_image ?? banner_image;
     const seo_og_image = details?.seoDetail?.og_image ?? "";
     const description = details?.description ?? "";
+    const description_title = details?.description_title ?? "";
     const second_descrption = details?.second_description ?? "";
+    const second_description_title = details?.second_description_title ?? "";
     const image = details?.image ?? "";
     const third_descripton = details?.third_description ?? "";
+    const third_description_title = details?.third_description_title ?? "";
     const overview_1 = details?.overview_1 ?? "";
     const overview_2 = details?.overview_2 ?? "";
     const overview_image_size_px = details?.overview_image_size_px ?? 300;
@@ -225,13 +228,13 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
                         </div>
                     </div> */}
 
-                    {position_1 ? <LeftImageRightContent description={description} image={image} overviewImageSizePx={overview_image_size_px} /> : <RightImageLeftContent description={description} image={image} overviewImageSizePx={overview_image_size_px} />}
+                    {position_1 ? <LeftImageRightContent description={description} image={image} overviewImageSizePx={overview_image_size_px} title={description_title} /> : <RightImageLeftContent description={description} image={image} overviewImageSizePx={overview_image_size_px} title={description_title} />}
 
 
                     {quote && <Quotes quote={quote} />}
-                    
-                    
-                    {position_2 ? <LeftImageRightContent description={second_descrption} image={overview_1} overviewImageSizePx={overview_image_size_2_px} /> : <RightImageLeftContent description={second_descrption} image={overview_1} overviewImageSizePx={overview_image_size_2_px} />}
+
+
+                    {position_2 ? <LeftImageRightContent description={second_descrption} image={overview_1} overviewImageSizePx={overview_image_size_2_px} title={second_description_title} /> : <RightImageLeftContent description={second_descrption} image={overview_1} overviewImageSizePx={overview_image_size_2_px} title={second_description_title} />}
 
                     {/* <div className="w-full">
 
@@ -276,7 +279,7 @@ export default function Blogdetails({ details }: { details: BlogDetailType }) {
 
                     </div> */}
 
-                    {position_3 ? <LeftImageRightContent description={third_descripton} image={overview_2} overviewImageSizePx={overview_image_size_3_px} /> : <RightImageLeftContent description={third_descripton} image={overview_2} overviewImageSizePx={overview_image_size_3_px} />}
+                    {position_3 ? <LeftImageRightContent description={third_descripton} image={overview_2} overviewImageSizePx={overview_image_size_3_px} title={third_description_title} /> : <RightImageLeftContent description={third_descripton} image={overview_2} overviewImageSizePx={overview_image_size_3_px} title={third_description_title} />}
 
                     <div className="w-full py-15 justify-between grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-3 border-t border-[#bfbdbd] pt-15 items-start">
                         {details?.author ? (

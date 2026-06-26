@@ -48,8 +48,11 @@ export type BlogDetailType = {
   title: string;
 
   description: string;
+  description_title?: string | null;
   second_description: string;
+  second_description_title?: string | null;
   third_description: string;
+  third_description_title?: string | null;
   overview_1?: string;
   overview_2?: string;
   overview_3?: string;

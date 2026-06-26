@@ -790,7 +790,7 @@ hover:before:translate-x-full hover:text-white
                         <div className="w-full flex justify-start md:justify-center items-center gap-6 md:gap-5 md:border-r md:border-gray-400 md:pr-4">
 
                             <div className="w-16 h-16 md:w-14 md:h-14 shrink-0 flex items-center justify-center">
-                                <img src="images/multi-country.png" alt="" className="w-14 h-14 md:w-11 md:h-11 object-contain" />
+                                <img src="images/multi-country.png" alt="" className="w-14 h-14 md:w-11 md:h-11 object-contain mr-3 md:mr-0" />
                             </div>
                             <p className="font-my-font-semibold text-lg md:text-lg leading-snug mb-0">
                                 Multi-country <br /> planning specialists

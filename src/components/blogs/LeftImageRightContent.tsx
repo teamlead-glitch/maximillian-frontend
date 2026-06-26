@@ -5,6 +5,7 @@ type LeftRightContentProps = {
     description: string;
     image: string;
     overviewImageSizePx?: number | string | null;
+    title?: string | null;
 };
 
 const getImageMaxWidth = (overviewImageSizePx?: number | string | null) => {
@@ -13,12 +14,13 @@ const getImageMaxWidth = (overviewImageSizePx?: number | string | null) => {
     return Number.isFinite(size) && size > 0 ? `${size}px` : "300px";
 };
 
-export default function LeftRightContent({ description, image, overviewImageSizePx }: LeftRightContentProps) {
+export default function LeftRightContent({ description, image, overviewImageSizePx, title }: LeftRightContentProps) {
     const imageMaxWidth = getImageMaxWidth(overviewImageSizePx);
 
 
     return (
         <section className="bg-white ">
+            {title && <h2 className="font-my-font-regular text-2xl md:text-3xl text-(--color-secondary) mb-6">{title}</h2>}
             <div className="w-full">
 
                 {image && <div className="float-none md:float-left w-full aspect-square mx-auto md:mx-0 md:mr-20 mt-1 md:mt-0 mb-12 md:mb-10 relative" style={{ maxWidth: imageMaxWidth }}>
