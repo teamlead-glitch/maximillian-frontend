@@ -195,7 +195,7 @@ px-4 sm:px-0 text-center">
                     </div>
 
                     {/* Loader Trigger */}
-                    <div ref={observerRef} className="flex h-0 justify-center mt-0 md:h-10 md:mt-10">
+                    <div ref={observerRef} className="flex h-0 justify-center mt-0 md:h-6 md:mt-6">
                         {loading && <Loader />}
                     </div>
 
