@@ -270,6 +270,24 @@ body {
   align-items: start !important;
 }
 
+@media (max-width: 767px) {
+  .what-makes-exceptional .grid > div:last-child {
+    padding-bottom: 0.5rem !important;
+  }
+}
+
+.what-makes-exceptional > section {
+  padding-top: 0.75rem;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .what-makes-exceptional > section {
+    padding-top: 1.75rem;
+    padding-bottom: 2rem;
+  }
+}
+
 .insights-swiper::after {
   content: "";
   position: absolute;
