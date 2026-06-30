@@ -92,11 +92,11 @@ export default function Footer({
                                         </div>
 
                                         <ul
-                                            className={`text-body font-medium ${openSection === "experience" ? "block" : "hidden md:block"
+                                            className={`text-body font-small ${openSection === "experience" ? "block" : "hidden md:block"
                                                 }`}
                                         >
                                             {tagGroups[0].tags.map((spec) => (
-                                                <li key={spec.id} className="mb-2 text-[#818c94]">
+                                                <li key={spec.id} className="mb-2 text-sm text-[#818c94]">
                                                     <Link href={`/tag/${spec.short_slug}`} className="hover:underline">
                                                         {spec.title}
                                                     </Link>
@@ -119,11 +119,11 @@ export default function Footer({
                                         </div>
 
                                         <ul
-                                            className={`text-body font-medium mb-5 md:mb-0 ${openSection === "specialties" ? "block" : "hidden md:block"
+                                            className={`text-body font-small mb-5 md:mb-0 ${openSection === "specialties" ? "block" : "hidden md:block"
                                                 }`}
                                         >
                                             {tagGroups[1].tags.map((exp) => (
-                                                <li key={exp.id} className="mb-2 text-[#818c94]">
+                                                <li key={exp.id} className="mb-2 text-sm text-[#818c94]">
                                                     <Link href={`/tag/${exp.short_slug}`} className="hover:underline">
                                                         {exp.title}
                                                     </Link>
@@ -154,7 +154,7 @@ export default function Footer({
                                                 }`}
                                         >
                                             {regions.map((reg) => (
-                                                <li key={reg.id} className="mb-2 text-[#818c94]">
+                                                <li key={reg.id} className="mb-2 text-sm text-[#818c94]">
                                                     {reg.slug === "region/india" ? (
                                                         <Link href={`/${reg?.countries[0]?.slug}`} className="hover:underline">
                                                             {reg.menu_title ? reg.menu_title : reg.title}
@@ -192,32 +192,32 @@ export default function Footer({
                                 className={`${openSection === "contact" ? "block" : "hidden md:block"
                                     }`}
                             >
-                                <ul className="text-body font-medium mb-5">
-                                    <li className="mb-4 text-[#818c94]">
+                                <ul className="text-body font-small mb-5">
+                                    <li className="mb-4 text-sm text-[#818c94]">
                                         Registered Office: <br />
                                         {settings.address}
                                     </li>
                                 </ul>
 
-                                <ul className="text-body font-medium mb-5">
-                                    <li className="mb-4 text-[#818c94]">
+                                <ul className="text-body font-small mb-5">
+                                    <li className="mb-4 text-sm text-[#818c94]">
                                         Corporate Office <br />
                                         {settings.address_2}
                                     </li>
                                 </ul>
 
                                 <ul className="text-body font-medium pl-0 md:pl-0 md:-ml-[25px]">
-                                    <li className="mb-4 flex items-center gap-3 text-[#818c94]">
+                                    <li className="mb-4 flex items-center gap-3 text-sm text-[#818c94]">
                                         <img src="/images/call-icon.svg" alt="Phone" className="w-3 h-3" />
                                         <a href={`tel:${settings.phone}`}>{settings.phone}</a>
                                     </li>
 
-                                    <li className="mb-4 flex items-center gap-3 text-[#818c94]">
+                                    <li className="mb-4 flex items-center gap-3 text-sm text-[#818c94]">
                                         <img src="/images/whatsapp-icon.svg" alt="Phone" className="w-3 h-3" />
                                         <a href={whatsappLink}>{settings.whatsapp}</a>
                                     </li>
 
-                                    <li className="flex items-center gap-3 text-[#818c94]">
+                                    <li className="flex items-center gap-3 text-sm text-[#818c94]">
                                         <img src="/images/mail-icon.svg" alt="Email" className="w-3 h-3" />
                                         <a href={`mailto:${settings.email}`}>{settings.email}</a>
                                     </li>
