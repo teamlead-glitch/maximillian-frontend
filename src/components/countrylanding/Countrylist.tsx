@@ -221,7 +221,7 @@ px-4 sm:px-0 text-center">
                 </div>
             </section>}
             
-            {nonSignaturePackages.length > 0 && <section id="nonsignaturejourneys" className="relative py-5  md:py-5 px-5 overflow-hidden bg-white scroll-mt-16">
+            {nonSignaturePackages.length > 0 && <section id="nonsignaturejourneys" className="relative pt-2 pb-5 md:pt-2 md:pb-5 px-5 overflow-hidden bg-white scroll-mt-16">
                 <div className="max-w-[1000px] mx-auto">
                     <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full gap-4 md:gap-8">
                         <div className="inline-block">  <h3 className=" font-my-font-regular text-3xl md:text-4xl text-(--color-secondary) md:text-right">More Journeys <br />
