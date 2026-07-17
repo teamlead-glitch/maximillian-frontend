@@ -22,12 +22,15 @@ interface PackageSliderprops {
     price_caption?: string;
     price_inr?: string;
     price_usd?: string;
+    currency?: string | null;
+    show_combined_price?: any;
 }
 
-function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false, price_caption = '', price_inr, price_usd }: PackageSliderprops) {
+function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false, price_caption = '', price_inr, price_usd, currency, show_combined_price }: PackageSliderprops) {
 
 
     useEffect(() => {
+        
         const options = {
             Toolbar: {
                 display: ["zoom", "close"],
@@ -100,7 +103,7 @@ function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false,
     const hasPriceUsd = Boolean(price_usd?.trim());
     const hasPriceText = Boolean(price_text?.trim());
 
-    const formatCurrencyValue = (currency: "INR" | "USD", value?: string) => {
+    const formatCurrencyValue = (currency: any, value?: string) => {
         const trimmedValue = value?.trim();
 
         if (!trimmedValue) return "";
@@ -112,7 +115,7 @@ function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false,
 
     const currencyPriceText = [
         formatCurrencyValue("INR", price_inr),
-        formatCurrencyValue("USD", price_usd),
+        formatCurrencyValue(currency, price_usd),
     ].filter(Boolean);
 
     /* -----------------------------------------------------------------------
@@ -237,7 +240,7 @@ function PackagedetailsSlider({ gallery, price_text, title, id, has_emi = false,
                                 <h3 className=" font-my-font-semibold text-2xl md:text-3xl lg:text-4xl text-(--color-secondary) md:text-right ">
                                     {currencyPriceText.map((item, index) => (
                                         <React.Fragment key={item}>
-                                            {index > 0 && <span className="mx-2 text-gray-400">|</span>}
+                                            {index > 0 && <span className="mx-2 text-gray-400">{show_combined_price === 1 ? '+' : '|'}</span>}
                                             {item}
                                         </React.Fragment>
                                     ))}

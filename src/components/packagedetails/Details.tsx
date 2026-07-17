@@ -608,7 +608,7 @@ hover:before:translate-x-full
                 </div>
             </section >
 
-            <PackagedetailsSlider price_inr={details?.price_inr} price_usd={details?.price_usd} price_caption={details?.price_caption ?? ''} has_emi={details?.has_emi} gallery={details?.gallery} price_text={price_text} title={title} id={tour_id} />
+            <PackagedetailsSlider price_inr={details?.price_inr} price_usd={details?.price_usd} price_caption={details?.price_caption ?? ''} has_emi={details?.has_emi} gallery={details?.gallery} price_text={price_text} title={title} id={tour_id} currency={details.currency} show_combined_price={details?.show_combined_price} />
             <Faq faq={faq} faq_image={faq_image} />
 
 

@@ -29,6 +29,8 @@ export interface PackageResponse {
   banner_mob_image: string | null;
   price_text: string | null;
   price_inr?: string ;
+  currency?: string | null ;
+  show_combined_price? : any;
    price_usd?: string ;
   price_caption?: string | null;
   sort_order: number;
