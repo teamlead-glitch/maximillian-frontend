@@ -15,4 +15,6 @@ export interface Region {
   what_makes_us_exceptional: string;
   faqs: any[]; // change to proper type if FAQ structure is known
   seoDetail: Seo;
+  redirect:boolean;
+  newSlug:string;
 }

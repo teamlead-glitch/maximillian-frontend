@@ -1,17 +1,25 @@
 import { generateSeoMetadata } from "@/lib/seo";
 import DynamicPageClient from "./DynamicPageClient";
 import { fetchPageBySlug } from "@/lib/page-api";
-import NotFound from "@/app/not-found";
+import {  permanentRedirect } from "next/navigation";
+import NotFound from "../not-found";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
+
+/* ---------- helper to normalize the redirect path ---------- */
+function normalizeRedirectPath(url: string): string {
+  // API sends "some-page\/new-slug" -> "some-page/new-slug"
+  const clean = url.replace(/\\\//g, "/");
+  return clean.startsWith("/") ? clean : `/${clean}`;
+}
 
 export const generateMetadata = async ({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) => {
-  const { slug } = await params; // ✅ UNWRAP PARAMS
+  const { slug } = await params;
 
   if (!slug || slug === "home") {
     return {};
@@ -26,11 +34,17 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const page = await fetchPageBySlug(slug);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const page: any = await fetchPageBySlug(slug);
 
-  if (!page || slug == 'home') {
-    // Optional: you can throw notFound() here
-    return <NotFound />;
+  // ✅ REDIRECT: slug was renamed — send a permanent redirect
+  if (page?.redirect === true && page?.redirect_url) {
+    const path = normalizeRedirectPath(page.redirect_url);
+    permanentRedirect(path);
+  }
+
+  if (!page || slug === "home") {
+     return <NotFound />;
   }
 
   return (
@@ -48,6 +62,4 @@ export default async function Page({
       <DynamicPageClient page={page} />
     </>
   );
-
-
 }
